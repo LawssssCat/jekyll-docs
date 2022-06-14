@@ -1,0 +1,34 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely need to edit after that.
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'jekyll serve'. If you change this file, please restart the server process.
+
+# -------------------------
+# site settings 
+# -------------------------
+baseurl: /jekyll-docs-all-in-one # does not include hostname
+
+# -------------------------
+# paginate
+# -------------------------
+paginate: 8
+paginate_path: /page/page:num # don't change this unless for special need
+
+# -------------------------
+# build
+# -------------------------
+
+exclude:
+  - LICENSE
+  - jekyll-*.gemspec
+
+# -------------------------
+# plugins
+# -------------------------
+plugins:
+  - jekyll-feed
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jemoji
