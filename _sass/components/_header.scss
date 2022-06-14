@@ -5,7 +5,9 @@ header {
 }
 
 .header__title {
-  // @include menu(3, 0);
+  @include menu(3, 0);
+  @include align-items(center);
+  @include flex(1);
 }
 
 .header__brand {
