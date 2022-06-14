@@ -14,3 +14,9 @@ Therefore, I want to collect the common information of Jekyll and put all in one
 - husky: git hook<br>
   [github](https://github.com/typicode/husky)<br>
   [docs](https://typicode.github.io/husky/#/?id=manual)<br>
+- stylelint: css <br>
+  [github](https://github.com/stylelint/stylelint) <br>
+  [docs](http://stylelint.docschina.org/)<br>
+- eslint: js <br>
+  [github](https://github.com/eslint/eslint) <br>
+  [docs](https://eslint.org/) <br>

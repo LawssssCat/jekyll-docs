@@ -21,13 +21,20 @@
     "serve": "bundle exec jekyll serve -H 0.0.0.0 --port 8765 -d _site/dev",
     "debug": "cross-env JEKYLL_LOG_LEVEL=debug bundle exec jekyll serve -H 0.0.0.0 --port 9875 -d _site/debug",
     "eslint": "eslint \"_includes/**/*.js\"",
-    "eslint-fix": "eslint \"_includes/**/*.js\" --fix"
+    "eslint-fix": "eslint \"_includes/**/*.js\" --fix",
+    "stylelint": "stylelint scss \"_sass/**/*.scss\"",
+    "stylelint-fix": "stylelint scss \"_sass/**/*.scss\" --fix"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.0.2",
     "@commitlint/config-conventional": "^17.0.2",
     "cross-env": "^7.0.3",
     "eslint": "^6.8.0",
-    "husky": "^8.0.1"
+    "husky": "^8.0.1",
+    "stylelint": "^14.9.1",
+    "stylelint-config-recommended-scss": "^6.0.0",
+    "stylelint-config-standard": "^26.0.0",
+    "stylelint-order": "^5.0.0",
+    "stylelint-scss": "^4.2.0"
   }
 }

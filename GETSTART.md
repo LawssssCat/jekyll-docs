@@ -30,3 +30,31 @@ $ npm run serve
 # 调试
 $ npm run debug
 ```
+
+## vscode plugs 
+
+Stylelint
+
+```json
+"stylelint.validate": [
+    "css",
+    "scss"
+],
+```
+
+ESLint
+
+```json
+// eslint   -----settings begin-----
+// 是否为JavaScript文件开启eslint检测
+"eslint.enable": true,
+// 保存之后进行lint
+"eslint.run": "onSave",
+// 是否启用eslint的调试模式
+//"eslint.debug": true,
+// 保存文件时进行eslint修复(MacOS：快捷键是 command + s ),并不能修复所有问题，多数还是需要手动修复
+//"editor.codeActionsOnSave":{
+//  "source.fixAll.eslint": true
+//}
+// eslint   -----settings end-----
+```
