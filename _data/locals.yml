@@ -1,0 +1,30 @@
+# @start locale config
+## => English
+########################
+en: &EN
+  theme: Theme
+  plugs: Plugs
+  about: About
+
+en-GB:
+  <<: *EN
+en-US:
+  <<: *EN
+en-CA:
+  <<: *EN
+en-AU:
+  <<: *EN
+
+## => Simplified Chinese
+########################
+zh-Hans: &ZH_HANS
+  theme: 主题
+  plugs: 插件
+  about: 关于
+
+zh:
+  <<: *ZH_HANS
+zh-CN:
+  <<: *ZH_HANS
+zh-SG:
+  <<: *ZH_HANS

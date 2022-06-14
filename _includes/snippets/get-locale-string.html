@@ -1,0 +1,10 @@
+{%- assign __leading_flag = include.key | slice: 0 -%}
+{%- if __leading_flag == ':' -%}
+  {%- assign __key_len = include.key | size -%}
+  {%- assign __key = include.key | slice: 1, __key_len -%}
+  {%- include snippets/get-lang.html -%}
+  {%- assign __lang = __return -%}
+  {%- assign __return = site.data.locals[__lang][__key] | default: __key -%}
+{%- else -%}
+  {%- assign __return = include.key -%}
+{%- endif -%}

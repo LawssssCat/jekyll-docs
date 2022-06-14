@@ -1,0 +1,9 @@
+header:
+  - title: Home
+    url: /
+  - title: :theme
+    url: /theme.html
+  - title: :plugs
+    url: plugs.html
+  - title: :about
+    url: about.html

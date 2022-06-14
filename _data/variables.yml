@@ -1,2 +1,4 @@
 default: 
   lang: en
+  paths:
+    roots: /

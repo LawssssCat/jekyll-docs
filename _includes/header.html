@@ -1,1 +1,30 @@
-<header>header</header>
+<header>
+  <div class="main">
+    <div class="header_title">
+      <div class="header_brand">
+        {%- include svg/logo.svg -%}
+        {%- assign _paths_root = site.data.variables.default.paths.root -%}
+        {%- include snippets/get-nav-url.html path=_paths_root -%}
+        <a title="{{ site.description }}" href="{{ __return }}">{{ site.title }}</a>
+      </div>
+    </div>
+    <div class="navigation">
+      <ul>
+        {%- for _item in site.data.navigation.header -%}
+          {%- include snippets/get-nav-url.html path=_item.url -%}
+          {%- assign _nav_url = __return -%}
+          {%- include snippets/get-nav-url.html path=page.url -%}
+          {%- assign _page_url = __return -%}
+          {%- if _nav_url == _page_url -%}
+            {%- assign _nav_active = 'active' -%}
+          {%- else -%}
+            {%- assign _nav_active = '' -%}
+          {%- endif -%}
+          {%- include snippets/get-locale-string.html key=_item.title -%}
+          {%- assign _nav_title = __return -%}
+          <li class="navigation__item {{ _nav_active }}"><a href="{{ _nav_url }}">{{ _nav_title }}</a></li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  </div>
+</header>
