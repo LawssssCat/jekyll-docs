@@ -1,0 +1,26 @@
+{
+  "name": "jekyll-docs-all-in-one",
+  "version": "1.0.0",
+  "author": "lawsssscat",
+  "license": "MIT",
+  "description": "jekyll docs all in one ",
+  "keywords": [
+    "jekyll"
+  ],
+  "homepage": "https://github.com/LawssssCat/jekyll-docs-all-in-one#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LawssssCat/jekyll-docs-all-in-one.git"
+  },
+  "bugs": {
+    "url": "https://github.com/LawssssCat/jekyll-docs-all-in-one/issues"
+  },
+  "scripts": {
+    "build": "cross-env JEKYLL_ENV=production JEKYLL_LOG_LEVEL=debug bundle exec jekyll build -d _site",
+    "serve": "bundle exec jekyll serve -H 0.0.0.0 --port 8765 -d _site/dev",
+    "debug": "cross-env JEKYLL_LOG_LEVEL=debug bundle exec jekyll serve -H 0.0.0.0 --port 9875 -d _site/debug"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
+  }
+}

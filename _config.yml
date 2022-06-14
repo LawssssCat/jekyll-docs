@@ -27,8 +27,12 @@ paginate_path: /page/page:num # don't change this unless for special need
 # Build
 # -------------------------
 exclude:
+  - README.md
   - LICENSE
   - jekyll-*.gemspec
+  - package-lock.json
+  - package.json
+  - /node_modules
 
 # -------------------------
 # Plugins
