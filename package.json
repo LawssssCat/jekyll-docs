@@ -16,11 +16,15 @@
     "url": "https://github.com/LawssssCat/jekyll-docs-all-in-one/issues"
   },
   "scripts": {
+    "prepare": "husky install",
     "build": "cross-env JEKYLL_ENV=production JEKYLL_LOG_LEVEL=debug bundle exec jekyll build -d _site",
     "serve": "bundle exec jekyll serve -H 0.0.0.0 --port 8765 -d _site/dev",
     "debug": "cross-env JEKYLL_LOG_LEVEL=debug bundle exec jekyll serve -H 0.0.0.0 --port 9875 -d _site/debug"
   },
   "devDependencies": {
-    "cross-env": "^7.0.3"
+    "@commitlint/cli": "^17.0.2",
+    "@commitlint/config-conventional": "^17.0.2",
+    "cross-env": "^7.0.3",
+    "husky": "^8.0.1"
   }
 }

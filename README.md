@@ -7,5 +7,10 @@ Therefore, I want to collect the common information of Jekyll and put all in one
 
 ## Thankes
 
-- [commitlint]() <br>
-  [husky]()
+- commitlint: git commit massage<br>
+  [github](https://github.com/conventional-changelog/commitlint/) <br>
+  [docs](https://commitlint.js.org/#/)<br>
+  [Commit Message Guidelines](https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#-commit-message-guidelines)<br>
+- husky: git hook<br>
+  [github](https://github.com/typicode/husky)<br>
+  [docs](https://typicode.github.io/husky/#/?id=manual)<br>
