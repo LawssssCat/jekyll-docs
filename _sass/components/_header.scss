@@ -1,0 +1,30 @@
+header {
+  .main {
+    @include flexbox();
+  }
+}
+
+.header__title {
+  // @include menu(3, 0);
+}
+
+.header__brand {
+  @include flexbox();
+
+  & > svg {
+    width: map-get($base, font-size-h4) * 1.6;
+    height: map-get($base, font-size-h4) * 1.6;
+  }
+  & > a {
+    display: inline-block;
+    font-size: map-get($base, font-size-h4);
+
+  }
+}
+
+.navigation {
+  @include overflow(auto, "x");
+  & > ul {
+    @include menu(3, 2, nowrap);
+  }
+}
