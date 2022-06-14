@@ -6,26 +6,32 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 
 # -------------------------
-# site settings 
+# Site Settings 
 # -------------------------
 baseurl: /jekyll-docs-all-in-one # does not include hostname
+title: jekyll-docs-all-in-one
 
 # -------------------------
-# paginate
+# Language and Timezone
+# -------------------------
+lang: # the language of your site, default as "en"
+timezone: # see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for the available values
+
+# -------------------------
+# Paginate
 # -------------------------
 paginate: 8
 paginate_path: /page/page:num # don't change this unless for special need
 
 # -------------------------
-# build
+# Build
 # -------------------------
-
 exclude:
   - LICENSE
   - jekyll-*.gemspec
 
 # -------------------------
-# plugins
+# Plugins
 # -------------------------
 plugins:
   - jekyll-feed
