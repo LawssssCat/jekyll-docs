@@ -1,0 +1,29 @@
+{%- assign _author = include.author -%}
+
+<div class="author-links">
+  <ul>
+    {%- if _author.url -%}
+      <!-- https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/itemprop -->
+      <link itemprop="url" href="{{ _author.url }}">
+    {%- endif -%}
+
+    {%- if _author.type == 'organization' -%}
+      {%- include snippets/get-locale-string-from-data.html key='EMAIL_US' -%}
+      {%- assign _locale_string_email = __return -%}
+      {%- include snippets/get-locale-string-from-data.html key='FOLLOW_US' -%}
+      {%- assign _locale_string_follow = __return -%}
+    {%- else -%}
+      {%- include snippets/get-locale-string-from-data.html key='EMAIL_ME' -%}
+      {%- assign _locale_string_email = __return -%}
+      {%- include snippets/get-locale-string-from-data.html key='FOLLOW_ME' -%}
+      {%- assign _locale_string_follow = __return -%}
+    {%- endif -%}
+
+    {%- if _author.email -%}
+      <li title="{{ _locale_string_email }}">
+        <a class="button" itemprop="email" href="mailto:{{ _author.email }}" target="_blank">
+        <i class="fas fa-envelope"></i></a></li>
+    {%- endif -%}
+
+  </ul>
+</div>

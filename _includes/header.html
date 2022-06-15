@@ -1,4 +1,4 @@
-<header>
+<header class="header">
   <div class="main">
     <div class="header__title">
       <div class="header__brand">
@@ -20,8 +20,14 @@
           {%- else -%}
             {%- assign _nav_active = '' -%}
           {%- endif -%}
-          {%- include snippets/get-locale-string.html key=_item.title -%}
-          {%- assign _nav_title = __return -%}
+          {%- if _item.title -%}
+            {%- assign _nav_title = _item.title -%}
+          {%- elsif _item.titles -%}
+            {%- include snippets/get-locale-string-from-locales.html locales=_item.titles -%}
+            {%- assign _nav_title = __return -%}
+          {%- else -%}
+            {%- assign _nav_title = 'undefine' -%}
+          {%- endif -%}
           <li class="navigation__item {{ _nav_active }}"><a href="{{ _nav_url }}">{{ _nav_title }}</a></li>
         {%- endfor -%}
       </ul>

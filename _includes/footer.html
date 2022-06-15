@@ -1,1 +1,32 @@
-<footer>footer</footer>
+<footer class="footer">
+  <div class="main">
+    {%- assign _site_author = site.author -%}
+    {%- if _site_author.type == 'organization' -%}
+      {%- assign _site_author_itemtype = 'http://schema.org/Organization' -%}
+    {%- else -%}
+      {%- assign _site_author_itemtype = 'http://schema.org/Person' -%}
+    {%- endif -%}
+    <!-- see https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/itemscope -->
+    <div itemscope itemtype="{{ _site_author_itemtype }}">
+      <meta itemprop="name" content="{{ _site_author.name }}">
+      {%- assign _site_author_url = _site_author.url | default: '/'-%}
+      {%- include snippets/get-nav-url.html path=_site_author_url -%}
+      {%- assign _site_author_url = __return -%}
+      <meta itemprop="url" content="{{ _site_author_url }}">
+      {%- if _site_author.bio -%}
+        <meta itemprop="description" content="{{ _site_author.bio }}">
+      {%- endif -%}
+      <div class="footer__author-links">
+        {%- include author-links.html author=_site_author -%}
+      </div>
+    </div>
+    
+    <div class="site-info">
+      <div>
+        © {{ site.title }} {{ site.time | date: '%Y'}},
+        Powered by <a title="Jekyll is a simple, blog-aware, static site generator." href="http://jekyllrb.com/">Jekyll</a>
+        & <a title="Collects the common information of Jekyll and put all in one site." href="https://github.com/LawssssCat/jekyll-docs-all-in-one">Jekyll docs all in one</a>
+      </div>
+    </div>
+  </div>
+</footer>

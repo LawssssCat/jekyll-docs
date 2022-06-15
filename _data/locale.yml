@@ -2,9 +2,8 @@
 ## => English
 ########################
 en: &EN
-  theme: Theme
-  plugs: Plugs
-  about: About
+  FOLLOW_ME               : Follow me on [NAME].
+  EMAIL_ME                : "Send me an Email."
 
 en-GB:
   <<: *EN
@@ -18,9 +17,8 @@ en-AU:
 ## => Simplified Chinese
 ########################
 zh-Hans: &ZH_HANS
-  theme: 主题
-  plugs: 插件
-  about: 关于
+  EMAIL_ME                 : 给我发邮件。
+  FOLLOW_ME                : 在 [NAME] 上关注我。
 
 zh:
   <<: *ZH_HANS

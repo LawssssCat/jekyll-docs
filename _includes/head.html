@@ -1,3 +1,10 @@
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
 <title>{{ site.title }}</title>
 
 <link rel="stylesheet" href="{{ 'assets/css/style.css' | relative_url }}">
+
+{%- include snippets/get-source.html id='font_awesome' -%}
+<link rel="stylesheet" href="{{ __return }}" >
