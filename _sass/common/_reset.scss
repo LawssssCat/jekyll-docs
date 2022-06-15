@@ -1,3 +1,11 @@
+@mixin block-elements {
+  ul,
+  ol,
+  dl {
+    @content;
+  }
+}
+
 *,
 ::before,
 ::after {
@@ -30,4 +38,9 @@ body {
   ::selection {
     background: $select-color;
   }
+}
+
+@include block-elements() {
+  padding: 0;
+  margin: map-get($spacers, 2) 0;
 }

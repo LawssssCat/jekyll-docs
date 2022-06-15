@@ -3,3 +3,12 @@
     text-align: center;
   }
 }
+
+.author-links {
+  text-align: center;
+  & > ul {
+    @include menu();
+    @include inline-flex();
+    @include align-items(center);
+  }
+}
