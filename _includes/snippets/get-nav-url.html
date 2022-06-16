@@ -1,1 +1,2 @@
-{%- assign __return = include.path | relative_url -%}
+{%- include snippets/get-accessible-url.html url=include.path -%}
+{%- assign __return = __return -%}

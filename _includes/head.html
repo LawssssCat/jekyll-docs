@@ -12,7 +12,20 @@
   {%- endif -%}
 </title>
 
-<link rel="stylesheet" href="{{ 'assets/css/style.css' | relative_url }}">
+{%- include snippets/get-description-from-page.html -%}
+<meta name="description" content="{{ __return }}">
+
+{%- include snippets/get-accessible-url.html url=site.url -%}
+<link rel="canonical" href="{{ __return }}">
+
+<!-- rss -->
+{%- include snippets/get-accessible-url.html url=site.data.variables.default.paths.rss -%}
+<link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ __return }}">
+<!-- favicon -->
+{%- include head/favicon.html -%}
+<!-- my style -->
+{%- include snippets/get-accessible-url.html url='assets/css/style.css' -%}
+<link rel="stylesheet" href="{{ __return }}">
 
 {%- include snippets/get-source.html id='font_awesome' -%}
 <link rel="stylesheet" href="{{ __return }}" >
