@@ -40,3 +40,8 @@ body {
   padding: 0;
   margin: map-get($spacers, 2) 0;
 }
+
+a {
+  // font-weight: map-get($base, font-weight-bold);
+  @include link-colors(null, $main-color-1);
+}

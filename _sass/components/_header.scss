@@ -30,3 +30,11 @@
     @include menu(3, 2, nowrap);
   }
 }
+
+.navigation__item {
+  @include active() {
+    a {
+      @include link-colors($main-color-1, $main-color-1);
+    }
+  }
+}
