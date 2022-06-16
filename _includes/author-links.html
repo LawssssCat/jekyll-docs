@@ -23,13 +23,13 @@
 
     {%- if _author.email -%}
       <li title="{{ _locale_string_email }}">
-        <a class="button" itemprop="email" href="mailto:{{ _author.email }}" target="_blank">
+        <a class="button button--circle mail-button" itemprop="email" href="mailto:{{ _author.email }}" target="_blank">
         <i class="fas fa-envelope"></i></a></li>
     {%- endif -%}
 
     {%- if _author.github -%}
       <li title="{{ _locale_string_follow | replace: '[NAME]', 'Github' }}">
-        <a class="button" itemprop="sameAs" href="https://github.com/{{ _author.github }}" target="_blank">
+        <a class="button button--circle github-button" itemprop="sameAs" href="https://github.com/{{ _author.github }}" target="_blank">
           <i class="fab fa-github"></i></a></li>
     {%- endif -%}
   </ul>

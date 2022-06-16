@@ -1,0 +1,45 @@
+@mixin plain() {
+  &,
+  &:link,
+  &:visited {
+    @content;
+  }
+}
+
+@mixin hover() {
+  &:hover {
+    @content;
+  }
+}
+
+@mixin active() {
+  &:active,
+  &.active {
+    @content;
+  }
+}
+
+@mixin focus() {
+  &:focus {
+    @content;
+  }
+}
+
+@mixin disabled() {
+  &:disabled,
+  &.disabled {
+    @content;
+  }
+}
+
+@mixin selection {
+  &::selection,
+  &.selection,
+  &::-webkit-selection 
+  {
+    @content;
+  }
+  &::-moz-selection {
+    @content;
+  }
+}

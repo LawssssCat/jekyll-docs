@@ -1,0 +1,22 @@
+.author-links {
+  text-align: center;
+  & > ul {
+    @include menu();
+    @include inline-flex();
+    @include align-items(center);
+  }
+}
+
+.author-links {
+  & > ul {
+    // margin: 0;
+    & > li > {
+      .mail-button {
+        @include clickable($text-color-1, $mail-color);
+      }
+      .github-button {
+        @include clickable($text-color-1, $github-color);
+      }
+    }
+  }
+}
