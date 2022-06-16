@@ -2,7 +2,15 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
-<title>{{ site.title }}</title>
+{%- include snippets/get-article-title.html article=page -%}
+{%- assign _page_title = __return -%}
+<title>
+  {%- if _page_title -%}
+    {{ _page_title }} | {{ site.title }}
+  {%- else -%}
+    {{ site.title }}
+  {%- endif -%}
+</title>
 
 <link rel="stylesheet" href="{{ 'assets/css/style.css' | relative_url }}">
 
