@@ -8,9 +8,15 @@ layout: none
     {%- include head.html -%}
     {%- include scripts/variables.html -%}
   </head>
+  <script>
+    {%- include scripts/utils/utils.js -%}
+  </script>
   <body>
     <div class="layout--base">
       {{ content }}
     </div>
+    <script>
+      {%- include scripts/common.js -%}
+    </script>
   </body>
 </html>
