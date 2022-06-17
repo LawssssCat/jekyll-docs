@@ -1,6 +1,6 @@
 header:
-  - title: Home
-    url: /index
+  - title: Jekyll
+    url: /jekyll
   - titles: 
       en      : &EN       Themes
       en-GB   : *EN
@@ -78,6 +78,8 @@ header:
       zh-CN   : *ZH_HANS
       zh-SG   : *ZH_HANS
     url: /samples
+  - title: Others
+    url: /others
   - titles: 
       en      : &EN       About
       en-GB   : *EN

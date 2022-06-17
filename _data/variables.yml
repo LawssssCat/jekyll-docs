@@ -1,7 +1,7 @@
 default: 
   lang: en
   paths:
-    roots: /
+    root: /
     rss:  /feed.xml
   sources: bootcdn
 

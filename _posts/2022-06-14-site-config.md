@@ -18,6 +18,14 @@ path | type of config | name | type of date | mean | default
 
 path | type of config | name | type of date | mean | default
 --   | ---            | ---  | ---          | ---  | ---
-`{page.path}`      | | `lang`    | string | the language of the page. see <http://www.lingoes.net/en/translator/langcode.htm> | `{{site.lang}}`
+`{page.path}`      | | `lang` | string | the language of the page. see <http://www.lingoes.net/en/translator/langcode.htm> | `{{site.lang}}`
+`{page.path}`      | front matter | `permalink` | url
+`{page.path}`      | front matter | `key` | string
+`{page.path}`      | front matter | `cover` | url 
+`{page.path}`      | front matter | `article_header` | obj
+`{page.path}`      | front matter | `article_header.type` | `cover` or `overload`
+`{page.path}`      | front matter | `article_header.image` | obj
+`{page.path}`      | front matter | `article_header.image.src` | url
+`{page.path}`      | front matter | `article_header.image.style` | css
 
 {% endraw %}

@@ -4,16 +4,9 @@ title: Common links
 article_header: 
   type: cover
   image:
-    src: assets/images/cover2.jpg
+    # svg seacher https://www.svgviewer.dev/directory/all/1
+    # svg editor  https://vecta.io/app/dashboard
+    src: assets/images/cover1_with_title.svg
+    style: "margin: 1em auto;; width: 80vw; display: block;"
 ---
 
-<h2>all posts in this site</h2>
-
-<ul>
-{%- for post in site.posts -%}
-  <li>
-    {%- include snippets/get-accessible-url.html url=post.url -%}
-    <span>{{ post.title }}</span> - <a href="{{ __return }}">read more</a>
-  </li>
-{%- endfor -%}
-</ul>

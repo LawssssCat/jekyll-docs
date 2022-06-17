@@ -61,6 +61,10 @@ collections:
   navs:
     output: true
     permalink: /:name
+  sample_articles:
+    output: true
+  sample_pages:
+    output: true
 
 exclude:
   - README.md
