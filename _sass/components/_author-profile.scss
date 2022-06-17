@@ -1,0 +1,20 @@
+.author-profile {
+  @include flexbox();
+  padding: map-get($spacers, 2) map-get($spacers, 3);
+  margin: map-get($spacers, 4) 0;
+  background-color: $text-background-color;
+  .profile__avatar img {
+    height: 5rem;
+    width: 5rem;
+    border-radius: 50%;
+    margin-top: map-get($spacers, 2);
+    margin-right: map-get($spacers, 2);
+  }
+  .author-links {
+    text-align: left;
+  }
+  .profile__name {
+    font-size: map-get($base, font-size-lg);
+    font-weight: map-get($base, font-weight-bold);
+  }
+}

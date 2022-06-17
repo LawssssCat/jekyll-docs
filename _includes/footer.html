@@ -1,11 +1,8 @@
 <footer class="footer py-4">
   <div class="main">
     {%- assign _site_author = site.author -%}
-    {%- if _site_author.type == 'organization' -%}
-      {%- assign _site_author_itemtype = 'http://schema.org/Organization' -%}
-    {%- else -%}
-      {%- assign _site_author_itemtype = 'http://schema.org/Person' -%}
-    {%- endif -%}
+    {%- include snippets/get-author-itemtype.html author=_site_author -%}
+    {%- assign _site_author_itemtype = __return -%}
     <!-- see https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/itemscope -->
     <div itemscope itemtype="{{ _site_author_itemtype }}">
       <meta itemprop="name" content="{{ _site_author.name }}">

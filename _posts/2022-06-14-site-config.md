@@ -28,4 +28,14 @@ path | type of config | name | type of date | mean | default
 `{page.path}`      | front matter | `article_header.image.src` | url
 `{page.path}`      | front matter | `article_header.image.style` | css
 
+## author
+
+path | type of config | name | type of date | mean | default
+--   | ---            | ---  | ---          | ---  | ---
+`_data/variables.yml`      |  | `default.page.show_author_profile` | boolean | | `false`
+`{layout}`      | front matter | `show_author_profile` | boolean | | `site.data.default.page.show_author_profile`
+`{page.path}`      | front matter | `show_author_profile` | boolean | | `{layout}.show_author_profile`
+`{author}`      | | `avatar` | url | | 
+`{author}`      | | `url` | url | |
+
 {% endraw %}

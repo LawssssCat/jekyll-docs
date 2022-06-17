@@ -1,0 +1,6 @@
+.card {
+  max-width: 18rem;
+  border-radius: map-get($base, border-radius);
+  @include box-shadow();
+
+}

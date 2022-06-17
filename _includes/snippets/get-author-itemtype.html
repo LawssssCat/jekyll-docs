@@ -1,0 +1,6 @@
+{%- assign _author_type = include.author.type -%}
+{%- if _author_type == 'organization' -%}
+  {%- assign __return = 'http://schema.org/Organization' -%}
+{%- else -%}
+  {%- assign __return = 'http://schema.org/Person' -%}
+{%- endif -%}

@@ -4,6 +4,8 @@ default:
     root: /
     rss:  /feed.xml
   sources: bootcdn
+  page:
+    show_author_profile: true
 
 sources:
   bootcdn:

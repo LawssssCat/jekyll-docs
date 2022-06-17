@@ -1,3 +1,7 @@
+{%- assign _show_author_profile = page.show_author_profile 
+  | default: layout.show_author_profile  
+  | default: site.data.variables.default.page.show_author_profile -%}
+
 <footer class="footer">
   {%- if page.last_modified_at -%}
     {%- include snippets/get-locale-string-from-data.html key='ARTICLE_DATE_FORMAT' -%}
@@ -11,4 +15,11 @@
   {%- elsif page.date -%}
     <meta itemprop="dateModified" content="{{ page.date | date_to_xmlschema }}">
   {%- endif -%}
+
+  {%- if _show_author_profile -%}
+    {%- include snippets/get-author.html -%}
+    {%- assign _author = __return -%}
+    {%- include author-profile.html author=_author -%}
+  {%- endif -%}
+
 </footer>
