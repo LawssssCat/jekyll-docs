@@ -2,7 +2,7 @@ header:
   - title: Home
     url: /
   - titles: 
-      en      : &EN       Theme
+      en      : &EN       Themes
       en-GB   : *EN
       en-US   : *EN
       en-CA   : *EN
@@ -23,6 +23,28 @@ header:
       zh-CN   : *ZH_HANS
       zh-SG   : *ZH_HANS
     url: /plugins.html
+  - titles: 
+      en      : &EN       Docs
+      en-GB   : *EN
+      en-US   : *EN
+      en-CA   : *EN
+      en-AU   : *EN
+      zh-Hans : &ZH_HANS  
+      zh      : *ZH_HANS
+      zh-CN   : *ZH_HANS
+      zh-SG   : *ZH_HANS
+    url: /docs.html
+  - titles: 
+      en      : &EN       Samples
+      en-GB   : *EN
+      en-US   : *EN
+      en-CA   : *EN
+      en-AU   : *EN
+      zh-Hans : &ZH_HANS  
+      zh      : *ZH_HANS
+      zh-CN   : *ZH_HANS
+      zh-SG   : *ZH_HANS
+    url: /samples.html
   - titles: 
       en      : &EN       About
       en-GB   : *EN

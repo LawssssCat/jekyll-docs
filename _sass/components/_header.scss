@@ -13,8 +13,11 @@
 .header__title {
   @include menu(3, 0);
   @include align-items(center);
+  @include flex-wrap(nowrap);
   @include flex(1);
   height: map-get($layout, header-height);
+  margin-right: map-get($spacers, 3);
+  white-space: nowrap;
 }
 
 .header__brand {
@@ -43,6 +46,7 @@
 }
 
 .navigation__item {
+  white-space: nowrap;
   @include active() {
     a {
       @include link-colors($main-color-1, $main-color-1);

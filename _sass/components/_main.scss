@@ -1,5 +1,5 @@
 .main {
   margin: 0 auto;
   max-width: map-get($layout, content-max-width);
-
+  padding: 0 map-get($spacers, 5);
 }
