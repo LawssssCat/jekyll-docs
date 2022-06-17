@@ -1,6 +1,6 @@
 header:
   - title: Home
-    url: /
+    url: /index
   - titles: 
       en      : &EN       Themes
       en-GB   : *EN
@@ -11,7 +11,7 @@ header:
       zh      : *ZH_HANS
       zh-CN   : *ZH_HANS
       zh-SG   : *ZH_HANS
-    url: /theme.html
+    url: /theme
   - titles: 
       en      : &EN       Plugs
       en-GB   : *EN
@@ -22,7 +22,40 @@ header:
       zh      : *ZH_HANS
       zh-CN   : *ZH_HANS
       zh-SG   : *ZH_HANS
-    url: /plugins.html
+    url: /plugins
+  - titles: 
+      en      : &EN       markdown
+      en-GB   : *EN
+      en-US   : *EN
+      en-CA   : *EN
+      en-AU   : *EN
+      zh-Hans : &ZH_HANS  
+      zh      : *ZH_HANS
+      zh-CN   : *ZH_HANS
+      zh-SG   : *ZH_HANS
+    url: /markdown
+  - titles: 
+      en      : &EN       liquid
+      en-GB   : *EN
+      en-US   : *EN
+      en-CA   : *EN
+      en-AU   : *EN
+      zh-Hans : &ZH_HANS  
+      zh      : *ZH_HANS
+      zh-CN   : *ZH_HANS
+      zh-SG   : *ZH_HANS
+    url: /liquid
+  - titles: 
+      en      : &EN       ruby
+      en-GB   : *EN
+      en-US   : *EN
+      en-CA   : *EN
+      en-AU   : *EN
+      zh-Hans : &ZH_HANS  
+      zh      : *ZH_HANS
+      zh-CN   : *ZH_HANS
+      zh-SG   : *ZH_HANS
+    url: /ruby
   - titles: 
       en      : &EN       Docs
       en-GB   : *EN
@@ -33,7 +66,7 @@ header:
       zh      : *ZH_HANS
       zh-CN   : *ZH_HANS
       zh-SG   : *ZH_HANS
-    url: /docs.html
+    url: /docs
   - titles: 
       en      : &EN       Samples
       en-GB   : *EN
@@ -44,7 +77,7 @@ header:
       zh      : *ZH_HANS
       zh-CN   : *ZH_HANS
       zh-SG   : *ZH_HANS
-    url: /samples.html
+    url: /samples
   - titles: 
       en      : &EN       About
       en-GB   : *EN
@@ -67,4 +100,4 @@ header:
       fr-FR   : *FR
       fr-LU   : *FR
       tr      : &TR       Hakkında
-    url: /about.html
+    url: /about

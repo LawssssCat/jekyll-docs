@@ -52,6 +52,16 @@ paginate_path: /page/page:num # don't change this unless for special need
 # -------------------------
 # Build
 # -------------------------
+# see https://jekyllrb.com/docs/configuration/markdown/
+# see https://kramdown.gettalong.org/index.html
+markdown: kramdown
+
+# see https://jekyllrb.com/docs/collections/#collections
+collections:
+  navs:
+    output: true
+    permalink: /:name
+
 exclude:
   - README.md
   - LICENSE
