@@ -1,55 +1,57 @@
-.header {
-  background-color: $header-background;
-  a {
-    // font-weight: map-get($base, font-weight);
-    // text-decoration: none !important;
-    @include link-colors($header-text-color, $main-color-1);
-  }
-  .main {
-    @include flexbox();
-  }
-}
-
-.header__title {
-  @include menu(3, 0);
-  @include align-items(center);
-  @include flex-wrap(nowrap);
-  @include flex(1);
-  height: map-get($layout, header-height);
-  margin-right: map-get($spacers, 3);
-  white-space: nowrap;
-}
-
-.header__brand {
-  @include flexbox();
-
-  & > svg {
-    width: map-get($base, font-size-h4) * 1.6;
-    height: map-get($base, font-size-h4) * 1.6;
-    margin-right: map-get($spacers, 3);
-  }
-  & > a {
-    display: inline-block;
-    font-size: map-get($base, font-size-h4);
-
-  }
-}
-
-.navigation {
-  @include overflow(auto, "x");
-  & > ul {
-    height: map-get($layout, header-height);
-    @include menu(3, 2, nowrap);
-    @include align-items(center);
-
-  }
-}
-
-.navigation__item {
-  white-space: nowrap;
-  @include active() {
+.page__header {
+  .header {
+    background-color: $header-background;
     a {
-      @include link-colors($main-color-1, $main-color-1);
+      // font-weight: map-get($base, font-weight);
+      // text-decoration: none !important;
+      @include link-colors($header-text-color, $main-color-1);
+    }
+    .main {
+      @include flexbox();
+    }
+  }
+  
+  .header__title {
+    @include menu(3, 0);
+    @include align-items(center);
+    @include flex-wrap(nowrap);
+    @include flex(1);
+    height: map-get($layout, header-height);
+    margin-right: map-get($spacers, 3);
+    white-space: nowrap;
+  }
+  
+  .header__brand {
+    @include flexbox();
+  
+    & > svg {
+      width: map-get($base, font-size-h4) * 1.6;
+      height: map-get($base, font-size-h4) * 1.6;
+      margin-right: map-get($spacers, 3);
+    }
+    & > a {
+      display: inline-block;
+      font-size: map-get($base, font-size-h4);
+  
+    }
+  }
+  
+  .navigation {
+    @include overflow(auto, "x");
+    & > ul {
+      height: map-get($layout, header-height);
+      @include menu(3, 2, nowrap);
+      @include align-items(center);
+  
+    }
+  }
+  
+  .navigation__item {
+    white-space: nowrap;
+    @include active() {
+      a {
+        @include link-colors($main-color-1, $main-color-1);
+      }
     }
   }
 }

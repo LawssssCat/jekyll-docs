@@ -2,4 +2,14 @@
 layout: page
 ---
 
-{{ content }}
+<div class="layout--article">
+  
+  <div class="article__content">
+    {{ content }}
+  </div>
+
+  <div class="article__footer d-print-none">
+    {%- include article-footer.html -%}
+  </div>
+
+</div>
