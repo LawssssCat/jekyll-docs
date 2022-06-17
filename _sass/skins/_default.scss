@@ -2,9 +2,23 @@
 $main-color-1: #fc4d50;;
 $text-color-1: #fff;
 
+$main-color-2: #fca24d;
+$text-color-2: #fff;
+
+$main-color-3: #f2f2f2;
+$text-color-3: #333;
+
 // page background
 $background-color: #fff;
 
+// header and footer colors
+$header-text-color: $text-color-3;
+$header-background: $main-color-3;
+
+$footer-text-color: $text-color-3;
+$footer-background: $main-color-3;
+
+// border and shadow colors
 $select-color: rgba(#fc4d50, .5);
 
 // logo colors

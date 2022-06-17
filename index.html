@@ -1,8 +1,24 @@
 ---
-layout: home
+layout: article
+title: Common links
+article_header: 
+  type: cover
+  image:
+    src: assets/images/cover2.jpg
 ---
 
-hello world
+<h2>liquid</h2>
 
 liquid docs - https://shopify.github.io/liquid/ (official)
 liquid docs - https://liquidjs.com/zh-cn/tutorials/intro-to-liquid.html
+
+<h2>all posts in this site</h2>
+
+<ul>
+{%- for post in site.posts -%}
+  <li>
+    {%- include snippets/get-accessible-url.html url=post.url -%}
+    <span>{{ post.title }}</span> - <a href="{{ __return }}">read more</a>
+  </li>
+{%- endfor -%}
+</ul>

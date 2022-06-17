@@ -1,4 +1,9 @@
 .footer {
+  color: $footer-text-color;
+  background-color: $footer-background;
+  a {
+    @include link-colors ($footer-text-color, $main-color-1);
+  }
   .site-info {
     text-align: center;
   }

@@ -1,2 +1,7 @@
+{%- comment -%}
+
+  get assets source by platform that indicate in '_data/variables'
+  
+{%- endcomment -%}
 {%- assign __sources_platform = site.data.variables.default.sources -%}
 {%- assign __return = site.data.variables.sources[__sources_platform] -%}

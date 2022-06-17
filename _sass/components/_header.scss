@@ -1,4 +1,10 @@
 .header {
+  background-color: $header-background;
+  a {
+    // font-weight: map-get($base, font-weight);
+    // text-decoration: none !important;
+    @include link-colors($header-text-color, $main-color-1);
+  }
   .main {
     @include flexbox();
   }
@@ -8,6 +14,7 @@
   @include menu(3, 0);
   @include align-items(center);
   @include flex(1);
+  height: map-get($layout, header-height);
 }
 
 .header__brand {
@@ -28,7 +35,10 @@
 .navigation {
   @include overflow(auto, "x");
   & > ul {
+    height: map-get($layout, header-height);
     @include menu(3, 2, nowrap);
+    @include align-items(center);
+
   }
 }
 

@@ -1,15 +1,43 @@
 ---
 layout: base
 ---
+{%- comment -%}
+page layout
+
+option:
+  page.article_header.type
+    - 'cover'
+    - 'overlay'
+{%- endcomment -%}
+{%- assign _article_header_type = page.article_header.type | default: layout.article_header.type -%}
+
 <div class="layout--page">
-  <div class="page__viewpoint">
-    <div class="page__main">
+  <div class="page__main page__viewport">
+    <div class="page__main-inner">
+      <!-- header -->
       <div class="page__header">
         {%- include header.html -%}
       </div>
+      <!-- content -->
       <div class="page__content">
-        {{ content }}
+        {%- if _article_header_type == 'overlay' or _article_header_type == 'cover' -%}
+          {%- if _article_header_type == 'cover' -%}
+            {%- include snippets/get-nav-url.html path=page.article_header.image.src -%}
+            {%- assign _header_image_src = __return -%}
+            <img class="article__header--cover" src="{{ _header_image_src }}" />
+          {%- endif -%}
+        {%- endif -%}
+        <div class="main">
+          <div class="grid">
+            <div class="col-main">
+              <article>
+                <div>{{ content }}</div>
+              </article>
+            </div>
+          </div>
+        </div>
       </div>
+      <!-- footer -->
       <div class="page__footer">
         {%- include footer.html -%}
       </div>
