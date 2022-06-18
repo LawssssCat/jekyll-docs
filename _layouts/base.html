@@ -11,7 +11,8 @@ layout: none
   <script>
     {%- include scripts/utils/utils.js -%}
   </script>
-  <body>
+  {%- assign _theme = site.color_theme | default: site.data.variables.default.color_theme -%}
+  <body data-theme="{{ _theme }}">
     <div class="layout--base">
       {{ content }}
     </div>

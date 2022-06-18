@@ -1,0 +1,7 @@
+@import "./theme/default";
+@import "./theme/dark";
+
+$themes:(
+  default: $theme-default,
+  dark: $theme-dark,
+)
