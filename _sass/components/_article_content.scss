@@ -1,0 +1,8 @@
+.article__content {
+  line-height: map-get($base, line-height-lg);
+  word-wrap: break-word;
+  h1,
+  h2 {
+    @include split-line(bottom);
+  }
+}

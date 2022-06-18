@@ -41,14 +41,17 @@ path | type of config | name | type of date | mean | default
 ### article
 
 priority: 
-1. page front matter
+1. page front matter (site.default.xxx)
 2. layout front matter
 3. `_data/variables` `default.page.{xxx}`
 
 path | type of config | name | type of date | mean | default
 --   | ---            | ---  | ---          | ---  | ---
+   |                | `show_article_footer_navigation` | boolean | | false
    |                | `show_author_profile` | boolean | | false
    |                | `show_subscribe` | boolean | | false
    |                | `license` | string | license name. data define in `_data/license.yml` | false
+ `_data.navigation`  |  | `key` | string | work with `nav_key` | 
+ page | front matter | `nav_key` | string | work with `_data.navigation` | 
 
 {% endraw %}

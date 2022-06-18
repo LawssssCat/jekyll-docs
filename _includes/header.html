@@ -15,10 +15,10 @@
           {%- assign _nav_url = __return -%}
           {%- include snippets/get-nav-url.html path=page.url -%}
           {%- assign _page_url = __return -%}
-          {%- if _nav_url == _page_url -%}
+          
+          {%- assign _nav_active = '' -%}
+          {%- if _nav_url == _page_url or _item.key != null and page.nav_key != null and page.nav_key == _item.key -%}
             {%- assign _nav_active = 'active' -%}
-          {%- else -%}
-            {%- assign _nav_active = '' -%}
           {%- endif -%}
           {%- if _item.title -%}
             {%- assign _nav_title = _item.title -%}

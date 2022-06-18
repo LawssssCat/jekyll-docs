@@ -67,6 +67,15 @@ collections:
   sample_pages:
     output: true
 
+defaults:
+  ## samples
+  - scope:
+      path: ""
+      type: sample_pages
+    values:
+      nav_key: samples
+      show_article_footer_navigation: true
+
 exclude:
   - README.md
   - LICENSE

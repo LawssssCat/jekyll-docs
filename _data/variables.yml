@@ -1,5 +1,5 @@
 default: 
-  color_theme: dark # "default" (default), "dark", "forest", "ocean", "chocolate", "orange"
+  color_theme: default # "default" (default), "dark", "forest", "ocean", "chocolate", "orange"
   highlight_theme: default # "default" (default), "tomorrow", "tomorrow-night", "tomorrow-night-eighties", "tomorrow-night-blue", "tomorrow-night-bright"
   lang: en
   paths:
@@ -13,6 +13,7 @@ default:
     show_author_profile: false
     show_subscribe: true
     show_last_modified_at: true
+    show_article_footer_navigation: false
     license: CC-BY-4.0
     
 sources:

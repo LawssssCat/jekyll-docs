@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Samples
-permalink: /samples.html
+# permalink: /samples
 ---
 <div class="layout--articles">
   <section>
