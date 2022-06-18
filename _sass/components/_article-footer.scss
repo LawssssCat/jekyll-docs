@@ -1,10 +1,37 @@
 .article__footer {
-  margin: map-get($spacers, 4) 0;
-  font-size: map-get($base, font-size-sm);
+
+  .footer {
+    margin: map-get($spacers, 4) 0;
+    font-size: map-get($base, font-size-sm);
+  }
 
   .article__license, .article__subscribe {
     a {
       @include link-colors($text-color, $main-color-1);
+    }
+  }
+
+  .navigation {
+    padding-top: map-get($spacers, 3);
+    margin: map-get($spacers, 4) 0 map-get($spacers, 3) 0;
+    @include flexbox();
+    @include justify-content(space-between);
+    @include split-line(top, 4px);
+    & > .previous, & > .next {
+      & > span {
+        font-weight: map-get($base, font-weight-bold);
+        color: $text-color-l;
+      }
+      & > a {
+        display: block;
+        @include link-colors($text-color, $main-color-1);
+      }
+    }
+    & > .previous {
+      text-align: left;
+    }
+    & > .next {
+      text-align: right;
     }
   }
   

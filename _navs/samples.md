@@ -10,7 +10,7 @@ permalink: /samples.html
   </section>
 </div>
 
-{%- for item in site.sample_pages -%}
+{%- for item in site.sample_pages %}
 {%- include snippets/get-accessible-url.html url=item.url -%}
-- [{{ item.title }}]({{ __return }})
-{%- endfor -%}
+- [{{ item.title }}]({{ __return }}) 
+{% endfor -%}

@@ -8,6 +8,8 @@ en: &EN
   ARTICLE_DATE_FORMAT     : "%b %d, %Y" 
   LAST_UPDATED            : "Last updated" 
   LICENSE_ANNOUNCE        : "This work is licensed under a [LICENSE] license."
+  PREVIOUS                : "PREVIOUS"
+  NEXT                    : "NEXT"
 
 en-GB:
   <<: *EN
@@ -27,7 +29,9 @@ zh-Hans: &ZH_HANS
   LAST_UPDATED             : "更新于"
   SUBSCRIBE                : "订阅"
   LICENSE_ANNOUNCE         : "本文遵守 [LICENSE] 许可协议。"
-
+  PREVIOUS                : "上篇"
+  NEXT                    : "下篇"
+  
 zh:
   <<: *ZH_HANS
 zh-CN:
