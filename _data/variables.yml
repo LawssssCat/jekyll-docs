@@ -1,4 +1,5 @@
 default: 
+  highlight_theme: default
   lang: en
   paths:
     root: /
