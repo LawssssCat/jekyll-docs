@@ -23,7 +23,7 @@
 {%- assign _license = __return -%}
 
 <footer class="footer">
-  {%- if _show_last_modified_at -%}
+  {%- if _show_last_modified_at and page.last_modified_at -%}
     {%- include snippets/get-locale-string-from-data.html key='ARTICLE_DATE_FORMAT' -%}
     {%- assign _locale_date_format = __return -%}
 
