@@ -4,7 +4,9 @@
     background-color: $footer-background;
     a {
       font-weight: map-get($base, font-weight);
-      @include link-colors ($footer-text-color, $main-color-1);
+      @include themeify {
+        @include link-colors(themed(footer-text-color), themed(main-color-1));
+      }
     }
     .site-info {
       text-align: center;

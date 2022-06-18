@@ -1,4 +1,7 @@
 $theme-dark: (
   // main colors
   main-color-1: #ff9500,
-)
+);
+
+@import "./default";
+$theme-dark: map-merge($theme-default, $theme-dark);

@@ -1,5 +1,5 @@
 default: 
-  color_theme: default
+  color_theme: dark
   highlight_theme: default
   lang: en
   paths:

@@ -7,7 +7,9 @@
 
   .article__license, .article__subscribe {
     a {
-      @include link-colors($text-color, $main-color-1);
+      @include themeify {
+        @include link-colors($text-color, themed(main-color-1));
+      }
     }
   }
 
@@ -22,7 +24,9 @@
       }
       & > a {
         display: block;
-        @include link-colors($text-color, $main-color-1);
+        @include themeify {
+          @include link-colors($text-color, themed(main-color-1));
+        }      
       }
     }
     & > .previous {

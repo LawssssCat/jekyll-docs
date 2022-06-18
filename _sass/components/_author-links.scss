@@ -12,10 +12,14 @@
     // margin: 0;
     & > li > {
       .mail-button {
-        @include clickable($text-color-1, $mail-color);
+        @include themeify() {
+          @include clickable(themed(text-color-1), themed(mail-color));
+        }
       }
       .github-button {
-        @include clickable($text-color-1, $github-color);
+        @include themeify() {
+          @include clickable(themed(text-color-1), themed(github-color));
+        }
       }
     }
   }

@@ -4,7 +4,9 @@
     a {
       font-weight: map-get($base, font-weight);
       // text-decoration: none !important;
-      @include link-colors($header-text-color, $main-color-1);
+      @include themeify {
+        @include link-colors($header-text-color, themed(main-color-1));
+      }
     }
     .main {
       @include flexbox();
@@ -50,7 +52,9 @@
     white-space: nowrap;
     @include active() {
       a {
-        @include link-colors($main-color-1, $main-color-1);
+        @include themeify {
+          @include link-colors(themed(main-color-1), themed(main-color-1));
+        }
       }
     }
   }
