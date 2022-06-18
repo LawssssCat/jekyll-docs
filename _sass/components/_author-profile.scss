@@ -2,7 +2,9 @@
   @include flexbox();
   padding: map-get($spacers, 2) map-get($spacers, 3);
   margin: map-get($spacers, 4) 0;
-  background-color: $text-background-color;
+  @include themeify {
+    background-color: themed(text-background-color);
+  }
   .profile__avatar img {
     height: 5rem;
     width: 5rem;

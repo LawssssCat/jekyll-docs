@@ -1,7 +1,9 @@
 .page__footer {
   .footer {
-    color: $footer-text-color;
-    background-color: $footer-background;
+    @include themeify {
+      color: themed(footer-text-color);
+      background-color: themed(footer-background);
+    }
     a {
       font-weight: map-get($base, font-weight);
       @include themeify {

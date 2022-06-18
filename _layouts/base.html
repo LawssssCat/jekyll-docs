@@ -2,8 +2,9 @@
 layout: none
 ---
 <!DOCTYPE html>
+{%- assign _theme = site.color_theme | default: site.data.variables.default.color_theme -%}
 {%- include snippets/get-lang.html -%}
-<html lang="{{ __return }}">
+<html lang="{{ __return }}" data-theme="{{ _theme }}">
   <head>
     {%- include head.html -%}
     {%- include scripts/variables.html -%}
@@ -11,8 +12,7 @@ layout: none
   <script>
     {%- include scripts/utils/utils.js -%}
   </script>
-  {%- assign _theme = site.color_theme | default: site.data.variables.default.color_theme -%}
-  <body data-theme="{{ _theme }}">
+  <body>
     <div class="layout--base">
       {{ content }}
     </div>

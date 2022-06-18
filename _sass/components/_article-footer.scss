@@ -8,7 +8,7 @@
   .article__license, .article__subscribe {
     a {
       @include themeify {
-        @include link-colors($text-color, themed(main-color-1));
+        @include link-colors(themed(text-color), themed(main-color-1));
       }
     }
   }
@@ -20,12 +20,14 @@
     & > .previous, & > .next {
       & > span {
         font-weight: map-get($base, font-weight-bold);
-        color: $text-color-l;
+        @include themeify {
+          color: themed(text-color-l);
+        }
       }
       & > a {
         display: block;
         @include themeify {
-          @include link-colors($text-color, themed(main-color-1));
+          @include link-colors(text-color, themed(main-color-1));
         }      
       }
     }

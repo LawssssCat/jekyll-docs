@@ -1,11 +1,13 @@
 .page__header {
   .header {
-    background-color: $header-background;
+    @include themeify {
+      background-color: themed(header-background);
+    }
     a {
       font-weight: map-get($base, font-weight);
       // text-decoration: none !important;
       @include themeify {
-        @include link-colors($header-text-color, themed(main-color-1));
+        @include link-colors(themed(header-text-color), themed(main-color-1));
       }
     }
     .main {
