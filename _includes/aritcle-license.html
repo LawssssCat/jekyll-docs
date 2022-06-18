@@ -1,0 +1,17 @@
+{%- assign _license = include.license -%}
+
+{%- capture _license_name -%}
+<a itemprop="license" rel="license" href="[URL]">[NAME]</a>
+{%- endcapture -%}
+{%- assign _license_name = _license_name | replace: "[URL]", _license.url | replace: "[NAME]", _license.name -%}
+
+{%- include snippets/get-locale-string-from-data.html key='LICENSE_ANNOUNCE' -%}
+{%- assign _license_announce = __return | replace: "[LICENSE]", _license_name -%}
+
+<div class="license">
+  <p>{{ _license_announce }}
+    <a rel="license" href="{{ _license.url }}">
+      <img alt="{{ _license.name }}" src="{{ _license.image }}" />
+    </a>
+  </p>
+</div>

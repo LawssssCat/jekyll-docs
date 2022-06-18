@@ -8,6 +8,7 @@ default:
     show_author_profile: false
     show_subscribe: true
     show_last_modified_at: true
+    license: CC-BY-4.0
     
 sources:
   bootcdn:

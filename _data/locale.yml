@@ -7,6 +7,7 @@ en: &EN
   EMAIL_ME                : "Send me an Email."
   ARTICLE_DATE_FORMAT     : "%b %d, %Y" 
   LAST_UPDATED            : "Last updated" 
+  LICENSE_ANNOUNCE        : "This work is licensed under a [LICENSE] license."
 
 en-GB:
   <<: *EN
@@ -25,6 +26,8 @@ zh-Hans: &ZH_HANS
   ARTICLE_DATE_FORMAT      : "%Y年 %m月%d日"
   LAST_UPDATED             : "更新于"
   SUBSCRIBE                : "订阅"
+  LICENSE_ANNOUNCE         : "本文遵守 [LICENSE] 许可协议。"
+
 zh:
   <<: *ZH_HANS
 zh-CN:

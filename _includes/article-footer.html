@@ -16,6 +16,12 @@
   value3=site.data.variables.default.page.show_subscribe -%}
 {%- assign _show_subscribe = __return -%}
 
+{%- include snippets/assign.html 
+  value1=page.license
+  value2=layout.license
+  value3=site.data.variables.default.page.license -%}
+{%- assign _license = __return -%}
+
 <footer class="footer">
   {%- if _show_last_modified_at and page.last_modified_at -%}
     {%- include snippets/get-locale-string-from-data.html key='ARTICLE_DATE_FORMAT' -%}
@@ -38,6 +44,12 @@
 
   {%- if _show_subscribe -%}
     <div class="article__subscribe">{%- include article-subscribe.html -%}</div>
+  {%- endif -%}
+
+  {%- if _license and _license != false -%}
+    {%- assign _data_license = site.data.licenses-%}
+    {%- assign _license_data = _data_license[_license] -%}
+    <div class="article__license">{%- include aritcle-license.html license=_license_data -%}</div>
   {%- endif -%}
 
 </footer>
