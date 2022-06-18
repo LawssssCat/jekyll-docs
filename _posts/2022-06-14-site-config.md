@@ -38,7 +38,7 @@ path | type of config | name | type of date | mean | default
 `{author}`      | | `avatar` | url | | 
 `{author}`      | | `url` | url | |
 
-### show?
+### article
 
 priority: 
 1. page front matter
@@ -49,5 +49,6 @@ path | type of config | name | type of date | mean | default
 --   | ---            | ---  | ---          | ---  | ---
    |                | `show_author_profile` | boolean | | false
    |                | `show_subscribe` | boolean | | false
+   |                | `license` | string | license name. data define in `_data/license.yml` | false
 
 {% endraw %}
