@@ -27,7 +27,7 @@
       & > a {
         display: block;
         @include themeify {
-          @include link-colors(text-color, themed(main-color-1));
+          @include link-colors(themed(text-color), themed(main-color-1));
         }      
       }
     }

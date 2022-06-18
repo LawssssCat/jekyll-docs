@@ -48,6 +48,6 @@ body {
 a {
   font-weight: map-get($base, font-weight-bold);
   @include themeify {
-    @include link-colors(null, themed(main-color-1));
+    @include link-colors(themed(main-color-1));
   }
 }

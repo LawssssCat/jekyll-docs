@@ -1,62 +1,59 @@
-$black: #000;
-$grey-d-700: #222;
-$grey-d-600: #333;
-$grey-d-500: #444;
-$grey-d-400: #555;
-$grey-d-300: #666;
-$grey-d-200: #777;
-$grey-d-100: #888;
-$grey-100: #f2f2f2;
-$white: #fff;
+$main-color-1: #fc4d50;
 
-$red-d-300: #fc4d50;
-$red-l-300 :#fca24d;
+$text-color-3: #333;
+$main-color-3: #f2f2f2;
+
+$background-color: #fff;
+
+$text-color-theme-light-d: #000;
+$text-color-theme-light: #222;
+$text-color-theme-light-l: #888;
 
 $theme-default: (
   // main colors
-  main-color-1: $red-d-300,
-  text-color-1: $white,
+  main-color-1: $main-color-1,
+  text-color-1: #fff,
   
-  main-color-2: $red-l-300,
-  text-color-2: $white,
+  main-color-2: #fca24d,
+  text-color-2: #fff,
   
-  main-color-3: $grey-100,
-  text-color-3: $grey-d-600,
+  main-color-3: $text-color-3,
+  text-color-3: $main-color-3,
   
-  main-color-theme-light: rgba($black, .9),
-  main-color-theme-dark:  rgba($white, .9),
+  main-color-theme-light: rgba(#000, .9),
+  main-color-theme-dark:  rgba(#fff, .9),
 
   // page background
-  background-color: $white,
+  background-color: $background-color,
   
   // text colors
-  text-color-theme-light-d: $black,
-  text-color-theme-light:   $grey-d-700,
-  text-color-theme-light-l: $grey-d-100,
+  text-color-theme-light-d: $text-color-theme-light-d,
+  text-color-theme-light:   $text-color-theme-light,
+  text-color-theme-light-l: $text-color-theme-light-l,
   
-  text-color-theme-dark-d:  $white,
-  text-color-theme-dark:    rgba($white, .95),
-  text-color-theme-dark-l:  rgba($white, .85),
+  text-color-theme-dark-d:  #fff,
+  text-color-theme-dark:    rgba(#fff, .95),
+  text-color-theme-dark-l:  rgba(#fff, .85),
   
-  text-color-d: $black,
-  text-color: $grey-d-700,
-  text-color-l: $grey-d-100,
+  text-color-d: $text-color-theme-light-d,
+  text-color: $text-color-theme-light,
+  text-color-l: $text-color-theme-light-l,
   
-  text-background-color: rgba($black, .05),
+  text-background-color: rgba(#000, .05),
   
   // header and footer colors
-  header-text-color: $grey-d-600,
-  header-background: $grey-100,
+  header-text-color: $text-color-3,
+  header-background: $main-color-3,
   
-  footer-text-color: $grey-d-600,
-  footer-background: $grey-100,
+  footer-text-color: $text-color-3,
+  footer-background: $main-color-3,
   
   // // border and shadow colors
-  border-color:     mix($black, $white, 20%),
-  border-color-l: mix($black, $white, 10%),
-  decorate-color:   rgba($black, .1),
-  mask-color:       rgba($black, .9),
-  select-color: rgba($red-d-300, .5),
+  border-color:     mix(#000, $background-color, 20%),
+  border-color-l: mix(#000,   $background-color, 10%),
+  decorate-color:   rgba(#000, .1),
+  mask-color:       rgba(#000, .9),
+  select-color: rgba($main-color-1, .5),
   
   // function colors
   green:           #5baa34,
@@ -68,4 +65,4 @@ $theme-default: (
 
 // logo colors
 @import "./logo-colors";
-$theme-default: map-merge($logo-colors,$theme-default);
+$theme-default: map-merge($theme-default, $logo-colors);
