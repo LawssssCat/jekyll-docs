@@ -11,6 +11,13 @@ $text-color-3: #333;
 // page background
 $background-color: #fff;
 
+// text colors
+$text-color-theme-light:   #222;
+
+$text-color-theme-dark:    rgba(#fff, .7);
+
+$text-color: $text-color-theme-light;
+
 $text-background-color: rgba(#000, .05);
 
 // header and footer colors

@@ -1,6 +1,7 @@
 ---
 layout: article
 title: Common links
+show_last_modified_at: false
 article_header: 
   type: cover
   image:
@@ -9,4 +10,3 @@ article_header:
     src: assets/images/cover1_with_title.svg
     style: "margin: 1em auto;; width: 80vw; display: block;"
 ---
-

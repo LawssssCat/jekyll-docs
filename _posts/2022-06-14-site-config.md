@@ -28,7 +28,7 @@ path | type of config | name | type of date | mean | default
 `{page.path}`      | front matter | `article_header.image.src` | url
 `{page.path}`      | front matter | `article_header.image.style` | css
 
-## author
+### author
 
 path | type of config | name | type of date | mean | default
 --   | ---            | ---  | ---          | ---  | ---
@@ -37,5 +37,17 @@ path | type of config | name | type of date | mean | default
 `{page.path}`      | front matter | `show_author_profile` | boolean | | `{layout}.show_author_profile`
 `{author}`      | | `avatar` | url | | 
 `{author}`      | | `url` | url | |
+
+### show?
+
+priority: 
+1. page front matter
+2. layout front matter
+3. `_data/variables` `default.page.{xxx}`
+
+path | type of config | name | type of date | mean | default
+--   | ---            | ---  | ---          | ---  | ---
+   |                | `show_author_profile` | boolean | | false
+   |                | `show_subscribe` | boolean | | false
 
 {% endraw %}

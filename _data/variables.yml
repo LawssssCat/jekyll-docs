@@ -5,8 +5,10 @@ default:
     rss:  /feed.xml
   sources: bootcdn
   page:
-    show_author_profile: true
-
+    show_author_profile: false
+    show_subscribe: true
+    show_last_modified_at: true
+    
 sources:
   bootcdn:
     font_awesome: 'https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.1/css/all.css'

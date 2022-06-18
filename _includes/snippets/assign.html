@@ -1,0 +1,15 @@
+{%- comment -%}
+priority 
+  value1 
+  value2
+  value3
+{%- endcomment -%}
+{%- if include.value1 != nil -%}
+  {%- assign __return = include.value1 -%}
+{%- elsif include.value2 != nil -%}
+  {%- assign __return = include.value2 -%}
+{%- elsif include.value3 != nil -%}
+  {%- assign __return = include.value3 -%}
+{%- else -%}
+  {%- assign __return = nil -%}
+{%- endif -%}

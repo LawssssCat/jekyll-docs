@@ -43,6 +43,6 @@ body {
 }
 
 a {
-  // font-weight: map-get($base, font-weight-bold);
+  font-weight: map-get($base, font-weight-bold);
   @include link-colors(null, $main-color-1);
 }
