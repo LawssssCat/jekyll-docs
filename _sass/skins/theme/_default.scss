@@ -52,10 +52,18 @@ $theme-default: (
   footer-background: $grey-100,
   
   // // border and shadow colors
-  border-color-l: mix(#000, $white, 10%),
-  
+  border-color:     mix($black, $white, 20%),
+  border-color-l: mix($black, $white, 10%),
+  decorate-color:   rgba($black, .1),
+  mask-color:       rgba($black, .9),
   select-color: rgba($red-d-300, .5),
   
+  // function colors
+  green:           #5baa34,
+  blue:            #1c7cd4,
+  yellow:          #c9771f,
+  red:             #da3d45,
+  text-color-function: rgba(#fff, .8),
 );
 
 // logo colors
