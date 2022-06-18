@@ -14,8 +14,6 @@
   .navigation {
     padding-top: map-get($spacers, 3);
     margin: map-get($spacers, 4) 0 map-get($spacers, 3) 0;
-    @include flexbox();
-    @include justify-content(space-between);
     @include split-line(top, 4px);
     & > .previous, & > .next {
       & > span {
@@ -28,9 +26,10 @@
       }
     }
     & > .previous {
-      text-align: left;
+      float: left;
     }
     & > .next {
+      float: right;
       text-align: right;
     }
   }

@@ -2,7 +2,7 @@
 {%- assign _next = page.next -%}
 
 {%- if _next or _previous -%}
-<div class="navigation">
+<div class="navigation clearfix">
   {%- if _previous -%}
     {%- include snippets/get-accessible-url.html url=_previous.url -%}
     {%- assign _href = __return -%}
