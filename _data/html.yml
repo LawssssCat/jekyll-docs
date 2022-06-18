@@ -1,0 +1,10 @@
+# see https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/itemscope
+itemtype:
+  organization: 
+    url: http://schema.org/Organization
+  person: 
+    url: http://schema.org/Person
+  webpage: 
+    url: http://schema.org/WebPage
+  article:
+    url: http://schema.org/Article

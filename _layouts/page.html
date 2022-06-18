@@ -5,10 +5,15 @@ layout: base
 page layout
 
 option:
+  page.type
+    - 'webpage'
+    - 'article'
   page.article_header.type
     - 'cover'
     - 'overlay'
 {%- endcomment -%}
+
+{%- assign _page_type = page.type | default: layout.type | default: site.data.variables.default.page.type -%}
 {%- assign _article_header_type = page.article_header.type | default: layout.article_header.type -%}
 
 <div class="layout--page">
@@ -20,6 +25,7 @@ option:
       </div>
       <!-- content -->
       <div class="page__content">
+        <!-- cover -->
         {%- if _article_header_type == 'overlay' or _article_header_type == 'cover' -%}
           {%- if _article_header_type == 'cover' -%}
             {%- include snippets/get-nav-url.html path=page.article_header.image.src -%}
@@ -28,10 +34,13 @@ option:
             <img class="article__header--cover" src="{{ _header_image_src }}" style="{{ _header_image_style }}" />
           {%- endif -%}
         {%- endif -%}
+        <!-- main -->
         <div class="main">
           <div class="grid">
             <div class="col-main">
-              <article>
+              {%- include snippets/get-html-itemtype-url.html type=_page_type -%}
+              {%- assign _page_item_type_url = __return -%}
+              <article itemscope itemtype="{{ _page_item_type_url }}">
                 <div>{{ content }}</div>
               </article>
             </div>

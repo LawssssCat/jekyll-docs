@@ -1,7 +1,8 @@
 <footer class="footer py-4">
   <div class="main">
     {%- assign _site_author = site.author -%}
-    {%- include snippets/get-author-itemtype.html author=_site_author -%}
+    {%- assign _author_type = _site_author.type | default: site.data.variables.default.author.type -%}
+    {%- include snippets/get-html-itemtype-url.html type=_author_type -%}
     {%- assign _site_author_itemtype = __return -%}
     <!-- see https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/itemscope -->
     <div itemscope itemtype="{{ _site_author_itemtype }}">

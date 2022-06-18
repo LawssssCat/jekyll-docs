@@ -1,6 +1,7 @@
 {%- assign _author = include.author -%}
 
-{%- include snippets/get-author-itemtype.html author=_author -%}
+{%- assign _author_type = _author.type | default: site.data.variables.default.author.type -%}
+{%- include snippets/get-html-itemtype-url.html type=_author_type -%}
 {%- assign _author_itemtype = __return -%}
 <div itemscope itemtype="{{ _author_itemtype }}" class="author-profile card">
   {%- if _author.avatar -%}
