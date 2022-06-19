@@ -1,11 +1,18 @@
 @import "./themes";
 
+$theme-map: null;
+
 @mixin themeify {
-  @each $theme-name, $theme-map in $themes {
-    $theme-map: $theme-map !global; // make $theme-map to a global variable
-    html[data-theme=#{$theme-name}] & {
-      @content;
+  @if ($theme-map == null) {
+    @each $theme-name, $theme-map in $themes {
+      $theme-map: $theme-map !global; // make $theme-map to a global variable
+      html[data-theme=#{$theme-name}] & {
+        @content;
+      }
     }
+    $theme-map: null !global;
+  } @else {
+    @content;
   }
 }
 
