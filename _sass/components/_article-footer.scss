@@ -16,7 +16,9 @@
   .navigation {
     padding-top: map-get($spacers, 3);
     margin: map-get($spacers, 4) 0 map-get($spacers, 3) 0;
-    @include split-line(top, 4px);
+    @include themeify { // for test. same as "@include split-line(top, 4px);"
+      @include split-line(top, 4px, themed(border-color-l));
+    }
     & > .previous, & > .next {
       & > span {
         font-weight: map-get($base, font-weight-bold);
