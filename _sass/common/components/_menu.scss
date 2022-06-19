@@ -24,3 +24,14 @@
     }
   }
 }
+
+@mixin menu-direction($direction: default) {
+  @if $direction == default {
+    $direction: "horizontal";
+  }
+  @if $direction == "vertical" {
+    @include flex-direction(column);
+  } @else {
+    @include flex-direction(row);
+  }
+}

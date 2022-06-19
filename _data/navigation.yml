@@ -1,6 +1,7 @@
 header:
   - title: Jekyll
     url: /jekyll
+    key: jekyll
   - titles: 
       en      : &EN       Themes
       en-GB   : *EN
@@ -12,6 +13,7 @@ header:
       zh-CN   : *ZH_HANS
       zh-SG   : *ZH_HANS
     url: /theme
+    parent: jekyll
   - titles: 
       en      : &EN       Plugs
       en-GB   : *EN
@@ -23,6 +25,7 @@ header:
       zh-CN   : *ZH_HANS
       zh-SG   : *ZH_HANS
     url: /plugins
+    parent: jekyll
   - titles: 
       en      : &EN       markdown
       en-GB   : *EN
@@ -56,6 +59,9 @@ header:
       zh-CN   : *ZH_HANS
       zh-SG   : *ZH_HANS
     url: /ruby
+  - title: Tools
+    url: /tools
+    parent: others
   - titles: 
       en      : &EN       Docs
       en-GB   : *EN
@@ -67,6 +73,7 @@ header:
       zh-CN   : *ZH_HANS
       zh-SG   : *ZH_HANS
     url: /docs
+    parent: others
   - titles: 
       en      : &EN       Samples
       en-GB   : *EN
@@ -79,8 +86,10 @@ header:
       zh-SG   : *ZH_HANS
     url: /samples
     key: samples
+    parent: others
   - title: Others
     url: /others
+    key: others
   - titles: 
       en      : &EN       About
       en-GB   : *EN

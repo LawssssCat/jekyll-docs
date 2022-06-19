@@ -56,11 +56,20 @@
   .navigation__item {
     white-space: nowrap;
     @include active() {
-      a {
+      .navigation__item-link {
         @include themeify {
           @include link-colors(themed(main-color-1), themed(main-color-1));
         }
       }
+    }
+  }
+
+  .sub_navigation {
+    position: absolute;
+    @include box-shadow(1);
+    & > ul {
+      @include menu(3, 0);
+      @include menu-direction(vertical);
     }
   }
 }

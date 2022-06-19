@@ -10,26 +10,46 @@
     </div>
     <div class="navigation">
       <ul>
-        {%- for _item in site.data.navigation.header -%}
+        <!-- top navs -->
+        {%- assign _top_headers = site.data.navigation.header | where: 'parent', nil -%}
+        {%- for _item in _top_headers -%}
           {%- include snippets/get-nav-url.html path=_item.url -%}
           {%- assign _nav_url = __return -%}
           {%- include snippets/get-nav-url.html path=page.url -%}
           {%- assign _page_url = __return -%}
-          
+
           {%- assign _nav_active = '' -%}
           {%- if _nav_url == _page_url or _item.key != null and page.nav_key != null and page.nav_key == _item.key -%}
             {%- assign _nav_active = 'active' -%}
           {%- endif -%}
-          {%- if _item.title -%}
-            {%- assign _nav_title = _item.title -%}
-          {%- elsif _item.titles -%}
-            {%- include snippets/get-locale-string-from-locales.html locales=_item.titles -%}
-            {%- assign _nav_title = __return -%}
-          {%- else -%}
-            {%- assign _nav_title = 'undefine' -%}
-          {%- endif -%}
-          <li class="navigation__item {{ _nav_active }}"><a href="{{ _nav_url }}">{{ _nav_title }}</a></li>
+          {%- include snippets/get-nav-title.html nav=_item -%}
+          {%- assign _nav_title = __return -%}
+          <li class="navigation__item {{ _nav_active }}">
+            <a class="navigation__item-link" href="{{ _nav_url }}">{{ _nav_title }}</a>
+            <!-- sub navs -->
+            {%- if _item.key != nil -%}
+            {%- assign _sub_navs = site.data.navigation.header | where: 'parent', _item.key -%}
+            {%- assign _sub_navs_num = _sub_navs | size -%}
+            {%- if _sub_navs_num > 0 -%}
+              <div class="sub_navigation">
+                <ul>
+                  {%- for _sub_item in _sub_navs -%}
+                    <li class="sub_navigation_item">
+                      {%- include snippets/get-nav-title.html nav=_sub_item -%}
+                      {%- assign _sub_nav_title = __return -%}
+                      {%- include snippets/get-nav-url.html path=_sub_item.url -%}
+                      {%- assign _sub_nav_url = __return -%}
+                      <a href="{{ _sub_nav_url }}">{{ _sub_nav_title }}</a>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              </div>
+            {%- endif -%}
+            {%- endif -%}
+            <!-- sub navs end -->
+          </li>
         {%- endfor -%}
+        <!-- top navs end -->
       </ul>
     </div>
   </div>
