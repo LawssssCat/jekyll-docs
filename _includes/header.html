@@ -18,10 +18,10 @@
           {%- include snippets/get-nav-url.html path=page.url -%}
           {%- assign _page_url = __return -%}
 
-          {%- assign _nav_active = '' -%}
-          {%- if _nav_url == _page_url or _item.key != null and page.nav_key != null and page.nav_key == _item.key -%}
-            {%- assign _nav_active = 'active' -%}
-          {%- endif -%}
+          {%- include snippets/get-nav-active.html 
+            item=_item 
+            page=page -%}
+          {%- assign _nav_active = __return -%}
           {%- include snippets/get-nav-title.html nav=_item -%}
           {%- assign _nav_title = __return -%}
           <li class="navigation__item {{ _nav_active }}">
@@ -34,12 +34,16 @@
               <div class="sub_navigation">
                 <ul>
                   {%- for _sub_item in _sub_navs -%}
-                    <li class="sub_navigation_item">
-                      {%- include snippets/get-nav-title.html nav=_sub_item -%}
-                      {%- assign _sub_nav_title = __return -%}
-                      {%- include snippets/get-nav-url.html path=_sub_item.url -%}
-                      {%- assign _sub_nav_url = __return -%}
-                      <a href="{{ _sub_nav_url }}">{{ _sub_nav_title }}</a>
+                    {%- include snippets/get-nav-title.html nav=_sub_item -%}
+                    {%- assign _sub_nav_title = __return -%}
+                    {%- include snippets/get-nav-url.html path=_sub_item.url -%}
+                    {%- assign _sub_nav_url = __return -%}
+                    {%- include snippets/get-nav-active.html 
+                      item=_sub_item 
+                      page=page -%}
+                    {%- assign _sub_nav_active = __return -%}
+                    <li class="sub_navigation__item {{ _sub_nav_active }}">
+                      <a class="sub_navigation__item-link" href="{{ _sub_nav_url }}">{{ _sub_nav_title }}</a>
                     </li>
                   {%- endfor -%}
                 </ul>

@@ -52,11 +52,34 @@
   
     }
   }
+
+  // nav active
+  @mixin nav_item_active {
+    .navigation__item-link {
+      @include themeify {
+        @include link-colors(themed(main-color-1), themed(main-color-1));
+      }
+    }
+  }
   
   .navigation__item {
     white-space: nowrap;
     @include active() {
-      .navigation__item-link {
+      @include nav_item_active();
+    }
+    @include hover() {
+      @include nav_item_active();
+      .sub_navigation {
+        display: inherit;
+      }
+    }
+  }
+
+  // sub nav active
+  .sub_navigation__item {
+    white-space: nowrap;
+    @include active() {
+      .sub_navigation__item-link {
         @include themeify {
           @include link-colors(themed(main-color-1), themed(main-color-1));
         }
@@ -65,11 +88,28 @@
   }
 
   .sub_navigation {
+    display: none;
     position: absolute;
-    @include box-shadow(1);
+    z-index: 9999;
+    border-bottom-left-radius: map-get($base, border-radius);
+    border-bottom-right-radius: map-get($base, border-radius);
+    @include box-shadow();
+    @include themeify {
+      background: rgba(themed(header-background), .8);
+    }
     & > ul {
       @include menu(3, 0);
       @include menu-direction(vertical);
     }
+    .sub_navigation__item {
+      white-space: nowrap;
+      padding-left: map-get($button, padding-x);
+      padding-right: map-get($button, padding-x);
+      margin-top: map-get($button, padding-y);
+    }
+    .sub_navigation__item:last-child {
+      margin-bottom: map-get($button, padding-y);
+    }
   }
+  
 }
