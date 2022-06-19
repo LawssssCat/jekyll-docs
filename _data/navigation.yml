@@ -87,6 +87,11 @@ header:
     url: /samples
     key: samples
     parent: others
+  - title: test
+    url: /test
+    parent: others
+    description: |
+      some test for this site.
   - title: Others
     url: /others
     key: others

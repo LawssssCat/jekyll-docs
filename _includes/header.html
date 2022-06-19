@@ -44,7 +44,7 @@
                       page=page -%}
                     {%- assign _sub_nav_active = __return -%}
                     <li class="sub_navigation__item {{ _sub_nav_active }}">
-                      <a class="sub_navigation__item-link" href="{{ _sub_nav_url }}">{{ _sub_nav_title }}</a>
+                      <a class="sub_navigation__item-link" href="{{ _sub_nav_url }}" title="{{ _sub_item.description }}">{{ _sub_nav_title }}</a>
                     </li>
                   {%- endfor -%}
                 </ul>
