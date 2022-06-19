@@ -1,5 +1,5 @@
 ---
-
+layout: article
 ---
 
 {% raw %}

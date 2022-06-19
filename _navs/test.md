@@ -9,6 +9,7 @@ title: text and typography
 ### H3
 #### H4
 ##### H5
+###### H6
 
 ```js
 (function() {
@@ -35,6 +36,19 @@ title: text and typography
     });
   });
 })();
+```
+
+```html
+<div class="layout--page layout--page--sidebar clearfix js-page-root">
+  <div class="page__mask d-print-none js-page-mask js-sidebar-hide"></div>
+  <div class="page__viewport">
+    <div class="page__actions d-print-none">
+      <div class="button button--circle button--lg box-shadow-2 sidebar-button js-sidebar-show js-sidebar-show-1 js-sidebar-show-2 js-sidebar-show-3">
+        <i class="fas fa-bars icon--show"></i>
+      </div>
+    </div>
+  </div>
+</div>
 ```
 
 ---
