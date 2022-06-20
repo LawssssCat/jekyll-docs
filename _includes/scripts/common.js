@@ -8,7 +8,7 @@
   }
 })();
 
-(function() {debugger
+(function() {
 
   // read session
   var session_name = "data-theme-" + 'asfawegasfasdfsd';
