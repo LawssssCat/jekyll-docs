@@ -100,7 +100,7 @@
     @include box-shadow();
     @include themeify {
       background: themed(header-background);
-      opacity: .8;
+      opacity: .92;
     }
     & > ul {
       @include menu(3, 0);
