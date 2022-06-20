@@ -20,6 +20,7 @@ themes:
   - default
   - dark
   - chocolate
+  - forest
 
 sources:
   bootcdn:
