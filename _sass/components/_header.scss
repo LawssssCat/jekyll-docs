@@ -1,7 +1,7 @@
 .page__header {
   .header {
     @include themeify {
-      background-color: themed(header-background);
+      background: themed(header-background);
     }
     a {
       font-weight: map-get($base, font-weight);
@@ -99,7 +99,8 @@
     border-bottom-right-radius: map-get($base, border-radius);
     @include box-shadow();
     @include themeify {
-      background: rgba(themed(header-background), .8);
+      background: themed(header-background);
+      opacity: .8;
     }
     & > ul {
       @include menu(3, 0);
