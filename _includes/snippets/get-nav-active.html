@@ -25,21 +25,29 @@ needs
 {%- endif -%}
 
 {%- assign __flag3 = false -%}{%- comment -%}  ================ sub nav page ================ {%- endcomment -%}
-{%- if __item.key != nil and __flag1==false and __flag2==false -%}
-  {%- assign __sub_navs = site.data.navigation.header | where: 'parent', __item.key -%}
-  {%- for __sub_nav in __sub_navs -%}
-    {%- include snippets/get-nav-active.html 
-      item=__sub_nav
-      page=__page -%}
-    {%- assign __sub_nav_active = __return -%}
-    {%- if __sub_nav_active == 'active' -%}
-      {%- assign __flag3 = true -%}
-      {%- break -%}
-    {%- endif -%}
-  {%- endfor -%}
+{%- if __flag1==false and __flag2==false -%}
+
+  {%- if __item.key != nil -%}
+    {%- assign __sub_navs = site.data.navigation.header | where: 'parent', __item.key -%}
+    {%- for __sub_nav in __sub_navs -%}
+      {%- include snippets/get-nav-active.html 
+        item=__sub_nav
+        page=__page -%}
+      {%- assign __sub_nav_active = __return -%}
+      {%- if __sub_nav_active == 'active' -%}
+        {%- assign __flag3 = true -%}
+        {%- break -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endif -%}
+
 {%- endif -%}
 
-{%- if __flag1 or __flag1 or __flag3 -%}
+{%- assign __flag4 = false -%}{%- comment -%}  ================ sub nav inner page ================ {%- endcomment -%}
+{%- if __flag1==false and __flag2==false and __flag3==false -%}
+{%- endif -%}
+
+{%- if __flag1 or __flag1 or __flag3 or __flag4 -%}
   {%- assign __nav_active = 'active' -%}
 {%- endif -%}
 
