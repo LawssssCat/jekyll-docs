@@ -1,6 +1,27 @@
 ---
-# only scss
+# Only the main Sass file needs front matter (the dashes are enough)
 ---
+
+/*
+dynamic import themes. like below.
+
+```scss
+@import "./theme/default";
+@import "./theme/dark";
+
+$themes:(
+  default: $theme-default,
+  dark: $theme-dark,
+)
+```
+*/
+$themes:();
+{%- for theme in site.data.variables.themes -%}
+@import "skins/theme/{{ theme }}";
+$themes: map-merge($themes, (
+  {{theme}}: $theme-{{ theme }}
+));
+{%- endfor -%}
 
 @import 
 
@@ -13,22 +34,6 @@
   // "skins/highlight/tomorrow-night-blue",
   // "skins/highlight/tomorrow-night-bright",
 
-  "common/variables",
-  "common/function",
-  "common/classes",
-  "common/reset",
-  "common/components/menu",
-  "common/components/card",
-  "common/components/button",
-  
-  "components/main",
-  "components/header",
-  "components/footer",
-  "components/article-footer",
-  "components/author-profile",
-  "components/author-links",
-  "components/article-header",
-
-  "layout/page",
+  "specification",
   
   "custom";

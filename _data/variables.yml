@@ -15,7 +15,15 @@ default:
     show_last_modified_at: true
     show_article_footer_navigation: false
     license: CC-BY-4.0
-    
+
+themes:
+  - default
+  - dark
+  - chocolate
+  - forest
+  - ocean
+  - orange
+
 sources:
   bootcdn:
     font_awesome: 'https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.1/css/all.css'

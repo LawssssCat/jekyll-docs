@@ -2,7 +2,7 @@
   .footer {
     @include themeify {
       color: themed(footer-text-color);
-      background-color: themed(footer-background);
+      background: themed(footer-background);
     }
     a {
       font-weight: map-get($base, font-weight);
