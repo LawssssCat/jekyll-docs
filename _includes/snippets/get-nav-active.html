@@ -12,8 +12,6 @@ needs
 {%- include snippets/get-nav-url.html path=__page.url -%}
 {%- assign __page_url = __return -%}
 
-{%- assign __nav_active = '' -%}
-
 {%- assign __flag1 = false -%}{%- comment -%}  ================ current nav ================ {%- endcomment -%}
 {%- if __nav_url == __page_url -%}
   {%- assign __flag1 = true -%}
@@ -43,11 +41,8 @@ needs
 
 {%- endif -%}
 
-{%- assign __flag4 = false -%}{%- comment -%}  ================ sub nav inner page ================ {%- endcomment -%}
-{%- if __flag1==false and __flag2==false and __flag3==false -%}
-{%- endif -%}
-
-{%- if __flag1 or __flag1 or __flag3 or __flag4 -%}
+{%- assign __nav_active = '' -%}
+{%- if __flag1 or __flag2 or __flag3 or __flag4 -%}
   {%- assign __nav_active = 'active' -%}
 {%- endif -%}
 
