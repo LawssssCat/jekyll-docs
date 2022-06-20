@@ -28,7 +28,11 @@ const commonsJs = () => {
   return concatJs(`${JS_SRC}/commons/*.js`, 'commons');
 };
 
-const buildJs = parallel(commonsJs);
+const toolBoxJs = () => {
+  return concatJs(`${JS_SRC}/utils/tool-box.js`, 'tool-box');
+};
+
+const buildJs = parallel(commonsJs, toolBoxJs);
 
 exports.build = series(buildJs, minifyJs);
 

@@ -1,7 +1,7 @@
 // Determine whether the touch panel
 (function() {
   var $root = document.getElementsByClassName('layout--base')[0];
-  if (window.hasEvent('touchstart')) {
+  if (window.TOOLBOX.hasEvent('touchstart')) {
     // $root.dataset.isTouch = true;
     $root.setAttribute('data-is-touch', true);
   } else {
