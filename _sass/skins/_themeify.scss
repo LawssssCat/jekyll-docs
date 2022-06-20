@@ -19,3 +19,14 @@ $theme-map: null;
 @function themed($key) {
   @return map-get($theme-map, $key);
 }
+
+@mixin themeify-color($color: null, $background-color: null) {
+  @include themeify {
+    @if ($color!=null) {
+      color: themed($color);
+    }
+    @if ($background-color!=null) {
+      background-color: themed($background-color);
+    }
+  }
+}

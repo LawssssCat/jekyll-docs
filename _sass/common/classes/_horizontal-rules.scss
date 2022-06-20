@@ -1,0 +1,12 @@
+@mixin horizontal-rules() {
+  @include themeify {
+    &::before {
+      display: block;
+      font-size: map-get($base, font-size-h2);
+      color: themed(text-color-l);
+      text-align: center;
+      letter-spacing: map-get($spacers, 4);
+      content: "...";
+    }
+  }
+}

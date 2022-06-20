@@ -80,6 +80,16 @@ $layout: (
   aside-width:            220px
 );
 
+//     sm       md       lg
+// | ------ | ------ | ------ |
+// 0       500      1024      -
+
+$responsive: (
+  sm:                      0,
+  md:                      500px,
+  lg:                      1024px
+);
+
 $button-height-xl:        2.8rem;
 $button-height-lg:        2.3rem;
 $button-height:           1.9rem;

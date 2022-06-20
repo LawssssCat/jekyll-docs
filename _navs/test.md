@@ -99,6 +99,7 @@ title: text and typography
 ### H3
 #### H4
 ##### H5
+###### H6
 
 asfsd  asf1 as23fasdf5345sd 3s1f 3asd 1asd53f4asf4 s35f1 sd31 asd3f4 asd351 asd3f4asd 35f4s6g4e3as1f3as 135asd1 asd3 1fasd3f1asd23f1asd 3f4 53asad f1 sfasd86 4s3 as23fasdf5345sd
 
@@ -136,6 +137,19 @@ f sdaf asd1 sd31 sd.f1as5e1f 3se
     });
   });
 })();
+```
+
+```html
+<div class="layout--page layout--page--sidebar clearfix js-page-root">
+  <div class="page__mask d-print-none js-page-mask js-sidebar-hide"></div>
+  <div class="page__viewport">
+    <div class="page__actions d-print-none">
+      <div class="button button--circle button--lg box-shadow-2 sidebar-button js-sidebar-show js-sidebar-show-1 js-sidebar-show-2 js-sidebar-show-3">
+        <i class="fas fa-bars icon--show"></i>
+      </div>
+    </div>
+  </div>
+</div>
 ```
 
 ---
