@@ -8,20 +8,35 @@
   }
 })();
 
-(function() {
-  {%- include snippets/get-theme.html -%}
-  var cur_theme = "{{ __return }}";
+(function() {debugger
+
+  // read session
+  var session_name = "data-theme-" + 'asfawegasfasdfsd';
+  var session_theme = window.sessionStorage.getItem(session_name);
+
   var themes = [];
   {%- for theme in site.data.variables.themes -%}
     themes.push("{{ theme }}");
   {%- endfor -%}
 
+  {%- include snippets/get-theme.html -%}
+  var cur_theme = "{{ __return }}";
   var cur_theme_index;
-  for(cur_theme_index=0; cur_theme_index<themes.length; cur_theme_index++) {
-    if(themes[cur_theme_index] == cur_theme) {
-      break;
-    }
+  if(session_theme) {
+    cur_theme = session_theme;
   }
+
+  function index_get(theme) {
+    var index;
+    for(index=0; index<themes.length; index++) {
+      if(themes[index] == theme) {
+        break;
+      }
+    }
+    return index;
+  }
+
+  cur_theme_index = index_get(cur_theme);
 
   function index_increase() {
     cur_theme_index = cur_theme_index+1;
@@ -30,13 +45,22 @@
     }
   }
 
-  var html = document.querySelectorAll('html')[0]
-  document.querySelectorAll('.btn_theme').forEach(btn => {
+  function theme_change(theme) {
+    document.querySelectorAll('.theme-panel_title').forEach(item => {
+      item.innerHTML = theme;
+    });
+    var html = document.querySelectorAll('html')[0];
+    html.setAttribute('data-theme', theme);
+    window.sessionStorage.setItem(session_name, theme);
+  }
+
+  theme_change(cur_theme);
+
+  document.querySelectorAll('.theme-btn').forEach(btn => {
     btn.addEventListener('click', function(target) {
       index_increase();
       var theme = themes[cur_theme_index];
-      target.path[0].innerHTML = theme;
-      html.setAttribute('data-theme', theme);
+      theme_change(theme);
     });
   })
 })();
