@@ -70,7 +70,7 @@
 }
 
 .button--outline-secondary {
-  @include button--outline(main-color-3, text-color-3);
+  @include button--outline(text-color-3, main-color-3);
 }
 
 .button--outline-success {
