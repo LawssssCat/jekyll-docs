@@ -17,11 +17,13 @@
   },
   "scripts": {
     "prepare": "husky install",
-    "build": "cross-env JEKYLL_ENV=production JEKYLL_LOG_LEVEL=debug bundle exec jekyll build -d _site",
-    "serve": "bundle exec jekyll serve -H 0.0.0.0 --port 8765 -d _site/dev",
-    "debug": "cross-env JEKYLL_LOG_LEVEL=debug bundle exec jekyll serve -H 0.0.0.0 --port 9875 -d _site/debug",
-    "eslint": "eslint \"_includes/**/*.js\"",
-    "eslint-fix": "eslint \"_includes/**/*.js\" --fix",
+    "js-build": "npm run eslint && gulp",
+    "js-watch": "npm run eslint && gulp dev",
+    "build": "npm run js-build && cross-env JEKYLL_ENV=production JEKYLL_LOG_LEVEL=debug bundle exec jekyll build -d _site",
+    "serve": "npm run js-build && bundle exec jekyll serve -H 0.0.0.0 --port 8765 -d _site/dev",
+    "debug": "npm run js-build && cross-env JEKYLL_LOG_LEVEL=debug bundle exec jekyll serve -H 0.0.0.0 --port 9875 -d _site/debug",
+    "eslint": "eslint \"_javascript/**/*.js\"",
+    "eslint-fix": "eslint \"_javascript/**/*.js\" --fix",
     "stylelint": "stylelint scss \"_sass/**/*.scss\"",
     "stylelint-fix": "stylelint scss \"_sass/**/*.scss\" --fix"
   },
@@ -30,11 +32,17 @@
     "@commitlint/config-conventional": "^17.0.2",
     "cross-env": "^7.0.3",
     "eslint": "^6.8.0",
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-uglify": "^3.0.2",
     "husky": "^8.0.1",
     "stylelint": "^14.9.1",
     "stylelint-config-recommended-scss": "^6.0.0",
     "stylelint-config-standard": "^26.0.0",
     "stylelint-order": "^5.0.0",
     "stylelint-scss": "^4.2.0"
+  },
+  "dependencies": {
+    "gulp-rename": "^2.0.0"
   }
 }

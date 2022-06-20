@@ -29,6 +29,7 @@ $ npm run build
 $ npm run serve
 # 调试
 $ npm run debug
+$ npm run js-watch
 ```
 
 ## vscode plugs 
