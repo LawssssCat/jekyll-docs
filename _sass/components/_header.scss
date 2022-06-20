@@ -42,6 +42,10 @@
   
     }
   }
+
+  .btn_theme {
+    margin-left: map-get($spacers, 2);
+  }
   
   .navigation {
     @include overflow(auto, "x");

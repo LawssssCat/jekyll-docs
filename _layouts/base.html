@@ -2,7 +2,8 @@
 layout: none
 ---
 <!DOCTYPE html>
-{%- assign _theme = site.color_theme | default: site.data.variables.default.color_theme -%}
+{%- include snippets/get-theme.html -%}
+{%- assign _theme = __return -%}
 {%- include snippets/get-lang.html -%}
 <html lang="{{ __return }}" data-theme="{{ _theme }}">
   <head>

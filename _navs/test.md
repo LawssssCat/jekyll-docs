@@ -76,19 +76,19 @@ title: text and typography
   <div class="button button--primary">
   primary
   </div>
-  <div class="button button--primary button--xs">
+  <div class="button button--primary button--pill button--xs">
   primary xs
   </div>
-  <div class="button button--primary button--sm">
+  <div class="button button--primary button--pill button--sm">
   primary sm
   </div>
-  <div class="button button--primary button--md">
+  <div class="button button--primary button--pill button--md">
   primary md
   </div>
-  <div class="button button--primary button--lg">
+  <div class="button button--primary button--pill button--lg">
   primary lg
   </div>
-  <div class="button button--primary button--xl">
+  <div class="button button--primary button--pill button--xl">
   primary xl
   </div>
 </p>

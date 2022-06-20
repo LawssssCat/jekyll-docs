@@ -7,6 +7,11 @@
         {%- include snippets/get-nav-url.html path=_paths_root -%}
         <a title="{{ site.description }}" href="{{ __return }}">{{ site.title }}</a>
       </div>
+      <div class="btn_theme">
+        {%- include snippets/get-theme.html -%}
+        {%- assign _theme = __return -%}
+        <div class="button button--outline-secondary button--xs">{{ _theme }}</div>
+      </div>
     </div>
     <div class="navigation">
       <ul>

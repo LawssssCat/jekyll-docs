@@ -53,6 +53,13 @@ $theme-dark: (
   decorate-color:   rgba(#fff, .1),
   mask-color:       rgba(#000, .9),
   select-color:     rgba($main-color-1, .5),
+
+  // function colors
+  green:           #5baa34,
+  blue:            #1c7cd4,
+  yellow:          #c9771f,
+  red:             #da3d45,
+  text-color-function: rgba(#fff, .8),
 );
 
-$theme-dark: map-merge($theme-default, $theme-dark);
+$theme-dark: map-merge($logo-colors, $theme-dark);
