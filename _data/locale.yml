@@ -10,6 +10,8 @@ en: &EN
   LICENSE_ANNOUNCE        : "This work is licensed under a [LICENSE] license."
   PREVIOUS                : "PREVIOUS"
   NEXT                    : "NEXT"
+  ORIGINAL_LINK           : "Original link [LINK]"
+  WORDS                   : "This article consists of [WORDS] words." 
 
 en-GB:
   <<: *EN
@@ -29,9 +31,11 @@ zh-Hans: &ZH_HANS
   LAST_UPDATED             : "更新于"
   SUBSCRIBE                : "订阅"
   LICENSE_ANNOUNCE         : "本文遵守 [LICENSE] 许可协议。"
-  PREVIOUS                : "上篇"
-  NEXT                    : "下篇"
-  
+  PREVIOUS                 : "上篇"
+  NEXT                     : "下篇"
+  ORIGINAL_LINK            : "原始链接 [LINK]"
+  WORDS                    : "文章字数：[WORDS]" 
+
 zh:
   <<: *ZH_HANS
 zh-CN:

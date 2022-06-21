@@ -10,6 +10,8 @@ default:
     type: person
   page:
     type: webpage
+    show_word_count: false
+    show_raw_article_link: false
     show_author_profile: false
     show_subscribe: true
     show_last_modified_at: true
