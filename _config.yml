@@ -19,7 +19,7 @@ description: >
 # -------------------------
 # Language and Timezone
 # -------------------------
-lang: zh # the language of your site, default as "en"
+# lang: zh # the language of your site, default as "en"
 timezone: # see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for the available values
 
 # -------------------------
@@ -74,6 +74,8 @@ defaults:
       type: sample_pages
     values:
       nav_key: samples
+      show_word_count: true
+      show_raw_article_link: true
       show_article_footer_navigation: true
 
 exclude:

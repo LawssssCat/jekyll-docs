@@ -1,4 +1,16 @@
 {%- include snippets/assign.html 
+  value1=page.show_raw_article_link
+  value2=layout.show_raw_article_link
+  value3=site.data.variables.default.page.show_raw_article_link -%}
+{%- assign _show_raw_article_link = __return -%}
+
+{%- include snippets/assign.html 
+  value1=page.show_word_count
+  value2=layout.show_word_count
+  value3=site.data.variables.default.page.show_word_count -%}
+{%- assign _show_word_count = __return -%}
+
+{%- include snippets/assign.html 
   value1=page.show_last_modified_at
   value2=layout.show_last_modified_at
   value3=site.data.variables.default.page.show_last_modified_at -%}
@@ -29,7 +41,21 @@
 {%- assign _show_article_footer_navigation = __return -%}
 
 <footer class="footer">
+  {%- if _show_subscribe -%}
+    <!-- footer subscribe -->
+    <div class="article__subscribe">{%- include article-subscribe.html -%}</div>
+  {%- endif -%}
+
+  {%- if _show_word_count -%}
+    <!-- footer word count -->
+    {%- assign _word_count = content | strip_html | number_of_words: "cjk" -%}
+    {%- include snippets/get-locale-string-from-data.html key='WORDS' -%}
+    {%- assign _locale_word_count = __return | replace: '[WORDS]', _word_count -%}
+    <p>{{ _locale_word_count }}</p>
+  {%- endif -%}
+
   {%- if _show_last_modified_at and page.last_modified_at -%}
+    <!-- footer article modified time -->
     {%- include snippets/get-locale-string-from-data.html key='ARTICLE_DATE_FORMAT' -%}
     {%- assign _locale_date_format = __return -%}
 
@@ -42,23 +68,38 @@
     </p>
   {%- endif -%}
 
+  {%- if _show_raw_article_link -%}
+    <!-- footer raw article link -->
+    {%- if page.original_link -%}
+      {%- assign _original_link = page.original_link -%}
+    {%- else -%}
+      {%- include snippets/get-accessible-url.html absolute=true url=page.url -%}
+      {%- assign _original_link = __return -%}
+    {%- endif -%}
+    {%- capture _article_link_block -%}
+      <a href="{{ _original_link }}">{{ _original_link }}</a>
+    {%- endcapture -%}
+    {%- include snippets/get-locale-string-from-data.html key='ORIGINAL_LINK' -%}
+    {%- assign _locale_original_link = __return | replace: '[LINK]', _article_link_block -%}
+    <p>{{ _locale_original_link }}</p>
+  {%- endif -%}
+
   {%- if _show_author_profile -%}
+    <!-- footer author profile -->
     {%- include snippets/get-author.html -%}
     {%- assign _author = __return -%}
     {%- include author-profile.html author=_author -%}
   {%- endif -%}
 
-  {%- if _show_subscribe -%}
-    <div class="article__subscribe">{%- include article-subscribe.html -%}</div>
-  {%- endif -%}
-
   {%- if _license and _license != false -%}
+    <!-- footer license -->
     {%- assign _data_license = site.data.licenses-%}
     {%- assign _license_data = _data_license[_license] -%}
     <div class="article__license">{%- include aritcle-license.html license=_license_data -%}</div>
   {%- endif -%}
 
   {%- if _show_article_footer_navigation -%}
+    <!-- footer navigation -->
     <div class="article__footer_navigation">{%- include article-footer-navigation.html -%}</div>
   {%- endif -%}
 
