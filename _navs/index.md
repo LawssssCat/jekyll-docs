@@ -10,3 +10,5 @@ article_header:
     src: assets/images/cover1_with_title.svg
     style: "margin: 1em auto;; width: 80vw; display: block;"
 ---
+
+The information is sorted out by individuals. If there is any improper place, you are welcome to point out and give your contribution.
