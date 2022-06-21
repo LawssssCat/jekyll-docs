@@ -157,6 +157,12 @@ On the contrary, [Rouge][ruge-github] supports [100+ languages](https://github.c
 
 [CodeRay](http://coderay.rubychan.de/) is Jekyll Highlighting Parser, but it's off by default. (use rouge by default)
 
+### GET START
+
+Syntax Highlighting (CodeRay) - <https://jekyllrb.com/docs/configuration/markdown/#syntax-highlighting-coderay>
+
+kramdown-syntax-coderay docs - <https://github.com/kramdown/syntax-coderay>
+
 The following configuration is required to open it.
 
 `Gemfile`
@@ -169,9 +175,10 @@ gem "kramdown-syntax-coderay"
 
 ```
 highlighter: coderay
+# or 
+kramdown:
+  syntax_highlighter: coderay
 ```
-
-### GET START
 
 ```html
 // render before

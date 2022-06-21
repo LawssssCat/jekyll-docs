@@ -3,6 +3,8 @@ layout: article
 title: Jekyll - docs
 ---
 
+[github-jekyll]: https://github.com/jekyll/jekyll
+
 Jekyll provice a simple way to make a static websit.
 
 + official website - <https://jekyllrb.com/>
@@ -101,3 +103,9 @@ DEFAULTS = {
 
 
 [jekyll-github]: https://github.com/jekyll/jekyll
+
+## Filters
+
+Liquid Filters - <https://jekyllrb.com/docs/liquid/filters/>
+
+the source code [filters.rb](https://github.com/jekyll/jekyll/blob/master/lib/jekyll/filters.rb) in [Jekyll Github][github-jekyll]
