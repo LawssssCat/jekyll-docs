@@ -23,12 +23,6 @@
 {%- assign _show_author_profile = __return -%}
 
 {%- include snippets/assign.html 
-  value1=page.show_subscribe
-  value2=layout.show_subscribe
-  value3=site.data.variables.default.page.show_subscribe -%}
-{%- assign _show_subscribe = __return -%}
-
-{%- include snippets/assign.html 
   value1=page.license
   value2=layout.license
   value3=site.data.variables.default.page.license -%}
@@ -41,18 +35,6 @@
 {%- assign _show_article_footer_navigation = __return -%}
 
 <footer class="footer">
-  {%- if _show_subscribe -%}
-    <!-- footer subscribe -->
-    <div class="article__subscribe">{%- include article-subscribe.html -%}</div>
-  {%- endif -%}
-
-  {%- if _show_word_count -%}
-    <!-- footer word count -->
-    {%- assign _word_count = content | strip_html | number_of_words: "cjk" -%}
-    {%- include snippets/get-locale-string-from-data.html key='WORDS' -%}
-    {%- assign _locale_word_count = __return | replace: '[WORDS]', _word_count -%}
-    <p>{{ _locale_word_count }}</p>
-  {%- endif -%}
 
   {%- if _show_last_modified_at and page.last_modified_at -%}
     <!-- footer article modified time -->
@@ -66,6 +48,14 @@
         <time itemprop="dateModified" datetime="{{ page.last_modified_at | date_to_xmlschema }}">{{ page.last_modified_at | date: _locale_date_format }}</time>
       </span>
     </p>
+  {%- endif -%}
+
+  {%- if _show_word_count -%}
+    <!-- footer word count -->
+    {%- assign _word_count = content | strip_html | number_of_words: "cjk" -%}
+    {%- include snippets/get-locale-string-from-data.html key='WORDS' -%}
+    {%- assign _locale_word_count = __return | replace: '[WORDS]', _word_count -%}
+    <p>{{ _locale_word_count }}</p>
   {%- endif -%}
 
   {%- if _show_raw_article_link -%}
