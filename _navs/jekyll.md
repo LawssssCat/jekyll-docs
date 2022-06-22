@@ -22,6 +22,10 @@ Jekyll provice a simple way to make a static websit.
 {%- endfor -%}
 </ul>
 
+## Configuration Options
+
+Configuration Options - <https://jekyllrb.com/docs/configuration/options/#global-configuration>
+
 ## default Configuration
 
 the [source code: configuration.rb](https://github.com/jekyll/jekyll/blob/master/lib/jekyll/configuration.rb) in [jekyll][jekyll-github]

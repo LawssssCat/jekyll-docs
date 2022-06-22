@@ -202,6 +202,46 @@ show(json);
 </div></div>
 ```
 
+### Config Priority
+
+source code [kramdown_parser.rb](https://github.com/jekyll/jekyll/blob/master/lib/jekyll/converters/markdown/kramdown_parser.rb) in [jekyll][jekyll-github]
+
+```ruby
+# config[kramdown][syntax_highlighter] >
+#   config[kramdown][enable_coderay] >
+#   config[highlighter]
+# Where `enable_coderay` is now deprecated because Kramdown
+# supports Rouge now too.
+def highlighter
+  return @highlighter if @highlighter
+
+  if @config["syntax_highlighter"]
+    return @highlighter = @config[
+      "syntax_highlighter"
+    ]
+  end
+
+  @highlighter = if @config.key?("enable_coderay") && @config["enable_coderay"]
+                    Jekyll::Deprecator.deprecation_message(
+                      "You are using 'enable_coderay', " \
+                      "use syntax_highlighter: coderay in your configuration file."
+                    )
+
+                    "coderay"
+                  else
+                    @main_fallback_highlighter
+                  end
+end
+
+def initialize(config)
+  @main_fallback_highlighter = config["highlighter"] || "rouge"
+  @config = config["kramdown"] || {}
+  @highlighter = nil
+  setup
+  load_dependencies
+end
+```
+
 ### Source
 
 source code [kramdown_parser.rb](https://github.com/jekyll/jekyll/blob/master/lib/jekyll/converters/markdown/kramdown_parser.rb) in [jekyll][jekyll-github]
