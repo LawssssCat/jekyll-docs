@@ -1,7 +1,7 @@
-$main-color-1: #fb7299;
+$main-color-1: #fc4d50;
 
-$text-color-3: #505050;
-$main-color-3: #f6f9fa;
+$text-color-3: #333;
+$main-color-3: #f2f2f2;
 
 $background-color: #fff;
 
@@ -9,7 +9,7 @@ $text-color-theme-light-d: #000;
 $text-color-theme-light: #222;
 $text-color-theme-light-l: #888;
 
-$theme-default: (
+$theme-original: (
   // main colors
   main-color-1: $main-color-1,
   text-color-1: #fff,
@@ -44,11 +44,9 @@ $theme-default: (
   // header and footer colors
   header-text-color: $text-color-3,
   header-background: $main-color-3,
-  // header-background: linear-gradient(60deg,#f6f9fa 0%, #e6f9ea 100%),
   
   footer-text-color: $text-color-3,
   footer-background: $main-color-3,
-  // footer-background: linear-gradient(12deg,#f2f2f6 0%, $main-color-3 100%),
   
   // // border and shadow colors
   border-color:     mix(#000, $background-color, 20%),
@@ -67,4 +65,4 @@ $theme-default: (
 
 // logo colors
 @import "./logo-colors";
-$theme-default: map-merge($theme-default, $logo-colors);
+$theme-original: map-merge($theme-original, $logo-colors);
