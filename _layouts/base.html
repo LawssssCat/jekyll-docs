@@ -2,23 +2,20 @@
 layout: none
 ---
 <!DOCTYPE html>
-{%- include snippets/get-theme.html -%}
-{%- assign _theme = __return -%}
 {%- include snippets/get-lang.html -%}
-<html lang="{{ __return }}" data-theme="{{ _theme }}">
+<html lang="{{ __return }}">
   <head>
     {%- include head.html -%}
-    {%- include scripts/variables.html -%}
+    {%- include snippets/get-accessible-url.html url="/assets/js/dist/tool-box.min.js" -%}
+    <script src="{{ __return }}"></script>
+    {%- include snippets/get-accessible-url.html url="/assets/js/data/variables.js" -%}
+    <script src="{{ __return }}"></script>
   </head>
-  <script>
-    {%- include scripts/utils/utils.js -%}
-  </script>
   <body>
     <div class="layout--base">
       {{ content }}
     </div>
-    <script>
-      {%- include scripts/common.js -%}
-    </script>
+    {%- include snippets/get-accessible-url.html url="/assets/js/dist/commons.min.js" -%}
+    <script src="{{ __return }}"></script>
   </body>
 </html>
