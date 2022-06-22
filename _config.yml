@@ -85,6 +85,7 @@ exclude:
   - /node_modules
   - /gulpfile.js
   - /_javascript
+  - /commitlint.config.js
 
 # -------------------------
 # Plugins
