@@ -1,4 +1,3 @@
-
 (function() {
 
   // read session
