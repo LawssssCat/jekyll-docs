@@ -12,7 +12,7 @@ Github - <https://github.com/rouge-ruby/rouge>
 Online preview - <http://rouge.jneen.net/v3.29.0/json/>
 
 {% raw %}
-Rouge is Jekyll's default syntax highlighter. Out of the box, Rouge will be used to highlight text wrapped in the `{% highlight %}` template tags. The `{% highlight %}` tag provides minimal options: you can specify the language to use and whether to enable line numbers or not. More information is available in the [Jekyll docs](https://jekyllrb.com/docs/liquid/tags/#code-snippet-highlighting).
+[Rouge](https://github.com/jneen/rouge) is Jekyll's default syntax highlighter. Out of the box, Rouge will be used to highlight text wrapped in the `{% highlight %}` template tags. The `{% highlight %}` tag provides minimal options: you can specify the language to use and whether to enable line numbers or not. More information is available in the [Jekyll docs](https://jekyllrb.com/docs/liquid/tags/#code-snippet-highlighting).
 {% endraw %}
 
 Supported Languages - <https://github.com/rouge-ruby/rouge/blob/master/docs/Languages.md>
@@ -53,7 +53,19 @@ Add `linenos` and line numbers will appear after rendering.
 {% raw %}{%- highlight javascript linenos -%}
 ...
 {%- endhighlight -%}{% endraw %}
+```
 
+or modify `_config.yml`
+
+```yml
+kramdown:
+  syntax_highlighter_opts:
+    line_numbers: true
+```
+
+the result
+
+```html
 // render result
 <figure class="highlight"><pre><code class="language-javascript" data-lang="javascript">
   <table class="rouge-table">
@@ -90,6 +102,10 @@ Copy the CSS file (`native.css` for example) into your css directory and import 
 ```scss
 @import "native.css";
 ```
+
+#### syntax_highlighter_opts
+
+Syntax Highlighting With Rouge - <https://kramdown.gettalong.org/syntax_highlighter/rouge.html>
 
 ### Source
 
