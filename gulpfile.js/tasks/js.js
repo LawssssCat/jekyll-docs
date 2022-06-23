@@ -15,10 +15,17 @@ const browserify = require('browserify');
 const JS_SRC = '_javascript';
 const JS_DEST = 'assets/js/dist';
 
+const VENDERS = ['tool-box', 'lazyLoad'];
+
 function isDebug() {
   let env = process.env.JEKYLL_ENV;
   return !env == 'production';
 }
+
+const BROWSERIFY_CVONFIG = {
+  paths: '_javascript/',
+  debug: isDebug()
+};
 
 function clean() {
   return del([`${JS_DEST}/*.js`]);
@@ -30,12 +37,8 @@ function minifyJs() {
     .pipe(dest(JS_DEST));
 }
 
-function normalize(files, output) {
-  return browserify(
-    { 
-      entries: files, 
-      debug: isDebug()
-    })
+function normalize(bf, output) {
+  return bf
     .transform(
       babelify,
       {
@@ -50,7 +53,14 @@ function normalize(files, output) {
 
 function concatJs(pattern, output) {
   let files = glob.sync(pattern);
-  return normalize(files, output);
+  let config = Object.assign(
+    {
+      entries: files
+    }, 
+    BROWSERIFY_CVONFIG
+  );
+  let bf = browserify(config).external(VENDERS);
+  return normalize(bf, output);
 }
 
 const commonsJs = () => {
@@ -62,17 +72,22 @@ const componentsJs = parallel(
   () => concatJs(`${JS_SRC}/components/aside/*.js`, 'aside')
 );
 
-const toolBoxJs = () => {
-  return concatJs(`${JS_SRC}/tool-box.js`, 'tool-box');
-};
-
-const lazyLoadJs = () => {
-  return concatJs(`${JS_SRC}/lazyLoad.js`, 'lazyLoad');
+const vendersJs = () => {
+  let config = Object.assign(
+    {
+    }, 
+    BROWSERIFY_CVONFIG
+  );
+  let bf = browserify(config);
+  VENDERS.forEach(lib => {
+    bf.require(lib); 
+  });
+  return normalize(bf, 'venders');
 };
 
 const buildJs = series(
   clean,
-  parallel(commonsJs, toolBoxJs, lazyLoadJs, componentsJs)
+  parallel(commonsJs, vendersJs, componentsJs)
 );
 
 exports.build = series(buildJs, minifyJs);

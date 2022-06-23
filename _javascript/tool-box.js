@@ -1,7 +1,7 @@
-const TOOL_BOX = {};
+const TOOL = {};
 
-TOOL_BOX.hasEvent = function (event) {
+TOOL.hasEvent = function (event) {
   return 'on'.concat(event) in window.document;
 };
 
-window.TOOL_BOX = TOOL_BOX;
+module.exports = TOOL;

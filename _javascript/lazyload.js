@@ -1,6 +1,6 @@
 const {Set}  = require('./lib/set');
 
-window.lazyLoad = (function(doc) {
+const lazyLoad = (function(doc) {
   function load(type, urls, callback) {
     let _urls = typeof urls == 'string' ? new Set([urls]) : new Set(urls);
   }
@@ -12,4 +12,8 @@ window.lazyLoad = (function(doc) {
       load('css', url, callback);
     }
   };
-})(this.document);
+})(document);
+
+module.exports = {
+  lazyLoad
+};
