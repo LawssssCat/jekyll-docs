@@ -1,16 +1,16 @@
 // read session
-var sessionName = 'data-theme-' + 'asfawegasfasdfsd';
-var sessionTheme = window.sessionStorage.getItem(sessionName);
+let sessionName = 'data-theme-' + 'asfawegasfasdfsd';
+let sessionTheme = window.sessionStorage.getItem(sessionName);
 
-var themes = window.VARIABLES.themes;
-var curTheme = window.VARIABLES.cur_theme;
-var curThemeIndex;
+let themes = window.VARIABLES.themes;
+let curTheme = window.VARIABLES.cur_theme;
+let curThemeIndex;
 if(sessionTheme) {
   curTheme = sessionTheme;
 }
 
 function indexGet(theme) {
-  var index;
+  let index;
   for(index=0; index<themes.length; index++) {
     if(themes[index] == theme) {
       break;
@@ -32,7 +32,7 @@ function themeChange(theme) {
   document.querySelectorAll('.theme-panel_title').forEach(item => {
     item.innerHTML = theme;
   });
-  var html = document.querySelectorAll('html')[0];
+  let html = document.querySelectorAll('html')[0];
   html.setAttribute('data-theme', theme);
   window.sessionStorage.setItem(sessionName, theme);
 }
@@ -42,7 +42,7 @@ themeChange(curTheme);
 document.querySelectorAll('.theme-btn').forEach(btn => {
   btn.addEventListener('click', function() {
     indexIncrease();
-    var theme = themes[curThemeIndex];
+    let theme = themes[curThemeIndex];
     themeChange(theme);
   });
 });
