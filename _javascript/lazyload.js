@@ -1,6 +1,6 @@
 const {Set}  = require('./lib/set');
 
-window.lazyLoad = (function(doc) {debugger
+window.lazyLoad = (function(doc) {
   function load(type, urls, callback) {
     let _urls = typeof urls == 'string' ? new Set([urls]) : new Set(urls);
   }

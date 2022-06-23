@@ -17,7 +17,7 @@
   },
   "scripts": {
     "prepare": "husky install",
-    "js-build": "npm run eslint && gulp",
+    "js-build": "cross-env JEKYLL_ENV=production npm run eslint && gulp",
     "js-watch": "gulp dev",
     "build": "npm run js-build && cross-env JEKYLL_ENV=production JEKYLL_LOG_LEVEL=debug bundle exec jekyll build -d _site",
     "serve": "npm run js-build && bundle exec jekyll serve -H 0.0.0.0 --port 8765 -d _site/dev",
@@ -31,14 +31,13 @@
     "@commitlint/cli": "^17.0.2",
     "@commitlint/config-conventional": "^17.0.2",
     "babel-preset-es2015": "^6.24.1",
-    "browserify": "^3.46.1",
+    "browserify": "^17.0.0",
     "cross-env": "^7.0.3",
     "del": "^6.1.1",
     "eslint": "^6.8.0",
+    "glob": "^8.0.3",
     "gulp": "^4.0.2",
     "gulp-babel": "^7.0.1",
-    "gulp-browserify": "^0.5.1",
-    "gulp-concat": "^2.6.1",
     "gulp-rename": "^2.0.0",
     "gulp-uglify": "^3.0.2",
     "husky": "^8.0.1",
@@ -46,6 +45,7 @@
     "stylelint-config-recommended-scss": "^6.0.0",
     "stylelint-config-standard": "^26.0.0",
     "stylelint-order": "^5.0.0",
-    "stylelint-scss": "^4.2.0"
+    "stylelint-scss": "^4.2.0",
+    "vinyl-source-stream": "^2.0.0"
   }
 }

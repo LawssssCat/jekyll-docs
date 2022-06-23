@@ -2,17 +2,23 @@
 
 'use strict';
 
-const { src, dest, watch, series, parallel} = require('gulp');
+const { src, dest, watch, series, parallel } = require('gulp');
 
 const del    = require('del');
 const uglify = require('gulp-uglify');
-const concat = require('gulp-concat');
 const rename = require('gulp-rename');
 const babel  = require('gulp-babel');
-const browserify = require('gulp-browserify');
+const glob   = require('glob');
+const source     = require('vinyl-source-stream');
+const browserify = require('browserify');
 
 const JS_SRC = '_javascript';
 const JS_DEST = 'assets/js/dist';
+
+function isDebug() {
+  let env = process.env.JEKYLL_ENV;
+  return !env == 'production';
+}
 
 function clean() {
   return del([`${JS_DEST}/*.js`]);
@@ -20,44 +26,43 @@ function clean() {
 
 function minifyJs() {
   return src(`${ JS_DEST }/*.js`)
+    .pipe(babel())       // to es5
     .pipe(uglify())      // to min
     .pipe(dest(JS_DEST));
 }
 
-function normalize(src) {
-  return src
-    .pipe(browserify())   // require
-    .pipe(babel())        // to es5
+function normalize(stream) {
+  return stream
     .pipe(rename({ extname: '.min.js' }))
     .pipe(dest(JS_DEST));
 }
 
-function moveJs(files) {
-  return normalize(
-    src(files)
-  );
-}
-
-function concatJs(files, output) {
-  return normalize(
-    src(files).pipe(concat(output)) // concat 
-  );
+function concatJs(pattern, output) {
+  let files = glob.sync(pattern);
+  let stream = browserify({ 
+    entries: files, 
+    debug: isDebug()
+  })
+    .bundle()
+    .pipe(source(output));
+  return normalize(stream);
 }
 
 const commonsJs = () => {
-  return concatJs(`${JS_SRC}/commons/*.js`, 'commons.js');
+  return concatJs(`${JS_SRC}/commons/*.js`, 'commons');
 };
 
-const componentsJs = () => {
-  return moveJs(`${JS_SRC}/components/*.js`);
-};
+const componentsJs = parallel(
+  () => concatJs(`${JS_SRC}/components/theme.js`, 'theme'),
+  () => concatJs(`${JS_SRC}/components/aside/*.js`, 'aside')
+);
 
 const toolBoxJs = () => {
-  return concatJs(`${JS_SRC}/tool-box.js`, 'tool-box.js');
+  return concatJs(`${JS_SRC}/tool-box.js`, 'tool-box');
 };
 
 const lazyLoadJs = () => {
-  return concatJs(`${JS_SRC}/lazyLoad.js`, 'lazyLoad.js');
+  return concatJs(`${JS_SRC}/lazyLoad.js`, 'lazyLoad');
 };
 
 const buildJs = series(
