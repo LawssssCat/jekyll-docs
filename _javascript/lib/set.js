@@ -12,7 +12,57 @@ class Set {
   }
   
   add(item) {
-    debugger
+    let i, data = this._data;
+    for (i=0; i<data.length; i++) {
+      if(data[i] == item) {
+        return false;
+      }
+    }
+    this.size++;
+    data.push(item);
+    return true;
+  }
+
+  get(index) {
+    return this._data[index];
+  }
+
+  has(item) {
+    let i, data = this._data;
+    for (i=0; i<data.length; i++) {
+      if(data[i] == item) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  values() {
+    return this._data;
+  }
+
+  size() {
+    return this._data.length;
+  }
+
+  is(set) {
+    if(set == this) return true;
+    if(set == null) return false;
+    if(set.size() != this.size()) return false;
+    
+    let i, j, myValue, itValue, flag;
+    for(flag=false, i=0; i<set.size(); i++) {
+      itValue = set.get(i);
+      for(j=0; j<this.size(); j++) {
+        myValue = this.get(j);
+        if( myValue == itValue ) {
+          flag = true;
+          break;
+        }
+      }
+      if(flag == false) return false;
+    }
+    return true;
   }
 
 }

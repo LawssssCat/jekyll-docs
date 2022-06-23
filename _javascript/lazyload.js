@@ -1,4 +1,4 @@
-const {Set}  = require('./lib/set');
+const {Set}  = require('lib/set');
 
 const lazyLoad = (function(doc) {
   function load(type, urls, callback) {
