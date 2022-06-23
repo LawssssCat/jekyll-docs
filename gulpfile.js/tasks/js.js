@@ -30,15 +30,8 @@ function minifyJs() {
     .pipe(dest(JS_DEST));
 }
 
-function normalize(stream) {
-  return stream
-    .pipe(rename({ extname: '.min.js' }))
-    .pipe(dest(JS_DEST));
-}
-
-function concatJs(pattern, output) {
-  let files = glob.sync(pattern);
-  let stream = browserify(
+function normalize(files, output) {
+  return browserify(
     { 
       entries: files, 
       debug: isDebug()
@@ -50,8 +43,14 @@ function concatJs(pattern, output) {
       }
     )
     .bundle()
-    .pipe(source(output));
-  return normalize(stream);
+    .pipe(source(output))
+    .pipe(rename({ extname: '.min.js' }))
+    .pipe(dest(JS_DEST));
+}
+
+function concatJs(pattern, output) {
+  let files = glob.sync(pattern);
+  return normalize(files, output);
 }
 
 const commonsJs = () => {
