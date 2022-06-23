@@ -47,6 +47,7 @@ priority:
 
 path | type of config | name | type of date | mean | default
 --   | ---            | ---  | ---          | ---  | ---
+   |                | `show_btn_change_theme` | boolean | | true
    |                | `show_article_footer_navigation` | boolean | | false
    |                | `show_author_profile` | boolean | | false
    |                | `show_subscribe` | boolean | | false

@@ -10,6 +10,7 @@ default:
     type: person
   page:
     type: webpage
+    show_btn_change_theme: true
     show_author_profile: false
     show_subscribe: true
     show_last_modified_at: true

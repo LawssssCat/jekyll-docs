@@ -1,3 +1,9 @@
+{%- include snippets/assign.html 
+  value1=page.show_btn_change_theme
+  value2=layout.show_btn_change_theme
+  value3=site.data.variables.default.page.show_btn_change_theme -%}
+{%- assign _show_btn_change_theme = __return -%}
+
 <header class="header">
   <div class="main">
     <div class="header__title">
@@ -7,11 +13,15 @@
         {%- include snippets/get-nav-url.html path=_paths_root -%}
         <a title="{{ site.description }}" href="{{ __return }}">{{ site.title }}</a>
       </div>
-      <div class="theme-btn">
-        {%- include snippets/get-theme.html -%}
-        {%- assign _theme = __return -%}
-        <div class="theme-panel_title button button--outline-secondary button--xs">{{ _theme }}</div>
-      </div>
+      {%- if _show_btn_change_theme -%}
+        <div class="theme-btn">
+          {%- include snippets/get-theme.html -%}
+          {%- assign _theme = __return -%}
+          <div class="theme-panel_title button button--outline-secondary button--xs">{{ _theme }}</div>
+        </div>
+        {%- include snippets/get-accessible-url.html url="/assets/js/dist/theme.min.js" -%}
+        <script src="{{ __return }}"></script>
+      {%- endif -%}
     </div>
     <div class="navigation">
       <ul>
