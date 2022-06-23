@@ -7,8 +7,8 @@ const { src, dest, watch, series, parallel } = require('gulp');
 const del    = require('del');
 const uglify = require('gulp-uglify');
 const rename = require('gulp-rename');
-const babel  = require('gulp-babel');
 const glob   = require('glob');
+const babelify   = require('babelify');
 const source     = require('vinyl-source-stream');
 const browserify = require('browserify');
 
@@ -26,7 +26,6 @@ function clean() {
 
 function minifyJs() {
   return src(`${ JS_DEST }/*.js`)
-    .pipe(babel())       // to es5
     .pipe(uglify())      // to min
     .pipe(dest(JS_DEST));
 }
@@ -39,10 +38,17 @@ function normalize(stream) {
 
 function concatJs(pattern, output) {
   let files = glob.sync(pattern);
-  let stream = browserify({ 
-    entries: files, 
-    debug: isDebug()
-  })
+  let stream = browserify(
+    { 
+      entries: files, 
+      debug: isDebug()
+    })
+    .transform(
+      babelify,
+      {
+        presets:['es2015']
+      }
+    )
     .bundle()
     .pipe(source(output));
   return normalize(stream);
