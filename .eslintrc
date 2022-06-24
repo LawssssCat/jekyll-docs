@@ -6,7 +6,7 @@
       "node": true
   },
   "rules": {
-      "no-console": "error",
+      "no-console": "warn",
       "semi": ["error", "always"],
       "quotes": ["error", "single"],
       "comma-dangle": ["error", "never"],

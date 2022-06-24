@@ -17,6 +17,7 @@
       {%- endfor -%}
     ],
     cur_theme: "{{ cur_theme }}",
+    sources: {{ _sources | json | replace: "=>", ":"}}
   };
   window.VARIABLES = VARIABLES;
 })();

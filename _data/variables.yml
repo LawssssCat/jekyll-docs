@@ -28,3 +28,6 @@ themes:
 sources:
   bootcdn:
     font_awesome: 'https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.1/css/all.css'
+    gitalk:
+      js: 'https://cdn.bootcss.com/gitalk/1.2.2/gitalk.min.js'
+      css: 'https://cdn.bootcss.com/gitalk/1.2.2/gitalk.min.css'
