@@ -11,6 +11,8 @@ default:
   page:
     type: webpage
     show_btn_change_theme: true
+    show_word_count: false
+    show_raw_article_link: false
     show_author_profile: false
     show_subscribe: true
     show_last_modified_at: true
@@ -19,6 +21,7 @@ default:
 
 themes:
   - default
+  - original
   - dark
   - chocolate
   - forest

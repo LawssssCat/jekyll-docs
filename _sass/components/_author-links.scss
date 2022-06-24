@@ -11,6 +11,11 @@
   & > ul {
     // margin: 0;
     & > li > {
+      .rss-button {
+        @include themeify() {
+          @include clickable(themed(text-color-1), themed(rss-color));
+        }
+      }
       .mail-button {
         @include themeify() {
           @include clickable(themed(text-color-1), themed(mail-color));

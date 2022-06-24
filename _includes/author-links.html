@@ -1,4 +1,5 @@
 {%- assign _author = include.author -%}
+{%- assign _rss_url = include.rss_url -%}
 
 <div class="author-links">
   <ul>
@@ -21,6 +22,14 @@
 
     <!-- icon. see https://fontawesome.cc/ -->
 
+    {%- if _rss_url -%}
+      {%- include snippets/get-locale-string-from-data.html key='SUBSCRIBE' -%}
+      {%- assign _locale_nav_subscribe = __return -%}
+      <li title="{{ _locale_nav_subscribe }}">
+        <a class="button button--circle rss-button" itemprop="sameAs" href="{{ _rss_url }}" target="_blank">
+          <i class="fas fa-rss"></i></a></li>
+    {%- endif -%}
+    
     {%- if _author.email -%}
       <li title="{{ _locale_string_email }}">
         <a class="button button--circle mail-button" itemprop="email" href="mailto:{{ _author.email }}" target="_blank">

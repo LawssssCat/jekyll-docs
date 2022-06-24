@@ -1,3 +1,9 @@
+{%- include snippets/assign.html 
+  value1=page.show_subscribe
+  value2=layout.show_subscribe
+  value3=site.data.variables.default.page.show_subscribe -%}
+{%- assign _show_subscribe = __return -%}
+
 <footer class="footer py-4">
   <div class="main">
     {%- assign _site_author = site.author -%}
@@ -15,7 +21,12 @@
         <meta itemprop="description" content="{{ _site_author.bio }}">
       {%- endif -%}
       <div class="footer__author-links">
-        {%- include author-links.html author=_site_author -%}
+        {%- assign _rss_url = nil -%}
+        {%- if _show_subscribe -%}
+          {%- include snippets/get-accessible-url.html url=site.data.variables.default.paths.rss -%}
+          {%- assign _rss_url = __return -%}
+        {%- endif -%}
+        {%- include author-links.html author=_site_author rss_url=_rss_url -%}
       </div>
     </div>
     

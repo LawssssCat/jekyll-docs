@@ -54,5 +54,6 @@ path | type of config | name | type of date | mean | default
    |                | `license` | string | license name. data define in `_data/license.yml` | false
  `_data.navigation`  |  | `key` | string | work with `nav_key` | 
  page | front matter | `nav_key` | string | work with `_data.navigation` | 
+ page | front matter | `original_link` | url | if not site url, please use absolute url | `page.url`
 
 {% endraw %}
