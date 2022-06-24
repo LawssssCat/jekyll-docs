@@ -10,6 +10,10 @@ $text-color-theme-light-d: #000;
 $text-color-theme-light: #222;
 $text-color-theme-light-l: #888;
 
+%aba {
+  background: #fff;
+}
+
 $theme-default: (
   // main colors
   main-color-1: $main-color-1,
@@ -49,7 +53,8 @@ $theme-default: (
   // header-background: linear-gradient(60deg,#f6f9fa 0%, #e6f9ea 100%),
 
   footer-text-color: $text-color-3,
-  footer-background: $main-color-3,
+  footer-background: linear-gradient(to bottom, #fff, #ebf2ff 100%),
+  footer-background-top: linear-gradient(90deg, #ffbe0b, #fb5607, #ff006e, #8338ec, #3a86ff),
   // footer-background: linear-gradient(12deg,#f2f2f6 0%, $main-color-3 100%),
 
   // // border and shadow colors
