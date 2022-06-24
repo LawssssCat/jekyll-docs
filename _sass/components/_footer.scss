@@ -1,4 +1,11 @@
+/* stylelint-disable scss/no-global-function-names */
 .page__footer {
+  @include themeify {
+    $_top: themed(footer-background-top);
+    @if $_top {
+      @include horizontal-rules-dashed($_top);
+    }
+  }
   .footer {
     @include themeify {
       color: themed(footer-text-color);

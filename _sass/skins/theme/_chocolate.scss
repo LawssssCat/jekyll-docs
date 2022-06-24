@@ -1,3 +1,4 @@
+/* stylelint-disable scss/no-global-function-names */
 $main-color-3: #b49b92;
 $text-color-3: rgba(#fff, .85);
 
@@ -8,7 +9,7 @@ $text-color-theme-light  : rgba(#000, .85);
 $text-color-theme-light-l: rgba(#000, .5);
 
 $theme-chocolate: (
-// main colors
+  // main colors
   main-color-1:     #563a20,
   text-color-1:     rgba(#fff, .85),
 
@@ -21,10 +22,10 @@ $theme-chocolate: (
   main-color-theme-light: rgba(#000, .9),
   main-color-theme-dark:  rgba(#fff, .9),
 
-// page background
+  // page background
   background-color: $background-color,
 
-// text colors
+  // text colors
   text-color-theme-light-d: $text-color-theme-light-d,
   text-color-theme-light:   $text-color-theme-light  ,
   text-color-theme-light-l: $text-color-theme-light-l,
@@ -39,21 +40,21 @@ $theme-chocolate: (
 
   text-background-color: rgba(#000, .05),
 
-// header and footer colors
+  // header and footer colors
   header-text-color: $text-color-3,
   header-background: $main-color-3,
 
   footer-text-color: $text-color-3,
   footer-background: $main-color-3,
 
-// border and shadow colors
+  // border and shadow colors
   border-color:     $main-color-3,
   border-color-l:   mix(#000, $background-color, 10%),
   decorate-color:   rgba(#000, .1),
   mask-color:       rgba(#000, .9),
   select-color:     rgba($main-color-3, .5),
 
-// function colors
+  // function colors
   green:           #5baa34,
   blue:            #1c7cd4,
   yellow:          #c9771f,
