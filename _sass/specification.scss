@@ -1,21 +1,20 @@
+@import
 
-@import 
+  "common/variables",
+  "common/function",
+  "common/classes",
+  "common/reset",
+  "common/components/menu",
+  "common/components/card",
+  "common/components/button",
 
-"common/variables",
-"common/function",
-"common/classes",
-"common/reset",
-"common/components/menu",
-"common/components/card",
-"common/components/button",
+  "components/main",
+  "components/header",
+  "components/footer",
+  "components/article-footer",
+  "components/author-profile",
+  "components/author-links",
+  "components/article-header",
+  "components/article-content",
 
-"components/main",
-"components/header",
-"components/footer",
-"components/article-footer",
-"components/author-profile",
-"components/author-links",
-"components/article-header",
-"components/article-content",
-
-"layout/page";
+  "layout/page";

@@ -1,3 +1,4 @@
+/* stylelint-disable scss/no-global-function-names */
 .article__content {
   line-height: map-get($base, line-height-lg);
   word-wrap: break-word;
@@ -12,7 +13,6 @@
     margin-top: map-get($spacers, 4);
     // todo
   }
-  
   hr {
     border: none;
     @include horizontal-rules();
@@ -35,7 +35,7 @@
     //   margin-top: map-get($spacers, 2) * 2;
     // }
 
-    ul, ol { 
+    ul, ol {
       li {
         p {
           margin: map-get($spacers, 1);

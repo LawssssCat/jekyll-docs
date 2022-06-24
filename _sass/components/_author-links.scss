@@ -1,14 +1,11 @@
 .author-links {
   text-align: center;
+
   & > ul {
     @include menu();
     @include inline-flex();
     @include align-items(center);
-  }
-}
 
-.author-links {
-  & > ul {
     // margin: 0;
     & > li > {
       .rss-button {

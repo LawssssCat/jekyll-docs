@@ -11,7 +11,7 @@
 
 .page__main-inner {
   @include themeify() {
-    background-color: themed(background-color);
     color: themed(text-color);
+    background-color: themed(background-color);
   }
 }

@@ -3,7 +3,7 @@
 $theme-map: null;
 
 @mixin themeify {
-  @if ($theme-map == null) {
+  @if not $theme-map {
     @each $theme-name, $theme-map in $themes {
       $theme-map: $theme-map !global; // make $theme-map to a global variable
       html[data-theme=#{$theme-name}] & {
@@ -22,10 +22,10 @@ $theme-map: null;
 
 @mixin themeify-color($color: null, $background-color: null) {
   @include themeify {
-    @if ($color!=null) {
+    @if $color {
       color: themed($color);
     }
-    @if ($background-color!=null) {
+    @if $background-color {
       background-color: themed($background-color);
     }
   }

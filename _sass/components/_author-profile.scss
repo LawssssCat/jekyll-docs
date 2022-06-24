@@ -1,3 +1,4 @@
+/* stylelint-disable scss/no-global-function-names */
 .author-profile {
   @include flexbox();
   padding: map-get($spacers, 2) map-get($spacers, 3);
@@ -6,11 +7,11 @@
     background-color: themed(text-background-color);
   }
   .profile__avatar img {
-    height: 5rem;
     width: 5rem;
-    border-radius: 50%;
+    height: 5rem;
     margin-top: map-get($spacers, 2);
     margin-right: map-get($spacers, 2);
+    border-radius: 50%;
   }
   .author-links {
     text-align: left;

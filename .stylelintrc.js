@@ -2,11 +2,14 @@
 module.exports = {
   "extends": ["stylelint-config-standard", "stylelint-config-recommended-scss"],
   "plugins": [
+    "stylelint-scss",
     "stylelint-order"
   ],
   "rules": {
+    "property-no-vendor-prefix": [true, {"ignoreProperties": ["transform", "columns", "text-size-adjust"]}],
+    "alpha-value-notation": "number",
+    "at-rule-name-space-after": null,
     "at-rule-empty-line-before": null,
-    "at-rule-name-space-after": "always",
     "at-rule-no-vendor-prefix": true,
     "at-rule-semicolon-space-before": "never",
     "block-closing-brace-empty-line-before": null,
@@ -15,12 +18,14 @@ module.exports = {
     "color-named": "never",
     "color-hex-case": "lower",
     "color-hex-length": "short",
+    "color-function-notation": "legacy",
     "declaration-block-semicolon-newline-after": "always-multi-line",
     "declaration-block-semicolon-newline-before": "never-multi-line",
     "declaration-block-semicolon-space-after": "always-single-line",
+    "declaration-block-single-line-max-declarations": 9999,
     "declaration-empty-line-before": null,
-    "declaration-no-important": true,
-    "font-family-name-quotes": "always-where-recommended",
+    // "font-family-name-quotes": "always-where-recommended",
+    "font-family-name-quotes": null,
     "font-weight-notation": null,
     "function-url-no-scheme-relative": true,
     "function-url-quotes": "always",
@@ -32,7 +37,6 @@ module.exports = {
     "media-feature-range-operator-space-after": "always",
     "media-feature-range-operator-space-before": "never",
     "no-descending-specificity": null,
-    "no-duplicate-selectors": true,
     "number-leading-zero": "never",
     "media-feature-name-no-unknown": [true, {
       "ignoreMediaFeatureNames": ["prefers-reduced-motion"]
@@ -248,7 +252,6 @@ module.exports = {
       "fill",
       "stroke"
     ],
-    "property-no-vendor-prefix": true,
     "rule-empty-line-before": null,
     "selector-attribute-quotes": "always",
     "selector-list-comma-newline-after": "always-multi-line",
@@ -262,15 +265,19 @@ module.exports = {
     "selector-max-empty-lines": 1,
     "selector-max-id": 0,
     "selector-max-specificity": null,
-    "selector-max-type": 2,
+    "selector-max-type": [2, {"ignore": ["child", "compounded", "descendant", "next-sibling"]}],
     "selector-max-universal": 1,
     "selector-no-qualifying-type": null,
     "selector-no-vendor-prefix": true,
+    "selector-class-pattern": "^[a-zA-Z0-9_-]+$",
+    "selector-id-pattern": "^[a-zA-Z0-9_-]+$",
+    "no-duplicate-selectors": true,
     "string-quotes": "double",
     "value-keyword-case": "lower",
     "value-list-comma-newline-after": "never-multi-line",
     "value-list-comma-newline-before": "never-multi-line",
     "value-list-comma-space-after": "always",
+    "value-list-max-empty-lines": 1,
     "value-no-vendor-prefix": true
   }
 }

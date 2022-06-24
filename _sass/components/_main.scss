@@ -1,5 +1,6 @@
+/* stylelint-disable scss/no-global-function-names */
 .main {
-  margin: 0 auto;
   max-width: map-get($layout, content-max-width);
   padding: 0 map-get($spacers, 5);
+  margin: 0 auto;
 }

@@ -1,3 +1,4 @@
+/* stylelint-disable scss/no-global-function-names */
 @mixin menu($horizontal-spacer: default, $horizontal-item-vertical-spacer: default, $wrap: default) {
   @if $horizontal-spacer == default {
     $horizontal-spacer: map-get($menu, horizontal-spacer);
