@@ -20,4 +20,7 @@
     sources: {{ _sources | json | replace: "=>", ":"}}
   };
   window.VARIABLES = VARIABLES;
+  window.VARIABLES.append = function(obj) {
+    Object.assign(VARIABLES, obj);
+  }
 })();
