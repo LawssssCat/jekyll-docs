@@ -45,6 +45,7 @@ $theme-default: (
   // header and footer colors
   header-text-color: $text-color-3,
   header-background: $main-color-3,
+  header-background-top: linear-gradient(90deg, #ffbe0b, #fb5607, #ff006e, #8338ec, #3a86ff),
   // header-background: linear-gradient(60deg,#f6f9fa 0%, #e6f9ea 100%),
 
   footer-text-color: $text-color-3,

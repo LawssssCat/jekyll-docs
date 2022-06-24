@@ -1,5 +1,12 @@
 /* stylelint-disable scss/no-global-function-names */
 .page__header {
+  @include themeify {
+    $_top: themed(header-background-top);
+    @if $_top {
+      padding-top: map-get($spacers, 2);
+      background: $_top;
+    }
+  }
   .header {
     @include themeify {
       background: themed(header-background);
@@ -13,6 +20,7 @@
     }
     .main {
       @include flexbox();
+      max-width: inherit;
     }
   }
 
