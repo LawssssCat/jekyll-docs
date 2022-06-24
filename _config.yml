@@ -90,6 +90,7 @@ exclude:
   - /_javascript
   - /commitlint.config.js
   - /.stylelintrc.js
+  - /_site
 
 # -------------------------
 # Plugins
