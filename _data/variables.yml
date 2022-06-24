@@ -5,7 +5,7 @@ default:
   paths:
     root: /
     rss:  /feed.xml
-  sources: bootcdn
+  sources: unpkg
   author: 
     type: person
   page:
@@ -31,3 +31,8 @@ sources:
     gitalk:
       js: 'https://cdn.bootcss.com/gitalk/1.2.2/gitalk.min.js'
       css: 'https://cdn.bootcss.com/gitalk/1.2.2/gitalk.min.css'
+  unpkg:
+    font_awesome: 'https://use.fontawesome.com/releases/v5.15.1/css/all.css'
+    gitalk:
+      js: 'https://unpkg.com/gitalk@1.2.2/dist/gitalk.min.js'
+      css: 'https://unpkg.com/gitalk@1.2.2/dist/gitalk.css'
