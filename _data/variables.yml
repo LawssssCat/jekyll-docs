@@ -17,6 +17,7 @@ default:
     show_subscribe: true
     show_last_modified_at: true
     show_article_footer_navigation: false
+    show_article_footer_horizontal_rule: false
     license: CC-BY-4.0
 
 themes:

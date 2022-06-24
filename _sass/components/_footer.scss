@@ -3,14 +3,7 @@
   @include themeify {
     $_top: themed(footer-background-top);
     @if $_top {
-      &::before {
-        z-index: 3;
-        display: block;
-        height: 1px;
-        content: "";
-        background: linear-gradient(90deg, transparent 0, transparent 50%, #fff 50%, #fff 100%), $_top;
-        background-size: 15px 20px, 100% 100%;
-      }
+      @include horizontal-rules-dashed($_top);
     }
   }
   .footer {

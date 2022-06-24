@@ -1,4 +1,10 @@
 {%- include snippets/assign.html 
+  value1=page.show_article_footer_horizontal_rule
+  value2=layout.show_article_footer_horizontal_rule
+  value3=site.data.variables.default.page.show_article_footer_horizontal_rule -%}
+{%- assign _show_article_footer_horizontal_rule = __return -%}
+
+{%- include snippets/assign.html 
   value1=page.show_raw_article_link
   value2=layout.show_raw_article_link
   value3=site.data.variables.default.page.show_raw_article_link -%}
@@ -34,7 +40,12 @@
   value3=site.data.variables.default.page.show_article_footer_navigation -%}
 {%- assign _show_article_footer_navigation = __return -%}
 
-<footer class="footer">
+{%- assign _footer_horizontal_class = "" -%}
+{%- if _show_article_footer_horizontal_rule -%}
+  {%- assign _footer_horizontal_class = "horizontal-rules-dashed" -%}
+{%- endif -%}
+
+<footer class="footer {{ _footer_horizontal_class }}">
 
   {%- if _show_last_modified_at and page.last_modified_at -%}
     <!-- footer article modified time -->
