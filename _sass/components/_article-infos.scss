@@ -1,5 +1,8 @@
 /* stylelint-disable scss/no-global-function-names */
 .article__infos {
+  .infos {
+    @include flexbox();
+  }
   .article__author-avatar-wrapper {
     $_width: map-get($image, width-xxs);
     $_border-width: 2px;

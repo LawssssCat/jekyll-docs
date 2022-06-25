@@ -16,6 +16,14 @@
   {%- endif -%}
 {%- endif -%}
 
+{%- comment -%}============================================ putlish ===================================== {%- endcomment -%}
+
+{%- include snippets/assign.html 
+  value1=page.show_article_info_publish_on
+  value2=layout.show_article_info_publish_on
+  value3=site.data.variables.default.page.show_article_info_publish_on -%}
+{%- assign _show_article_info_publish_on = __return -%}
+
 {%- comment -%}============================================ tags ===================================== {%- endcomment -%}
 
 {%- include snippets/assign.html 
@@ -70,6 +78,21 @@
     {%- endif -%}
   {%- endif -%}
   <!-- publish on -->
+  {%- if _show_article_info_publish_on -%}
+    {%- assign _publish_on = page.date | default: page["first_publish_at"] -%}
+    {%- if _publish_on -%}
+      {%- include snippets/get-string-locale-from-data.html key='ARTICLE_DATE_FORMAT' -%}
+      {%- assign _locale_date_format = __return -%}
+      {%- include snippets/get-string-locale-from-data.html key='PUBLISH_ON' -%}
+      {%- assign _locale_publish_on = __return -%}
+      <div>
+        <p>
+          {{ _locale_publish_on }}
+          <span>{{ _publish_on | date: _locale_date_format }}</span>
+        </p>
+      </div>
+    {%- endif -%}
+  {%- endif -%}
   <!-- written by -->
   <!-- read time -->
   <!-- more on (tags) -->

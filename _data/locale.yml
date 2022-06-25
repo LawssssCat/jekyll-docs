@@ -7,6 +7,7 @@ en: &EN
   EMAIL_ME                : "Send me an Email."
   ARTICLE_DATE_FORMAT     : "%b %d, %Y" 
   LAST_UPDATED            : "Last updated" 
+  PUBLISH_ON              : "Published on"
   LICENSE_ANNOUNCE        : "This work is licensed under a [LICENSE] license."
   PREVIOUS                : "PREVIOUS"
   NEXT                    : "NEXT"
