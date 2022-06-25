@@ -47,30 +47,6 @@
 
 {%- comment -%}============================================ switch ===================================== {%- endcomment -%}
 
-{%- capture _lef_infos -%}
-  {%- if _show_article_info_tags -%}
-    {%- include snippets/get-accessible-url.html url=site.data.variables.default.paths.archive -%}
-    {%- assign _path_archive = __return -%}
-    <ul class="left-col menu">
-      {%- for _tag in page.tags -%}
-        {%- include snippets/get-string-encode.html str=_tag -%}
-        {%- assign _tag_encode = __return -%}
-        {%- assign _path_archive_tag = _path_archive | append: '?tag=' | append: _tag_encode -%}
-        <li>
-          <a class="button button--tag"
-          href="{{ _path_archive_tag }}">{{ _tag }}</a>
-        </li>
-      {%- endfor -%}
-    </ul>
-  {%- endif -%}
-{%- endcapture -%}
-
-{%- capture _rig_infos -%}
-  <ul class="right-col menu">
-
-  </ul>
-{%- endcapture -%}
-
 {%- if _show_article_info_author -%}
 <div class="infos">
   <!-- author avator -->
@@ -132,6 +108,25 @@
     </div>
   {%- endif -%}
   <!-- more on (tags) -->
+  {%- if _show_article_info_tags -%}
+    {%- include snippets/get-string-locale-from-data.html key='MORE_ON' -%}
+    {%- assign _locale_more_on = __return -%}
+    <div>
+      <p>{{ _locale_more_on }}
+        <span>
+          {%- include snippets/get-accessible-url.html url=site.data.variables.default.paths.archive -%}
+          {%- assign _path_archive = __return -%}
+          {%- for _tag in page.tags -%}
+            {%- include snippets/get-string-encode.html str=_tag -%}
+            {%- assign _tag_encode = __return -%}
+            {%- assign _path_archive_tag = _path_archive | append: '?tag=' | append: _tag_encode -%}
+            <a href="{{ _path_archive_tag }}">{{ _tag }}</a>
+            {%- unless forloop.last -%},&nbsp;{%- endunless -%}
+          {%- endfor -%}
+        </span>
+      </p>
+    </div>
+  {%- endif -%}
 </div>
 {%- endif -%}
 

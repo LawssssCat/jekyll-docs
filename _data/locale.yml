@@ -11,6 +11,7 @@ en: &EN
   WRITTEN_BY              : "Written by"
   READING_TIME            : "Reading time"
   READING_TIME_MIN        : "min"
+  MORE_ON                 : "More on"
   LICENSE_ANNOUNCE        : "This work is licensed under a [LICENSE] license."
   PREVIOUS                : "PREVIOUS"
   NEXT                    : "NEXT"
