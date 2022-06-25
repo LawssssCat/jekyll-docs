@@ -22,6 +22,7 @@ default:
     show_article_title_edit_on_github: true
     show_article_title: false
     show_article_info_tags: true
+    show_article_info_author: true
     license: CC-BY-4.0
 
 themes:

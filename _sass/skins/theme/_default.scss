@@ -1,4 +1,12 @@
 /* stylelint-disable scss/no-global-function-names */
+$color-one: #ffbe0b;
+$color-two: #fb5607;
+$color-three: #ff006e;
+$color-four: #8338ec;
+$color-five: #3a86ff;
+$color-brilliant: linear-gradient(90deg, $color-one, $color-two);
+$color-rainbow: linear-gradient(90deg, $color-one, $color-two, $color-three, $color-four, $color-five);
+
 $main-color-1: #fb7299;
 
 $text-color-3: #505050;
@@ -9,10 +17,6 @@ $background-color: #fff;
 $text-color-theme-light-d: #000;
 $text-color-theme-light: #222;
 $text-color-theme-light-l: #888;
-
-%aba {
-  background: #fff;
-}
 
 $theme-default: (
   // main colors
@@ -49,17 +53,18 @@ $theme-default: (
   // header and footer colors
   header-text-color: $text-color-3,
   header-background: $main-color-3,
-  header-background-top: linear-gradient(90deg, #ffbe0b, #fb5607, #ff006e, #8338ec, #3a86ff),
+  header-background-top: $color-rainbow,
   // header-background: linear-gradient(60deg,#f6f9fa 0%, #e6f9ea 100%),
 
   footer-text-color: $text-color-3,
-  footer-background: linear-gradient(to bottom, #fff, #ebf2ff 100%),
-  footer-background-top: linear-gradient(90deg, #ffbe0b, #fb5607, #ff006e, #8338ec, #3a86ff),
+  footer-background: linear-gradient(to bottom, $background-color, #ebf2ff 100%),
+  footer-background-top: $color-rainbow,
   // footer-background: linear-gradient(12deg,#f2f2f6 0%, $main-color-3 100%),
 
-  // // border and shadow colors
+  // border and shadow colors
   border-color:     mix(#000, $background-color, 20%),
   border-color-l:   mix(#000, $background-color, 10%),
+  border-color-light: $color-brilliant,
   decorate-color:   rgba(#000, .1),
   mask-color:       rgba(#000, .9),
   select-color: rgba($main-color-1, .5),
@@ -70,6 +75,7 @@ $theme-default: (
   yellow:          #c9771f,
   red:             #da3d45,
   text-color-function: rgba(#fff, .8),
+
 );
 
 // logo colors

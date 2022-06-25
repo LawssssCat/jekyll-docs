@@ -1,3 +1,23 @@
+{%- comment -%}============================================ author ===================================== {%- endcomment -%}
+
+{%- include snippets/assign.html 
+  value1=page.show_article_info_author
+  value2=layout.show_article_info_author
+  value3=site.data.variables.default.page.show_article_info_author -%}
+{%- assign _show_article_info_author = __return -%}
+{%- assign _author = nil -%}
+{%- if _show_article_info_author -%}
+  {%- include snippets/get-author.html -%}
+  {%- assign _author = __return -%}
+  {%- if _author -%}
+    {%- assign _show_article_info_author = true -%}
+  {%- else -%}
+    {%- assign _show_article_info_author = false -%}
+  {%- endif -%}
+{%- endif -%}
+
+{%- comment -%}============================================ tags ===================================== {%- endcomment -%}
+
 {%- include snippets/assign.html 
   value1=page.show_article_info_tags
   value2=layout.show_article_info_tags
@@ -10,9 +30,6 @@
 {%- endif -%}
 
 {%- comment -%}============================================ switch ===================================== {%- endcomment -%}
-
-{%- include snippets/get-author.html -%}
-{%- assign _author = __return -%}
 
 {%- capture _lef_infos -%}
   {%- if _show_article_info_tags -%}
@@ -38,10 +55,26 @@
   </ul>
 {%- endcapture -%}
 
-<div class="infos clearfix">
-  {{ _lef_infos }}
-  {{ _rig_infos }}
+{%- if _show_article_info_author -%}
+<div class="infos">
+  <!-- author avator -->
+  {%- if _show_article_info_author -%}
+    {%- include snippets/get-accessible-url.html url=_author.avatar -%}
+    {%- assign _author_avatar_url = __return -%}
+    {%- if _author_avatar_url -%}
+      <div>
+        <div class="article__author-avatar-wrapper">
+          <img src="{{ _author_avatar_url }}" alt="author avatar">
+        </div>
+      </div>
+    {%- endif -%}
+  {%- endif -%}
+  <!-- publish on -->
+  <!-- written by -->
+  <!-- read time -->
+  <!-- more on (tags) -->
 </div>
+{%- endif -%}
 
 <!-- semantic -->
 {%- if _author -%}

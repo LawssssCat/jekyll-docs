@@ -120,6 +120,15 @@ $button: (
   font-weight:            map-get($base, font-weight-bold)
 );
 
+$image: (
+  width-xl:  20em,
+  width-lg:  16rem,
+  width:     12rem,
+  width-sm:  8rem,
+  width-xs:  4rem,
+  width-xxs: 3.5rem
+);
+
 $menu: (
   horizontal-spacer: 1,
   horizontal-item-vertical-spacer: 1
