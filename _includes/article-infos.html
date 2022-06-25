@@ -94,6 +94,18 @@
     {%- endif -%}
   {%- endif -%}
   <!-- written by -->
+  {%- if _show_article_info_author -%}
+    {%- include snippets/get-string-locale-from-data.html key='WRITTEN_BY' -%}
+    {%- assign _locale_written_by = __return -%}
+    <div>
+      <p>
+        {{ _locale_written_by }}
+        <span>
+          <a href="{{ _author.url }}">@{{ _author.name }}</a>
+        </span>
+      </p>
+    </div>
+  {%- endif -%}
   <!-- read time -->
   <!-- more on (tags) -->
 </div>

@@ -11,10 +11,11 @@
       color: themed(footer-text-color);
       background: themed(footer-background);
     }
-    a {
+    .site-info a {
       font-weight: map-get($base, font-weight);
       @include themeify {
         @include link-colors(themed(footer-text-color), themed(main-color-1));
+        @include link-decoration();
       }
     }
     .site-info {

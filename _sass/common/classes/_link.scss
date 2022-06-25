@@ -10,3 +10,16 @@
   }
   @include clickable($clr, null, $hover-clr, null, $active-clr, null, $focus-clr, null, $theme);
 }
+
+@mixin link-decoration {
+  @include plain() {
+    text-decoration: none;
+  }
+  @include hover() {
+    text-decoration: none !important;
+  }
+  @include active() {
+    text-decoration: none;
+  }
+  border-bottom: 1px dashed currentcolor;
+}

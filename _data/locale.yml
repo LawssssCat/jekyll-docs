@@ -8,6 +8,7 @@ en: &EN
   ARTICLE_DATE_FORMAT     : "%b %d, %Y" 
   LAST_UPDATED            : "Last updated" 
   PUBLISH_ON              : "Published on"
+  WRITTEN_BY              : "Written by"
   LICENSE_ANNOUNCE        : "This work is licensed under a [LICENSE] license."
   PREVIOUS                : "PREVIOUS"
   NEXT                    : "NEXT"
