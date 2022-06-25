@@ -116,6 +116,27 @@
   @extend %button--md;
 }
 
+.button--tag {
+  @include button--outline(text-color-3, main-color-3);
+  position: relative;
+  padding-left: 1em;
+  border-top-left-radius: .5em;
+  border-bottom-left-radius: .5em;
+  &::before {
+    position: absolute;
+    top: 50%;
+    left: .25em;
+    width: .5em;
+    height: .5em;
+    content: "";
+    border-radius: .25rem;
+    transform: translateY(-50%);
+    @include themeify {
+      background-color: themed(text-color-3);
+    }
+  }
+}
+
 .button--md {
   @extend %button--md;
 }

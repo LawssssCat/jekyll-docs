@@ -24,7 +24,8 @@
         {%- assign _tag_encode = __return -%}
         {%- assign _path_archive_tag = _path_archive | append: '?tag=' | append: _tag_encode -%}
         <li>
-          <a href="{{ _path_archive_tag }}">{{ _tag }}</a>
+          <a class="button button--tag"
+          href="{{ _path_archive_tag }}">{{ _tag }}</a>
         </li>
       {%- endfor -%}
     </ul>
