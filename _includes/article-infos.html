@@ -24,6 +24,14 @@
   value3=site.data.variables.default.page.show_article_info_publish_on -%}
 {%- assign _show_article_info_publish_on = __return -%}
 
+{%- comment -%}============================================ reading time ===================================== {%- endcomment -%}
+
+{%- include snippets/assign.html 
+  value1=page.show_article_info_reading_time
+  value2=layout.show_article_info_reading_time
+  value3=site.data.variables.default.page.show_article_info_reading_time -%}
+{%- assign _show_article_info_reading_time = __return -%}
+
 {%- comment -%}============================================ tags ===================================== {%- endcomment -%}
 
 {%- include snippets/assign.html 
@@ -107,6 +115,22 @@
     </div>
   {%- endif -%}
   <!-- read time -->
+  {%- if _show_article_info_reading_time -%}
+    {%- include snippets/get-string-locale-from-data.html key='READING_TIME' -%}
+    {%- assign _locale_reading_time = __return -%}
+    {%- include snippets/get-article-words.html content=content -%}
+    {%- assign _word_count = __return -%}
+    {%- include snippets/get-string-locale-from-data.html key='WORDS' -%}
+    {%- assign _locale_word_count = __return | replace: '[WORDS]', _word_count -%}
+    {%- include snippets/get-article-read-time.html words=_word_count -%}
+    {%- assign _read_time = __return -%}
+    <div>
+      <p>
+        {{ _locale_reading_time }}
+        <span data-words="{{ _locale_word_count }}">{{ _read_time }}</span>
+      </p>
+    </div>
+  {%- endif -%}
   <!-- more on (tags) -->
 </div>
 {%- endif -%}

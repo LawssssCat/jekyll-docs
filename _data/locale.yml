@@ -9,11 +9,13 @@ en: &EN
   LAST_UPDATED            : "Last updated" 
   PUBLISH_ON              : "Published on"
   WRITTEN_BY              : "Written by"
+  READING_TIME            : "Reading time"
+  READING_TIME_MIN        : "min"
   LICENSE_ANNOUNCE        : "This work is licensed under a [LICENSE] license."
   PREVIOUS                : "PREVIOUS"
   NEXT                    : "NEXT"
   ORIGINAL_LINK           : "Original link [LINK]"
-  WORDS                   : "This article consists of [WORDS] words." 
+  WORDS                   : "[WORDS] words"
   POST_ON_REPO            : "Edit on Github"
   GITHUB                  : "GitHub"
 
@@ -38,7 +40,7 @@ zh-Hans: &ZH_HANS
   PREVIOUS                 : "上篇"
   NEXT                     : "下篇"
   ORIGINAL_LINK            : "原始链接 [LINK]"
-  WORDS                    : "文章字数：[WORDS]" 
+  WORDS                    : "[WORDS] 字" 
   POST_ON_REPO             : "在 [REPO] 上修改"
   GITHUB                   : "GitHub"
 

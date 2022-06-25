@@ -1,0 +1,26 @@
+{%- comment -%}
+needs:
+  - words: article content words
+  - content: article content (if no 'words' input)
+{%- endcomment -%}
+
+{%- assign _word_count = include.words -%}
+{%- unless _word_count -%}
+  {%- include snippets/get-article-words.html content=include.content -%}
+  {%- assign _word_count = __return -%}
+{%- endunless -%}
+
+{%- assign wpm = 180.0 -%}
+{%- assign min_time = 1 -%}
+
+{%- comment -%}      210/180=2          {%- endcomment -%}
+{%- assign read_time = _word_count | divided_by: wpm | ceil -%}
+
+{%- unless read_time > 0 -%}
+  {%- assign read_time = min_time -%}
+{%- endunless -%}
+
+{%- include snippets/get-string-locale-from-data.html key='READING_TIME_MIN' -%}
+{%- assign _reading_time_min = __return -%}
+{%- assign __return = read_time | append: ' ' | append: _reading_time_min -%}
+

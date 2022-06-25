@@ -65,7 +65,8 @@
 
   {%- if _show_word_count -%}
     <!-- footer word count -->
-    {%- assign _word_count = content | strip_html | number_of_words: "cjk" -%}
+    {%- include snippets/get-article-words.html content=content -%}
+    {%- assign _word_count = __return -%}
     {%- include snippets/get-string-locale-from-data.html key='WORDS' -%}
     {%- assign _locale_word_count = __return | replace: '[WORDS]', _word_count -%}
     <p>{{ _locale_word_count }}</p>

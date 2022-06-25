@@ -24,6 +24,7 @@ default:
     show_article_info_tags: true
     show_article_info_author: true
     show_article_info_publish_on: true
+    show_article_info_reading_time: true
     license: CC-BY-4.0
 
 themes:
