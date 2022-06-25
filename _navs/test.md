@@ -1,6 +1,7 @@
 ---
 layout: article
 title: text and typography
+tags: ['test', 'typography']
 ---
 
 <p>

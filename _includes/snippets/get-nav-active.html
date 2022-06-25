@@ -8,9 +8,9 @@ needs
 {%- assign __page = include.page -%}
 
 {%- include snippets/get-nav-url.html path=__item.url -%}
-{%- assign __nav_url = __return -%}
+{%- assign __nav_url = __return | replace: '.html', '' -%}
 {%- include snippets/get-nav-url.html path=__page.url -%}
-{%- assign __page_url = __return -%}
+{%- assign __page_url = __return | replace: '.html', '' -%}
 
 {%- assign __flag1 = false -%}{%- comment -%}  ================ current nav ================ {%- endcomment -%}
 {%- if __nav_url == __page_url -%}

@@ -1,3 +1,7 @@
+{%- comment -%}
+needs:
+  - url
+{%- endcomment -%}
 {%- if include.absolute == true -%}
   {%- assign __return = include.url | absolute_url -%}
 {%- else -%}

@@ -1,0 +1,52 @@
+{%- include snippets/assign.html 
+  value1=page.show_article_info_tags
+  value2=layout.show_article_info_tags
+  value3=site.data.variables.default.page.show_article_info_tags -%}
+{%- assign _show_article_info_tags = __return -%}
+{%- if _show_article_info_tags and page.tags[0] -%}
+  {%- assign _show_article_info_tags = true -%}
+{%- else -%}
+  {%- assign _show_article_info_tags = false -%}
+{%- endif -%}
+
+{%- comment -%}============================================ switch ===================================== {%- endcomment -%}
+
+{%- include snippets/get-author.html -%}
+{%- assign _author = __return -%}
+
+{%- capture _lef_infos -%}
+  {%- if _show_article_info_tags -%}
+    {%- include snippets/get-accessible-url.html url=site.data.variables.default.paths.archive -%}
+    {%- assign _path_archive = __return -%}
+    <ul class="left-col menu">
+      {%- for _tag in page.tags -%}
+        {%- include snippets/get-string-encode.html str=_tag -%}
+        {%- assign _tag_encode = __return -%}
+        {%- assign _path_archive_tag = _path_archive | append: '?tag=' | append: _tag_encode -%}
+        <li>
+          <a href="{{ _path_archive_tag }}">{{ _tag }}</a>
+        </li>
+      {%- endfor -%}
+    </ul>
+  {%- endif -%}
+{%- endcapture -%}
+
+{%- capture _rig_infos -%}
+  <ul class="right-col menu">
+
+  </ul>
+{%- endcapture -%}
+
+<div class="infos clearfix">
+  {{ _lef_infos }}
+  {{ _rig_infos }}
+</div>
+
+<!-- semantic -->
+{%- if _author -%}
+  <meta itemprop="author" content="{{ _author.name }}"/>
+{%- endif -%}
+{%- if include.article.tags[0] -%}
+  {%- assign _keywords = include.article.tags | join: ',' %}
+  <meta itemprop="keywords" content="{{ _keywords }}">
+{%- endif -%}

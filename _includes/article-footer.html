@@ -51,10 +51,10 @@
 
   {%- if _show_last_modified_at and page.last_modified_at -%}
     <!-- footer article modified time -->
-    {%- include snippets/get-locale-string-from-data.html key='ARTICLE_DATE_FORMAT' -%}
+    {%- include snippets/get-string-locale-from-data.html key='ARTICLE_DATE_FORMAT' -%}
     {%- assign _locale_date_format = __return -%}
 
-    {%- include snippets/get-locale-string-from-data.html key='LAST_UPDATED' -%}
+    {%- include snippets/get-string-locale-from-data.html key='LAST_UPDATED' -%}
     {%- assign _locale_last_update = __return -%}
     <p>
       <span>{{ _locale_last_update }}
@@ -66,7 +66,7 @@
   {%- if _show_word_count -%}
     <!-- footer word count -->
     {%- assign _word_count = content | strip_html | number_of_words: "cjk" -%}
-    {%- include snippets/get-locale-string-from-data.html key='WORDS' -%}
+    {%- include snippets/get-string-locale-from-data.html key='WORDS' -%}
     {%- assign _locale_word_count = __return | replace: '[WORDS]', _word_count -%}
     <p>{{ _locale_word_count }}</p>
   {%- endif -%}
@@ -82,7 +82,7 @@
     {%- capture _article_link_block -%}
       <a href="{{ _original_link }}">{{ _original_link }}</a>
     {%- endcapture -%}
-    {%- include snippets/get-locale-string-from-data.html key='ORIGINAL_LINK' -%}
+    {%- include snippets/get-string-locale-from-data.html key='ORIGINAL_LINK' -%}
     {%- assign _locale_original_link = __return | replace: '[LINK]', _article_link_block -%}
     <p>{{ _locale_original_link }}</p>
   {%- endif -%}

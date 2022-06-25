@@ -5,7 +5,7 @@
 {%- endcapture -%}
 {%- assign _license_name = _license_name | replace: "[URL]", _license.url | replace: "[NAME]", _license.name -%}
 
-{%- include snippets/get-locale-string-from-data.html key='LICENSE_ANNOUNCE' -%}
+{%- include snippets/get-string-locale-from-data.html key='LICENSE_ANNOUNCE' -%}
 {%- assign _license_announce = __return | replace: "[LICENSE]", _license_name -%}
 
 <div class="license">

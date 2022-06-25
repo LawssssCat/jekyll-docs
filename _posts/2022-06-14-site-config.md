@@ -47,6 +47,7 @@ priority:
 
 path | type of config | name | type of date | mean | default
 --   | ---            | ---  | ---          | ---  | ---
+   |                | `show_article_info_tags` | boolean | | true
    |                | `show_article_title` | boolean | | true
    |                | `show_article_title_edit_on_github` | boolean | | true
  `site` | | `repository` | boolean | obj |

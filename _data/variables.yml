@@ -5,6 +5,7 @@ default:
   paths:
     root: /
     rss:  /feed.xml
+    archive: /archive
   sources: unpkg
   author: 
     type: person
@@ -20,6 +21,7 @@ default:
     show_article_footer_horizontal_rule: false
     show_article_title_edit_on_github: true
     show_article_title: false
+    show_article_info_tags: true
     license: CC-BY-4.0
 
 themes:

@@ -36,3 +36,7 @@
     @include flex-direction(row);
   }
 }
+
+.menu {
+  @include menu();
+}

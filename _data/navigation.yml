@@ -92,6 +92,9 @@ header:
     parent: others
     description: |
       some test for this site.
+  - title: archive
+    url: /archive
+    parent: others
   - title: Others
     url: /others
     key: others

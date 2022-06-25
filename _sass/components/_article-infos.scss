@@ -1,0 +1,8 @@
+.article__infos {
+  .left-col {
+    float: left;
+    @include media-breakpoint-down(md) {
+      float: none;
+    }
+  }
+}
