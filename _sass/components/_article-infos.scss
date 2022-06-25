@@ -2,6 +2,7 @@
 .article__infos {
   .infos {
     @include flexbox();
+    @include align-items(center);
   }
   .article__author-avatar-wrapper {
     $_width: map-get($image, width-xxs);
@@ -24,6 +25,15 @@
       height: $img_width;
       border: $_border-width-inner solid #fff;
       border-radius: 50%;
+    }
+  }
+  .info__item {
+    padding-right: map-get($spacers, 4);
+  }
+  .info__item p {
+    & > span {
+      display: block;
+      font-weight: map-get($base, font-weight-bold);
     }
   }
 }

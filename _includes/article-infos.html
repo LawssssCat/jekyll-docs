@@ -54,7 +54,7 @@
     {%- include snippets/get-accessible-url.html url=_author.avatar -%}
     {%- assign _author_avatar_url = __return -%}
     {%- if _author_avatar_url -%}
-      <div>
+      <div class="info__item">
         <div class="article__author-avatar-wrapper">
           <img src="{{ _author_avatar_url }}" alt="author avatar">
         </div>
@@ -69,7 +69,7 @@
       {%- assign _locale_date_format = __return -%}
       {%- include snippets/get-string-locale-from-data.html key='PUBLISH_ON' -%}
       {%- assign _locale_publish_on = __return -%}
-      <div>
+      <div class="info__item">
         <p>
           {{ _locale_publish_on }}
           <span>{{ _publish_on | date: _locale_date_format }}</span>
@@ -81,7 +81,7 @@
   {%- if _show_article_info_author -%}
     {%- include snippets/get-string-locale-from-data.html key='WRITTEN_BY' -%}
     {%- assign _locale_written_by = __return -%}
-    <div>
+    <div class="info__item">
       <p>
         {{ _locale_written_by }}
         <span>
@@ -100,7 +100,7 @@
     {%- assign _locale_word_count = __return | replace: '[WORDS]', _word_count -%}
     {%- include snippets/get-article-read-time.html words=_word_count -%}
     {%- assign _read_time = __return -%}
-    <div>
+    <div class="info__item">
       <p>
         {{ _locale_reading_time }}
         <span data-words="{{ _locale_word_count }}">{{ _read_time }}</span>
@@ -111,7 +111,7 @@
   {%- if _show_article_info_tags -%}
     {%- include snippets/get-string-locale-from-data.html key='MORE_ON' -%}
     {%- assign _locale_more_on = __return -%}
-    <div>
+    <div class="info__item">
       <p>{{ _locale_more_on }}
         <span>
           {%- include snippets/get-accessible-url.html url=site.data.variables.default.paths.archive -%}

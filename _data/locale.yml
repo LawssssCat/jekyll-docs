@@ -34,7 +34,7 @@ en-AU:
 zh-Hans: &ZH_HANS
   EMAIL_ME                 : 给我发邮件。
   FOLLOW_ME                : 在 [NAME] 上关注我。
-  ARTICLE_DATE_FORMAT      : "%Y年 %m月%d日"
+  ARTICLE_DATE_FORMAT      : "%Y年%m月%d日"
   LAST_UPDATED             : "更新于"
   SUBSCRIBE                : "订阅"
   LICENSE_ANNOUNCE         : "本文遵守 [LICENSE] 许可协议。"
