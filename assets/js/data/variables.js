@@ -2,7 +2,8 @@
 # dynamic generate from _data 
 ---
 
-{%- assign _themes = site.data.variables.themes -%}
+{%- include snippets/get-themes.html -%}
+{%- assign _themes = __return -%}
 {%- include snippets/get-theme.html -%}
 {%- assign cur_theme = __return -%}
 

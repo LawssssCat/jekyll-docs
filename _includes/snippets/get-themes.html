@@ -1,0 +1,12 @@
+{%- include snippets/assign.html 
+  value3=site.data.variables.default.page.show_btn_change_theme -%}
+{%- assign _show_btn_change_theme = __return -%}
+
+{%- if _show_btn_change_theme -%}
+  {%- assign _themes = site.data.variables.themes -%}
+{%- else -%}
+  {%- include snippets/get-theme.html -%}
+  {%- assign _theme = __return -%}
+  {%- assign _themes = _theme | split: ',' -%}
+{%- endif -%}
+{%- assign __return = _themes -%}

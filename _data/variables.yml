@@ -11,7 +11,7 @@ default:
     type: person
   page:
     type: webpage
-    show_btn_change_theme: true
+    show_btn_change_theme: true # If false, the build result of style.css will be greatly reduced.
     show_word_count: false
     show_raw_article_link: false
     show_author_profile: false
