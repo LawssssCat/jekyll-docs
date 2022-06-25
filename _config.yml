@@ -62,6 +62,16 @@ paginate_path: /page/page:num # don't change this unless for special need
 # see https://kramdown.gettalong.org/index.html
 markdown: kramdown
 
+# see https://jekyllrb.com/docs/configuration/sass/
+# see https://github.com/jekyll/jekyll-sass-converter
+sass:
+  implementation    : sassc # Compiler (Possible values: 'sassc' [default] for LibSass [DEPRECATED], 'sass-embedded' for Dart Sass [requires Ruby 2.6 or higher])
+  style             : compact # The style of the CSS-output (Possible values: 'expanded', 'nested', 'compact'(default), or 'compressed').
+  sass_dir          : _sass # A filesystem-path which should be searched for Sass partials.
+  load_paths        : [] # An array of additional filesystem-paths which should be searched for Sass partials.
+  line_comments     : true # Include the line number and filename of the source in the compiled CSS-file.
+  sourcemap         : always # Controls when source maps shall be generated (Possible values: 'never', 'always' or 'development').
+
 # see https://jekyllrb.com/docs/collections/#collections
 collections:
   navs:
@@ -88,7 +98,7 @@ defaults:
 exclude:
   - README.md
   - LICENSE
-  - jekyll-*.gemspec
+  - jekyll-docs-all-in-one.gemspec
   - .gitignore
   - package-lock.json
   - package.json
