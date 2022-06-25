@@ -1,11 +1,17 @@
+/* stylelint-disable scss/no-global-function-names */
 .article__header--cover {
   width: 100%;
 }
 
 .article__header {
   .header {
-    @include inline-flex();
-    // @include justify-content(center);
-    @include align-items(baseline);
+    margin-top: map-get($spacers, 5);
+    margin-bottom: map-get($spacers, 4);
+    @include media-breakpoint-down(md) {
+      margin-top: map-get($spacers, 4);
+    }
+    h1 {
+      display: inline;
+    }
   }
 }

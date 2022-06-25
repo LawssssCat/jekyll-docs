@@ -1,5 +1,6 @@
 /* stylelint-disable scss/no-global-function-names */
 .article__content {
+  margin-top: map-get($spacers, 5);
   line-height: map-get($base, line-height-lg);
   word-wrap: break-word;
   h1,
