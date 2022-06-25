@@ -12,6 +12,8 @@ en: &EN
   NEXT                    : "NEXT"
   ORIGINAL_LINK           : "Original link [LINK]"
   WORDS                   : "This article consists of [WORDS] words." 
+  POST_ON_REPO            : "Edit on Github"
+  GITHUB                  : "GitHub"
 
 en-GB:
   <<: *EN
@@ -35,6 +37,8 @@ zh-Hans: &ZH_HANS
   NEXT                     : "下篇"
   ORIGINAL_LINK            : "原始链接 [LINK]"
   WORDS                    : "文章字数：[WORDS]" 
+  POST_ON_REPO             : "在 [REPO] 上修改"
+  GITHUB                   : "GitHub"
 
 zh:
   <<: *ZH_HANS

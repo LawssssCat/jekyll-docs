@@ -41,6 +41,7 @@ option:
               {%- include snippets/get-html-itemtype-url.html type=_page_type -%}
               {%- assign _page_item_type_url = __return -%}
               <article itemscope itemtype="{{ _page_item_type_url }}">
+                <!-- article content -->
                 <div>{{ content }}</div>
               </article>
             </div>

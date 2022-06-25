@@ -16,6 +16,11 @@ title_short: jekyll-aio
 description: >
   Collects the common information of Jekyll and put all in one site.
 
+repository:
+  platform: github
+  name: lawsssscat/jekyll-docs-all-in-one
+  tree: dev
+
 # -------------------------
 # Language and Timezone
 # -------------------------
@@ -67,10 +72,11 @@ collections:
   sample_pages:
     output: true
 
+# see https://jekyllrb.com/docs/configuration/front-matter-defaults/
 defaults:
   ## samples
   - scope:
-      path: ""
+      path: "" # While type is optional, you must specify a value for path when creating a scope/values pair
       type: sample_pages
     values:
       nav_key: samples

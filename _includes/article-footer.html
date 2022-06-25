@@ -40,6 +40,8 @@
   value3=site.data.variables.default.page.show_article_footer_navigation -%}
 {%- assign _show_article_footer_navigation = __return -%}
 
+{%- comment -%}============================================ switch ===================================== {%- endcomment -%}
+
 {%- assign _footer_horizontal_class = "" -%}
 {%- if _show_article_footer_horizontal_rule -%}
   {%- assign _footer_horizontal_class = "horizontal-rules-dashed" -%}

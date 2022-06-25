@@ -1,10 +1,15 @@
 ---
 layout: page
 type: article
+show_article_title: true
 ---
 
 <div class="layout--article">
   
+  <div class="article__header">
+    {%- include article-header.html -%}
+  </div>
+
   <div class="article__content">
     {{ content }}
   </div>

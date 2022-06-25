@@ -1,0 +1,12 @@
+{%- assign _repo = site.repository -%}
+
+{%- assign _locale_name = '' -%}
+{%- case  _repo.platform -%}
+  {%- when 'github' -%}
+    {%- include snippets/get-locale-string-from-data.html key='GITHUB' -%}
+    {%- assign _locale_name = __return -%}
+  {%- else -%}
+    
+{%- endcase -%}
+
+{%- assign __return = _locale_name -%}

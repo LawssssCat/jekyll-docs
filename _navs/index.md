@@ -1,6 +1,7 @@
 ---
 layout: article
 title: Common links
+show_article_title: false
 show_last_modified_at: false
 article_header: 
   type: cover

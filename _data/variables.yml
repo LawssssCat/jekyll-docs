@@ -1,7 +1,7 @@
 default: 
   color_theme: default # "default" (default), "dark", "forest", "ocean", "chocolate", "orange"
   highlight_theme: default # "default" (default), "tomorrow", "tomorrow-night", "tomorrow-night-eighties", "tomorrow-night-blue", "tomorrow-night-bright"
-  lang: en
+  lang: zh # options: en (default), zh
   paths:
     root: /
     rss:  /feed.xml
@@ -18,6 +18,8 @@ default:
     show_last_modified_at: true
     show_article_footer_navigation: false
     show_article_footer_horizontal_rule: false
+    show_article_title_edit_on_github: true
+    show_article_title: false
     license: CC-BY-4.0
 
 themes:
