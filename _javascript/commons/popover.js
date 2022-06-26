@@ -16,14 +16,36 @@ lazyload.js([sources.popper.js], function() {
     triggers.forEach(trigger => {
       switch (trigger) {
         case 'click': addListener4Click(toggle, title, content); break;
-        case 'hover':// onmouseover onmouseout
-        case 'focus':break;
+        case 'hover': addListener4Hover(toggle, title, content); break;
+        case 'focus': addListener4focus(toggle, title, content); break;
         case 'manual':
         default: break;
       }
     });
   });
 });
+
+// focus
+function addListener4focus(toggle, title, content) {
+  let popover=new Popper(toggle, title, content);
+  toggle.addEventListener('focus', () => {
+    popover.show();
+  });
+  toggle.addEventListener('focusout', () => {
+    popover.hide();
+  });
+}
+
+// hover
+function addListener4Hover(toggle, title, content) {
+  let popover=new Popper(toggle, title, content);
+  toggle.addEventListener('mouseover', () => {
+    popover.show();
+  });
+  toggle.addEventListener('mouseout', () => {
+    popover.hide();
+  });
+}
 
 // click
 function addListener4Click(toggle, title, content) {
