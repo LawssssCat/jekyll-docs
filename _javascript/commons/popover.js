@@ -76,10 +76,12 @@ class Popper {
     window.Popper.createPopper(this.toggle, this.node, {
 
     });
+    this.toggle.setAttribute('aria-describedby', this.id);
   }
 
   hide() {
     this.node.remove();
+    this.toggle.setAttribute('aria-describedby', null);
   }
 
   createId() {
