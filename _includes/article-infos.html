@@ -103,7 +103,10 @@
     <div class="info__item">
       <p>
         {{ _locale_reading_time }}
-        <span data-words="{{ _locale_word_count }}">{{ _read_time }}</span>
+        <span data-one-toggle="popover" data-one-title="Article words" data-one-content="{{ _locale_word_count }}">
+          {{ _read_time }}
+        </span>
+        <!-- data-one-trigger="hover focus" -->
       </p>
     </div>
   {%- endif -%}

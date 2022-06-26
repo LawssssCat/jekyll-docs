@@ -39,11 +39,19 @@ themes:
 sources:
   bootcdn:
     font_awesome: 'https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.1/css/all.css'
+    popper:
+      js: "https://cdn.bootcdn.net/ajax/libs/popper.js/2.11.5/cjs/popper.min.js"
     gitalk:
       js: 'https://cdn.bootcss.com/gitalk/1.2.2/gitalk.min.js'
       css: 'https://cdn.bootcss.com/gitalk/1.2.2/gitalk.min.css'
   unpkg:
     font_awesome: 'https://use.fontawesome.com/releases/v5.15.1/css/all.css'
+    popper:
+      js: "https://unpkg.com/@popperjs/core@2"
     gitalk:
       js: 'https://unpkg.com/gitalk@1.2.2/dist/gitalk.min.js'
       css: 'https://unpkg.com/gitalk@1.2.2/dist/gitalk.css'
+  cloudflare:
+    font_awesome: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css'
+    popper:
+        js: 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.5/umd/popper.min.js'
