@@ -1,5 +1,8 @@
 /* stylelint-disable scss/no-global-function-names */
 .article__infos {
+  a {
+    @include link-decoration();
+  }
   .infos {
     @include flexbox();
     @include align-items(center);
