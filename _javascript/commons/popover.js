@@ -81,7 +81,7 @@ class Popper {
 
   hide() {
     this.node.remove();
-    this.toggle.setAttribute('aria-describedby', null);
+    this.toggle.removeAttribute('aria-describedby');
   }
 
   createId() {
@@ -102,16 +102,20 @@ class Popper {
     result.classList.add('popover');
     // arrow
     let arrow = document.createElement('div');
+    arrow.classList.add('popover-arrow');
+    arrow.toggleAttribute('data-popper-arrow');
     result.appendChild(arrow);
     // title
     if(this.title) {
       let titleDOM = document.createElement('h3');
       titleDOM.innerHTML=this.title;
+      titleDOM.classList.add('popover-header');
       result.appendChild(titleDOM);
     }
     // content
     let contentDOM = document.createElement('div');
     contentDOM.innerHTML = this.content;
+    contentDOM.classList.add('popover-body');
     result.appendChild(contentDOM);
     return result;
   }
