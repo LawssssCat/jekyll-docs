@@ -1,5 +1,9 @@
 /* stylelint-disable scss/no-global-function-names */
 .popover {
+  display: none;
+  &[data-show] {
+    display: block;
+  }
   $arrow-width: map-get($base, font-size) / 2;
   $padding-width: map-get($spacers, 2);
   z-index: 10;

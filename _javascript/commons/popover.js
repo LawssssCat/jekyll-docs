@@ -11,16 +11,20 @@ lazyload.js([sources.popper.js], function() {
 
   let popoverToggles = document.querySelectorAll('[data-one-toggle=popover]');
   popoverToggles.forEach(toggle => {
+    // adapt
     let content = toggle.getAttribute('data-one-content');
     if(!content) return;
     let title = toggle.getAttribute('data-one-title');
+    // assemble
+    let popper = new Popper(toggle, title, content);
+    // trigger
     let triggerStr = toggle.getAttribute('data-one-trigger') || 'click'; //  click | hover | focus | manual. manual cannot be combined with any other trigger.
     let triggers = triggerStr.split(/\s+/).filter(str => str!='');
     triggers.forEach(trigger => {
       switch (trigger) {
-        case 'click': addListener4Click(toggle, title, content); break;
-        case 'hover': addListener4Hover(toggle, title, content); break;
-        case 'focus': addListener4focus(toggle, title, content); break;
+        case 'click': addListener4Click(toggle, popper); break;
+        case 'hover': addListener4Hover(toggle, popper); break;
+        case 'focus': addListener4focus(toggle, popper); break;
         case 'manual':
         default: break;
       }
@@ -29,8 +33,7 @@ lazyload.js([sources.popper.js], function() {
 });
 
 // focus
-function addListener4focus(toggle, title, content) {
-  let popover=new Popper(toggle, title, content);
+function addListener4focus(toggle, popover) {
   toggle.addEventListener('focus', () => {
     popover.show();
   });
@@ -40,8 +43,7 @@ function addListener4focus(toggle, title, content) {
 }
 
 // hover
-function addListener4Hover(toggle, title, content) {
-  let popover=new Popper(toggle, title, content);
+function addListener4Hover(toggle, popover) {
   toggle.addEventListener('mouseover', () => {
     popover.show();
   });
@@ -51,8 +53,8 @@ function addListener4Hover(toggle, title, content) {
 }
 
 // click
-function addListener4Click(toggle, title, content) {
-  let count=0, popover=new Popper(toggle, title, content);
+function addListener4Click(toggle, popover) {
+  let count=0;
   toggle.addEventListener('click', () => {
     if(count==0) { // show
       count=1;
@@ -69,23 +71,46 @@ class Popper {
     this.toggle = toggle;
     this.title = title;
     this.content = content;
-  }
-
-  show() {
-    // refresh id
+    // id
     this.id = this.createId();
+    // node
     this.node = this.createDOM(this.id);
+    // popper
     window.document.body.appendChild(this.node);
-    window.Popper.createPopper(this.toggle, this.node, {
+    this.instance = window.Popper.createPopper(this.toggle, this.node, {
       // placement: 'bottom-end',
       modifiers: []
     });
+  }
+
+  show() {
+    // Make css
+    this.node.toggleAttribute('data-show');
     this.toggle.setAttribute('aria-describedby', this.id);
+
+    // Enable the event listeners
+    this.instance.setOptions((options) => ({
+      ...options,
+      modifiers: [
+        ...options.modifiers,
+        { name: 'eventListeners', enabled: true }
+      ]
+    }));
   }
 
   hide() {
-    this.node.remove();
+    // Hide css
+    this.node.removeAttribute('data-show');
     this.toggle.removeAttribute('aria-describedby');
+
+    // Disable the event listeners
+    this.instance.setOptions((options) => ({
+      ...options,
+      modifiers: [
+        ...options.modifiers,
+        { name: 'eventListeners', enabled: false }
+      ]
+    }));
   }
 
   createId() {
