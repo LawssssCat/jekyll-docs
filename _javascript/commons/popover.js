@@ -1,3 +1,6 @@
+// popper.js 
+// see https://popper.js.org/
+
 const tools = require('tool-box');
 const lazyload = require('lazyload');
 const sources = window.VARIABLES.sources;
@@ -74,7 +77,8 @@ class Popper {
     this.node = this.createDOM(this.id);
     window.document.body.appendChild(this.node);
     window.Popper.createPopper(this.toggle, this.node, {
-
+      // placement: 'bottom-end',
+      modifiers: []
     });
     this.toggle.setAttribute('aria-describedby', this.id);
   }
