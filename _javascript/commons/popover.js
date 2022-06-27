@@ -73,6 +73,7 @@ class Popper {
     this.content = content;
     // id
     this.id = this.createId();
+    this.toggle.setAttribute('aria-describedby', this.id);
     // node
     this.node = this.createDOM(this.id);
     // popper
@@ -86,7 +87,6 @@ class Popper {
   show() {
     // Make css
     this.node.toggleAttribute('data-show');
-    this.toggle.setAttribute('aria-describedby', this.id);
 
     // Enable the event listeners
     this.instance.setOptions((options) => ({
@@ -101,7 +101,6 @@ class Popper {
   hide() {
     // Hide css
     this.node.removeAttribute('data-show');
-    this.toggle.removeAttribute('aria-describedby');
 
     // Disable the event listeners
     this.instance.setOptions((options) => ({
