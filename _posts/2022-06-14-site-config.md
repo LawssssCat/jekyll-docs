@@ -47,6 +47,8 @@ priority:
 
 path | type of config | name | type of date | mean | default
 --   | ---            | ---  | ---          | ---  | ---
+   |                | `show_article_info_read_by_count` | boolean | | true
+   |                | `enable_article_read_by_count` | boolean | | true
    |                | `show_article_info_reading_time` | boolean | | true
    |                | `show_article_info_publish_on` | boolean | | true
    |                | `show_article_info_tags` | boolean | | true

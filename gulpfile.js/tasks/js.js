@@ -75,6 +75,10 @@ const componentsJs = parallel(
   () => concatJs(`${JS_SRC}/components/aside/*.js`, 'aside')
 );
 
+const layoutsJs = parallel(
+  () => concatJs(`${JS_SRC}/layouts/article.js`, 'article')
+);
+
 const vendersJs = () => {
   let config = Object.assign(
     {
@@ -90,7 +94,7 @@ const vendersJs = () => {
 
 const buildJs = series(
   clean,
-  parallel(commonsJs, vendersJs, componentsJs)
+  parallel(commonsJs, vendersJs, componentsJs, layoutsJs)
 );
 
 exports.build = series(buildJs, minifyJs);

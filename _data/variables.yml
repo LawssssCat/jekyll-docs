@@ -25,6 +25,8 @@ default:
     show_article_info_author: true
     show_article_info_publish_on: true
     show_article_info_reading_time: true
+    show_article_info_read_by_count: true
+    enable_article_read_by_count: true
     license: CC-BY-4.0
 
 themes:
@@ -37,21 +39,30 @@ themes:
   - orange
 
 sources:
+  # bootcdn
   bootcdn:
     font_awesome: 'https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.1/css/all.css'
+    leancloud_sdk: 
+      js: '//cdn.jsdelivr.net/npm/leancloud-storage@3.13.2/dist/av-min.js'
     popper:
       js: "https://cdn.bootcdn.net/ajax/libs/popper.js/2.11.5/cjs/popper.min.js"
     gitalk:
       js: 'https://cdn.bootcss.com/gitalk/1.2.2/gitalk.min.js'
       css: 'https://cdn.bootcss.com/gitalk/1.2.2/gitalk.min.css'
+  # unpkg
   unpkg:
     font_awesome: 'https://use.fontawesome.com/releases/v5.15.1/css/all.css'
+    leancloud_sdk: 
+      js: '//cdn.jsdelivr.net/npm/leancloud-storage@3.13.2/dist/av-min.js'
     popper:
       js: "https://unpkg.com/@popperjs/core@2"
     gitalk:
       js: 'https://unpkg.com/gitalk@1.2.2/dist/gitalk.min.js'
       css: 'https://unpkg.com/gitalk@1.2.2/dist/gitalk.css'
+  # cloudflare
   cloudflare:
     font_awesome: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css'
+    leancloud_sdk: 
+      js: '//cdn.jsdelivr.net/npm/leancloud-storage@3.13.2/dist/av-min.js'
     popper:
         js: 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.5/umd/popper.min.js'

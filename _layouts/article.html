@@ -23,3 +23,17 @@ show_article_title: true
   </div>
 
 </div>
+
+{%- comment -%}============================================ author ===================================== {%- endcomment -%}
+
+{%- include snippets/assign.html 
+  value1=page.enable_article_read_by_count
+  value2=layout.enable_article_read_by_count
+  value3=site.data.variables.default.page.enable_article_read_by_count -%}
+{%- assign _enable_article_read_by_count = __return -%}
+
+{%- if _enable_article_read_by_count -%}
+  {%- include snippets/get-accessible-url.html url="/assets/js/dist/article.min.js" -%}
+  <script src="{{ __return }}"></script>
+{%- endif -%}
+
