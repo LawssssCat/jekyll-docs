@@ -4,7 +4,7 @@
 {%- if __title -%}
   {%- assign __return = __title -%}
 {%- elsif __titles -%}
-  {%- include snippets/get-locale-string-from-locales locales=__titles -%}
+  {%- include snippets/get-string-locale-from-locales locales=__titles -%}
   {%- assign __return = __return -%}
 {%- else -%}
   {%- assign __return = nil -%}

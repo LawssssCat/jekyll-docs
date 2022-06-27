@@ -1,6 +1,6 @@
+/* stylelint-disable scss/no-global-function-names */
 .card {
   max-width: 18rem;
   border-radius: map-get($base, border-radius);
   @include box-shadow();
-
 }

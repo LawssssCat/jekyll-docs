@@ -1,22 +1,30 @@
 default: 
   color_theme: default # "default" (default), "dark", "forest", "ocean", "chocolate", "orange"
   highlight_theme: default # "default" (default), "tomorrow", "tomorrow-night", "tomorrow-night-eighties", "tomorrow-night-blue", "tomorrow-night-bright"
-  lang: en
+  lang: zh # options: en (default), zh
   paths:
     root: /
     rss:  /feed.xml
+    archive: /archive
   sources: unpkg
   author: 
     type: person
   page:
     type: webpage
-    show_btn_change_theme: true
+    show_btn_change_theme: true # If false, the build result of style.css will be greatly reduced.
     show_word_count: false
     show_raw_article_link: false
     show_author_profile: false
     show_subscribe: true
     show_last_modified_at: true
     show_article_footer_navigation: false
+    show_article_footer_horizontal_rule: false
+    show_article_title_edit_on_github: true
+    show_article_title: false
+    show_article_info_tags: true
+    show_article_info_author: true
+    show_article_info_publish_on: true
+    show_article_info_reading_time: true
     license: CC-BY-4.0
 
 themes:
@@ -31,11 +39,19 @@ themes:
 sources:
   bootcdn:
     font_awesome: 'https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.1/css/all.css'
+    popper:
+      js: "https://cdn.bootcdn.net/ajax/libs/popper.js/2.11.5/cjs/popper.min.js"
     gitalk:
       js: 'https://cdn.bootcss.com/gitalk/1.2.2/gitalk.min.js'
       css: 'https://cdn.bootcss.com/gitalk/1.2.2/gitalk.min.css'
   unpkg:
     font_awesome: 'https://use.fontawesome.com/releases/v5.15.1/css/all.css'
+    popper:
+      js: "https://unpkg.com/@popperjs/core@2"
     gitalk:
       js: 'https://unpkg.com/gitalk@1.2.2/dist/gitalk.min.js'
       css: 'https://unpkg.com/gitalk@1.2.2/dist/gitalk.css'
+  cloudflare:
+    font_awesome: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css'
+    popper:
+        js: 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.5/umd/popper.min.js'

@@ -1,3 +1,4 @@
+/* stylelint-disable scss/no-global-function-names */
 @mixin button() {
   display: inline-block;
   font-weight: map-get($button, font-weight);
@@ -99,12 +100,12 @@
 
 .button--pill {
   border-radius: map-get($button, pill-radius);
-  @extend .button--md;
+  @extend %button--md;
 }
 
 .button--rounded {
   border-radius: map-get($base, border-radius);
-  @extend .button--md;
+  @extend %button--md;
 }
 
 .button--circle {
@@ -112,10 +113,35 @@
   @include justify-content(center);
   @include align-items(center);
   border-radius: 50%;
-  @extend .button--md;
+  @extend %button--md;
+}
+
+.button--tag {
+  @include button--outline(text-color-3, main-color-3);
+  position: relative;
+  padding-left: 1em;
+  border-top-left-radius: .5em;
+  border-bottom-left-radius: .5em;
+  &::before {
+    position: absolute;
+    top: 50%;
+    left: .25em;
+    width: .5em;
+    height: .5em;
+    content: "";
+    border-radius: .25rem;
+    transform: translateY(-50%);
+    @include themeify {
+      background-color: themed(text-color-3);
+    }
+  }
 }
 
 .button--md {
+  @extend %button--md;
+}
+
+%button--md {
   padding: map-get($button, padding-y) map-get($button, padding-x);
   font-size: map-get($base, font-size);
   &.button--circle {

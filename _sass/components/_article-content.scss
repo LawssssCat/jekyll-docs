@@ -1,4 +1,6 @@
+/* stylelint-disable scss/no-global-function-names */
 .article__content {
+  margin-top: map-get($spacers, 5);
   line-height: map-get($base, line-height-lg);
   word-wrap: break-word;
   h1,
@@ -12,12 +14,13 @@
     margin-top: map-get($spacers, 4);
     // todo
   }
-  
   hr {
     border: none;
     @include horizontal-rules();
   }
-
+  // a {
+  //   @include link-decoration();
+  // }
 }
 
 @media print {
@@ -35,7 +38,7 @@
     //   margin-top: map-get($spacers, 2) * 2;
     // }
 
-    ul, ol { 
+    ul, ol {
       li {
         p {
           margin: map-get($spacers, 1);

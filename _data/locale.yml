@@ -7,11 +7,18 @@ en: &EN
   EMAIL_ME                : "Send me an Email."
   ARTICLE_DATE_FORMAT     : "%b %d, %Y" 
   LAST_UPDATED            : "Last updated" 
+  PUBLISH_ON              : "Published on"
+  WRITTEN_BY              : "Written by"
+  READING_TIME            : "Reading time"
+  READING_TIME_MIN        : "min"
+  MORE_ON                 : "More on"
   LICENSE_ANNOUNCE        : "This work is licensed under a [LICENSE] license."
   PREVIOUS                : "PREVIOUS"
   NEXT                    : "NEXT"
   ORIGINAL_LINK           : "Original link [LINK]"
-  WORDS                   : "This article consists of [WORDS] words." 
+  WORDS                   : "[WORDS] words"
+  POST_ON_REPO            : "Edit on Github"
+  GITHUB                  : "GitHub"
 
 en-GB:
   <<: *EN
@@ -27,14 +34,16 @@ en-AU:
 zh-Hans: &ZH_HANS
   EMAIL_ME                 : 给我发邮件。
   FOLLOW_ME                : 在 [NAME] 上关注我。
-  ARTICLE_DATE_FORMAT      : "%Y年 %m月%d日"
+  ARTICLE_DATE_FORMAT      : "%Y年%m月%d日"
   LAST_UPDATED             : "更新于"
   SUBSCRIBE                : "订阅"
   LICENSE_ANNOUNCE         : "本文遵守 [LICENSE] 许可协议。"
   PREVIOUS                 : "上篇"
   NEXT                     : "下篇"
   ORIGINAL_LINK            : "原始链接 [LINK]"
-  WORDS                    : "文章字数：[WORDS]" 
+  WORDS                    : "[WORDS] 字" 
+  POST_ON_REPO             : "在 [REPO] 上修改"
+  GITHUB                   : "GitHub"
 
 zh:
   <<: *ZH_HANS

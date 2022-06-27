@@ -9,21 +9,21 @@
     {%- endif -%}
 
     {%- if _author.type == 'organization' -%}
-      {%- include snippets/get-locale-string-from-data.html key='EMAIL_US' -%}
+      {%- include snippets/get-string-locale-from-data.html key='EMAIL_US' -%}
       {%- assign _locale_string_email = __return -%}
-      {%- include snippets/get-locale-string-from-data.html key='FOLLOW_US' -%}
+      {%- include snippets/get-string-locale-from-data.html key='FOLLOW_US' -%}
       {%- assign _locale_string_follow = __return -%}
     {%- else -%}
-      {%- include snippets/get-locale-string-from-data.html key='EMAIL_ME' -%}
+      {%- include snippets/get-string-locale-from-data.html key='EMAIL_ME' -%}
       {%- assign _locale_string_email = __return -%}
-      {%- include snippets/get-locale-string-from-data.html key='FOLLOW_ME' -%}
+      {%- include snippets/get-string-locale-from-data.html key='FOLLOW_ME' -%}
       {%- assign _locale_string_follow = __return -%}
     {%- endif -%}
 
     <!-- icon. see https://fontawesome.cc/ -->
 
     {%- if _rss_url -%}
-      {%- include snippets/get-locale-string-from-data.html key='SUBSCRIBE' -%}
+      {%- include snippets/get-string-locale-from-data.html key='SUBSCRIBE' -%}
       {%- assign _locale_nav_subscribe = __return -%}
       <li title="{{ _locale_nav_subscribe }}">
         <a class="button button--circle rss-button" itemprop="sameAs" href="{{ _rss_url }}" target="_blank">

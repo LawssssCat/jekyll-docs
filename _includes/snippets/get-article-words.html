@@ -1,0 +1,7 @@
+{%- comment -%}
+needs:
+  - content: article content
+{%- endcomment -%}
+
+{% assign words = include.content | strip_html | number_of_words: "cjk" %}
+{%- assign __return = words -%}

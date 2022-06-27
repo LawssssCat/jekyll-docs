@@ -1,0 +1,5 @@
+{%- comment -%}
+needs:
+  - str
+{%- endcomment -%}
+{%- assign __return = include.str | strip | url_encode -%}

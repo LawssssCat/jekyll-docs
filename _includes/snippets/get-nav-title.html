@@ -9,7 +9,7 @@ return
 {%- if __item.title -%}
   {%- assign _nav_title = __item.title -%}
 {%- elsif __item.titles -%}
-  {%- include snippets/get-locale-string-from-locales.html locales=__item.titles -%}
+  {%- include snippets/get-string-locale-from-locales.html locales=__item.titles -%}
   {%- assign _nav_title = __return -%}
 {%- else -%}
   {%- assign _nav_title = 'undefine' -%}

@@ -47,6 +47,16 @@ priority:
 
 path | type of config | name | type of date | mean | default
 --   | ---            | ---  | ---          | ---  | ---
+   |                | `show_article_info_reading_time` | boolean | | true
+   |                | `show_article_info_publish_on` | boolean | | true
+   |                | `show_article_info_tags` | boolean | | true
+   |                | `show_article_title` | boolean | | true
+   |                | `show_article_title_edit_on_github` | boolean | | true
+ `site` | | `repository` | boolean | obj |
+ `site` | | `repository.platform` | boolean | string |
+ `site` | | `repository.name` | boolean | string | 
+ `site` | | `repository.tree` | boolean | string |
+   |                | `show_article_footer_horizontal_rule` | boolean | | false
    |                | `show_btn_change_theme` | boolean | | true
    |                | `show_article_footer_navigation` | boolean | | false
    |                | `show_author_profile` | boolean | | false

@@ -1,13 +1,21 @@
+/* stylelint-disable scss/no-global-function-names */
 .page__footer {
+  @include themeify {
+    $_top: themed(footer-background-top);
+    @if $_top {
+      @include horizontal-rules-dashed($_top);
+    }
+  }
   .footer {
     @include themeify {
       color: themed(footer-text-color);
       background: themed(footer-background);
     }
-    a {
+    .site-info a {
       font-weight: map-get($base, font-weight);
       @include themeify {
         @include link-colors(themed(footer-text-color), themed(main-color-1));
+        @include link-decoration();
       }
     }
     .site-info {

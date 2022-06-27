@@ -16,6 +16,11 @@ title_short: jekyll-aio
 description: >
   Collects the common information of Jekyll and put all in one site.
 
+repository:
+  platform: github
+  name: lawsssscat/jekyll-docs-all-in-one
+  tree: dev
+
 # -------------------------
 # Language and Timezone
 # -------------------------
@@ -57,6 +62,16 @@ paginate_path: /page/page:num # don't change this unless for special need
 # see https://kramdown.gettalong.org/index.html
 markdown: kramdown
 
+# see https://jekyllrb.com/docs/configuration/sass/
+# see https://github.com/jekyll/jekyll-sass-converter
+sass:
+  implementation    : sassc # Compiler (Possible values: 'sassc' [default] for LibSass [DEPRECATED], 'sass-embedded' for Dart Sass [requires Ruby 2.6 or higher])
+  style             : compact # The style of the CSS-output (Possible values: 'expanded', 'nested', 'compact'(default), or 'compressed').
+  sass_dir          : _sass # A filesystem-path which should be searched for Sass partials.
+  load_paths        : [] # An array of additional filesystem-paths which should be searched for Sass partials.
+  line_comments     : true # Include the line number and filename of the source in the compiled CSS-file.
+  sourcemap         : always # Controls when source maps shall be generated (Possible values: 'never', 'always' or 'development').
+
 # see https://jekyllrb.com/docs/collections/#collections
 collections:
   navs:
@@ -67,21 +82,23 @@ collections:
   sample_pages:
     output: true
 
+# see https://jekyllrb.com/docs/configuration/front-matter-defaults/
 defaults:
   ## samples
   - scope:
-      path: ""
+      path: "" # While type is optional, you must specify a value for path when creating a scope/values pair
       type: sample_pages
     values:
       nav_key: samples
       show_word_count: true
       show_raw_article_link: true
       show_article_footer_navigation: true
+      show_article_footer_horizontal_rule: true
 
 exclude:
   - README.md
   - LICENSE
-  - jekyll-*.gemspec
+  - jekyll-docs-all-in-one.gemspec
   - .gitignore
   - package-lock.json
   - package.json
@@ -89,6 +106,8 @@ exclude:
   - /gulpfile.js
   - /_javascript
   - /commitlint.config.js
+  - /.stylelintrc.js
+  - /_site
 
 # -------------------------
 # Plugins
