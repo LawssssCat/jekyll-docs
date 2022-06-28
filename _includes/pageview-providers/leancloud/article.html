@@ -1,0 +1,30 @@
+{%- comment -%}
+
+target
+  1. increase article view count
+  2. get article view count and display in a specific please
+
+needs: 
+  1. settings = pageview setting
+
+{%- endcomment -%}
+
+{%- assign _LEANCLOUD_APP_ID    = include.settings.leancloud.app_id -%}
+{%- assign _LEANCLOUD_APP_KEY   = include.settings.leancloud.app_key -%}
+{%- assign _LEANCLOUD_APP_CLASS = include.settings.leancloud.app_class -%}
+{%- assign _LEANCLOUD_APP_SERVER_RUL = include.settings.leancloud.server_url -%}
+<script>
+window.VARIABLES.append({
+  paveview: {
+    appId:    "{{ _LEANCLOUD_APP_ID }}",
+    appKey:   "{{ _LEANCLOUD_APP_KEY }}",
+    appClass: "{{ _LEANCLOUD_APP_CLASS }}",
+    {%- if _LEANCLOUD_APP_SERVER_RUL -%}
+      serverURL: "{{ _LEANCLOUD_APP_SERVER_RUL }}",
+    {%- endif -%}
+    layout: "article"
+  }
+});
+</script>
+{%- include snippets/get-accessible-url.html url="/assets/js/dist/pageview/leancloud.min.js" -%}
+<script src="{{ __return }}"></script>

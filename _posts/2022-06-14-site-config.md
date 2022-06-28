@@ -13,6 +13,7 @@ path | type of config | name | type of date | mean | default
 `_data/locale.yml` | | `{{lang}}.{{key}}` | string | the value represents the localized representation of the `key` that will display in the webpag. | 
 `_data/navigation.yml` | | `header[{{index}}].name` | string | the value will display in navigation row of the webpag. <br> if it's start with `:`, the final value is taken from `_data/locale.yml`| 
 `_config.yml`      | | `author` | obj |  | 
+`_data/variables.yml` | | `pageview.enable` | boolean | | true
 
 ## page 
 
@@ -47,6 +48,7 @@ priority:
 
 path | type of config | name | type of date | mean | default
 --   | ---            | ---  | ---          | ---  | ---
+   |                | `show_article_info_read_by_count` | boolean | | true
    |                | `show_article_info_reading_time` | boolean | | true
    |                | `show_article_info_publish_on` | boolean | | true
    |                | `show_article_info_tags` | boolean | | true

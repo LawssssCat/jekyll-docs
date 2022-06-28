@@ -72,7 +72,8 @@ const commonsJs = () => {
 
 const componentsJs = parallel(
   () => concatJs(`${JS_SRC}/components/theme.js`, 'theme'),
-  () => concatJs(`${JS_SRC}/components/aside/*.js`, 'aside')
+  () => concatJs(`${JS_SRC}/components/aside/*.js`, 'aside'),
+  () => concatJs(`${JS_SRC}/components/pageview/leancloud.js`, 'pageview/leancloud')
 );
 
 const vendersJs = () => {

@@ -23,3 +23,10 @@ show_article_title: true
   </div>
 
 </div>
+
+<!-- pageview -->
+{%- assign _pageview_settings = site.pageview -%}
+{%- if _pageview_settings.enable -%}
+  {%- assign _provider = _pageview_settings.provider -%}
+  {%- include pageview-providers/{{ _provider }}/article.html settings=_pageview_settings -%}
+{%- endif -%}
