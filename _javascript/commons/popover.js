@@ -14,7 +14,7 @@ function isInited(toggle) {
     return false;
   }
 }
-function popoverInit() {debugger
+function popoverInit() {
   lazyload.js([sources.popper.js], function() {
     
     if(!window.Popper) throw new Error('need Popper obj from popper.js');
