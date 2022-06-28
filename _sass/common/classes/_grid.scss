@@ -1,7 +1,22 @@
 $grid-columns: 12;
 
+.cell {
+  min-width: 0; /* ensure that the contents do not exceed the outer container. same as overflow: hidden */
+}
+
 @mixin make-cell($columns) {
-  width: percentage($columns / $grid-columns);
+  @if $columns == "auto" {
+    @include flex(1 1 0);
+    width: auto;
+  } @else if $columns == "shrink" {
+    @include flex(0 0 auto);
+    width: auto;
+  } @else if $columns == "stretch" {
+    @include flex(1);
+  } @else {
+    @include flex(none);
+    width: percentage($columns / $grid-columns);
+  }
 }
 
 @mixin make-grid-cell($columns, $breakpoint) {
@@ -20,6 +35,13 @@ $grid-columns: 12;
       @for $i from 1 through $grid-columns {
         @include make-grid-cell($i, $breakpoint);
       }
+      @include make-grid-cell("auto", $breakpoint);
+      @include make-grid-cell("shrink", $breakpoint);
+      @include make-grid-cell("stretch", $breakpoint);
     }
   }
+}
+
+.grid--reverse {
+  flex-direction: row-reverse;
 }
