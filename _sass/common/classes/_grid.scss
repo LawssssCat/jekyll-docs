@@ -21,8 +21,13 @@ $grid-columns: 12;
 
 @mixin make-grid-cell($columns, $breakpoint) {
   @include media-breakpoint-up($breakpoint) {
-    .cell--#{breakpoint-infix($breakpoint)}#{$columns} {
+    .cell--#{$breakpoint}-#{$columns} {
       @include make-cell($columns);
+    }
+    @if $breakpoint == $breakpoint-default {
+      .cell--#{$columns} {
+        @include make-cell($columns);
+      }
     }
   }
 }

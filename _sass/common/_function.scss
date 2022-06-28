@@ -14,6 +14,3 @@
 //   @return if($min != 0, "#{$name}-", "");
 // }
 
-@function breakpoint-infix($name, $breakpoints: default) {
-  @return if($name == "md", "", "#{$name}-");
-}
