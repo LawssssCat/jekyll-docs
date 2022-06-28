@@ -1,3 +1,25 @@
-.grid {
+$grid-columns: 12;
 
+@mixin make-cell($columns) {
+  width: percentage($columns / $grid-columns);
+}
+
+@mixin make-grid-cell($columns, $breakpoint) {
+  @include media-breakpoint-up($breakpoint) {
+    .cell--#{breakpoint-infix($breakpoint)}#{$columns} {
+      @include make-cell($columns);
+    }
+  }
+}
+
+.grid {
+  @include flexbox();
+  @include flex-wrap(wrap);
+  & > {
+    @each $breakpoint in map-keys($responsive) {
+      @for $i from 1 through $grid-columns {
+        @include make-grid-cell($i, $breakpoint);
+      }
+    }
+  }
 }

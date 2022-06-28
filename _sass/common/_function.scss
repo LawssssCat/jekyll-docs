@@ -5,3 +5,15 @@
     @return "light";
   }
 }
+
+// @function breakpoint-infix($name, $breakpoints: default) {
+//   @if $breakpoints == default {
+//     $breakpoints: $responsive;
+//   }
+//   $min: map-get($breakpoints, $name);
+//   @return if($min != 0, "#{$name}-", "");
+// }
+
+@function breakpoint-infix($name, $breakpoints: default) {
+  @return if($name == "md", "", "#{$name}-");
+}
