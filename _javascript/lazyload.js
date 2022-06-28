@@ -76,13 +76,30 @@ const lazyLoad = (function(doc) {
     }
   } // end func 'load'
 
+  let winLoad = false, winLoadFuncs = [];
+  function onload(callback) {
+    if(winLoad) {
+      callback && callback.call(context);
+    } else {
+      winLoadFuncs.push(callback);
+    }
+  }
+  onload(window.onload);
+  window.onload = () => {
+    winLoadFuncs.forEach(func => {
+      func && func.call(context);
+    });
+    winLoad = true;
+  };
+
   return {
     js: function(url, callback) {
       load('js', url, callback);
     }, 
     css: function(url, callback) {
       load('css', url, callback);
-    }
+    },
+    onload
   };
 })(window.document);
 
