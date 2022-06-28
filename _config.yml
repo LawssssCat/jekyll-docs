@@ -56,7 +56,7 @@ pageview:
   enable: true
   provider: leancloud
 
-  ## Leancloud
+  ## Leancloud. see https://leancloud.app/
   leancloud:
     server_url : # Null if there is no special requirement. see https://leancloud.cn/docs/custom-api-domain-guide.html#hash-1410615135
     app_id    : OC6yw4BTaMHK4tuRLUG2jbPd-MdYXbMMI
