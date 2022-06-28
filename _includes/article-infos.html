@@ -133,7 +133,8 @@
           {%- assign _article_title = __return -%}
           {%- include snippets/get-page-key.html -%}
           {%- assign _page_key = __return -%}
-          <span class="js-pageview" data-one-page-key="{{ _page_key }}" data-one-page-title={{ _article_title | jsonify }}>
+          <span class="js-pageview" data-one-page-key="{{ _page_key }}" data-one-page-title={{ _article_title | jsonify }} 
+          data-one-toggle="popover" data-one-trigger="hover focus" data-one-content="0">
             <font class="views-num">0</font> {{ _locale_hits }}
           </span>
         {%- endif -%}

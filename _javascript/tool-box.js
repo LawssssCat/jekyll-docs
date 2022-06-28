@@ -10,4 +10,16 @@ TOOL.randomInt = function (Min,Max) {
   return num;
 };
 
+// 
+TOOL.generateId = function (prefix, suffix, scope=window.document) {
+  function randomInt() {
+    return prefix + TOOL.randomInt(10000, 99999) + suffix;
+  }
+  let id;
+  do {
+    id = randomInt();
+  } while (scope.getElementById(id));
+  return id;
+};
+
 module.exports = TOOL;

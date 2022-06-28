@@ -11,12 +11,10 @@ lazyload.js([sources.popper.js], function() {
 
   let popoverToggles = document.querySelectorAll('[data-one-toggle=popover]');
   popoverToggles.forEach(toggle => {
-    // adapt
-    let content = toggle.getAttribute('data-one-content');
-    if(!content) return;
-    let title = toggle.getAttribute('data-one-title');
+    // adapter
+    let adapter = new PopperAdapter(toggle);
     // assemble
-    let popper = new Popper(toggle, title, content);
+    let popper = new Popper(adapter);
     // trigger
     let triggerStr = toggle.getAttribute('data-one-trigger') || 'click'; //  click | hover | focus | manual. manual cannot be combined with any other trigger.
     let triggers = triggerStr.split(/\s+/).filter(str => str!='');
@@ -66,25 +64,46 @@ function addListener4Click(toggle, popover) {
   });
 }
 
-class Popper {
-  constructor(toggle, title, content) {
+class PopperAdapter {
+  constructor(toggle) {
     this.toggle = toggle;
-    this.title = title;
-    this.content = content;
+  }
+  refresh() {
+    this.content = this.toggle.getAttribute('data-one-content');
+    this.title = this.toggle.getAttribute('data-one-title');
+  }
+}
+
+class Popper {
+  constructor(adapter) {
+    this.adapter = adapter;
+    this.adapter.refresh();
+
     // id
-    this.id = this.createId();
-    this.toggle.setAttribute('aria-describedby', this.id);
+    this.id = tools.generateId('popover');
+    this.adapter.toggle.setAttribute('aria-describedby', this.id);
     // node
     this.node = this.createDOM(this.id);
     // popper
     window.document.body.appendChild(this.node);
-    this.instance = window.Popper.createPopper(this.toggle, this.node, {
+    this.instance = window.Popper.createPopper(this.adapter.toggle, this.node, {
       // placement: 'bottom-end',
       modifiers: []
     });
   }
 
+  refresh() {
+    this.adapter.refresh();
+    if(this.node) {
+      let header = this.node.querySelector('.popover-header');
+      if(header) header.innerHTML = this.adapter.title;
+      let body = this.node.querySelector('.popover-body');
+      if(body) body.innerHTML = this.adapter.content;
+    }
+  }
+
   show() {
+    this.refresh();
     // Make css
     this.node.toggleAttribute('data-show');
 
@@ -112,17 +131,6 @@ class Popper {
     }));
   }
 
-  createId() {
-    function randomInt() {
-      return 'popover' + tools.randomInt(10000, 99999);
-    }
-    let id;
-    do {
-      id = randomInt();
-    } while (document.getElementById(id));
-    return id;
-  }
-
   createDOM(id) {
     // popover dom
     let result = document.createElement('div');
@@ -134,15 +142,15 @@ class Popper {
     arrow.toggleAttribute('data-popper-arrow');
     result.appendChild(arrow);
     // title
-    if(this.title) {
+    if(this.adapter.title) {
       let titleDOM = document.createElement('h3');
-      titleDOM.innerHTML=this.title;
+      titleDOM.innerHTML=this.adapter.title;
       titleDOM.classList.add('popover-header');
       result.appendChild(titleDOM);
     }
     // content
     let contentDOM = document.createElement('div');
-    contentDOM.innerHTML = this.content;
+    contentDOM.innerHTML = this.adapter.content;
     contentDOM.classList.add('popover-body');
     result.appendChild(contentDOM);
     return result;
