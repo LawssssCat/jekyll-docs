@@ -20,7 +20,6 @@ en: &EN
   POST_ON_REPO            : "Edit on Github"
   GITHUB                  : "GitHub"
   READ_BY                 : "Read by"
-  NUM_PEOPLE              : "[NUM] people"
 
 en-GB:
   <<: *EN

@@ -7,7 +7,7 @@ const sources = window.VARIABLES.sources;
 
 lazyload.js([sources.popper.js], function() {
   
-  if(!window.Popper) return;
+  if(!window.Popper) throw new Error('need Popper obj from popper.js');
 
   let popoverToggles = document.querySelectorAll('[data-one-toggle=popover]');
   popoverToggles.forEach(toggle => {

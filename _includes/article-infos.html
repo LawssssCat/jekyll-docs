@@ -32,6 +32,14 @@
   value3=site.data.variables.default.page.show_article_info_reading_time -%}
 {%- assign _show_article_info_reading_time = __return -%}
 
+{%- comment -%}============================================ raed count ===================================== {%- endcomment -%}
+
+{%- include snippets/assign.html 
+  value1=page.show_article_info_read_by_count
+  value2=layout.show_article_info_read_by_count
+  value3=site.data.variables.default.page.show_article_info_read_by_count -%}
+{%- assign _show_article_info_read_by_count = __return -%}
+
 {%- comment -%}============================================ tags ===================================== {%- endcomment -%}
 
 {%- include snippets/assign.html 
@@ -106,6 +114,27 @@
         <span data-one-toggle="popover" data-one-trigger="hover focus" data-one-title="" data-one-content="{{ _locale_word_count }}">
           {{ _read_time }}
         </span>
+      </p>
+    </div>
+  {%- endif -%}
+  <!-- read by count -->
+  {%- if _show_article_info_read_by_count -%}
+    {%- include snippets/get-string-locale-from-data.html key='READ_BY' -%}
+    {%- assign _locale_reading_by = __return -%}
+    <div class="info__item">
+      <p>
+        {{ _locale_reading_by }}
+        {%- if site.pageview.enable != true -%}
+          <span>⚠️ pageview disable now.</span>
+        {%- else -%}
+          {%- include snippets/get-article-title.html article=page -%}
+          {%- assign _article_title = __return -%}
+          {%- include snippets/get-page-key.html -%}
+          {%- assign _page_key = __return -%}
+          <span class="js-pageview" data-one-page-key="{{ _page_key }}" data-one-page-title={{ _article_title | jsonify }}>
+            <font class="views-num">0</font> views
+          </span>
+        {%- endif -%}
       </p>
     </div>
   {%- endif -%}
