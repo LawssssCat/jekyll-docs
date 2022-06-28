@@ -121,6 +121,8 @@
   {%- if _show_article_info_read_by_count -%}
     {%- include snippets/get-string-locale-from-data.html key='READ_BY' -%}
     {%- assign _locale_reading_by = __return -%}
+    {%- include snippets/get-string-locale-from-data.html key='HITS' -%}
+    {%- assign _locale_hits = __return -%}
     <div class="info__item">
       <p>
         {{ _locale_reading_by }}
@@ -132,7 +134,7 @@
           {%- include snippets/get-page-key.html -%}
           {%- assign _page_key = __return -%}
           <span class="js-pageview" data-one-page-key="{{ _page_key }}" data-one-page-title={{ _article_title | jsonify }}>
-            <font class="views-num">0</font> views
+            <font class="views-num">0</font> {{ _locale_hits }}
           </span>
         {%- endif -%}
       </p>

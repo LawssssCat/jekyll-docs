@@ -19,7 +19,8 @@ en: &EN
   WORDS                   : "[WORDS] words"
   POST_ON_REPO            : "Edit on Github"
   GITHUB                  : "GitHub"
-  READ_BY                 : "Hits"
+  READ_BY                 : "Views"
+  HITS                    : "Hits"
 
 en-GB:
   <<: *EN

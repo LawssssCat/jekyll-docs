@@ -30,8 +30,18 @@ function actions4Artical(pageView) {
     
     // increment and render views num
     pageView.increase(key, title, (views) => {
+      let str;
+      if(views>=1000000) {
+        let num = (views/1000000).toFixed(2);
+        str = `${num}Million+`;
+      } else if(views>=1000) {
+        let num = (views/1000).toFixed(1);
+        str = `${num}K+` ;
+      } else {
+        str = `${views}`;
+      }
       const numWrapper = item.querySelector('.views-num');
-      numWrapper.innerHTML = views;
+      numWrapper.innerHTML = str;
     });
   });
 }
