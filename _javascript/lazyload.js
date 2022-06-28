@@ -47,7 +47,7 @@ const lazyLoad = (function(doc) {
     });
 
     if(qRecord) { // queue record exists
-      if(callback) return;
+      if(!callback) return;
       if(qRecord.load == true) {      // dependencies had loaded.  ==> run callback directly
         callback.call(context);
       } else {                        // dependencies are loading. ==> run callback after loading
