@@ -47,7 +47,7 @@ function actions4Artical(pageView) {
         item.setAttribute('data-one-toggle', 'popover');
         item.setAttribute('data-one-trigger', 'hover focus');
         item.setAttribute('data-one-content', views.toLocaleString());
-        window.popoverInit();
+        window.popoverInit([item]);
       }
     });
   });

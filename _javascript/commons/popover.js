@@ -14,12 +14,14 @@ function isInited(toggle) {
     return false;
   }
 }
-function popoverInit() {
+function popoverInit(popoverToggles) {
   lazyload.js([sources.popper.js], function() {
     
     if(!window.Popper) throw new Error('need Popper obj from popper.js');
   
-    let popoverToggles = document.querySelectorAll('[data-one-toggle=popover]');
+    if(!popoverToggles) {
+      popoverToggles = document.querySelectorAll('[data-one-toggle=popover]');
+    }
     popoverToggles.forEach(toggle => {
       if(isInited(toggle)) return;
       // adapter
