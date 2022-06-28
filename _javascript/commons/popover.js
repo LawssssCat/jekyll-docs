@@ -5,30 +5,47 @@ const tools = require('tool-box');
 const lazyload = require('lazyload');
 const sources = window.VARIABLES.sources;
 
-lazyload.js([sources.popper.js], function() {
+function isInited(toggle) {
+  let id = toggle.getAttribute('aria-describedby');
+  let popover = window.document.querySelector(`#${id}`);
+  if(popover) {
+    return true;
+  } else {
+    return false;
+  }
+}
+function popoverInit(popoverToggles) {
+  lazyload.js([sources.popper.js], function() {
+    
+    if(!window.Popper) throw new Error('need Popper obj from popper.js');
   
-  if(!window.Popper) throw new Error('need Popper obj from popper.js');
-
-  let popoverToggles = document.querySelectorAll('[data-one-toggle=popover]');
-  popoverToggles.forEach(toggle => {
-    // adapter
-    let adapter = new PopperAdapter(toggle);
-    // assemble
-    let popper = new Popper(adapter);
-    // trigger
-    let triggerStr = toggle.getAttribute('data-one-trigger') || 'click'; //  click | hover | focus | manual. manual cannot be combined with any other trigger.
-    let triggers = triggerStr.split(/\s+/).filter(str => str!='');
-    triggers.forEach(trigger => {
-      switch (trigger) {
-        case 'click': addListener4Click(toggle, popper); break;
-        case 'hover': addListener4Hover(toggle, popper); break;
-        case 'focus': addListener4focus(toggle, popper); break;
-        case 'manual':
-        default: break;
-      }
+    if(!popoverToggles) {
+      popoverToggles = document.querySelectorAll('[data-one-toggle=popover]');
+    }
+    popoverToggles.forEach(toggle => {
+      if(isInited(toggle)) return;
+      // adapter
+      let adapter = new PopperAdapter(toggle);
+      // assemble
+      let popper = new Popper(adapter);
+      // trigger
+      let triggerStr = toggle.getAttribute('data-one-trigger') || 'click'; //  click | hover | focus | manual. manual cannot be combined with any other trigger.
+      let triggers = triggerStr.split(/\s+/).filter(str => str!='');
+      triggers.forEach(trigger => {
+        switch (trigger) {
+          case 'click': addListener4Click(toggle, popper); break;
+          case 'hover': addListener4Hover(toggle, popper); break;
+          case 'focus': addListener4focus(toggle, popper); break;
+          case 'manual':
+          default: break;
+        }
+      });
     });
   });
-});
+}
+
+popoverInit();
+window.popoverInit = popoverInit;
 
 // focus
 function addListener4focus(toggle, popover) {

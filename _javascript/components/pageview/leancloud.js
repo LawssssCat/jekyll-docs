@@ -1,4 +1,3 @@
-const tools = require('tool-box');
 const lazyload = require('lazyload');
 const sources = window.VARIABLES.sources;
 
@@ -44,8 +43,11 @@ function actions4Artical(pageView) {
       }
       const numWrapper = item.querySelector('.views-num');
       numWrapper.innerHTML = str;
-      if(flag) {
+      if(window.popoverInit && flag) { // see popover.js
+        item.setAttribute('data-one-toggle', 'popover');
+        item.setAttribute('data-one-trigger', 'hover focus');
         item.setAttribute('data-one-content', views.toLocaleString());
+        window.popoverInit([item]);
       }
     });
   });
