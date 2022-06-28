@@ -11,7 +11,7 @@ TOOL.randomInt = function (Min,Max) {
 };
 
 // 
-TOOL.generateId = function (prefix, suffix, scope=window.document) {
+TOOL.generateId = function (prefix='generateId', suffix='', scope=window.document) {
   function randomInt() {
     return prefix + TOOL.randomInt(10000, 99999) + suffix;
   }

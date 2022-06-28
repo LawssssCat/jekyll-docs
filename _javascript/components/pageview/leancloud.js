@@ -24,6 +24,7 @@ lazyload.js([sources.leancloud_sdk.js], function() {
 });
 
 function actions4Artical(pageView) {
+  let flag4popover = false;
   window.document.querySelectorAll('.js-pageview').forEach(item => {
     const key = item.getAttribute('data-one-page-key');
     const title = item.getAttribute('data-one-page-title');
@@ -44,9 +45,15 @@ function actions4Artical(pageView) {
       }
       const numWrapper = item.querySelector('.views-num');
       numWrapper.innerHTML = str;
-      if(flag) {
+      if(window.popoverInit && flag) { // see popover.js
+        flag4popover = true;
+        item.setAttribute('data-one-toggle', 'popover');
+        item.setAttribute('data-one-trigger', 'hover focus');
         item.setAttribute('data-one-content', views.toLocaleString());
       }
     });
   });
+  if(window.popoverInit && flag4popover) {
+    window.popoverInit();
+  }
 }
