@@ -29,6 +29,8 @@
     $css_sides: ("right", "left");
   } @else if ($side == "y") {
     $css_sides: ("top", "bottom");
+  } @else if ($side == "") {
+    $css_sides: ("");
   }
 
   @each $side in $css_sides {
