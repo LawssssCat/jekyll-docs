@@ -1,6 +1,7 @@
 ---
 layout: base
 ---
+{%- comment -%}=====================================  global ========================================{%- endcomment -%}
 {%- comment -%}
 page layout
 
@@ -16,8 +17,19 @@ option:
 {%- assign _page_type = page.type | default: layout.type | default: site.data.variables.default.page.type -%}
 {%- assign _article_header_type = page.article_header.type | default: layout.article_header.type -%}
 
+{%- comment -%}
+                                            page class
+{%- endcomment -%}
+
+{%- assign _page_main_class = 'page__main js-page-main page__viewport' -%}
+{%- if page.aside -%}
+  {%- assign _page_main_class = _page_main_class | append: ' has-aside' -%}
+{%- endif -%}
+
+{%- comment -%}=====================================  global end  ========================================{%- endcomment -%}
+
 <div class="layout--page">
-  <div class="page__main page__viewport">
+  <div class="{{ _page_main_class }}">
     <div class="page__main-inner">
       <!-- header -->
       <div class="page__header d-print-none">
