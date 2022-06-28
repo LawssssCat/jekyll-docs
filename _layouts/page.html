@@ -59,8 +59,10 @@ option:
             {%- if _show_aside -%}
               <div class="col-aside d-print-none">
                 <aside>
-                  <!-- toc -->
-                  <div>{%- include aside/toc.html -%}</div>
+                  {%- if page.aside.toc -%}
+                    <!-- toc -->
+                    <div>{%- include aside/toc.html -%}</div>
+                  {%- endif -%}
                 </aside>
               </div>
             {%- endif -%}

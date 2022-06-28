@@ -28,6 +28,7 @@ path | type of config | name | type of date | mean | default
 `{page.path}`      | front matter | `article_header.image` | obj
 `{page.path}`      | front matter | `article_header.image.src` | url
 `{page.path}`      | front matter | `article_header.image.style` | css
+`{page.path}`      | front matter | `aside.toc` | boolean
 
 ### author
 
