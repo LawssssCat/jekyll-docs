@@ -5,15 +5,15 @@
 class Pageview {
   constructor(_AV, options) {
     this.AV = _AV;
-    this.appId = options.appId;
-    this.appKey = options.appKey;
+    let config = {};
+    this.appId = config.appId = options.appId;
+    this.appKey = config.appKey = options.appKey;
+    if(options.serverUrl) {
+      this.serverUrl = config.serverUrl = options.serverUrl;
+    }
     this.appClass = options.appClass;
 
-    this.AV.init({
-      // todo serverURL
-      appId: this.appId,
-      appKey: this.appKey
-    });
+    this.AV.init(config);
   }
   search(key) {
     const query = new this.AV.Query(this.appClass);
