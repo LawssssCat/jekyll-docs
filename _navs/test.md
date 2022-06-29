@@ -283,3 +283,17 @@ click to show popover
 
 options 
 - `data-one-trigger`: `click` `hover` `focus` `manual`
+
+## textarea
+
+<textarea>
+haha
+
+baba
+
+!
+
+
+
+123
+</textarea>
