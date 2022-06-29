@@ -79,8 +79,8 @@
       {%- assign _locale_publish_on = __return -%}
       <div class="info__item">
         <p>
-          {{ _locale_publish_on }}
-          <span>{{ _publish_on | date: _locale_date_format }}</span>
+          <font>{{ _locale_publish_on }}</font>
+          <span class="nowrap">{{ _publish_on | date: _locale_date_format }}</span>
         </p>
       </div>
     {%- endif -%}
@@ -91,8 +91,8 @@
     {%- assign _locale_written_by = __return -%}
     <div class="info__item">
       <p>
-        {{ _locale_written_by }}
-        <span>
+        <font>{{ _locale_written_by }}</font>
+        <span class="nowrap">
           <a href="{{ _author.url }}">@{{ _author.name }}</a>
         </span>
       </p>
@@ -110,8 +110,8 @@
     {%- assign _read_time = __return -%}
     <div class="info__item">
       <p>
-        {{ _locale_reading_time }}
-        <span data-one-toggle="popover" data-one-trigger="hover focus" data-one-title="" data-one-content="{{ _locale_word_count }}">
+        <font>{{ _locale_reading_time }}</font>
+        <span class="nowrap" data-one-toggle="popover" data-one-trigger="hover focus" data-one-title="" data-one-content="{{ _locale_word_count }}">
           {{ _read_time }}
         </span>
       </p>
@@ -125,15 +125,15 @@
     {%- assign _locale_hits = __return -%}
     <div class="info__item">
       <p>
-        {{ _locale_reading_by }}
+        <font>{{ _locale_reading_by }}</font>
         {%- if site.pageview.enable != true -%}
-          <span>⚠️ pageview disable now.</span>
+          <span class="nowrap">⚠️ pageview disable now.</span>
         {%- else -%}
           {%- include snippets/get-article-title.html article=page -%}
           {%- assign _article_title = __return -%}
           {%- include snippets/get-page-key.html -%}
           {%- assign _page_key = __return -%}
-          <span class="js-pageview" data-one-page-key="{{ _page_key }}" data-one-page-title={{ _article_title | jsonify }} >
+          <span class="nowrap js-pageview" data-one-page-key="{{ _page_key }}" data-one-page-title={{ _article_title | jsonify }} >
             <font class="views-num">0</font> {{ _locale_hits }}
           </span>
         {%- endif -%}
@@ -145,8 +145,9 @@
     {%- include snippets/get-string-locale-from-data.html key='MORE_ON' -%}
     {%- assign _locale_more_on = __return -%}
     <div class="info__item">
-      <p>{{ _locale_more_on }}
-        <span>
+      <p>
+        <font>{{ _locale_more_on }}</font>
+        <span class="wrap">
           {%- include snippets/get-accessible-url.html url=site.data.variables.default.paths.archive -%}
           {%- assign _path_archive = __return -%}
           {%- for _tag in page.tags -%}
