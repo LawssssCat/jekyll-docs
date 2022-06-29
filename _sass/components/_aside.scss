@@ -7,7 +7,7 @@
     width: map-get($layout, aside-width);
   }
   .toc-aside {
-    padding: map-get($spacers, 5) 0 map-get($spacers, 3) map-get($spacers, 5);
+    padding: map-get($spacers, 5) 0 map-get($spacers, 3) map-get($spacers, 4);
   }
   aside {
     height: 100%;

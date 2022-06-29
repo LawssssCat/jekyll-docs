@@ -1,0 +1,15 @@
+/* stylelint-disable scss/no-global-function-names */
+.toc-aside {
+  ol {
+    @include menu();
+    @include menu-direction(vertical);
+  }
+  a {
+    @include themeify {
+      @include link-colors(themed(text-color-theme-light-l));
+      @include hover { /* must in themeify, because of additional settings in link-colors */
+        text-decoration: none;
+      }
+    }
+  }
+}
