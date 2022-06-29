@@ -10,7 +10,7 @@ TOOL.randomInt = function (Min,Max) {
   return num;
 };
 
-// 
+// generate non deplicate DOM id
 TOOL.generateId = function (prefix='generateId', suffix='', scope=window.document) {
   function randomInt() {
     return prefix + TOOL.randomInt(10000, 99999) + suffix;
