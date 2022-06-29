@@ -1,7 +1,7 @@
 ---
 layout: base
 ---
-{%- if page.aside -%}
+{%- if page.aside or layout.aside -%}
   {%- assign _show_aside = true -%}
 {%- else -%}
   {%- assign _show_aside = false -%}
@@ -59,7 +59,7 @@ option:
             {%- if _show_aside -%}
               <div class="col-aside d-print-none">
                 <aside>
-                  {%- if page.aside.toc -%}
+                  {%- if page.aside.toc or layout.aside.toc -%}
                     <!-- toc -->
                     <div>{%- include aside/toc.html -%}</div>
                   {%- endif -%}

@@ -1,6 +1,6 @@
 const lazyload = require('lazyload');
-const sources = window.VARIABLES.sources;
+const toc = window.VARIABLES.toc.selectors;
 
 lazyload.onload(() => {
-  console.log('hahahahah');
+  console.log(toc);
 });
