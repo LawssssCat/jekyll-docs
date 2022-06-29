@@ -11,7 +11,7 @@ default:
   sources: unpkg
   aside:
     toc: 
-      selectors: 'h1,h2,h3'
+      selectors: 'h1,h2,h3,h4,h5'
   page:
     type: webpage
     show_btn_change_theme: true # If false, the build result of style.css will be greatly reduced.

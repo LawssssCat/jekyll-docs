@@ -125,7 +125,9 @@ class Toc {
     if(!this.toc)     throw new Error(`toc can't find toc with selector ${this.config.tocSelector}`);
     this.levels = this.config.headerSelectors.trim().split(/\s*,\s*/g);
     this.headers = Array.from(this.content.querySelectorAll(this.config.headerSelectors)).filter((header) => {
+      // has id
       const id = header.getAttribute('id');
+      // no ignore flag
       const flagIgnore = header.hasAttribute(this.config.headerIgnoreAttr);
       return id!=null && !flagIgnore;
     });

@@ -99,3 +99,5 @@ aside.toc.selectors
 `page.aside.toc.selectors`
 `layout.aside.toc.selectors`
 `site.data.variables.default.aside.toc.selectors`
+
+> add html dom attribute `toc-header-ignore` to avoid being regarded as headers.
