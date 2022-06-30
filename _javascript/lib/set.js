@@ -41,19 +41,15 @@ class Set {
     return this._data;
   }
 
-  size() {
-    return this._data.length;
-  }
-
   is(set) {
     if(set == this) return true;
     if(set == null) return false;
-    if(set.size() != this.size()) return false;
+    if(set.size != this.size) return false;
     
     let i, j, myValue, itValue, flag;
-    for(flag=false, i=0; i<set.size(); i++) {
+    for(flag=false, i=0; i<set.size; i++) {
       itValue = set.get(i);
-      for(j=0; j<this.size(); j++) {
+      for(j=0; j<this.size; j++) {
         myValue = this.get(j);
         if( myValue == itValue ) {
           flag = true;

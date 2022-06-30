@@ -1,4 +1,3 @@
-const tools = require('tool-box');
 const lazyload = require('lazyload');
 const sources = window.VARIABLES.sources;
 
@@ -30,18 +29,26 @@ function actions4Artical(pageView) {
     
     // increment and render views num
     pageView.increase(key, title, (views) => {
-      let str;
+      let str, flag=false;
       if(views>=1000000) {
         let num = (views/1000000).toFixed(2);
         str = `${num}Million+`;
+        flag = true;
       } else if(views>=1000) {
         let num = (views/1000).toFixed(1);
         str = `${num}K+` ;
+        flag = true;
       } else {
         str = `${views}`;
       }
       const numWrapper = item.querySelector('.views-num');
       numWrapper.innerHTML = str;
+      if(window.popoverInit && flag) { // see popover.js
+        item.setAttribute('data-one-toggle', 'popover');
+        item.setAttribute('data-one-trigger', 'hover focus');
+        item.setAttribute('data-one-content', views.toLocaleString());
+        window.popoverInit([item]);
+      }
     });
   });
 }

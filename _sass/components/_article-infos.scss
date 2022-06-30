@@ -32,11 +32,14 @@
   }
   .info__item {
     padding-right: map-get($spacers, 4);
-  }
-  .info__item p {
-    & > span {
-      display: block;
-      font-weight: map-get($base, font-weight-bold);
+    p {
+      > span {
+        display: block;
+        font-weight: map-get($base, font-weight-bold);
+      }
+      > font {
+        white-space: nowrap;
+      }
     }
   }
 }

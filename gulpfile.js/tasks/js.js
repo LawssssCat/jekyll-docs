@@ -15,15 +15,15 @@ const browserify = require('browserify');
 const JS_SRC = '_javascript';
 const JS_DEST = 'assets/js/dist';
 
-const VENDERS = ['tool-box', 'lazyLoad'];
+const VENDERS = ['tool-box', 'lazyload']; // base on '_javascript/'
 
 function isDebug() {
   let env = process.env.JEKYLL_ENV;
   return !env == 'production';
 }
 
-const BROWSERIFY_CVONFIG = {
-  paths: '_javascript/',
+const BROWSERIFY_CONFIG = {
+  paths: `${JS_SRC}/`,
   debug: isDebug()
 };
 
@@ -60,9 +60,14 @@ function concatJs(pattern, output) {
     {
       entries: files
     }, 
-    BROWSERIFY_CVONFIG
+    BROWSERIFY_CONFIG
   );
-  let bf = browserify(config).external(VENDERS);
+  let bf = browserify(config);
+  VENDERS.forEach(lib => {
+    let libPath = `${JS_SRC}/${lib}.js`;
+    // bf = bf.external(libPath);
+    bf = bf.exclude(libPath);
+  });
   return normalize(bf, output);
 }
 
@@ -72,7 +77,7 @@ const commonsJs = () => {
 
 const componentsJs = parallel(
   () => concatJs(`${JS_SRC}/components/theme.js`, 'theme'),
-  () => concatJs(`${JS_SRC}/components/aside/*.js`, 'aside'),
+  () => concatJs(`${JS_SRC}/components/aside/toc.js`, 'aside/toc'),
   () => concatJs(`${JS_SRC}/components/pageview/leancloud.js`, 'pageview/leancloud')
 );
 
@@ -80,11 +85,11 @@ const vendersJs = () => {
   let config = Object.assign(
     {
     }, 
-    BROWSERIFY_CVONFIG
+    BROWSERIFY_CONFIG
   );
   let bf = browserify(config);
   VENDERS.forEach(lib => {
-    bf.require(lib); 
+    bf = bf.require(lib); 
   });
   return normalize(bf, 'venders');
 };

@@ -109,6 +109,16 @@ defaults:
       show_article_footer_navigation: true
       show_article_footer_horizontal_rule: true
 
+# see http://jch.penibelst.de/
+compress_html:
+  clippings: all
+  comments: all
+  endings: all
+  profile: false
+  blanklines: false
+  # ignore:
+  #   envs: [development]
+
 exclude:
   - README.md
   - LICENSE

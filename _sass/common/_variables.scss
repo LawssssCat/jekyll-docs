@@ -84,7 +84,9 @@ $layout: (
 //     sm       md       lg
 // | ------ | ------ | ------ |
 // 0       500      1024      -
+// see https://v5.bootcss.com/docs/layout/breakpoints/
 
+$breakpoint-default: "md";
 $responsive: (
   sm:                      0,
   md:                      500px,

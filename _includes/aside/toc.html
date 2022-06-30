@@ -1,0 +1,15 @@
+{%- assign _toc_selectors = page.aside.toc.selectors
+  | default: layout.aside.toc.selectors
+  | default: site.data.variables.default.aside.toc.selectors -%}
+
+<div class="toc-aside js-toc-root"></div>
+
+<script>
+window.VARIABLES.append({
+  toc: {
+    selectors: "{{ _toc_selectors }}"
+  }
+});
+</script>
+{%- include snippets/get-accessible-url.html url="/assets/js/dist/aside/toc.min.js" -%}
+<script src="{{ __return }}"></script>

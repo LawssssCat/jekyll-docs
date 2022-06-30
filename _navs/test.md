@@ -3,14 +3,22 @@ layout: article
 title: text and typography
 author: foo
 tags: ['test', 'typography']
+aside: 
+  toc: true
 ---
 
 # H1
+{: toc-header-ignore='true'}
 ## H2
+{: toc-header-ignore='true'}
 ### H3
+{: toc-header-ignore='true'}
 #### H4
+{: toc-header-ignore='true'}
 ##### H5
+{: toc-header-ignore='true'}
 ###### H6
+{: toc-header-ignore='true'}
 
 ## Paragraph
 
@@ -24,6 +32,30 @@ asfase23f 1s.efasf1as5ef1as as efasf1as5ef1asasf ase5asf
 
 asfasdg1a53g31af .sd0g .asd
 f sdaf asd1 sd31 sd.f1as5e1f 3se 
+
+{::comment}
+This text is completely ignored by kramdown - a comment in the text.
+{:/comment}
+
+Do you see {::comment}this text{:/comment}?
+{::comment}some other comment{:/}
+
+{::options key="val" /}
+
+A simple paragraph with an ID attribute.
+{: #para-one}
+
+> A blockquote with a title
+{:title="The blockquote title"}
+{: #myid}
+
+{:.ruby}
+    Some code here
+
+This *is*{:.underline} some `code`{:#id}{:.class}.
+A [link](test.html){:rel='something'} and some **tools**{:.tools}.
+
+This *is italic*{::}*marked*{:.special} text
 
 ## Code
 
@@ -251,3 +283,17 @@ click to show popover
 
 options 
 - `data-one-trigger`: `click` `hover` `focus` `manual`
+
+## textarea
+
+<textarea>
+haha
+
+baba
+
+!
+
+
+
+123
+</textarea>

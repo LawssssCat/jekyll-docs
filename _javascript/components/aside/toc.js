@@ -1,6 +1,11 @@
 const lazyload = require('lazyload');
-const sources = window.VARIABLES.sources;
+const tocSettings = window.VARIABLES.toc;
 
-lazyload.js([sources.gitalk.js], function() {
-  console.log('hello world');
+lazyload.onload(() => {
+  const {Toc} = require('lib/toc');
+  const toc = new Toc({
+    headerSelectors: tocSettings.selectors, 
+    scrollTarget: null //'.js-article-content'
+  });
+  toc.init();
 });

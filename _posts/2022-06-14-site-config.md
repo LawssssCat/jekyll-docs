@@ -28,6 +28,7 @@ path | type of config | name | type of date | mean | default
 `{page.path}`      | front matter | `article_header.image` | obj
 `{page.path}`      | front matter | `article_header.image.src` | url
 `{page.path}`      | front matter | `article_header.image.style` | css
+`{page.path}`      | front matter | `aside.toc` | boolean
 
 ### author
 
@@ -69,3 +70,34 @@ path | type of config | name | type of date | mean | default
  page | front matter | `original_link` | url | if not site url, please use absolute url | `page.url`
 
 {% endraw %}
+
+
+aside 
+
+`page.aside` `true`
+`layout.aside` `true`
+
+or obj
+
+`page.aside.toc` `true`
+`page.aside.tocselectors`
+`layout.aside.toc` `true`
+`layout.aside.tocselectors`
+
+aside.toc
+
+`page.aside.toc` `true` 
+`layout.aside.toc` `true` 
+
+or obj
+
+`page.aside.toc.selectors`
+`layout.aside.toc.selectors`
+
+aside.toc.selectors
+
+`page.aside.toc.selectors`
+`layout.aside.toc.selectors`
+`site.data.variables.default.aside.toc.selectors`
+
+> add html dom attribute `toc-header-ignore` to avoid being regarded as headers.
