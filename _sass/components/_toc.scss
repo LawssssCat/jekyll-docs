@@ -3,7 +3,7 @@
 /* stylelint-disable scss/no-global-function-names */
 .toc-aside {
   .toc {
-    max-height: 100vh;
+    max-height: calc(100vh - #{map-get($spacers, 5)});
     overflow-y: auto;
     @include scrollbar-none();
   }

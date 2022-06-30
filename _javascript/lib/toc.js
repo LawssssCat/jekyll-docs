@@ -170,12 +170,26 @@ class Toc {
   }
   updateTocScroll() { // if toc overflow, top active header at the top of toc scroll
     if(TOOL.isOverflowY(this.toc)) {
-      const topActive = this.headersDOMlist.find(dom => {
+      const activeList = this.headersDOMlist.filter(dom => {
         return dom.classList.contains(this.activeClass);
       });
-      if(topActive) {
-        const positionRelative = TOOL.positionRelative(topActive, this.toc);
-        this.toc.scrollTop = positionRelative.top;
+      if(activeList && activeList.length>0) {
+        let topActive, lowestActive, topTop, lowestTop;
+        if(activeList.length==1) {
+          topActive=lowestActive=activeList[0];
+          topTop=lowestTop=TOOL.positionRelative(topActive, this.toc);
+        } else {
+          topActive             =activeList[0];
+          lowestActive          =activeList[activeList.length-1];
+          topTop                =TOOL.positionRelative(topActive, this.toc).top;
+          lowestTop             =TOOL.positionRelative(lowestActive, this.toc).top;
+        }
+        const scrollHeight=this.toc.clientHeight, activeHeight=(lowestTop-topTop);
+        if(scrollHeight>activeHeight) {
+          this.toc.scrollTop = topTop;
+        } else {
+          this.toc.scrollTop = (lowestTop-scrollHeight);
+        }
       }
     }
   }
