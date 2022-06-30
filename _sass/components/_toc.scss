@@ -28,7 +28,7 @@
       overflow: hidden;
       transition: max-height .8s ease;
     }
-    @include active {
+    &.active {
       > ol {
         max-height: 2000px;
       }
