@@ -29,8 +29,8 @@
         {%- assign _repo_locale_name = __return -%}
         {%- include snippets/get-string-locale-from-data.html key="POST_ON_REPO" -%}
         {%- assign _locale_post_on_repo = __return | replace: "[REPO]", _repo_locale_name -%}
-        <span class="split-space">&nbsp;</span>
-        <a class="edit-on-repo" title="{{ _locale_post_on_repo }}" href="{{ _repo_path_url }}"><i class="far fa-edit"></i></a>
+        <span class="split-space d-print-none">&nbsp;</span>
+        <a class="edit-on-repo d-print-none" title="{{ _locale_post_on_repo }}" href="{{ _repo_path_url }}"><i class="far fa-edit"></i></a>
       {%- endif -%}
     {%- endif -%}
   </header>

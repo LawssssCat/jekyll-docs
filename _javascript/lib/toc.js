@@ -112,7 +112,7 @@ function generateDOM(headers, levels) {
       preLevel++;
       stackDOM.push(li);
       index++;
-      headersDOMlist.push(a); // save for later use
+      headersDOMlist.push(li); // save for later use
     }
   }
   return result;
@@ -144,24 +144,74 @@ class Toc {
     });
     if(this.headers.length==0) this.disable = true;
     // scroll
+    this.activeClass = 'active';
     this.scrollTarget = typeof this.config.scrollTarget == 'string' ? window.document.querySelector(this.config.scrollTarget) : this.config.scrollTarget;
     this.scroller = typeof this.config.scroller == 'string' ? window.document.querySelector(this.config.scroller) : this.config.scroller;
 
     // rander
     this.rander();
-    this.updateActive();
+    this.updateToc();
 
     // listener
     this.scrollTarget.addEventListener('scroll', () => {
-      this.updateActive();
+      this.updateToc();
     });
     window.addEventListener('resize', () => {
-      this.updateActive();
+      this.updateToc();
+    });
+    this.headersDOMlist.forEach(dom => {
+      const a = dom.querySelector('a');
+      if(a) {
+        a.addEventListener('click', (e) => {
+          e.preventDefault();
+          const href = a.getAttribute('href');
+          const offsetTop = document.querySelector(href).offsetTop;
+
+          this.scrollTarget.scroll({
+            top: offsetTop,
+            behavior: 'smooth'
+          });
+        });
+      }
     });
   }
   rander() {
     const tocDOM = generateDOM.call(this, this.headers, this.levels);
     this.toc.appendChild(tocDOM);
+  }
+  updateToc() {
+    this.updateActive();
+    this.updateTocScroll();
+  }
+  updateTocScroll() { // if toc overflow, top active header at the top of toc scroll
+    if(TOOL.isOverflowY(this.toc)) {
+      const activeList = this.headersDOMlist.filter(dom => {
+        return dom.classList.contains(this.activeClass);
+      });
+      if(activeList && activeList.length>0) {
+        let topActive, lowestActive, topTop, lowestTop;
+        if(activeList.length==1) {
+          topActive=lowestActive=activeList[0];
+          topTop=lowestTop=TOOL.positionRelative(topActive, this.toc).top;
+        } else {
+          topActive             =activeList[0];
+          lowestActive          =activeList[activeList.length-1];
+          topTop                =TOOL.positionRelative(topActive, this.toc).top;
+          lowestTop             =TOOL.positionRelative(lowestActive, this.toc).top;
+        }
+        const scrollHeight=this.toc.clientHeight, activeHeight=(lowestTop-topTop);
+        let scrollTop;
+        if(scrollHeight>activeHeight) {
+          scrollTop = topTop;
+        } else {
+          scrollTop = (lowestTop-scrollHeight);
+        }
+        this.toc.scroll({
+          top: scrollTop,
+          behavior: 'smooth'
+        });
+      }
+    }
   }
   updateActive() {
     /*
@@ -190,7 +240,7 @@ class Toc {
     }
     // console.log(scrollViewpointButton, activeHeader)
     // refresh 'active' class 
-    const activeClass = 'active';
+    const activeClass = this.activeClass;
     this.headers.forEach(header => header.classList.remove(activeClass));      // header in content
     this.headersDOMlist.forEach(tocdom => tocdom.classList.remove(activeClass)); // link in toc
     let index = (this.headers.length <= i ? this.headers.length : i)-1;

@@ -69,7 +69,8 @@ $spacers: (
   2:                      map-get($base, spacer) * .5,
   3:                      map-get($base, spacer),
   4:                      map-get($base, spacer) * 1.5,
-  5:                      map-get($base, spacer) * 3
+  5:                      map-get($base, spacer) * 3,
+  6:                      map-get($base, spacer) * 4.5
 );
 
 $layout: (
@@ -91,6 +92,16 @@ $responsive: (
   sm:                      0,
   md:                      500px,
   lg:                      1024px
+);
+
+$animation: (
+  duration:               .4s,
+  duration-sm:            .2s,
+  timing-function:        ease-in-out
+);
+
+$clickable: (
+  transition:             all .15s ease-in-out
 );
 
 $button-height-xl:        2.8rem;
