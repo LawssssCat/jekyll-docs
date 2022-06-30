@@ -69,7 +69,13 @@ function generateDOM(headers, levels) {
     }), 
     topLevel = Math.min.apply(Math, headersLevel),
     // stack
-    stackDOM = new Stack([result]);
+    stackDOM = new Stack([result]), 
+    headersDOMlist = []; // save for later use
+
+  if(this) {
+    this.headersLevel = headersLevel; this.topLevel = topLevel; // save for later use
+    this.headersDOMlist = headersDOMlist;
+  }
 
   // create header dom one by one
   let index=0, preLevel=topLevel;
@@ -105,6 +111,7 @@ function generateDOM(headers, levels) {
       preLevel++;
       stackDOM.push(li);
       index++;
+      headersDOMlist.push(a); // save for later use
     }
   }
   return result;
@@ -148,7 +155,7 @@ class Toc {
     });
   }
   rander() {
-    const tocDOM = generateDOM(this.headers, this.levels);
+    const tocDOM = generateDOM.call(this, this.headers, this.levels);
     this.toc.appendChild(tocDOM);
   }
   updateActive() {
@@ -172,12 +179,33 @@ class Toc {
       if(scrollViewpointBottom>headerBottom) {
         activeHeader = currentHeader;
       } else {
-        break;
+        break; // next
       }
     }
     // console.log(scrollViewpointButton, activeHeader)
-    this.headers.forEach(header => header.classList.remove('active'));
-    if(activeHeader) activeHeader.classList.add('active');
+    // refresh 'active' class 
+    const activeClass = 'active';
+    this.headers.forEach(header => header.classList.remove(activeClass));      // header in content
+    this.headersDOMlist.forEach(tocdom => tocdom.classList.remove(activeClass)); // link in toc
+    let index = (this.headers.length <= i ? this.headers.length : i)-1;
+    if(activeHeader){
+      activeHeader.classList.add(activeClass);
+      this.headersDOMlist[index].classList.add(activeClass);
+      // 
+      let headerLevel = this.headersLevel[index];
+      for(index=index-1;index>=0; index--) { // set 'active' class into parent headers
+        const curHeaderLevel = this.headersLevel[index], curHeader = this.headers[index], curTocDom = this.headersDOMlist[index];
+        if(headerLevel>curHeaderLevel) {
+          curHeader.classList.add(activeClass);
+          curTocDom.classList.add(activeClass);
+          // 
+          headerLevel = curHeaderLevel;
+        }
+        if(this.topLevel==curHeaderLevel) {
+          break;
+        }
+      }
+    } 
   }
 }
 

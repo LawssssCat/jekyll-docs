@@ -10,6 +10,9 @@
       @include hover { /* must in themeify, because of additional settings in link-colors */
         text-decoration: none;
       }
+      @include active() {
+        background-color: red;
+      }
     }
   }
 }
