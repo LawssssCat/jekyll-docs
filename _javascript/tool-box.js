@@ -46,4 +46,8 @@ TOOL.positionRelative = function(dom, container=document.body) {
   };
 };
 
+TOOL.isOverflowY = function(dom) {
+  return dom.offsetHeight < dom.scrollHeight;
+};
+
 module.exports = TOOL;

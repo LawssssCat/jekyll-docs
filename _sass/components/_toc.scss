@@ -2,6 +2,10 @@
 /* stylelint-disable selector-max-compound-selectors */
 /* stylelint-disable scss/no-global-function-names */
 .toc-aside {
+  .toc {
+    max-height: 100vh;
+    overflow-y: auto;
+  }
   ol {
     @include menu(0, 0);
     @include menu-direction(vertical);
