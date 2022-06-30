@@ -5,6 +5,7 @@
   .toc {
     max-height: 100vh;
     overflow-y: auto;
+    @include scrollbar-none();
   }
   ol {
     @include menu(0, 0);

@@ -1,0 +1,34 @@
+/* stylelint-disable scss/no-global-function-names */
+@mixin scrollbar($width: default, $color-track: default, $color-thumb: default) {
+  @if $width == default {
+    $width: 8px;
+  }
+  @if $color-track == default {
+    $color-track: rgb(222, 220, 220);
+  }
+  @if $color-thumb == default {
+    $color-thumb: rgb(136, 136, 136);
+  }
+  & {
+    cursor: pointer;
+  }
+  &::-webkit-scrollbar {
+    width: $width;
+  }
+  &::-webkit-scrollbar-track {
+    background: $color-track;
+    border-radius: $width / 2;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: $color-thumb;
+    border-radius: 10px;
+    &:hover { background: darken($color-thumb, 18%); }
+    &:active { background: darken($color-thumb, 30%); }
+  }
+}
+
+@mixin scrollbar-none {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
