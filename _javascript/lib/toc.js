@@ -149,9 +149,13 @@ class Toc {
 
     // rander
     this.rander();
+    this.updateActive();
 
     // listener
     this.scrollTarget.addEventListener('scroll', () => {
+      this.updateActive();
+    });
+    window.addEventListener('resize', () => {
       this.updateActive();
     });
   }
