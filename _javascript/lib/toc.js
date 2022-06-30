@@ -1,5 +1,6 @@
 
 const {Stack} = require('lib/stack');
+const TOOL = require('tool-box');
 
 function getCurLevel(curNode, levels) { // 0,1,2,3...
   let curLevel = levels.findIndex((label) => {
@@ -116,6 +117,8 @@ class Toc {
     this.config.tocSelector        = options.tocSelector           || '.js-toc-root';
     this.config.headerSelectors    = options.headerSelectors       || 'h1,h2,h3';
     this.config.headerIgnoreAttr   = options.headerIgnoreAttr      || 'toc-header-ignore';
+    this.config.scrollTarget       = options.scrollTarget          || window;
+    this.config.scroller           = options.scroller              || (window.document.scrollingElement || window.document.documentElement || window.document.body);
   }
   init() {
     // assamble
@@ -132,13 +135,49 @@ class Toc {
       return id!=null && !flagIgnore;
     });
     if(this.headers.length==0) this.disable = true;
+    // scroll
+    this.scrollTarget = typeof this.config.scrollTarget == 'string' ? window.document.querySelector(this.config.scrollTarget) : this.config.scrollTarget;
+    this.scroller = typeof this.config.scroller == 'string' ? window.document.querySelector(this.config.scroller) : this.config.scroller;
 
     // rander
     this.rander();
+
+    // listener
+    this.scrollTarget.addEventListener('scroll', () => {
+      this.updateActive();
+    });
   }
   rander() {
     const tocDOM = generateDOM(this.headers, this.levels);
     this.toc.appendChild(tocDOM);
+  }
+  updateActive() {
+    /*
+    --------------- headerBottom0
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~ scrollViewpoint
+    --------------- headerBottom1
+    --------------- headerBottom2 active
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~ scrollViewpointBottom
+    --------------- headerBottom3
+    */
+    const scrollViewpointTop = this.scroller.scrollTop, 
+      scrollViewpointHeight = this.scroller.clientHeight, 
+      scrollViewpointBottom = scrollViewpointTop + scrollViewpointHeight;
+    let i, currentHeader, activeHeader=null;
+    for(i=0; i<this.headers.length; i++) {
+      currentHeader = this.headers[i];
+      const headerHeight = currentHeader.clientHeight,
+        headerTop = TOOL.positionRelative(currentHeader, this.scroller).top,
+        headerBottom = headerHeight+headerTop;
+      if(scrollViewpointBottom>headerBottom) {
+        activeHeader = currentHeader;
+      } else {
+        break;
+      }
+    }
+    // console.log(scrollViewpointButton, activeHeader)
+    this.headers.forEach(header => header.classList.remove('active'));
+    if(activeHeader) activeHeader.classList.add('active');
   }
 }
 

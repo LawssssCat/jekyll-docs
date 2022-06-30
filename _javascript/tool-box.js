@@ -22,4 +22,28 @@ TOOL.generateId = function (prefix='generateId', suffix='', scope=window.documen
   return id;
 };
 
+// relative to document/html/body
+TOOL.position = function(dom) {
+  let top = dom.offsetTop;
+  let left = dom.offsetLeft;
+  var current = dom.offsetParent;
+  while (current !== null) {
+    top += current.offsetTop;
+    left += current.offsetLeft;
+    current = current.offsetParent;
+  }
+  return {
+    top,
+    left
+  };
+};
+
+TOOL.positionRelative = function(dom, container=document.body) {
+  const p1 = TOOL.position(dom), p2 = TOOL.position(container);
+  return {
+    top: (p1.top - p2.top), 
+    left: (p1.left - p2.left)
+  };
+};
+
 module.exports = TOOL;
