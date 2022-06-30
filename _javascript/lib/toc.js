@@ -159,6 +159,21 @@ class Toc {
     window.addEventListener('resize', () => {
       this.updateToc();
     });
+    this.headersDOMlist.forEach(dom => {
+      const a = dom.querySelector('a');
+      if(a) {
+        a.addEventListener('click', (e) => {
+          e.preventDefault();
+          const href = a.getAttribute('href');
+          const offsetTop = document.querySelector(href).offsetTop;
+
+          scroll({
+            top: offsetTop,
+            behavior: 'smooth'
+          });
+        });
+      }
+    });
   }
   rander() {
     const tocDOM = generateDOM.call(this, this.headers, this.levels);
