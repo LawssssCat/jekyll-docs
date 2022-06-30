@@ -62,8 +62,8 @@
     {%- include snippets/get-accessible-url.html url=_author.avatar -%}
     {%- assign _author_avatar_url = __return -%}
     {%- if _author_avatar_url -%}
-      <div class="info__item">
-        <div class="article__author-avatar-wrapper">
+      <div class="info__item article__author-avatar-wrapper">
+        <div class="article__author-avatar">
           <img src="{{ _author_avatar_url }}" alt="author avatar">
         </div>
       </div>
