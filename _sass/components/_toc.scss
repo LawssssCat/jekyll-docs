@@ -1,17 +1,47 @@
+/* stylelint-disable selector-max-combinators */
+/* stylelint-disable selector-max-compound-selectors */
 /* stylelint-disable scss/no-global-function-names */
 .toc-aside {
   ol {
-    @include menu();
+    @include menu(0, 0);
     @include menu-direction(vertical);
   }
+  ol li a { /* h1 */
+    padding-top: map-get($spacers, 2);
+    padding-bottom: map-get($spacers, 2);
+    padding-left: map-get($spacers, 2);
+  }
+  ol li ol li a { /* h2 */
+    padding-top: map-get($spacers, 1);
+    padding-bottom: map-get($spacers, 1);
+    padding-left: map-get($spacers, 3);
+  }
+  ol li ol li ol li a { /* h3 */
+    padding-top: map-get($spacers, 0);
+    padding-bottom: map-get($spacers, 0);
+    padding-left: map-get($spacers, 4);
+  }
+  ol li ol li ol li ol li a { /* h4 */
+    padding-left: map-get($spacers, 5);
+  }
+  > ol {
+    @include themeify {
+      background: themed(text-color-theme-light-l);
+    }
+  }
   a {
+    display: block;
+    margin-left: 1px;
+    font-size: map-get($base, font-size-sm);
+    font-weight: map-get($base, font-weight);
     @include themeify {
       @include link-colors(themed(text-color-theme-light-l));
       @include hover { /* must in themeify, because of additional settings in link-colors */
         text-decoration: none;
       }
+      background: themed(background-color);
       @include active() {
-        background-color: red;
+        background-color: transparent;
       }
     }
   }

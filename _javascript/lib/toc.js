@@ -107,6 +107,7 @@ function generateDOM(headers, levels) {
       a.href = `#${header.id}`;
       a.textContent = header.textContent;
       li.appendChild(a);
+      li.classList.add(`toc-h${curLevel+1}`);
       preDOM.appendChild(li); // top is 'li' not 'ol'
       preLevel++;
       stackDOM.push(li);
@@ -162,21 +163,22 @@ class Toc {
     /*
     --------------- headerBottom0
     ~~~~~~~~~~~~~~~~~~~~~~~~~~ scrollViewpoint
-    --------------- headerBottom1
-    --------------- headerBottom2 active
+    --------------- headerBottom1 active
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~ scrollViewpointMiddle
+    --------------- headerBottom2 
     ~~~~~~~~~~~~~~~~~~~~~~~~~~ scrollViewpointBottom
     --------------- headerBottom3
     */
     const scrollViewpointTop = this.scroller.scrollTop, 
       scrollViewpointHeight = this.scroller.clientHeight, 
-      scrollViewpointBottom = scrollViewpointTop + scrollViewpointHeight;
+      scrollViewpointMiddle = scrollViewpointTop + scrollViewpointHeight/2;
     let i, currentHeader, activeHeader=null;
     for(i=0; i<this.headers.length; i++) {
       currentHeader = this.headers[i];
       const headerHeight = currentHeader.clientHeight,
         headerTop = TOOL.positionRelative(currentHeader, this.scroller).top,
         headerBottom = headerHeight+headerTop;
-      if(scrollViewpointBottom>headerBottom) {
+      if(scrollViewpointMiddle>headerBottom) {
         activeHeader = currentHeader;
       } else {
         break; // next
