@@ -8,7 +8,7 @@
     @include scrollbar-none();
   }
   ol {
-    @include menu(0, 0);
+    @include menu(0, 0, nowrap);
     @include menu-direction(vertical);
   }
   ol li a { /* h1 */
@@ -23,11 +23,14 @@
       padding-left: map-get($spacers, 3);
     }
     > ol {
-      display: none;
+      height: auto;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .5s ease;
     }
     @include active {
       > ol {
-        display: block;
+        max-height: 2000px;
       }
     }
   }
