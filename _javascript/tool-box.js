@@ -50,4 +50,10 @@ TOOL.isOverflowY = function(dom) {
   return dom.offsetHeight < dom.scrollHeight;
 };
 
+TOOL.isHidden = function(element) {
+  // var style = window.getComputedStyle(el);//el即DOM元素
+  // return (style.display === 'none');
+  return !element || (element.offsetHeight === 0 && element.offsetWidth === 0);
+};
+
 module.exports = TOOL;

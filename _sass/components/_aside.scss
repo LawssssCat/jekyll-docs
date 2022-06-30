@@ -5,6 +5,9 @@
   }
   .col-aside {
     width: map-get($layout, aside-width);
+    @include media-breakpoint-down(lg) {
+      display: none;
+    }
   }
   .toc-aside {
     padding: map-get($spacers, 5) 0 map-get($spacers, 3) map-get($spacers, 5);
