@@ -26,7 +26,7 @@
   }
   > ol {
     @include themeify {
-      background: themed(text-color-theme-light-l);
+      background: themed(main-color-3);
     }
   }
   a {
@@ -35,13 +35,17 @@
     font-size: map-get($base, font-size-sm);
     font-weight: map-get($base, font-weight);
     @include themeify {
+      background: themed(background-color);
       @include link-colors(themed(text-color-theme-light-l));
       @include hover { /* must in themeify, because of additional settings in link-colors */
+        color: themed(main-color-1);
         text-decoration: none;
+        border-left: 2px solid themed(main-color-1);
       }
-      background: themed(background-color);
       @include active() {
-        background-color: transparent;
+        // background-color: transparent;
+        color: themed(main-color-1);
+        border-left: 2px solid themed(main-color-1);
       }
     }
   }
