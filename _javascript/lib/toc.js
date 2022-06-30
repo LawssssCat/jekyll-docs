@@ -177,7 +177,7 @@ class Toc {
         let topActive, lowestActive, topTop, lowestTop;
         if(activeList.length==1) {
           topActive=lowestActive=activeList[0];
-          topTop=lowestTop=TOOL.positionRelative(topActive, this.toc);
+          topTop=lowestTop=TOOL.positionRelative(topActive, this.toc).top;
         } else {
           topActive             =activeList[0];
           lowestActive          =activeList[activeList.length-1];
