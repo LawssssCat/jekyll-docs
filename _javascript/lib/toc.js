@@ -167,7 +167,7 @@ class Toc {
           const href = a.getAttribute('href');
           const offsetTop = document.querySelector(href).offsetTop;
 
-          scroll({
+          this.scrollTarget.scroll({
             top: offsetTop,
             behavior: 'smooth'
           });
@@ -200,11 +200,16 @@ class Toc {
           lowestTop             =TOOL.positionRelative(lowestActive, this.toc).top;
         }
         const scrollHeight=this.toc.clientHeight, activeHeight=(lowestTop-topTop);
+        let scrollTop;
         if(scrollHeight>activeHeight) {
-          this.toc.scrollTop = topTop;
+          scrollTop = topTop;
         } else {
-          this.toc.scrollTop = (lowestTop-scrollHeight);
+          scrollTop = (lowestTop-scrollHeight);
         }
+        this.toc.scroll({
+          top: scrollTop,
+          behavior: 'smooth'
+        });
       }
     }
   }
