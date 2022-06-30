@@ -28,6 +28,8 @@
     }
   }
 
+  @include transition(map-get($clickable, transition));
+
   // hover
   @if $hover-clr == default { /* hover -> normal */
     @if $hover-bg-clr == null {

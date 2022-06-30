@@ -1,0 +1,6 @@
+@mixin transition($value) {
+  -moz-transition: $value;; /* Firefox 4 */
+  -webkit-transition: $value;; /* Safari 和 Chrome */
+  -o-transition: $value;; /* Opera */
+  transition: $value;
+}

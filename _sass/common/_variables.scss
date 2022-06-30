@@ -93,6 +93,16 @@ $responsive: (
   lg:                      1024px
 );
 
+$animation: (
+  duration:               .4s,
+  duration-sm:            .2s,
+  timing-function:        ease-in-out
+);
+
+$clickable: (
+  transition:             all .15s ease-in-out
+);
+
 $button-height-xl:        2.8rem;
 $button-height-lg:        2.3rem;
 $button-height:           1.9rem;
