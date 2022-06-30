@@ -19,6 +19,14 @@
     padding-top: map-get($spacers, 1);
     padding-bottom: map-get($spacers, 1);
     padding-left: map-get($spacers, 3);
+    & ~ ol {
+      display: none;
+    }
+    @include active {
+      & ~ ol {
+        display: block;
+      }
+    }
   }
   ol li ol li ol li a { /* h3 */
     padding-top: map-get($spacers, 0);
