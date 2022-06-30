@@ -112,7 +112,7 @@ function generateDOM(headers, levels) {
       preLevel++;
       stackDOM.push(li);
       index++;
-      headersDOMlist.push(a); // save for later use
+      headersDOMlist.push(li); // save for later use
     }
   }
   return result;
