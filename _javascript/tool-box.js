@@ -57,28 +57,44 @@ TOOL.isOverflowX = function(dom) {
 TOOL.isHidden = function(element) {
   // var style = window.getComputedStyle(el);//el即DOM元素
   // return (style.display === 'none');
-  return !element || (element.offsetHeight === 0 && element.offsetWidth === 0);
+  return (!element)
+    || (TOOL.getStyle(element, 'display') == 'none')
+    || (element.offsetHeight === 0 && element.offsetWidth === 0);
 };
 
 TOOL.getStyle = function(obj, attr) {
   if (obj.currentStyle) { // compatible IE
     return obj.currentStyle[attr];
+  } else if (window.getComputedStyle) {
+    return window.getComputedStyle(obj, null)[attr];
   } else {
-    return document.defaultView.getComputedStyle(obj, null)[attr];
+    return obj.style[attr];
   }
 };
 
 function px2Float(px) {
   if(!px) return 0;
   const intStr=px.replace('px');
-  return parseFloat(intStr);
+  const float=parseFloat(intStr);
+  return float?float:0;
 }
 
 TOOL.innerWidth = function(dom) {
   if(!dom) return 0;
+  const flag = (TOOL.getStyle(dom, 'display') == 'none');
+  if(flag) {
+    dom = dom.cloneNode(true);
+    dom.style.position = 'absolute';
+    dom.style.top = '-3000px';
+    dom.style.display = 'block';
+    document.getElementsByTagName('body')[0].appendChild(dom);
+  }
   const paddingLeft      =px2Float(TOOL.getStyle(dom, 'paddingLeft')),
     innerWidth           =px2Float(TOOL.getStyle(dom, 'width')),
     paddingRight         =px2Float(TOOL.getStyle(dom, 'paddingRight'));
+  if(flag) {
+    dom.parentNode.removeChild(dom);
+  }
   return -paddingLeft+innerWidth-paddingRight;
 };
 
@@ -88,6 +104,25 @@ TOOL.outterWidth = function(dom) {
     marginRight        =px2Float(TOOL.getStyle(dom, 'marginRight')),
     innerWidth         =TOOL.innerWidth(dom);
   return marginLeft+innerWidth+marginRight;
+};
+
+/*
+| ---------------- dom ------------------ |
+| --- child 1--- | ---- child 2----- | 
+return (child 1 outter width) + (child 2 outter width)
+
+| ---------------- dom ------------------ |
+| --- child 1--- | ---- child 2----- | ---- child 3 ---- |
+return dom inner width
+*/
+TOOL.childTotalWidth = function(dom) {
+  if(!dom) return 0;
+  const innerWidth = TOOL.innerWidth(dom),
+    childTotalWidth = Array.from(dom.childNodes).reduce((sum, child) => {
+      let width = TOOL.outterWidth(child);
+      return width ? width + sum : sum;
+    }, 0);
+  return innerWidth>childTotalWidth ? childTotalWidth : innerWidth;
 };
 
 module.exports = TOOL;
