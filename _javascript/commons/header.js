@@ -12,6 +12,10 @@ const headerMainSelector     = '.page__header .main',
     '.page__header .main .header__title .header__brand-title'
   ];
 lazyload.onload(() => {
+
+  const _revert = true;
+  if(_revert) return; // disgraceful, revert 
+
   // window.document.querySelector('.header__title .header__brand-title').style.display = '';
   function hideHeaderElement() {
     /*
