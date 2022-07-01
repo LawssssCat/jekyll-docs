@@ -1,5 +1,7 @@
 ---
 # dynamic generate from _data 
+# Do not use '//' in the script, bu use '/*..........*/' for comments
+layout: compress
 ---
 
 {%- include snippets/get-themes.html -%}
