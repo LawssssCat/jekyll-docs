@@ -49,12 +49,19 @@
     & > a {
       display: inline-block;
       font-size: map-get($base, font-size-h4);
-
+    }
+    .header__brand-title {
+      @include media-breakpoint-down(md) {
+        display: none;
+      }
     }
   }
 
   .theme-btn {
     margin-left: map-get($spacers, 2);
+    @include media-breakpoint-down(md) {
+      display: none;
+    }
   }
 
   .navigation {
