@@ -59,6 +59,7 @@
 
   .navigation {
     @include overflow(auto, "x");
+    @include scrollbar($direction: "horizontal");
     & > ul {
       height: map-get($layout, header-height);
       @include menu(3, 2, nowrap);
