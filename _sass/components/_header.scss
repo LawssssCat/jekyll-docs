@@ -93,23 +93,49 @@
 
   .navigation__item {
     white-space: nowrap;
+    .navigation__item-sub_icon {
+      display: none;
+    }
     @include active() {
       @include nav_item_active();
     }
     @include hover() {
       @include nav_item_active();
+      .navigation__item-sub_icon {
+        transform: rotate(0deg);
+      }
+    }
+  }
+  @include media-breakpoint-up(lg) {
+    .navigation__item {
+      .navigation__item-sub_icon {
+        display: inline-block;
+        @include transition(transform .2s ease);
+        transform: rotate(90deg);
+      }
+      @include hover() {
+        .navigation__item-sub_icon {
+          transform: rotate(0deg);
+        }
+      }
     }
   }
 
   // sub nav active
+  %sub_navigation_active {
+    .sub_navigation__item-link {
+      @include themeify {
+        @include link-colors(themed(main-color-1), themed(main-color-1));
+      }
+    }
+  }
   .sub_navigation__item {
     white-space: nowrap;
+    @include hover() {
+      @extend %sub_navigation_active;
+    }
     @include active() {
-      .sub_navigation__item-link {
-        @include themeify {
-          @include link-colors(themed(main-color-1), themed(main-color-1));
-        }
-      }
+      @extend %sub_navigation_active;
     }
   }
 
@@ -120,8 +146,6 @@
     overflow: hidden;
     border-bottom-right-radius: map-get($base, border-radius);
     border-bottom-left-radius: map-get($base, border-radius);
-    @include box-shadow(2);
-    @include transition(max-height .1s ease);
     @include themeify {
       background: themed(header-background);
       // opacity: .92;
@@ -140,7 +164,13 @@
       margin-bottom: map-get($button, padding-y);
     }
   }
-  .navigation__item[data-show-sub_navigation] .sub_navigation {
-    max-height: 200px;
+  @include media-breakpoint-up(lg) {
+    .sub_navigation {
+      @include transition(max-height .3s ease);
+      @include box-shadow(2);
+    }
+    .navigation__item[data-hover-sub_navigation] .sub_navigation {
+      max-height: 200000px; // to the end of the world
+    }
   }
 }

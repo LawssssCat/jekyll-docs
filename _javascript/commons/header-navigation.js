@@ -25,7 +25,7 @@ lazyload.js([sources.popper.js], function() {
   });
 });
 
-const showClass = 'data-show-sub_navigation';
+const showClass = 'data-hover-sub_navigation';
 const showEvents = ['mouseenter', 'focus'];
 const hideEvents = ['mouseleave', 'blur'];
 
