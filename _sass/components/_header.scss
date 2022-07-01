@@ -91,9 +91,6 @@
     }
     @include hover() {
       @include nav_item_active();
-      .sub_navigation {
-        display: inherit;
-      }
     }
   }
 
@@ -110,7 +107,6 @@
   }
 
   .sub_navigation {
-    position: absolute;
     z-index: 9999;
     display: none;
     border-bottom-right-radius: map-get($base, border-radius);
@@ -134,5 +130,7 @@
       margin-bottom: map-get($button, padding-y);
     }
   }
-
+  .navigation__item[data-show-sub_navigation] .sub_navigation {
+    display: block;
+  }
 }
