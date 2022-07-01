@@ -13,7 +13,7 @@ const headerMainSelector     = '.page__header .main',
   ];
 lazyload.onload(() => {
   // window.document.querySelector('.header__title .header__brand-title').style.display = '';
-  window.addEventListener('resize', () => {
+  function hideHeaderElement() {
     /*
     | ------------------------------- headerMain --------------------------------- |
     | ------------ headerTitle ------------ | --------- headerNavigation --------- |
@@ -68,5 +68,7 @@ lazyload.onload(() => {
         dom.style.display = '';
       });
     }
-  });
+  }
+  hideHeaderElement();
+  window.addEventListener('resize', hideHeaderElement);
 });

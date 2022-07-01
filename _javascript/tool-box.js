@@ -68,7 +68,7 @@ TOOL.getStyle = function(obj, attr) {
   } else if (window.getComputedStyle) {
     return window.getComputedStyle(obj, null)[attr];
   } else {
-    return elem.style[attr];
+    return obj.style[attr];
   }
 };
 
@@ -81,7 +81,7 @@ function px2Float(px) {
 
 TOOL.innerWidth = function(dom) {
   if(!dom) return 0;
-  const flag = TOOL.isHidden(dom);
+  const flag = (TOOL.getStyle(dom, 'display') == 'none');
   if(flag) {
     dom = dom.cloneNode(true);
     dom.style.position = 'absolute';
