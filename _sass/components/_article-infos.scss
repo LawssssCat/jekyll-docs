@@ -3,11 +3,20 @@
   a {
     @include link-decoration();
   }
-  .infos {
-    @include flexbox();
-    @include align-items(center);
+  @include media-breakpoint-up(md) {
+    .infos {
+      @include flexbox();
+      @include flex-wrap(wrap);
+      @include align-items(center);
+    }
   }
   .article__author-avatar-wrapper {
+    display: none;
+    @include media-breakpoint-up(lg) {
+      display: block;
+    }
+  }
+  .article__author-avatar {
     $_width: map-get($image, width-xxs);
     $_border-width: 2px;
     $_border-width-inner: 4px;
@@ -33,8 +42,12 @@
   .info__item {
     padding-right: map-get($spacers, 4);
     p {
+      @include media-breakpoint-up(md) {
+        > span {
+          display: block;
+        }
+      }
       > span {
-        display: block;
         font-weight: map-get($base, font-weight-bold);
       }
       > font {

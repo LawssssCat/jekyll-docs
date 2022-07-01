@@ -28,7 +28,7 @@
       height: auto;
       max-height: 0;
       overflow: hidden;
-      transition: max-height .8s ease;
+      @include transition(max-height .8s ease);
     }
     &.active {
       > ol {

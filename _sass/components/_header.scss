@@ -49,21 +49,36 @@
     & > a {
       display: inline-block;
       font-size: map-get($base, font-size-h4);
-
+    }
+    .header__brand-title {
+      @include media-breakpoint-down(md) {
+        display: none;
+      }
     }
   }
 
   .theme-btn {
     margin-left: map-get($spacers, 2);
+    @include media-breakpoint-down(md) {
+      display: none;
+    }
   }
 
   .navigation {
     @include overflow(auto, "x");
+    @include scrollbar($direction: "horizontal");
     & > ul {
       height: map-get($layout, header-height);
-      @include menu(3, 2, nowrap);
+      @include menu(0, 0, nowrap);
       @include align-items(center);
-
+      > li {
+        padding-top: map-get($spacers, 2);
+        padding-right: map-get($spacers, 3);
+        padding-bottom: map-get($spacers, 2);
+        &:last-child {
+          padding-right: 0;
+        }
+      }
     }
   }
 
@@ -83,9 +98,6 @@
     }
     @include hover() {
       @include nav_item_active();
-      .sub_navigation {
-        display: inherit;
-      }
     }
   }
 
@@ -102,23 +114,25 @@
   }
 
   .sub_navigation {
-    position: absolute;
     z-index: 9999;
-    display: none;
+    // display: none;
+    max-height: 0;
+    overflow: hidden;
     border-bottom-right-radius: map-get($base, border-radius);
     border-bottom-left-radius: map-get($base, border-radius);
-    @include box-shadow();
+    @include box-shadow(2);
+    @include transition(max-height .1s ease);
     @include themeify {
       background: themed(header-background);
-      opacity: .92;
+      // opacity: .92;
     }
     & > ul {
       @include menu(3, 0);
       @include menu-direction(vertical);
     }
     .sub_navigation__item {
-      padding-right: map-get($button, padding-x);
-      padding-left: map-get($button, padding-x);
+      padding-right: map-get($button, padding-x-lg);
+      padding-left: map-get($button, padding-x-lg);
       margin-top: map-get($button, padding-y);
       white-space: nowrap;
     }
@@ -126,5 +140,7 @@
       margin-bottom: map-get($button, padding-y);
     }
   }
-
+  .navigation__item[data-show-sub_navigation] .sub_navigation {
+    max-height: 200px;
+  }
 }
