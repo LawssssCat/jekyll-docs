@@ -9,7 +9,7 @@
         {%- include svg/logo.svg -%}
         {%- assign _paths_root = site.data.variables.default.paths.root -%}
         {%- include snippets/get-nav-url.html path=_paths_root -%}
-        <a title="{{ site.description }}" href="{{ __return }}">{{ site.title }}</a>
+        <a class="header__brand-title" title="{{ site.description }}" href="{{ __return }}">{{ site.title }}</a>
       </div>
       {%- if _show_btn_change_theme -%}
         <div class="theme-btn">
