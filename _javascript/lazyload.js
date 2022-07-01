@@ -87,7 +87,11 @@ const lazyLoad = (function(doc) {
   onload(window.onload);
   window.onload = () => {
     winLoadFuncs.forEach(func => {
-      func && func.call(context);
+      try{
+        func && func.call(context);
+      } catch (err) {
+        console.error(err.stack); // prompt the console for errors and continue with the next task.
+      }
     });
     winLoad = true;
   };
