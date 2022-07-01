@@ -50,10 +50,44 @@ TOOL.isOverflowY = function(dom) {
   return dom.offsetHeight < dom.scrollHeight;
 };
 
+TOOL.isOverflowX = function(dom) {
+  return dom.offsetWidth < dom.scrollWidth;
+};
+
 TOOL.isHidden = function(element) {
   // var style = window.getComputedStyle(el);//el即DOM元素
   // return (style.display === 'none');
   return !element || (element.offsetHeight === 0 && element.offsetWidth === 0);
+};
+
+TOOL.getStyle = function(obj, attr) {
+  if (obj.currentStyle) { // compatible IE
+    return obj.currentStyle[attr];
+  } else {
+    return document.defaultView.getComputedStyle(obj, null)[attr];
+  }
+};
+
+function px2Float(px) {
+  if(!px) return 0;
+  const intStr=px.replace('px');
+  return parseFloat(intStr);
+}
+
+TOOL.innerWidth = function(dom) {
+  if(!dom) return 0;
+  const paddingLeft      =px2Float(TOOL.getStyle(dom, 'paddingLeft')),
+    innerWidth           =px2Float(TOOL.getStyle(dom, 'width')),
+    paddingRight         =px2Float(TOOL.getStyle(dom, 'paddingRight'));
+  return -paddingLeft+innerWidth-paddingRight;
+};
+
+TOOL.outterWidth = function(dom) {
+  if(!dom) return 0;
+  const marginLeft     =px2Float(TOOL.getStyle(dom, 'marginLeft')),
+    marginRight        =px2Float(TOOL.getStyle(dom, 'marginRight')),
+    innerWidth         =TOOL.innerWidth(dom);
+  return marginLeft+innerWidth+marginRight;
 };
 
 module.exports = TOOL;
