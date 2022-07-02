@@ -241,11 +241,15 @@ $height_header: map-get($layout, header-height) - $height_header_top;
         @include transition(transform .2s ease);
         transform: rotate(90deg);
       }
-      // @include hover() {
-      //   .navigation__item-sub_icon {
-      //     transform: rotate(0deg);
-      //   }
-      // }
+      &.sub_navigation-open {
+        .navigation__item-sub_icon {
+          transform: rotate(0deg);
+        }
+      }
+      filter: brightness(98%);
+      @include hover() {
+        filter: brightness(105%);
+      }
     }
     .navigation {
       position: absolute;
@@ -257,7 +261,9 @@ $height_header: map-get($layout, header-height) - $height_header_top;
       overflow-y: auto;
       @include scrollbar-none;
       > ul {
-        height: 100%;
+        height: auto;
+        background: transparent;
+        @include box-shadow(2);
         @include menu-direction(vertical);
         > li {
           width: 100%;
@@ -269,12 +275,12 @@ $height_header: map-get($layout, header-height) - $height_header_top;
           @include themeify {
             background: themed(header-background);
             // opacity: .92;
+            border-top: 1px solid rgba(themed(text-color-theme-light-l), .2);
           }
           &:last-child {
             border-bottom-right-radius: map-get($base, border-radius);
             border-bottom-left-radius: map-get($base, border-radius);
           }
-          @include box-shadow(2);
         }
       }
     }

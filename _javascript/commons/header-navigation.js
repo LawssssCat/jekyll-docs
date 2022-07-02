@@ -38,6 +38,22 @@ lazyload.onload(() => {
   });
 });
 
+lazyload.onload(() => {
+  const toggleClassName = 'sub_navigation-open';
+  Array.from(window.document.querySelectorAll('.navigation__item')).forEach(nav => {
+    let subnavToggle = nav.querySelector('.navigation__item-sub_icon');
+    if(subnavToggle) {
+      subnavToggle.addEventListener('click', () => {
+        if(nav.classList.contains(toggleClassName)) {
+          nav.classList.remove(toggleClassName);
+        } else {
+          nav.classList.add(toggleClassName);
+        }
+      });
+    }
+  });
+});
+
 const showClass = 'data-hover-sub_navigation';
 const showEvents = ['mouseenter', 'focus'];
 const hideEvents = ['mouseleave', 'blur'];
