@@ -21,16 +21,28 @@ lazyload.js([sources.popper.js], function() {
   });
 
   // init subnav poppover
+  const subNavs = [];
   navs.forEach(item => {
     let subNav = new SubNav(item.nav, item.subnav);
     subNav.init();
+    subNavs.push(subNav);
   });
 
   // listen to change poppover
-  const toggle = window.document.querySelector('.navigation__toggle');
-  TOOL.respondToVisibility(toggle, (visible) => {
-    console.log(visible);
-  });
+  if (subNavs.length>0) {
+    const toggle = window.document.querySelector('.navigation__toggle');
+    TOOL.respondToVisibility(toggle, (visible) => {
+      if (visible) {
+        subNavs.forEach(subNav => {
+          subNav.disable();
+        });
+      } else {
+        subNavs.forEach(subNav => {
+          subNav.enable();
+        });
+      }
+    });
+  }
 
 });
 
@@ -42,9 +54,13 @@ class SubNav {
   constructor(nav, subnav) {
     this.nav = nav;
     this.subnav = subnav;
+    this.generateSnapshot();
     this.popover = window.Popper.createPopper(this.nav, this.subnav, {
       placement: 'bottom'
     });
+  }
+  generateSnapshot() {
+    this.subnavClone = this.subnav.cloneNode(true);
   }
   init() {
     showEvents.forEach((event) => {
@@ -89,5 +105,23 @@ class SubNav {
         { name: 'eventListeners', enabled: false }
       ]
     }));
+  }
+  disable() {
+    if(!this.disableStatus) {
+      this.subnav.remove();
+      this.subnavClone.remove();
+      this.nav.appendChild(this.subnavClone);
+    }
+    this.disableStatus=true;
+  }
+  enable() {
+    if(this.disableStatus) {
+      this.subnav.remove();
+      this.subnavClone.remove();
+      this.nav.appendChild(this.subnav);
+      // Update its position
+      this.popover.update();
+    }
+    this.disableStatus=false;
   }
 }
