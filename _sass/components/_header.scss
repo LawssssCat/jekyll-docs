@@ -72,14 +72,8 @@ $height_header: map-get($layout, header-height) - $height_header_top;
 
   // =================================== navigation toggle ==================================
 
-  $_mobile_nav_width  : map-get($base, font-size) * 5;
-  $_modile_nav_margin : map-get($button, padding-x);
-
   .navigation__toggle {
     $_h: map-get($base, font-size-h4) * 1.6;
-    position: absolute;
-    top: $height_header_top + $height_header / 2 - $_h / 2;
-    right: $_modile_nav_margin + $_mobile_nav_width / 2 - $_h / 2;
     z-index: 100;
     width: $_h;
     height: $_h;
@@ -249,15 +243,16 @@ $height_header: map-get($layout, header-height) - $height_header_top;
       position: absolute;
       top: $height_header_top + $height_header;
       right: 0;
-      width: $_mobile_nav_width + $_modile_nav_margin * 2;
+      width: 100%;
       height: 0;
+      @include transition(height .2s ease);
       overflow-y: auto;
       @include scrollbar-none;
       > ul {
         height: 100%;
         @include menu-direction(vertical);
         > li {
-          width: $_mobile_nav_width;
+          width: 100%;
           padding-right: 0;
           @include flexbox();
           @include justify-content(center);
