@@ -226,11 +226,13 @@ $height_header: map-get($layout, header-height) - $height_header_top;
   }
   @include media-breakpoint-up(lg) {
     .sub_navigation {
-      @include transition(max-height .3s ease);
+      @include transition(max-height .2s ease);
       @include box-shadow(2);
     }
     .navigation__item[data-hover-sub_navigation] .sub_navigation {
-      max-height: 200000px; // to the end of the world
+      max-height: calc(100vh - #{$height_header});
+      overflow-y: auto;
+      @include scrollbar-none;
     }
   }
 }
