@@ -80,6 +80,10 @@
         }
       }
     }
+    @include media-breakpoint-down(lg) {
+      position: absolute;
+      max-height: 0;
+    }
   }
 
   // nav active
@@ -140,6 +144,7 @@
   }
 
   .sub_navigation {
+    position: absolute;
     z-index: 9999;
     // display: none;
     max-height: 0;
