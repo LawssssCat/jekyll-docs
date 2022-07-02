@@ -4,6 +4,20 @@ TOOL.hasEvent = function (event) {
   return 'on'.concat(event) in window.document;
 };
 
+TOOL.historyReplaceHash = function (hash) {
+  const split = window.location.href.split('?');
+  let baseUrl = split[0].split('#')[0], query = split.length>1?split[1]:'';
+  let href=baseUrl;
+  if(hash) {
+    hash = hash.replace('#', '');
+    href = `${href}#${hash}`;
+  }
+  if(query) {
+    href = `${href}?${query}`;
+  }
+  history.replaceState(null, '', href);
+};
+
 // min <= r <= max
 TOOL.randomInt = function (Min,Max) {
   var num = Min + Math.round(Math.random() * (Max - Min)); 
@@ -123,6 +137,27 @@ TOOL.childTotalWidth = function(dom) {
       return width ? width + sum : sum;
     }, 0);
   return innerWidth>childTotalWidth ? childTotalWidth : innerWidth;
+};
+
+// Start observing visbility of element. On change, the
+//   the callback is called with Boolean visibility as
+//   argument:
+// 
+// see: https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API
+// demo: https://jsfiddle.net/elmarj/u35tez5n/5
+TOOL.respondToVisibility = function(element, callback) {
+  var options = {
+    root: document.documentElement
+  };
+
+  // eslint-disable-next-line no-unused-vars
+  var observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      callback(entry.intersectionRatio > 0);
+    });
+  }, options);
+
+  observer.observe(element);
 };
 
 module.exports = TOOL;

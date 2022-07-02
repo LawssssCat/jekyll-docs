@@ -6,6 +6,20 @@
   }
 }
 
+/*
+  $type = dark/light
+*/
+@function get-color-adjust($type, $color, $level: default) {
+  @if $level == default {
+    $level: 1;
+  }
+  @if $type == "dark" {
+    @return darken($color, map-get($dark, $level));
+  } @else {
+    @return lighten($color, map-get($light, $level));
+  }
+}
+
 // @function breakpoint-infix($name, $breakpoints: default) {
 //   @if $breakpoints == default {
 //     $breakpoints: $responsive;

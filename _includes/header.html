@@ -4,6 +4,7 @@
 
 <header class="header">
   <div class="main">
+    <!-- title -->
     <div class="header__title">
       <div class="header__brand">
         {%- include svg/logo.svg -%}
@@ -21,6 +22,17 @@
         <script src="{{ __return }}"></script>
       {%- endif -%}
     </div>
+    <!-- navigation toggle -->
+    <div class="navigation__toggle">
+      <a href="#" aria-label="Menu" class="toggle">
+        <div class="toggle-inner">
+          <div class="toggle__bar"></div>
+          <div class="toggle__bar"></div>
+          <div class="toggle__bar"></div>
+        </div>
+      </a>
+    </div>
+    <!-- navigation -->
     <div class="navigation">
       <ul>
         <!-- top navs -->
@@ -44,7 +56,7 @@
             {%- assign _sub_navs = site.data.navigation.header | where: 'parent', _item.key -%}
             {%- assign _sub_navs_num = _sub_navs | size -%}
             {%- if _sub_navs_num > 0 -%}
-              <i class="fas fa-caret-down"></i>
+              <i class="fas fa-caret-down navigation__item-sub_icon"></i>
               <div class="sub_navigation">
                 <ul>
                   {%- for _sub_item in _sub_navs -%}
