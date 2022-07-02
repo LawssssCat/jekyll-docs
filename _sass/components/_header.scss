@@ -77,9 +77,23 @@ $height_header: map-get($layout, header-height) - $height_header_top;
     z-index: 100;
     width: $_h;
     height: $_h;
+    @include button();
+    @include button--md();
+    @extend .button--rounded;
+    @include themeify {
+      @include hover() {
+        // color: themed(main-color-3);
+        background: themed(text-color-3); // @include clickable(themed($color), transparent, , themed($color));
+        .toggle__bar {
+          background: themed(main-color-3) !important;
+        }
+      }
+    }
+    // @include themeify {
+    //   @include button--outline(text-color-3, main-color-3);
+    // }
     padding: map-get($spacers, 2) map-get($spacers, 1);
     .toggle {
-      cursor: pointer;
       .toggle-inner {
         @include flexbox();
         @include justify-content(space-between);
