@@ -1,12 +1,16 @@
 /* stylelint-disable scss/no-global-function-names */
+$height_header_top: map-get($spacers, 1);
+$height_header: map-get($layout, header-height) - $height_header_top;
+
 .page__header {
   @include themeify {
     $_top: themed(header-background-top);
-    @if $_top {
-      padding-top: map-get($spacers, 2);
-      background: $_top;
+    @if not $_top {
+      $_top: themed(header-background);
     }
+    background: $_top;
   }
+  padding-top: $height_header_top;
   @include box-shadow();
   .header {
     @include themeify {
@@ -30,7 +34,7 @@
     @include align-items(center);
     @include flex-wrap(nowrap);
     @include flex(1);
-    height: map-get($layout, header-height);
+    height: $height_header;
     margin-right: map-get($spacers, 3);
     white-space: nowrap;
   }
@@ -68,7 +72,7 @@
     @include overflow(auto, "x");
     @include scrollbar($direction: "horizontal");
     & > ul {
-      height: map-get($layout, header-height);
+      height: $height_header;
       @include menu(0, 0, nowrap);
       @include align-items(center);
       > li {
