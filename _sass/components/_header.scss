@@ -160,6 +160,7 @@ $height_header: map-get($layout, header-height) - $height_header_top;
   .navigation__item {
     white-space: nowrap;
     .navigation__item-sub_icon {
+      @include transition(transform .2s cubic-bezier(.68, -.55, .27, 1.55));
       display: none;
     }
     @include active() {
@@ -193,6 +194,7 @@ $height_header: map-get($layout, header-height) - $height_header_top;
     z-index: 9999;
     // display: none;
     max-height: 0;
+    @include transition(max-height .2s ease);
     overflow: hidden;
     border-bottom-right-radius: map-get($base, border-radius);
     border-bottom-left-radius: map-get($base, border-radius);
@@ -209,6 +211,9 @@ $height_header: map-get($layout, header-height) - $height_header_top;
       padding-right: map-get($button, padding-x-lg);
       padding-left: map-get($button, padding-x-lg);
       white-space: nowrap;
+      a {
+        display: block;
+      }
     }
     .sub_navigation__item:last-child {
       padding-bottom: map-get($button, padding-y);
@@ -226,7 +231,6 @@ $height_header: map-get($layout, header-height) - $height_header_top;
     .navigation__item {
       .navigation__item-sub_icon {
         display: inline-block;
-        @include transition(transform .2s ease);
         transform: rotate(90deg);
       }
       @include hover() {
@@ -237,7 +241,6 @@ $height_header: map-get($layout, header-height) - $height_header_top;
     }
     // sub nav
     .sub_navigation {
-      @include transition(max-height .2s ease);
       @include box-shadow(2);
     }
     .navigation__item[data-hover-sub_navigation] .sub_navigation {
@@ -250,10 +253,11 @@ $height_header: map-get($layout, header-height) - $height_header_top;
   // ================================================ media down lg
   @include media-breakpoint-down(lg) {
     .navigation__item {
+      @include flexbox();
+      @include flex-wrap(wrap);
       .navigation__item-sub_icon {
         @include button();
         @include button--md();
-        @include transition(transform .2s ease);
         border-radius: map-get($base, border-radius);
         transform: rotate(90deg);
         @include hover() {
@@ -263,9 +267,38 @@ $height_header: map-get($layout, header-height) - $height_header_top;
           }
         }
       }
+      .navigation__item-link {
+        @include flexbox();
+        @include flex(1);
+      }
+      .sub_navigation {
+        position: relative;
+        width: 100%;
+        li {
+          border-radius: map-get($base, border-radius);
+          @include hover() {
+            @include themeify {
+              background: themed(main-color-1);
+              /* stylelint-disable-next-line selector-max-compound-selectors */
+              a, a:hover {
+                color: themed(text-color-1);
+                text-decoration: none;
+              }
+            }
+          }
+        }
+      }
       &.sub_navigation-open {
         .navigation__item-sub_icon {
           transform: rotate(0deg);
+        }
+        .sub_navigation {
+          max-height: 2000px;
+          li {
+            padding-top: map-get($button, padding-y);
+            padding-bottom: map-get($button, padding-y);
+            margin-right: map-get($button, padding-x-lg);
+          }
         }
       }
       @include hover() {
