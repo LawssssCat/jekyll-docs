@@ -8,4 +8,7 @@ lazyload.onload(() => {
     scrollTarget: null //'.js-article-content'
   });
   toc.init();
+  if(toc.disable) {
+    window.document.querySelector('.js-toc-root').innerHTML = 'no headings...';
+  }
 });
