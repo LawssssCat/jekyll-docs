@@ -72,10 +72,17 @@ $height_header: map-get($layout, header-height) - $height_header_top;
 
   // =================================== navigation toggle ==================================
 
+  $_mobile_nav_width  : map-get($base, font-size) * 5;
+  $_modile_nav_margin : map-get($button, padding-x);
+
   .navigation__toggle {
+    $_h: map-get($base, font-size-h4) * 1.6;
+    position: absolute;
+    top: $height_header_top + $height_header / 2 - $_h / 2;
+    right: $_modile_nav_margin + $_mobile_nav_width / 2 - $_h / 2;
     z-index: 100;
-    width: map-get($base, font-size-h4) * 1.6;
-    height: map-get($base, font-size-h4) * 1.6;
+    width: $_h;
+    height: $_h;
     padding: map-get($spacers, 2) map-get($spacers, 1);
     .toggle {
       cursor: pointer;
@@ -135,12 +142,43 @@ $height_header: map-get($layout, header-height) - $height_header_top;
         }
       }
     }
-    @include media-breakpoint-down(lg) {
+  }
+  @include media-breakpoint-down(lg) {
+    .navigation {
       position: absolute;
-      max-height: 0;
+      top: $height_header_top + $height_header;
+      right: 0;
+      width: $_mobile_nav_width + $_modile_nav_margin * 2;
+      height: 0;
+      overflow-y: auto;
+      @include scrollbar-none;
+      > ul {
+        height: 100%;
+        @include menu-direction(vertical);
+        > li {
+          width: $_mobile_nav_width;
+          padding-right: 0;
+          @include flexbox();
+          @include justify-content(center);
+          @include align-items(center);
+          @include themeify {
+            background: themed(header-background);
+            // opacity: .92;
+          }
+          &:last-child {
+            border-bottom-right-radius: map-get($base, border-radius);
+            border-bottom-left-radius: map-get($base, border-radius);
+          }
+          @include box-shadow(2);
+        }
+      }
+    }
+    &.navigation--mobile-open {
+      .navigation {
+        height: calc(100vh - #{$height_header});
+      }
     }
   }
-
   // nav active
   @mixin nav_item_active {
     .navigation__item-link {
@@ -215,13 +253,13 @@ $height_header: map-get($layout, header-height) - $height_header_top;
       @include menu-direction(vertical);
     }
     .sub_navigation__item {
+      padding-top: map-get($button, padding-y);
       padding-right: map-get($button, padding-x-lg);
       padding-left: map-get($button, padding-x-lg);
-      margin-top: map-get($button, padding-y);
       white-space: nowrap;
     }
     .sub_navigation__item:last-child {
-      margin-bottom: map-get($button, padding-y);
+      padding-bottom: map-get($button, padding-y);
     }
   }
   @include media-breakpoint-up(lg) {
