@@ -26,8 +26,8 @@
   &::-webkit-scrollbar-thumb {
     background: $color-thumb;
     border-radius: $size / 2;
-    &:hover { background: darken($color-thumb, 18%); }
-    &:active { background: darken($color-thumb, 30%); }
+    &:hover { background: get-color-adjust("dark", $color-thumb, 3); }
+    &:active { background: get-color-adjust("dark", $color-thumb, 4); }
   }
 }
 
