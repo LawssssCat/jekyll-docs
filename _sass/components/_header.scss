@@ -236,7 +236,8 @@ $height_header: map-get($layout, header-height) - $height_header_top;
   @include media-breakpoint-down(lg) {
     .navigation__item {
       .navigation__item-sub_icon {
-        display: inline-block;
+        @include button();
+        @include button--md();
         @include transition(transform .2s ease);
         transform: rotate(90deg);
       }

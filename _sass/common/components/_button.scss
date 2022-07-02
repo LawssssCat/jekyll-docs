@@ -16,6 +16,15 @@
   // }
 }
 
+@mixin button--md() {
+  padding: map-get($button, padding-y) map-get($button, padding-x);
+  font-size: map-get($base, font-size);
+  &.button--circle {
+    width: map-get($button, circle-diameter);
+    height: map-get($button, circle-diameter);
+  }
+}
+
 .button {
   @include button();
 }
@@ -100,12 +109,12 @@
 
 .button--pill {
   border-radius: map-get($button, pill-radius);
-  @extend %button--md;
+  @include button--md;
 }
 
 .button--rounded {
   border-radius: map-get($base, border-radius);
-  @extend %button--md;
+  @include button--md;
 }
 
 .button--circle {
@@ -113,7 +122,7 @@
   @include justify-content(center);
   @include align-items(center);
   border-radius: 50%;
-  @extend %button--md;
+  @include button--md;
 }
 
 .button--tag {
@@ -138,16 +147,7 @@
 }
 
 .button--md {
-  @extend %button--md;
-}
-
-%button--md {
-  padding: map-get($button, padding-y) map-get($button, padding-x);
-  font-size: map-get($base, font-size);
-  &.button--circle {
-    width: map-get($button, circle-diameter);
-    height: map-get($button, circle-diameter);
-  }
+  @include button--md;
 }
 
 .button--xs {
