@@ -21,6 +21,7 @@ en: &EN
   GITHUB                  : "GitHub"
   READ_BY                 : "Views"
   HITS                    : "Hits"
+  TOC_TITLE               : "In this article"
 
 en-GB:
   <<: *EN

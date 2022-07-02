@@ -2,6 +2,9 @@
 /* stylelint-disable selector-max-compound-selectors */
 /* stylelint-disable scss/no-global-function-names */
 .toc-aside {
+  .toc-handing {
+    font-size: map-get($base, font-size-lg);
+  }
   .toc {
     max-height: calc(100vh - #{map-get($spacers, 5)});
     overflow-y: auto;
