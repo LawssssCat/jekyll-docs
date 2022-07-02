@@ -142,6 +142,8 @@ class Toc {
       const flagIgnore = header.hasAttribute(this.config.headerIgnoreAttr);
       return id!=null && !flagIgnore;
     });
+    if(this.headers.length==0) this.disable = true;
+    if(this.disable) return;
     // scroll
     this.activeClass = 'active';
     this.scrollTarget = typeof this.config.scrollTarget == 'string' ? window.document.querySelector(this.config.scrollTarget) : this.config.scrollTarget;

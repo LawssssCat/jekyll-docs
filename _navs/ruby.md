@@ -1,5 +1,7 @@
 ---
-layout: page
+layout: article
+aside:
+  toc: true
 ---
 
 api - <https://ruby-doc.org/core-2.5.0/>\
