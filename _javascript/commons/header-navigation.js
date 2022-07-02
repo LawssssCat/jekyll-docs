@@ -30,13 +30,15 @@ lazyload.onload(() => {
   const toggle = window.document.querySelector('.navigation__toggle');
   const toggleClassName = 'navigation--mobile-open';
   window.addEventListener('click', (e) => {
-    if(!e.path.includes(toggle)) {
+    if(!e.path.includes(header)) {
       header.classList.remove(toggleClassName);
     } else {
-      if(header.classList.contains(toggleClassName)) {
-        header.classList.remove(toggleClassName);
-      } else {
-        header.classList.add(toggleClassName);
+      if(e.path.includes(toggle)) {
+        if(header.classList.contains(toggleClassName)) {
+          header.classList.remove(toggleClassName);
+        } else {
+          header.classList.add(toggleClassName);
+        }
       }
     }
   });
