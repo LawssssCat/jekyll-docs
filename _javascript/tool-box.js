@@ -4,6 +4,20 @@ TOOL.hasEvent = function (event) {
   return 'on'.concat(event) in window.document;
 };
 
+TOOL.historyReplaceHash = function (hash) {
+  const split = window.location.href.split('?');
+  let baseUrl = split[0].split('#')[0], query = split.length>1?split[1]:'';
+  let href=baseUrl;
+  if(hash) {
+    hash = hash.replace('#', '');
+    href = `${href}#${hash}`;
+  }
+  if(query) {
+    href = `${href}?${query}`;
+  }
+  history.replaceState(null, '', href);
+};
+
 // min <= r <= max
 TOOL.randomInt = function (Min,Max) {
   var num = Min + Math.round(Math.random() * (Max - Min)); 
