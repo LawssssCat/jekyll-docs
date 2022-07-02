@@ -139,4 +139,25 @@ TOOL.childTotalWidth = function(dom) {
   return innerWidth>childTotalWidth ? childTotalWidth : innerWidth;
 };
 
+// Start observing visbility of element. On change, the
+//   the callback is called with Boolean visibility as
+//   argument:
+// 
+// see: https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API
+// demo: https://jsfiddle.net/elmarj/u35tez5n/5
+TOOL.respondToVisibility = function(element, callback) {
+  var options = {
+    root: document.documentElement
+  };
+
+  // eslint-disable-next-line no-unused-vars
+  var observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      callback(entry.intersectionRatio > 0);
+    });
+  }, options);
+
+  observer.observe(element);
+};
+
 module.exports = TOOL;

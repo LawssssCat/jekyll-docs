@@ -1,6 +1,7 @@
 // popper.js 
 // see https://popper.js.org/
 
+const TOOL = require('tool-box');
 const lazyload = require('lazyload');
 const sources = window.VARIABLES.sources;
 
@@ -19,45 +20,18 @@ lazyload.js([sources.popper.js], function() {
     }
   });
 
+  // init subnav poppover
   navs.forEach(item => {
     let subNav = new SubNav(item.nav, item.subnav);
     subNav.init();
   });
-});
 
-lazyload.onload(() => {
-  const header = window.document.querySelector('.js-header');
+  // listen to change poppover
   const toggle = window.document.querySelector('.navigation__toggle');
-  const toggleClassName = 'navigation--mobile-open';
-  window.addEventListener('click', (e) => {
-    if(!e.path.includes(header)) {
-      header.classList.remove(toggleClassName);
-    } else {
-      if(e.path.includes(toggle)) {
-        if(header.classList.contains(toggleClassName)) {
-          header.classList.remove(toggleClassName);
-        } else {
-          header.classList.add(toggleClassName);
-        }
-      }
-    }
+  TOOL.respondToVisibility(toggle, (visible) => {
+    console.log(visible);
   });
-});
 
-lazyload.onload(() => {
-  const toggleClassName = 'sub_navigation-open';
-  Array.from(window.document.querySelectorAll('.navigation__item')).forEach(nav => {
-    let subnavToggle = nav.querySelector('.navigation__item-sub_icon');
-    if(subnavToggle) {
-      subnavToggle.addEventListener('click', () => {
-        if(nav.classList.contains(toggleClassName)) {
-          nav.classList.remove(toggleClassName);
-        } else {
-          nav.classList.add(toggleClassName);
-        }
-      });
-    }
-  });
 });
 
 const showClass = 'data-hover-sub_navigation';

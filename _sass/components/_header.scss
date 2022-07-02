@@ -79,6 +79,7 @@ $height_header: map-get($layout, header-height) - $height_header_top;
     height: $_h;
     @include button();
     @include button--md();
+    // stylelint-disable-next-line scss/at-extend-no-missing-placeholder
     @extend .button--rounded;
     @include themeify {
       @include hover() {
