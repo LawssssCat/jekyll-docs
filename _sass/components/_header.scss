@@ -103,10 +103,6 @@ $height_header: map-get($layout, header-height) - $height_header_top;
         }
       }
     }
-    @include media-breakpoint-up(lg) {
-      display: none;
-      opacity: 0;
-    }
   }
   &.navigation--mobile-open {
     .navigation__toggle {
@@ -143,42 +139,6 @@ $height_header: map-get($layout, header-height) - $height_header_top;
       }
     }
   }
-  @include media-breakpoint-down(lg) {
-    .navigation {
-      position: absolute;
-      top: $height_header_top + $height_header;
-      right: 0;
-      width: $_mobile_nav_width + $_modile_nav_margin * 2;
-      height: 0;
-      overflow-y: auto;
-      @include scrollbar-none;
-      > ul {
-        height: 100%;
-        @include menu-direction(vertical);
-        > li {
-          width: $_mobile_nav_width;
-          padding-right: 0;
-          @include flexbox();
-          @include justify-content(center);
-          @include align-items(center);
-          @include themeify {
-            background: themed(header-background);
-            // opacity: .92;
-          }
-          &:last-child {
-            border-bottom-right-radius: map-get($base, border-radius);
-            border-bottom-left-radius: map-get($base, border-radius);
-          }
-          @include box-shadow(2);
-        }
-      }
-    }
-    &.navigation--mobile-open {
-      .navigation {
-        height: calc(100vh - #{$height_header});
-      }
-    }
-  }
   // nav active
   @mixin nav_item_active {
     .navigation__item-link {
@@ -200,20 +160,6 @@ $height_header: map-get($layout, header-height) - $height_header_top;
       @include nav_item_active();
       .navigation__item-sub_icon {
         transform: rotate(0deg);
-      }
-    }
-  }
-  @include media-breakpoint-up(lg) {
-    .navigation__item {
-      .navigation__item-sub_icon {
-        display: inline-block;
-        @include transition(transform .2s ease);
-        transform: rotate(90deg);
-      }
-      @include hover() {
-        .navigation__item-sub_icon {
-          transform: rotate(0deg);
-        }
       }
     }
   }
@@ -262,7 +208,29 @@ $height_header: map-get($layout, header-height) - $height_header_top;
       padding-bottom: map-get($button, padding-y);
     }
   }
+
+  // ================================================ media up lg
+
   @include media-breakpoint-up(lg) {
+    // toggle
+    .navigation__toggle {
+      display: none;
+      opacity: 0;
+    }
+    // nav 
+    .navigation__item {
+      .navigation__item-sub_icon {
+        display: inline-block;
+        @include transition(transform .2s ease);
+        transform: rotate(90deg);
+      }
+      @include hover() {
+        .navigation__item-sub_icon {
+          transform: rotate(0deg);
+        }
+      }
+    }
+    // sub nav
     .sub_navigation {
       @include transition(max-height .2s ease);
       @include box-shadow(2);
@@ -271,6 +239,45 @@ $height_header: map-get($layout, header-height) - $height_header_top;
       max-height: calc(100vh - #{$height_header});
       overflow-y: auto;
       @include scrollbar-none;
+    }
+  }
+
+  // ================================================ media down lg
+
+  @include media-breakpoint-down(lg) {
+    .navigation {
+      position: absolute;
+      top: $height_header_top + $height_header;
+      right: 0;
+      width: $_mobile_nav_width + $_modile_nav_margin * 2;
+      height: 0;
+      overflow-y: auto;
+      @include scrollbar-none;
+      > ul {
+        height: 100%;
+        @include menu-direction(vertical);
+        > li {
+          width: $_mobile_nav_width;
+          padding-right: 0;
+          @include flexbox();
+          @include justify-content(center);
+          @include align-items(center);
+          @include themeify {
+            background: themed(header-background);
+            // opacity: .92;
+          }
+          &:last-child {
+            border-bottom-right-radius: map-get($base, border-radius);
+            border-bottom-left-radius: map-get($base, border-radius);
+          }
+          @include box-shadow(2);
+        }
+      }
+    }
+    &.navigation--mobile-open {
+      .navigation {
+        height: calc(100vh - #{$height_header});
+      }
     }
   }
 }
