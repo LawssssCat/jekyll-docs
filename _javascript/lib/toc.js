@@ -171,6 +171,8 @@ class Toc {
             top: offsetTop,
             behavior: 'smooth'
           });
+
+          TOOL.historyReplaceHash(href);
         });
       }
     });
