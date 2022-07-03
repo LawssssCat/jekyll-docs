@@ -54,18 +54,18 @@
   //   }
   // }
   li {
-    a {
+    & > a {
       display: block;
       // margin-left: 1px;
       font-weight: map-get($base, font-weight);
       @include themeify {
         background: themed(background-color);
-        border-left: 1px solid rgba(themed(text-color-theme-light-l), .2);
+        @include split-line(left);
         @include link-colors(themed(text-color-theme-light-l));
         @include hover { /* must in themeify, because of additional settings in link-colors */
           color: themed(main-color-1);
           text-decoration: none;
-          border-left: 1px solid themed(main-color-1);
+          @include split-line(left, 1px, themed(main-color-1));
         }
       }
     }
@@ -74,7 +74,7 @@
         @include themeify {
           // background-color: transparent;
           color: themed(main-color-1);
-          border-left: 2px solid themed(main-color-1);
+          @include split-line(left, 2px, themed(main-color-1));
         }
       }
     }

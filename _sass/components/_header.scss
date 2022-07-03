@@ -334,7 +334,7 @@ $height_header: map-get($layout, header-height) - $height_header_top;
           @include themeify {
             background: themed(header-background);
             // opacity: .92;
-            border-top: 1px solid rgba(themed(text-color-theme-light-l), .2);
+            @include split-line(top, 1px);
           }
         }
       }
