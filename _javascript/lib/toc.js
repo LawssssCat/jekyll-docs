@@ -178,11 +178,16 @@ class Toc {
       }
     });
   }
+  disable() {
+    return TOOL.isHidden(this.toc)
+      || (this.headers.length==0);
+  }
   rander() {
     const tocDOM = generateDOM.call(this, this.headers, this.levels);
     this.toc.appendChild(tocDOM);
   }
   updateToc() {
+    if(this.disable()) return; // if no header or display=none, don't update
     this.updateActive();
     this.updateTocScroll();
   }

@@ -6,6 +6,14 @@ const lazyLoad = (function(doc) {
     sources = {js: {}, css: {}}, // load url status
     context=this;
 
+  function runFunction(func, caller=context) {
+    try{
+      func && func.call(caller);
+    } catch (err) {
+      console.error('stack', err.stack, 'func', func, 'context', caller); // prompt the console for errors and continue with the next task.
+    }
+  }
+
   function createNode(name, attrs) {
     const node = doc.createElement(name);
     for(const [key, value] of Object.entries(attrs)) {
@@ -27,7 +35,7 @@ const lazyLoad = (function(doc) {
         if(flag == true) {
           item.load = true;
           item.callbacks.forEach(callback => {       // trigger callbacks of item one by one, which have just been loaded
-            callback.call(context);
+            runFunction(callback);
           });
         }
       }
@@ -49,7 +57,7 @@ const lazyLoad = (function(doc) {
     if(qRecord) { // queue record exists
       if(!callback) return;
       if(qRecord.load == true) {      // dependencies had loaded.  ==> run callback directly
-        callback.call(context);
+        runFunction(callback);
       } else {                        // dependencies are loading. ==> run callback after loading
         qRecord.callbacks.push(callback);
       }
@@ -87,7 +95,7 @@ const lazyLoad = (function(doc) {
   onload(window.onload);
   window.onload = () => {
     winLoadFuncs.forEach(func => {
-      func && func.call(context);
+      runFunction(func);
     });
     winLoad = true;
   };

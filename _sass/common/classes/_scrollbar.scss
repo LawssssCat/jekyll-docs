@@ -1,0 +1,38 @@
+/* stylelint-disable scss/no-global-function-names */
+@mixin scrollbar($size: default, $color-track: default, $color-thumb: default, $direction: default) {
+  @if $size == default {
+    $size: 8px;
+  }
+  @if $direction == default {
+    $direction: "vertical";
+  }
+  @if $color-track == default {
+    $color-track: rgb(222, 220, 220);
+  }
+  @if $color-thumb == default {
+    $color-thumb: rgb(136, 136, 136);
+  }
+  &::-webkit-scrollbar {
+    @if $direction == "vertical" {
+      width: $size;
+    } @else if $direction == "horizontal" { /* horizontal */
+      height: $size;
+    }
+  }
+  &::-webkit-scrollbar-track {
+    background: $color-track;
+    border-radius: $size / 2;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: $color-thumb;
+    border-radius: $size / 2;
+    &:hover { background: get-color-adjust("dark", $color-thumb, 3); }
+    &:active { background: get-color-adjust("dark", $color-thumb, 4); }
+  }
+}
+
+@mixin scrollbar-none {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
