@@ -160,7 +160,7 @@ $height_header: map-get($layout, header-height) - $height_header_top;
   .navigation__item {
     white-space: nowrap;
     .navigation__item-sub_icon {
-      @include transition(transform .2s cubic-bezier(.68, -.55, .27, 1.55));
+      @include transition(transform .2s map-get($animation-timing-function, 2));
       display: none;
     }
     @include active() {
