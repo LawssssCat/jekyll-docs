@@ -108,5 +108,7 @@ aside.toc.selectors
 
 open obj
 
-`page.sidebar.nav` `a_sidebar_key`
-`layout.sidebar.nav` `a_sidebar_key`
+`page.sidebar.quicklinks` 
+`layout.sidebar.quicklinks`
+
+the values define in `_data/quicklinks.yml`.

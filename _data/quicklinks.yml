@@ -1,0 +1,12 @@
+# class: ''(default) 'strong'
+layouts:
+  - title: Samples
+    class: strong
+    url: /samples.html
+  - title: Page Layout
+    details:
+      - url: /page/single.html
+      - url: /page/aside.html
+      - url: /page/sidebar.html
+  - title: Articles Layout
+  - title: Languages

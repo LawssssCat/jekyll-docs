@@ -1,0 +1,42 @@
+{%- assign _quicklinks_key = page.sidebar.quicklinks | default: layout.sidebar.quicklinks -%}
+{%- assign _quicklinks = site.data.quicklinks[_quicklinks_key] -%}
+<div class="quicklinks">
+  <ul>
+    {%- for _item in _quicklinks -%}
+    <li>
+      <!-- title -->
+      {%- include snippets/get-accessible-url.html url=_item.url -%}
+      {%- assign _url = __return -%}
+      {%- assign _title = _item.title -%}
+      {%- unless _title -%}
+        {%- include snippets/get-page-title.html id=_item.url -%}
+        {%- assign _title = __return -%}
+      {%- endunless -%}
+      <div class="{{ _item.class }}">
+        {%- if _url -%}
+          <a href="{{ _url }}">{{ _title }}</a>
+        {%- else -%}
+          {{ _title }}
+        {%- endif -%}
+      </div>
+      <!-- details -->
+      {%- if _item.details -%}
+        <ol>
+          {%- for _detail in _item.details -%}
+            {%- include snippets/get-accessible-url.html url=_detail.url -%}
+            {%- assign _detail_url = __return -%}
+            {%- assign _detail_title = _detail.title -%}
+            {%- unless _detail_title -%}
+              {%- include snippets/get-page-title.html id=_detail.url -%}
+              {%- assign _detail_title = __return -%}
+            {%- endunless -%}
+            <li>
+              <a href="{{ _detail_url }}">{{ _detail_title }}</a>
+            </li>
+          {%- endfor -%}
+        </ol>
+      {%- endif -%}
+    </li>
+    {%- endfor -%}
+  </ul>
+</div>

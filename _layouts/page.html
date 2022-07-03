@@ -38,7 +38,9 @@ layout: base
     <div class="page__sidebar-actions d-print-none"></div>
     <div class="grid">
       <!-- sidebar -->
-      <div class="page__sidebar d-print-none"></div>
+      <div class="page__sidebar d-print-none">
+        <div class="page__sidebar-quicklinks">{%- include sidebar/quicklinks.html -%}</div>
+      </div>
       <!-- main -->
       {{ _page_main }}
     </div>
