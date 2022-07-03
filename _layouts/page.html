@@ -23,18 +23,16 @@ option:
 {%- assign _page_type = page.type | default: layout.type | default: site.data.variables.default.page.type -%}
 {%- assign _article_header_type = page.article_header.type | default: layout.article_header.type -%}
 
-{%- comment -%}
-                                            page class
-{%- endcomment -%}
-
-{%- assign _page_main_class = 'page__main js-page-main page__viewport' -%}
-{%- if _show_aside -%}
-  {%- assign _page_main_class = _page_main_class | append: ' has-aside' -%}
-{%- endif -%}
-
 {%- comment -%}=====================================  global end  ========================================{%- endcomment -%}
 
 <div class="layout--page">
+<div class="page__viewport">
+  {%- if _show_sidebar -%}
+    <div class="page__sidebar"></div>
+  {%- endif -%}
+  {%- assign _page_main_class = 'page__main js-page-main' -%}
+  {%- if _show_aside -%}     {%- assign _page_main_class = _page_main_class | append: ' has-aside' -%}{%- endif -%}
+  {%- if _show_sidebar -%}   {%- assign _page_main_class = _page_main_class | append: ' has-sidebar' -%}{%- endif -%}
   <div class="{{ _page_main_class }}">
     <div class="page__main-inner">
       <!-- header -->
@@ -84,4 +82,5 @@ option:
       </div>
     </div>
   </div>
+</div>
 </div>
