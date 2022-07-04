@@ -3,7 +3,10 @@
 /* stylelint-disable scss/no-global-function-names */
 .toc-aside {
   .toc-handing {
+    margin-top: 0;
+    margin-bottom: map-get($spacers, 2);
     font-size: map-get($base, font-size-lg);
+    font-weight: map-get($base, font-weight);
   }
   .toc {
     max-height: calc(100vh - #{map-get($spacers, 5)});
