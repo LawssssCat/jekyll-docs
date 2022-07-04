@@ -1,15 +1,24 @@
 /* stylelint-disable scss/no-global-function-names */
 .page__sidebar {
+  $_sidebar_width: map-get($layout, sidebar-width);
   position: sticky;
   top: 0;
   z-index: 999;
   width: 80%;
-  max-width: map-get($layout, sidebar-width);
+  max-width: $_sidebar_width;
   height: 100vh;
   white-space: nowrap;
   @include split-line(right);
-  @include transition(transform map-get($animation, duration));
   @include overflow(auto);
+  @include transition(transform map-get($animation, duration));
+  @include media-breakpoint-down($name: lg, $offset: $_sidebar_width) {
+    position: fixed;
+    @include transform(translate(- $_sidebar_width, 0));
+  }
+  @include themeify() {
+    color: themed(text-color);
+    background-color: themed(background-color);
+  }
   @include themeify {
     li, li > div {
       > a {
