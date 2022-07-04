@@ -1,13 +1,16 @@
-# class: ''(default) 'strong'
+# class: ''(default) 'strong' 'heading'
 layouts:
   - title: Samples
-    class: strong
+    class: heading
     url: /samples.html
   - title: Page Layout
+    type: strong
     details:
       - url: /page/single.html
       - url: /page/aside.html
       - url: /page/sidebar.html
       - url: /page/page-sidebar-aside.html
   - title: Articles Layout
+    type: strong
   - title: Languages
+    type: strong

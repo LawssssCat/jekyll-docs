@@ -1,10 +1,37 @@
 /* stylelint-disable scss/no-global-function-names */
 .page__sidebar {
+  position: sticky;
+  top: 0;
   z-index: 999;
   width: 80%;
   max-width: map-get($layout, sidebar-width);
+  height: 100vh;
+  white-space: nowrap;
   @include split-line(right);
   @include transition(transform map-get($animation, duration));
   @include overflow(auto);
-
+  @include themeify {
+    li, li > div {
+      > a {
+        color: inherit;
+      }
+    }
+  }
+  li, li > div {
+    font-size: map-get($base, font-size-root-sm);
+    > a {
+      font-weight: map-get($base, font-weight);
+    }
+  }
+  li {
+    padding: map-get($spacers, 1);
+    > ol {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+  .title {
+    margin-top: map-get($spacers, 2);
+    margin-bottom: map-get($spacers, 1);
+  }
 }
