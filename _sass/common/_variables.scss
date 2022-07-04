@@ -97,7 +97,11 @@ $responsive: (
 $animation: (
   duration:               .4s,
   duration-sm:            .2s,
-  timing-function:        ease-in-out
+);
+
+$animation-timing-function: (
+  1:                      ease-in-out,
+  2:                      cubic-bezier(.68, -.55, .27, 1.55),
 );
 
 $clickable: (

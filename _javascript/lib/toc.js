@@ -142,6 +142,7 @@ class Toc {
       const flagIgnore = header.hasAttribute(this.config.headerIgnoreAttr);
       return id!=null && !flagIgnore;
     });
+    if(this.disable()) return;
     // scroll
     this.activeClass = 'active';
     this.scrollTarget = typeof this.config.scrollTarget == 'string' ? window.document.querySelector(this.config.scrollTarget) : this.config.scrollTarget;
@@ -185,7 +186,7 @@ class Toc {
     this.toc.appendChild(tocDOM);
   }
   updateToc() {
-    if(this.disable()) return; // if no header or display=none, don't update
+    // if(this.disable()) return; // if no header or display=none, don't update // 2022-07-03 if toc disable, return directly on init.
     this.updateActive();
     this.updateTocScroll();
   }

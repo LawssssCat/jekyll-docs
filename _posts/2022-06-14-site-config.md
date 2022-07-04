@@ -72,7 +72,9 @@ path | type of config | name | type of date | mean | default
 {% endraw %}
 
 
-aside 
+### aside 
+
+open
 
 `page.aside` `true`
 `layout.aside` `true`
@@ -80,9 +82,9 @@ aside
 or obj
 
 `page.aside.toc` `true`
-`page.aside.tocselectors`
+`page.aside.tocselectors` `h1,h2,h3,h4`
 `layout.aside.toc` `true`
-`layout.aside.tocselectors`
+`layout.aside.tocselectors` `h1,h2,h3,h4`
 
 aside.toc
 
@@ -91,13 +93,22 @@ aside.toc
 
 or obj
 
-`page.aside.toc.selectors`
-`layout.aside.toc.selectors`
+`page.aside.toc.selectors` `h1,h2,h3,h4`
+`layout.aside.toc.selectors` `h1,h2,h3,h4`
 
 aside.toc.selectors
 
-`page.aside.toc.selectors`
-`layout.aside.toc.selectors`
-`site.data.variables.default.aside.toc.selectors`
+`page.aside.toc.selectors` `h1,h2,h3,h4`
+`layout.aside.toc.selectors` `h1,h2,h3,h4`
+`site.data.variables.default.aside.toc.selectors` `h1,h2,h3,h4`
 
 > add html dom attribute `toc-header-ignore` to avoid being regarded as headers.
+
+### sidebar
+
+open obj
+
+`page.sidebar.quicklinks` 
+`layout.sidebar.quicklinks`
+
+the values define in `_data/quicklinks.yml`.

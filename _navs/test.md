@@ -295,5 +295,32 @@ baba
 
 
 
-123
+https://jekyllrb.com/docs/variables/
+{{site.time}}
+============================= site.pages
+{% for _page in site.pages %}
+  {{ _page.url }}
+{% endfor %}
+============================= site.posts
+{% for _post in site.posts %}
+  {{ _post.url }}
+{% endfor %}
+============================= site.related_posts
+{% for _post in site.related_posts %}
+  {{ _post.url }}
+{% endfor %}
+============================= site.static_files
+{% for _post in site.static_files %}
+  {{ _post.path }}
+{% endfor %}
+============================= site.html_pages
+{% for _post in site.html_pages %}
+  {{ _post.url }}
+{% endfor %}
+============================= site.documents
+{% for _post in site.documents %}
+  - url {{ _post.url }}
+    id {{ _post.id }}
+    key {{ _post.key }}
+{% endfor %}
 </textarea>

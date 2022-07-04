@@ -1,6 +1,8 @@
 ---
 layout: article
 title: Jekyll - docs
+aside:
+  toc: true
 ---
 
 [github-jekyll]: https://github.com/jekyll/jekyll

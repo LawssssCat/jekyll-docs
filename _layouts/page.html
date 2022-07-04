@@ -1,87 +1,56 @@
 ---
 layout: base
 ---
+
+{%- comment -%} ~~~~~~~~~~~~~~~~~~~~~ sidebar switch ~~~~~~~~~~~~~~~~~~~~~ {%- endcomment -%}
+{%- if page.sidebar or layout.sidebar -%}
+  {%- assign _show_sidebar = true -%}
+{%- else -%}
+  {%- assign _show_sidebar = false -%}
+{%- endif -%}
+
+{%- comment -%} ~~~~~~~~~~~~~~~~~~~~~ aside switch ~~~~~~~~~~~~~~~~~~~~~ {%- endcomment -%}
 {%- if page.aside or layout.aside -%}
   {%- assign _show_aside = true -%}
 {%- else -%}
   {%- assign _show_aside = false -%}
 {%- endif -%}
 
-{%- comment -%}=====================================  global ========================================{%- endcomment -%}
-{%- comment -%}
-page layout
+{%- comment -%} ~~~~~~~~~~~~~~~~~~~~~ main class ~~~~~~~~~~~~~~~~~~~~~ {%- endcomment -%}
+{%- capture _page_main -%}
+  {%- assign _page_main_class = 'page__main js-page-main' -%}
+  {%- if _show_aside -%}     {%- assign _page_main_class = _page_main_class | append: ' has-aside' -%}{%- endif -%}
+  {%- if _show_sidebar -%}   {%- assign _page_main_class = _page_main_class | append: ' has-sidebar cell cell--auto' -%}{%- endif -%}
+  <div class="{{ _page_main_class }}">
+    {%- include main.html 
+      content=content
+      show_aside=_show_aside -%}
+  </div>
+{%- endcapture -%}
 
-option:
-  page.type
-    - 'webpage'
-    - 'article'
-  page.article_header.type
-    - 'cover'
-    - 'overlay'
-{%- endcomment -%}
-
-{%- assign _page_type = page.type | default: layout.type | default: site.data.variables.default.page.type -%}
-{%- assign _article_header_type = page.article_header.type | default: layout.article_header.type -%}
-
-{%- comment -%}
-                                            page class
-{%- endcomment -%}
-
-{%- assign _page_main_class = 'page__main js-page-main page__viewport' -%}
-{%- if _show_aside -%}
-  {%- assign _page_main_class = _page_main_class | append: ' has-aside' -%}
-{%- endif -%}
-
-{%- comment -%}=====================================  global end  ========================================{%- endcomment -%}
 
 <div class="layout--page">
-  <div class="{{ _page_main_class }}">
-    <div class="page__main-inner">
-      <!-- header -->
-      <div class="page__header js-header d-print-none">
-        {%- include header.html -%}
-      </div>
-      <!-- content -->
-      <div class="page__content">
-        <!-- cover -->
-        {%- if _article_header_type == 'overlay' or _article_header_type == 'cover' -%}
-          {%- if _article_header_type == 'cover' -%}
-            {%- include snippets/get-nav-url.html path=page.article_header.image.src -%}
-            {%- assign _header_image_src = __return -%}
-            {%- assign _header_image_style = page.article_header.image.style -%}
-            <img class="article__header--cover" src="{{ _header_image_src }}" style="{{ _header_image_style }}" />
-          {%- endif -%}
-        {%- endif -%}
-        <!-- main -->
-        <div class="main">
-          <div class="grid grid--reverse">
-            <!-- col aside -->
-            {%- if _show_aside -%}
-              <div class="col-aside d-print-none">
-                <aside>
-                  {%- if page.aside.toc or layout.aside.toc -%}
-                    <!-- toc -->
-                    <div class="toc-aside">{%- include aside/toc.html -%}</div>
-                  {%- endif -%}
-                </aside>
-              </div>
-            {%- endif -%}
-            <!-- col main -->
-            <div class="col-main cell cell--auto">
-              {%- include snippets/get-html-itemtype-url.html type=_page_type -%}
-              {%- assign _page_item_type_url = __return -%}
-              <article itemscope itemtype="{{ _page_item_type_url }}">
-                <!-- article content -->
-                <div>{{ content }}</div>
-              </article>
-            </div>
+<div class="page__viewport">
+  {%- if _show_sidebar -%}
+    <!-- mask -->
+    <div class="page__mask d-print-none js-page-mask"></div>
+    <!-- actions -->
+    <div class="page__sidebar-actions d-print-none"></div>
+    <div class="grid">
+      <!-- sidebar -->
+      <div class="page__sidebar d-print-none">
+        <div class="page__sidebar-inner">
+          <div class="page__sidebar-quicklinks">
+            {%- include sidebar/quicklinks.html -%}
           </div>
         </div>
       </div>
-      <!-- footer -->
-      <div class="page__footer d-print-none">
-        {%- include footer.html -%}
-      </div>
+      <!-- main -->
+      {{ _page_main }}
     </div>
-  </div>
+  {%- else -%}
+    <!-- main -->
+    {{ _page_main }}
+  {%- endif -%}
+</div><!-- viewpoint end -->
 </div>

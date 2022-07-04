@@ -1,0 +1,68 @@
+{%- comment -%}
+needs:
+  - content
+  - show_aside
+{%- endcomment -%}
+
+
+{%- comment -%} ======================= page.type ======================================
+option:
+    - 'webpage'
+    - 'article'
+{%- endcomment -%}
+{%- assign _page_type = page.type | default: layout.type | default: site.data.variables.default.page.type -%}
+
+{%- comment -%} ======================= page.article_header.type ========================
+option:
+    - 'cover'
+    - 'overlay'
+{%- endcomment -%}
+{%- assign _article_header_type = page.article_header.type | default: layout.article_header.type -%}
+
+<div class="page__main-inner">
+  <!-- header -->
+  <div class="page__header js-header d-print-none">
+    {%- include header.html -%}
+  </div>
+  <!-- content -->
+  <div class="page__content">
+    <!-- cover -->
+    {%- if _article_header_type == 'overlay' or _article_header_type == 'cover' -%}
+      {%- if _article_header_type == 'cover' -%}
+        {%- include snippets/get-nav-url.html path=page.article_header.image.src -%}
+        {%- assign _header_image_src = __return -%}
+        {%- assign _header_image_style = page.article_header.image.style -%}
+        <img class="article__header--cover" src="{{ _header_image_src }}" style="{{ _header_image_style }}" />
+      {%- endif -%}
+    {%- endif -%}
+    <!-- main -->
+    <div class="main">
+      <div class="grid grid--reverse">
+        <!-- col aside -->
+        {%- if include.show_aside -%}
+          <div class="col-aside d-print-none">
+            <aside>
+              {%- if page.aside.toc or layout.aside.toc -%}
+                <!-- toc -->
+                <div class="toc-aside">{%- include aside/toc.html -%}</div>
+              {%- endif -%}
+            </aside>
+          </div>
+        {%- endif -%}
+        <!-- col main -->
+        <div class="col-main cell cell--auto">
+          {%- include snippets/get-html-itemtype-url.html type=_page_type -%}
+          {%- assign _page_item_type_url = __return -%}
+          <article itemscope itemtype="{{ _page_item_type_url }}">
+            <!-- article content -->
+            <div>{{ include.content }}</div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- footer -->
+  <div class="page__footer d-print-none">
+    {%- include footer.html -%}
+  </div>
+</div>
