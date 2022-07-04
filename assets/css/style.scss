@@ -1,0 +1,28 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+
+$themes:();
+{%- include snippets/get-themes.html -%}
+{%- assign _themes = __return -%}
+{%- for theme in _themes -%}
+  @import "skins/theme/{{ theme }}";
+  $themes: map-merge($themes, (
+    {{theme}}: $theme-{{ theme }}
+  ));
+{%- endfor -%}
+
+@import 
+
+  "skins/themeify",
+
+  "skins/highlight/{{ site.highlight_theme | default: site.data.variables.default.highlight_theme }}",
+  // "skins/highlight/tomorrow",
+  // "skins/highlight/tomorrow-night",
+  // "skins/highlight/tomorrow-night-eighties",
+  // "skins/highlight/tomorrow-night-blue",
+  // "skins/highlight/tomorrow-night-bright",
+
+  "specification",
+  
+  "custom";

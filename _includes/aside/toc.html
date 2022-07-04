@@ -1,0 +1,20 @@
+{%- assign _toc_selectors = page.aside.toc.selectors
+  | default: layout.aside.toc.selectors
+  | default: site.data.variables.default.aside.toc.selectors -%}
+
+{%- include snippets/get-string-locale-from-data.html key='TOC_TITLE' -%}
+{%- assign _locale_toc_title = __return -%}
+<header>
+  <h2 class="toc-handing">{{ _locale_toc_title }}</h2>
+</header>
+<div class="toc js-toc-root"></div>
+
+<script>
+window.VARIABLES.append({
+  toc: {
+    selectors: "{{ _toc_selectors }}"
+  }
+});
+</script>
+{%- include snippets/get-accessible-url.html url="/assets/js/dist/aside/toc.min.js" -%}
+<script src="{{ __return }}"></script>

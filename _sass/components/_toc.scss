@@ -1,0 +1,85 @@
+/* stylelint-disable selector-max-combinators */
+/* stylelint-disable selector-max-compound-selectors */
+/* stylelint-disable scss/no-global-function-names */
+.toc-aside {
+  .toc-handing {
+    margin-top: 0;
+    margin-bottom: map-get($spacers, 2);
+    font-size: map-get($base, font-size-lg);
+    font-weight: map-get($base, font-weight);
+  }
+  .toc {
+    max-height: calc(100vh - #{map-get($spacers, 5)});
+    @include overflow(auto, "y");
+    @include scrollbar-none();
+  }
+  ol {
+    @include menu(0, 0, nowrap);
+    @include menu-direction(vertical);
+  }
+  ol li a { /* h1 */
+    padding-top: map-get($spacers, 2);
+    padding-bottom: map-get($spacers, 2);
+    padding-left: map-get($spacers, 3);
+    font-size: map-get($base, font-size);
+  }
+  ol li ol li { /* h2 */
+    a {
+      padding-top: map-get($spacers, 1);
+      padding-bottom: map-get($spacers, 1);
+      padding-left: map-get($spacers, 4);
+      font-size: map-get($base, font-size-sm);
+    }
+    > ol {
+      height: auto;
+      max-height: 0;
+      @include overflow(hidden);
+      @include transition(max-height .8s ease);
+    }
+    &.active {
+      > ol {
+        max-height: 2000px;
+      }
+    }
+  }
+  ol li ol li ol li a { /* h3 */
+    padding-top: map-get($spacers, 0);
+    padding-bottom: map-get($spacers, 0);
+    padding-left: map-get($spacers, 5);
+    font-size: map-get($base, font-size-xs);
+  }
+  ol li ol li ol li ol li a { /* h4 */
+    padding-left: map-get($spacers, 6);
+  }
+  // > ol {
+  //   @include themeify {
+  //     background: themed(main-color-3);
+  //   }
+  // }
+  li {
+    & > a {
+      display: block;
+      // margin-left: 1px;
+      font-weight: map-get($base, font-weight);
+      @include themeify {
+        background: themed(background-color);
+        @include split-line(left);
+        @include link-colors(themed(text-color-theme-light-l));
+        @include hover { /* must in themeify, because of additional settings in link-colors */
+          color: themed(main-color-1);
+          text-decoration: none;
+          @include split-line(left, 1px, themed(main-color-1));
+        }
+      }
+    }
+    @include active() {
+      & > a {
+        @include themeify {
+          // background-color: transparent;
+          color: themed(main-color-1);
+          @include split-line(left, 2px, themed(main-color-1));
+        }
+      }
+    }
+  }
+}

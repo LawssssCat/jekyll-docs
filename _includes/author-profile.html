@@ -1,0 +1,29 @@
+{%- assign _author = include.author -%}
+
+{%- assign _author_type = _author.type | default: site.data.variables.default.author.type -%}
+{%- include snippets/get-html-itemtype-url.html type=_author_type -%}
+{%- assign _author_itemtype = __return -%}
+<div itemscope itemtype="{{ _author_itemtype }}" class="author-profile card">
+  {%- if _author.avatar -%}
+    <div class="profile__avatar">
+      <a href="{{ _author.url }}">
+        {%- include snippets/get-accessible-url.html url=_author.avatar -%}
+        {%- assign _author_avatar_url = __return -%}
+        <img src="{{ _author_avatar_url }}" alt="author avatar">
+      </a>
+    </div>
+  {%- endif -%}
+  <meta itemprop="url" content="{{ _author.url }}">
+  <meta itemprop="name" content="{{ _author.name }}">
+  <div class="profile__content">
+    <div class="profile__name">
+      <p>{{ _author.name }}</p>
+    </div>
+    <div class="profile__description">
+      <p itemprop="description">{{ _author.bio }}</p>
+    </div>
+    <div class="profile__links">
+      {%- include author-links.html author=_author -%}
+    </div>
+  </div>
+</div>

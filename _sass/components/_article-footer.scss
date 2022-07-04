@@ -1,0 +1,45 @@
+/* stylelint-disable scss/no-global-function-names */
+.article__footer {
+
+  .footer {
+    margin: map-get($spacers, 4) 0;
+    font-size: map-get($base, font-size-sm);
+  }
+
+  .article__license, .article__subscribe {
+    a {
+      @include themeify {
+        @include link-colors(themed(text-color), themed(main-color-1));
+      }
+    }
+  }
+
+  .navigation {
+    padding-top: map-get($spacers, 3);
+    margin: map-get($spacers, 4) 0 map-get($spacers, 3) 0;
+    @include themeify { // for test. same as "@include split-line(top, 4px);"
+      @include split-line(top, 4px, themed(border-color-l));
+    }
+    & > .previous, & > .next {
+      & > span {
+        font-weight: map-get($base, font-weight-bold);
+        @include themeify {
+          color: themed(text-color-l);
+        }
+      }
+      & > a {
+        display: block;
+        @include themeify {
+          @include link-colors(themed(text-color), themed(main-color-1));
+        }
+      }
+    }
+    & > .previous {
+      float: left;
+    }
+    & > .next {
+      float: right;
+      text-align: right;
+    }
+  }
+}

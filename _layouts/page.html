@@ -1,0 +1,56 @@
+---
+layout: base
+---
+
+{%- comment -%} ~~~~~~~~~~~~~~~~~~~~~ sidebar switch ~~~~~~~~~~~~~~~~~~~~~ {%- endcomment -%}
+{%- if page.sidebar or layout.sidebar -%}
+  {%- assign _show_sidebar = true -%}
+{%- else -%}
+  {%- assign _show_sidebar = false -%}
+{%- endif -%}
+
+{%- comment -%} ~~~~~~~~~~~~~~~~~~~~~ aside switch ~~~~~~~~~~~~~~~~~~~~~ {%- endcomment -%}
+{%- if page.aside or layout.aside -%}
+  {%- assign _show_aside = true -%}
+{%- else -%}
+  {%- assign _show_aside = false -%}
+{%- endif -%}
+
+{%- comment -%} ~~~~~~~~~~~~~~~~~~~~~ main class ~~~~~~~~~~~~~~~~~~~~~ {%- endcomment -%}
+{%- capture _page_main -%}
+  {%- assign _page_main_class = 'page__main js-page-main' -%}
+  {%- if _show_aside -%}     {%- assign _page_main_class = _page_main_class | append: ' has-aside' -%}{%- endif -%}
+  {%- if _show_sidebar -%}   {%- assign _page_main_class = _page_main_class | append: ' has-sidebar cell cell--auto' -%}{%- endif -%}
+  <div class="{{ _page_main_class }}">
+    {%- include main.html 
+      content=content
+      show_aside=_show_aside -%}
+  </div>
+{%- endcapture -%}
+
+
+<div class="layout--page">
+<div class="page__viewport">
+  {%- if _show_sidebar -%}
+    <!-- mask -->
+    <div class="page__mask d-print-none js-page-mask"></div>
+    <!-- actions -->
+    <div class="page__sidebar-actions d-print-none"></div>
+    <div class="grid">
+      <!-- sidebar -->
+      <div class="page__sidebar d-print-none">
+        <div class="page__sidebar-inner">
+          <div class="page__sidebar-quicklinks">
+            {%- include sidebar/quicklinks.html -%}
+          </div>
+        </div>
+      </div>
+      <!-- main -->
+      {{ _page_main }}
+    </div>
+  {%- else -%}
+    <!-- main -->
+    {{ _page_main }}
+  {%- endif -%}
+</div><!-- viewpoint end -->
+</div>

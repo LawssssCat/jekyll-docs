@@ -1,0 +1,41 @@
+{%- include snippets/assign.html 
+  value1=page.show_subscribe
+  value2=layout.show_subscribe
+  value3=site.data.variables.default.page.show_subscribe -%}
+{%- assign _show_subscribe = __return -%}
+
+<footer class="footer py-4">
+  <div class="main">
+    {%- assign _site_author = site.author -%}
+    {%- assign _author_type = _site_author.type | default: site.data.variables.default.author.type -%}
+    {%- include snippets/get-html-itemtype-url.html type=_author_type -%}
+    {%- assign _site_author_itemtype = __return -%}
+    <!-- see https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/itemscope -->
+    <div itemscope itemtype="{{ _site_author_itemtype }}">
+      <meta itemprop="name" content="{{ _site_author.name }}">
+      {%- assign _site_author_url = _site_author.url | default: '/'-%}
+      {%- include snippets/get-nav-url.html path=_site_author_url -%}
+      {%- assign _site_author_url = __return -%}
+      <meta itemprop="url" content="{{ _site_author_url }}">
+      {%- if _site_author.bio -%}
+        <meta itemprop="description" content="{{ _site_author.bio }}">
+      {%- endif -%}
+      <div class="footer__author-links">
+        {%- assign _rss_url = nil -%}
+        {%- if _show_subscribe -%}
+          {%- include snippets/get-accessible-url.html url=site.data.variables.default.paths.rss -%}
+          {%- assign _rss_url = __return -%}
+        {%- endif -%}
+        {%- include author-links.html author=_site_author rss_url=_rss_url -%}
+      </div>
+    </div>
+    
+    <div class="site-info">
+      <div>
+        © {{ site.title }} {{ site.time | date: '%Y'}},
+        Powered by <a title="Jekyll is a simple, blog-aware, static site generator." href="http://jekyllrb.com/">Jekyll</a>
+        & <a title="Collects the common information of Jekyll and put all in one site." href="https://github.com/LawssssCat/jekyll-docs-all-in-one">Jekyll docs all in one</a>
+      </div>
+    </div>
+  </div>
+</footer>

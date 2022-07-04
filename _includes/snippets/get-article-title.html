@@ -1,0 +1,11 @@
+{%- assign __title = include.article.title -%}
+{%- assign __titles = include.article.titles -%}
+
+{%- if __title -%}
+  {%- assign __return = __title -%}
+{%- elsif __titles -%}
+  {%- include snippets/get-string-locale-from-locales locales=__titles -%}
+  {%- assign __return = __return -%}
+{%- else -%}
+  {%- assign __return = nil -%}
+{%- endif -%}

@@ -1,0 +1,31 @@
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+{%- include snippets/get-article-title.html article=page -%}
+{%- assign _page_title = __return -%}
+<title>
+  {%- if _page_title -%}
+    {{ _page_title }} | {{ site.title }}
+  {%- else -%}
+    {{ site.title }}
+  {%- endif -%}
+</title>
+
+{%- include snippets/get-description-from-page.html -%}
+<meta name="description" content="{{ __return }}">
+
+{%- include snippets/get-accessible-url.html url=site.url -%}
+<link rel="canonical" href="{{ __return }}">
+
+<!-- rss -->
+{%- include snippets/get-accessible-url.html url=site.data.variables.default.paths.rss -%}
+<link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ __return }}">
+<!-- favicon -->
+{%- include head/favicon.html -%}
+<!-- my style -->
+{%- include snippets/get-accessible-url.html url='assets/css/style.css' -%}
+<link rel="stylesheet" href="{{ __return }}">
+
+{%- include snippets/get-source-by-id.html id='font_awesome' -%}
+<link rel="stylesheet" href="{{ __return }}" >

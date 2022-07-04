@@ -1,0 +1,143 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely need to edit after that.
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'jekyll serve'. If you change this file, please restart the server process.
+
+# -------------------------
+# Site Settings 
+# -------------------------
+highlight_theme: default # "default" (default), "tomorrow", "tomorrow-night", "tomorrow-night-eighties", "tomorrow-night-blue", "tomorrow-night-bright". see https://github.com/chriskempson/tomorrow-theme
+baseurl: /jekyll-docs-all-in-one # does not include hostname
+url: # https://lawsssscat.github.com/jekyll-docs-all-in-one (needn't indicate. auto generate) # the base hostname & protocol for your site e.g. https://www.someone.com
+title: jekyll-docs-all-in-one
+title_short: jekyll-aio
+description: >
+  Collects the common information of Jekyll and put all in one site.
+
+repository:
+  platform: github
+  name: lawsssscat/jekyll-docs-all-in-one
+  tree: dev
+
+# -------------------------
+# Language and Timezone
+# -------------------------
+# lang: zh # the language of your site, default as "en"
+timezone: # see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for the available values
+
+# -------------------------
+# Author and Social
+# -------------------------
+author:
+  type      : # "person" (default), "organization"
+  name      : lawsssscat
+  url       : https://lawsssscat.github.com/
+  avatar    : /assets/images/avatar/18041500.jpg # path or url of avatar image (square)
+  bio       : Expect inspiring inspiration. 😉
+  email     : 1191693505@qq.com
+  facebook  : # "user_name" the last part of your profile url, e.g. https://www.facebook.com/user_name
+  twitter   : # "user_name" the last part of your profile url, e.g. https://twitter.com/user_name
+  weibo     : # "user_id"   the last part of your profile url, e.g. https://www.weibo.com/user_id/profile?...
+  googleplus: # "user_id"   the last part of your profile url, e.g. https://plus.google.com/u/0/user_id
+  telegram  : # "user_name" the last part of your profile url, e.g. https://t.me/user_name
+  medium    : # "user_name" the last part of your profile url, e.g. https://medium.com/user_name
+  zhihu     : # "user_name" the last part of your profile url, e.g. https://www.zhihu.com/people/user_name
+  douban    : # "user_name" the last part of your profile url, e.g. https://www.douban.com/people/user_name
+  linkedin  : # "user_name" the last part of your profile url, e.g. https://www.linkedin.com/in/user_name
+  github    : lawsssscat # "user_name" the last part of your profile url, e.g. https://github.com/user_name
+  npm       : # "user_name" the last part of your profile url, e.g. https://www.npmjs.com/~user_name
+
+# -------------------------
+# pageview
+# -------------------------
+pageview:
+  enable: true
+  provider: leancloud
+
+  ## Leancloud. see https://leancloud.app/
+  leancloud:
+    server_url : # Null if there is no special requirement. see https://leancloud.cn/docs/custom-api-domain-guide.html#hash-1410615135
+    app_id    : OC6yw4BTaMHK4tuRLUG2jbPd-MdYXbMMI
+    app_key   : wlnRdeSQaLI70XWjvabbtGeq
+    app_class : pageview
+
+# -------------------------
+# Paginate
+# -------------------------
+paginate: 8
+paginate_path: /page/page:num # don't change this unless for special need
+
+# -------------------------
+# Build
+# -------------------------
+# see https://jekyllrb.com/docs/configuration/markdown/
+# see https://kramdown.gettalong.org/index.html
+markdown: kramdown
+
+# see https://jekyllrb.com/docs/configuration/sass/
+# see https://github.com/jekyll/jekyll-sass-converter
+sass:
+  implementation    : sassc # Compiler (Possible values: 'sassc' [default] for LibSass [DEPRECATED], 'sass-embedded' for Dart Sass [requires Ruby 2.6 or higher])
+  style             : compact # The style of the CSS-output (Possible values: 'expanded', 'nested', 'compact'(default), or 'compressed').
+  sass_dir          : _sass # A filesystem-path which should be searched for Sass partials.
+  load_paths        : [] # An array of additional filesystem-paths which should be searched for Sass partials.
+  line_comments     : true # Include the line number and filename of the source in the compiled CSS-file.
+  sourcemap         : always # Controls when source maps shall be generated (Possible values: 'never', 'always' or 'development').
+
+# see https://jekyllrb.com/docs/collections/#collections
+collections:
+  navs:
+    output: true
+    permalink: /:name
+  sample_articles:
+    output: true
+  sample_pages:
+    output: true
+
+# see https://jekyllrb.com/docs/configuration/front-matter-defaults/
+defaults:
+  ## samples
+  - scope:
+      path: "" # While type is optional, you must specify a value for path when creating a scope/values pair
+      type: sample_pages
+    values:
+      nav_key: samples
+      show_word_count: true
+      show_raw_article_link: true
+      show_article_footer_navigation: true
+      show_article_footer_horizontal_rule: true
+
+# see http://jch.penibelst.de/
+compress_html:
+  clippings: all
+  comments: all
+  endings: all
+  profile: false
+  blanklines: false
+  # ignore:
+  #   envs: [development]
+
+exclude:
+  - README.md
+  - LICENSE
+  - jekyll-docs-all-in-one.gemspec
+  - .gitignore
+  - package-lock.json
+  - package.json
+  - /node_modules
+  - /gulpfile.js
+  - /_javascript
+  - /commitlint.config.js
+  - /.stylelintrc.js
+  - /_site
+
+# -------------------------
+# Plugins
+# -------------------------
+plugins:
+  - jekyll-feed
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jemoji

@@ -1,0 +1,17 @@
+{%- comment -%}
+needs
+  - nav
+return 
+  __return
+{%- endcomment -%}
+
+{% assign __item = include.nav %}
+{%- if __item.title -%}
+  {%- assign _nav_title = __item.title -%}
+{%- elsif __item.titles -%}
+  {%- include snippets/get-string-locale-from-locales.html locales=__item.titles -%}
+  {%- assign _nav_title = __return -%}
+{%- else -%}
+  {%- assign _nav_title = 'undefine' -%}
+{%- endif -%}
+{%- assign __return = _nav_title -%}

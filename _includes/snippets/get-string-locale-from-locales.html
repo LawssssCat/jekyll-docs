@@ -1,0 +1,17 @@
+{%- comment -%}
+needs:
+  - lang
+  - locales
+{%- endcomment -%}
+{%- if include.lang -%}
+  {%- assign __lang = include.lang -%}
+{%- else -%}
+  {%- include snippets/get-lang.html -%}
+  {%- assign __lang = __return -%}
+{%- endif -%}
+{%- assign __locale = include.locales[__lang] -%}
+{%- if __locale -%}
+  {%- assign __return = __locale -%}
+{%- else -%}
+  {%- assign __return = include.locales.en -%}
+{%- endif -%}

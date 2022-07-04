@@ -1,0 +1,50 @@
+/* stylelint-disable scss/no-global-function-names */
+.popover {
+  z-index: 10;
+  display: none;
+  &[data-show] {
+    display: block;
+  }
+  $arrow-width: map-get($base, font-size) / 2;
+  $padding-width: map-get($spacers, 2);
+  padding: $padding-width;
+  border-radius: map-get($base, border-radius);
+  @include themeify {
+    background: themed(main-color-theme-light);
+  }
+  .popover-arrow, .popover-header, .popover-body {
+    margin: 0;
+    font-size: map-get($base, font-size-root-sm);
+    @include themeify {
+      color: themed(text-color-theme-dark);
+    }
+  }
+  .popover-arrow {
+    visibility: hidden;
+    &, &::before {
+      position: absolute;
+      width: $arrow-width;
+      height: $arrow-width;
+      background: inherit;
+    }
+    &::before {
+      visibility: visible;
+      content: "";
+      transform: rotate(45deg);
+    }
+  }
+  $arrow-offset: ($arrow-width) / 2;
+  &[data-popper-placement^="top"] > .popover-arrow {
+    bottom: -$arrow-offset;
+  }
+  &[data-popper-placement^="bottom"] > .popover-arrow {
+    top: -$arrow-offset;
+  }
+  &[data-popper-placement^="left"] > .popover-arrow {
+    right: -$arrow-offset;
+  }
+  &[data-popper-placement^="right"] > .popover-arrow {
+    left: -$arrow-offset;
+  }
+}
+

@@ -1,0 +1,174 @@
+{%- comment -%}============================================ author ===================================== {%- endcomment -%}
+
+{%- include snippets/assign.html 
+  value1=page.show_article_info_author
+  value2=layout.show_article_info_author
+  value3=site.data.variables.default.page.show_article_info_author -%}
+{%- assign _show_article_info_author = __return -%}
+{%- assign _author = nil -%}
+{%- if _show_article_info_author -%}
+  {%- include snippets/get-author.html -%}
+  {%- assign _author = __return -%}
+  {%- if _author -%}
+    {%- assign _show_article_info_author = true -%}
+  {%- else -%}
+    {%- assign _show_article_info_author = false -%}
+  {%- endif -%}
+{%- endif -%}
+
+{%- comment -%}============================================ putlish ===================================== {%- endcomment -%}
+
+{%- include snippets/assign.html 
+  value1=page.show_article_info_publish_on
+  value2=layout.show_article_info_publish_on
+  value3=site.data.variables.default.page.show_article_info_publish_on -%}
+{%- assign _show_article_info_publish_on = __return -%}
+
+{%- comment -%}============================================ reading time ===================================== {%- endcomment -%}
+
+{%- include snippets/assign.html 
+  value1=page.show_article_info_reading_time
+  value2=layout.show_article_info_reading_time
+  value3=site.data.variables.default.page.show_article_info_reading_time -%}
+{%- assign _show_article_info_reading_time = __return -%}
+
+{%- comment -%}============================================ raed count ===================================== {%- endcomment -%}
+
+{%- include snippets/assign.html 
+  value1=page.show_article_info_read_by_count
+  value2=layout.show_article_info_read_by_count
+  value3=site.data.variables.default.page.show_article_info_read_by_count -%}
+{%- assign _show_article_info_read_by_count = __return -%}
+
+{%- comment -%}============================================ tags ===================================== {%- endcomment -%}
+
+{%- include snippets/assign.html 
+  value1=page.show_article_info_tags
+  value2=layout.show_article_info_tags
+  value3=site.data.variables.default.page.show_article_info_tags -%}
+{%- assign _show_article_info_tags = __return -%}
+{%- if _show_article_info_tags and page.tags[0] -%}
+  {%- assign _show_article_info_tags = true -%}
+{%- else -%}
+  {%- assign _show_article_info_tags = false -%}
+{%- endif -%}
+
+{%- comment -%}============================================ switch ===================================== {%- endcomment -%}
+
+{%- if _show_article_info_author or _show_article_info_publish_on or _show_article_info_author or _show_article_info_reading_time or _show_article_info_tags -%}
+<div class="infos">
+  <!-- author avator -->
+  {%- if _show_article_info_author -%}
+    {%- include snippets/get-accessible-url.html url=_author.avatar -%}
+    {%- assign _author_avatar_url = __return -%}
+    {%- if _author_avatar_url -%}
+      <div class="info__item article__author-avatar-wrapper">
+        <div class="article__author-avatar">
+          <img src="{{ _author_avatar_url }}" alt="author avatar">
+        </div>
+      </div>
+    {%- endif -%}
+  {%- endif -%}
+  <!-- publish on -->
+  {%- if _show_article_info_publish_on -%}
+    {%- assign _publish_on = page["first_publish_at"] | default: page.date -%}
+    {%- if _publish_on -%}
+      {%- include snippets/get-string-locale-from-data.html key='ARTICLE_DATE_FORMAT' -%}
+      {%- assign _locale_date_format = __return -%}
+      {%- include snippets/get-string-locale-from-data.html key='PUBLISH_ON' -%}
+      {%- assign _locale_publish_on = __return -%}
+      <div class="info__item">
+        <p>
+          <font>{{ _locale_publish_on }}</font>
+          <span class="nowrap">{{ _publish_on | date: _locale_date_format }}</span>
+        </p>
+      </div>
+    {%- endif -%}
+  {%- endif -%}
+  <!-- written by -->
+  {%- if _show_article_info_author -%}
+    {%- include snippets/get-string-locale-from-data.html key='WRITTEN_BY' -%}
+    {%- assign _locale_written_by = __return -%}
+    <div class="info__item">
+      <p>
+        <font>{{ _locale_written_by }}</font>
+        <span class="nowrap">
+          <a href="{{ _author.url }}">@{{ _author.name }}</a>
+        </span>
+      </p>
+    </div>
+  {%- endif -%}
+  <!-- read time -->
+  {%- if _show_article_info_reading_time -%}
+    {%- include snippets/get-string-locale-from-data.html key='READING_TIME' -%}
+    {%- assign _locale_reading_time = __return -%}
+    {%- include snippets/get-article-words.html content=content -%}
+    {%- assign _word_count = __return -%}
+    {%- include snippets/get-string-locale-from-data.html key='WORDS' -%}
+    {%- assign _locale_word_count = __return | replace: '[WORDS]', _word_count -%}
+    {%- include snippets/get-article-read-time.html words=_word_count -%}
+    {%- assign _read_time = __return -%}
+    <div class="info__item">
+      <p>
+        <font>{{ _locale_reading_time }}</font>
+        <span class="nowrap" data-one-toggle="popover" data-one-trigger="hover focus" data-one-title="" data-one-content="{{ _locale_word_count }}">
+          {{ _read_time }}
+        </span>
+      </p>
+    </div>
+  {%- endif -%}
+  <!-- read by count -->
+  {%- if _show_article_info_read_by_count -%}
+    {%- include snippets/get-string-locale-from-data.html key='READ_BY' -%}
+    {%- assign _locale_reading_by = __return -%}
+    {%- include snippets/get-string-locale-from-data.html key='HITS' -%}
+    {%- assign _locale_hits = __return -%}
+    <div class="info__item">
+      <p>
+        <font>{{ _locale_reading_by }}</font>
+        {%- if site.pageview.enable != true -%}
+          <span class="nowrap">⚠️ pageview disable now.</span>
+        {%- else -%}
+          {%- include snippets/get-article-title.html article=page -%}
+          {%- assign _article_title = __return -%}
+          {%- include snippets/get-page-key.html -%}
+          {%- assign _page_key = __return -%}
+          <span class="nowrap js-pageview" data-one-page-key="{{ _page_key }}" data-one-page-title={{ _article_title | jsonify }} >
+            <font class="views-num">0</font> {{ _locale_hits }}
+          </span>
+        {%- endif -%}
+      </p>
+    </div>
+  {%- endif -%}
+  <!-- more on (tags) -->
+  {%- if _show_article_info_tags -%}
+    {%- include snippets/get-string-locale-from-data.html key='MORE_ON' -%}
+    {%- assign _locale_more_on = __return -%}
+    <div class="info__item">
+      <p>
+        <font>{{ _locale_more_on }}</font>
+        <span class="wrap">
+          {%- include snippets/get-accessible-url.html url=site.data.variables.default.paths.archive -%}
+          {%- assign _path_archive = __return -%}
+          {%- for _tag in page.tags -%}
+            {%- include snippets/get-string-encode.html str=_tag -%}
+            {%- assign _tag_encode = __return -%}
+            {%- assign _path_archive_tag = _path_archive | append: '?tag=' | append: _tag_encode -%}
+            <a href="{{ _path_archive_tag }}">{{ _tag }}</a>
+            {%- unless forloop.last -%},&nbsp;{%- endunless -%}
+          {%- endfor -%}
+        </span>
+      </p>
+    </div>
+  {%- endif -%}
+</div>
+{%- endif -%}
+
+<!-- semantic -->
+{%- if _author -%}
+  <meta itemprop="author" content="{{ _author.name }}"/>
+{%- endif -%}
+{%- if include.article.tags[0] -%}
+  {%- assign _keywords = include.article.tags | join: ',' %}
+  <meta itemprop="keywords" content="{{ _keywords }}">
+{%- endif -%}

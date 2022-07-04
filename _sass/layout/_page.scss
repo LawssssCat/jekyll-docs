@@ -1,0 +1,17 @@
+.layout--page {
+  .page__viewport {
+    // height: 100%;
+  }
+}
+
+// .page__main {
+//   // height: 100%;
+//   color: $text-color;
+// }
+
+.page__main-inner {
+  @include themeify() {
+    color: themed(text-color);
+    background-color: themed(background-color);
+  }
+}

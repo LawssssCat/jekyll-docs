@@ -1,0 +1,58 @@
+/* stylelint-disable scss/no-global-function-names */
+.article__infos {
+  a {
+    @include link-decoration();
+  }
+  @include media-breakpoint-up(md) {
+    .infos {
+      @include flexbox();
+      @include flex-wrap(wrap);
+      @include align-items(center);
+    }
+  }
+  .article__author-avatar-wrapper {
+    display: none;
+    @include media-breakpoint-up(lg) {
+      display: block;
+    }
+  }
+  .article__author-avatar {
+    $_width: map-get($image, width-xxs);
+    $_border-width: 2px;
+    $_border-width-inner: 4px;
+    @include themeify {
+      $_border-color: themed(border-color-light);
+      @if not $_border-color {
+        $_border-color: themed(border-color-1);
+      }
+      background: $_border-color;
+    }
+    width: $_width;
+    height: $_width;
+    padding: calc((#{$_border-width} + #{$_border-width-inner}) / 2);
+    border-radius: 50%;
+    img {
+      $img_width: calc(#{$_width} - ((#{$_border-width} + #{$_border-width-inner})));
+      width: $img_width;
+      height: $img_width;
+      border: $_border-width-inner solid #fff;
+      border-radius: 50%;
+    }
+  }
+  .info__item {
+    padding-right: map-get($spacers, 4);
+    p {
+      @include media-breakpoint-up(md) {
+        > span {
+          display: block;
+        }
+      }
+      > span {
+        font-weight: map-get($base, font-weight-bold);
+      }
+      > font {
+        white-space: nowrap;
+      }
+    }
+  }
+}

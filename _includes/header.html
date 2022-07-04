@@ -1,0 +1,86 @@
+{%- include snippets/assign.html 
+  value3=site.data.variables.default.page.show_btn_change_theme -%}
+{%- assign _show_btn_change_theme = __return -%}
+
+<header class="header">
+  <div class="main">
+    <!-- title -->
+    <div class="header__title">
+      <div class="header__brand">
+        {%- include svg/logo.svg -%}
+        {%- assign _paths_root = site.data.variables.default.paths.root -%}
+        {%- include snippets/get-nav-url.html path=_paths_root -%}
+        <a class="header__brand-title" title="{{ site.description }}" href="{{ __return }}">{{ site.title }}</a>
+      </div>
+      {%- if _show_btn_change_theme -%}
+        <div class="theme-btn">
+          {%- include snippets/get-theme.html -%}
+          {%- assign _theme = __return -%}
+          <div class="theme-panel_title button button--outline-secondary button--xs">{{ _theme }}</div>
+        </div>
+        {%- include snippets/get-accessible-url.html url="/assets/js/dist/theme.min.js" -%}
+        <script src="{{ __return }}"></script>
+      {%- endif -%}
+    </div>
+    <!-- navigation toggle -->
+    <div class="navigation__toggle">
+      <a href="#" aria-label="Menu" class="toggle">
+        <div class="toggle-inner">
+          <div class="toggle__bar"></div>
+          <div class="toggle__bar"></div>
+          <div class="toggle__bar"></div>
+        </div>
+      </a>
+    </div>
+    <!-- navigation -->
+    <div class="navigation">
+      <ul>
+        <!-- top navs -->
+        {%- assign _top_headers = site.data.navigation.header | where: 'parent', nil -%}
+        {%- for _item in _top_headers -%}
+          {%- include snippets/get-nav-url.html path=_item.url -%}
+          {%- assign _nav_url = __return -%}
+          {%- include snippets/get-nav-url.html path=page.url -%}
+          {%- assign _page_url = __return -%}
+
+          {%- include snippets/get-nav-active.html 
+            item=_item 
+            page=page -%}
+          {%- assign _nav_active = __return -%}
+          {%- include snippets/get-nav-title.html nav=_item -%}
+          {%- assign _nav_title = __return -%}
+          <li class="navigation__item {{ _nav_active }}">
+            <a class="navigation__item-link" href="{{ _nav_url }}">{{ _nav_title }}</a>
+            <!-- sub navs -->
+            {%- if _item.key != nil -%}
+            {%- assign _sub_navs = site.data.navigation.header | where: 'parent', _item.key -%}
+            {%- assign _sub_navs_num = _sub_navs | size -%}
+            {%- if _sub_navs_num > 0 -%}
+              <i class="fas fa-caret-down navigation__item-sub_icon"></i>
+              <div class="sub_navigation">
+                <ul>
+                  {%- for _sub_item in _sub_navs -%}
+                    {%- include snippets/get-nav-title.html nav=_sub_item -%}
+                    {%- assign _sub_nav_title = __return -%}
+                    {%- include snippets/get-nav-url.html path=_sub_item.url -%}
+                    {%- assign _sub_nav_url = __return -%}
+                    {%- include snippets/get-nav-active.html 
+                      item=_sub_item 
+                      page=page -%}
+                    {%- assign _sub_nav_active = __return -%}
+                    <li class="sub_navigation__item {{ _sub_nav_active }}">
+                      <a class="sub_navigation__item-link" href="{{ _sub_nav_url }}" title="{{ _sub_item.description }}">{{ _sub_nav_title }}</a>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              </div>
+            {%- endif -%}
+            {%- endif -%}
+            <!-- sub navs end -->
+          </li>
+        {%- endfor -%}
+        <!-- top navs end -->
+      </ul>
+    </div>
+  </div>
+</header>

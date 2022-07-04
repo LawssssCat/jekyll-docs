@@ -1,0 +1,13 @@
+---
+layout: compress
+---
+<?xml version="1.0" encoding="utf-8"?>
+<browserconfig>
+    <msapplication>
+        <tile>
+            {%- include snippets/get-accessible-url.html url='/assets/images/favicon/mstile-150x150.png' -%}
+            <square150x150logo src="{{  __return }}"/>
+            <TileColor>#da532c</TileColor>
+        </tile>
+    </msapplication>
+</browserconfig>

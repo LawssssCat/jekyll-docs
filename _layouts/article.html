@@ -1,0 +1,32 @@
+---
+layout: page
+type: article
+show_article_title: true
+---
+
+<div class="layout--article">
+  
+  <div class="article__header">
+    {%- include article-header.html -%}
+  </div>
+
+  <div class="article__infos d-print-none">
+    {%- include article-infos.html -%}
+  </div>
+
+  <div class="article__content js-article-content">
+    {{ content }}
+  </div>
+
+  <div class="article__footer d-print-none">
+    {%- include article-footer.html -%}
+  </div>
+
+</div>
+
+<!-- pageview -->
+{%- assign _pageview_settings = site.pageview -%}
+{%- if _pageview_settings.enable -%}
+  {%- assign _provider = _pageview_settings.provider -%}
+  {%- include pageview-providers/{{ _provider }}/article.html settings=_pageview_settings -%}
+{%- endif -%}

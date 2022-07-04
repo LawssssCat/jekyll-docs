@@ -1,0 +1,13 @@
+{%- comment -%}
+needs:
+  - key = locale_id in _data/locale.yml
+{%- endcomment -%}
+{%- include snippets/get-lang.html -%}
+{%- assign __lang = __return -%}
+{%- assign __locale = site.data.locale[__lang][include.key] -%}
+{%- assign __locale_en = site.data.locale.en[include.key] -%}
+{%- if __locale -%}
+  {%- assign __return = __locale -%}
+{%- else -%}
+  {%- assign __return = __locale_en -%}
+{%- endif -%}

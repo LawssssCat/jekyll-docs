@@ -1,0 +1,18 @@
+{%- comment -%}
+needs:
+  - path = root base relative path in repository
+{%- endcomment -%}
+
+{%- assign _repo = site.repository -%}
+
+{%- assign _accessible_url = nil -%}
+
+{%- case  _repo.platform -%}
+  {%- when 'github' -%}
+    {%- assign _accessible_url = '/' | append: _repo.name | append: '/tree/' | append: _repo.tree | append: '/' | append: include.path | replace:'//','/' -%}
+    {%- assign _accessible_url = 'https://github.com' | append: _accessible_url -%}
+  {%- else -%}
+    
+{%- endcase -%}
+
+{%- assign __return = _accessible_url -%}

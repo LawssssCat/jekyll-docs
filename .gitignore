@@ -1,0 +1,16 @@
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+.bundle/
+vendor/
+Gemfile.lock
+
+node_modules/
+package-lock.json
+
+.vscode/
+
+# build by `$ npm run build`
+/assets/js/dist

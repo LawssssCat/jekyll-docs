@@ -1,0 +1,24 @@
+---
+layout: compress
+---
+<!DOCTYPE html>
+{%- include snippets/get-lang.html -%}
+{%- assign _lang = __return -%}
+{%- include snippets/get-theme.html -%}
+{%- assign _theme = __return -%}
+<html lang="{{ _lang }}" data-theme="{{ _theme }}">
+  <head>
+    {%- include head.html -%}
+    {%- include snippets/get-accessible-url.html url="/assets/js/data/variables.js" -%}
+    <script src="{{ __return }}"></script>
+    {%- include snippets/get-accessible-url.html url="/assets/js/dist/venders.min.js" -%}
+    <script src="{{ __return }}"></script>
+  </head>
+  <body>
+    <div class="layout--base">
+      {{ content }}
+    </div>
+    {%- include snippets/get-accessible-url.html url="/assets/js/dist/commons.min.js" -%}
+    <script src="{{ __return }}"></script>
+  </body>
+</html>

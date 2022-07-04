@@ -1,0 +1,23 @@
+@mixin media-breakpoint-down($name, $breakpoints: default, $offset: default) {
+  @if $breakpoints == default {
+    $breakpoints: $responsive;
+  }
+  @if $offset == default {
+    $offset: 0;
+  }
+  @media (max-width: map-get($breakpoints, $name) - 1 + $offset) {
+    @content;
+  }
+}
+
+@mixin media-breakpoint-up($name, $breakpoints: default, $offset: default) {
+  @if $breakpoints == default {
+    $breakpoints: $responsive;
+  }
+  @if $offset == default {
+    $offset: 0;
+  }
+  @media (min-width: map-get($breakpoints, $name) + $offset) {
+    @content;
+  }
+}

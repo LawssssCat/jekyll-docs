@@ -1,0 +1,33 @@
+@mixin horizontal-rules() {
+  @include themeify {
+    &::before {
+      display: block;
+      font-size: map-get($base, font-size-h2);
+      color: themed(text-color-l);
+      text-align: center;
+      letter-spacing: map-get($spacers, 4);
+      content: "...";
+    }
+  }
+}
+
+@mixin horizontal-rules-dashed($color, $color-bg: default) {
+  @if $color-bg == default {
+    $color-bg: #fff; 
+  }
+  @include themeify {
+    &::before {
+      display: block;
+      height: 1px;
+      content: "";
+      background: linear-gradient(90deg, transparent 0, transparent 50%, $color-bg 50%, $color-bg 100%), $color ;
+      background-size: 15px 20px, 100% 100%;
+    }
+  }
+}
+
+.horizontal-rules-dashed {
+  @include themeify {
+    @include horizontal-rules-dashed(themed(text-color), themed(background-color));
+  }
+}
