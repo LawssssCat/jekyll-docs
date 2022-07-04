@@ -195,7 +195,7 @@ $height_header: map-get($layout, header-height) - $height_header_top;
     // display: none;
     max-height: 0;
     @include transition(max-height .2s ease);
-    overflow: hidden;
+    @include overflow(hidden);
     border-bottom-right-radius: map-get($base, border-radius);
     border-bottom-left-radius: map-get($base, border-radius);
     @include themeify {
@@ -245,7 +245,7 @@ $height_header: map-get($layout, header-height) - $height_header_top;
     }
     .navigation__item[data-hover-sub_navigation] .sub_navigation {
       max-height: calc(100vh - #{$height_header});
-      overflow-y: auto;
+      @include overflow(auto, "y");
       @include scrollbar-none;
     }
   }
@@ -312,7 +312,7 @@ $height_header: map-get($layout, header-height) - $height_header_top;
       width: 100%;
       max-height: 0;
       @include transition(max-height .2s ease);
-      overflow-y: auto;
+      @include overflow(auto, "y");
       @include scrollbar-none;
       @include box-shadow(2);
       > ul {
