@@ -2,8 +2,15 @@
 {%- assign _quicklinks = site.data.quicklinks[_quicklinks_key] -%}
 <div class="quicklinks">
   <ol>
+    {%- assign token_page_url   = page.url    | replace: '.html', '' -%}
     {%- for _item in _quicklinks -%}
-      <li class="{{ _item.class }}">
+      {%- assign token_item_url = _item.url | replace: '.html', '' -%}
+      {%- if token_item_url==token_page_url -%}
+        {%- assign _active = 'active' -%}
+      {%- else -%}
+        {%- assign _active = '' -%}
+      {%- endif -%}
+      <li class="{{ _item.class }} {{ _active }}">
         <!-- title -->
         {%- include snippets/get-accessible-url.html url=_item.url -%}
         {%- assign _url = __return -%}
@@ -31,7 +38,6 @@
                 {%- assign _detail_title = __return -%}
               {%- endunless -%}
               {%- assign token_detail_url = _detail.url | replace: '.html', '' -%}
-              {%- assign token_page_url   = page.url    | replace: '.html', '' -%}
               {%- if token_detail_url==token_page_url -%}
                 {%- assign _active = 'active' -%}
               {%- else -%}
