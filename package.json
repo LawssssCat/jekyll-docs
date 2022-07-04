@@ -22,7 +22,7 @@
     "check": "cross-env JEKYLL_ENV=production npm run stylelint && npm run eslint",
     "build": "npm run check && npm run js-build && cross-env JEKYLL_ENV=production JEKYLL_LOG_LEVEL=debug bundle exec jekyll build -d _site",
     "serve": "npm run check && npm run js-build && bundle exec jekyll serve -H 0.0.0.0 --port 8765 -d _site/dev",
-    "debug": "cross-env JEKYLL_LOG_LEVEL=debug bundle exec jekyll serve -H 0.0.0.0 --port 9875 -d _site/debug",
+    "debug": "cross-env JEKYLL_LOG_LEVEL=debug bundle exec jekyll serve --port 9875 -d _site/debug",
     "eslint": "eslint \"_javascript/**/*.js\"",
     "eslint-fix": "eslint \"_javascript/**/*.js\" --fix",
     "stylelint": "stylelint scss \"_sass/**/*.scss\"",
