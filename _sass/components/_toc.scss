@@ -7,7 +7,7 @@
   }
   .toc {
     max-height: calc(100vh - #{map-get($spacers, 5)});
-    overflow-y: auto;
+    @include overflow(auto, "y");
     @include scrollbar-none();
   }
   ol {
@@ -30,7 +30,7 @@
     > ol {
       height: auto;
       max-height: 0;
-      overflow: hidden;
+      @include overflow(hidden);
       @include transition(max-height .8s ease);
     }
     &.active {
