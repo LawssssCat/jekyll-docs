@@ -22,9 +22,27 @@ docs-en:
     url: /docs/en/quick-start
   - title: Structure
     url: /docs/en/structure
+
   - title: Customization
     class: heading
   - title: Configuration
     class: strong
     details:
       - url: 
+  - title: Layouts
+    class: strong
+    url: 
+  - title: Authors
+    class: strong
+    url: /docs/en/authors
+
+  - title: Components
+    class: heading
+
+  - title: Language
+    class: heading
+  - title: 中文
+    url: 
+
+  - title: Development
+    class: heading
