@@ -47,8 +47,12 @@
         color: themed(main-color-1);
       }
     }
-    .active {
-      color: themed(main-color-1);
+    li.active {
+      &, & > .quicklinks-item {
+        > a {
+          color: themed(main-color-1);
+        }
+      }
     }
   }
   .heading {
