@@ -4,13 +4,13 @@ layouts:
     class: heading
     url: /samples.html
   - title: Page Layout
-    type: strong
+    class: strong
     details:
       - url: /page/single.html
       - url: /page/aside.html
       - url: /page/sidebar.html
       - url: /page/page-sidebar-aside.html
   - title: Articles Layout
-    type: strong
+    class: strong
   - title: Languages
-    type: strong
+    class: strong

@@ -39,7 +39,11 @@ layout: base
     <div class="grid">
       <!-- sidebar -->
       <div class="page__sidebar d-print-none">
-        <div class="page__sidebar-quicklinks">{%- include sidebar/quicklinks.html -%}</div>
+        <div class="page__sidebar-inner">
+          <div class="page__sidebar-quicklinks">
+            {%- include sidebar/quicklinks.html -%}
+          </div>
+        </div>
       </div>
       <!-- main -->
       {{ _page_main }}
