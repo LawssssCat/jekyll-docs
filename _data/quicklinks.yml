@@ -8,5 +8,6 @@ layouts:
       - url: /page/single.html
       - url: /page/aside.html
       - url: /page/sidebar.html
+      - url: /page/page-sidebar-aside.html
   - title: Articles Layout
   - title: Languages

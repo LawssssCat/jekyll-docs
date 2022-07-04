@@ -1,0 +1,10 @@
+/* stylelint-disable scss/no-global-function-names */
+.page__sidebar {
+  z-index: 999;
+  width: 80%;
+  max-width: map-get($layout, sidebar-width);
+  @include split-line(right);
+  @include transition(transform map-get($animation, duration));
+  @include overflow(auto);
+
+}

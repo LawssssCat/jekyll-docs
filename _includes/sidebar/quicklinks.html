@@ -30,7 +30,14 @@
               {%- include snippets/get-page-title.html id=_detail.url -%}
               {%- assign _detail_title = __return -%}
             {%- endunless -%}
-            <li>
+            {%- assign token_detail_url = _detail.url | replace: '.html', '' -%}
+            {%- assign token_page_url   = page.url    | replace: '.html', '' -%}
+            {%- if token_detail_url==token_page_url -%}
+              {%- assign _active = 'active' -%}
+            {%- else -%}
+              {%- assign _active = '' -%}
+            {%- endif -%}
+            <li class="{{ _active }}">
               <a href="{{ _detail_url }}">{{ _detail_title }}</a>
             </li>
           {%- endfor -%}
