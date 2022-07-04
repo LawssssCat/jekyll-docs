@@ -38,11 +38,14 @@ docs-en:
 
   - title: Components
     class: heading
+    details:
+      - url: 
 
   - title: Language
     class: heading
-  - title: 中文
-    url: 
+    details: 
+      - title: 中文
+        url: 
 
   - title: Development
     class: heading

@@ -60,10 +60,10 @@
     margin-top: map-get($spacers, 2);
     margin-bottom: map-get($spacers, 1);
     line-height: map-get($base, line-height);
-    @include split-line(bottom);
     .quicklinks-item {
       font-size: map-get($base, font-size-lg);
       font-weight: map-get($base, font-weight-bold);
+      @include split-line(bottom);
     }
   }
   .strong {
