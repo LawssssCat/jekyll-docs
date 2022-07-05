@@ -46,6 +46,77 @@
       margin-bottom: 0;
     }
   }
+  ul, ol {
+    margin-left: map-get($spacers, 4);
+    ul, ol {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+    li {
+      p {
+        margin: map-get($spacers, 2);
+        @media print {
+          margin: map-get($spacers, 1);
+        }
+      }
+    }
+  }
+  dl {
+    dt, dd {
+      p {
+        margin: map-get($spacers, 2);
+        @media print {
+          margin: map-get($spacers, 1);
+        }
+      }
+    }
+    dt {
+      font-weight: map-get($base, font-weight-bold);
+    }
+    dd {
+      margin-left: 2rem;
+    }
+  }
+  ul.task-list {
+    margin-left: 0;
+    list-style-type: none;
+    ul, ol {
+      margin-left: map-get($spacers, 4);
+    }
+  }
+  table {
+    display: block;
+    width: 100%;
+    border-collapse: collapse;
+    @include overflow(auto);
+    thead, tfoot {
+      @include themeify {
+        background-color: themed(text-background-color);
+      }
+    }
+    th, td {
+      padding: map-get($spacers, 2);
+      border: 1px solid;
+      @include themeify {
+        border-color: themed(border-color-l);
+      }
+    }
+    // tbody {
+    //   tr {
+    //     &:nth-child(2n) {
+    //       @include themeify {
+    //         background-color: themed(text-background-color);
+    //       }
+    //     }
+    //     // &:nth-child(2n + 1) {
+    //     //   background-color: var(--tb-odd-bg);
+    //     // }
+    //   }
+    // }
+    th {
+      font-weight: map-get($base, font-weight-bold);
+    }
+  }
   .emoji {
     display: inline-block;
     width: map-get($base, line-height-lg) * .7rem;
