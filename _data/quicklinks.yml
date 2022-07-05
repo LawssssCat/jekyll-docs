@@ -11,9 +11,8 @@ layouts:
   - title: Articles Layout
 
 markdown:
-  - title: Markdown In Jekyll
+  - url: /markdown
     details:
-      - url: /markdown
       - url: /markdown/kramdown
       - url: /markdown/kramdown/gfm
 

@@ -66,6 +66,11 @@
     margin-top: map-get($spacers, 2);
     margin-bottom: map-get($spacers, 1);
     line-height: map-get($base, line-height);
+    @include hover {
+      a {
+        text-decoration: none !important;
+      }
+    }
     .quicklinks-item {
       font-size: map-get($base, font-size);
       font-weight: map-get($base, font-weight-bold);
