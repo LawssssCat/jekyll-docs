@@ -18,10 +18,17 @@ layouts:
 docs-en:
   - title: Start
     class: heading
-  - title: Quick Start
-    url: /docs/en/quick-start
-  - title: Structure
-    url: /docs/en/structure
+    details:
+      - title: Quick Start
+        url: /docs/en/quick-start
+      - title: Structure
+        url: /docs/en/structure
+      - url: /docs/en/typography
+
+  - title: Components
+    class: heading
+    details:
+      - url: /docs/en/components/spacing
 
   - title: Customization
     class: heading
@@ -35,11 +42,6 @@ docs-en:
   - title: Authors
     class: strong
     url: /docs/en/authors
-
-  - title: Components
-    class: heading
-    details:
-      - url: /docs/en/components/spacing
 
   - title: Language
     class: heading
