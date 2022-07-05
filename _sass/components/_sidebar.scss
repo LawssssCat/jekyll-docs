@@ -48,10 +48,13 @@
       }
     }
     li.active {
-      &, & > .quicklinks-item {
-        > a {
-          color: themed(main-color-1);
-        }
+      & > .quicklinks-item {
+        @include split-line(bottom, 2px, themed(main-color-1));
+      }
+    }
+    .quicklinks-details {
+      li.active {
+        color: themed(main-color-1);
       }
     }
   }
@@ -61,15 +64,9 @@
     margin-bottom: map-get($spacers, 1);
     line-height: map-get($base, line-height);
     .quicklinks-item {
-      font-size: map-get($base, font-size-lg);
-      font-weight: map-get($base, font-weight-bold);
-      @include split-line(bottom);
-    }
-  }
-  .strong {
-    .quicklinks-item {
       font-size: map-get($base, font-size);
       font-weight: map-get($base, font-weight-bold);
+      @include split-line(bottom, 1px);
     }
   }
 }
