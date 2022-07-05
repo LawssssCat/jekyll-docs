@@ -59,9 +59,6 @@ header:
       zh-CN   : *ZH_HANS
       zh-SG   : *ZH_HANS
     url: /ruby
-  - title: Tools
-    url: /tools
-    parent: others
   - titles: 
       en      : &EN       Docs
       en-GB   : *EN
@@ -72,7 +69,8 @@ header:
       zh      : *ZH_HANS
       zh-CN   : *ZH_HANS
       zh-SG   : *ZH_HANS
-    url: /docs
+    url: /docs/en/quick-start
+    key: docs
     parent: others
   - titles: 
       en      : &EN       Samples
@@ -86,6 +84,9 @@ header:
       zh-SG   : *ZH_HANS
     url: /samples
     key: samples
+    parent: others
+  - title: Tools
+    url: /tools
     parent: others
   - title: test
     url: /test

@@ -14,3 +14,38 @@ layouts:
     class: strong
   - title: Languages
     class: strong
+
+docs-en:
+  - title: Start
+    class: heading
+  - title: Quick Start
+    url: /docs/en/quick-start
+  - title: Structure
+    url: /docs/en/structure
+
+  - title: Customization
+    class: heading
+  - title: Configuration
+    class: strong
+    details:
+      - url: 
+  - title: Layouts
+    class: strong
+    url: 
+  - title: Authors
+    class: strong
+    url: /docs/en/authors
+
+  - title: Components
+    class: heading
+    details:
+      - url: /docs/en/components/spacing
+
+  - title: Language
+    class: heading
+    details: 
+      - title: 中文
+        url: 
+
+  - title: Development
+    class: heading
