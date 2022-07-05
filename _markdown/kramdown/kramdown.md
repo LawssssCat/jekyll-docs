@@ -7,44 +7,24 @@ date: 2022-06-20
 [kramdown-github]: https://github.com/gettalong/kramdown
 [jekyll-github]: https://github.com/jekyll/jekyll
 
-Github - <https://github.com/gettalong/kramdown>
+[Kramdown](https://kramdown.gettalong.org/index.html) is the default Markdown renderer for Jekyll.
 
-Jekyll Markdown Parser: Kramdown - <https://jekyllrb.com/docs/configuration/markdown/>
+> + Github - <https://github.com/gettalong/kramdown>
 
-Options - <https://kramdown.gettalong.org/rdoc/Kramdown/Options.html>
+You can refer to the following for setting options.
 
-> Custom Markdown Processors - <https://jekyllrb.com/docs/configuration/markdown/#custom-markdown-processors>
+> + Jekyll Markdown Parser: Kramdown - <https://jekyllrb.com/docs/configuration/markdown/>
+> + Kramdown Options - <https://kramdown.gettalong.org/rdoc/Kramdown/Options.html>
 
 ```yml
 markdown: kramdown # options: kramdown (default), redcarpet
 ```
 
-default config
-
-source code [configuration.rb](https://github.com/jekyll/jekyll/blob/master/lib/jekyll/configuration.rb) in [jekyll][jekyll-github]
-
-```ruby
-DEFAULTS = {
-  ...
-  "kramdown"            => {
-    "auto_ids"      => true,
-    "toc_levels"    => (1..6).to_a,
-    "entity_output" => "as_char",
-    "smart_quotes"  => "lsquo,rsquo,ldquo,rdquo",
-    "input"         => "GFM",
-    "hard_wrap"     => false,
-    "guess_lang"    => true,
-    "footnote_nr"   => 1,
-    "show_warnings" => false,
-  },
-}
-```
-
-config pickup
-
-source code [markdown.rb](https://github.com/jekyll/jekyll/blob/master/lib/jekyll/converters/markdown.rb) in [jekyll][jekyll-github]
-
-```ruby
+<details>
+  <summary>
+    source code <a href='https://github.com/jekyll/jekyll/blob/master/lib/jekyll/converters/markdown.rb'>lib/jekyll/converters/markdown.rb</a> and <a href='https://github.com/gettalong/kramdown/blob/master/lib/kramdown/parser/kramdown.rb'>lib/kramdown/parser/kramdown.rb</a>
+  </summary>
+{%- highlight ruby -%}
 # RuboCop does not allow reader methods to have names starting with `get_`
 # To ensure compatibility, this check has been disabled on this method
 #
@@ -56,13 +36,6 @@ def get_processor
     custom_processor
   end
 end
-```
-
-reference kramdown parsercode 
-
-source code [markdown.rb](https://github.com/jekyll/jekyll/blob/master/lib/jekyll/converters/markdown.rb) in [jekyll][jekyll-github]
-
-```ruby
 ...
 def initialize(source, options = {})
   JekyllDocument.setup(options)
@@ -93,9 +66,45 @@ def try_require(type, name)
 rescue LoadError
   false
 end
+{%- endhighlight -%}
+</details>
+
+## default config
+
+```yml
+"kramdown"
+  "auto_ids"      : true
+  "toc_levels"    : (1..6).to_a
+  "entity_output" : "as_char"
+  "smart_quotes"  : "lsquo,rsquo,ldquo,rdquo"
+  "input"         : "GFM"
+  "hard_wrap"     : false
+  "guess_lang"    : true
+  "footnote_nr"   : 1
+  "show_warnings" : false
 ```
 
-source code [kramdown/parser/kramdown.rb)](https://github.com/gettalong/kramdown/blob/master/lib/kramdown/parser/kramdown.rb) in [kramdown-github]
+<details>
+  <summary>
+    source code <a href='https://github.com/jekyll/jekyll/blob/master/lib/jekyll/configuration.rb'>configuration.rb</a>
+  </summary>
+{%- highlight ruby -%}
+DEFAULTS = {
+  ...
+  "kramdown"            => {
+    "auto_ids"      => true,
+    "toc_levels"    => (1..6).to_a,
+    "entity_output" => "as_char",
+    "smart_quotes"  => "lsquo,rsquo,ldquo,rdquo",
+    "input"         => "GFM",
+    "hard_wrap"     => false,
+    "guess_lang"    => true,
+    "footnote_nr"   => 1,
+    "show_warnings" => false,
+  },
+}
+{%- endhighlight -%}
+</details>
 
 ## GFM (GitHub Flavored Markdown)
 
@@ -123,9 +132,11 @@ kramdown:
   show_warnings: true
 ```
 
-source code [kramdown_parser.rb](https://github.com/jekyll/jekyll/blob/master/lib/jekyll/converters/markdown/kramdown_parser.rb) in [jekyll][jekyll-github]
-
-```ruby
+<details>
+  <summary>
+    source code <a href='https://github.com/jekyll/jekyll/blob/master/lib/jekyll/converters/markdown/kramdown_parser.rb'>lib/jekyll/converters/markdown/kramdown_parser.rb</a>
+  </summary>
+{%- highlight ruby -%}
 def convert(content)
   document = Kramdown::JekyllDocument.new(content, @config)
   html_output = document.to_html
@@ -136,5 +147,5 @@ def convert(content)
   end
   html_output
 end
-```
-
+{%- endhighlight -%}
+</details>

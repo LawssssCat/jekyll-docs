@@ -12,8 +12,8 @@ layouts:
 
 markdown:
   - url: /markdown
+  - url: /markdown/kramdown
     details:
-      - url: /markdown/kramdown
       - url: /markdown/kramdown/gfm
 
 docs-en:

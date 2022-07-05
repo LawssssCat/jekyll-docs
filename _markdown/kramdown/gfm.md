@@ -12,14 +12,17 @@ title: GFM (GitHub Flavored Markdown)
 
 By default, kramdown uses the GitHub Flavored Markdown ([GFM](https://github.com/kramdown/parser-gfm)) dialect to converts Markdown documents to HTML.
 
-source code [kramdown_parser.rb](https://github.com/jekyll/jekyll/blob/master/lib/jekyll/converters/markdown/kramdown_parser.rb) in [jekyll][jekyll-github]
-
-```ruby
+<details>
+<summary>
+  source code <a href='https://github.com/jekyll/jekyll/blob/master/lib/jekyll/converters/markdown/kramdown_parser.rb'>kramdown_parser.rb</a>
+</summary>
+{% highlight ruby %}
 def load_dependencies
   require "kramdown-parser-gfm" if @config["input"] == "GFM"
   ...
 end
-```
+{% endhighlight %}
+</details>
 
 > You can also change the processor used by Kramdown (as specified for the input key in the Kramdown [RDoc](https://kramdown.gettalong.org/rdoc/Kramdown/Document.html#method-c-new))
 
