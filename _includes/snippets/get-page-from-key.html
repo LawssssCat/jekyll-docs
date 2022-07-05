@@ -5,12 +5,14 @@ needs
 
 {%- assign _input_key = include.key | replace: '.html', '' -%}
 {%- assign _output_page = nil -%}
-{% for _page in site.documents %}
+{%- if _input_key and _input_key!='' -%}
+  {% for _page in site.documents %}
   {%- assign _url = _page.url   | replace: '.html', '' -%}
   {%- assign _id  = _page.id    | replace: '.html', '' -%}
   {%- assign _key = _page.key   | replace: '.html', '' -%}
   {%- if _input_key==_url or _input_key==_id or _input_key==_key -%}
     {%- assign _output_page = _page -%}
   {%- endif -%}
-{% endfor %}
+  {% endfor %}
+{%- endif -%}
 {%- assign __return = _output_page -%}
