@@ -1,5 +1,5 @@
-{%- assign _quicklinks_key = page.sidebar.quicklinks | default: layout.sidebar.quicklinks -%}
-{%- assign _quicklinks = site.data.quicklinks[_quicklinks_key] -%}
+{%- include snippets/get-article-sidebar-quicklinks.html -%}
+{%- assign _quicklinks = __return -%}
 <div class="quicklinks">
   <ol>
     {%- assign token_page_url   = page.url    | replace: '.html', '' -%}

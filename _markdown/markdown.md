@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Markdown in Jekyll 
+title: Markdown
 permalink: /markdown
 ---
 

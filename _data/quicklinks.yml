@@ -11,10 +11,10 @@ layouts:
   - title: Articles Layout
 
 markdown:
-  - url: /markdown
-    class: heading
-  - url: /markdown/kramdown
+  - title: Markdown In Jekyll
     details:
+      - url: /markdown
+      - url: /markdown/kramdown
       - url: /markdown/kramdown/gfm
 
 docs-en:
