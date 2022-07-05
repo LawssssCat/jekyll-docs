@@ -15,6 +15,11 @@ layouts:
   - title: Languages
     class: strong
 
+markdown:
+  - url: /markdown
+    class: heading
+  - url: /markdown/kramdown
+
 docs-en:
   - title: Start
     class: heading
@@ -29,6 +34,7 @@ docs-en:
     class: heading
     details:
       - url: /docs/en/components/spacing
+      - url: /docs/en/components/code
 
   - title: Customization
     class: heading

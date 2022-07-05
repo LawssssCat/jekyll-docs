@@ -13,15 +13,15 @@
       <li class="{{ _item.class }} {{ _active }}">
         <!-- title -->
         {%- include snippets/get-accessible-url.html url=_item.url -%}
-        {%- assign _url = __return -%}
+        {%- assign _item_url = __return -%}
         {%- assign _title = _item.title -%}
         {%- unless _title -%}
           {%- include snippets/get-article-title.html article_id=_item.url -%}
           {%- assign _title = __return -%}
         {%- endunless -%}
         <div class="quicklinks-item">
-          {%- if _url -%}
-            <a href="{{ _url }}">{{ _title }}</a>
+          {%- if _item_url -%}
+            <a href="{{ _item_url }}">{{ _title }}</a>
           {%- else -%}
             {{ _title }}
           {%- endif -%}

@@ -1,13 +1,17 @@
 ---
-layout: page
+layout: article
+title: Markdown in Jekyll 
+aside:
+    toc: true
+sidebar: 
+    quicklinks: markdown
 ---
 
-Jekyll - markdown options
-https://jekyllrb.com/docs/configuration/markdown/
+In the official document of Jekyll, we have some [options](https://jekyllrb.com/docs/configuration/markdown/) for setting.
 
-Kramdown - the default Markdown renderer for Jekyll
-https://kramdown.gettalong.org/index.html
-https://kramdown.gettalong.org/syntax.html
+We further knows that [Kramdown](https://kramdown.gettalong.org/index.html) is the default Markdown renderer for Jekyll. 
+
+> Kramdown syntax - <https://kramdown.gettalong.org/syntax.html>
 
 redcarpet
 ```yml
@@ -25,13 +29,11 @@ If we want to access the site resources, we may not be able to access them by st
 Therefore, if we want to access resources in the station, we need to use `links` tag. To use `links` tag, we need to provide he path to the post, page, or collection is defined as the path relative to the root directory (where your config file is) to the file.
 
 ```liquid
-{% raw %}
-// render after
+{% raw %}// render after
 {% link _collection/name-of-document.md %}
 {% link _posts/2016-07-26-name-of-post.md %}
 {% link news/index.html %}
-{% link /assets/files/doc.pdf %}
-{% endraw %}
+{% link /assets/files/doc.pdf %}{% endraw %}
 
 // render result
 /{baseurl}/{dynamic output path}

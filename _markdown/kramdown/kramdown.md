@@ -1,5 +1,7 @@
 ---
 layout: article
+permalink: /markdown/kramdown
+date: 2022-06-20
 ---
 
 [kramdown-github]: https://github.com/gettalong/kramdown

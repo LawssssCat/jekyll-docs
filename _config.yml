@@ -93,6 +93,8 @@ collections:
     permalink: /:name
   docs:
     output: true
+  markdown:
+    output: true
   sample_articles:
     output: true
   sample_pages:
@@ -119,6 +121,15 @@ defaults:
         toc: true
       sidebar:
         quicklinks: docs-en
+  - scope:
+      path: "_markdown/"
+      type: markdown
+    values:
+      nav_key: markdown
+      aside:
+          toc: true
+      sidebar: 
+          quicklinks: markdown
 
 # see http://jch.penibelst.de/
 compress_html:
