@@ -178,8 +178,7 @@ class Toc {
     });
   }
   disable() {
-    return TOOL.isHidden(this.toc)
-      || (this.headers.length==0);
+    return (this.headers.length==0);
   }
   rander() {
     const tocDOM = generateDOM.call(this, this.headers, this.levels);
