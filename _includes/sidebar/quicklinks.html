@@ -16,7 +16,7 @@
         {%- assign _url = __return -%}
         {%- assign _title = _item.title -%}
         {%- unless _title -%}
-          {%- include snippets/get-page-title.html id=_item.url -%}
+          {%- include snippets/get-article-title.html id=_item.url -%}
           {%- assign _title = __return -%}
         {%- endunless -%}
         <div class="quicklinks-item">
@@ -34,7 +34,7 @@
               {%- assign _detail_url = __return -%}
               {%- assign _detail_title = _detail.title -%}
               {%- unless _detail_title -%}
-                {%- include snippets/get-page-title.html id=_detail.url -%}
+                {%- include snippets/get-article-title.html id=_detail.url -%}
                 {%- assign _detail_title = __return -%}
               {%- endunless -%}
               {%- assign token_detail_url = _detail.url | replace: '.html', '' -%}

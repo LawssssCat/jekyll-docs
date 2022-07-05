@@ -1,5 +1,22 @@
-{%- assign __title = include.article.title -%}
-{%- assign __titles = include.article.titles -%}
+{%- comment -%}
+needs:
+  - article
+  - article_id = page.id (if article is nil, search article by article_ids)
+{%- endcomment -%}
+
+{%- comment -%}============================ 1. init article ================================{%- endcomment -%}
+
+{%- assign _article      = include.article -%}
+{%- assign _article_id   = include.article_id -%}
+{%- unless _article -%}
+  {%- include snippets/get-page-from-key.html key=_article_id -%}
+  {%- assign _article = __return -%}
+{%- endunless -%}
+
+{%- comment -%}============================ 2. get title ================================{%- endcomment -%}
+
+{%- assign __title  = _article.title -%}
+{%- assign __titles = _article.titles -%}
 
 {%- if __title -%}
   {%- assign __return = __title -%}
