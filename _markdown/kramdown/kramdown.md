@@ -10,8 +10,6 @@ date: 2022-06-20
 [parser-gfm.gfm.rb]: https://github.com/kramdown/parser-gfm/blob/master/lib/kramdown/parser/gfm.rb
 
 
-## kramdown
-
 Github - <https://github.com/gettalong/kramdown>
 
 Jekyll Markdown Parser: Kramdown - <https://jekyllrb.com/docs/configuration/markdown/>

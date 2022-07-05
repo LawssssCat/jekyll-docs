@@ -1,10 +1,7 @@
 ---
 layout: article
 title: Markdown in Jekyll 
-aside:
-    toc: true
-sidebar: 
-    quicklinks: markdown
+permalink: /markdown
 ---
 
 In the official document of Jekyll, we have some [options](https://jekyllrb.com/docs/configuration/markdown/) for setting.

@@ -32,9 +32,49 @@
     border: none;
     @include horizontal-rules();
   }
-  // a {
-  //   @include link-decoration();
-  // }
+  blockquote {
+    padding-left: map-get($spacers, 3);
+    font-size: map-get($base, font-size-sm);
+    @include themeify {
+      color: themed(text-color-l);
+      @include split-line(left, 4px, themed(border-color));
+    }
+    p {
+      margin: map-get($spacers, 2) 0;
+    }
+    & > :last-child {
+      margin-bottom: 0;
+    }
+  }
+  .emoji {
+    display: inline-block;
+    width: map-get($base, line-height-lg) * .7rem;
+    height: map-get($base, line-height-lg) * .7rem;
+    vertical-align: text-bottom;
+  }
+  .footnotes {
+    @include split-line();
+    margin-top: map-get($spacers, 5);
+  }
+  code {
+    padding: map-get($spacers, 1) map-get($spacers, 2);
+    border-radius: map-get($base, border-radius);
+    span {
+      padding: 0;
+      margin: 0;
+    }
+    @include themeify {
+      background-color: themed(text-background-color);
+    }
+  }
+  pre {
+    @include overflow(auto);
+    & > code {
+      padding: 0;
+      word-wrap: normal;
+      background-color: transparent;
+    }
+  }
 }
 
 @media print {
@@ -66,6 +106,10 @@
           margin: map-get($spacers, 1);
         }
       }
+    }
+
+    .footnotes {
+      margin-top: map-get($spacers, 2) * 2;
     }
 
   }
