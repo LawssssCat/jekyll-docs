@@ -4,13 +4,41 @@
   <ol>
     {%- assign token_page_url   = page.url    | replace: '.html', '' -%}
     {%- for _item in _quicklinks -%}
+
+      {%- assign  _item_details_active = false -%}
+      {%- capture _item_details -%}
+        {%- if _item.details -%}
+          <ol class="quicklinks-details">
+            {%- for _detail in _item.details -%}
+              {%- include snippets/get-accessible-url.html url=_detail.url -%}
+              {%- assign _detail_url = __return -%}
+              {%- assign _detail_title = _detail.title -%}
+              {%- unless _detail_title -%}
+                {%- include snippets/get-article-title.html article_id=_detail.url -%}
+                {%- assign _detail_title = __return -%}
+              {%- endunless -%}
+              {%- assign token_detail_url = _detail.url | replace: '.html', '' -%}
+              {%- if token_detail_url==token_page_url -%}
+                {%- assign _active = 'active' -%}
+                {%- assign _item_details_active = true -%}
+              {%- else -%}
+                {%- assign _active = '' -%}
+              {%- endif -%}
+              <li class="{{ _active }}">
+                <a href="{{ _detail_url }}">{{ _detail_title }}</a>
+              </li>
+            {%- endfor -%}
+          </ol>
+        {%- endif -%} 
+      {%- endcapture -%}
+    
       {%- assign token_item_url = _item.url | replace: '.html', '' -%}
-      {%- if token_item_url==token_page_url -%}
+      {%- if token_item_url==token_page_url or _item_details_active==true -%}
         {%- assign _active = 'active' -%}
       {%- else -%}
         {%- assign _active = '' -%}
       {%- endif -%}
-      <li class="{{ _item.class }} {{ _active }}">
+      <li class="heading {{ _active }}">
         <!-- title -->
         {%- include snippets/get-accessible-url.html url=_item.url -%}
         {%- assign _item_url = __return -%}
@@ -27,28 +55,7 @@
           {%- endif -%}
         </div>
         <!-- details -->
-        {%- if _item.details -%}
-          <ol class="quicklinks-details">
-            {%- for _detail in _item.details -%}
-              {%- include snippets/get-accessible-url.html url=_detail.url -%}
-              {%- assign _detail_url = __return -%}
-              {%- assign _detail_title = _detail.title -%}
-              {%- unless _detail_title -%}
-                {%- include snippets/get-article-title.html article_id=_detail.url -%}
-                {%- assign _detail_title = __return -%}
-              {%- endunless -%}
-              {%- assign token_detail_url = _detail.url | replace: '.html', '' -%}
-              {%- if token_detail_url==token_page_url -%}
-                {%- assign _active = 'active' -%}
-              {%- else -%}
-                {%- assign _active = '' -%}
-              {%- endif -%}
-              <li class="{{ _active }}">
-                <a href="{{ _detail_url }}">{{ _detail_title }}</a>
-              </li>
-            {%- endfor -%}
-          </ol>
-        {%- endif -%}
+        {{ _item_details }}
       </li>
     {%- endfor -%}
   </ol>
