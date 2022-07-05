@@ -27,6 +27,9 @@
 
 .page__sidebar-quicklinks {
   padding: map-get($spacers, 3) map-get($spacers, 3) map-get($spacers, 4) map-get($spacers, 4);
+  .quicklinks {
+    overflow-x: hidden;
+  }
   ol {
     @include menu(0 0);
     @include menu-direction(vertical);
