@@ -30,3 +30,7 @@ show_article_title: true
   {%- assign _provider = _pageview_settings.provider -%}
   {%- include pageview-providers/{{ _provider }}/article.html settings=_pageview_settings -%}
 {%- endif -%}
+
+<!-- article -->
+{%- include snippets/get-accessible-url.html url="/assets/js/dist/layouts/article.min.js" -%}
+<script src="{{ __return }}"></script>

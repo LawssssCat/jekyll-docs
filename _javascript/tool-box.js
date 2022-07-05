@@ -36,6 +36,14 @@ TOOL.generateId = function (prefix='generateId', suffix='', scope=window.documen
   return id;
 };
 
+const createDomContainer = window.document.createElement('div');
+TOOL.createDOM = function(template) {
+  createDomContainer.innerHTML = template;
+  const dom = createDomContainer.firstChild;
+  createDomContainer.removeChild(dom);
+  return dom;
+};
+
 // relative to document/html/body
 TOOL.position = function(dom) {
   let top = dom.offsetTop;

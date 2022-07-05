@@ -12,7 +12,21 @@
   }
   @include heading-elements() {
     margin-top: map-get($spacers, 4);
-    // todo
+    > .anchor {
+      margin-left: map-get($spacers, 1);
+      visibility: hidden;
+      opacity: 0;
+      @include themeify {
+        text-decoration: none;
+      }
+    }
+    @include hover() {
+      > .anchor{
+        cursor: pointer;
+        visibility: visible;
+        opacity: 1;
+      }
+    }
   }
   hr {
     border: none;
