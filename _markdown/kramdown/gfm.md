@@ -12,17 +12,18 @@ title: GFM (GitHub Flavored Markdown)
 
 By default, kramdown uses the GitHub Flavored Markdown ([GFM](https://github.com/kramdown/parser-gfm)) dialect to converts Markdown documents to HTML.
 
-<details>
-<summary>
+{%- capture _summary -%}
   source code <a href='https://github.com/jekyll/jekyll/blob/master/lib/jekyll/converters/markdown/kramdown_parser.rb'>kramdown_parser.rb</a>
-</summary>
-{% highlight ruby %}
+{%- endcapture -%}
+{%- capture _code -%}
+{%- highlight ruby -%}
 def load_dependencies
   require "kramdown-parser-gfm" if @config["input"] == "GFM"
   ...
 end
-{% endhighlight %}
-</details>
+{%- endhighlight -%}
+{%- endcapture -%}
+{%- include article/generate-code-details.html summary=_summary code=_code -%}
 
 > You can also change the processor used by Kramdown (as specified for the input key in the Kramdown [RDoc](https://kramdown.gettalong.org/rdoc/Kramdown/Document.html#method-c-new))
 
@@ -49,11 +50,15 @@ kramdown:
     asset_path: # Defaults to https://github.githubassets.com/images/icons/emoji.
 ```
 
+The following shows the the differences of settings one by one.
+
 ### hard_wrap
 
-source code [gfm.rb][parser-gfm.gfm.rb] in [parser-gfm][parser-gfm]
-
-```ruby
+{%- capture _summary -%}
+  source code <a href='https://github.com/kramdown/parser-gfm/blob/master/lib/kramdown/parser/gfm.rb'>lib/kramdown/parser/gfm.rb</a>
+{%- endcapture -%}
+{%- capture _code -%}
+{%- highlight ruby -%}
 def initialize(source, options)
   ...
   @span_parsers.delete(:line_break)       if @options[:hard_wrap]
@@ -61,7 +66,9 @@ def initialize(source, options)
   @hard_line_break = "#{@options[:hard_wrap] ? '' : '\\'}\n"
   ...
 end
-```
+{%- endhighlight -%}
+{%- endcapture -%}
+{%- include article/generate-code-details.html summary=_summary code=_code -%}
 
 for a markdown file (not converted yet)
 
@@ -110,13 +117,21 @@ blank</p>
 <p>blank\blank</p>
 ```
 
-### gfm_quirks: [paragraph_end]
+### gfm_quirks
 
-source code [gfm.rb][parser-gfm.gfm.rb] in [parser-gfm][parser-gfm]
-
-```ruby
+{%- capture _summary -%}
+  source code <a href='https://github.com/kramdown/parser-gfm/blob/master/lib/kramdown/parser/gfm.rb'>lib/kramdown/parser/gfm.rb</a>
+{%- endcapture -%}
+{%- capture _code -%}
+{%- highlight ruby -%}
 def initialize(source, options)
-  ...
+  super
+  @options[:auto_id_stripping] = true
+  @id_counter = Hash.new(-1)
+
+  @span_parsers.delete(:line_break)       if @options[:hard_wrap]
+  @span_parsers.delete(:typographic_syms) if @options[:gfm_quirks].include?(:no_auto_typographic)
+
   if @options[:gfm_quirks].include?(:paragraph_end)
     atx_header_parser = :atx_header_gfm_quirk
     @paragraph_end    = self.class::PARAGRAPH_END_GFM
@@ -124,9 +139,15 @@ def initialize(source, options)
     atx_header_parser = :atx_header_gfm
     @paragraph_end    = self.class::PARAGRAPH_END
   end
+
   ...
+
 end
-```
+{%- endhighlight -%}
+{%- endcapture -%}
+{%- include article/generate-code-details.html summary=_summary code=_code -%}
+
+#### paragraph_end
 
 for a markdown file (not converted yet)
 
@@ -239,15 +260,7 @@ some text</p>
 ### h3</p>
 ```
 
-### gfm_quirks: [no_auto_typographic]
-
-source code [gfm.rb][parser-gfm.gfm.rb] in [parser-gfm][parser-gfm]
-
-```ruby
-def initialize(source, options)
-  @span_parsers.delete(:typographic_syms) if @options[:gfm_quirks].include?(:no_auto_typographic)
-end
-```
+#### no_auto_typographic
 
 for a markdown file (not converted yet)
 
@@ -281,9 +294,11 @@ for a markdown file (not converted yet)
 
 ### auto_ids {#static_id_auto_ids}
 
-source code [gfm.rb][parser-gfm.gfm.rb] in [parser-gfm][parser-gfm]
-
-```ruby
+{%- capture _summary -%}
+source code <a href='https://github.com/kramdown/parser-gfm/blob/master/lib/kramdown/parser/gfm.rb'>lib/kramdown/parser/gfm.rb</a>
+{%- endcapture -%}
+{%- capture _code -%}
+{%- highlight ruby -%}
 def update_elements(element)
   element.children.map! do |child|
     if child.type == :text && child.value.include?(@hard_line_break)
@@ -302,7 +317,9 @@ def update_elements(element)
     end
   end.flatten!
 end
-```
+{%- endhighlight -%}
+{%- endcapture -%}
+{%- include article/generate-code-details.html summary=_summary code=_code -%}
 
 for a markdown file (not converted yet)
 

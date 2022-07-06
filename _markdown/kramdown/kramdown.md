@@ -20,10 +20,10 @@ You can refer to the following for setting options.
 markdown: kramdown # options: kramdown (default), redcarpet
 ```
 
-<details>
-  <summary>
-    source code <a href='https://github.com/jekyll/jekyll/blob/master/lib/jekyll/converters/markdown.rb'>lib/jekyll/converters/markdown.rb</a> and <a href='https://github.com/gettalong/kramdown/blob/master/lib/kramdown/parser/kramdown.rb'>lib/kramdown/parser/kramdown.rb</a>
-  </summary>
+{%- capture _summary -%}
+source code <a href='https://github.com/jekyll/jekyll/blob/master/lib/jekyll/converters/markdown.rb'>lib/jekyll/converters/markdown.rb</a> and <a href='https://github.com/gettalong/kramdown/blob/master/lib/kramdown/parser/kramdown.rb'>lib/kramdown/parser/kramdown.rb</a>
+{%- endcapture -%}
+{%- capture _code -%}
 {%- highlight ruby -%}
 # RuboCop does not allow reader methods to have names starting with `get_`
 # To ensure compatibility, this check has been disabled on this method
@@ -67,7 +67,8 @@ rescue LoadError
   false
 end
 {%- endhighlight -%}
-</details>
+{%- endcapture -%}
+{%- include article/generate-code-details.html summary=_summary code=_code -%}
 
 ## default config
 
@@ -84,10 +85,10 @@ end
   "show_warnings" : false
 ```
 
-<details>
-  <summary>
-    source code <a href='https://github.com/jekyll/jekyll/blob/master/lib/jekyll/configuration.rb'>configuration.rb</a>
-  </summary>
+{%- capture _summary -%}
+source code <a href='https://github.com/jekyll/jekyll/blob/master/lib/jekyll/configuration.rb'>configuration.rb</a>
+{%- endcapture -%}
+{%- capture _code -%}
 {%- highlight ruby -%}
 DEFAULTS = {
   ...
@@ -104,7 +105,8 @@ DEFAULTS = {
   },
 }
 {%- endhighlight -%}
-</details>
+{%- endcapture -%}
+{%- include article/generate-code-details.html summary=_summary code=_code -%}
 
 ## GFM (GitHub Flavored Markdown)
 
@@ -132,10 +134,10 @@ kramdown:
   show_warnings: true
 ```
 
-<details>
-  <summary>
-    source code <a href='https://github.com/jekyll/jekyll/blob/master/lib/jekyll/converters/markdown/kramdown_parser.rb'>lib/jekyll/converters/markdown/kramdown_parser.rb</a>
-  </summary>
+{%- capture _summary -%}
+source code <a href='https://github.com/jekyll/jekyll/blob/master/lib/jekyll/converters/markdown/kramdown_parser.rb'>lib/jekyll/converters/markdown/kramdown_parser.rb</a>
+{%- endcapture -%}
+{%- capture _code -%}
 {%- highlight ruby -%}
 def convert(content)
   document = Kramdown::JekyllDocument.new(content, @config)
@@ -148,4 +150,5 @@ def convert(content)
   html_output
 end
 {%- endhighlight -%}
-</details>
+{%- endcapture -%}
+{%- include article/generate-code-details.html summary=_summary code=_code -%}
