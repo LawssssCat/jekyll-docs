@@ -2,11 +2,52 @@
 layout: article
 title: Markdown
 permalink: /markdown
+tags: ['test', 'typography']
+author: foo
 ---
 
-## Start
+## Syntax
 
 The markdown syntax and style of this site can be referred [here]({% link _docs/en/1.3 typography.md %}).
+
+In addition, since Jekyll use kramdown as the markdown processor by default. You can use the [syntax](https://kramdown.gettalong.org/syntax.html) of kramdown, such as [IAL(Inline Attribute Lists)](https://kramdown.gettalong.org/syntax.html#block-ials)
+
+{% capture _markdown %}
+{::comment}
+This text is completely ignored by kramdown - a comment in the text.
+{:/comment}
+
+Do you see {::comment}this text{:/comment}?
+{::comment}some other comment{:/}
+{::}some other{:.special}
+
+{::options key="val" /}
+
+A simple{:.underline} paragraph with an ID{:#id}{:.class}. attribute.
+{: #para-one}
+
+> A blockquote{:rel='something'} with a title{:.tools}
+{:title="The blockquote title"}
+{: #myid}
+
+{:.ruby}
+    Some code here
+{% endcapture %}
+{%- capture _titles -%}
+before render
+<!-- split title -->
+after render
+{%- endcapture -%}
+{%- capture _contents -%}
+{%- highlight markdown -%}
+{{ _markdown }}
+{%- endhighlight -%}
+<!-- split content -->
+{%- highlight html -%}
+{{ _markdown | markdownify }}
+{%- endhighlight -%}
+{%- endcapture -%}
+{%- include article/generate-tabs.html titles=_titles contents=_contents -%}
 
 ## Markdown Processor
 
@@ -19,8 +60,6 @@ We further knows that [Kramdown](https://kramdown.gettalong.org/index.html) is t
 ```yml
 markdown: kramdown # options: kramdown (default), redcarpet
 ```
-
-> + Kramdown syntax - <https://kramdown.gettalong.org/syntax.html>
 
 ### redcarpet
 
@@ -35,5 +74,3 @@ redcarpet:
 Jekyll provides the way to customize Markdown Processor.
 
 > + Custom Markdown Processors - <https://jekyllrb.com/docs/configuration/markdown/#custom-markdown-processors>
-
-## 

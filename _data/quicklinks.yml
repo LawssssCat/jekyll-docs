@@ -29,6 +29,8 @@ docs-en:
     details:
       - url: /docs/en/components/spacing
       - url: /docs/en/components/code
+      - url: /docs/en/components/button
+      - url: /docs/en/components/popover
 
   - title: Customization
     class: heading
