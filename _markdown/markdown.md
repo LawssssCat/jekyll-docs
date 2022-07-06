@@ -4,6 +4,10 @@ title: Markdown
 permalink: /markdown
 ---
 
+## Start
+
+The markdown syntax and style of this site can be referred [here]({% link _docs/en/1.3 typography.md %}).
+
 ## Markdown Processor
 
 In the official document of Jekyll, we have some [options](https://jekyllrb.com/docs/configuration/markdown/) for setting.
@@ -31,3 +35,5 @@ redcarpet:
 Jekyll provides the way to customize Markdown Processor.
 
 > + Custom Markdown Processors - <https://jekyllrb.com/docs/configuration/markdown/#custom-markdown-processors>
+
+## 

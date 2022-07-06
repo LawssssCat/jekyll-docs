@@ -28,6 +28,9 @@
       }
     }
   }
+  p > img {
+    max-width: calc(100%);
+  }
   hr {
     border: none;
     @include horizontal-rules();
