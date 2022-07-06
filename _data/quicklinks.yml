@@ -18,6 +18,9 @@ markdown:
   - title: Highlight
     details: 
       - url: /markdown/highlight/rouge
+      - url: /markdown/highlight/compare-rouge-vs-coderay
+      - url: /markdown/highlight/coderay
+      - url: /markdown/highlight/pygments
 
 docs-en:
   - title: Start
