@@ -1,0 +1,23 @@
+{% assign _title_list   = include.titles   | split: '<!-- split title -->' %}
+{% assign _content_list = include.contents | split: '<!-- split content -->' %}
+
+<div class="block-tabs">
+  <div class="tab-navs">
+    {%- for _title in _title_list -%}
+      {%- assign _active_class = '' -%}
+      {%- if forloop.first -%}
+        {%- assign _active_class = 'active' -%}
+      {%- endif -%}
+      <div class="tab-nav {{ _active_class }}">{{ _title }}</div>
+    {%- endfor -%}
+  </div>
+  <div class="tab-contents">
+    {%- for _content in _content_list -%}
+      {%- assign _active_class = '' -%}
+      {%- if forloop.first -%}
+        {%- assign _active_class = 'active' -%}
+      {%- endif -%}
+      <div class="tab-content {{ _active_class }}">{{ _content }}</div>
+    {%- endfor -%}
+  </div>
+</div>

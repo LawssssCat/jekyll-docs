@@ -15,15 +15,15 @@ default:
   page:
     type: webpage
     show_btn_change_theme: true # If false, the build result of style.css will be greatly reduced.
-    show_word_count: false
-    show_raw_article_link: false
+    show_word_count: true
+    show_raw_article_link: true
     show_author_profile: false
     show_subscribe: true
     show_last_modified_at: true
-    show_article_footer_navigation: false
-    show_article_footer_horizontal_rule: false
+    show_article_footer_navigation: true
+    show_article_footer_horizontal_rule: true
     show_article_title_edit_on_github: true
-    show_article_title: false
+    show_article_title: true
     show_article_info_tags: true
     show_article_info_author: true
     show_article_info_publish_on: true

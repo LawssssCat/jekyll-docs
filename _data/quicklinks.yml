@@ -10,6 +10,12 @@ layouts:
       - url: /page/page-sidebar-aside.html
   - title: Articles Layout
 
+markdown:
+  - url: /markdown
+  - url: /markdown/kramdown
+    details:
+      - url: /markdown/kramdown/gfm
+
 docs-en:
   - title: Start
     details:
@@ -22,6 +28,7 @@ docs-en:
   - title: Components
     details:
       - url: /docs/en/components/spacing
+      - url: /docs/en/components/code
 
   - title: Customization
     class: heading

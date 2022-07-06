@@ -1,5 +1,49 @@
-{%- assign _previous = page.previous -%}
-{%- assign _next = page.next -%}
+{%- comment -%}
+
+if there are _quicklinks, netx/previous base on _quicklinks.
+
+{%- endcomment -%}
+{%- include snippets/get-article-sidebar-quicklinks.html -%}
+{%- assign _quicklinks = __return -%}
+{%- if _quicklinks -%}
+  {%- comment -%}=========================== init ==========================={%- endcomment -%}
+  {%- assign _previous = nil -%}
+  {%- assign _next     = nil -%}
+  {%- comment -%}=========================== link ==========================={%- endcomment -%}
+  {%- include snippets/get-article-sidebar-quicklinks-links.html quicklinks=_quicklinks -%}
+  {%- assign _link_list = __return -%}
+  {%- assign _link_list_size = _link_list | size -%}
+  {%- comment -%}=========================== next/pre ==========================={%- endcomment -%}
+  {%- if _link_list and _link_list_size > 0 -%}
+    {%- assign _id_page = page.url | replace: '.html', '' -%}
+    {%- assign _before = _id_page -%}
+    {%- assign _after  = _id_page -%}
+    {%- assign _next_break = false -%}
+    {%- for _link in _link_list -%}
+      {%- assign _id_link = _link | replace: '.html', '' -%}
+      {%- if _next_break -%}
+        {%- assign _after = _id_link -%}
+        {%- break -%}
+      {%- endif -%}
+      {%- if _id_link==_id_page -%}
+        {%- assign _next_break = true -%}
+      {%- else -%}
+        {%- assign _before = _id_link -%}
+      {%- endif -%}
+    {%- endfor -%}
+    {%- if _before!=_id_page -%}
+      {%- include snippets/get-page-from-key.html key=_before -%}
+      {%- assign _previous = __return -%}
+    {%- endif -%}
+    {%- if _after!=_id_page -%}
+      {%- include snippets/get-page-from-key.html key=_after -%}
+      {%- assign _next = __return -%}
+    {%- endif -%}
+  {%- endif -%}
+{%- else -%}
+  {%- assign _previous = page.previous -%}
+  {%- assign _next = page.next -%}
+{%- endif -%}
 
 {%- if _next or _previous -%}
 <div class="navigation clearfix">

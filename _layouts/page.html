@@ -3,7 +3,9 @@ layout: base
 ---
 
 {%- comment -%} ~~~~~~~~~~~~~~~~~~~~~ sidebar switch ~~~~~~~~~~~~~~~~~~~~~ {%- endcomment -%}
-{%- if page.sidebar or layout.sidebar -%}
+{%- include snippets/get-article-sidebar-quicklinks.html -%}
+{%- assign _quicklinks = __return -%}
+{%- if _quicklinks -%}
   {%- assign _show_sidebar = true -%}
 {%- else -%}
   {%- assign _show_sidebar = false -%}
