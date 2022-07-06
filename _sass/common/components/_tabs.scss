@@ -1,5 +1,6 @@
 /* stylelint-disable scss/no-global-function-names */
 .block-tabs {
+  margin-top: map-get($spacers, 3);
   .tab-navs {
     margin-top: 0;
     margin-bottom: 0;
@@ -11,6 +12,8 @@
       @include themeify {
         @include button--outline(text-color-3, main-color-3);
       }
+      @include flexbox();
+      @include align-items(center);
       margin-right: -1px;
       $_radius: map-get($base, border-radius);
       &:first-child {

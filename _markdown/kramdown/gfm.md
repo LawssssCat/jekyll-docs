@@ -52,6 +52,8 @@ kramdown:
 
 The following shows the the differences of settings one by one.
 
+## settings
+
 ### hard_wrap
 
 {%- capture _summary -%}
@@ -155,9 +157,15 @@ end
 
 #### paragraph_end
 
-for a markdown file (not converted yet)
-
-~~~markdown
+{%- capture _titles -%}
+raw
+<!-- split title -->
+"gfm_quirks:" or "gfm_quirks: [paragraph_end]"
+<!-- split title -->
+"gfm_quirks: []" ( disable paragraph_end )
+{%- endcapture -%}
+{%- capture _contents -%}
+{%- highlight markdown -%}
 A
   - b
 
@@ -185,11 +193,9 @@ puts hello world
 # h1
 ## h2
 ### h3
-~~~
-
-`gfm_quirks:` or `gfm_quirks: [paragraph_end]`
-
-```html
+{%- endhighlight -%}
+<!-- split content -->
+{%- highlight html -%}
 <p>A</p>
 <ul>
   <li>b</li>
@@ -228,11 +234,9 @@ some text</p>
 <h1 id="h1">h1</h1>
 <h2 id="h2">h2</h2>
 <h3 id="h3">h3</h3>
-```
-
-`gfm_quirks: []` ( disable paragraph_end )
-
-```html
+{%- endhighlight -%}
+<!-- split content -->
+{%- highlight html -%}
 <p>A
   - b</p>
 
@@ -264,39 +268,45 @@ some text</p>
 <h1 id="h1">h1</h1>
 <p>## h2
 ### h3</p>
-```
+{%- endhighlight -%}
+{%- endcapture -%}
+{%- include article/generate-tabs.html titles=_titles contents=_contents -%}
 
 #### no_auto_typographic
 
-for a markdown file (not converted yet)
-
-```markdown
+{%- capture _titles -%}
+raw
+<!-- split title -->
+"gfm_quirks:" (default) (disable no_auto_typographic)
+<!-- split title -->
+"gfm_quirks: [no_auto_typographic]"
+{%- endcapture -%}
+{%- capture _contents -%}
+{%- highlight markdown -%}
 ### Header with --ndash 😀
 
 ### with --- << typographic >> ... symbols
 
 ### bb<font color='red'>haha</font>qq
-```
-
-`gfm_quirks: ` (default) ( disable no_auto_typographic )
-
-```html
+{%- endhighlight -%}
+<!-- split content -->
+{%- highlight html -%}
 <h3 id="header-with---ndash-">Header with --ndash 😀</h3>
 
 <h3 id="with--typographic--symbols">with — « typographic » … symbols</h3>
 
 <h3 id="bbhahaqq">bb<font color="red">haha</font>qq</h3>
-```
-
-`gfm_quirks: [no_auto_typographic]`
-
-```html
+{%- endhighlight -%}
+<!-- split content -->
+{%- highlight html -%}
 <h3 id="header-with-ndash-">Header with –ndash 😀</h3>
 
 <h3 id="with------typographic---symbols">with --- &lt;&lt; typographic &gt;&gt; ... symbols</h3>
 
 <h3 id="bbhahaqq">bb<font color="red">haha</font>qq</h3>
-```
+{%- endhighlight -%}
+{%- endcapture -%}
+{%- include article/generate-tabs.html titles=_titles contents=_contents -%}
 
 ### auto_ids {#static_id_auto_ids}
 
@@ -327,9 +337,19 @@ end
 {%- endcapture -%}
 {%- include article/generate-details.html summary=_summary code=_code -%}
 
-for a markdown file (not converted yet)
 
-```markdown
+
+{%- capture _titles -%}
+raw
+<!-- split title -->
+"auto_ids: true" (default)<br>
+"transliterated_header_ids: false" (default)
+<!-- split title -->
+"auto_ids: true" (default)<br>
+"auto_id_prefix: hallo-"
+{%- endcapture -%}
+{%- capture _contents -%}
+{%- highlight markdown -%}
 ### test {#myid}
 
 ### variable_name
@@ -357,12 +377,9 @@ for a markdown file (not converted yet)
 ### with --- << typographic >> ... symbols
 
 ### with $$m=5$$
-```
-
-`auto_ids: true` (default)\
-`transliterated_header_ids: false` (default)
-
-```html
+{%- endhighlight -%}
+<!-- split content -->
+{%- highlight html -%}
 <h3 id="myid">test</h3>
 
 <h3 id="variable_name">variable_name</h3>
@@ -390,12 +407,9 @@ for a markdown file (not converted yet)
 <h3 id="with--typographic--symbols">with — « typographic » … symbols</h3>
 
 <h3 id="with-m5">with \(m=5\)</h3>
-```
-
-`auto_ids: true` (default)\
-`auto_id_prefix: hallo-`
-
-```html
+{%- endhighlight -%}
+<!-- split content -->
+{%- highlight html -%}
 <h3 id="myid">test</h3>
 
 <h3 id="hallo-variable_name">variable_name</h3>
@@ -423,4 +437,6 @@ for a markdown file (not converted yet)
 <h3 id="hallo-with--typographic--symbols">with — « typographic » … symbols</h3>
 
 <h3 id="hallo-with-m5">with \(m=5\)</h3>
-```
+{%- endhighlight -%}
+{%- endcapture -%}
+{%- include article/generate-tabs.html titles=_titles contents=_contents -%}
