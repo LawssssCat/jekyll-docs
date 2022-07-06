@@ -68,7 +68,7 @@ rescue LoadError
 end
 {%- endhighlight -%}
 {%- endcapture -%}
-{%- include article/generate-code-details.html summary=_summary code=_code -%}
+{%- include article/generate-details.html summary=_summary code=_code -%}
 
 ## default config
 
@@ -106,7 +106,7 @@ DEFAULTS = {
 }
 {%- endhighlight -%}
 {%- endcapture -%}
-{%- include article/generate-code-details.html summary=_summary code=_code -%}
+{%- include article/generate-details.html summary=_summary code=_code -%}
 
 ## GFM (GitHub Flavored Markdown)
 
@@ -151,4 +151,4 @@ def convert(content)
 end
 {%- endhighlight -%}
 {%- endcapture -%}
-{%- include article/generate-code-details.html summary=_summary code=_code -%}
+{%- include article/generate-details.html summary=_summary code=_code -%}

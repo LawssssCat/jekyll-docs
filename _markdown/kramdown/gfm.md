@@ -23,7 +23,7 @@ def load_dependencies
 end
 {%- endhighlight -%}
 {%- endcapture -%}
-{%- include article/generate-code-details.html summary=_summary code=_code -%}
+{%- include article/generate-details.html summary=_summary code=_code -%}
 
 > You can also change the processor used by Kramdown (as specified for the input key in the Kramdown [RDoc](https://kramdown.gettalong.org/rdoc/Kramdown/Document.html#method-c-new))
 
@@ -68,13 +68,21 @@ def initialize(source, options)
 end
 {%- endhighlight -%}
 {%- endcapture -%}
-{%- include article/generate-code-details.html summary=_summary code=_code -%}
+{%- include article/generate-details.html summary=_summary code=_code -%}
 
 for a markdown file (not converted yet)
 
 > In the first paragraph there are two spaces ' ' after the first 'blank'.
 
-```markdown
+{%- capture _titles -%}
+raw
+<!-- split title -->
+hard_wrap: false (default)
+<!-- split title -->
+hard_wrap: true
+{%- endcapture -%}
+{%- capture _contents -%}
+{%- highlight markdown -%}
 blank  
 blank
 
@@ -85,11 +93,9 @@ blank\
 blank
 
 blank\blank
-```
-
-`hard_wrap: false` (default)
-
-```html
+{%- endhighlight -%}
+<!-- split content -->
+{%- highlight html -%}
 <p>blank<br />
 blank</p>
 
@@ -100,11 +106,9 @@ blank</p>
 blank</p>
 
 <p>blank\blank</p>
-```
-
-`hard_wrap: true`
-
-```html
+{%- endhighlight -%}
+<!-- split content -->
+{%- highlight html -%}
 <p>blank  <br />
 blank</p>
 
@@ -115,7 +119,9 @@ blank</p>
 blank</p>
 
 <p>blank\blank</p>
-```
+{%- endhighlight -%}
+{%- endcapture -%}
+{%- include article/generate-tabs.html titles=_titles contents=_contents -%}
 
 ### gfm_quirks
 
@@ -145,7 +151,7 @@ def initialize(source, options)
 end
 {%- endhighlight -%}
 {%- endcapture -%}
-{%- include article/generate-code-details.html summary=_summary code=_code -%}
+{%- include article/generate-details.html summary=_summary code=_code -%}
 
 #### paragraph_end
 
@@ -319,7 +325,7 @@ def update_elements(element)
 end
 {%- endhighlight -%}
 {%- endcapture -%}
-{%- include article/generate-code-details.html summary=_summary code=_code -%}
+{%- include article/generate-details.html summary=_summary code=_code -%}
 
 for a markdown file (not converted yet)
 
