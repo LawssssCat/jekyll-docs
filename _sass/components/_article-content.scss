@@ -1,3 +1,4 @@
+/* stylelint-disable selector-max-compound-selectors */
 /* stylelint-disable scss/no-global-function-names */
 .article__content {
   margin-top: map-get($spacers, 5);
@@ -147,6 +148,19 @@
       padding: 0;
       word-wrap: normal;
       background-color: transparent;
+    }
+  }
+  .highlighter-rouge > .highlight, figure.highlight {
+    & > pre {
+      padding: map-get($spacers, 3) 0 map-get($spacers, 3) map-get($spacers, 3);
+      margin: 0;
+      border-radius: map-get($base, border-radius);
+      @include themeify {
+        background-color: themed(text-background-color);
+      }
+      & > code {
+        display: block;
+      }
     }
   }
 }

@@ -4,9 +4,52 @@ title: Code
 permalink: /docs/en/components/code
 ---
 
-js
+By default, Jekyll uses [Kramdown]({% link _markdown/kramdown/kramdown.md %}) to render markdown file, while Kramdown uses [Rouge]({% link _markdown/highlight/rouge.md %}) to highlight code.
 
-```js
+So There are two ways to declare code blocks.
+
+1. `kramdown => rouge => highlight css`\
+in this way, the code block is wrapped by two line breaking "{% raw %}```{% endraw %}" symbols.
+  
+    e.g.
+  
+    ``````markdown
+    ```javascript
+    code block
+    ```
+    ``````
+  
+    render 
+    
+    ```html
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+      <span>code block</span>
+    </code></pre></div></div>
+    ```
+
+2. `rouge => highlight css`\
+in this way, the code block is wrapped by `{% raw %}{%- highlight javascript -%}...{%- endhighlight -%}{% endraw %}` .
+
+    e.g.
+
+    ```liquid
+    {% raw %}{%- highlight javascript -%}{% endraw %}
+    code block
+    {% raw %}{%- endhighlight -%}{% endraw %}
+    ``` 
+
+    render
+
+    ```html
+    <figure class="highlight"><pre><code class="language-javascript" data-lang="javascript">
+      <span>code block</span>
+    </code></pre></figure>
+    ```
+
+## js
+
+<!-- ====================================================================================== -->
+{%- capture _code -%}
 (function() {
   var SOURCES = window.TEXT_VARIABLES.sources;
   window.Lazyload.js(SOURCES.jquery, function() {
@@ -30,9 +73,64 @@ js
     });
   });
 })();
+{%- endcapture -%}
+{%- capture _code_rouge -%}
+  {%- highlight javascript -%}
+  {{_code}}
+  {%- endhighlight -%}
+{%- endcapture -%}
+{%- capture _code_kramdown -%}
+```javascript
+{{ _code }}
 ```
+{%- endcapture -%}
+<!-- ====================================================================================== -->
+{%- capture _titles -%}
+rouge raw
+<!-- split title -->
+rouge render
+<!-- split title -->
+rouge html
+{%- endcapture -%}
+{%- capture _contents -%}
+{%- highlight javascript -%}
+{% raw %}{%- highlight javascript -%}{% endraw %}
+{{ _code }}
+{% raw %}{%- endhighlight -%}{% endraw %}
+{%- endhighlight -%}
+<!-- split content -->
+{{ _code_rouge }}
+<!-- split content -->
+{%- highlight html -%}
+{{ _code_rouge }}
+{%- endhighlight -%}
+{%- endcapture -%}
+{%- include article/generate-tabs.html titles=_titles contents=_contents -%}
+<!-- ====================================================================================== -->
+{%- capture _titles -%}
+kramdown raw
+<!-- split title -->
+kramdown render
+<!-- split title -->
+kramdown html
+{%- endcapture -%}
+{%- capture _contents -%}
+{%- highlight javascript -%}
+```javascript
+{{ _code }}
+```
+{%- endhighlight -%}
+<!-- split content -->
+{{ _code_kramdown | markdownify }}
+<!-- split content -->
+{%- highlight html -%}
+{{ _code_kramdown | markdownify }}
+{%- endhighlight -%}
+{%- endcapture -%}
+{%- include article/generate-tabs.html titles=_titles contents=_contents -%}
+<!-- ====================================================================================== -->
 
-html
+## html
 
 ```html
 <div class="layout--page layout--page--sidebar clearfix js-page-root">
