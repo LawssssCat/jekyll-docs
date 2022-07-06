@@ -15,6 +15,9 @@ markdown:
   - url: /markdown/kramdown
     details:
       - url: /markdown/kramdown/gfm
+  - title: Highlight
+    details: 
+      - url: /markdown/highlight/rouge
 
 docs-en:
   - title: Start

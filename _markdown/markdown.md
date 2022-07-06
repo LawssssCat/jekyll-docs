@@ -2,7 +2,7 @@
 layout: article
 title: Markdown
 permalink: /markdown
-tags: ['test', 'typography']
+tags: ['guide', 'typography']
 author: foo
 ---
 
@@ -61,6 +61,8 @@ We further knows that [Kramdown](https://kramdown.gettalong.org/index.html) is t
 markdown: kramdown # options: kramdown (default), redcarpet
 ```
 
+see [here]({% link _markdown/kramdown/kramdown.md %}) for more.
+
 ### redcarpet
 
 ```yml
@@ -74,3 +76,9 @@ redcarpet:
 Jekyll provides the way to customize Markdown Processor.
 
 > + Custom Markdown Processors - <https://jekyllrb.com/docs/configuration/markdown/#custom-markdown-processors>
+
+## Highlight
+
+[Rouge](https://github.com/jneen/rouge) is Jekyll's default syntax highlighter.
+
+see [here]({% link _markdown/highlight/rouge.md %}) for more.

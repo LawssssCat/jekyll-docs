@@ -1,5 +1,8 @@
 ---
 layout: article
+permalink: /markdown/highlight/rouge
+title: Rouge
+date: 2022-06-21
 ---
 
 [jekyll-github]: https://github.com/jekyll/jekyll
@@ -7,41 +10,51 @@ layout: article
 
 ## Rouge
 
-Github - <https://github.com/rouge-ruby/rouge>
-
-Online preview - <http://rouge.jneen.net/v3.29.0/json/>
-
 {% raw %}
-[Rouge](https://github.com/jneen/rouge) is Jekyll's default syntax highlighter. Out of the box, Rouge will be used to highlight text wrapped in the `{% highlight %}` template tags. The `{% highlight %}` tag provides minimal options: you can specify the language to use and whether to enable line numbers or not. More information is available in the [Jekyll docs](https://jekyllrb.com/docs/liquid/tags/#code-snippet-highlighting).
+[Rouge](https://github.com/rouge-ruby/rouge) is Jekyll's default syntax highlighter. Out of the box, Rouge will be used to highlight text wrapped in the `{% highlight %}` template tags. The `{% highlight %}` tag provides minimal options: you can specify the language to use and whether to enable line numbers or not. More information is available in the [Jekyll docs](https://jekyllrb.com/docs/liquid/tags/#code-snippet-highlighting).
 {% endraw %}
 
-Supported Languages - <https://github.com/rouge-ruby/rouge/blob/master/docs/Languages.md>
-
-Docs - <https://rouge-ruby.github.io/docs/>
+> + Online preview - <http://rouge.jneen.net/v3.29.0/json/>
+> + Supported Languages - <https://github.com/rouge-ruby/rouge/blob/master/docs/Languages.md>
+> + Docs - <https://rouge-ruby.github.io/docs/>
 
 ### GET START
 
 By default, Jekyll uses Rouge for highlight rendering. Therefor, no additional configuration is required.
 
-```html
-// render before
-{% raw %}{%- highlight javascript -%}
+<!-- ========================================================= -->
+{%- capture _code_content -%}
 var json = { name: "balabala", id: 123321 }
 function show(str) {
   console.log(str);
 }
 show(json);
-{%- endhighlight -%}{% endraw %}
-
-// render result
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript">
-  <span class="kd">var</span> <span class="nx">json</span> <span class="o">=</span> <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">balabala</span><span class="dl">"</span><span class="p">,</span> <span class="na">id</span><span class="p">:</span> <span class="mi">123321</span> <span class="p">}</span>
-  <span class="kd">function</span> <span class="nx">show</span><span class="p">(</span><span class="nx">str</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">str</span><span class="p">);</span>
-  <span class="p">}</span>
-  <span class="nx">show</span><span class="p">(</span><span class="nx">json</span><span class="p">);</span></code></pre>
-</figure>
-```
+{%- endcapture -%}
+{%- capture _code_content_render -%}
+{%- highlight javascript -%}{{ _code_content }}{%- endhighlight -%}
+{%- endcapture -%}
+{%- capture _titles -%}
+raw
+<!-- split title -->
+render
+<!-- split title -->
+html
+{%- endcapture -%}
+{%- capture _contents -%}
+{%- highlight liquid -%}
+{% raw %}{%- highlight javascript -%}{% endraw %}
+{{ _code_content }}
+{% raw %}{%- endhighlight -%}{% endraw %}
+{%- endhighlight -%}
+<!-- split content -->
+{{ _code_content_render }}
+<!-- split content -->
+{%- highlight html -%}
+{{ _code_content_render }}
+{%- endhighlight -%}
+{%- endcapture -%}
+{%- include article/generate-tabs.html titles=_titles contents=_contents -%}
+<!-- ========================================================= -->
 
 #### line-numbers
 
