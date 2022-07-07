@@ -10,7 +10,7 @@
       @include button;
       @include button--md;
       @include themeify {
-        @include button--outline(text-color-3, main-color-3);
+        @include button--outline(text-color, main-color-3);
       }
       @include flexbox();
       @include align-items(center);

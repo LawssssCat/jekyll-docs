@@ -121,6 +121,10 @@
       font-weight: map-get($base, font-weight-bold);
     }
   }
+  // img:not(.emoji) {
+  //   max-width: 100%;
+  //   vertical-align: middle;
+  // }
   .emoji {
     display: inline-block;
     width: map-get($base, line-height-lg) * .7rem;
@@ -132,42 +136,6 @@
     margin-top: map-get($spacers, 5);
   }
 
-  // code 
-
-  code {
-    padding: map-get($spacers, 1) map-get($spacers, 2);
-    border-radius: map-get($base, border-radius);
-    span {
-      padding: 0;
-      margin: 0;
-    }
-    @include themeify {
-      background-color: themed(text-background-color);
-    }
-  }
-  pre {
-    @include overflow(auto);
-    & > code {
-      padding: 0;
-      word-wrap: normal;
-      @include themeify {
-        background-color: transparent;
-      }
-    }
-  }
-  .highlighter-rouge > .highlight, figure.highlight {
-    & > pre {
-      padding: map-get($spacers, 3) 0 map-get($spacers, 3) map-get($spacers, 3);
-      margin: 0;
-      border-radius: map-get($base, border-radius);
-      @include themeify {
-        background-color: themed(text-background-color);
-      }
-      & > code {
-        display: block;
-      }
-    }
-  }
 }
 
 @media print {
