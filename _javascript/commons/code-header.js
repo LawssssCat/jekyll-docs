@@ -1,4 +1,5 @@
 const lazyload = require('lazyload');
+const TOOL = require('tool-box');
 
 lazyload.onload(() => {
   // <figure class="highlight"><pre><code class="language-liquid" data-lang="liquid">............</code>
@@ -17,7 +18,9 @@ lazyload.onload(() => {
       const headerCopy = window.document.createElement('div');
       header.appendChild(headerCopy);
       headerCopy.innerHTML = 'Copy';
-      
+      headerCopy.addEventListener('click', () => {
+        TOOL.copyTextToClipboard(dom.textContent);
+      });
 
     }
   });
