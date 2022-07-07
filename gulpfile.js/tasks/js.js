@@ -79,6 +79,7 @@ const componentsJs = parallel(
   () => concatJs(`${JS_SRC}/components/theme.js`, 'theme'),
   () => concatJs(`${JS_SRC}/components/aside/toc.js`, 'aside/toc'),
   () => concatJs(`${JS_SRC}/components/sidebar/quicklinks.js`, 'sidebar/quicklinks'),
+  () => concatJs(`${JS_SRC}/components/sidebar/actions.js`   , 'sidebar/actions'),
   () => concatJs(`${JS_SRC}/components/pageview/leancloud.js`, 'pageview/leancloud')
 );
 
