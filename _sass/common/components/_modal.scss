@@ -1,0 +1,35 @@
+/* stylelint-disable scss/no-global-function-names */
+@mixin modal($z-index: default, $color: default, $background-color: default) {
+  @include themeify {
+    @if $color == default {
+      $color: themed(text-color-theme-dark);
+    }
+    @if $background-color == default {
+      $background-color: themed(mask-color);
+    }
+    color: $color;
+    background-color: $background-color;
+  }
+  @if $z-index == default {
+    $z-index: map-get($z-indexes, modal);
+  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: $z-index;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  opacity: 0;
+  @include transform(translate(100%, 0));
+  $_animation_dura: map-get($animation, duration);
+  $_animation_func: map-get($animation-timing-function, 1);
+  @include transition(#{opacity $_animation_dura $_animation_func ,
+  transform 0s $_animation_dura $_animation_func});
+}
+
+@mixin modal--show() {
+  opacity: 1;
+  @include transform(translate(0, 0));
+  @include transition(#{opacity map-get($animation, duration) map-get($animation, timing-function)});
+}
