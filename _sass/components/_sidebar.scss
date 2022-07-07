@@ -50,7 +50,7 @@
         color: themed(main-color-1);
       }
     }
-    li.active {
+    li.here {
       & > .quicklinks-item {
         @include split-line(bottom, 2px, themed(main-color-1));
       }

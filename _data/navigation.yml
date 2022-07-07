@@ -37,6 +37,7 @@ header:
       zh-CN   : *ZH_HANS
       zh-SG   : *ZH_HANS
     url: /markdown
+    key: markdown
   - titles: 
       en      : &EN       liquid
       en-GB   : *EN
@@ -72,6 +73,8 @@ header:
     url: /docs/en/quick-start
     key: docs
     parent: others
+    description: |
+      some docs for this site.
   - titles: 
       en      : &EN       Samples
       en-GB   : *EN
@@ -88,11 +91,6 @@ header:
   - title: Tools
     url: /tools
     parent: others
-  - title: test
-    url: /test
-    parent: others
-    description: |
-      some test for this site.
   - title: archive
     url: /archive
     parent: others

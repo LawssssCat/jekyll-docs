@@ -15,6 +15,12 @@ markdown:
   - url: /markdown/kramdown
     details:
       - url: /markdown/kramdown/gfm
+  - title: Highlight
+    details: 
+      - url: /markdown/highlight/rouge
+      - url: /markdown/highlight/compare-rouge-vs-coderay
+      - url: /markdown/highlight/coderay
+      - url: /markdown/highlight/pygments
 
 docs-en:
   - title: Start
@@ -29,6 +35,8 @@ docs-en:
     details:
       - url: /docs/en/components/spacing
       - url: /docs/en/components/code
+      - url: /docs/en/components/button
+      - url: /docs/en/components/popover
 
   - title: Customization
     class: heading

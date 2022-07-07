@@ -33,10 +33,12 @@
       {%- endcapture -%}
     
       {%- assign token_item_url = _item.url | replace: '.html', '' -%}
+      {%- assign _active = '' -%}
+      {%- if token_item_url==token_page_url -%}
+        {%- assign _active = _active | append: ' here' -%}
+      {%- endif -%}
       {%- if token_item_url==token_page_url or _item_details_active==true -%}
-        {%- assign _active = 'active' -%}
-      {%- else -%}
-        {%- assign _active = '' -%}
+        {%- assign _active = _active | append: ' active' -%}
       {%- endif -%}
       <li class="heading {{ _active }}">
         <!-- title -->

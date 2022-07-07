@@ -12,6 +12,7 @@ title: GFM (GitHub Flavored Markdown)
 
 By default, kramdown uses the GitHub Flavored Markdown ([GFM](https://github.com/kramdown/parser-gfm)) dialect to converts Markdown documents to HTML.
 
+<!-- ========================================================= -->
 {%- capture _summary -%}
   source code <a href='https://github.com/jekyll/jekyll/blob/master/lib/jekyll/converters/markdown/kramdown_parser.rb'>kramdown_parser.rb</a>
 {%- endcapture -%}
@@ -24,6 +25,7 @@ end
 {%- endhighlight -%}
 {%- endcapture -%}
 {%- include article/generate-details.html summary=_summary code=_code -%}
+<!-- ========================================================= -->
 
 > You can also change the processor used by Kramdown (as specified for the input key in the Kramdown [RDoc](https://kramdown.gettalong.org/rdoc/Kramdown/Document.html#method-c-new))
 
@@ -56,6 +58,7 @@ The following shows the the differences of settings one by one.
 
 ### hard_wrap
 
+<!-- ========================================================= -->
 {%- capture _summary -%}
   source code <a href='https://github.com/kramdown/parser-gfm/blob/master/lib/kramdown/parser/gfm.rb'>lib/kramdown/parser/gfm.rb</a>
 {%- endcapture -%}
@@ -71,11 +74,13 @@ end
 {%- endhighlight -%}
 {%- endcapture -%}
 {%- include article/generate-details.html summary=_summary code=_code -%}
+<!-- ========================================================= -->
 
 for a markdown file (not converted yet)
 
 > In the first paragraph there are two spaces ' ' after the first 'blank'.
 
+<!-- ========================================================= -->
 {%- capture _titles -%}
 raw
 <!-- split title -->
@@ -124,9 +129,11 @@ blank</p>
 {%- endhighlight -%}
 {%- endcapture -%}
 {%- include article/generate-tabs.html titles=_titles contents=_contents -%}
+<!-- ========================================================= -->
 
 ### gfm_quirks
 
+<!-- ========================================================= -->
 {%- capture _summary -%}
   source code <a href='https://github.com/kramdown/parser-gfm/blob/master/lib/kramdown/parser/gfm.rb'>lib/kramdown/parser/gfm.rb</a>
 {%- endcapture -%}
@@ -154,9 +161,11 @@ end
 {%- endhighlight -%}
 {%- endcapture -%}
 {%- include article/generate-details.html summary=_summary code=_code -%}
+<!-- ========================================================= -->
 
 #### paragraph_end
 
+<!-- ========================================================= -->
 {%- capture _titles -%}
 raw
 <!-- split title -->
@@ -271,9 +280,11 @@ some text</p>
 {%- endhighlight -%}
 {%- endcapture -%}
 {%- include article/generate-tabs.html titles=_titles contents=_contents -%}
+<!-- ========================================================= -->
 
 #### no_auto_typographic
 
+<!-- ========================================================= -->
 {%- capture _titles -%}
 raw
 <!-- split title -->
@@ -307,9 +318,11 @@ raw
 {%- endhighlight -%}
 {%- endcapture -%}
 {%- include article/generate-tabs.html titles=_titles contents=_contents -%}
+<!-- ========================================================= -->
 
 ### auto_ids {#static_id_auto_ids}
 
+<!-- ========================================================= -->
 {%- capture _summary -%}
 source code <a href='https://github.com/kramdown/parser-gfm/blob/master/lib/kramdown/parser/gfm.rb'>lib/kramdown/parser/gfm.rb</a>
 {%- endcapture -%}
@@ -336,9 +349,9 @@ end
 {%- endhighlight -%}
 {%- endcapture -%}
 {%- include article/generate-details.html summary=_summary code=_code -%}
+<!-- ========================================================= -->
 
-
-
+<!-- ========================================================= -->
 {%- capture _titles -%}
 raw
 <!-- split title -->
@@ -440,3 +453,4 @@ raw
 {%- endhighlight -%}
 {%- endcapture -%}
 {%- include article/generate-tabs.html titles=_titles contents=_contents -%}
+<!-- ========================================================= -->

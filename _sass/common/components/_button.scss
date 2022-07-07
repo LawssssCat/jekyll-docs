@@ -126,8 +126,12 @@
 }
 
 .button--tag {
+  @include inline-flex();
+  @include justify-content(center);
+  @include align-items(center);
   @include button--outline(text-color-3, main-color-3);
   position: relative;
+  padding-right: .5em;
   padding-left: 1em;
   border-top-left-radius: .5em;
   border-bottom-left-radius: .5em;
@@ -141,7 +145,14 @@
     border-radius: .25rem;
     transform: translateY(-50%);
     @include themeify {
-      background-color: themed(text-color-3);
+      background: themed(text-color-3);
+    }
+  }
+  @include hover {
+    @include themeify {
+      &::before {
+        background: themed(main-color-3);
+      }
     }
   }
 }
