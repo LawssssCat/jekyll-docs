@@ -1,6 +1,6 @@
 /* stylelint-disable scss/no-global-function-names */
 .popover {
-  z-index: 10;
+  z-index: map-get($z-indexes, popover);
   display: none;
   &[data-show] {
     display: block;
