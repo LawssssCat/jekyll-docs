@@ -121,6 +121,10 @@
       font-weight: map-get($base, font-weight-bold);
     }
   }
+  // img:not(.emoji) {
+  //   max-width: 100%;
+  //   vertical-align: middle;
+  // }
   .emoji {
     display: inline-block;
     width: map-get($base, line-height-lg) * .7rem;
@@ -153,9 +157,19 @@
       @include themeify {
         background-color: transparent;
       }
+      // &.language-mermaid, &.language-chart {
+      //   svg {
+      //     width: 100%;
+      //   }
+      //   display: none;
+      //   &[data-processed] {
+      //     display: block;
+      //   }
+      // }
     }
   }
   .highlighter-rouge > .highlight, figure.highlight {
+    // base style
     & > pre {
       padding: map-get($spacers, 3) 0 map-get($spacers, 3) map-get($spacers, 3);
       margin: 0;
@@ -167,6 +181,7 @@
         display: block;
       }
     }
+    // show language
   }
 }
 
