@@ -27,6 +27,9 @@ lazyload.onload(() => {
   });
 });
 
+let copyDonePopperDOM = window.document.createElement('div');
+copyDonePopperDOM.innerHTML = 'copy done!';
+
 function createCodeHeader(pre, code, lang) {
   const header = window.document.createElement('div');
   pre.parentNode.prepend(header);
@@ -43,7 +46,24 @@ function createCodeHeader(pre, code, lang) {
   headerCopy.classList.add('code-toggle-copy');
   headerCopy.addEventListener('click', () => {
     TOOL.copyTextToClipboard(code.textContent).then(() => {
-      console.log('copy ok');
+      // show popover when copy ok
+      const sources = window.VARIABLES.sources;
+      lazyload.js([sources.popper.js], function() {
+        window.document.body.append(copyDonePopperDOM);
+        const popper = window.Popper.createPopper(headerCopy, copyDonePopperDOM, {
+          placement: 'left'
+        });
+        setTimeout(() => {
+          popper.setOptions((options) => ({ // remove listener
+            ...options,
+            modifiers: [
+              ...options.modifiers,
+              { name: 'eventListeners', enabled: false }
+            ]
+          }));
+          window.document.body.removeChild(copyDonePopperDOM);
+        }, 1000);
+      });
     });
   });
 }
