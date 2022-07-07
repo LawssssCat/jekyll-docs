@@ -9,6 +9,8 @@ date: 2022-06-20
 
 [Kramdown](https://kramdown.gettalong.org/index.html) is the default Markdown renderer for Jekyll.
 
+> + Quick Reference - <https://kramdown.gettalong.org/quickref.html>
+> + Syntax - <https://kramdown.gettalong.org/syntax.html>
 > + Github - <https://github.com/gettalong/kramdown>
 
 You can refer to the following for setting options.

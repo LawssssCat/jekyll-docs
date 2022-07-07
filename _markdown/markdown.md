@@ -8,7 +8,8 @@ author: foo
 
 ## Syntax
 
-The markdown syntax and style of this site can be referred [here]({% link _docs/en/1.3 typography.md %}).
+The markdown syntax and style of this site can be referred [here]({% link _docs/en/1.3 typography.md %}).\
+(see [here](https://kramdown.gettalong.org/quickref.html) for origianl syntax and typography of kramdown)
 
 In addition, since Jekyll use kramdown as the markdown processor by default. You can use the [syntax](https://kramdown.gettalong.org/syntax.html) of kramdown, such as [IAL(Inline Attribute Lists)](https://kramdown.gettalong.org/syntax.html#block-ials)
 
