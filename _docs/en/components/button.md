@@ -4,96 +4,267 @@ title: Button
 permalink: /docs/en/components/button
 ---
 
+| Type | Class Names |
+| ---- | ---- |
+| **base**  | button |
+| **type**  | button\-\-primary, button\-\-secondary, button\-\-success, button\-\-info, button\-\-warning, button\-\-error, <br>button\-\-outline\-primary, button\-\-outline\-secondary, button\-\-outline\-success, button\-\-outline\-info, button\-\-outline\-warning, button\-\-outline\-error |
+| **shape** | button\-\-pill, button\-\-rounded, button\-\-circle |
+| **size**  | button\-\-md (default), button\-\-xs, button\-\-sm, button\-\-lg, button\-\-xl |
+
+## Type
+
+### Primary
+
+<!-- ============================= -->
+{%- capture _code -%}
+<div class="button button--primary button--pill">BUTTON</div>
+{%- endcapture -%}
+
+{{ _code }}
+
 ```html
-<div class="button button--primary">primary</div>
+{{ _code }}
 ```
+<!-- ============================= -->
+{%- capture _code -%}
+[BUTTON](#){:.button.button--primary.button--pill}
+{%- endcapture -%}
 
-<p>
-  <div class="button button--primary">
-  primary
-  </div>
-  <div class="button button--secondary">
-  secondary
-  </div>
-  <div class="button button--success">
-  success
-  </div>
-  <div class="button button--info">
-  info
-  </div>
-  <div class="button button--warning">
-  warning
-  </div>
-  <div class="button button--error">
-  error
-  </div>
-  <div class="button button--theme-light">
-  theme-light
-  </div>
-  <div class="button button--theme-dark">
-  theme-dark
-  </div>
-  
-  <br>
+{{ _code }}
 
-  <div class="button button--outline-primary">
-  outline-primary
-  </div>
-  <div class="button button--outline-secondary">
-  outline-secondary
-  </div>
-  <div class="button button--outline-success">
-  outline-success
-  </div>
-  <div class="button button--outline-info">
-  outline-info
-  </div>
-  <div class="button button--outline-warning">
-  outline-warning
-  </div>
-  <div class="button button--outline-error">
-  outline-error
-  </div>
-  <div class="button button--outline-theme-light">
-  outline-theme-light
-  </div>
-  <div class="button button--outline-theme-dark">
-  outline-theme-dark
-  </div>
+```html
+{{ _code }}
+```
+<!-- ============================= -->
 
-  <br>
+### Secondary
 
-  <div class="button button--outline-primary">
-  primary
-  </div>
-  <div class="button button--outline-primary button--pill">
-  primary pill
-  </div>
-  <div class="button button--outline-primary button--rounded">
-  primary rounded
-  </div> 
-  <div class="button button--outline-primary button--circle">
-  circle
-  </div>
+<!-- ============================= -->
+{%- capture _code -%}
+<div class="button button--secondary button--pill">BUTTON</div>
+{%- endcapture -%}
 
-  <br>
+{{ _code }}
 
-  <div class="button button--primary">
-  primary
-  </div>
-  <div class="button button--primary button--pill button--xs">
-  primary xs
-  </div>
-  <div class="button button--primary button--pill button--sm">
-  primary sm
-  </div>
-  <div class="button button--primary button--pill button--md">
-  primary md
-  </div>
-  <div class="button button--primary button--pill button--lg">
-  primary lg
-  </div>
-  <div class="button button--primary button--pill button--xl">
-  primary xl
-  </div>
-</p>
+```html
+{{ _code }}
+```
+<!-- ============================= -->
+{%- capture _code -%}
+[BUTTON](#){:.button.button--secondary.button--pill}
+{%- endcapture -%}
+
+{{ _code }}
+
+```html
+{{ _code }}
+```
+<!-- ============================= -->
+
+### Success
+
+<!-- ============================= -->
+{%- capture _code -%}
+<div class="button button--success button--pill">BUTTON</div>
+{%- endcapture -%}
+
+{{ _code }}
+
+```html
+{{ _code }}
+```
+<!-- ============================= -->
+{%- capture _code -%}
+[BUTTON](#){:.button.button--success.button--pill}
+{%- endcapture -%}
+
+{{ _code }}
+
+```html
+{{ _code }}
+```
+<!-- ============================= -->
+
+### Outline
+
+<!-- ============================= -->
+{%- capture _code -%}
+<div class="button button--outline-success button--pill">BUTTON</div>
+{%- endcapture -%}
+
+{{ _code }}
+
+```html
+{{ _code }}
+```
+<!-- ============================= -->
+{%- capture _code -%}
+[BUTTON](#){:.button.button--outline-success.button--pill}
+{%- endcapture -%}
+
+{{ _code }}
+
+```html
+{{ _code }}
+```
+<!-- ============================= -->
+
+## Shape
+
+### Pill
+
+<!-- ============================= -->
+{%- capture _code -%}
+<div class="button button--primary button--pill">BUTTON</div>
+{%- endcapture -%}
+
+{{ _code }}
+
+```html
+{{ _code }}
+```
+<!-- ============================= -->
+{%- capture _code -%}
+[BUTTON](#){:.button.button--primary .button--pill}
+{%- endcapture -%}
+
+{{ _code }}
+
+```html
+{{ _code }}
+```
+<!-- ============================= -->
+
+### Rounded
+
+<!-- ============================= -->
+{%- capture _code -%}
+<div class="button button--primary button--rounded">BUTTON</div>
+{%- endcapture -%}
+
+{{ _code }}
+
+```html
+{{ _code }}
+```
+<!-- ============================= -->
+{%- capture _code -%}
+[BUTTON](#){:.button.button--primary .button--rounded}
+{%- endcapture -%}
+
+{{ _code }}
+
+```html
+{{ _code }}
+```
+<!-- ============================= -->
+
+### Circle
+
+<!-- ============================= -->
+{%- capture _code -%}
+<div class="button button--primary button--circle">X</div>
+{%- endcapture -%}
+
+{{ _code }}
+
+```html
+{{ _code }}
+```
+<!-- ============================= -->
+{%- capture _code -%}
+[X](#){:.button.button--primary.button--circle}
+{%- endcapture -%}
+
+{{ _code }}
+
+```html
+{{ _code }}
+```
+<!-- ============================= -->
+
+### Tag
+
+<!-- ============================= -->
+{%- capture _code -%}
+<div class="button button--primary button--tag">BUTTON</div>
+{%- endcapture -%}
+
+{{ _code }}
+
+```html
+{{ _code }}
+```
+<!-- ============================= -->
+{%- capture _code -%}
+[BUTTON](#){:.button.button--primary.button--tag}
+{%- endcapture -%}
+
+{{ _code }}
+
+```html
+{{ _code }}
+```
+<!-- ============================= -->
+
+## Size
+
+### Extreme Small
+
+<!-- ============================= -->
+{%- capture _code -%}
+<div class="button button--primary button--rounded button--xs">BUTTON</div>
+{%- endcapture -%}
+{{ _code }}
+```html
+{{ _code }}
+```
+<!-- ============================= -->
+
+### Small
+
+<!-- ============================= -->
+{%- capture _code -%}
+<div class="button button--primary button--rounded button--sm">BUTTON</div>
+{%- endcapture -%}
+{{ _code }}
+```html
+{{ _code }}
+```
+<!-- ============================= -->
+
+### Middle
+
+<!-- ============================= -->
+{%- capture _code -%}
+<div class="button button--primary button--rounded">BUTTON</div>
+{%- endcapture -%}
+{{ _code }}
+```html
+{{ _code }}
+```
+<!-- ============================= -->
+
+### Large
+
+<!-- ============================= -->
+{%- capture _code -%}
+<div class="button button--primary button--rounded button--lg">BUTTON</div>
+{%- endcapture -%}
+{{ _code }}
+```html
+{{ _code }}
+```
+<!-- ============================= -->
+
+### Extreme Large
+
+<!-- ============================= -->
+{%- capture _code -%}
+<div class="button button--primary button--rounded button--xl">BUTTON</div>
+{%- endcapture -%}
+{{ _code }}
+```html
+{{ _code }}
+```
+<!-- ============================= -->
