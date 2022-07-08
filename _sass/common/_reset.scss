@@ -52,7 +52,7 @@ body {
   font: map-get($base, font-weight) #{map-get($base, font-size)}/#{map-get($base, line-height)} map-get($base, font-family);
   * {
     @include selection() {
-      @include themeify-color($background-color: select-color);
+      @include themeify-color($color: text-color-1, $background-color: select-color);
     }
   }
 }

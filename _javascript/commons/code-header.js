@@ -9,6 +9,7 @@ lazyload.onload(() => {
     if(pre) {
       const code = pre.querySelector('code');
       const lang = code.getAttribute('data-lang');
+      dom.setAttribute('data-lang', lang);
       createCodeHeader(pre, code, lang);
     }
   });
@@ -22,6 +23,7 @@ lazyload.onload(() => {
         return item.startsWith('language-');
       });
       const lang = className.replace('language-', '');
+      dom.setAttribute('data-lang', lang);
       createCodeHeader(pre, code, lang);
     }
   });

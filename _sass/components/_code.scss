@@ -39,9 +39,9 @@ pre {
     margin: 0;
     border-bottom-right-radius: $_border_radius;
     border-bottom-left-radius: $_border_radius;
-    @include themeify {
-      background-color: themed(text-background-color);
-    }
+    // @include themeify {
+    //   background-color: themed(text-background-color);
+    // }
     & > code {
       display: block;
     }
