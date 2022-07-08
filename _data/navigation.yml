@@ -37,6 +37,7 @@ header:
       zh-CN   : *ZH_HANS
       zh-SG   : *ZH_HANS
     url: /markdown
+    key: markdown
   - titles: 
       en      : &EN       liquid
       en-GB   : *EN
@@ -59,9 +60,6 @@ header:
       zh-CN   : *ZH_HANS
       zh-SG   : *ZH_HANS
     url: /ruby
-  - title: Tools
-    url: /tools
-    parent: others
   - titles: 
       en      : &EN       Docs
       en-GB   : *EN
@@ -72,8 +70,11 @@ header:
       zh      : *ZH_HANS
       zh-CN   : *ZH_HANS
       zh-SG   : *ZH_HANS
-    url: /docs
+    url: /docs/en/quick-start
+    key: docs
     parent: others
+    description: |
+      some docs for this site.
   - titles: 
       en      : &EN       Samples
       en-GB   : *EN
@@ -87,11 +88,9 @@ header:
     url: /samples
     key: samples
     parent: others
-  - title: test
-    url: /test
+  - title: Tools
+    url: /tools
     parent: others
-    description: |
-      some test for this site.
   - title: archive
     url: /archive
     parent: others

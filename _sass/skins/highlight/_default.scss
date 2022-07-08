@@ -1,3 +1,12 @@
+// @import
+//   "./tomorrow/default",
+//   "./tomorrow/highlight";
 @import
-  "./tomorrow/default",
-  "./tomorrow/highlight";
+  "./pygments";
+
+.highlighter-rouge, figure.highlight {
+  @extend %monokai;
+  // &[data-lang="javascript"] {
+  //   @extend %fruity;
+  // }
+}

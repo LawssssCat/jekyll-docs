@@ -20,7 +20,9 @@ layout: compress
       {%- endfor -%}
     ],
     cur_theme: "{{ cur_theme }}",
-    sources: {{ _sources | json | replace: "=>", ":"}}
+    sources: {{ _sources | json | replace: "=>", ":"}},
+    pageScrollTarget: window,
+    pageScroller: (window.document.scrollingElement || window.document.documentElement || window.document.body),
   };
   window.VARIABLES = VARIABLES;
   window.VARIABLES.append = function(obj) {

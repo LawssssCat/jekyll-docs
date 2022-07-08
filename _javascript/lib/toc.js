@@ -125,8 +125,8 @@ class Toc {
     this.config.tocSelector        = options.tocSelector           || '.js-toc-root';
     this.config.headerSelectors    = options.headerSelectors       || 'h1,h2,h3';
     this.config.headerIgnoreAttr   = options.headerIgnoreAttr      || 'toc-header-ignore';
-    this.config.scrollTarget       = options.scrollTarget          || window;
-    this.config.scroller           = options.scroller              || (window.document.scrollingElement || window.document.documentElement || window.document.body);
+    this.config.scrollTarget       = options.scrollTarget          || window.VARIABLES.pageScrollTarget;
+    this.config.scroller           = options.scroller              || window.VARIABLES.pageScroller;
   }
   init() {
     // assamble
@@ -178,8 +178,7 @@ class Toc {
     });
   }
   disable() {
-    return TOOL.isHidden(this.toc)
-      || (this.headers.length==0);
+    return (this.headers.length==0);
   }
   rander() {
     const tocDOM = generateDOM.call(this, this.headers, this.levels);

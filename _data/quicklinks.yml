@@ -1,16 +1,56 @@
-# class: ''(default) 'strong' 'heading'
 layouts:
   - title: Samples
-    class: heading
     url: /samples.html
+    details:
   - title: Page Layout
-    class: strong
     details:
       - url: /page/single.html
       - url: /page/aside.html
       - url: /page/sidebar.html
       - url: /page/page-sidebar-aside.html
   - title: Articles Layout
-    class: strong
-  - title: Languages
-    class: strong
+
+markdown:
+  - url: /markdown
+  - url: /markdown/kramdown
+    details:
+      - url: /markdown/kramdown/gfm
+  - title: Highlight
+    details: 
+      - url: /markdown/highlight/rouge
+      - url: /markdown/highlight/compare-rouge-vs-coderay
+      - url: /markdown/highlight/coderay
+      - url: /markdown/highlight/pygments
+
+docs-en:
+  - title: Start
+    details:
+      - title: Quick Start
+        url: /docs/en/quick-start
+      - title: Structure
+        url: /docs/en/structure
+      - url: /docs/en/typography
+
+  - title: Components
+    details:
+      - url: /docs/en/components/spacing
+      - url: /docs/en/components/code
+      - url: /docs/en/components/button
+      - url: /docs/en/components/popover
+
+  - title: Customization
+    class: heading
+  - title: Configuration
+    details:
+      - url: 
+  - title: Layouts
+    url: 
+  - title: Authors
+    url: /docs/en/authors
+
+  - title: Language
+    details: 
+      - title: 中文
+        url: 
+
+  - title: Development

@@ -1,119 +1,31 @@
 ---
 layout: article
+permalink: /markdown/kramdown/gfm
+date: 2022-06-20
+title: GFM (GitHub Flavored Markdown)
 ---
 
-[kramdown-github]: https://github.com/gettalong/kramdown
 [jekyll-github]: https://github.com/jekyll/jekyll
+[kramdown-github]: https://github.com/gettalong/kramdown
 [parser-gfm]: https://github.com/kramdown/parser-gfm
 [parser-gfm.gfm.rb]: https://github.com/kramdown/parser-gfm/blob/master/lib/kramdown/parser/gfm.rb
 
-
-## kramdown
-
-Github - <https://github.com/gettalong/kramdown>
-
-Jekyll Markdown Parser: Kramdown - <https://jekyllrb.com/docs/configuration/markdown/>
-
-Options - <https://kramdown.gettalong.org/rdoc/Kramdown/Options.html>
-
-> Custom Markdown Processors - <https://jekyllrb.com/docs/configuration/markdown/#custom-markdown-processors>
-
-```yml
-markdown: kramdown # options: kramdown (default), redcarpet
-```
-
-default config
-
-source code [configuration.rb](https://github.com/jekyll/jekyll/blob/master/lib/jekyll/configuration.rb) in [jekyll][jekyll-github]
-
-```ruby
-DEFAULTS = {
-  ...
-  "kramdown"            => {
-    "auto_ids"      => true,
-    "toc_levels"    => (1..6).to_a,
-    "entity_output" => "as_char",
-    "smart_quotes"  => "lsquo,rsquo,ldquo,rdquo",
-    "input"         => "GFM",
-    "hard_wrap"     => false,
-    "guess_lang"    => true,
-    "footnote_nr"   => 1,
-    "show_warnings" => false,
-  },
-}
-```
-
-config pickup
-
-source code [markdown.rb](https://github.com/jekyll/jekyll/blob/master/lib/jekyll/converters/markdown.rb) in [jekyll][jekyll-github]
-
-```ruby
-# RuboCop does not allow reader methods to have names starting with `get_`
-# To ensure compatibility, this check has been disabled on this method
-#
-# rubocop:disable Naming/AccessorMethodName
-def get_processor
-  case @config["markdown"].downcase
-  when "kramdown" then KramdownParser.new(@config)
-  else
-    custom_processor
-  end
-end
-```
-
-reference kramdown parsercode 
-
-source code [markdown.rb](https://github.com/jekyll/jekyll/blob/master/lib/jekyll/converters/markdown.rb) in [jekyll][jekyll-github]
-
-```ruby
-...
-def initialize(source, options = {})
-  JekyllDocument.setup(options)
-
-  @options = JekyllDocument.options
-  @root, @warnings = JekyllDocument.parser.parse(source, @options)
-end
-...
-def setup(options)
-  ...
-  @parser  ||= begin
-    parser_name = (@options[:input] || "kramdown").to_s
-    parser_name = parser_name[0..0].upcase + parser_name[1..-1]
-    try_require("parser", parser_name)
-
-    if Parser.const_defined?(parser_name)
-      Parser.const_get(parser_name)
-    else
-      raise Kramdown::Error, "kramdown has no parser to handle the specified " \
-                              "input format: #{@options[:input]}"
-    end
-  end
-  ...
-end
-...
-def try_require(type, name)
-  require "kramdown/#{type}/#{Utils.snake_case(name)}"
-rescue LoadError
-  false
-end
-```
-
-source code [kramdown/parser/kramdown.rb)](https://github.com/gettalong/kramdown/blob/master/lib/kramdown/parser/kramdown.rb) in [kramdown-github]
-
-
-
-## GFM
-
 By default, kramdown uses the GitHub Flavored Markdown ([GFM](https://github.com/kramdown/parser-gfm)) dialect to converts Markdown documents to HTML.
 
-source code [kramdown_parser.rb](https://github.com/jekyll/jekyll/blob/master/lib/jekyll/converters/markdown/kramdown_parser.rb) in [jekyll][jekyll-github]
-
-```ruby
+<!-- ========================================================= -->
+{%- capture _summary -%}
+  source code <a href='https://github.com/jekyll/jekyll/blob/master/lib/jekyll/converters/markdown/kramdown_parser.rb'>kramdown_parser.rb</a>
+{%- endcapture -%}
+{%- capture _code -%}
+{%- highlight ruby -%}
 def load_dependencies
   require "kramdown-parser-gfm" if @config["input"] == "GFM"
   ...
 end
-```
+{%- endhighlight -%}
+{%- endcapture -%}
+{%- include article/generate-details.html summary=_summary code=_code -%}
+<!-- ========================================================= -->
 
 > You can also change the processor used by Kramdown (as specified for the input key in the Kramdown [RDoc](https://kramdown.gettalong.org/rdoc/Kramdown/Document.html#method-c-new))
 
@@ -140,11 +52,18 @@ kramdown:
     asset_path: # Defaults to https://github.githubassets.com/images/icons/emoji.
 ```
 
+The following shows the the differences of settings one by one.
+
+## settings
+
 ### hard_wrap
 
-source code [gfm.rb][parser-gfm.gfm.rb] in [parser-gfm][parser-gfm]
-
-```ruby
+<!-- ========================================================= -->
+{%- capture _summary -%}
+  source code <a href='https://github.com/kramdown/parser-gfm/blob/master/lib/kramdown/parser/gfm.rb'>lib/kramdown/parser/gfm.rb</a>
+{%- endcapture -%}
+{%- capture _code -%}
+{%- highlight ruby -%}
 def initialize(source, options)
   ...
   @span_parsers.delete(:line_break)       if @options[:hard_wrap]
@@ -152,13 +71,25 @@ def initialize(source, options)
   @hard_line_break = "#{@options[:hard_wrap] ? '' : '\\'}\n"
   ...
 end
-```
+{%- endhighlight -%}
+{%- endcapture -%}
+{%- include article/generate-details.html summary=_summary code=_code -%}
+<!-- ========================================================= -->
 
 for a markdown file (not converted yet)
 
 > In the first paragraph there are two spaces ' ' after the first 'blank'.
 
-```markdown
+<!-- ========================================================= -->
+{%- capture _titles -%}
+raw
+<!-- split title -->
+hard_wrap: false (default)
+<!-- split title -->
+hard_wrap: true
+{%- endcapture -%}
+{%- capture _contents -%}
+{%- highlight markdown -%}
 blank  
 blank
 
@@ -169,11 +100,9 @@ blank\
 blank
 
 blank\blank
-```
-
-`hard_wrap: false` (default)
-
-```html
+{%- endhighlight -%}
+<!-- split content -->
+{%- highlight html -%}
 <p>blank<br />
 blank</p>
 
@@ -184,11 +113,9 @@ blank</p>
 blank</p>
 
 <p>blank\blank</p>
-```
-
-`hard_wrap: true`
-
-```html
+{%- endhighlight -%}
+<!-- split content -->
+{%- highlight html -%}
 <p>blank  <br />
 blank</p>
 
@@ -199,15 +126,27 @@ blank</p>
 blank</p>
 
 <p>blank\blank</p>
-```
+{%- endhighlight -%}
+{%- endcapture -%}
+{%- include article/generate-tabs.html titles=_titles contents=_contents -%}
+<!-- ========================================================= -->
 
-### gfm_quirks: [paragraph_end]
+### gfm_quirks
 
-source code [gfm.rb][parser-gfm.gfm.rb] in [parser-gfm][parser-gfm]
-
-```ruby
+<!-- ========================================================= -->
+{%- capture _summary -%}
+  source code <a href='https://github.com/kramdown/parser-gfm/blob/master/lib/kramdown/parser/gfm.rb'>lib/kramdown/parser/gfm.rb</a>
+{%- endcapture -%}
+{%- capture _code -%}
+{%- highlight ruby -%}
 def initialize(source, options)
-  ...
+  super
+  @options[:auto_id_stripping] = true
+  @id_counter = Hash.new(-1)
+
+  @span_parsers.delete(:line_break)       if @options[:hard_wrap]
+  @span_parsers.delete(:typographic_syms) if @options[:gfm_quirks].include?(:no_auto_typographic)
+
   if @options[:gfm_quirks].include?(:paragraph_end)
     atx_header_parser = :atx_header_gfm_quirk
     @paragraph_end    = self.class::PARAGRAPH_END_GFM
@@ -215,13 +154,27 @@ def initialize(source, options)
     atx_header_parser = :atx_header_gfm
     @paragraph_end    = self.class::PARAGRAPH_END
   end
+
   ...
+
 end
-```
+{%- endhighlight -%}
+{%- endcapture -%}
+{%- include article/generate-details.html summary=_summary code=_code -%}
+<!-- ========================================================= -->
 
-for a markdown file (not converted yet)
+#### paragraph_end
 
-~~~markdown
+<!-- ========================================================= -->
+{%- capture _titles -%}
+raw
+<!-- split title -->
+"gfm_quirks:" or "gfm_quirks: [paragraph_end]"
+<!-- split title -->
+"gfm_quirks: []" ( disable paragraph_end )
+{%- endcapture -%}
+{%- capture _contents -%}
+{%- highlight markdown -%}
 A
   - b
 
@@ -249,11 +202,9 @@ puts hello world
 # h1
 ## h2
 ### h3
-~~~
-
-`gfm_quirks:` or `gfm_quirks: [paragraph_end]`
-
-```html
+{%- endhighlight -%}
+<!-- split content -->
+{%- highlight html -%}
 <p>A</p>
 <ul>
   <li>b</li>
@@ -292,11 +243,9 @@ some text</p>
 <h1 id="h1">h1</h1>
 <h2 id="h2">h2</h2>
 <h3 id="h3">h3</h3>
-```
-
-`gfm_quirks: []` ( disable paragraph_end )
-
-```html
+{%- endhighlight -%}
+<!-- split content -->
+{%- highlight html -%}
 <p>A
   - b</p>
 
@@ -328,53 +277,57 @@ some text</p>
 <h1 id="h1">h1</h1>
 <p>## h2
 ### h3</p>
-```
+{%- endhighlight -%}
+{%- endcapture -%}
+{%- include article/generate-tabs.html titles=_titles contents=_contents -%}
+<!-- ========================================================= -->
 
-### gfm_quirks: [no_auto_typographic]
+#### no_auto_typographic
 
-source code [gfm.rb][parser-gfm.gfm.rb] in [parser-gfm][parser-gfm]
-
-```ruby
-def initialize(source, options)
-  @span_parsers.delete(:typographic_syms) if @options[:gfm_quirks].include?(:no_auto_typographic)
-end
-```
-
-for a markdown file (not converted yet)
-
-```markdown
+<!-- ========================================================= -->
+{%- capture _titles -%}
+raw
+<!-- split title -->
+"gfm_quirks:" (default) (disable no_auto_typographic)
+<!-- split title -->
+"gfm_quirks: [no_auto_typographic]"
+{%- endcapture -%}
+{%- capture _contents -%}
+{%- highlight markdown -%}
 ### Header with --ndash 😀
 
 ### with --- << typographic >> ... symbols
 
 ### bb<font color='red'>haha</font>qq
-```
-
-`gfm_quirks: ` (default) ( disable no_auto_typographic )
-
-```html
+{%- endhighlight -%}
+<!-- split content -->
+{%- highlight html -%}
 <h3 id="header-with---ndash-">Header with --ndash 😀</h3>
 
 <h3 id="with--typographic--symbols">with — « typographic » … symbols</h3>
 
 <h3 id="bbhahaqq">bb<font color="red">haha</font>qq</h3>
-```
-
-`gfm_quirks: [no_auto_typographic]`
-
-```html
+{%- endhighlight -%}
+<!-- split content -->
+{%- highlight html -%}
 <h3 id="header-with-ndash-">Header with –ndash 😀</h3>
 
 <h3 id="with------typographic---symbols">with --- &lt;&lt; typographic &gt;&gt; ... symbols</h3>
 
 <h3 id="bbhahaqq">bb<font color="red">haha</font>qq</h3>
-```
+{%- endhighlight -%}
+{%- endcapture -%}
+{%- include article/generate-tabs.html titles=_titles contents=_contents -%}
+<!-- ========================================================= -->
 
 ### auto_ids {#static_id_auto_ids}
 
-source code [gfm.rb][parser-gfm.gfm.rb] in [parser-gfm][parser-gfm]
-
-```ruby
+<!-- ========================================================= -->
+{%- capture _summary -%}
+source code <a href='https://github.com/kramdown/parser-gfm/blob/master/lib/kramdown/parser/gfm.rb'>lib/kramdown/parser/gfm.rb</a>
+{%- endcapture -%}
+{%- capture _code -%}
+{%- highlight ruby -%}
 def update_elements(element)
   element.children.map! do |child|
     if child.type == :text && child.value.include?(@hard_line_break)
@@ -393,11 +346,23 @@ def update_elements(element)
     end
   end.flatten!
 end
-```
+{%- endhighlight -%}
+{%- endcapture -%}
+{%- include article/generate-details.html summary=_summary code=_code -%}
+<!-- ========================================================= -->
 
-for a markdown file (not converted yet)
-
-```markdown
+<!-- ========================================================= -->
+{%- capture _titles -%}
+raw
+<!-- split title -->
+"auto_ids: true" (default)<br>
+"transliterated_header_ids: false" (default)
+<!-- split title -->
+"auto_ids: true" (default)<br>
+"auto_id_prefix: hallo-"
+{%- endcapture -%}
+{%- capture _contents -%}
+{%- highlight markdown -%}
 ### test {#myid}
 
 ### variable_name
@@ -425,12 +390,9 @@ for a markdown file (not converted yet)
 ### with --- << typographic >> ... symbols
 
 ### with $$m=5$$
-```
-
-`auto_ids: true` (default)\
-`transliterated_header_ids: false` (default)
-
-```html
+{%- endhighlight -%}
+<!-- split content -->
+{%- highlight html -%}
 <h3 id="myid">test</h3>
 
 <h3 id="variable_name">variable_name</h3>
@@ -458,12 +420,9 @@ for a markdown file (not converted yet)
 <h3 id="with--typographic--symbols">with — « typographic » … symbols</h3>
 
 <h3 id="with-m5">with \(m=5\)</h3>
-```
-
-`auto_ids: true` (default)\
-`auto_id_prefix: hallo-`
-
-```html
+{%- endhighlight -%}
+<!-- split content -->
+{%- highlight html -%}
 <h3 id="myid">test</h3>
 
 <h3 id="hallo-variable_name">variable_name</h3>
@@ -491,41 +450,7 @@ for a markdown file (not converted yet)
 <h3 id="hallo-with--typographic--symbols">with — « typographic » … symbols</h3>
 
 <h3 id="hallo-with-m5">with \(m=5\)</h3>
-```
-
-
-## Advanced Kramdown Options
-
-Kramdown supports a variety of other relatively advanced options such as `header_offset` and `smart_quotes`. These are documented in the [Kramdown configuration documentation](https://kramdown.gettalong.org/options.html) and can be added to your Kramdown config like this:
-
-```yml
-kramdown:
-  header_offset: 2
-```
-
-There are several unsupported kramdown options\
-Please note that Jekyll uses Kramdown's HTML converter. Kramdown options used only by other converters, such as remove_block_html_tags (used by the RemoveHtmlTags converter), will not work.
-{: .error}
-
-### show_warnings
-
-```yml
-kramdown:
-  show_warnings: true
-```
-
-source code [kramdown_parser.rb](https://github.com/jekyll/jekyll/blob/master/lib/jekyll/converters/markdown/kramdown_parser.rb) in [jekyll][jekyll-github]
-
-```ruby
-def convert(content)
-  document = Kramdown::JekyllDocument.new(content, @config)
-  html_output = document.to_html
-  if @config["show_warnings"]
-    document.warnings.each do |warning|
-      Jekyll.logger.warn "Kramdown warning:", warning
-    end
-  end
-  html_output
-end
-```
-
+{%- endhighlight -%}
+{%- endcapture -%}
+{%- include article/generate-tabs.html titles=_titles contents=_contents -%}
+<!-- ========================================================= -->

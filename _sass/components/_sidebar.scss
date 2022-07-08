@@ -1,9 +1,32 @@
 /* stylelint-disable scss/no-global-function-names */
+
+$_sidebar_width: map-get($layout, sidebar-width);
+
+.page__mask {
+  @include modal(map-get($z-indexes, mask));
+  cursor: pointer;
+}
+
+.page__sidebar-actions {
+  position: fixed;
+  bottom: map-get($spacers, 5);
+  left: map-get($spacers, 3);
+  z-index: map-get($z-indexes, actions);
+  display: none;
+  opacity: 0;
+  $_transition_time: map-get($animation, duration);
+  @include transition(opacity $_transition_time map-get($animation-timing-function, 1) $_transition_time);
+  .sidebar-button {
+    @include themeify() {
+      @include clickable(themed(text-color-d), rgba(themed(main-color-3), .75));
+    }
+  }
+}
+
 .page__sidebar {
-  $_sidebar_width: map-get($layout, sidebar-width);
   position: sticky;
   top: 0;
-  z-index: 999;
+  z-index: map-get($z-indexes, sidebar);
   width: 80%;
   max-width: $_sidebar_width;
   height: 100vh;
@@ -11,10 +34,6 @@
   @include split-line(right);
   @include overflow(auto);
   @include transition(transform map-get($animation, duration));
-  @include media-breakpoint-down($name: lg, $offset: $_sidebar_width) {
-    position: fixed;
-    @include transform(translate(- $_sidebar_width, 0));
-  }
   @include themeify() {
     color: themed(text-color);
     background-color: themed(background-color);
@@ -25,8 +44,33 @@
   }
 }
 
+@include media-breakpoint-down($name: lg, $offset: $_sidebar_width) {
+  .page__sidebar-actions {
+    display: block;
+    opacity: 1;
+  }
+  .page__sidebar {
+    position: fixed;
+    @include transform(translate(- $_sidebar_width, 0));
+  }
+  .show-sidebar {
+    .page__actions {
+      visibility: hidden;
+    }
+    .page__sidebar {
+      @include transform(translate(0));
+    }
+    .page__mask {
+      @include modal--show();
+    }
+  }
+}
+
 .page__sidebar-quicklinks {
   padding: map-get($spacers, 3) map-get($spacers, 3) map-get($spacers, 4) map-get($spacers, 4);
+  .quicklinks {
+    overflow-x: hidden;
+  }
   ol {
     @include menu(0 0);
     @include menu-direction(vertical);
@@ -47,8 +91,15 @@
         color: themed(main-color-1);
       }
     }
-    .active {
-      color: themed(main-color-1);
+    li.here {
+      & > .quicklinks-item {
+        @include split-line(bottom, 2px, themed(main-color-1));
+      }
+    }
+    .quicklinks-details {
+      li.active {
+        color: themed(main-color-1);
+      }
     }
   }
   .heading {
@@ -56,16 +107,15 @@
     margin-top: map-get($spacers, 2);
     margin-bottom: map-get($spacers, 1);
     line-height: map-get($base, line-height);
-    @include split-line(bottom);
-    .quicklinks-item {
-      font-size: map-get($base, font-size-lg);
-      font-weight: map-get($base, font-weight-bold);
+    @include hover {
+      a {
+        text-decoration: none !important;
+      }
     }
-  }
-  .strong {
     .quicklinks-item {
       font-size: map-get($base, font-size);
       font-weight: map-get($base, font-weight-bold);
+      @include split-line(bottom, 1px);
     }
   }
 }

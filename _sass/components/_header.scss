@@ -74,7 +74,7 @@ $height_header: map-get($layout, header-height) - $height_header_top;
 
   .navigation__toggle {
     $_h: map-get($base, font-size-h4) * 1.6;
-    z-index: 100;
+    z-index: map-get($z-indexes, header) + 1;
     width: $_h;
     height: $_h;
     @include button();
@@ -191,7 +191,7 @@ $height_header: map-get($layout, header-height) - $height_header_top;
 
   .sub_navigation {
     position: absolute;
-    z-index: 9999;
+    z-index: map-get($z-indexes, header);
     // display: none;
     max-height: 0;
     @include transition(max-height .2s ease);

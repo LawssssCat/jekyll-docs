@@ -91,6 +91,12 @@ collections:
   navs:
     output: true
     permalink: /:name
+  docs:
+    output: true
+  liquid:
+    output: true
+  markdown:
+    output: true
   sample_articles:
     output: true
   sample_pages:
@@ -108,6 +114,33 @@ defaults:
       show_raw_article_link: true
       show_article_footer_navigation: true
       show_article_footer_horizontal_rule: true
+  - scope:
+      path: "_docs/en/"
+      type: docs
+    values:
+      nav_key: docs
+      aside:
+        toc: true
+      sidebar:
+        quicklinks: docs-en
+  - scope:
+      path: "_markdown/"
+      type: markdown
+    values:
+      nav_key: markdown
+      aside:
+          toc: true
+      sidebar: 
+          quicklinks: markdown
+  - scope:
+      path: "_liquid/"
+      type: liquid
+    values:
+      nav_key: liquid
+      aside:
+          toc: true
+      sidebar: 
+          quicklinks: liquid
 
 # see http://jch.penibelst.de/
 compress_html:

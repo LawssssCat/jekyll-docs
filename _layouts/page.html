@@ -3,7 +3,9 @@ layout: base
 ---
 
 {%- comment -%} ~~~~~~~~~~~~~~~~~~~~~ sidebar switch ~~~~~~~~~~~~~~~~~~~~~ {%- endcomment -%}
-{%- if page.sidebar or layout.sidebar -%}
+{%- include snippets/get-article-sidebar-quicklinks.html -%}
+{%- assign _quicklinks = __return -%}
+{%- if _quicklinks -%}
   {%- assign _show_sidebar = true -%}
 {%- else -%}
   {%- assign _show_sidebar = false -%}
@@ -29,13 +31,15 @@ layout: base
 {%- endcapture -%}
 
 
-<div class="layout--page">
+<div class="layout--page js-page-root">
 <div class="page__viewport">
   {%- if _show_sidebar -%}
     <!-- mask -->
     <div class="page__mask d-print-none js-page-mask"></div>
     <!-- actions -->
-    <div class="page__sidebar-actions d-print-none"></div>
+    <div class="page__sidebar-actions d-print-none">
+      {%- include sidebar/actions.html -%}
+    </div>
     <div class="grid">
       <!-- sidebar -->
       <div class="page__sidebar d-print-none">

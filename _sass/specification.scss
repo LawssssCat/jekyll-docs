@@ -8,6 +8,8 @@
   "common/components/card",
   "common/components/button",
   "common/components/popover",
+  "common/components/tabs",
+  "common/components/modal",
 
   "components/main",
   "components/header",
@@ -18,8 +20,10 @@
   "components/article-header",
   "components/article-infos",
   "components/article-content",
+  "components/code",
   "components/aside",
   "components/toc", // must be after 'aside'
   "components/sidebar",
 
-  "layout/page";
+  "layout/page",
+  "layout/404";

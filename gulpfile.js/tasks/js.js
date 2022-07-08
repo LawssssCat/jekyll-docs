@@ -78,7 +78,13 @@ const commonsJs = () => {
 const componentsJs = parallel(
   () => concatJs(`${JS_SRC}/components/theme.js`, 'theme'),
   () => concatJs(`${JS_SRC}/components/aside/toc.js`, 'aside/toc'),
+  () => concatJs(`${JS_SRC}/components/sidebar/quicklinks.js`, 'sidebar/quicklinks'),
+  () => concatJs(`${JS_SRC}/components/sidebar/actions.js`   , 'sidebar/actions'),
   () => concatJs(`${JS_SRC}/components/pageview/leancloud.js`, 'pageview/leancloud')
+);
+
+const layoutsJs = parallel(
+  () => concatJs(`${JS_SRC}/layouts/article.js`, 'layouts/article')
 );
 
 const vendersJs = () => {
@@ -96,7 +102,7 @@ const vendersJs = () => {
 
 const buildJs = series(
   clean,
-  parallel(commonsJs, vendersJs, componentsJs)
+  parallel(commonsJs, vendersJs, componentsJs, layoutsJs)
 );
 
 exports.build = series(buildJs, minifyJs);

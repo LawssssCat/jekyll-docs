@@ -7,9 +7,16 @@
   h5,
   h6,
   p,
+  hr,
+  blockquote,
+  figure,
+  pre,
+  .highlighter-rouge,
   ul,
   ol,
-  dl {
+  dl,
+  table,
+  .footnotes {
     @content;
   }
 }
@@ -45,7 +52,7 @@ body {
   font: map-get($base, font-weight) #{map-get($base, font-size)}/#{map-get($base, line-height)} map-get($base, font-family);
   * {
     @include selection() {
-      @include themeify-color($background-color: select-color);
+      @include themeify-color($color: text-color-1, $background-color: select-color);
     }
   }
 }
@@ -55,20 +62,20 @@ body {
   margin: map-get($spacers, 2) 0;
 }
 
-// input, textarea, select, button {
-//   font: map-get($base, font-weight) #{map-get($base, font-size)}/#{map-get($base, line-height)} map-get($base, font-family);
-//   color: $text-color;
-// }
+input, textarea, select, button {
+  font: map-get($base, font-weight) #{map-get($base, font-size)}/#{map-get($base, line-height)} map-get($base, font-family);
+  @include themeify-color(text-color);
+}
 
-// h1,
-// h2,
-// h3,
-// h4,
-// h5,
-// h6,
-// strong{
-//   font-weight: map-get($base, font-weight-bold);
-// }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong{
+  font-weight: map-get($base, font-weight-bold);
+}
 
 h1 {
   font-size: map-get($base, font-size-h1);
@@ -134,29 +141,29 @@ code {
   line-height: map-get($base, line-height-sm);
 }
 
-// figure > img {
-//   display: block;
-// }
+figure > img {
+  display: block;
+}
 
-// figcaption {
-//   font-size: map-get($base, font-size-sm);
-// }
+figcaption {
+  font-size: map-get($base, font-size-sm);
+}
 
-// button {
-//   padding: 0;
-//   margin: 0;
-//   font-size: map-get($spacers, 3);
-//   cursor: pointer;
-//   background-color: transparent;
-//   border-width: 0;
-//   outline: none;
-// }
+button {
+  padding: 0;
+  margin: 0;
+  font-size: map-get($spacers, 3);
+  cursor: pointer;
+  background-color: transparent;
+  border-width: 0;
+  outline: none;
+}
 
-// input {
-//   &::-ms-clear {
-//     display: none;
-//   }
-//   &:focus {
-//     outline: none;
-//   }
-// }
+input {
+  &::-ms-clear {
+    display: none;
+  }
+  &:focus {
+    outline: none;
+  }
+}
