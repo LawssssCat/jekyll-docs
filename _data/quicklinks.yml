@@ -9,6 +9,10 @@ layouts:
       - url: /page/sidebar.html
       - url: /page/page-sidebar-aside.html
   - title: Articles Layout
+    details:
+      - url: /articles/brief.html
+      - url: /articles/item.html
+
 
 markdown:
   - url: /markdown

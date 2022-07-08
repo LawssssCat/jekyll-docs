@@ -12,6 +12,7 @@ needs:
 {%- case _type -%}
   {%- when 'grid' -%}
   {%- when 'item' -%}
+    {%- assign _list_class = 'items items--divided' -%}
   {%- when 'brief' -%}
     {%- assign _list_class = 'items' -%}
 {%- endcase -%}
@@ -19,20 +20,49 @@ needs:
   {%- for _article in _articles -%}
     {%- include snippets/get-accessible-url.html url=_article.url -%}
     {%- assign _article_url = __return -%}
+    {%- assign _article_title = _article.title -%}
     {%- case _type -%}
-      {%- when 'grid' -%}
-      {%- when 'item' -%}
-      {%- when 'brief' -%}
+      {%- when 'grid' -%}{%- comment -%}===================================================================================={%- endcomment -%}
+      
+      {%- when 'item' -%}{%- comment -%}===================================================================================={%- endcomment -%}
+        <article class="item" itemscope itemtype="{{ site.data.html.itemtype.blog_posting.url }}">
+          {%- if _article.cover -%}
+            {%- include snippets/get-nav-url.html path=_article.cover -%}
+            {%- assign _article_cover = __return -%}
+            <div class="item__image">
+              {%- assign _article_cover_size = '' -%}
+              {%- if include.cover_size == 'lg' -%}
+                {%- assign _article_cover_size = _article_cover_size | append: ' image--lg' -%}
+              {%- elsif include.cover_size == 'sm' -%}
+                {%- assign _article_cover_size = _article_cover_size | append: ' image--sm' -%}
+              {%- endif -%}
+              <img class="image {{ _article_cover_size }} " src="{{ _article_cover }}" />
+            </div>
+          {%- endif -%}
+          <div class="item__content">
+            <header>
+              <a href="{{ _article_url }}"><h2 itemprop="headline" class="item__header">{{ _article_title }}</h2></a>
+            </header>
+            <div class="item__description">
+              {%- if _article.excerpt -%}
+                <div class="article__content" itemprop="description articleBody">
+                  {{ _article.excerpt }}
+                </div>
+              {%- endif -%}
+            </div>
+          </div>
+        </article>
+      {%- when 'brief' -%}{%- comment -%}===================================================================================={%- endcomment -%}
         <li class="item" itemscope itemtype="{{ site.data.html.itemtype.blog_posting.url }}" data-tags="{{ _tags }}">
           <div class="item__content">
             {%- include snippets/get-string-locale-from-data.html key='ARTICLE_LIST_DATE_FORMAT' -%}
             {%- assign _locale_date_format = __return -%}
             <span class="item__meta">{{ _article.date | date: _locale_date_format }}</span>
-            <a class="item__header" itemprop="headline" href="{{ _article_url }}">{{ _article.title }}</a>
+            <a class="item__header" itemprop="headline" href="{{ _article_url }}">{{ _article_title }}</a>
           </div>
         </li>
-      {%- else -%}
+      {%- else -%}{%- comment -%}===================================================================================={%- endcomment -%}
         error type {{ _type }}. [error code 0x30001]
-    {%- endcase -%}
+    {%- endcase -%}{%- comment -%}===================================================================================={%- endcomment -%}
   {%- endfor -%}
 </div>
