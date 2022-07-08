@@ -38,6 +38,7 @@ docs-en:
       - url: /docs/en/components/code
       - url: /docs/en/components/button
       - url: /docs/en/components/popover
+      - url: /docs/en/components/icons
 
   - title: Customization
     class: heading
