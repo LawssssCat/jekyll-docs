@@ -94,7 +94,7 @@ header:
   - title: archive
     url: /archive
     parent: others
-  - title: Others
+  - title: Posts/Others
     url: /others
     key: others
   - titles: 

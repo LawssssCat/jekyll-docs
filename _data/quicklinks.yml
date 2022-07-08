@@ -40,6 +40,7 @@ docs-en:
       - url: /docs/en/components/popover
       - url: /docs/en/components/icons
       - url: /docs/en/components/images
+      - url: /docs/en/components/item
 
   - title: Customization
     class: heading
