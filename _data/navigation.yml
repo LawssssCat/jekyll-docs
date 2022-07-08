@@ -72,7 +72,7 @@ header:
       zh-SG   : *ZH_HANS
     url: /docs/en/quick-start
     key: docs
-    parent: others
+    parent: archive33965
     description: |
       some docs for this site.
   - titles: 
@@ -87,16 +87,13 @@ header:
       zh-SG   : *ZH_HANS
     url: /samples
     key: samples
-    parent: others
+    parent: archive33965
   - title: Tools
     url: /tools
-    parent: others
-  - title: archive
+    parent: archive33965
+  - title: Archive
     url: /archive
-    parent: others
-  - title: Posts/Others
-    url: /others
-    key: others
+    key: archive33965
   - titles: 
       en      : &EN       About
       en-GB   : *EN
