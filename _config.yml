@@ -50,8 +50,9 @@ author:
   npm       : # "user_name" the last part of your profile url, e.g. https://www.npmjs.com/~user_name
 
 # -------------------------
-# pageview
+# Post
 # -------------------------
+## pageview
 pageview:
   enable: true
   provider: leancloud
@@ -62,6 +63,9 @@ pageview:
     app_id    : OC6yw4BTaMHK4tuRLUG2jbPd-MdYXbMMI
     app_key   : wlnRdeSQaLI70XWjvabbtGeq
     app_class : pageview
+
+## excerpt
+excerpt_separator: <!--more-->
 
 # -------------------------
 # Paginate
