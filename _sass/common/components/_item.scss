@@ -1,54 +1,73 @@
 /* stylelint-disable scss/no-global-function-names */
+.items {
+  & > .item {
+    margin-bottom: map-get($spacers, 2);
+    // &:not(:last-child) {
+    //   margin-bottom: map-get($spacers, 2);
+    // }
+  }
+}
+
 .item {
   @include flexbox();
   @include media-breakpoint-down(md) {
     @include flex-direction(column);
   }
+  .item__meta {
+    @include themeify {
+      color: themed(text-color-l);
+    }
+  }
+  a > .item__header, a.item__header, .item__header > a {
+    @include themeify {
+      @include link-colors(themed(text-color-d), themed(main-color-1));
+    }
+  }
   .item__content {
     min-width: 0;
     @include flex(1);
-    .item__description {
-      font-size: map-get($base, font-size-sm);
-      line-height: map-get($base, line-height);
-      @include block-elements() {
-        margin-top: map-get($spacers, 2);
-        margin-bottom: map-get($spacers, 2);
+  }
+  .item__description {
+    font-size: map-get($base, font-size-sm);
+    line-height: map-get($base, line-height);
+    @include block-elements() {
+      margin-top: map-get($spacers, 2);
+      margin-bottom: map-get($spacers, 2);
+    }
+    @include heading-elements() {
+      margin-top: map-get($spacers, 3);
+    }
+    h1, h2, h3 {
+      @include themeify {
+        color: themed(text-color);
       }
-      @include heading-elements() {
-        margin-top: map-get($spacers, 3);
-      }
-      h1, h2, h3 {
-        @include themeify {
-          color: themed(text-color);
-        }
-      }
-      h1, h2 {
-        padding: 0;
-        border: none;
-      }
-      h1 {
-        font-size: map-get($base, font-size-h1-xs);
-      }
-      h2 {
-        font-size: map-get($base, font-size-h2-xs);
-      }
-      h3 {
-        font-size: map-get($base, font-size-h3-xs);
-      }
-      h4 {
-        font-size: map-get($base, font-size-h4-xs);
-      }
-      h5 {
-        font-size: map-get($base, font-size-h5-xs);
-      }
-      h6 {
-        font-size: map-get($base, font-size-h6-xs);
-      }
-      img {
-        max-height: 32rem;
-        @include media-breakpoint-down(md) {
-          max-height: 14rem;
-        }
+    }
+    h1, h2 {
+      padding: 0;
+      border: none;
+    }
+    h1 {
+      font-size: map-get($base, font-size-h1-xs);
+    }
+    h2 {
+      font-size: map-get($base, font-size-h2-xs);
+    }
+    h3 {
+      font-size: map-get($base, font-size-h3-xs);
+    }
+    h4 {
+      font-size: map-get($base, font-size-h4-xs);
+    }
+    h5 {
+      font-size: map-get($base, font-size-h5-xs);
+    }
+    h6 {
+      font-size: map-get($base, font-size-h6-xs);
+    }
+    img {
+      max-height: 32rem;
+      @include media-breakpoint-down(md) {
+        max-height: 14rem;
       }
     }
   }

@@ -1,0 +1,38 @@
+{%- comment -%}
+needs:
+  - type = 'brief' 'item' 'grid'
+  - articles
+  - articles.url
+{%- endcomment -%}
+
+{%- assign _type     = include.type -%}
+{%- assign _articles = include.articles -%}
+
+{%- assign _list_class = '' -%}
+{%- case _type -%}
+  {%- when 'grid' -%}
+  {%- when 'item' -%}
+  {%- when 'brief' -%}
+    {%- assign _list_class = 'items' -%}
+{%- endcase -%}
+<div class="article-list {{ _list_class }}">
+  {%- for _article in _articles -%}
+    {%- include snippets/get-accessible-url.html url=_article.url -%}
+    {%- assign _article_url = __return -%}
+    {%- case _type -%}
+      {%- when 'grid' -%}
+      {%- when 'item' -%}
+      {%- when 'brief' -%}
+        <li class="item" itemscope itemtype="{{ site.data.html.itemtype.blog_posting.url }}" data-tags="{{ _tags }}">
+          <div class="item__content">
+            {%- include snippets/get-string-locale-from-data.html key='ARTICLE_LIST_DATE_FORMAT' -%}
+            {%- assign _locale_date_format = __return -%}
+            <span class="item__meta">{{ _article.date | date: _locale_date_format }}</span>
+            <a class="item__header" itemprop="headline" href="{{ _article_url }}">{{ _article.title }}</a>
+          </div>
+        </li>
+      {%- else -%}
+        error type {{ _type }}. [error code 0x30001]
+    {%- endcase -%}
+  {%- endfor -%}
+</div>

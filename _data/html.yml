@@ -8,3 +8,5 @@ itemtype:
     url: http://schema.org/WebPage
   article:
     url: http://schema.org/Article
+  blog_posting:
+    url: http://schema.org/BlogPosting
