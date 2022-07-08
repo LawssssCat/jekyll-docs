@@ -34,6 +34,7 @@ docs-en:
   - title: Components
     details:
       - url: /docs/en/components/spacing
+      - url: /docs/en/components/grid
       - url: /docs/en/components/code
       - url: /docs/en/components/button
       - url: /docs/en/components/popover
