@@ -110,90 +110,82 @@ And if there is no style of the current breakpoint, a smaller style (if this sty
 
 <!-- ============= -->
 {%- capture _code -%}
-<div class="grid-container">
-  <div class="grid grid--p-3">
-    <div class="cell cell--6">
-      <div class="content">6 cells</div>
-    </div>
-    <div class="cell cell--6">
-      <div class="content">6 cells</div>
-    </div>
-    <div class="cell cell--6">
-      <div class="content">6 cells</div>
-    </div>
-    <div class="cell cell--6">
-      <div class="content">6 cells</div>
-    </div>
+<div class="grid grid--p-3">
+  <div class="cell cell--6">
+    <div class="content">6 cells</div>
+  </div>
+  <div class="cell cell--6">
+    <div class="content">6 cells</div>
+  </div>
+  <div class="cell cell--6">
+    <div class="content">6 cells</div>
+  </div>
+  <div class="cell cell--6">
+    <div class="content">6 cells</div>
   </div>
 </div>
 {%- endcapture-%}
 <!-- ============= -->
-
-<div class="grid-example my-5">
+<div class="grid-example my-5 grid-container">
   {{ _code }}
 </div>
-
+<!-- ============= -->
 ```html
 {{ _code }}
 ```
 
 <!-- ============= -->
 {%- capture _code -%}
-<div class="grid-container">
-  <div class="grid grid--px-3">
-    <div class="cell cell--6">
-      <div class="content">6 cells</div>
-    </div>
-    <div class="cell cell--6">
-      <div class="content">6 cells</div>
-    </div>
-    <div class="cell cell--6">
-      <div class="content">6 cells</div>
-    </div>
-    <div class="cell cell--6">
-      <div class="content">6 cells</div>
-    </div>
+<div class="grid grid--px-3">
+  <div class="cell cell--6">
+    <div class="content">6 cells</div>
+  </div>
+  <div class="cell cell--6">
+    <div class="content">6 cells</div>
+  </div>
+  <div class="cell cell--6">
+    <div class="content">6 cells</div>
+  </div>
+  <div class="cell cell--6">
+    <div class="content">6 cells</div>
   </div>
 </div>
 {%- endcapture-%}
 <!-- ============= -->
-
-<div class="grid-example my-5">
+<div class="grid-example my-5 grid-container">
   {{ _code }}
 </div>
-
+<!-- ============= -->
 ```html
 {{ _code }}
 ```
 
 <!-- ============= -->
 {%- capture _code -%}
-<div class="grid-container">
-  <div class="grid grid--py-3">
-    <div class="cell cell--6">
-      <div class="content">6 cells</div>
-    </div>
-    <div class="cell cell--6">
-      <div class="content">6 cells</div>
-    </div>
-    <div class="cell cell--6">
-      <div class="content">6 cells</div>
-    </div>
-    <div class="cell cell--6">
-      <div class="content">6 cells</div>
-    </div>
+<div class="grid grid--py-3">
+  <div class="cell cell--6">
+    <div class="content">6 cells</div>
+  </div>
+  <div class="cell cell--6">
+    <div class="content">6 cells</div>
+  </div>
+  <div class="cell cell--6">
+    <div class="content">6 cells</div>
+  </div>
+  <div class="cell cell--6">
+    <div class="content">6 cells</div>
   </div>
 </div>
 {%- endcapture-%}
 <!-- ============= -->
-
-<div class="grid-example my-5">
+<div class="grid-example my-5 grid-container">
 {{ _code }}
 </div>
-
+<!-- ============= -->
 ```html
 {{ _code }}
 ```
+<!-- ============= -->
 
 ## Overflow
 
