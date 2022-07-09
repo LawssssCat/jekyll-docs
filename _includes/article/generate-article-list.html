@@ -74,14 +74,27 @@ needs:
                   <i class="far fa-calendar-alt"></i>
                   <span>{{ _publish_on | date: _locale_date_format }}</span>
                 </li>
+                <!-- read time -->
+                {%- include snippets/get-article-words.html content=_article.content -%}
+                {%- assign _word_count = __return -%}
+                {%- include snippets/get-string-locale-from-data.html key='WORDS' -%}
+                {%- assign _locale_word_count = __return | replace: '[WORDS]', _word_count -%}
+                {%- include snippets/get-article-read-time.html words=_word_count -%}
+                {%- assign _read_time = __return -%}
+                <li>
+                  <i class="fas fa-book"></i>
+                  <span data-one-toggle="popover" data-one-trigger="hover focus" data-one-title="" data-one-content="{{ _locale_word_count }}">
+                    {{ _read_time }}
+                  </span>
+                </li>
                 <!-- pageview -->
                 {%- if _option_show_article_info_read_by_count -%}
                   <li>
-                    <i class="far fa-eye"></i>
                     {%- include snippets/get-page-key.html page=page -%}
                     {%- assign _page_key = __return -%}
                     {%- include snippets/get-string-locale-from-data.html key='HITS' -%}
                     {%- assign _locale_hits = __return -%}
+                    <i class="far fa-eye"></i>
                     <span class="js-pageview" ata-one-page-action="query" data-one-page-key="{{ _page_key }}">
                       <font class="views-num">0</font> {{ _locale_hits }}
                     </span>
