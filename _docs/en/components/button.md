@@ -31,11 +31,23 @@ permalink: /docs/en/components/button
         {%- else -%}
           {%- assign _button_text = _type | append: ' ' | append: _shape | append: ' ' | append: _size | upcase -%}
       {%- endcase -%}
-      <div class="button button--{{ _type }} button--{{ _shape }} button--{{ _size }} example-button">{{ _button_text }}</div>
+      <div class="button button--{{ _type }} button--{{ _shape }} button--{{ _size }} example-button"
+        onclick="javascript:copyButtonClass(this)">
+        {{ _button_text }}
+      </div>
     {%- endfor -%}
   {%- endfor -%}
 </p>
 {%- endfor -%}
+<script>
+  function copyButtonClass(el) {
+    var classStr = Array.from(el.classList).filter(function(item) {
+      return item != 'example-button';
+    }).join(' ');
+    TOOL.copyTextToClipboard(classStr);
+    TOOL.prompt('Successfully copy class to clipboard!');
+  }
+</script>
 <!-- ================================ -->
 
 ## Type
