@@ -23,15 +23,19 @@ $grid-columns: 12;
   }
 }
 
-@mixin make-grid-cell($columns, $breakpoint) {
-  @if $breakpoint == $breakpoint-default { // before meida for priority
-    .cell--#{$columns} {
-      @include make-cell($columns);
-    }
+@mixin make-grid-cell-default($columns) {
+  .cell--#{$columns} {
+    @include make-cell($columns);
   }
+}
+
+@mixin make-grid-cell($columns, $breakpoint) {
   @include media-breakpoint-up($breakpoint) {
     .cell--#{$breakpoint}-#{$columns} {
       @include make-cell($columns);
+    }
+    @if $breakpoint == $breakpoint-default {
+      @include make-grid-cell-default($columns);
     }
   }
 }
@@ -40,6 +44,29 @@ $grid-columns: 12;
   @include flexbox();
   @include flex-wrap(wrap);
   & > {
+    // Complication order and priority reason, the default breakpoint needs to be declared twice befor and after.
+    // 
+    // e.g. breakpoint default: md
+    // 
+    // cell (default) -- once
+    // media sm {
+    //   cell-sm
+    // }
+    // media md {
+    //   cell-md
+    //   cell (default) -- twice
+    // }
+    // media lg {
+    //   cell-lg
+    // }
+    // ...
+    @for $i from 1 through $grid-columns {
+      @include make-grid-cell-default($i);
+    }
+    @include make-grid-cell-default("auto");
+    @include make-grid-cell-default("shrink");
+    @include make-grid-cell-default("stretch");
+    // 
     @each $breakpoint in map-keys($responsive) {
       @for $i from 1 through $grid-columns {
         @include make-grid-cell($i, $breakpoint);
