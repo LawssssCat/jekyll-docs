@@ -4,13 +4,6 @@ title: Button
 permalink: /docs/en/components/button
 ---
 
-| Type | Class Names |
-| ---- | ---- |
-| **base**  | button |
-| **type**  | button\-\-primary, button\-\-secondary, button\-\-success, button\-\-info, button\-\-warning, button\-\-error, <br>button\-\-outline\-primary, button\-\-outline\-secondary, button\-\-outline\-success, button\-\-outline\-info, button\-\-outline\-warning, button\-\-outline\-error |
-| **shape** | button\-\-pill, button\-\-rounded, button\-\-circle |
-| **size**  | button\-\-xs, button\-\-sm, button\-\-md (default), button\-\-lg, button\-\-xl |
-
 <!-- ================================ -->
 {%- assign types  = 'primary,secondary,success,info,warning,error,outline-primary,outline-secondary,outline-success,outline-info,outline-warning,outline-error' | split: ',' -%}
 {%- assign shapes = 'pill,rounded,circle' | split: ',' -%}
@@ -49,6 +42,13 @@ permalink: /docs/en/components/button
   }
 </script>
 <!-- ================================ -->
+
+| Type | Class Names |
+| ---- | ---- |
+| **base**  | button |
+| **type**  | button\-\-primary, button\-\-secondary, button\-\-success, button\-\-info, button\-\-warning, button\-\-error, <br>button\-\-outline\-primary, button\-\-outline\-secondary, button\-\-outline\-success, button\-\-outline\-info, button\-\-outline\-warning, button\-\-outline\-error |
+| **shape** | button\-\-pill, button\-\-rounded, button\-\-circle |
+| **size**  | button\-\-xs, button\-\-sm, button\-\-md (default), button\-\-lg, button\-\-xl |
 
 ## Type
 
