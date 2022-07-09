@@ -8,7 +8,7 @@
     @include flex-wrap(wrap);
     .tab-nav {
       @include button;
-      @include button--md;
+      @include button-size("md");
       @include themeify {
         @include button--outline(text-color, main-color-3);
       }
