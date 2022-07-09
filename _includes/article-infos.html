@@ -148,12 +148,9 @@
       <p>
         <font>{{ _locale_more_on }}</font>
         <span class="wrap">
-          {%- include snippets/get-accessible-url.html url=site.data.variables.default.paths.archive -%}
-          {%- assign _path_archive = __return -%}
           {%- for _tag in page.tags -%}
-            {%- include snippets/get-string-encode.html str=_tag -%}
-            {%- assign _tag_encode = __return -%}
-            {%- assign _path_archive_tag = _path_archive | append: '?tag=' | append: _tag_encode -%}
+            {%- include snippets/get-article-tag-archive-url.html tag=_tag -%}
+            {%- assign _path_archive_tag = __return -%}
             <a href="{{ _path_archive_tag }}">{{ _tag }}</a>
             {%- unless forloop.last -%},&nbsp;{%- endunless -%}
           {%- endfor -%}

@@ -40,14 +40,27 @@ needs:
             </div>
           {%- endif -%}
           <div class="item__content">
-            <header>
-              <a href="{{ _article_url }}"><h2 itemprop="headline" class="item__header">{{ _article_title }}</h2></a>
+            <header class="item__header">
+              <a href="{{ _article_url }}"><h2 itemprop="headline">{{ _article_title }}</h2></a>
             </header>
             <div class="item__description">
               {%- if _article.excerpt -%}
-                <div class="article__content" itemprop="description articleBody">
+                <div class="article-excerpt" itemprop="description articleBody">
                   {{ _article.excerpt }}
                 </div>
+              {%- endif -%}
+            </div>
+            <div class="item__info">
+              {%- if _article.tags -%}
+                <ul class="left-col menu">
+                  <!-- tag -->
+                  {%- for _tag in _article.tags -%}
+                    {%- include snippets/get-article-tag-archive-url.html tag=_tag -%}
+                    {%- assign _path_archive_tag = __return -%}
+                    <a href="{{ _path_archive_tag }}">{{ _tag }}</a>
+                    {%- unless forloop.last -%},&nbsp;{%- endunless -%}
+                  {%- endfor -%}
+                </ul>
               {%- endif -%}
             </div>
           </div>
