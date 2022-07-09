@@ -78,7 +78,13 @@ needs:
                 {%- if _option_show_article_info_read_by_count -%}
                   <li>
                     <i class="far fa-eye"></i>
-                    <span class="js-pageview">0</span>
+                    {%- include snippets/get-page-key.html page=page -%}
+                    {%- assign _page_key = __return -%}
+                    {%- include snippets/get-string-locale-from-data.html key='HITS' -%}
+                    {%- assign _locale_hits = __return -%}
+                    <span class="js-pageview" ata-one-page-action="query" data-one-page-key="{{ _page_key }}">
+                      <font class="views-num">0</font> {{ _locale_hits }}
+                    </span>
                   </li>
                 {%- endif -%}
               </ul>

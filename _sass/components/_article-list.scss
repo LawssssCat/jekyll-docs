@@ -3,6 +3,8 @@
     .item__info {
       @include flexbox();
       @include justify-content(space-between);
+      @include align-items(center);
+      @include flex-wrap(wrap);
       .left-col, .right-col {
         margin: 0;
       }

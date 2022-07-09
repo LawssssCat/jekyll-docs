@@ -132,9 +132,9 @@
         {%- else -%}
           {%- include snippets/get-article-title.html article=page -%}
           {%- assign _article_title = __return -%}
-          {%- include snippets/get-page-key.html -%}
+          {%- include snippets/get-page-key.html page=page -%}
           {%- assign _page_key = __return -%}
-          <span class="nowrap js-pageview" data-one-page-key="{{ _page_key }}" data-one-page-title={{ _article_title | jsonify }} >
+          <span class="nowrap js-pageview" data-one-page-action="increase" data-one-page-key="{{ _page_key }}" data-one-page-title={{ _article_title | jsonify }} >
             <font class="views-num">0</font> {{ _locale_hits }}
           </span>
         {%- endif -%}
