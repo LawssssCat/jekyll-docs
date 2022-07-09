@@ -59,8 +59,9 @@ needs:
                   {%- for _tag in _article.tags -%}
                     {%- include snippets/get-article-tag-archive-url.html tag=_tag -%}
                     {%- assign _path_archive_tag = __return -%}
-                    <a href="{{ _path_archive_tag }}">{{ _tag }}</a>
-                    {%- unless forloop.last -%},&nbsp;{%- endunless -%}
+                    <li>
+                      <a class="button button--primary button--pill button--xs" href="{{ _path_archive_tag }}">{{ _tag }}</a>
+                    </li>
                   {%- endfor -%}
                 </ul>
               {%- endif -%}
