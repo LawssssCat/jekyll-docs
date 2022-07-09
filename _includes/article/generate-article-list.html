@@ -7,6 +7,7 @@ needs:
 
 {%- assign _type     = include.type -%}
 {%- assign _articles = include.articles -%}
+{%- assign _option_show_article_info_read_by_count = include.show_read_count -%}
 
 {%- assign _list_class = '' -%}
 {%- case _type -%}
@@ -20,7 +21,8 @@ needs:
   {%- for _article in _articles -%}
     {%- include snippets/get-accessible-url.html url=_article.url -%}
     {%- assign _article_url = __return -%}
-    {%- assign _article_title = _article.title -%}
+    {%- include snippets/get-article-title.html article=page -%}
+    {%- assign _article_title = __return -%}
     {%- case _type -%}
       {%- when 'grid' -%}{%- comment -%}===================================================================================={%- endcomment -%}
       
@@ -62,6 +64,24 @@ needs:
                   {%- endfor -%}
                 </ul>
               {%- endif -%}
+              <ul class="right-col menu">
+                <!-- publish on  -->
+                <li>
+                  {%- include snippets/get-article-publish-on.html article=page -%}
+                  {%- assign _publish_on = __return -%}
+                  {%- include snippets/get-string-locale-from-data.html key='ARTICLE_DATE_FORMAT' -%}
+                  {%- assign _locale_date_format = __return -%}
+                  <i class="far fa-calendar-alt"></i>
+                  <span>{{ _publish_on | date: _locale_date_format }}</span>
+                </li>
+                <!-- pageview -->
+                {%- if _option_show_article_info_read_by_count -%}
+                  <li>
+                    <i class="far fa-eye"></i>
+                    <span class="js-pageview">0</span>
+                  </li>
+                {%- endif -%}
+              </ul>
             </div>
           </div>
         </article>

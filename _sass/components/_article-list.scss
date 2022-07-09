@@ -1,0 +1,11 @@
+.article-list {
+  .item__content {
+    .item__info {
+      @include flexbox();
+      @include justify-content(space-between);
+      .left-col, .right-col {
+        margin: 0;
+      }
+    }
+  }
+}

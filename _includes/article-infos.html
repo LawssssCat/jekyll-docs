@@ -71,7 +71,8 @@
   {%- endif -%}
   <!-- publish on -->
   {%- if _show_article_info_publish_on -%}
-    {%- assign _publish_on = page["first_publish_at"] | default: page.date -%}
+    {%- include snippets/get-article-publish-on.html article=page -%}
+    {%- assign _publish_on = __return -%}
     {%- if _publish_on -%}
       {%- include snippets/get-string-locale-from-data.html key='ARTICLE_DATE_FORMAT' -%}
       {%- assign _locale_date_format = __return -%}
