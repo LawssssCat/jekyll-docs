@@ -4,6 +4,12 @@ title: Item
 permalink: /docs/en/components/item
 ---
 
+<!-- ============== -->
+{%- capture _img_src -%}
+{% link assets/images/cover1_with_title.svg %}
+{%- endcapture -%}
+<!-- ============== -->
+
 ## Content
 
 <!-- ========================== -->
@@ -31,10 +37,11 @@ permalink: /docs/en/components/item
 
 ## Image and Content
 
-
+<!-- ========================== -->
+{%- capture _code -%}
 <div class="item">
   <div class="item__image">
-    <img class="image" src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/image.jpg"/>
+    <img class="image" src="{{ _img_src }}"/>
   </div>
   <div class="item__content">
     <div class="item__header">
@@ -42,23 +49,20 @@ permalink: /docs/en/components/item
     </div>
   </div>
 </div>
-
+{%- endcapture -%}
+<!-- ========================== -->
+{{ _code }}
+<!-- ========================== -->
 ```html
-<div class="item">
-  <div class="item__image">
-    <img class="image" src=""/>
-  </div>
-  <div class="item__content">
-    <div class="item__header">
-      <h4>Photograph</h4>
-    </div>
-  </div>
-</div>
+{{ _code }}
 ```
+<!-- ========================== --> 
 
+<!-- ========================== --> 
+{%- capture _code -%}
 <div class="item">
   <div class="item__image">
-    <img class="image" src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/image.jpg"/>
+    <img class="image" src="{{ _img_src }}"/>
   </div>
   <div class="item__content">
     <div class="item__header">
@@ -71,28 +75,22 @@ permalink: /docs/en/components/item
     </div>
   </div>
 </div>
-
+{%- endcapture -%}
+<!-- ========================== -->
+{{ _code }}
+<!-- ========================== -->
 ```html
-<div class="item">
-  <div class="item__image">
-    <img class="image" src=""/>
-  </div>
-  <div class="item__content">
-    <div class="item__header">
-      <h4>Photograph</h4>
-    </div>
-    <div class="item__description">
-      <p>...</p>
-    </div>
-  </div>
-</div>
+{{ _code }}
 ```
+<!-- ========================== --> 
 
 ## Image Size
 
+<!-- ========================== -->
+{%- capture _code -%}
 <div class="item">
   <div class="item__image">
-    <img class="image image--xs" src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/image.jpg"/>
+    <img class="image image--xs" src="{{ _img_src }}"/>
   </div>
   <div class="item__content">
     <div class="item__header">
@@ -100,23 +98,20 @@ permalink: /docs/en/components/item
     </div>
   </div>
 </div>
-
+{%- endcapture -%}
+<!-- ========================== -->
+{{ _code }}
+<!-- ========================== -->
 ```html
-<div class="item">
-  <div class="item__image">
-    <img class="image image--xs" src=""/>
-  </div>
-  <div class="item__content">
-    <div class="item__header">
-      <h4>Photograph</h4>
-    </div>
-  </div>
-</div>
+{{ _code }}
 ```
+<!-- ========================== --> 
 
+<!-- ========================== --> 
+{%- capture _code -%}
 <div class="item">
   <div class="item__image">
-    <img class="image image--sm" src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/image.jpg"/>
+    <img class="image image--sm" src="{{ _img_src }}"/>
   </div>
   <div class="item__content">
     <div class="item__header">
@@ -129,26 +124,20 @@ permalink: /docs/en/components/item
     </div>
   </div>
 </div>
-
+{%- endcapture -%}
+<!-- ========================== -->
+{{ _code }}
+<!-- ========================== -->
 ```html
-<div class="item">
-  <div class="item__image">
-    <img class="image image--sm" src=""/>
-  </div>
-  <div class="item__content">
-    <div class="item__header">
-      <h4>Photograph</h4>
-    </div>
-    <div class="item__description">
-      <p>...</p>
-    </div>
-  </div>
-</div>
+{{ _code }}
 ```
+<!-- ========================== --> 
 
+<!-- ========================== --> 
+{%- capture _code -%}
 <div class="item">
   <div class="item__image">
-    <img class="image image--lg" src="https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/image.jpg"/>
+    <img class="image image--lg" src="{{ _img_src }}"/>
   </div>
   <div class="item__content">
     <div class="item__header">
@@ -161,19 +150,13 @@ permalink: /docs/en/components/item
     </div>
   </div>
 </div>
-
+{%- endcapture -%}
+<!-- ========================== -->
+{{ _code }}
+<!-- ========================== -->
 ```html
-<div class="item">
-  <div class="item__image">
-    <img class="image image--lg" src=""/>
-  </div>
-  <div class="item__content">
-    <div class="item__header">
-      <h4>Photograph</h4>
-    </div>
-    <div class="item__description">
-      <p>...</p>
-    </div>
-  </div>
-</div>
+{{ _code }}
 ```
+<!-- ========================== --> 
+
+see [here]({% link _docs/en/components/images.md %}) for more about image size.
