@@ -27,7 +27,7 @@ permalink: /docs/en/components/button
     {%- for _size in sizes -%}
       {%- case _shape -%}
         {%- when 'circle' -%}
-          {%- assign _button_text = 'x' -%}
+          {%- assign _button_text = 'X' -%}
         {%- else -%}
           {%- assign _button_text = _type | append: ' ' | append: _shape | append: ' ' | append: _size | upcase -%}
       {%- endcase -%}
