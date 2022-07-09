@@ -12,6 +12,7 @@ needs:
 {%- assign _list_class = '' -%}
 {%- case _type -%}
   {%- when 'grid' -%}
+    {%- assign _list_class = 'grid grid-p-3' -%}
   {%- when 'item' -%}
     {%- assign _list_class = 'items items--divided' -%}
   {%- when 'brief' -%}
@@ -25,7 +26,9 @@ needs:
     {%- assign _article_title = __return -%}
     {%- case _type -%}
       {%- when 'grid' -%}{%- comment -%}===================================================================================={%- endcomment -%}
-      
+        <div class="cell cell--6 cell--sm-12 cell--lg-4">
+          <div>article</div>
+        </div>
       {%- when 'item' -%}{%- comment -%}===================================================================================={%- endcomment -%}
         <article class="item" itemscope itemtype="{{ site.data.html.itemtype.blog_posting.url }}">
           {%- if _article.cover -%}
