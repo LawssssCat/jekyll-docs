@@ -11,22 +11,31 @@
   //   width: 1rem;
   //   height: 1rem;
   // }
-  // @include disabled() {
-  //   cursor: not-allowed;
-  // }
-}
-
-@mixin button--md() {
-  padding: map-get($button, padding-y) map-get($button, padding-x);
-  font-size: map-get($base, font-size);
-  &.button--circle {
-    width: map-get($button, circle-diameter);
-    height: map-get($button, circle-diameter);
+  @include disabled() {
+    cursor: not-allowed;
   }
 }
 
 .button {
   @include button();
+}
+
+@mixin button-size($size) {
+  @if $size == "md" {
+    padding: map-get($button, padding-y) map-get($button, padding-x);
+    font-size: map-get($base, font-size);
+    &.button--circle {
+      width: map-get($button, circle-diameter);
+      height: map-get($button, circle-diameter);
+    }
+  } @else {
+    padding: map-get($button, padding-y-#{$size}) map-get($button, padding-x-#{$size});
+    font-size: map-get($base, font-size-#{$size});
+    &.button--circle {
+      width: map-get($button, circle-diameter-#{$size});
+      height: map-get($button, circle-diameter-#{$size});
+    }
+  }
 }
 
 @mixin button--fill($color, $background-color) {
@@ -109,12 +118,12 @@
 
 .button--pill {
   border-radius: map-get($button, pill-radius);
-  @include button--md;
+  @include button-size("md");
 }
 
 .button--rounded {
   border-radius: map-get($base, border-radius);
-  @include button--md;
+  @include button-size("md");
 }
 
 .button--circle {
@@ -122,7 +131,7 @@
   @include justify-content(center);
   @include align-items(center);
   border-radius: 50%;
-  @include button--md;
+  @include button-size("md");
 }
 
 .button--tag {
@@ -157,42 +166,15 @@
   }
 }
 
-.button--md {
-  @include button--md;
-}
+@mixin make-button-size {
+  $sizes: ("xs", "sm", "md", "lg", "xl");
 
-.button--xs {
-  padding: map-get($button, padding-y-xs) map-get($button, padding-x-xs);
-  font-size: map-get($base, font-size-xs);
-  &.button--circle {
-    width: map-get($button, circle-diameter-xs);
-    height: map-get($button, circle-diameter-xs);
+  @each $size in $sizes {
+    .button--#{$size} {
+      @include button-size($size);
+    }
   }
 }
 
-.button--sm {
-  padding: map-get($button, padding-y-sm) map-get($button, padding-x-sm);
-  font-size: map-get($base, font-size-sm);
-  &.button--circle {
-    width: map-get($button, circle-diameter-sm);
-    height: map-get($button, circle-diameter-sm);
-  }
-}
-
-.button--lg {
-  padding: map-get($button, padding-y-lg) map-get($button, padding-x-lg);
-  font-size: map-get($base, font-size-lg);
-  &.button--circle {
-    width: map-get($button, circle-diameter-lg);
-    height: map-get($button, circle-diameter-lg);
-  }
-}
-
-.button--xl {
-  padding: map-get($button, padding-y-xl) map-get($button, padding-x-xl);
-  font-size: map-get($base, font-size-xl);
-  &.button--circle {
-    width: map-get($button, circle-diameter-xl);
-    height: map-get($button, circle-diameter-xl);
-  }
-}
+// put later for priority reason
+@include make-button-size;
