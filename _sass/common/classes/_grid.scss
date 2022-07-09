@@ -24,13 +24,13 @@ $grid-columns: 12;
 }
 
 @mixin make-grid-cell($columns, $breakpoint) {
-  @include media-breakpoint-up($breakpoint) {
-    .cell--#{$breakpoint}-#{$columns} {
+  @if $breakpoint == $breakpoint-default { // before meida for priority
+    .cell--#{$columns} {
       @include make-cell($columns);
     }
   }
-  @if $breakpoint == $breakpoint-default {
-    .cell--#{$columns} {
+  @include media-breakpoint-up($breakpoint) {
+    .cell--#{$breakpoint}-#{$columns} {
       @include make-cell($columns);
     }
   }
