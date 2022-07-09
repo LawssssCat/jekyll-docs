@@ -4,12 +4,51 @@ title: Button
 permalink: /docs/en/components/button
 ---
 
+<!-- ================================ -->
+{%- assign types  = 'primary,secondary,success,info,warning,error,outline-primary,outline-secondary,outline-success,outline-info,outline-warning,outline-error' | split: ',' -%}
+{%- assign shapes = 'pill,rounded,circle' | split: ',' -%}
+{%- assign sizes  = 'xs,sm,md,lg,xl' | split: ',' -%}
+<!-- ================================ -->
+<style>
+.example-button {
+  margin: 2px 3px;
+}
+</style>
+{%- for _type in types -%}
+<p>
+  {%- for _shape in shapes -%}
+    {%- for _size in sizes -%}
+      {%- case _shape -%}
+        {%- when 'circle' -%}
+          {%- assign _button_text = 'X' -%}
+        {%- else -%}
+          {%- assign _button_text = _type | append: ' ' | append: _shape | append: ' ' | append: _size | upcase -%}
+      {%- endcase -%}
+      <div class="button button--{{ _type }} button--{{ _shape }} button--{{ _size }} example-button"
+        onclick="javascript:copyButtonClass(this)">
+        {{ _button_text }}
+      </div>
+    {%- endfor -%}
+  {%- endfor -%}
+</p>
+{%- endfor -%}
+<script>
+  function copyButtonClass(el) {
+    var classStr = Array.from(el.classList).filter(function(item) {
+      return item != 'example-button';
+    }).join(' ');
+    TOOL.copyTextToClipboard(classStr);
+    TOOL.prompt('Successfully copy class to clipboard!');
+  }
+</script>
+<!-- ================================ -->
+
 | Type | Class Names |
 | ---- | ---- |
 | **base**  | button |
 | **type**  | button\-\-primary, button\-\-secondary, button\-\-success, button\-\-info, button\-\-warning, button\-\-error, <br>button\-\-outline\-primary, button\-\-outline\-secondary, button\-\-outline\-success, button\-\-outline\-info, button\-\-outline\-warning, button\-\-outline\-error |
 | **shape** | button\-\-pill, button\-\-rounded, button\-\-circle |
-| **size**  | button\-\-md (default), button\-\-xs, button\-\-sm, button\-\-lg, button\-\-xl |
+| **size**  | button\-\-xs, button\-\-sm, button\-\-md (default), button\-\-lg, button\-\-xl |
 
 ## Type
 

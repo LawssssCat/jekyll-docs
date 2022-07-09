@@ -32,6 +32,18 @@ class Pageview {
     pv.increment('views', 1);
     return pv.save();
   }
+  query(key, callback) {
+    return this.search(key)
+      .then(pv => {
+        let count;
+        if(pv) {
+          count = pv.attributes.views;
+        } else {
+          count = 0;
+        }
+        callback && callback(count);
+      });
+  }
   increase(key, title, callback) {
     return this.search(key)
       .then(result => {

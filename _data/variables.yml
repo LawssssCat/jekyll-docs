@@ -20,10 +20,12 @@ default:
     show_author_profile: false
     show_subscribe: true
     show_last_modified_at: true
+    show_article_footer: true
     show_article_footer_navigation: true
     show_article_footer_horizontal_rule: true
     show_article_title_edit_on_github: true
     show_article_title: true
+    show_article_info: true
     show_article_info_tags: true
     show_article_info_author: true
     show_article_info_publish_on: true

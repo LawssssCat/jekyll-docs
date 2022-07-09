@@ -4,23 +4,48 @@ type: article
 show_article_title: true
 ---
 
+{%- include snippets/assign.html 
+  value1=page.show_article_title
+  value2=layout.show_article_title
+  value3=site.data.variables.default.page.show_article_title -%}
+{%- assign _show_article_title = __return -%}
+
+{%- include snippets/assign.html 
+  value1=page.show_article_info
+  value2=layout.show_article_info
+  value3=site.data.variables.default.page.show_article_info -%}
+{%- assign _show_article_info = __return -%}
+
+{%- include snippets/assign.html 
+  value1=page.show_article_footer
+  value2=layout.show_article_footer
+  value3=site.data.variables.default.page.show_article_footer -%}
+{%- assign _show_article_footer = __return -%}
+
+
 <div class="layout--article">
   
-  <div class="article__header">
-    {%- include article-header.html -%}
-  </div>
+  {%- if _show_article_title -%}
+    <div class="article__header">
+      {%- include article-header.html -%}
+    </div>
+  {%- endif -%}
 
-  <div class="article__infos d-print-none">
-    {%- include article-infos.html -%}
-  </div>
+  {%- if _show_article_info -%}
+    <div class="article__infos d-print-none">
+      {%- include article-infos.html -%}
+    </div>
+  {%- endif -%}
 
   <div class="article__content js-article-content">
     {{ content }}
   </div>
 
-  <div class="article__footer d-print-none">
-    {%- include article-footer.html -%}
-  </div>
+  {%- if _show_article_footer -%}
+    <div class="article__footer d-print-none">
+      {%- include article-footer.html -%}
+    </div>
+  {%- endif -%}
 
 </div>
 

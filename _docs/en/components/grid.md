@@ -1,7 +1,8 @@
 ---
 layout: article
-aside: 
-  toc: true
+date: 2022-06-28
+title: Grid
+permalink: /docs/en/components/grid
 ---
 
 <style>

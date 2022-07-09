@@ -9,6 +9,10 @@ layouts:
       - url: /page/sidebar.html
       - url: /page/page-sidebar-aside.html
   - title: Articles Layout
+    details:
+      - url: /articles/brief.html
+      - url: /articles/item.html
+
 
 markdown:
   - url: /markdown
@@ -34,9 +38,13 @@ docs-en:
   - title: Components
     details:
       - url: /docs/en/components/spacing
+      - url: /docs/en/components/grid
       - url: /docs/en/components/code
       - url: /docs/en/components/button
       - url: /docs/en/components/popover
+      - url: /docs/en/components/icons
+      - url: /docs/en/components/images
+      - url: /docs/en/components/item
 
   - title: Customization
     class: heading

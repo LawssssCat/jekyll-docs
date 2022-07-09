@@ -1,0 +1,121 @@
+{%- comment -%}
+needs:
+  - type = 'brief' 'item' 'grid'
+  - articles
+  - articles.url
+{%- endcomment -%}
+
+{%- assign _type     = include.type -%}
+{%- assign _articles = include.articles -%}
+{%- assign _option_show_article_info_read_by_count = include.show_read_count -%}
+
+{%- assign _list_class = '' -%}
+{%- case _type -%}
+  {%- when 'grid' -%}
+  {%- when 'item' -%}
+    {%- assign _list_class = 'items items--divided' -%}
+  {%- when 'brief' -%}
+    {%- assign _list_class = 'items' -%}
+{%- endcase -%}
+<div class="article-list {{ _list_class }}">
+  {%- for _article in _articles -%}
+    {%- include snippets/get-accessible-url.html url=_article.url -%}
+    {%- assign _article_url = __return -%}
+    {%- include snippets/get-article-title.html article=page -%}
+    {%- assign _article_title = __return -%}
+    {%- case _type -%}
+      {%- when 'grid' -%}{%- comment -%}===================================================================================={%- endcomment -%}
+      
+      {%- when 'item' -%}{%- comment -%}===================================================================================={%- endcomment -%}
+        <article class="item" itemscope itemtype="{{ site.data.html.itemtype.blog_posting.url }}">
+          {%- if _article.cover -%}
+            {%- include snippets/get-nav-url.html path=_article.cover -%}
+            {%- assign _article_cover = __return -%}
+            <div class="item__image">
+              {%- assign _article_cover_size = '' -%}
+              {%- if include.cover_size == 'lg' -%}
+                {%- assign _article_cover_size = _article_cover_size | append: ' image--lg' -%}
+              {%- elsif include.cover_size == 'sm' -%}
+                {%- assign _article_cover_size = _article_cover_size | append: ' image--sm' -%}
+              {%- endif -%}
+              <img class="image {{ _article_cover_size }} " src="{{ _article_cover }}" />
+            </div>
+          {%- endif -%}
+          <div class="item__content">
+            <header class="item__header">
+              <a href="{{ _article_url }}"><h2 itemprop="headline">{{ _article_title }}</h2></a>
+            </header>
+            <div class="item__description">
+              {%- if _article.excerpt -%}
+                <div class="article-excerpt" itemprop="description articleBody">
+                  {{ _article.excerpt }}
+                </div>
+              {%- endif -%}
+            </div>
+            <div class="item__info">
+              {%- if _article.tags -%}
+                <ul class="left-col menu">
+                  <!-- tag -->
+                  {%- for _tag in _article.tags -%}
+                    {%- include snippets/get-article-tag-archive-url.html tag=_tag -%}
+                    {%- assign _path_archive_tag = __return -%}
+                    <li>
+                      <a class="button button--primary button--pill button--xs" href="{{ _path_archive_tag }}">{{ _tag }}</a>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              {%- endif -%}
+              <ul class="right-col menu">
+                <!-- publish on  -->
+                <li>
+                  {%- include snippets/get-article-publish-on.html article=page -%}
+                  {%- assign _publish_on = __return -%}
+                  {%- include snippets/get-string-locale-from-data.html key='ARTICLE_DATE_FORMAT' -%}
+                  {%- assign _locale_date_format = __return -%}
+                  <i class="far fa-calendar-alt"></i>
+                  <span>{{ _publish_on | date: _locale_date_format }}</span>
+                </li>
+                <!-- read time -->
+                {%- include snippets/get-article-words.html content=_article.content -%}
+                {%- assign _word_count = __return -%}
+                {%- include snippets/get-string-locale-from-data.html key='WORDS' -%}
+                {%- assign _locale_word_count = __return | replace: '[WORDS]', _word_count -%}
+                {%- include snippets/get-article-read-time.html words=_word_count -%}
+                {%- assign _read_time = __return -%}
+                <li>
+                  <i class="fas fa-book"></i>
+                  <span data-one-toggle="popover" data-one-trigger="hover focus" data-one-title="" data-one-content="{{ _locale_word_count }}">
+                    {{ _read_time }}
+                  </span>
+                </li>
+                <!-- pageview -->
+                {%- if _option_show_article_info_read_by_count -%}
+                  <li>
+                    {%- include snippets/get-page-key.html page=page -%}
+                    {%- assign _page_key = __return -%}
+                    {%- include snippets/get-string-locale-from-data.html key='HITS' -%}
+                    {%- assign _locale_hits = __return -%}
+                    <i class="far fa-eye"></i>
+                    <span class="js-pageview" ata-one-page-action="query" data-one-page-key="{{ _page_key }}">
+                      <font class="views-num">0</font> {{ _locale_hits }}
+                    </span>
+                  </li>
+                {%- endif -%}
+              </ul>
+            </div>
+          </div>
+        </article>
+      {%- when 'brief' -%}{%- comment -%}===================================================================================={%- endcomment -%}
+        <li class="item" itemscope itemtype="{{ site.data.html.itemtype.blog_posting.url }}" data-tags="{{ _tags }}">
+          <div class="item__content">
+            {%- include snippets/get-string-locale-from-data.html key='ARTICLE_LIST_DATE_FORMAT' -%}
+            {%- assign _locale_date_format = __return -%}
+            <span class="item__meta">{{ _article.date | date: _locale_date_format }}</span>
+            <a class="item__header" itemprop="headline" href="{{ _article_url }}">{{ _article_title }}</a>
+          </div>
+        </li>
+      {%- else -%}{%- comment -%}===================================================================================={%- endcomment -%}
+        error type {{ _type }}. [error code 0x30001]
+    {%- endcase -%}{%- comment -%}===================================================================================={%- endcomment -%}
+  {%- endfor -%}
+</div>
