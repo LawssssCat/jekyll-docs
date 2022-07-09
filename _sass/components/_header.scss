@@ -207,7 +207,7 @@ $height_header: map-get($layout, header-height) - $height_header_top;
       @include menu-direction(vertical);
     }
     .sub_navigation__item {
-      padding-top: map-get($button, padding-y);
+      padding-top: map-get($button, padding-y-md);
       padding-right: map-get($button, padding-x-lg);
       padding-left: map-get($button, padding-x-lg);
       white-space: nowrap;
@@ -216,7 +216,7 @@ $height_header: map-get($layout, header-height) - $height_header_top;
       }
     }
     .sub_navigation__item:last-child {
-      padding-bottom: map-get($button, padding-y);
+      padding-bottom: map-get($button, padding-y-md);
     }
   }
 
@@ -295,8 +295,8 @@ $height_header: map-get($layout, header-height) - $height_header_top;
         .sub_navigation {
           max-height: 2000px;
           li {
-            padding-top: map-get($button, padding-y);
-            padding-bottom: map-get($button, padding-y);
+            padding-top: map-get($button, padding-y-md);
+            padding-bottom: map-get($button, padding-y-md);
             margin-right: map-get($button, padding-x-lg);
           }
         }

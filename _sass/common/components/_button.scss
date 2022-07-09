@@ -21,20 +21,11 @@
 }
 
 @mixin button-size($size) {
-  @if $size == "md" {
-    padding: map-get($button, padding-y) map-get($button, padding-x);
-    font-size: map-get($base, font-size);
-    &.button--circle {
-      width: map-get($button, circle-diameter);
-      height: map-get($button, circle-diameter);
-    }
-  } @else {
-    padding: map-get($button, padding-y-#{$size}) map-get($button, padding-x-#{$size});
-    font-size: map-get($base, font-size-#{$size});
-    &.button--circle {
-      width: map-get($button, circle-diameter-#{$size});
-      height: map-get($button, circle-diameter-#{$size});
-    }
+  padding: map-get($button, padding-y-#{$size}) map-get($button, padding-x-#{$size});
+  font-size: map-get($base, font-size-#{$size});
+  &.button--circle {
+    width: map-get($button, circle-diameter-#{$size});
+    height: map-get($button, circle-diameter-#{$size});
   }
 }
 
