@@ -16,28 +16,22 @@ lazyload.js([sources.leancloud_sdk.js], function() {
 });
 
 function actions4Artical(pageView) {
-  window.document.querySelectorAll('.js-pageview').forEach(item => {
-    const action = item.getAttribute('data-one-page-action');
+  window.document.querySelectorAll('.js-pageview[data-one-page-action=increase]').forEach(item => {
     const key = item.getAttribute('data-one-page-key');
     const title = item.getAttribute('data-one-page-title');
-    
-    switch (action) {
-      case 'increase':
-        // increment and render views num
-        pageView.increase(key, title, (views) => {
-          updateDOMCounter(item, views);
-        });
-        break;
-      case 'query': 
-        pageView.query(key, (views) => {
-          updateDOMCounter(item, views);
-        });
-        break;
-      default:
-        break;
-    }
-    
+    pageView.increase(key, title, (views) => {
+      updateDOMCounter(item, views);
+    });
   });
+  const articleMap = {};
+  window.document.querySelectorAll('.js-pageview[data-one-page-action=query]').forEach(item => {
+    const key = item.getAttribute('data-one-page-key');
+    // pageView.query(key, (views) => {
+    //   updateDOMCounter(item, views);
+    // });
+    articleMap[key] = item;
+  });
+  console.log(articleMap); // todo
 }
 
 function updateDOMCounter(item, views) {
