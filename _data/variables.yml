@@ -47,7 +47,7 @@ sources:
   bootcdn:
     font_awesome: 'https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.1/css/all.css'
     leancloud_sdk: 
-      js: '//cdn.jsdelivr.net/npm/leancloud-storage@3.13.2/dist/av-min.js'
+      js: '//cdn.jsdelivr.net/npm/leancloud-storage@4.12.3/dist/av-min.js'
     popper:
       js: "https://cdn.bootcdn.net/ajax/libs/popper.js/2.11.5/cjs/popper.min.js"
     gitalk:
@@ -57,7 +57,7 @@ sources:
   unpkg:
     font_awesome: 'https://use.fontawesome.com/releases/v5.15.1/css/all.css'
     leancloud_sdk: 
-      js: '//cdn.jsdelivr.net/npm/leancloud-storage@3.13.2/dist/av-min.js'
+      js: '//unpkg.com/leancloud-storage@4.12.3/dist/av-min.js'
     popper:
       js: "https://unpkg.com/@popperjs/core@2"
     gitalk:
@@ -67,6 +67,6 @@ sources:
   cloudflare:
     font_awesome: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css'
     leancloud_sdk: 
-      js: '//cdn.jsdelivr.net/npm/leancloud-storage@3.13.2/dist/av-min.js'
+      js: '//cdn.jsdelivr.net/npm/leancloud-storage@4.12.3/dist/av-min.js'
     popper:
         js: 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.5/umd/popper.min.js'
