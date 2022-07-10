@@ -20,11 +20,13 @@ a > .card__header, a.card__header, .card__header > a {
 
 .card__image {
   width: 100%;
+  overflow: hidden;
   border-radius: map-get($base, border-radius);
-  & > img {
+  img {
+    display: block;
     width: 100%;
     height: auto;
-    border-radius: inherit;
+    // border-radius: inherit;
   }
 }
 

@@ -1,12 +1,22 @@
+/* stylelint-disable selector-max-class */
 .article-list {
-  .item__content {
-    .item__info {
-      @include flexbox();
-      @include justify-content(space-between);
-      @include align-items(center);
-      @include flex-wrap(wrap);
-      .left-col, .right-col {
-        margin: 0;
+  &.item {
+    .item__content {
+      .item__info {
+        @include flexbox();
+        @include justify-content(space-between);
+        @include align-items(center);
+        @include flex-wrap(wrap);
+        .left-col, .right-col {
+          margin: 0;
+        }
+      }
+    }
+  }
+  &.grid {
+    .card__image {
+      @include hover {
+        @include box-shadow(1);
       }
     }
   }

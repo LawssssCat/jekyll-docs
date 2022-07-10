@@ -30,7 +30,11 @@ needs:
           <div class="card card--flat">
             {%- include snippets/get-nav-url.html path=_article.cover -%}
             {%- assign _article_cover = __return -%}
-            <div class="card__image"><img src="{{ _article_cover }}" alt=""></div>
+            <div class="card__image">
+              <a href="{{ _article_url }}" itemprop="headline">
+                <img src="{{ _article_cover }}" alt="">
+              </a>
+            </div>
             <div class="card__content">
               <header class="card__header">
                 <a href="{{ _article_url }}" itemprop="headline">{{ _article_title }}</a>
