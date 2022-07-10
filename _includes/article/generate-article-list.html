@@ -1,21 +1,28 @@
+{%- comment -%}=========================================== options ==============================================={%- endcomment -%}
 {%- comment -%}
-needs:
-  - type = 'brief' 'item' 'grid'
-  - articles
-  - articles.url
+  type = 'brief' 'item' 'grid' 
 {%- endcomment -%}
-
 {%- assign _type     = include.type -%}
 {%- assign _articles = include.articles -%}
-{%- assign _option_show_article_info_read_by_count = include.show_read_count -%}
+{%- assign _option_item_show_article_info_read_by_count = include.show_read_count -%}
+{%- comment -%}
+  cover_size = 'sm' nil 'lg'
+{%- endcomment -%}
+{%- assign _option_item_cover_size = include.cover_size -%}
+{%- comment -%}
+  small = nil(false) true
+{%- endcomment -%}
+{%- assign _option_grid_small = include.small -%}
+{%- comment -%}=========================================== options end ==============================================={%- endcomment -%}
 
 {%- assign _list_class = '' -%}
 {%- case _type -%}
   {%- when 'grid' -%}
+    {%- assign _list_class = 'grid grid--p-3' -%}
   {%- when 'item' -%}
     {%- assign _list_class = 'items items--divided' -%}
   {%- when 'brief' -%}
-    {%- assign _list_class = 'items' -%}
+    {%- assign _list_class = 'items brief' -%}
 {%- endcase -%}
 <div class="article-list {{ _list_class }}">
   {%- for _article in _articles -%}
@@ -25,25 +32,49 @@ needs:
     {%- assign _article_title = __return -%}
     {%- case _type -%}
       {%- when 'grid' -%}{%- comment -%}===================================================================================={%- endcomment -%}
-      
+        {%- if _option_grid_small -%}
+          {%- assign _cell_media = ' cell--sm-6 cell--4 cell--lg-3' -%}
+          {%- assign _card_addition_class = ' card--overlay' -%}
+        {%- else -%}
+          {%- assign _cell_media = ' cell--sm-12 cell--6 cell--lg-4' -%}
+          {%- assign _card_addition_class = '' -%}
+        {%- endif -%}
+        <div class="cell {{ _cell_media }}">
+          <div class="card card--flat  {{ _card_addition_class }}">
+            {%- include snippets/get-nav-url.html path=_article.cover -%}
+            {%- assign _article_cover = __return -%}
+            <div class="card__image">
+              <a href="{{ _article_url }}" itemprop="headline">
+                <img src="{{ _article_cover }}" alt="">
+              </a>
+            </div>
+            <div class="card__content">
+              <header class="card__header">
+                <a href="{{ _article_url }}" itemprop="headline">{{ _article_title }}</a>
+              </header>
+            </div>
+          </div>
+        </div>
       {%- when 'item' -%}{%- comment -%}===================================================================================={%- endcomment -%}
         <article class="item" itemscope itemtype="{{ site.data.html.itemtype.blog_posting.url }}">
           {%- if _article.cover -%}
             {%- include snippets/get-nav-url.html path=_article.cover -%}
             {%- assign _article_cover = __return -%}
             <div class="item__image">
-              {%- assign _article_cover_size = '' -%}
-              {%- if include.cover_size == 'lg' -%}
-                {%- assign _article_cover_size = _article_cover_size | append: ' image--lg' -%}
-              {%- elsif include.cover_size == 'sm' -%}
-                {%- assign _article_cover_size = _article_cover_size | append: ' image--sm' -%}
-              {%- endif -%}
+              {%- case _option_item_cover_size -%}
+                {%- when 'lg' -%}
+                  {%- assign _article_cover_size = ' image--lg' -%}
+                {%- when 'sm' -%}
+                  {%- assign _article_cover_size = ' image--sm' -%}
+                {%- else -%}
+                  {%- assign _article_cover_size = '' -%}
+              {%- endcase -%}
               <img class="image {{ _article_cover_size }} " src="{{ _article_cover }}" />
             </div>
           {%- endif -%}
           <div class="item__content">
             <header class="item__header">
-              <a href="{{ _article_url }}"><h2 itemprop="headline">{{ _article_title }}</h2></a>
+              <a href="{{ _article_url }}" itemprop="headline">{{ _article_title }}</a>
             </header>
             <div class="item__description">
               {%- if _article.excerpt -%}
@@ -89,7 +120,7 @@ needs:
                   </span>
                 </li>
                 <!-- pageview -->
-                {%- if _option_show_article_info_read_by_count -%}
+                {%- if _option_item_show_article_info_read_by_count -%}
                   <li>
                     {%- include snippets/get-page-key.html page=_article -%}
                     {%- assign _article_key = __return -%}
