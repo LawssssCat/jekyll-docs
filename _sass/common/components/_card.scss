@@ -1,20 +1,24 @@
 /* stylelint-disable scss/no-global-function-names */
+@mixin set-card_header($color, $color_active) {
+  a > .card__header, a.card__header, .card__header > a {
+    @include link-colors($color, $color_active);
+    @content;
+  }
+}
+
 .card {
   max-width: 18rem;
   font-size: map-get($base, font-size);
   border-radius: map-get($base, border-radius);
   @include box-shadow();
+  @include themeify {
+    @include set-card_header(themed(text-color-d), themed(main-color-1));
+  }
 }
 
 .cell {
   & > .card {
     max-width: unset;
-  }
-}
-
-a > .card__header, a.card__header, .card__header > a {
-  @include themeify {
-    @include link-colors(themed(text-color-d), themed(main-color-1));
   }
 }
 
@@ -30,6 +34,28 @@ a > .card__header, a.card__header, .card__header > a {
   }
 }
 
-.card--flat {
+.card.card--flat {
   @include box-shadow(0);
+}
+
+.card.card--overlay {
+  position: relative;
+  .card__content {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: map-get($spacers, 2);
+    border-radius: inherit;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    @include themeify {
+      background: rgba(#000, .4);
+      @include set-card_header(themed(text-color-theme-dark), themed(main-color-1)) {
+        display: block;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        @include overflow(hidden);
+      }
+    }
+  }
 }

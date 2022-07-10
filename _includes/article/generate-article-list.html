@@ -1,13 +1,19 @@
+{%- comment -%}=========================================== options ==============================================={%- endcomment -%}
 {%- comment -%}
-needs:
-  - type = 'brief' 'item' 'grid'
-  - articles
-  - articles.url
+  type = 'brief' 'item' 'grid' 
 {%- endcomment -%}
-
 {%- assign _type     = include.type -%}
 {%- assign _articles = include.articles -%}
-{%- assign _option_show_article_info_read_by_count = include.show_read_count -%}
+{%- assign _option_item_show_article_info_read_by_count = include.show_read_count -%}
+{%- comment -%}
+  cover_size = 'sm' nil 'lg'
+{%- endcomment -%}
+{%- assign _option_item_cover_size = include.cover_size -%}
+{%- comment -%}
+  small = nil(false) true
+{%- endcomment -%}
+{%- assign _option_grid_small = include.small -%}
+{%- comment -%}=========================================== options end ==============================================={%- endcomment -%}
 
 {%- assign _list_class = '' -%}
 {%- case _type -%}
@@ -26,8 +32,15 @@ needs:
     {%- assign _article_title = __return -%}
     {%- case _type -%}
       {%- when 'grid' -%}{%- comment -%}===================================================================================={%- endcomment -%}
-        <div class="cell cell--6 cell--sm-12 cell--lg-4">
-          <div class="card card--flat">
+        {%- if _option_grid_small -%}
+          {%- assign _cell_media = ' cell--sm-6 cell--4 cell--lg-3' -%}
+          {%- assign _card_addition_class = ' card--overlay' -%}
+        {%- else -%}
+          {%- assign _cell_media = ' cell--sm-12 cell--6 cell--lg-4' -%}
+          {%- assign _card_addition_class = '' -%}
+        {%- endif -%}
+        <div class="cell {{ _cell_media }}">
+          <div class="card card--flat  {{ _card_addition_class }}">
             {%- include snippets/get-nav-url.html path=_article.cover -%}
             {%- assign _article_cover = __return -%}
             <div class="card__image">
@@ -48,12 +61,14 @@ needs:
             {%- include snippets/get-nav-url.html path=_article.cover -%}
             {%- assign _article_cover = __return -%}
             <div class="item__image">
-              {%- assign _article_cover_size = '' -%}
-              {%- if include.cover_size == 'lg' -%}
-                {%- assign _article_cover_size = _article_cover_size | append: ' image--lg' -%}
-              {%- elsif include.cover_size == 'sm' -%}
-                {%- assign _article_cover_size = _article_cover_size | append: ' image--sm' -%}
-              {%- endif -%}
+              {%- case _option_item_cover_size -%}
+                {%- when 'lg' -%}
+                  {%- assign _article_cover_size = ' image--lg' -%}
+                {%- when 'sm' -%}
+                  {%- assign _article_cover_size = ' image--sm' -%}
+                {%- else -%}
+                  {%- assign _article_cover_size = '' -%}
+              {%- endcase -%}
               <img class="image {{ _article_cover_size }} " src="{{ _article_cover }}" />
             </div>
           {%- endif -%}
@@ -105,7 +120,7 @@ needs:
                   </span>
                 </li>
                 <!-- pageview -->
-                {%- if _option_show_article_info_read_by_count -%}
+                {%- if _option_item_show_article_info_read_by_count -%}
                   <li>
                     {%- include snippets/get-page-key.html page=_article -%}
                     {%- assign _article_key = __return -%}
