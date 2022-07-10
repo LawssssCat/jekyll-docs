@@ -12,6 +12,7 @@ layouts:
     details:
       - url: /articles/brief.html
       - url: /articles/item.html
+      - url: /articles/grid.html
 
 
 markdown:
