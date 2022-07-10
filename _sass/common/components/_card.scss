@@ -1,6 +1,33 @@
 /* stylelint-disable scss/no-global-function-names */
 .card {
   max-width: 18rem;
+  font-size: map-get($base, font-size);
   border-radius: map-get($base, border-radius);
   @include box-shadow();
+}
+
+.cell {
+  & > .card {
+    max-width: unset;
+  }
+}
+
+a > .card__header, a.card__header, .card__header > a {
+  @include themeify {
+    @include link-colors(themed(text-color-d), themed(main-color-1));
+  }
+}
+
+.card__image {
+  width: 100%;
+  border-radius: map-get($base, border-radius);
+  & > img {
+    width: 100%;
+    height: auto;
+    border-radius: inherit;
+  }
+}
+
+.card--flat {
+  @include box-shadow(0);
 }

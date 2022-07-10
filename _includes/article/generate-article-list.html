@@ -12,7 +12,7 @@ needs:
 {%- assign _list_class = '' -%}
 {%- case _type -%}
   {%- when 'grid' -%}
-    {%- assign _list_class = 'grid grid-p-3' -%}
+    {%- assign _list_class = 'grid grid--p-3' -%}
   {%- when 'item' -%}
     {%- assign _list_class = 'items items--divided' -%}
   {%- when 'brief' -%}
@@ -27,7 +27,16 @@ needs:
     {%- case _type -%}
       {%- when 'grid' -%}{%- comment -%}===================================================================================={%- endcomment -%}
         <div class="cell cell--6 cell--sm-12 cell--lg-4">
-          <div>article</div>
+          <div class="card card--flat">
+            {%- include snippets/get-nav-url.html path=_article.cover -%}
+            {%- assign _article_cover = __return -%}
+            <div class="card__image"><img src="{{ _article_cover }}" alt=""></div>
+            <div class="card__content">
+              <header class="card__header">
+                <a href="{{ _article_url }}" itemprop="headline">{{ _article_title }}</a>
+              </header>
+            </div>
+          </div>
         </div>
       {%- when 'item' -%}{%- comment -%}===================================================================================={%- endcomment -%}
         <article class="item" itemscope itemtype="{{ site.data.html.itemtype.blog_posting.url }}">
@@ -46,7 +55,7 @@ needs:
           {%- endif -%}
           <div class="item__content">
             <header class="item__header">
-              <a href="{{ _article_url }}"><h2 itemprop="headline">{{ _article_title }}</h2></a>
+              <a href="{{ _article_url }}" itemprop="headline">{{ _article_title }}</a>
             </header>
             <div class="item__description">
               {%- if _article.excerpt -%}

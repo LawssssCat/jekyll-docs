@@ -36,6 +36,10 @@
     @include themeify {
       @include link-colors(themed(text-color-d), themed(main-color-1));
     }
+    font-size: map-get($base, font-size-h2);
+    @include media-breakpoint-down(md) {
+      font-size: map-get($base, font-size-h2-sm);
+    }
   }
   .item__image {
     margin-right: map-get($spacers, 3);
@@ -59,14 +63,6 @@
   }
   .item__header {
     line-height: map-get($base, line-height);
-    h2 {
-      margin-top: map-get($spacers, 2);
-      margin-bottom: map-get($spacers, 2);
-      @include themeify {
-        color: inherit;
-        border: none;
-      }
-    }
   }
   .item__description {
     font-size: map-get($base, font-size-sm);
