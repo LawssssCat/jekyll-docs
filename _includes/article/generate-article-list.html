@@ -16,7 +16,7 @@ needs:
   {%- when 'item' -%}
     {%- assign _list_class = 'items items--divided' -%}
   {%- when 'brief' -%}
-    {%- assign _list_class = 'items' -%}
+    {%- assign _list_class = 'items brief' -%}
 {%- endcase -%}
 <div class="article-list {{ _list_class }}">
   {%- for _article in _articles -%}

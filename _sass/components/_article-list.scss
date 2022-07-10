@@ -1,6 +1,8 @@
+/* stylelint-disable scss/no-global-function-names */
+/* stylelint-disable selector-max-compound-selectors */
 /* stylelint-disable selector-max-class */
 .article-list {
-  &.item {
+  &.items {
     .item__content {
       .item__info {
         @include flexbox();
@@ -10,6 +12,21 @@
         .left-col, .right-col {
           margin: 0;
         }
+      }
+    }
+  }
+  &.items.brief {
+    .item__content {
+      @include flex-direction(row);
+      @include align-items(center);
+      .item__header {
+        font-size: map-get($base, font-size);
+      }
+      .item__meta {
+        padding: 0 map-get($spacers, 3) 0 0;
+        font-family: map-get($base, font-family-code);
+        font-size: map-get($base, font-size-sm);
+        white-space: nowrap;
       }
     }
   }
