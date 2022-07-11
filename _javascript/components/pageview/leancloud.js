@@ -16,6 +16,7 @@ lazyload.js([sources.leancloud_sdk.js], function() {
 });
 
 function actions4Artical(pageView) {
+  // article query and increase
   window.document.querySelectorAll('.js-pageview[data-one-page-action=increase]').forEach(item => {
     const key = item.getAttribute('data-one-page-key');
     const title = item.getAttribute('data-one-page-title');
@@ -23,15 +24,25 @@ function actions4Artical(pageView) {
       updateDOMCounter(item, views);
     });
   });
+  // article query only
   const articleMap = {};
   window.document.querySelectorAll('.js-pageview[data-one-page-action=query]').forEach(item => {
     const key = item.getAttribute('data-one-page-key');
-    // pageView.query(key, (views) => {
-    //   updateDOMCounter(item, views);
-    // });
     articleMap[key] = item;
   });
-  console.log(articleMap); // todo
+  const articleMapKeys = Object.keys(articleMap);
+  if(articleMapKeys && articleMapKeys.length>0) {
+    pageView.queryBatch(articleMapKeys, (result) => {
+      if(result) {
+        result.forEach(pv => {
+          const attributes = pv.attributes;
+          const key = attributes.key, views = attributes.views;
+          const dom = articleMap[key];
+          updateDOMCounter(dom, views);
+        });
+      }
+    });
+  }
 }
 
 function updateDOMCounter(item, views) {
