@@ -24,7 +24,7 @@ lazyload.onload(() => {
       headerTop = TOOL.positionRelative(dom, window.VARIABLES.pageScroller).top;
       window.VARIABLES.pageScrollTarget.scroll({
         top: headerTop,
-        behavior: 'smooth'
+        behavior: window.VARIABLES.pageScrollerBehavior
       });
 
       const id = dom.id;
