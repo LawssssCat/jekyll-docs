@@ -31,15 +31,3 @@
     @content;
   }
 }
-
-@mixin selection {
-  &::selection,
-  &.selection,
-  &::-webkit-selection 
-  {
-    @content;
-  }
-  &::-moz-selection {
-    @content;
-  }
-}
