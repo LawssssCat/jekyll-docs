@@ -70,7 +70,14 @@
     cursor: pointer;
     @include transition(map-get($clickable, transition));
     @include hover {
-      @include box-shadow(2);
+      &:not(.card--flat) {
+        @include box-shadow(2);
+      }
+      &.card--flat {
+        .card__image {
+          @include box-shadow(1);
+        }
+      }
     }
   }
 }
