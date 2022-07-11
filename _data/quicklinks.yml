@@ -47,6 +47,7 @@ docs-en:
       - url: /docs/en/components/icons
       - url: /docs/en/components/images
       - url: /docs/en/components/item
+      - url: /docs/en/components/card
 
   - title: Customization
     class: heading
