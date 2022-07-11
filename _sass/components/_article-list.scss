@@ -30,11 +30,4 @@
       }
     }
   }
-  &.grid {
-    .card__image {
-      @include hover {
-        @include box-shadow(1);
-      }
-    }
-  }
 }

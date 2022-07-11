@@ -127,6 +127,7 @@ class Toc {
     this.config.headerIgnoreAttr   = options.headerIgnoreAttr      || 'toc-header-ignore';
     this.config.scrollTarget       = options.scrollTarget          || window.VARIABLES.pageScrollTarget;
     this.config.scroller           = options.scroller              || window.VARIABLES.pageScroller;
+    this.config.scrollerBehavior   = options.scrollerBehavior      || window.VARIABLES.pageScrollerBehavior;
   }
   init() {
     // assamble
@@ -169,10 +170,10 @@ class Toc {
 
           this.scrollTarget.scroll({
             top: offsetTop,
-            behavior: 'smooth'
+            behavior: this.config.scrollerBehavior
           });
 
-          TOOL.historyReplaceHash(href);
+          TOOL.historyPushHash(href);
         });
       }
     });

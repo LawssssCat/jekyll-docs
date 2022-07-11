@@ -1,13 +1,13 @@
 .layout--page {
   .page__viewport {
-    // width: 100vw; // overflow x
-    height: 100vh;
+    width: 100vw;
+    min-height: 100vh;
+    @include flexbox();
+    .page__main, .grid {
+      width: 100%;
+      @include flex(1);
+    }
   }
-}
-
-.page__main {
-  // height: 100%;
-  display: inline;
 }
 
 .page__main-inner {

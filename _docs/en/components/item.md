@@ -9,6 +9,11 @@ permalink: /docs/en/components/item
 {% link assets/images/cover1_with_title.svg %}
 {%- endcapture -%}
 <!-- ============== -->
+<!-- ============== -->
+{%- capture _img_style -%}
+background: #1fefff;
+{%- endcapture -%}
+<!-- ============== -->
 
 ## Content
 
@@ -41,7 +46,7 @@ permalink: /docs/en/components/item
 {%- capture _code -%}
 <div class="item">
   <div class="item__image">
-    <img class="image" src="{{ _img_src }}"/>
+    <img class="image" src="{{ _img_src }}" style="{{ _img_style }}"/>
   </div>
   <div class="item__content">
     <div class="item__header">
@@ -62,7 +67,7 @@ permalink: /docs/en/components/item
 {%- capture _code -%}
 <div class="item">
   <div class="item__image">
-    <img class="image" src="{{ _img_src }}"/>
+    <img class="image" src="{{ _img_src }}" style="{{ _img_style }}"/>
   </div>
   <div class="item__content">
     <div class="item__header">
@@ -90,7 +95,7 @@ permalink: /docs/en/components/item
 {%- capture _code -%}
 <div class="item">
   <div class="item__image">
-    <img class="image image--xs" src="{{ _img_src }}"/>
+    <img class="image image--xs" src="{{ _img_src }}" style="{{ _img_style }}"/>
   </div>
   <div class="item__content">
     <div class="item__header">
@@ -111,7 +116,7 @@ permalink: /docs/en/components/item
 {%- capture _code -%}
 <div class="item">
   <div class="item__image">
-    <img class="image image--sm" src="{{ _img_src }}"/>
+    <img class="image image--sm" src="{{ _img_src }}" style="{{ _img_style }}"/>
   </div>
   <div class="item__content">
     <div class="item__header">
@@ -137,7 +142,7 @@ permalink: /docs/en/components/item
 {%- capture _code -%}
 <div class="item">
   <div class="item__image">
-    <img class="image image--lg" src="{{ _img_src }}"/>
+    <img class="image image--lg" src="{{ _img_src }}" style="{{ _img_style }}"/>
   </div>
   <div class="item__content">
     <div class="item__header">

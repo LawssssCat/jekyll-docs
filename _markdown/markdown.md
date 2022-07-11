@@ -13,6 +13,7 @@ The markdown syntax and style of this site can be referred [here]({% link _docs/
 
 In addition, since Jekyll use kramdown as the markdown processor by default. You can use the [syntax](https://kramdown.gettalong.org/syntax.html) of kramdown, such as [IAL(Inline Attribute Lists)](https://kramdown.gettalong.org/syntax.html#block-ials)
 
+<!-- ============================================================================ -->
 {% capture _markdown %}
 {::comment}
 This text is completely ignored by kramdown - a comment in the text.
@@ -49,6 +50,7 @@ after render
 {%- endhighlight -%}
 {%- endcapture -%}
 {%- include article/generate-tabs.html titles=_titles contents=_contents -%}
+<!-- ============================================================================ -->
 
 ## Markdown Processor
 
