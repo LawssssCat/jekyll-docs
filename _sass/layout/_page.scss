@@ -1,7 +1,8 @@
 .layout--page {
   .page__viewport {
     // width: 100vw; // overflow x
-    height: 100vh;
+    display: grid;
+    min-height: 100vh;
   }
 }
 
