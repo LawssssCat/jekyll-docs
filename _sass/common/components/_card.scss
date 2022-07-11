@@ -8,8 +8,17 @@
 
 .card {
   max-width: 18rem;
+  overflow: hidden;
   font-size: map-get($base, font-size);
-  border-radius: map-get($base, border-radius);
+  $_card_border_radius: map-get($base, border-radius);
+  border-radius: $_card_border_radius;
+  &.card--flat {
+    overflow: visible;
+    .card__image {
+      overflow: hidden;
+      border-radius: $_card_border_radius;
+    }
+  }
   @include box-shadow();
   @include themeify {
     @include set-card_header(themed(text-color-d), themed(main-color-1));
@@ -24,8 +33,6 @@
 
 .card__image {
   width: 100%;
-  overflow: hidden;
-  border-radius: map-get($base, border-radius);
   img {
     display: block;
     width: 100%;
@@ -38,16 +45,16 @@
   @include box-shadow(0);
 }
 
+.card__content {
+  padding: map-get($spacers, 2) map-get($spacers, 3);
+}
+
 .card.card--overlay {
   position: relative;
   .card__content {
     position: absolute;
     bottom: 0;
     width: 100%;
-    padding: map-get($spacers, 2);
-    border-radius: inherit;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
     @include themeify {
       background: rgba(#000, .4);
       @include set-card_header(themed(text-color-theme-dark), themed(main-color-1)) {
