@@ -35,6 +35,7 @@ docs-en:
       - title: Structure
         url: /docs/en/structure
       - url: /docs/en/typography
+      - url: /docs/en/blog-service-migration
 
   - title: Components
     details:
