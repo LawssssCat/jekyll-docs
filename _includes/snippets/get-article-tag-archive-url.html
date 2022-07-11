@@ -1,0 +1,9 @@
+{%- assign _tag = include.tag -%}
+
+{%- include snippets/get-accessible-url.html url=site.data.variables.default.paths.archive -%}
+{%- assign _path_archive = __return -%}
+{%- include snippets/get-string-encode.html str=_tag -%}
+{%- assign _tag_encode = __return -%}
+{%- assign _path_archive_tag = _path_archive | append: '?tag=' | append: _tag_encode -%}
+
+{%- assign __return = _path_archive_tag -%}

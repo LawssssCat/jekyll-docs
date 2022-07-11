@@ -1,14 +1,14 @@
 /* stylelint-disable selector-max-compound-selectors */
 /* stylelint-disable scss/no-global-function-names */
-code {
-  padding: map-get($spacers, 1) map-get($spacers, 2);
+code.highlighter-rouge {
+  padding: map-get($spacers, 1) map-get($spacers, 1);
   border-radius: map-get($base, border-radius);
   span {
     padding: 0;
     margin: 0;
   }
   @include themeify {
-    background-color: themed(text-background-color);
+    background-color: rgba(themed(main-color-1), .3);
   }
 }
 pre {

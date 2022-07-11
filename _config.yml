@@ -10,7 +10,7 @@
 # -------------------------
 highlight_theme: default # "default" (default), "tomorrow", "tomorrow-night", "tomorrow-night-eighties", "tomorrow-night-blue", "tomorrow-night-bright". see https://github.com/chriskempson/tomorrow-theme
 baseurl: /jekyll-docs-all-in-one # does not include hostname
-url: # https://lawsssscat.github.com/jekyll-docs-all-in-one (needn't indicate. auto generate) # the base hostname & protocol for your site e.g. https://www.someone.com
+url: https://LawssssCat.github.com/ # https://lawsssscat.github.com/jekyll-docs-all-in-one (needn't indicate. auto generate) # the base hostname & protocol for your site e.g. https://www.someone.com (use in "absolute_url" tag with production environment. e.g. JEKYLL_ENV="production" bundle exec jekyll build)
 title: jekyll-docs-all-in-one
 title_short: jekyll-aio
 description: >
@@ -50,8 +50,9 @@ author:
   npm       : # "user_name" the last part of your profile url, e.g. https://www.npmjs.com/~user_name
 
 # -------------------------
-# pageview
+# Post
 # -------------------------
+## pageview
 pageview:
   enable: true
   provider: leancloud
@@ -62,6 +63,9 @@ pageview:
     app_id    : OC6yw4BTaMHK4tuRLUG2jbPd-MdYXbMMI
     app_key   : wlnRdeSQaLI70XWjvabbtGeq
     app_class : pageview
+
+## excerpt
+excerpt_separator: <!--more-->
 
 # -------------------------
 # Paginate

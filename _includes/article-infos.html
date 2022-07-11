@@ -71,7 +71,8 @@
   {%- endif -%}
   <!-- publish on -->
   {%- if _show_article_info_publish_on -%}
-    {%- assign _publish_on = page["first_publish_at"] | default: page.date -%}
+    {%- include snippets/get-article-publish-on.html article=page -%}
+    {%- assign _publish_on = __return -%}
     {%- if _publish_on -%}
       {%- include snippets/get-string-locale-from-data.html key='ARTICLE_DATE_FORMAT' -%}
       {%- assign _locale_date_format = __return -%}
@@ -131,9 +132,9 @@
         {%- else -%}
           {%- include snippets/get-article-title.html article=page -%}
           {%- assign _article_title = __return -%}
-          {%- include snippets/get-page-key.html -%}
+          {%- include snippets/get-page-key.html page=page -%}
           {%- assign _page_key = __return -%}
-          <span class="nowrap js-pageview" data-one-page-key="{{ _page_key }}" data-one-page-title={{ _article_title | jsonify }} >
+          <span class="nowrap js-pageview" data-one-page-action="increase" data-one-page-key="{{ _page_key }}" data-one-page-title={{ _article_title | jsonify }} >
             <font class="views-num">0</font> {{ _locale_hits }}
           </span>
         {%- endif -%}
@@ -148,12 +149,9 @@
       <p>
         <font>{{ _locale_more_on }}</font>
         <span class="wrap">
-          {%- include snippets/get-accessible-url.html url=site.data.variables.default.paths.archive -%}
-          {%- assign _path_archive = __return -%}
           {%- for _tag in page.tags -%}
-            {%- include snippets/get-string-encode.html str=_tag -%}
-            {%- assign _tag_encode = __return -%}
-            {%- assign _path_archive_tag = _path_archive | append: '?tag=' | append: _tag_encode -%}
+            {%- include snippets/get-article-tag-archive-url.html tag=_tag -%}
+            {%- assign _path_archive_tag = __return -%}
             <a href="{{ _path_archive_tag }}">{{ _tag }}</a>
             {%- unless forloop.last -%},&nbsp;{%- endunless -%}
           {%- endfor -%}

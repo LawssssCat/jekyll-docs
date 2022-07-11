@@ -15,5 +15,5 @@ lazyload.onload(() => {
   });
   mask.addEventListener('click', () => {
     root.classList.remove(addClass);
-  })
+  });
 });

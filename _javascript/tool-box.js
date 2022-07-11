@@ -1,3 +1,5 @@
+const {Prompt} = require('lib/prompt');
+
 const TOOL = {};
 
 TOOL.hasEvent = function (event) {
@@ -230,4 +232,13 @@ TOOL.copyTextToClipboard = function(text) {
   }
 };
 
-module.exports = TOOL;
+TOOL.prompt = function (text, delay=1000) {
+  let prompt = new Prompt();
+  prompt.text = text;
+  prompt.show();
+  setTimeout(() => {
+    prompt.remove();
+  }, delay);
+};
+
+module.exports = window.TOOL = TOOL;

@@ -1,17 +1,25 @@
 .layout--page {
   .page__viewport {
-    // height: 100%;
+    // width: 100vw; // overflow x
+    height: 100vh;
   }
 }
 
-// .page__main {
-//   // height: 100%;
-//   color: $text-color;
-// }
+.page__main {
+  // height: 100%;
+  display: inline;
+}
 
 .page__main-inner {
+  height: 100%;
+  @include flexbox();
+  @include flex-direction(column);
   @include themeify() {
     color: themed(text-color);
     background-color: themed(background-color);
   }
+}
+
+.page__content {
+  @include flex(1);
 }

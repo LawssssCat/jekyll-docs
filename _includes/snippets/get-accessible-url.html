@@ -3,7 +3,22 @@ needs:
   - url
 {%- endcomment -%}
 {%- if include.absolute == true -%}
-  {%- assign __return = include.url | absolute_url -%}
+  {%- comment -%}====================================================== same as 'absolute_url' tag{%- endcomment -%}
+  {%- if jekyll.environment=="production" and site.url -%}
+    {%- assign __site_url = site.url -%}
+  {%- else -%}
+    {%- assign __site_url = 'http://localhost' -%}
+  {%- endif -%}
+  {%- if site.port -%}
+    {%- assign __site_url = __site_url | append: ':' | replace: '/:', ':' | append: site.port -%}
+  {%- endif -%}
+  {%- if site.baseurl -%}
+    {%- assign __site_url = __site_url | append: '/' | append: site.baseurl -%}
+  {%- endif -%}
+  {%- if include.url -%}
+    {%- assign __site_url = __site_url | append: '/' | append: include.url -%}
+  {%- endif -%}
+  {%- assign __return = __site_url | replace: '://', ':////' | replace: '//', '/' -%}
 {%- else -%}
   {%- assign __return = include.url | relative_url -%}
 {%- endif -%}

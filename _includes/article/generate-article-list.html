@@ -1,0 +1,152 @@
+{%- comment -%}=========================================== options ==============================================={%- endcomment -%}
+{%- comment -%}
+  type = 'brief' 'item' 'grid' 
+{%- endcomment -%}
+{%- assign _type     = include.type -%}
+{%- assign _articles = include.articles -%}
+{%- assign _option_item_show_article_info_read_by_count = include.show_read_count -%}
+{%- comment -%}
+  cover_size = 'sm' nil 'lg'
+{%- endcomment -%}
+{%- assign _option_item_cover_size = include.cover_size -%}
+{%- comment -%}
+  small = nil(false) true
+{%- endcomment -%}
+{%- assign _option_grid_small = include.small -%}
+{%- comment -%}=========================================== options end ==============================================={%- endcomment -%}
+
+{%- assign _list_class = '' -%}
+{%- case _type -%}
+  {%- when 'grid' -%}
+    {%- assign _list_class = 'grid grid--p-3' -%}
+  {%- when 'item' -%}
+    {%- assign _list_class = 'items items--divided' -%}
+  {%- when 'brief' -%}
+    {%- assign _list_class = 'items brief' -%}
+{%- endcase -%}
+<div class="article-list {{ _list_class }}">
+  {%- for _article in _articles -%}
+    {%- include snippets/get-accessible-url.html url=_article.url -%}
+    {%- assign _article_url = __return -%}
+    {%- include snippets/get-article-title.html article=page -%}
+    {%- assign _article_title = __return -%}
+    {%- case _type -%}
+      {%- when 'grid' -%}{%- comment -%}===================================================================================={%- endcomment -%}
+        {%- if _option_grid_small -%}
+          {%- assign _cell_media = ' cell--sm-6 cell--4 cell--lg-3' -%}
+          {%- assign _card_addition_class = ' card--overlay' -%}
+        {%- else -%}
+          {%- assign _cell_media = ' cell--sm-12 cell--6 cell--lg-4' -%}
+          {%- assign _card_addition_class = '' -%}
+        {%- endif -%}
+        <div class="cell {{ _cell_media }}">
+          <div class="card card--flat  {{ _card_addition_class }}">
+            {%- include snippets/get-nav-url.html path=_article.cover -%}
+            {%- assign _article_cover = __return -%}
+            <div class="card__image">
+              <a href="{{ _article_url }}" itemprop="headline">
+                <img src="{{ _article_cover }}" alt="">
+              </a>
+            </div>
+            <div class="card__content">
+              <header class="card__header">
+                <a href="{{ _article_url }}" itemprop="headline">{{ _article_title }}</a>
+              </header>
+            </div>
+          </div>
+        </div>
+      {%- when 'item' -%}{%- comment -%}===================================================================================={%- endcomment -%}
+        <article class="item" itemscope itemtype="{{ site.data.html.itemtype.blog_posting.url }}">
+          {%- if _article.cover -%}
+            {%- include snippets/get-nav-url.html path=_article.cover -%}
+            {%- assign _article_cover = __return -%}
+            <div class="item__image">
+              {%- case _option_item_cover_size -%}
+                {%- when 'lg' -%}
+                  {%- assign _article_cover_size = ' image--lg' -%}
+                {%- when 'sm' -%}
+                  {%- assign _article_cover_size = ' image--sm' -%}
+                {%- else -%}
+                  {%- assign _article_cover_size = '' -%}
+              {%- endcase -%}
+              <img class="image {{ _article_cover_size }} " src="{{ _article_cover }}" />
+            </div>
+          {%- endif -%}
+          <div class="item__content">
+            <header class="item__header">
+              <a href="{{ _article_url }}" itemprop="headline">{{ _article_title }}</a>
+            </header>
+            <div class="item__description">
+              {%- if _article.excerpt -%}
+                <div class="article-excerpt" itemprop="description articleBody">
+                  {{ _article.excerpt }}
+                </div>
+              {%- endif -%}
+            </div>
+            <div class="item__info">
+              {%- if _article.tags -%}
+                <ul class="left-col menu">
+                  <!-- tag -->
+                  {%- for _tag in _article.tags -%}
+                    {%- include snippets/get-article-tag-archive-url.html tag=_tag -%}
+                    {%- assign _path_archive_tag = __return -%}
+                    <li>
+                      <a class="button button--primary button--pill button--xs" href="{{ _path_archive_tag }}">{{ _tag }}</a>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              {%- endif -%}
+              <ul class="right-col menu">
+                <!-- publish on  -->
+                <li>
+                  {%- include snippets/get-article-publish-on.html article=page -%}
+                  {%- assign _publish_on = __return -%}
+                  {%- include snippets/get-string-locale-from-data.html key='ARTICLE_DATE_FORMAT' -%}
+                  {%- assign _locale_date_format = __return -%}
+                  <i class="far fa-calendar-alt"></i>
+                  <span>{{ _publish_on | date: _locale_date_format }}</span>
+                </li>
+                <!-- read time -->
+                {%- include snippets/get-article-words.html content=_article.content -%}
+                {%- assign _word_count = __return -%}
+                {%- include snippets/get-string-locale-from-data.html key='WORDS' -%}
+                {%- assign _locale_word_count = __return | replace: '[WORDS]', _word_count -%}
+                {%- include snippets/get-article-read-time.html words=_word_count -%}
+                {%- assign _read_time = __return -%}
+                <li>
+                  <i class="fas fa-book"></i>
+                  <span data-one-toggle="popover" data-one-trigger="hover focus" data-one-title="" data-one-content="{{ _locale_word_count }}">
+                    {{ _read_time }}
+                  </span>
+                </li>
+                <!-- pageview -->
+                {%- if _option_item_show_article_info_read_by_count -%}
+                  <li>
+                    {%- include snippets/get-page-key.html page=_article -%}
+                    {%- assign _article_key = __return -%}
+                    {%- include snippets/get-string-locale-from-data.html key='HITS' -%}
+                    {%- assign _locale_hits = __return -%}
+                    <i class="far fa-eye"></i>
+                    <span class="js-pageview" data-one-page-action="query" data-one-page-key="{{ _article_key }}">
+                      <font class="views-num">0</font> {{ _locale_hits }}
+                    </span>
+                  </li>
+                {%- endif -%}
+              </ul>
+            </div>
+          </div>
+        </article>
+      {%- when 'brief' -%}{%- comment -%}===================================================================================={%- endcomment -%}
+        <li class="item" itemscope itemtype="{{ site.data.html.itemtype.blog_posting.url }}" data-tags="{{ _tags }}">
+          <div class="item__content">
+            {%- include snippets/get-string-locale-from-data.html key='ARTICLE_LIST_DATE_FORMAT' -%}
+            {%- assign _locale_date_format = __return -%}
+            <span class="item__meta">{{ _article.date | date: _locale_date_format }}</span>
+            <a class="item__header" itemprop="headline" href="{{ _article_url }}">{{ _article_title }}</a>
+          </div>
+        </li>
+      {%- else -%}{%- comment -%}===================================================================================={%- endcomment -%}
+        error type {{ _type }}. [error code 0x30001]
+    {%- endcase -%}{%- comment -%}===================================================================================={%- endcomment -%}
+  {%- endfor -%}
+</div>
