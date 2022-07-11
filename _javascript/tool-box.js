@@ -6,18 +6,22 @@ TOOL.hasEvent = function (event) {
   return 'on'.concat(event) in window.document;
 };
 
+function formatHash(hash) {
+  if(!hash) {
+    hash = '';
+  }
+  if(!hash.startsWith('#')) {
+    hash = '#' + hash;
+  }
+  return hash;
+}
+
 TOOL.historyReplaceHash = function (hash) {
-  const split = window.location.href.split('?');
-  let baseUrl = split[0].split('#')[0], query = split.length>1?split[1]:'';
-  let href=baseUrl;
-  if(hash) {
-    hash = hash.replace('#', '');
-    href = `${href}#${hash}`;
-  }
-  if(query) {
-    href = `${href}?${query}`;
-  }
-  history.replaceState(null, '', href);
+  history.replaceState(null, '', formatHash(hash));
+};
+
+TOOL.historyPushHash = function (hash) {
+  history.pushState(null, '', formatHash(hash));
 };
 
 // min <= r <= max

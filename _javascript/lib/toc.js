@@ -172,7 +172,7 @@ class Toc {
             behavior: 'smooth'
           });
 
-          TOOL.historyReplaceHash(href);
+          TOOL.historyPushHash(href);
         });
       }
     });
