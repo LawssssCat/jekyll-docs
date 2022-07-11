@@ -17,12 +17,18 @@ lazyload.onload(() => {
     anchor.innerHTML = '#';
     dom.appendChild(anchor);
     let headerTop;
-    anchor.addEventListener('click', () => {
+    anchor.addEventListener('click', (e) => {
+
+      e.preventDefault();
+
       headerTop = TOOL.positionRelative(dom, window.VARIABLES.pageScroller).top;
       window.VARIABLES.pageScrollTarget.scroll({
         top: headerTop,
-        behavior: 'smooth'
+        behavior: window.VARIABLES.pageScrollerBehavior
       });
+
+      const id = dom.id;
+      TOOL.historyPushHash(id);
     });
   });
 

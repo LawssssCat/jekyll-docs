@@ -23,6 +23,7 @@ layout: compress
     sources: {{ _sources | json | replace: "=>", ":"}},
     pageScrollTarget: window,
     pageScroller: (window.document.scrollingElement || window.document.documentElement || window.document.body),
+    pageScrollerBehavior: "smooth"
   };
   window.VARIABLES = VARIABLES;
   window.VARIABLES.append = function(obj) {

@@ -40,7 +40,7 @@
           {%- assign _card_addition_class = '' -%}
         {%- endif -%}
         <div class="cell {{ _cell_media }}">
-          <div class="card card--flat  {{ _card_addition_class }}">
+          <div class="card card--flat card--clickable {{ _card_addition_class }}">
             {%- include snippets/get-nav-url.html path=_article.cover -%}
             {%- assign _article_cover = __return -%}
             <div class="card__image">

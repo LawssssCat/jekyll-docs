@@ -18,41 +18,66 @@ permalink: /docs/en/components/images
 {% link assets/images/cover1_with_title.svg %}
 {%- endcapture -%}
 <!-- ============== -->
+<!-- ============== -->
+{%- capture _img_style -%}
+background: #1fefff;
+{%- endcapture -%}
+<!-- ============== -->
 
-<img class="image image--xs" src="{{ _img_src }}"/>
-
+<!-- ============== -->
+{%- capture _code -%}
+<img class="image image--xs" src="{{ _img_src }}" style="{{ _img_style }}"/>
+{%- endcapture -%}
+{{ _code }}
 ```html
-<img class="image image--xs" src=""/>
+{{ _code }}
 ```
+<!-- ============== -->
 
 ### Small
 
-<img class="image image--sm" src="{{ _img_src }}"/>
-
+<!-- ============== -->
+{%- capture _code -%}
+<img class="image image--sm" src="{{ _img_src }}" style="{{ _img_style }}"/>
+{%- endcapture -%}
+{{ _code }}
 ```html
-<img class="image image--sm" src=""/>
+{{ _code }}
 ```
+<!-- ============== -->
 
 ### Middle
 
-<img class="image image--md" src="{{ _img_src }}"/>
-
+<!-- ============== -->
+{%- capture _code -%}
+<img class="image image--md" src="{{ _img_src }}" style="{{ _img_style }}"/>
+{%- endcapture -%}
+{{ _code }}
 ```html
-<img class="image image--md" src=""/>
+{{ _code }}
 ```
+<!-- ============== -->
 
 ### Large
 
-<img class="image image--lg" src="{{ _img_src }}"/>
-
+<!-- ============== -->
+{%- capture _code -%}
+<img class="image image--lg" src="{{ _img_src }}" style="{{ _img_style }}"/>
+{%- endcapture -%}
+{{ _code }}
 ```html
-<img class="image image--lg" src=""/>
+{{ _code }}
 ```
+<!-- ============== -->
 
 ### Extreme Large
 
-<img class="image image--xl" src="{{ _img_src }}"/>
-
+<!-- ============== -->
+{%- capture _code -%}
+<img class="image image--xl" src="{{ _img_src }}" style="{{ _img_style }}"/>
+{%- endcapture -%}
+{{ _code }}
 ```html
-<img class="image image--xl" src=""/>
+{{ _code }}
 ```
+<!-- ============== -->
