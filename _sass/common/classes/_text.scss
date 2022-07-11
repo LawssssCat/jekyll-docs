@@ -1,0 +1,43 @@
+@mixin text-light {
+  @include themeify {
+    color: themed(text-color-theme-light);
+    h1, h2, h3 {
+      color: themed(text-color-theme-light-d);
+    }
+    h4, h5 {
+      color: themed(text-color-theme-light);
+    }
+    h6 {
+      color: themed(text-color-theme-light-l);
+    }
+    a:not(.button) {
+      @include link-colors(themed(text-color-theme-light), themed(main-color-1));
+    }
+  }
+}
+
+@mixin text-dark {
+  @include themeify {
+    color: themed(text-color-theme-dark);
+    h1, h2, h3 {
+      color: themed(text-color-theme-dark-d);
+    }
+    h4, h5 {
+      color: themed(text-color-theme-dark);
+    }
+    h6 {
+      color: themed(text-color-theme-dark-l);
+    }
+    a:not(.button) {
+      @include link-colors(themed(text-color-theme-dark), themed(main-color-1));
+    }
+  }
+}
+
+.text--light {
+  @include text-light();
+}
+
+.text--dark {
+  @include text-dark();
+}
