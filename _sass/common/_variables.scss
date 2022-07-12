@@ -74,13 +74,17 @@ $spacers: (
   6:                      map-get($base, spacer) * 4.5
 );
 
+//     unset       middle       top
+// | ---------- | --------- | --------- |
+// 0           400         999          -
 $z-indexes: (
-  actions: 996,
-  mask: 997,
-  sidebar: 998,
   modal: 999,
+  sidebar-active: 998,
+  mask: 997,
+  popover: 600,
+  sidebar: 400,
   header: 400,
-  popover: 300
+  actions: 399,
 );
 
 $layout: (
