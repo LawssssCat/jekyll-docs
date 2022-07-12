@@ -36,17 +36,129 @@ Where *spacer* is one of:
 
 ## Examples
 
-```html
-<div class="mt-2"></div>
-<div style="margin-top: ($spacer * .5)"></div>
-```
+<!-- =================================================================== -->
+{%- assign _color_margin  = "#fcb78c" -%}
+{%- assign _color_padding = "#a4f798" -%}
+{%- assign _color_content = "#97caff" -%}
 
-```html
-<div class="mx-3"></div>
-<div class="margin-left: $spacer; margin-right: $spacer;"></div>
-```
++ margin - `{{ _color_margin }}`{:style="background: {{ _color_margin }}"}
++ padding - `{{ _color_padding }}`{:style="background: {{ _color_padding }}"}
++ content - `{{ _color_content }}`{:style="background: {{ _color_content }}"}
+<!-- =================================================================== -->
 
-```html
-<div class="p-4"></div>
-<div class="padding: ($spacer * 1.5);"></div>
-```
+<!-- =================================================================== -->
+{%- capture _code_style -%}
+.example-spacing {
+  .outter {
+    background: {{ _color_margin }};
+    overflow: auto;
+    > div {
+      background: {{ _color_padding }};
+      .inner {
+        background: {{ _color_content }};
+        height: 2rem;
+      }
+    }
+  }
+}
+{%- endcapture -%}
+<!-- =================================================================== -->
+
+### mt (margin-top)
+
+<!-- =================================================================== -->
+<style>
+{{ _code_style | scssify }}
+</style>
+{%- capture _code_html -%}
+<div class="example-spacing">
+  <div class="outter">
+    <div class="mt-2"><!-- here -->
+      <div class="inner"></div>
+    </div>
+  </div>
+</div>
+{%- endcapture -%}
+{{ _code_html }}
+<!-- =================================================================== -->
+{%- capture _titles -%}
+html
+<!-- split title -->
+scss
+{%- endcapture -%}
+{%- capture _contents -%}
+{%- highlight html -%}
+{{ _code_html }}
+{%- endhighlight -%}
+<!-- split content -->
+{%- highlight scss -%}
+{{ _code_style }}
+{%- endhighlight -%}
+{%- endcapture -%}
+{%- include article/generate-tabs.html titles=_titles contents=_contents -%}
+
+### mx (margin-left and margin-right)
+
+<!-- =================================================================== -->
+<style>
+{{ _code_style | scssify }}
+</style>
+{%- capture _code_html -%}
+<div class="example-spacing">
+  <div class="outter">
+    <div class="mx-2"><!-- here -->
+      <div class="inner"></div>
+    </div>
+  </div>
+</div>
+{%- endcapture -%}
+{{ _code_html }}
+<!-- =================================================================== -->
+{%- capture _titles -%}
+html
+<!-- split title -->
+scss
+{%- endcapture -%}
+{%- capture _contents -%}
+{%- highlight html -%}
+{{ _code_html }}
+{%- endhighlight -%}
+<!-- split content -->
+{%- highlight scss -%}
+{{ _code_style }}
+{%- endhighlight -%}
+{%- endcapture -%}
+{%- include article/generate-tabs.html titles=_titles contents=_contents -%}
+
+### p (padding)
+
+<!-- =================================================================== -->
+<style>
+{{ _code_style | scssify }}
+</style>
+{%- capture _code_html -%}
+<div class="example-spacing">
+  <div class="outter">
+    <div class="p-4"><!-- here -->
+      <div class="inner"></div>
+    </div>
+  </div>
+</div>
+{%- endcapture -%}
+{{ _code_html }}
+<!-- =================================================================== -->
+{%- capture _titles -%}
+html
+<!-- split title -->
+scss
+{%- endcapture -%}
+{%- capture _contents -%}
+{%- highlight html -%}
+{{ _code_html }}
+{%- endhighlight -%}
+<!-- split content -->
+{%- highlight scss -%}
+{{ _code_style }}
+{%- endhighlight -%}
+{%- endcapture -%}
+{%- include article/generate-tabs.html titles=_titles contents=_contents -%}

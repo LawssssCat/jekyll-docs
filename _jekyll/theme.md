@@ -6,6 +6,7 @@ article_header:
   type: overlay
   background_color: '#123'
   background_image: false
+permalink: /theme
 ---
 
 <div markdown="block">

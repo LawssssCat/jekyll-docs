@@ -1,8 +1,7 @@
 ---
 layout: article
 title: Jekyll - docs
-aside:
-  toc: true
+permalink: /jekyll
 ---
 
 [github-jekyll]: https://github.com/jekyll/jekyll
