@@ -101,6 +101,8 @@ collections:
     output: true
   markdown:
     output: true
+  jekyll:
+    output: true
   sample_articles:
     output: true
   sample_pages:
@@ -136,6 +138,15 @@ defaults:
           toc: true
       sidebar: 
           quicklinks: markdown
+  - scope:
+      path: "_jekyll/"
+      type: jekyll
+    values:
+      nav_key: jekyll
+      aside:
+          toc: true
+      sidebar: 
+          quicklinks: jekyll
   - scope:
       path: "_liquid/"
       type: liquid

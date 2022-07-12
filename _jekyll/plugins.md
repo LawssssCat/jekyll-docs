@@ -1,5 +1,7 @@
 ---
-layout: page
+layout: article
+title: Jekyll - Plugins
+permalink: /plugins
 ---
 
 + jemoji - <https://github.com/jekyll/jemoji>\

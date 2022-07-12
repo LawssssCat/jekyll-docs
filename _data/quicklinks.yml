@@ -14,6 +14,16 @@ layouts:
       - url: /articles/item.html
       - url: /articles/grid.html
 
+jekyll:
+  - title: Jekyll
+    url: /jekyll
+  - title: Theme
+    url: /theme
+  - title: Plugins
+    url: /plugins
+    details:
+      - url: /plugins/emoji
+        title: emoji
 
 markdown:
   - url: /markdown
