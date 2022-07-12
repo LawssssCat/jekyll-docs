@@ -1,3 +1,6 @@
+// popper.js 
+// see https://popper.js.org/
+
 const lazyload = require('lazyload');
 const TOOL = require('tool-box');
 const sources = window.VARIABLES.sources;
@@ -87,26 +90,64 @@ class CodeHeader {
 class CodeHeaderPopper {
   constructor(toggle) {
     this.toggle = toggle;
-    this.popperDOM = window.document.createElement('div');
+    const popperDOM = this.popperDOM = window.document.createElement('div');
+    popperDOM.classList.add('popover');
+    // content
+    const content = popperDOM.popperContent = window.document.createElement('div');
+    this.popperDOM.appendChild(content);
+    content.classList.add('popover-body');
+    // arrow
+    const arrow = window.document.createElement('div');
+    this.popperDOM.appendChild(arrow);
+    arrow.toggleAttribute('data-popper-arrow');
+    arrow.classList.add('popover-arrow');
   }
-  show(innerHTML, callback) {
+  set content(innerHTML) {
+    this.popperDOM.popperContent.innerHTML = innerHTML;
+  }
+  show(innerHTML) {
     if(innerHTML) {
-      this.popperDOM.innerHTML = innerHTML;
+      this.content = innerHTML;
     }
     if(!window.document.body.contains(this.popperDOM)) {
       window.document.body.append(this.popperDOM);
     }
+
+    // Make the tooltip visible
+    this.popperDOM.toggleAttribute('data-show');
+
+    // call popper.js api
     if(!this.popper) {
       this.popper = window.Popper.createPopper(this.toggle, this.popperDOM, {
-        placement: 'top'
+        placement: 'top',
+        modifiers: [
+          {
+            name: 'flip',
+            options: {
+              fallbackPlacements: ['bottom'] // see https://popper.js.org/docs/v2/modifiers/flip/#fallbackplacements
+            }
+          }
+        ]
       });
     }
+
+    // Enable the event listeners
+    this.popper.setOptions((options) => ({
+      ...options,
+      modifiers: [
+        ...options.modifiers,
+        { name: 'eventListeners', enabled: true }
+      ]
+    }));
+    // Update its position
     this.popper.update();
-    callback && callback();
   }
   remove() {
+    // Hide the tooltip
+    this.popperDOM.removeAttribute('data-show');
     if(this.popper) {
-      this.popper.setOptions((options) => ({ // remove listener
+      // Disable the event listeners
+      this.popper.setOptions((options) => ({
         ...options,
         modifiers: [
           ...options.modifiers,
