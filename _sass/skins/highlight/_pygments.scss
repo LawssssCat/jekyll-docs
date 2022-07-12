@@ -9,7 +9,7 @@
 // MONOKAI
 // https://raw.githubusercontent.com/jwarby/pygments-css/master/monokai.css
 
-%monokai {
+%monokai_base {
   $_comment: #68bb1a;
   pre { color: #ffffff; background-color: #272822; }
   .hll { background-color: #272822; }
@@ -78,6 +78,21 @@
   .gi { color: #a6e22e; } /* Generic.Inserted & Diff Inserted */
 }
 
+%monokai_scss {
+  .m { color: #a6e22e; }
+  .nn, .nc, .p { color: #e6db74; }
+  .nl { color: #66d9ef; }
+  .n, .nb { color: #fb660a; }
+}
+
+%monokai {
+  @extend %monokai_base;
+  &[data-lang="scss"], &[data-lang="css"] {
+    @extend %monokai_scss;
+  }
+}
+
+// FRUITY
 
 %fruity {
   pre { color: #ffffff; background-color: #333; }
@@ -152,8 +167,9 @@
   .il { color: #0086f7; font-weight: bold } /* Literal.Number.Integer.Long */
 }
 
-
+// ZENBURN
 // https://raw.githubusercontent.com/jwarby/pygments-css/master/zenburn.css
+
 %zenburn {
   code, pre { color:#fdce93; background-color:#3f3f3f; }
   .hll { background-color:#222; }

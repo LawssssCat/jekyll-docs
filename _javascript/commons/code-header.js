@@ -64,24 +64,38 @@ class CodeHeader {
     let hover = false;
     headerCopy.addEventListener('mouseover', () => {
       if(!hover) { // only the first hover event is active until 'mouseout'.
-        headerCopy.setCopyReady();
         popper.show('Copy to clipboard');
       }
       hover = true;
     });
+    let setCopyReadyFlag = false;
     headerCopy.addEventListener('mouseout', (e) => {
       if(!headerCopy.contains(e.toElement)) { // out copy toggle and it's child
         hover = false;
-        headerCopy.setCopyReady();
+        if(setCopyReadyFlag) {
+          headerCopy.setCopyReady();
+          setCopyReadyFlag = false;
+        }
         popper.remove();
       }
     });
+    let setCopyReadyTimeoutClock;
     headerCopy.addEventListener('click', () => {
       popper.remove();
       TOOL.copyTextToClipboard(this.code.textContent).then(() => {
         // show popover when copy ok
-        headerCopy.setCopyOk();
         popper.show('Copied!');
+        headerCopy.setCopyOk();
+        if(!setCopyReadyTimeoutClock) {
+          setCopyReadyTimeoutClock = setTimeout(() => {
+            if(hover) {
+              setCopyReadyFlag = true;
+            } else {
+              headerCopy.setCopyReady();
+            }
+            setCopyReadyTimeoutClock = null;
+          }, 1000);
+        }
       });
     });
   }
