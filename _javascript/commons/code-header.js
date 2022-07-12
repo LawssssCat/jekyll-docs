@@ -115,6 +115,7 @@ class CodeHeaderPopper {
 
     // Make the tooltip visible
     this.popperDOM.toggleAttribute('data-show');
+    this.popperDOM.removeAttribute('style');
 
     // call popper.js api
     if(!this.popper) {
