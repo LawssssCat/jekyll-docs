@@ -1,4 +1,5 @@
 const {Set}  = require('lib/set');
+const TOOL = require('tool-box');
 
 const lazyLoad = (function(doc) {
   const 
@@ -10,7 +11,7 @@ const lazyLoad = (function(doc) {
     try{
       func && func.call(caller);
     } catch (err) {
-      console.error('stack', err.stack, 'func', func, 'context', caller); // prompt the console for errors and continue with the next task.
+      TOOL.logger.error('caller', caller, func, err); // prompt the console for errors and continue with the next task.
     }
   }
 
