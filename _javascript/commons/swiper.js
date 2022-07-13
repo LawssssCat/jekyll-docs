@@ -26,11 +26,12 @@ class Swiper {
   constructor(dom, options={}) {
     this.dom = dom;
     const config = this.config = {};
-    config.slideContainerSelector     = options.slideContainerSelector       || '.swiper__slides';
-    config.slideSelector              = options.slideSelector                || '.swiper__slide';
-    config.slideIndex                 = options.slideIndex                   || 0;
-    config.buttonPrevSelector         = options.buttonPrevSelector           || '.swiper__button.swiper__button--prev';
-    config.buttonNextSelector         = options.buttonNextSelector           || '.swiper__button.swiper__button--next';
+    config.slideContainerSelector          = options.slideContainerSelector           || '.swiper__slides';
+    config.slideContainerAnimationClass    = options.slideContainerAnimationClass     || 'swiper__slides--animation';
+    config.slideSelector                   = options.slideSelector                    || '.swiper__slide';
+    config.slideIndex                      = options.slideIndex                       || 0;
+    config.buttonPrevSelector              = options.buttonPrevSelector               || '.swiper__button.swiper__button--prev';
+    config.buttonNextSelector              = options.buttonNextSelector               || '.swiper__button.swiper__button--next';
   }
   init() {
     const dom = this.dom;
@@ -54,7 +55,14 @@ class Swiper {
       context.refresh();
     }).observe(slideContainer);
   }
-  moveTo(index) {
+  setTransition() {
+    this.slideContainer.classList.add(this.config.slideContainerAnimationClass);
+    this.slideContainer.addEventListener('transitionend', () => {
+      this.slideContainer.classList.remove(this.config.slideContainerAnimationClass);
+    });
+  }
+  moveTo(index, options={}) {
+    // index
     let moveToIndex, leftIndex=0, rightIndex=this.slideList.length-1;
     if(index<leftIndex) {
       moveToIndex = leftIndex;
@@ -63,6 +71,11 @@ class Swiper {
     } else {
       moveToIndex = index;
     }
+    // animation
+    if(options.animation != false) {
+      this.setTransition();
+    }
+    // offset
     const slide = this.slideList[this.slideIndexCur=moveToIndex];
     const offset = TOOL.positionRelative(slide, this.slideContainer).left;
     domFunc.translateX(this.slideContainer, -offset);
@@ -78,7 +91,9 @@ class Swiper {
     }
   }
   refresh() {
-    this.moveTo(this.slideIndexCur);
+    this.moveTo(this.slideIndexCur, {
+      animation: false
+    });
   }
   prev() {
     this.moveTo(this.slideIndexCur-1);

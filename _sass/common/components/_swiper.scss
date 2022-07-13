@@ -11,7 +11,7 @@
 .swiper__slides {
   @include flexbox();
   &.swiper__slides--animation {
-    @include transition(transform map-get($animation, duration) map-get($animation-timing-function, 2));
+    @include transition(transform map-get($animation, duration) map-get($animation-timing-function, 1));
   }
   .swiper__slide {
     @include flex-shrink(0);
