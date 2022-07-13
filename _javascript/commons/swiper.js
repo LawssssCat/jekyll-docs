@@ -50,6 +50,9 @@ class Swiper {
     this.buttonNext.addEventListener('click', () => {
       context.next();
     });
+    new ResizeObserver(() => {
+      context.refresh();
+    }).observe(slideContainer);
   }
   moveTo(index) {
     let moveToIndex, leftIndex=0, rightIndex=this.slideList.length-1;
@@ -73,6 +76,9 @@ class Swiper {
     } else {
       domFunc.enable(this.buttonNext);
     }
+  }
+  refresh() {
+    this.moveTo(this.slideIndexCur);
   }
   prev() {
     this.moveTo(this.slideIndexCur-1);
