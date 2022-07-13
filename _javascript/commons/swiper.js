@@ -7,6 +7,21 @@ lazyload.onload(() => {
   });
 });
 
+const domFunc = (function() {
+  const FUNC = {};
+  FUNC.translateX = function(dom, offset) {
+    dom.style.transform = `translate(${offset}px, 0)`;
+  };
+  const disabledClass = 'disabled';
+  FUNC.enable = function(dom) {
+    dom.classList.remove(disabledClass);
+  };
+  FUNC.disable = function(dom) {
+    dom.classList.add(disabledClass);
+  };
+  return FUNC;
+})();
+
 class Swiper {
   constructor(dom, options={}) {
     this.dom = dom;
@@ -37,17 +52,27 @@ class Swiper {
     });
   }
   moveTo(index) {
-    let moveToIndex;
-    if(index<0) {
-      moveToIndex=0;
-    } else if (index>=this.slideList.length) {
-      moveToIndex=this.slideList.length-1;
+    let moveToIndex, leftIndex=0, rightIndex=this.slideList.length-1;
+    if(index<leftIndex) {
+      moveToIndex = leftIndex;
+    } else if (index>rightIndex) {
+      moveToIndex = rightIndex;
     } else {
-      moveToIndex=index;
+      moveToIndex = index;
     }
     const slide = this.slideList[this.slideIndexCur=moveToIndex];
     const offset = TOOL.positionRelative(slide, this.slideContainer).left;
-    this.slideContainer.style.transform = `translate(-${offset}px, 0)`;
+    domFunc.translateX(this.slideContainer, -offset);
+    if(this.slideIndexCur == leftIndex) {
+      domFunc.disable(this.buttonPrev);
+    } else {
+      domFunc.enable(this.buttonPrev);
+    }
+    if(this.slideIndexCur == rightIndex) {
+      domFunc.disable(this.buttonNext);
+    } else {
+      domFunc.enable(this.buttonNext);
+    }
   }
   prev() {
     this.moveTo(this.slideIndexCur-1);
