@@ -3,7 +3,11 @@ const TOOL = require('tool-box');
 
 lazyload.onload(() => {
   window.document.querySelectorAll('.swiper').forEach(dom => {
-    new Swiper(dom).init();
+    try {
+      new Swiper(dom).init();
+    } catch(err) {
+      TOOL.logger.error('problem dom:', dom, '\n', err);
+    }
   });
 });
 
@@ -63,20 +67,20 @@ class Swiper {
   }
   moveTo(index, options={}) {
     // index
-    let moveToIndex, leftIndex=0, rightIndex=this.slideList.length-1;
+    let leftIndex=0, rightIndex=this.slideList.length-1;
     if(index<leftIndex) {
-      moveToIndex = leftIndex;
+      this.slideIndexCur = leftIndex;
     } else if (index>rightIndex) {
-      moveToIndex = rightIndex;
+      this.slideIndexCur = rightIndex;
     } else {
-      moveToIndex = index;
+      this.slideIndexCur = index;
     }
     // animation
     if(options.animation != false) {
       this.setTransition();
     }
     // offset
-    const slide = this.slideList[this.slideIndexCur=moveToIndex];
+    const slide = this.slideList[this.slideIndexCur];
     const offset = TOOL.positionRelative(slide, this.slideContainer).left;
     domFunc.translateX(this.slideContainer, -offset);
     if(this.slideIndexCur == leftIndex) {

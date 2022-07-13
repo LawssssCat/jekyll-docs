@@ -33,3 +33,15 @@
     right: 10px;
   }
 }
+
+.swiper--light .swiper__button {
+  @include themeify {
+    @include clickable(themed(text-color-theme-light), rgba(themed(main-color-theme-dark), .4));
+  }
+}
+
+.swiper--dark .swiper__button {
+  @include themeify {
+    @include clickable(themed(text-color-theme-dark), rgba(themed(main-color-theme-light), .4));
+  }
+}

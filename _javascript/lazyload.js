@@ -11,7 +11,7 @@ const lazyLoad = (function(doc) {
     try{
       func && func.call(caller);
     } catch (err) {
-      TOOL.logger.error('caller', caller, func, err); // prompt the console for errors and continue with the next task.
+      TOOL.logger.error('caller', caller, '\n', func, '\n', err); // prompt the console for errors and continue with the next task.
     }
   }
 
