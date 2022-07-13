@@ -1,0 +1,35 @@
+/* stylelint-disable scss/at-extend-no-missing-placeholder */
+.swiper {
+  position: relative;
+  @include overflow(hidden);
+}
+.swiper__slides, .swiper__slide {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper__slides {
+  @include flexbox();
+  &.swiper__slides--animation {
+    @include transition(transform map-get($animation, duration) map-get($animation-timing-function, 1));
+  }
+  .swiper__slide {
+    @include flex-shrink(0);
+  }
+}
+
+.swiper__button {
+  position: absolute;
+  top: 50%;
+  @extend .button, .button--circle;
+  @include transform(translate(0, -50%));
+  @include themeify {
+    @include clickable(themed(text-color-d), rgba(themed(main-color-3), .4));
+  }
+  &.swiper__button--prev {
+    left: 10px;
+  }
+  &.swiper__button--next {
+    right: 10px;
+  }
+}

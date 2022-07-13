@@ -53,11 +53,12 @@ $_sidebar_width: map-get($layout, sidebar-width);
     position: fixed;
     @include transform(translate(- $_sidebar_width, 0));
   }
-  .show-sidebar {
+  .show-sidebar { // show
     .page__actions {
       visibility: hidden;
     }
     .page__sidebar {
+      z-index: map-get($z-indexes, sidebar-active);
       @include transform(translate(0));
     }
     .page__mask {

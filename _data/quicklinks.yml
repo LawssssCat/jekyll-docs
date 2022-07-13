@@ -60,6 +60,7 @@ docs-en:
       - url: /docs/en/components/item
       - url: /docs/en/components/card
       - url: /docs/en/components/hero
+      - url: /docs/en/components/swiper
 
   - title: Customization
     class: heading

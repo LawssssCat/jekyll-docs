@@ -66,6 +66,20 @@ TOOL.position = function(dom) {
   };
 };
 
+/**
+ * position diff with two dom (dom and container)
+ * 
+ * | ------------ container -------------- |
+ * | <------ left -------> | ---- dom ---- | 
+ * 
+ * ------------------- container
+ * ↑
+ * | top
+ * ↓
+ * ------------------- dom
+ * 
+ * return (top, left)
+ */
 TOOL.positionRelative = function(dom, container=document.body) {
   const p1 = TOOL.position(dom), p2 = TOOL.position(container);
   return {

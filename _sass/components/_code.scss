@@ -68,9 +68,6 @@ pre {
     .code-toggle-copy {
       border-bottom-right-radius: 0;
       @include button;
-      @include themeify {
-        @include clickable(themed(text-color), transparent, themed(text-color-3), themed(main-color-3));
-      }
       @include flexbox();
       @include align-items(center);
     }
