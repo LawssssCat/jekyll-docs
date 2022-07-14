@@ -42,6 +42,7 @@ class Swiper {
     const dom = this.dom;
     const config = this.config;
     const slideContainer = this.slideContainer = dom.querySelector(config.slideContainerSelector);
+    this.slideContainerTranslateOffseX = 0; // touch move offset init
     this.slideList = slideContainer.querySelectorAll(config.slideSelector);
     this.slideIndexCur = config.slideIndex;
     this.buttonPrev = dom.querySelector(config.buttonPrevSelector);
@@ -61,6 +62,47 @@ class Swiper {
     new ResizeObserver(() => {
       context.refresh();
     }).observe(slideContainer);
+    this.bundleTouchEventListener(); // touch/mouseDown move
+  }
+  bundleTouchEventListener() {
+    const context = this;
+    const slideContainer = this.slideContainer;
+    let touch = false;
+    let touchPageX;
+    slideContainer.addEventListener('mousedown', (e) => {
+      touch = true;
+      touchPageX = e.pageX;
+    });
+    let mouseUpListenerFunc;
+    slideContainer.addEventListener('mouseup', mouseUpListenerFunc = () => {
+      touch = false;
+      const slideIndexAdjust = context.getSlideIndexAdjust();
+      context.moveTo(slideIndexAdjust, {
+        offset: 0
+      });
+    });
+    slideContainer.addEventListener('mouseleave', mouseUpListenerFunc);
+    slideContainer.addEventListener('mousemove', (e) => {
+      if(touch) {
+        const movePageX = e.pageX - touchPageX;
+        context.moveTo(context.slideIndexCur, {
+          animation: false,
+          offset: movePageX
+        });
+      }
+    });
+  }
+  getSlideIndexAdjust() {
+    const offsetX = this.slideContainerTranslateOffseX;
+    const slideWidth = TOOL.innerWidth(this.slideContainer);
+    if(Math.abs(offsetX) > (slideWidth/4)) {
+      if(offsetX < 0) { // end ← start
+        return this.slideIndexCur + 1;
+      } else { // start → end
+        return this.slideIndexCur - 1;
+      }
+    }
+    return this.slideIndexCur;
   }
   isAnimation() {
     return this.isAnimationFlag;
@@ -88,25 +130,32 @@ class Swiper {
       this.setAnimation();
     }
     // offset
+    const offsetX = this.slideContainerTranslateOffseX = options.offset ? options.offset : 0;
     const slideWidth = TOOL.innerWidth(this.slideContainer);
-    const offset = this.slideIndexCur * slideWidth;
-    domFunc.translateX(this.slideContainer, -offset);
+    const translateX = this.slideIndexCur * slideWidth;
+    domFunc.translateX(this.slideContainer, -translateX+offsetX);
     // button
-    if(this.slideIndexCur == leftIndex) {
-      domFunc.disable(this.buttonPrev);
-    } else {
+    if(this.hasPrev()) {
       domFunc.enable(this.buttonPrev);
-    }
-    if(this.slideIndexCur == rightIndex) {
-      domFunc.disable(this.buttonNext);
     } else {
+      domFunc.disable(this.buttonPrev);
+    }
+    if(this.hasNext()) {
       domFunc.enable(this.buttonNext);
+    } else {
+      domFunc.disable(this.buttonNext);
     }
   }
   refresh() {
     this.moveTo(this.slideIndexCur, {
       animation: false
     });
+  }
+  hasPrev(index = this.slideIndexCur) {
+    return index > 0;
+  }
+  hasNext(index = this.slideIndexCur) {
+    return index < (this.slideList.length-1);
   }
   prev() {
     const index = this.slideIndexCur-1;
