@@ -96,6 +96,7 @@ class Swiper {
           animation: false,
           offset: movePageX
         });
+        e.preventDefault(); // prevent 'select' and 'drop' that has been 'select'
       }
     });
     slideContainer.addEventListener('touchmove', mousemoveListenerFunc);
