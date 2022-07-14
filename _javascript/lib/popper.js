@@ -9,36 +9,43 @@ function promptError(msg) {
 
 // focus
 function addListener4focus(popover) { // todo test
-  popover.toggle.addEventListener('focus', () => {
-    popover.show();
+  popover.toggle.addEventListener('focus', (e) => {
+    popover.show(e);
   });
-  popover.toggle.addEventListener('focusout', () => {
-    popover.hide();
+  popover.toggle.addEventListener('focusout', (e) => {
+    popover.hide(e);
   });
 }
 
 // hover
 function addListener4Hover(popover) {
+  let show = false;
   popover.toggle.addEventListener('mouseover', (e) => {
     TOOLS.logger.isDebug() && TOOLS.logger.debug(e);
-    popover.show();
+    if(!show) {
+      popover.show(e);
+      show = true;
+    }
   });
   popover.toggle.addEventListener('mouseout', (e) => {
     TOOLS.logger.isDebug() && TOOLS.logger.debug(e);
-    popover.hide();
+    if(!popover.toggle.contains(e.toElement)) {
+      popover.hide(e);
+      show = false;
+    }
   });
 }
 
 // click
 function addListener4Click(popover) {
   let count=0;
-  popover.toggle.addEventListener('click', () => {
+  popover.toggle.addEventListener('click', (e) => {
     if(count==0) { // show
       count=1;
-      popover.show();
+      popover.show(e);
     } else {       // hide
       count=0;
-      popover.hide();
+      popover.hide(e);
     }
   });
 }
@@ -47,8 +54,8 @@ class Popper {
   constructor(options={}) {
     // popper.js 
     // see https://popper.js.org/
-    this.popper         = window.Popper          || promptError('need Popper obj from popper.js');
-    this.popperConfig   = options.popperConfig   || {
+    this.popper           = window.Popper          || promptError('need Popper obj from popper.js');
+    this.popperConfig     = options.popperConfig   || {
       placement: options.popperConfigPlacement   || 'top',
       modifiers: [
         {
@@ -60,14 +67,15 @@ class Popper {
         ...(options.popperConfigModifiers || [])
       ]
     };
-    this.toggle         = options.toggle         || promptError('"toggle" is required');
-    this.toggleEvents   = options.toggleEvents   || []; // support "hover", "focus", "click"
-    this.content        = options.content        || promptError('"content" is required');
-    this.container      = options.container      || window.document.body;
-    this.title          = options.title;
-    this.idStatic       = options.id;
-    this.showCallback   = options.showCallback;
-    this.hideCallback   = options.hideCallback;
+    this.toggle           = options.toggle         || promptError('"toggle" is required');
+    this.toggleEvents     = options.toggleEvents   || []; // support "hover", "focus", "click"
+    this.content          = options.content        || promptError('"content" is required');
+    this.container        = options.container      || window.document.body;
+    this.title            = options.title;
+    this.idStatic         = options.id;
+    this.showCallback     = options.showCallback;
+    this.hideCallback     = options.hideCallback;
+    this.hidePreCallBack  = options.hidePreCallBack;
   }
   init() {
     if(this.toggleEvents.length > 0) // add event listener
@@ -81,8 +89,9 @@ class Popper {
         }
       });
     }
+    return this;
   }
-  show() {
+  show(event) {
     // node
     this.id = this.idStatic || TOOLS.generateId('popover');
     this.node = this.createDOM();
@@ -101,9 +110,12 @@ class Popper {
     // Update its position
     this.popperInstance.update();
     // callback
-    this.showCallback && this.showCallback();
+    this.showCallback && this.showCallback(event);
   }
-  hide() {
+  hide(event) {
+    if(this.hidePreCallBack && this.hidePreCallBack(event) == false) {
+      return;
+    }
     // Disable the event listeners
     this.popperInstance.setOptions((options) => ({
       ...options,
@@ -119,7 +131,7 @@ class Popper {
     this.node=null;
     // node 
     this.id = null;
-    this.hideCallback && this.hideCallback();
+    this.hideCallback && this.hideCallback(event);
   }
   createDOM(id) {
     // popover dom
@@ -144,6 +156,14 @@ class Popper {
     contentDOM.classList.add('popover-body');
     result.appendChild(contentDOM);
     return result;
+  }
+  setContent(innerHTML) {
+    this.content = innerHTML;
+    try {
+      this.node.querySelector('.popover-body').innerHTML = innerHTML;
+    } catch(err) {
+      TOOLS.logger.debug(err);
+    }
   }
 }
 
