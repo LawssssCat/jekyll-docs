@@ -1,7 +1,8 @@
 const lazyload = require('lazyload');
+const {Popper} = require('lib/popper');
 const sources = window.VARIABLES.sources;
 
-lazyload.js([sources.leancloud_sdk.js], function() {
+lazyload.js([sources.leancloud_sdk.js, sources.popper.js], function() {
 
   if(!window.AV) throw new Error('needs AV obj from leancloud_sdk.js');
   
@@ -60,10 +61,13 @@ function updateDOMCounter(item, views) {
   }
   const numWrapper = item.querySelector('.views-num');
   numWrapper.innerHTML = str;
-  if(window.popoverInit && flag) { // see popover.js
-    item.setAttribute('data-one-toggle', 'popover');
-    item.setAttribute('data-one-trigger', 'hover focus');
-    item.setAttribute('data-one-content', views.toLocaleString());
-    window.popoverInit([item]);
+  if(flag) { // see popover.js
+    const popper = new Popper({
+      popperConfigPlacement: 'bottom',
+      toggle: item,
+      toggleEvents: ['hover'],
+      content: views.toLocaleString()
+    });
+    popper.init();
   }
 }
