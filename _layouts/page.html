@@ -20,10 +20,10 @@ layout: base
 
 {%- comment -%} ~~~~~~~~~~~~~~~~~~~~~ main class ~~~~~~~~~~~~~~~~~~~~~ {%- endcomment -%}
 {%- capture _page_main -%}
-  {%- assign _page_main_class = 'page__main js-page-main' -%}
+  {%- assign _page_main_class = '' -%}
   {%- if _show_aside -%}     {%- assign _page_main_class = _page_main_class | append: ' has-aside' -%}{%- endif -%}
   {%- if _show_sidebar -%}   {%- assign _page_main_class = _page_main_class | append: ' has-sidebar cell cell--auto' -%}{%- endif -%}
-  <div class="{{ _page_main_class }}">
+  <div class="page__main js-page-main {{ _page_main_class }}">
     {%- include main.html 
       content=content
       show_aside=_show_aside -%}

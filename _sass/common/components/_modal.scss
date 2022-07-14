@@ -33,3 +33,10 @@
   @include transform(translate(0, 0));
   @include transition(#{opacity map-get($animation, duration) map-get($animation, timing-function)});
 }
+
+.modal {
+  @include modal();
+}
+.modal--show {
+  @include modal--show();
+}
