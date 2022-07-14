@@ -69,28 +69,36 @@ class Swiper {
     const slideContainer = this.slideContainer;
     let touch = false;
     let touchPageX;
-    slideContainer.addEventListener('mousedown', (e) => {
+    let mousedownListenerFunc;
+    slideContainer.addEventListener('mousedown', mousedownListenerFunc = (e) => {
       touch = true;
-      touchPageX = e.pageX;
+      const point = e.targetTouches ? e.targetTouches[0] : e;
+      touchPageX = point.pageX;
     });
-    let mouseUpListenerFunc;
-    slideContainer.addEventListener('mouseup', mouseUpListenerFunc = () => {
+    slideContainer.addEventListener('touchstart', mousedownListenerFunc);
+    let mouseupListenerFunc;
+    slideContainer.addEventListener('mouseup', mouseupListenerFunc = () => {
       touch = false;
       const slideIndexAdjust = context.getSlideIndexAdjust();
       context.moveTo(slideIndexAdjust, {
         offset: 0
       });
     });
-    slideContainer.addEventListener('mouseleave', mouseUpListenerFunc);
-    slideContainer.addEventListener('mousemove', (e) => {
+    slideContainer.addEventListener('mouseleave', mouseupListenerFunc);
+    slideContainer.addEventListener('touchend', mouseupListenerFunc);
+    slideContainer.addEventListener('touchcancel', mouseupListenerFunc);
+    let mousemoveListenerFunc;
+    slideContainer.addEventListener('mousemove', mousemoveListenerFunc = (e) => {
       if(touch) {
-        const movePageX = e.pageX - touchPageX;
+        const point = e.targetTouches ? e.targetTouches[0] : e;
+        const movePageX = point.pageX - touchPageX;
         context.moveTo(context.slideIndexCur, {
           animation: false,
           offset: movePageX
         });
       }
     });
+    slideContainer.addEventListener('touchmove', mousemoveListenerFunc);
   }
   getSlideIndexAdjust() {
     const offsetX = this.slideContainerTranslateOffseX;
