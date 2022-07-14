@@ -56,16 +56,8 @@ class Popper {
     // see https://popper.js.org/
     this.popper           = window.Popper          || promptError('need Popper obj from popper.js');
     this.popperConfig     = options.popperConfig   || {
-      placement: options.popperConfigPlacement   || 'top',
-      modifiers: [
-        {
-          name: 'flip',
-          options: {
-            fallbackPlacements: ['top', 'bottom'] // see https://popper.js.org/docs/v2/modifiers/flip/#fallbackplacements
-          }
-        },
-        ...(options.popperConfigModifiers || [])
-      ]
+      placement: options.popperConfigPlacement   || 'top', // see https://popper.js.org/docs/v2/modifiers/flip/#fallbackplacements
+      modifiers: options.popperConfigModifiers   || []
     };
     this.toggle           = options.toggle         || promptError('"toggle" is required');
     this.toggleEvents     = options.toggleEvents   || []; // support "hover", "focus", "click"
@@ -85,7 +77,9 @@ class Popper {
           case 'click': addListener4Click(this); break;
           case 'hover': addListener4Hover(this); break;
           case 'focus': addListener4focus(this); break;
-          default: break;
+          default: 
+            TOOLS.logger.isDebug() && TOOLS.logger.debug('unknow event', event);
+            break;
         }
       });
     }
@@ -162,7 +156,7 @@ class Popper {
     try {
       this.node.querySelector('.popover-body').innerHTML = innerHTML;
     } catch(err) {
-      TOOLS.logger.debug(err);
+      TOOLS.logger.isDebug() && TOOLS.logger.debug(err);
     }
   }
 }
