@@ -88,8 +88,8 @@ class Swiper {
       this.setAnimation();
     }
     // offset
-    const slide = this.slideList[this.slideIndexCur];
-    const offset = TOOL.positionRelative(slide, this.slideContainer).left;
+    const slideWidth = TOOL.innerWidth(this.slideContainer);
+    const offset = this.slideIndexCur * slideWidth;
     domFunc.translateX(this.slideContainer, -offset);
     // button
     if(this.slideIndexCur == leftIndex) {

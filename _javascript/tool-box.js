@@ -124,6 +124,10 @@ function px2Float(px) {
   return float?float:0;
 }
 
+/**
+ * margin + padding + content + padding + margin
+ * return content
+ */
 TOOL.innerWidth = function(dom) {
   if(!dom) return 0;
   const flag = (TOOL.getStyle(dom, 'display') == 'none');
@@ -143,6 +147,9 @@ TOOL.innerWidth = function(dom) {
   return -paddingLeft+innerWidth-paddingRight;
 };
 
+/**
+ * return margin + padding + content + padding + margin
+ */
 TOOL.outterWidth = function(dom) {
   if(!dom) return 0;
   const marginLeft     =px2Float(TOOL.getStyle(dom, 'marginLeft')),
