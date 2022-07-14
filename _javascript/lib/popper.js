@@ -19,10 +19,12 @@ function addListener4focus(popover) { // todo test
 
 // hover
 function addListener4Hover(popover) {
-  popover.toggle.addEventListener('mouseover', () => {
+  popover.toggle.addEventListener('mouseover', (e) => {
+    TOOLS.logger.isDebug() && TOOLS.logger.debug(e);
     popover.show();
   });
-  popover.toggle.addEventListener('mouseout', () => {
+  popover.toggle.addEventListener('mouseout', (e) => {
+    TOOLS.logger.isDebug() && TOOLS.logger.debug(e);
     popover.hide();
   });
 }
@@ -54,7 +56,8 @@ class Popper {
           options: {
             fallbackPlacements: ['top', 'bottom'] // see https://popper.js.org/docs/v2/modifiers/flip/#fallbackplacements
           }
-        }
+        },
+        ...(options.popperConfigModifiers || [])
       ]
     };
     this.toggle         = options.toggle         || promptError('"toggle" is required');

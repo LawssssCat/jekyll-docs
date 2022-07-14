@@ -11,6 +11,14 @@ lazyload.js([sources.popper.js], function() {
     const placement       = toggle.getAttribute('data-popper-placement');
     const popper = new Popper({
       popperConfigPlacement: placement || 'bottom',
+      popperConfigModifiers: [
+        {
+          name: 'offset',
+          options: {
+            offset: [0, 8]
+          }
+        }
+      ],
       toggle: toggle,
       toggleEvents: triggerEvents,
       title: title,
