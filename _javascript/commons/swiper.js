@@ -42,15 +42,11 @@ class Swiper {
     const dom = this.dom;
     const config = this.config;
     const slideContainer = this.slideContainer = dom.querySelector(config.slideContainerSelector);
-    this.slideContainerTranslateOffseX = 0; // touch move offset init
     this.slideList = slideContainer.querySelectorAll(config.slideSelector);
     this.slideIndexCur = config.slideIndex;
     this.buttonPrev = dom.querySelector(config.buttonPrevSelector);
     this.buttonNext = dom.querySelector(config.buttonNextSelector);
-    // animation
-    this.isAnimationFlag = 'close' != dom.getAttribute(config.slideContainerAnimationSwitch);
-    // init status
-    this.moveTo(this.slideIndexCur);
+    this.reset();
     // listener
     const context = this;
     this.buttonPrev.addEventListener('click', () => {
@@ -63,6 +59,15 @@ class Swiper {
       context.refresh();
     }).observe(slideContainer);
     this.bundleTouchEventListener(); // touch/mouseDown move
+  }
+  reset() {
+    // touch move offset init
+    this.slideContainerTranslateX = 0;
+    this.slideContainerTranslateOffseX = 0; 
+    // animation
+    this.isAnimationFlag = 'close' != this.dom.getAttribute(this.config.slideContainerAnimationSwitch);
+    // init status
+    this.refresh(true);
   }
   bundleTouchEventListener() {
     const context = this;
@@ -77,10 +82,12 @@ class Swiper {
     });
     slideContainer.addEventListener('touchstart', mousedownListenerFunc);
     let mouseupListenerFunc;
-    slideContainer.addEventListener('mouseup', mouseupListenerFunc = () => {
+    slideContainer.addEventListener('mouseup', mouseupListenerFunc = (e) => {
+      TOOL.logger.isDebug() && TOOL.logger.debug(e);
       touch = false;
       const slideIndexAdjust = context.getSlideIndexAdjust();
       context.moveTo(slideIndexAdjust, {
+        animation: true,
         offset: 0
       });
     });
@@ -134,15 +141,18 @@ class Swiper {
     } else {
       this.slideIndexCur = index;
     }
-    // animation
-    if(this.isAnimation() && options.animation != false) {
-      this.setAnimation();
-    }
     // offset
     const offsetX = this.slideContainerTranslateOffseX = options.offset ? options.offset : 0;
     const slideWidth = TOOL.innerWidth(this.slideContainer);
-    const translateX = this.slideIndexCur * slideWidth;
-    domFunc.translateX(this.slideContainer, -translateX+offsetX);
+    const translateXOld = this.slideContainerTranslateX;
+    const translateX = this.slideContainerTranslateX = offsetX - (this.slideIndexCur * slideWidth);
+    if(translateX != translateXOld) {
+      // animation
+      if((options.animation == true) || (this.isAnimation() && options.animation != false)) {
+        this.setAnimation();
+      }
+    }
+    domFunc.translateX(this.slideContainer, translateX);
     // button
     if(this.hasPrev()) {
       domFunc.enable(this.buttonPrev);
@@ -155,9 +165,9 @@ class Swiper {
       domFunc.disable(this.buttonNext);
     }
   }
-  refresh() {
+  refresh(animation=false) {
     this.moveTo(this.slideIndexCur, {
-      animation: false
+      animation: animation
     });
   }
   hasPrev(index = this.slideIndexCur) {
