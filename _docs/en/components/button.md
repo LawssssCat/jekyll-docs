@@ -35,6 +35,7 @@ permalink: /docs/en/components/button
         onclick="javascript:copyButtonClass(this)"
         data-toggle="popover" 
         data-popper-trigger="hover" 
+        data-popper-placement="top" 
         data-popper-title="" 
         data-popper-content="Copy class to Clipboard">
         {{ _button_text }}

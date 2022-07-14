@@ -4,12 +4,13 @@ const sources = window.VARIABLES.sources;
 
 lazyload.js([sources.popper.js], function() {
   document.querySelectorAll('[data-toggle=popover]').forEach(toggle => {
-    const content = toggle.getAttribute('data-popper-content');
-    const title   = toggle.getAttribute('data-popper-title');
-    const triggerStr = toggle.getAttribute('data-popper-trigger') || 'click'; //  click | hover | focus
-    const triggerEvents = triggerStr.split(/\s+/).filter(str => str!='');
+    const content         = toggle.getAttribute('data-popper-content');
+    const title           = toggle.getAttribute('data-popper-title');
+    const triggerStr      = toggle.getAttribute('data-popper-trigger') || 'click'; //  click | hover | focus
+    const triggerEvents   = triggerStr.split(/\s+/).filter(str => str!='');
+    const placement       = toggle.getAttribute('data-popper-placement');
     const popper = new Popper({
-      popperConfigPlacement: 'bottom',
+      popperConfigPlacement: placement || 'bottom',
       toggle: toggle,
       toggleEvents: triggerEvents,
       title: title,
