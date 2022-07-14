@@ -3,7 +3,11 @@ const TOOL = require('tool-box');
 
 lazyload.onload(() => {
   window.document.querySelectorAll('.swiper').forEach(dom => {
-    new Swiper(dom).init();
+    try {
+      new Swiper(dom).init();
+    } catch(err) {
+      TOOL.logger.error('problem dom:', dom, '\n', err);
+    }
   });
 });
 
@@ -28,6 +32,7 @@ class Swiper {
     const config = this.config = {};
     config.slideContainerSelector          = options.slideContainerSelector           || '.swiper__slides';
     config.slideContainerAnimationClass    = options.slideContainerAnimationClass     || 'swiper__slides--animation';
+    config.slideContainerAnimationSwitch   = options.slideContainerAnimationSwitch    || 'data-swiper-animation';
     config.slideSelector                   = options.slideSelector                    || '.swiper__slide';
     config.slideIndex                      = options.slideIndex                       || 0;
     config.buttonPrevSelector              = options.buttonPrevSelector               || '.swiper__button.swiper__button--prev';
@@ -37,10 +42,13 @@ class Swiper {
     const dom = this.dom;
     const config = this.config;
     const slideContainer = this.slideContainer = dom.querySelector(config.slideContainerSelector);
+    this.slideContainerTranslateOffseX = 0; // touch move offset init
     this.slideList = slideContainer.querySelectorAll(config.slideSelector);
     this.slideIndexCur = config.slideIndex;
     this.buttonPrev = dom.querySelector(config.buttonPrevSelector);
     this.buttonNext = dom.querySelector(config.buttonNextSelector);
+    // animation
+    this.isAnimationFlag = 'close' != dom.getAttribute(config.slideContainerAnimationSwitch);
     // init status
     this.moveTo(this.slideIndexCur);
     // listener
@@ -54,40 +62,97 @@ class Swiper {
     new ResizeObserver(() => {
       context.refresh();
     }).observe(slideContainer);
+    this.bundleTouchEventListener(); // touch/mouseDown move
   }
-  setTransition() {
+  bundleTouchEventListener() {
+    const context = this;
+    const slideContainer = this.slideContainer;
+    let touch = false;
+    let touchPageX;
+    let mousedownListenerFunc;
+    slideContainer.addEventListener('mousedown', mousedownListenerFunc = (e) => {
+      touch = true;
+      const point = e.targetTouches ? e.targetTouches[0] : e;
+      touchPageX = point.pageX;
+    });
+    slideContainer.addEventListener('touchstart', mousedownListenerFunc);
+    let mouseupListenerFunc;
+    slideContainer.addEventListener('mouseup', mouseupListenerFunc = () => {
+      touch = false;
+      const slideIndexAdjust = context.getSlideIndexAdjust();
+      context.moveTo(slideIndexAdjust, {
+        offset: 0
+      });
+    });
+    slideContainer.addEventListener('mouseleave', mouseupListenerFunc);
+    slideContainer.addEventListener('touchend', mouseupListenerFunc);
+    slideContainer.addEventListener('touchcancel', mouseupListenerFunc);
+    let mousemoveListenerFunc;
+    slideContainer.addEventListener('mousemove', mousemoveListenerFunc = (e) => {
+      if(touch) {
+        const point = e.targetTouches ? e.targetTouches[0] : e;
+        const movePageX = point.pageX - touchPageX;
+        context.moveTo(context.slideIndexCur, {
+          animation: false,
+          offset: movePageX
+        });
+        e.preventDefault(); // prevent 'select' and 'drop' that has been 'select'
+      }
+    });
+    slideContainer.addEventListener('touchmove', mousemoveListenerFunc);
+  }
+  getSlideIndexAdjust() {
+    const offsetX = this.slideContainerTranslateOffseX;
+    const slideWidth = TOOL.innerWidth(this.slideContainer);
+    if(Math.abs(offsetX) > (slideWidth/4)) {
+      if(offsetX < 0) { // end ← start
+        return this.slideIndexCur + 1;
+      } else { // start → end
+        return this.slideIndexCur - 1;
+      }
+    }
+    return this.slideIndexCur;
+  }
+  isAnimation() {
+    return this.isAnimationFlag;
+  }
+  setAnimation() {
     this.slideContainer.classList.add(this.config.slideContainerAnimationClass);
-    this.slideContainer.addEventListener('transitionend', () => {
+    let listenerFunc;
+    this.slideContainer.addEventListener('transitionend', listenerFunc = () => {
       this.slideContainer.classList.remove(this.config.slideContainerAnimationClass);
+      this.slideContainer.removeEventListener('transitionend', listenerFunc);
     });
   }
   moveTo(index, options={}) {
     // index
-    let moveToIndex, leftIndex=0, rightIndex=this.slideList.length-1;
+    let leftIndex=0, rightIndex=this.slideList.length-1;
     if(index<leftIndex) {
-      moveToIndex = leftIndex;
+      this.slideIndexCur = leftIndex;
     } else if (index>rightIndex) {
-      moveToIndex = rightIndex;
+      this.slideIndexCur = rightIndex;
     } else {
-      moveToIndex = index;
+      this.slideIndexCur = index;
     }
     // animation
-    if(options.animation != false) {
-      this.setTransition();
+    if(this.isAnimation() && options.animation != false) {
+      this.setAnimation();
     }
     // offset
-    const slide = this.slideList[this.slideIndexCur=moveToIndex];
-    const offset = TOOL.positionRelative(slide, this.slideContainer).left;
-    domFunc.translateX(this.slideContainer, -offset);
-    if(this.slideIndexCur == leftIndex) {
-      domFunc.disable(this.buttonPrev);
-    } else {
+    const offsetX = this.slideContainerTranslateOffseX = options.offset ? options.offset : 0;
+    const slideWidth = TOOL.innerWidth(this.slideContainer);
+    const translateX = this.slideIndexCur * slideWidth;
+    domFunc.translateX(this.slideContainer, -translateX+offsetX);
+    // button
+    if(this.hasPrev()) {
       domFunc.enable(this.buttonPrev);
-    }
-    if(this.slideIndexCur == rightIndex) {
-      domFunc.disable(this.buttonNext);
     } else {
+      domFunc.disable(this.buttonPrev);
+    }
+    if(this.hasNext()) {
       domFunc.enable(this.buttonNext);
+    } else {
+      domFunc.disable(this.buttonNext);
     }
   }
   refresh() {
@@ -95,10 +160,18 @@ class Swiper {
       animation: false
     });
   }
+  hasPrev(index = this.slideIndexCur) {
+    return index > 0;
+  }
+  hasNext(index = this.slideIndexCur) {
+    return index < (this.slideList.length-1);
+  }
   prev() {
-    this.moveTo(this.slideIndexCur-1);
+    const index = this.slideIndexCur-1;
+    this.moveTo(index);
   }
   next() {
-    this.moveTo(this.slideIndexCur+1);
+    const index = this.slideIndexCur+1;
+    this.moveTo(index);
   }
 }
