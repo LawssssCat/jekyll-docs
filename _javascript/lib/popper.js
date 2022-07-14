@@ -8,11 +8,13 @@ function promptError(msg) {
 }
 
 // focus
-function addListener4focus(popover) { // todo test
-  popover.toggle.addEventListener('focus', (e) => {
+function addListener4focus(popover) {
+  popover.toggle.addEventListener('focusin', (e) => {
+    TOOLS.logger.isDebug() && TOOLS.logger.debug(e);
     popover.show(e);
   });
   popover.toggle.addEventListener('focusout', (e) => {
+    TOOLS.logger.isDebug() && TOOLS.logger.debug(e);
     popover.hide(e);
   });
 }

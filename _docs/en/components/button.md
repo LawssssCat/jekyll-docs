@@ -51,20 +51,22 @@ function copyButtonClass(el) {
         {%- else -%}
           {%- assign _button_text = _type | append: ' ' | append: _shape | append: ' ' | append: _size | upcase -%}
       {%- endcase -%}
-      <div class="button button--{{ _type }} button--{{ _shape }} button--{{ _size }} example-button"
-        onclick="javascript:copyButtonClass(this)"
-        data-toggle="popover" 
-        data-popper-trigger="hover" 
-        data-popper-placement="top" 
-        data-popper-title="" 
-        data-popper-content="Copy class to Clipboard">
-        {{ _button_text }}
-      </div>
+<div class="button button--{{ _type }} button--{{ _shape }} button--{{ _size }} example-button"
+  onclick="javascript:copyButtonClass(this)"
+  data-toggle="popover" 
+  data-popper-trigger="hover" 
+  data-popper-placement="top" 
+  data-popper-title="" 
+  data-popper-content="Copy class to Clipboard">
+  {{ _button_text }}
+</div>
+[SPACE]
     {%- endfor -%}
   {%- endfor -%}
 {%- endcapture -%}
 </p>
-{{ _code_html }}
+<!-- ================================ -->
+{{ _code_html | replace: "[SPACE]", "" | strip }}
 <!-- ================================ -->
 {%- capture _titles -%}
 html
@@ -73,7 +75,7 @@ js
 {%- endcapture -%}
 {%- capture _contents -%}
 ```html
-{{ _code_html }}
+{{ _code_html | replace: "[SPACE]", "" | strip }}
 ```
 <!-- split content -->
 ```javascript
@@ -87,15 +89,22 @@ js
 {%- include article/generate-details.html summary="source code" code=_code_tabs -%}
 <!-- ================================ -->
 {%- endfor -%}
-<!-- ================================ -->
+
+<!-- ================================================================================================================================ -->
 
 ## Type
 
-### Primary
+<!-- ================================ -->
+{%- assign _title_h3_list = "primary,secondary,success,outline" | split: "," -%}
+{%- for _title_h3 in _title_h3_list -%}
+{%- capture _code_block_h3 -%}
+<!-- ============================= -->
+### {{ _title_h3 | capitalize }} 
+{: #{{ _title_h3 }}}
 
 <!-- ============================= -->
 {%- capture _code -%}
-<div class="button button--primary button--pill">BUTTON</div>
+<div class="button button--{{ _title_h3 }} button--pill">BUTTON</div>
 {%- endcapture -%}
 
 {{ _code }}
@@ -105,7 +114,7 @@ js
 ```
 <!-- ============================= -->
 {%- capture _code -%}
-[BUTTON](#){:.button.button--primary.button--pill}
+[BUTTON](#{{ _title_h3 }}){:.button.button--{{ _title_h3 }}.button--pill}
 {%- endcapture -%}
 
 {{ _code }}
@@ -114,86 +123,33 @@ js
 {{ _code }}
 ```
 <!-- ============================= -->
-
-### Secondary
-
-<!-- ============================= -->
-{%- capture _code -%}
-<div class="button button--secondary button--pill">BUTTON</div>
 {%- endcapture -%}
+{{ _code_block_h3 | markdownify }}
+{%- endfor -%}
 
-{{ _code }}
-
-```html
-{{ _code }}
-```
-<!-- ============================= -->
-{%- capture _code -%}
-[BUTTON](#){:.button.button--secondary.button--pill}
-{%- endcapture -%}
-
-{{ _code }}
-
-```html
-{{ _code }}
-```
-<!-- ============================= -->
-
-### Success
-
-<!-- ============================= -->
-{%- capture _code -%}
-<div class="button button--success button--pill">BUTTON</div>
-{%- endcapture -%}
-
-{{ _code }}
-
-```html
-{{ _code }}
-```
-<!-- ============================= -->
-{%- capture _code -%}
-[BUTTON](#){:.button.button--success.button--pill}
-{%- endcapture -%}
-
-{{ _code }}
-
-```html
-{{ _code }}
-```
-<!-- ============================= -->
-
-### Outline
-
-<!-- ============================= -->
-{%- capture _code -%}
-<div class="button button--outline-success button--pill">BUTTON</div>
-{%- endcapture -%}
-
-{{ _code }}
-
-```html
-{{ _code }}
-```
-<!-- ============================= -->
-{%- capture _code -%}
-[BUTTON](#){:.button.button--outline-success.button--pill}
-{%- endcapture -%}
-
-{{ _code }}
-
-```html
-{{ _code }}
-```
-<!-- ============================= -->
+<!-- ================================================================================================================================ -->
 
 ## Shape
 
-### Pill
+<!-- ================================ -->
+{%- assign _title_h3_list = "pill,rounded,circle,tag" | split: "," -%}
+{%- for _title_h3 in _title_h3_list -%}
+
+{%- case _title_h3 -%}
+  {%- when 'circle' -%}
+    {%- assign _button_content_h3 = "X" -%}
+  {%- else -%}
+    {%- assign _button_content_h3 = "BUTTON" -%}
+{%- endcase -%}
+
+{%- capture _code_block_h3 -%}
+<!-- ============================= -->
+### {{ _title_h3 | capitalize }} 
+{: #{{ _title_h3 }}}
 
 <!-- ============================= -->
 {%- capture _code -%}
-<div class="button button--primary button--pill">BUTTON</div>
+<div class="button button--primary button--{{ _title_h3 }}">{{ _button_content_h3 }}</div>
 {%- endcapture -%}
 
 {{ _code }}
@@ -203,7 +159,7 @@ js
 ```
 <!-- ============================= -->
 {%- capture _code -%}
-[BUTTON](#){:.button.button--primary .button--pill}
+[{{ _button_content_h3 }}](#{{ _title_h3 }}){:.button.button--primary.button--{{ _title_h3 }}}
 {%- endcapture -%}
 
 {{ _code }}
@@ -212,78 +168,11 @@ js
 {{ _code }}
 ```
 <!-- ============================= -->
-
-### Rounded
-
-<!-- ============================= -->
-{%- capture _code -%}
-<div class="button button--primary button--rounded">BUTTON</div>
 {%- endcapture -%}
+{{ _code_block_h3 | markdownify }}
+{%- endfor -%}
 
-{{ _code }}
-
-```html
-{{ _code }}
-```
-<!-- ============================= -->
-{%- capture _code -%}
-[BUTTON](#){:.button.button--primary .button--rounded}
-{%- endcapture -%}
-
-{{ _code }}
-
-```html
-{{ _code }}
-```
-<!-- ============================= -->
-
-### Circle
-
-<!-- ============================= -->
-{%- capture _code -%}
-<div class="button button--primary button--circle">X</div>
-{%- endcapture -%}
-
-{{ _code }}
-
-```html
-{{ _code }}
-```
-<!-- ============================= -->
-{%- capture _code -%}
-[X](#){:.button.button--primary.button--circle}
-{%- endcapture -%}
-
-{{ _code }}
-
-```html
-{{ _code }}
-```
-<!-- ============================= -->
-
-### Tag
-
-<!-- ============================= -->
-{%- capture _code -%}
-<div class="button button--primary button--tag">BUTTON</div>
-{%- endcapture -%}
-
-{{ _code }}
-
-```html
-{{ _code }}
-```
-<!-- ============================= -->
-{%- capture _code -%}
-[BUTTON](#){:.button.button--primary.button--tag}
-{%- endcapture -%}
-
-{{ _code }}
-
-```html
-{{ _code }}
-```
-<!-- ============================= -->
+<!-- ================================================================================================================================ -->
 
 ## Size
 
@@ -360,7 +249,7 @@ js
 | **data-popper-content**  | true |  |
 
 <!-- ============================= -->
-{%- assign _trigger_list = 'click,hover,focus' | split: ',' -%}
+{%- assign _trigger_list = 'click,hover' | split: ',' -%}
 {%- assign _placement_list = 'left,top,bottom,right' | split: ',' -%}
 <!-- ============================= -->
 {%- for _trigger in _trigger_list -%}
@@ -375,19 +264,44 @@ data-popper-title="Popper Title for {{ _trigger }}"
 data-popper-content="Popper Content for {{ _trigger }}">
 {{ _trigger }} to show popover
 </div>
+[SPACE]
 {%- endfor -%}
 {%- endcapture -%}
 <!-- ============================= -->
 {%- capture _code_highlight -%}
 ```html
-{{ _code_html }}
+{{ _code_html | replace: "[SPACE]", "" | strip }}
 ```
 {%- endcapture -%}
-<!-- ============================= -->
 {%- assign _code_highlight = _code_highlight | markdownify -%}
 <!-- ============================= -->
-{{ _code_html }}
+{{ _code_html | replace: "[SPACE]", "" | strip }}
 {{ _code_highlight }}
 <!-- ============================= -->
 {%- endfor -%}
+<!-- ============================= -->
+
+<!-- ============================= -->
+{%- capture _code_html -%}
+{%- for _placement in _placement_list -%}
+<input class="example-button"
+placeholder="focus to show popper"
+data-toggle="popover" 
+data-popper-trigger="focus" 
+data-popper-placement="{{ _placement }}" 
+data-popper-title="Popper Title for focus" 
+data-popper-content="Popper Content for focus">
+[SPACE]
+{%- endfor -%}
+{%- endcapture -%}
+<!-- ============================= -->
+{%- capture _code_highlight -%}
+```html
+{{ _code_html | replace: "[SPACE]", "" | strip }}
+```
+{%- endcapture -%}
+{%- assign _code_highlight = _code_highlight | markdownify -%}
+<!-- ============================= -->
+{{ _code_html | replace: "[SPACE]", "" | strip }}
+{{ _code_highlight }}
 <!-- ============================= -->
