@@ -13,9 +13,14 @@ lazyload.js([sources.popper.js], function() {
       toggle: toggle,
       toggleEvents: triggerEvents,
       title: title,
-      content: content
+      content: content,
+      showCallback: () => {
+        toggle.setAttribute('aria-describedby', popper.id);
+      },
+      hideCallback: () => {
+        toggle.removeAttribute('aria-describedby');
+      }
     });
     popper.init();
-    // this.adapter.toggle.setAttribute('aria-describedby', this.id);
   });
 });

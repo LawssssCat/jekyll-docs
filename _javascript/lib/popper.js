@@ -63,6 +63,8 @@ class Popper {
     this.container      = options.container      || window.document.body;
     this.title          = options.title;
     this.idStatic       = options.id;
+    this.showCallback   = options.showCallback;
+    this.hideCallback   = options.hideCallback;
   }
   init() {
     if(this.toggleEvents.length > 0) // add event listener
@@ -95,6 +97,8 @@ class Popper {
     }));
     // Update its position
     this.popperInstance.update();
+    // callback
+    this.showCallback && this.showCallback();
   }
   hide() {
     // Disable the event listeners
@@ -112,6 +116,7 @@ class Popper {
     this.node=null;
     // node 
     this.id = null;
+    this.hideCallback && this.hideCallback();
   }
   createDOM(id) {
     // popover dom
