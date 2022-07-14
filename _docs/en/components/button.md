@@ -4,6 +4,13 @@ title: Button
 permalink: /docs/en/components/button
 ---
 
+| Type | Class Names |
+| ---- | ---- |
+| **base**  | button |
+| **type**  | button\-\-primary, button\-\-secondary, button\-\-success, button\-\-info, button\-\-warning, button\-\-error, <br>button\-\-outline\-primary, button\-\-outline\-secondary, button\-\-outline\-success, button\-\-outline\-info, button\-\-outline\-warning, button\-\-outline\-error |
+| **shape** | button\-\-pill, button\-\-rounded, button\-\-circle |
+| **size**  | button\-\-xs, button\-\-sm, button\-\-md (default), button\-\-lg, button\-\-xl |
+
 <!-- ================================ -->
 {%- assign types  = 'primary,secondary,success,info,warning,error,outline-primary,outline-secondary,outline-success,outline-info,outline-warning,outline-error' | split: ',' -%}
 {%- assign shapes = 'pill,rounded,circle' | split: ',' -%}
@@ -25,7 +32,11 @@ permalink: /docs/en/components/button
           {%- assign _button_text = _type | append: ' ' | append: _shape | append: ' ' | append: _size | upcase -%}
       {%- endcase -%}
       <div class="button button--{{ _type }} button--{{ _shape }} button--{{ _size }} example-button"
-        onclick="javascript:copyButtonClass(this)">
+        onclick="javascript:copyButtonClass(this)"
+        data-toggle="popover" 
+        data-popper-trigger="hover" 
+        data-popper-title="" 
+        data-popper-content="Copy class to Clipboard">
         {{ _button_text }}
       </div>
     {%- endfor -%}
@@ -42,13 +53,6 @@ permalink: /docs/en/components/button
   }
 </script>
 <!-- ================================ -->
-
-| Type | Class Names |
-| ---- | ---- |
-| **base**  | button |
-| **type**  | button\-\-primary, button\-\-secondary, button\-\-success, button\-\-info, button\-\-warning, button\-\-error, <br>button\-\-outline\-primary, button\-\-outline\-secondary, button\-\-outline\-success, button\-\-outline\-info, button\-\-outline\-warning, button\-\-outline\-error |
-| **shape** | button\-\-pill, button\-\-rounded, button\-\-circle |
-| **size**  | button\-\-xs, button\-\-sm, button\-\-md (default), button\-\-lg, button\-\-xl |
 
 ## Type
 
@@ -307,3 +311,28 @@ permalink: /docs/en/components/button
 {{ _code }}
 ```
 <!-- ============================= -->
+
+## Action
+
+### Popper
+
+```html
+<div class="button button--primary button--pill" 
+data-toggle="popover" 
+data-popper-trigger="click" 
+data-popper-title="title.title.title.title.title.title." 
+data-popper-content="content.content.content.content.content.content.content.content.content.">
+click to show popover
+</div>
+```
+
+<div class="button button--primary button--pill"
+data-toggle="popover" 
+data-popper-trigger="click" 
+data-popper-title="title.title.title.title.title.title." 
+data-popper-content="content.content.content.content.content.content.content.content.content.">
+click to show popover
+</div>
+
+options 
+- `data-popper-trigger`: `click` `hover` `focus` `manual`
