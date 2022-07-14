@@ -24,6 +24,20 @@ permalink: /docs/en/components/swiper
   }
 {%- endcapture -%}
 <!-- ============================================= -->
+{%- capture _demo_html_base -%}
+  <div class="swiper__slides">
+    <div class="swiper__slide">1</div>
+    <div class="swiper__slide">2</div>
+    <div class="swiper__slide">3</div>
+    <div class="swiper__slide">4</div>
+    <div class="swiper__slide">5</div>
+    <div class="swiper__slide">6</div>
+    <div class="swiper__slide">7</div>
+  </div>
+  <div class="swiper__button swiper__button--prev fas fa-chevron-left"></div>
+  <div class="swiper__button swiper__button--next fas fa-chevron-right"></div>
+{%- endcapture -%}
+<!-- ============================================= -->
 
 ## Normal
 
@@ -38,17 +52,7 @@ permalink: /docs/en/components/swiper
 </style>
 {%- capture _code_html -%}
 <div class="swiper my-3" id="example-swiper-normal">
-  <div class="swiper__slides">
-    <div class="swiper__slide">1</div>
-    <div class="swiper__slide">2</div>
-    <div class="swiper__slide">3</div>
-    <div class="swiper__slide">4</div>
-    <div class="swiper__slide">5</div>
-    <div class="swiper__slide">6</div>
-    <div class="swiper__slide">7</div>
-  </div>
-  <div class="swiper__button swiper__button--prev fas fa-chevron-left"></div>
-  <div class="swiper__button swiper__button--next fas fa-chevron-right"></div>
+{{ _demo_html_base }}
 </div>
 {%- endcapture -%}
 {{ _code_html }}
@@ -72,7 +76,7 @@ scss
 
 ## Light Theme
 
-button color. same as normal.
+button color.
 
 <!-- ============================================= -->
 <style>
@@ -85,17 +89,7 @@ button color. same as normal.
 </style>
 {%- capture _code_html -%}
 <div class="swiper swiper--light my-3" id="example-swiper-light">
-  <div class="swiper__slides">
-    <div class="swiper__slide">1</div>
-    <div class="swiper__slide">2</div>
-    <div class="swiper__slide">3</div>
-    <div class="swiper__slide">4</div>
-    <div class="swiper__slide">5</div>
-    <div class="swiper__slide">6</div>
-    <div class="swiper__slide">7</div>
-  </div>
-  <div class="swiper__button swiper__button--prev fas fa-chevron-left"></div>
-  <div class="swiper__button swiper__button--next fas fa-chevron-right"></div>
+{{ _demo_html_base }}
 </div>
 {%- endcapture -%}
 {{ _code_html }}
@@ -132,17 +126,7 @@ button color.
 </style>
 {%- capture _code_html -%}
 <div class="swiper swiper--dark my-3" id="example-swiper-dark">
-  <div class="swiper__slides">
-    <div class="swiper__slide">1</div>
-    <div class="swiper__slide">2</div>
-    <div class="swiper__slide">3</div>
-    <div class="swiper__slide">4</div>
-    <div class="swiper__slide">5</div>
-    <div class="swiper__slide">6</div>
-    <div class="swiper__slide">7</div>
-  </div>
-  <div class="swiper__button swiper__button--prev fas fa-chevron-left"></div>
-  <div class="swiper__button swiper__button--next fas fa-chevron-right"></div>
+{{ _demo_html_base }}
 </div>
 {%- endcapture -%}
 {{ _code_html }}
@@ -200,17 +184,7 @@ scss
 </style>
 {%- capture _code_html -%}
 <div class="swiper my-3" id="example-swiper-images">
-  <div class="swiper__slides">
-    <div class="swiper__slide">1</div>
-    <div class="swiper__slide">2</div>
-    <div class="swiper__slide">3</div>
-    <div class="swiper__slide">4</div>
-    <div class="swiper__slide">5</div>
-    <div class="swiper__slide">6</div>
-    <div class="swiper__slide">7</div>
-  </div>
-  <div class="swiper__button swiper__button--prev fas fa-chevron-left"></div>
-  <div class="swiper__button swiper__button--next fas fa-chevron-right"></div>
+{{ _demo_html_base }}
 </div>
 {%- endcapture -%}
 {{ _code_html }}
@@ -245,17 +219,7 @@ scss
 </style>
 {%- capture _code_html -%}
 <div class="swiper my-3" id="example-swiper-normal" data-swiper-animation='close'>
-  <div class="swiper__slides">
-    <div class="swiper__slide">1</div>
-    <div class="swiper__slide">2</div>
-    <div class="swiper__slide">3</div>
-    <div class="swiper__slide">4</div>
-    <div class="swiper__slide">5</div>
-    <div class="swiper__slide">6</div>
-    <div class="swiper__slide">7</div>
-  </div>
-  <div class="swiper__button swiper__button--prev fas fa-chevron-left"></div>
-  <div class="swiper__button swiper__button--next fas fa-chevron-right"></div>
+{{ _demo_html_base }}
 </div>
 {%- endcapture -%}
 {{ _code_html }}
