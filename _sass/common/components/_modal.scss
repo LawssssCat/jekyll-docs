@@ -5,7 +5,7 @@
       $color: themed(text-color-theme-dark);
     }
     @if $background-color == default {
-      $background-color: themed(mask-color);
+      $background-color: themed(modal-color);
     }
     color: $color;
     background-color: $background-color;
