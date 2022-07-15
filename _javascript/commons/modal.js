@@ -30,6 +30,7 @@ lazyload.onload(() => {
       showCallback: showCallbackStrFunc,
       hideCallback: hideCallbackStrFunc
     });
+    modal.enableEventEscClose();
     modal.addEventListener('click', () => {
       modal.hide();
     });

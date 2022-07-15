@@ -20,4 +20,5 @@ lazyload.onload(() => {
   modal.addEventListener('click', () => {
     modal.hide();
   });
+  modal.enableEventEscClose();
 });

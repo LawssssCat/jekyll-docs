@@ -1,3 +1,5 @@
+const TOOL = require('tool-box');
+
 class Modal {
   constructor(options={}) {
     this.container         = options.container          || window.document.body;
@@ -32,6 +34,51 @@ class Modal {
     });
     this.node.classList.remove(this.config.modalShowClass);
     this.hideCallback && this.hideCallback(this);
+  }
+  addCallback(callbackName, callback) {
+    if(!this[callbackName]) {
+      this[callbackName] = callback;
+    } else {
+      const callbackListName = `_${callbackName}List`;
+      if(this[callbackListName]) {
+        this[callbackListName].push(callback);
+      } else {
+        const context = this;
+        const callList = this[callbackListName] = [];
+        callList.push(this[callbackName]);
+        callList.push(callback);
+        this[callbackName] = (...args) => {
+          callList.forEach(cb => {
+            try {
+              cb.call(context, ...args);
+            } catch(error) {
+              TOOL.logger.error(context, cb, ...args);
+            }
+          });
+        };
+      }
+    }
+  }
+  addShowCallback(callback) {
+    this.addCallback('showCallback', callback);
+  }
+  addHideCallback(callback) {
+    this.addCallback('hideCallback', callback);
+  }
+  enableEventEscClose() {
+    const context=this;
+    let func;
+    this.addShowCallback(() => {
+      window.document.addEventListener('keydown', func = (e) => {
+        if(e.keyCode == 27){
+          //add your code here
+          context.hide();
+        }
+      });
+    });
+    this.addHideCallback(() => {
+      window.document.removeEventListener('keydown', func);
+    });
   }
   addEventListener(...args) {
     this.node.addEventListener(...args);
