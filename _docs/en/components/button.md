@@ -321,7 +321,30 @@ data-popper-content="Popper Content for focus">
 {%- endfor -%}
 {%- endcapture -%}
 <!-- ============================= -->
-{{_code_html |  replace: "[SPACE]", "" | strip}}
+{{ _code_html |  replace: "[SPACE]", "" | strip}}
+<!-- ============================= -->
 ```html
-{{_code_html | replace: "[SPACE]", "" | strip }}
+{{ _code_html | replace: "[SPACE]", "" | strip }}
 ```
+<!-- ============================= -->
+
+### Modal
+
+<!-- ============================= -->
+{%- assign _modal_trigger_list = "click,hover" | split: ',' -%}
+{%- capture _modal_code_html -%}
+{%- for _modal_trigger in _modal_trigger_list -%}
+<div class="button button--primary button--rounded example-button"
+data-toggle="modal" 
+data-modal-trigger="{{ _modal_trigger }}" 
+>{{ _modal_trigger }} to show Modal</div>
+[SPACE]
+{%- endfor -%}
+{%- endcapture -%}
+<!-- ============================= -->
+{{ _modal_code_html | replace: "[SPACE]", "" | strip }}
+<!-- ============================= -->
+```html
+{{ _modal_code_html | replace: "[SPACE]", "" | strip }}
+```
+<!-- ============================= -->
