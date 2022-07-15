@@ -45,8 +45,10 @@ class Prompt {
   }
   remove() {
     this.prompt.style.opacity = '0';
-    this.prompt.addEventListener('transitionend', () => {
+    let func;
+    this.prompt.addEventListener('transitionend', func = () => {
       this.prompt.remove();
+      this.prompt.removeEventListener('transitionend', func);
     });
   }
 }
