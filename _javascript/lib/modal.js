@@ -21,7 +21,7 @@ class Modal {
     this.scrollDisable();
     this.node.classList.add(this.config.modalShowClass);
     this.container.appendChild(this.node);
-    this.showCallback && this.showCallback();
+    this.showCallback && this.showCallback(this);
   }
   hide() {
     this.scrollEnable();
@@ -31,7 +31,7 @@ class Modal {
       this.node.removeEventListener('transitionend', TransitionedFunc);
     });
     this.node.classList.remove(this.config.modalShowClass);
-    this.hideCallback && this.hideCallback();
+    this.hideCallback && this.hideCallback(this);
   }
   addEventListener(...args) {
     this.node.addEventListener(...args);

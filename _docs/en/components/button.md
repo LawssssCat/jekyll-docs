@@ -337,14 +337,50 @@ data-popper-content="Popper Content for focus">
 <div class="button button--primary button--rounded example-button"
 data-toggle="modal" 
 data-modal-trigger="{{ _modal_trigger }}" 
+data-modal-showCallback="myModalShowCallback"
+data-modal-hideCallback="myModalHideCallback"
 >{{ _modal_trigger }} to show Modal</div>
 [SPACE]
 {%- endfor -%}
 {%- endcapture -%}
 <!-- ============================= -->
 {{ _modal_code_html | replace: "[SPACE]", "" | strip }}
+<script>
+{%- capture _modal_code_js -%}
+var _modalPromptId = 'asfasgasdkgblasrekarjaesfas';
+function myModalShowCallback(modal) {
+  console.trace('myModalShowCallback', modal);
+  var prompt = TOOL.prompt('Click to Close this Modal', {
+    position: 'middle',
+    delay: -1 /* don't auto close */
+  });
+  modal[_modalPromptId] = prompt;
+}
+function myModalHideCallback(modal) {
+  console.trace('myModalHideCallback', modal);
+  var prompt = modal[_modalPromptId];
+  if(prompt) {
+    prompt.remove();
+  }
+}
+{%- endcapture -%}
+{{ _modal_code_js }}
+</script>
 <!-- ============================= -->
+{%- capture _titles -%}
+html
+<!-- split title -->
+js
+{%- endcapture -%}
+{%- capture _contents -%}
 ```html
 {{ _modal_code_html | replace: "[SPACE]", "" | strip }}
 ```
+<!-- split content -->
+```javascript
+{{ _modal_code_js }}
+```
+{%- endcapture -%}
+{%- assign _contents = _contents | markdownify -%}
+{%- include article/generate-tabs.html titles=_titles contents=_contents -%}
 <!-- ============================= -->

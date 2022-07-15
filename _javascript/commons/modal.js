@@ -22,7 +22,14 @@ lazyload.onload(() => {
           break;
       }
     });
-    const modal = new Modal();
+    const showCallbackStr = toggle.getAttribute('data-modal-showCallback');
+    const hideCallbackStr = toggle.getAttribute('data-modal-hideCallback');
+    const showCallbackStrFunc = showCallbackStr ? window[showCallbackStr] : null;
+    const hideCallbackStrFunc = hideCallbackStr ? window[hideCallbackStr] : null;
+    const modal = new Modal({
+      showCallback: showCallbackStrFunc,
+      hideCallback: hideCallbackStrFunc
+    });
     modal.addEventListener('click', () => {
       modal.hide();
     });
