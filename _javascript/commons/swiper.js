@@ -133,8 +133,8 @@ class Swiper {
     this.slideContainer.classList.add(this.config.slideContainerAnimationClass);
     let listenerFunc;
     this.slideContainer.addEventListener('transitionend', listenerFunc = () => {
-      this.slideContainer.classList.remove(this.config.slideContainerAnimationClass);
       this.slideContainer.removeEventListener('transitionend', listenerFunc);
+      this.slideContainer.classList.remove(this.config.slideContainerAnimationClass);
     });
   }
   moveTo(index, options={}) {

@@ -29,8 +29,8 @@ class Modal {
     this.scrollEnable();
     let TransitionedFunc;
     this.node.addEventListener('transitionend', TransitionedFunc = () => {
-      this.container.removeChild(this.node);
       this.node.removeEventListener('transitionend', TransitionedFunc);
+      this.container.removeChild(this.node);
     });
     this.node.classList.remove(this.config.modalShowClass);
     this.hideCallback && this.hideCallback(this);
