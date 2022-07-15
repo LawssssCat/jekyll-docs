@@ -1,6 +1,5 @@
 .layout--page {
   .page__viewport {
-    width: 100vw;
     min-height: 100vh;
     @include flexbox();
     .page__main, .grid {
