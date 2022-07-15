@@ -16,19 +16,9 @@ lazyload.onload(() => {
     const anchor = TOOL.createDOM('<a class="anchor d-print-none"></a>');
     anchor.innerHTML = '#';
     dom.appendChild(anchor);
-    let headerTop;
     anchor.addEventListener('click', (e) => {
-
       e.preventDefault();
-
-      headerTop = TOOL.positionRelative(dom, window.VARIABLES.pageScroller).top;
-      window.VARIABLES.pageScrollTarget.scroll({
-        top: headerTop,
-        behavior: window.VARIABLES.pageScrollerBehavior
-      });
-
-      const id = dom.id;
-      TOOL.historyPushHash(id);
+      TOOL.historyPushHash(dom.id);
     });
   });
 
