@@ -16,8 +16,12 @@ class Modal {
     this.showCallback && this.showCallback();
   }
   hide() {
+    let TransitionedFunc;
+    this.node.addEventListener('transitionend', TransitionedFunc = () => {
+      this.container.removeChild(this.node);
+      this.node.removeEventListener('transitionend', TransitionedFunc);
+    });
     this.node.classList.remove(this.config.modalShowClass);
-    this.container.removeChild(this.node);
     this.hideCallback && this.hideCallback();
   }
   addEventListener(...args) {
