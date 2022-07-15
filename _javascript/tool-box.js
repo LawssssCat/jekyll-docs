@@ -260,8 +260,11 @@ TOOL.copyTextToClipboard = function(text) {
   }
 };
 
-TOOL.prompt = function (text, delay=1000) {
-  let prompt = new Prompt();
+TOOL.prompt = function (text, options={}) {
+  const delay = options.delay || 1000;
+  let prompt = new Prompt({
+    position: options.position // bottom, middle, top
+  });
   prompt.text = text;
   prompt.show();
   setTimeout(() => {
