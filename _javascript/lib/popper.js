@@ -134,6 +134,7 @@ class Popper {
     let result = document.createElement('div');
     result.setAttribute('id', id);
     result.classList.add('popover');
+    result.classList.add('d-print-none'); // fix: display none when print
     // arrow
     let arrow = document.createElement('div');
     arrow.classList.add('popover-arrow');
