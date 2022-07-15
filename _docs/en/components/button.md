@@ -305,3 +305,23 @@ data-popper-content="Popper Content for focus">
 {{ _code_html | replace: "[SPACE]", "" | strip }}
 {{ _code_highlight }}
 <!-- ============================= -->
+
+### Prompt
+
+<!-- ============================= -->
+{%- assign _position_list = 'bottom,middle,top' | split: ',' -%}
+<!-- ============================= -->
+{%- capture _code_html -%}
+{%- for _position in _position_list -%}
+<div class="button button--primary button--pill example-button"
+  onclick="javascript:TOOL.prompt('hello world', {position: '{{ _position }}'})">
+  Click to Prompt at {{ _position }}
+</div>
+[SPACE]
+{%- endfor -%}
+{%- endcapture -%}
+<!-- ============================= -->
+{{_code_html |  replace: "[SPACE]", "" | strip}}
+```html
+{{_code_html | replace: "[SPACE]", "" | strip }}
+```
