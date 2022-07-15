@@ -52,7 +52,7 @@ $theme-dark: (
   border-color:     mix(#fff, $background-color, 20%),
   border-color-l:   mix(#fff, $background-color, 10%),
   decorate-color:   rgba(#fff, .1),
-  mask-color:       rgba(#000, .9),
+  modal-color:       rgba(#000, .9),
   select-color:     rgba($main-color-1, .5),
 
   // function colors

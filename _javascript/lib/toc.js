@@ -166,13 +166,6 @@ class Toc {
         a.addEventListener('click', (e) => {
           e.preventDefault();
           const href = a.getAttribute('href');
-          const offsetTop = document.querySelector(href).offsetTop;
-
-          this.scrollTarget.scroll({
-            top: offsetTop,
-            behavior: this.config.scrollerBehavior
-          });
-
           TOOL.historyPushHash(href);
         });
       }

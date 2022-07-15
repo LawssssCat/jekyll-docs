@@ -2,11 +2,6 @@
 
 $_sidebar_width: map-get($layout, sidebar-width);
 
-.page__mask {
-  @include modal(map-get($z-indexes, mask));
-  cursor: pointer;
-}
-
 .page__sidebar-actions {
   position: fixed;
   bottom: map-get($spacers, 5);
@@ -60,9 +55,6 @@ $_sidebar_width: map-get($layout, sidebar-width);
     .page__sidebar {
       z-index: map-get($z-indexes, sidebar-active);
       @include transform(translate(0));
-    }
-    .page__mask {
-      @include modal--show();
     }
   }
 }
