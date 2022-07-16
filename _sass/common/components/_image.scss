@@ -3,6 +3,13 @@
 .image {
   max-width: 100%;
   @extend .image--md;
+  &.card--clickable {
+    cursor: pointer;
+    @include transition(map-get($clickable, transition));
+    @include hover {
+      @include box-shadow(2);
+    }
+  }
 }
 .image--md {
   width: map-get($image, width);
@@ -19,3 +26,4 @@
 .image--xs {
   width: map-get($image, width-xs);
 }
+

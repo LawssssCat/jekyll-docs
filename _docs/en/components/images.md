@@ -8,6 +8,7 @@ permalink: /docs/en/components/images
 | ---- | ---- |
 | **base**  | image |
 | **size**  | image\-\-md (default), image\-\-xs, image\-\-sm, image\-\-lg, image\-\-xl |
+| **Clickable**  | image\-\-clickable |
 
 ## Size
 
@@ -75,6 +76,18 @@ background: #1fefff;
 <!-- ============== -->
 {%- capture _code -%}
 <img class="image image--xl" src="{{ _img_src }}" style="{{ _img_style }}"/>
+{%- endcapture -%}
+{{ _code }}
+```html
+{{ _code }}
+```
+<!-- ============== -->
+
+## Clickable
+
+<!-- ============== -->
+{%- capture _code -%}
+<img class="image card--clickable" src="{{ _img_src }}" style="{{ _img_style }}"/>
 {%- endcapture -%}
 {{ _code }}
 ```html
