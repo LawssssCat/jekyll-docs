@@ -8,26 +8,57 @@ permalink: /docs/en/components/images
 | ---- | ---- |
 | **base**  | image |
 | **size**  | image\-\-md (default), image\-\-xs, image\-\-sm, image\-\-lg, image\-\-xl |
-| **Clickable**  | image\-\-clickable |
-
-## Size
-
-### Extreme Small
+| **clickable**  | image\-\-clickable |
 
 <!-- ============== -->
 {%- capture _img_src -%}
 {% link assets/images/cover1_with_title.svg %}
 {%- endcapture -%}
 <!-- ============== -->
-<!-- ============== -->
-{%- capture _img_style -%}
-background: #1fefff;
-{%- endcapture -%}
-<!-- ============== -->
+
+## Base
 
 <!-- ============== -->
 {%- capture _code -%}
-<img class="image image--xs" src="{{ _img_src }}" style="{{ _img_style }}"/>
+![Image]({{ _img_src }} "Image_Example"){:.image}
+{%- endcapture -%}
+{{ _code }}
+```html
+{{ _code | markdownify | replace: '<p>', '' | replace: '</p>', '' | strip }}
+```
+or
+```markdown
+{{ _code }}
+```
+<!-- ============== -->
+
+## Border
+
+<div class="grid grid--p-2">
+<div class="cell cell--12 cell--md-4" markdown="1">
+{%- capture _code -%}
+![Image]({{ _img_src }} "Image_border"){:.image.image--border}
+{%- endcapture -%}
+{{ _code }}
+</div>
+<div class="cell cell--12 cell--md-auto" markdown="1">
+```html
+{{ _code | markdownify | replace: '<p>', '' | replace: '</p>', '' | strip }}
+```
+or
+```markdown
+{{ _code }}
+```
+</div>
+</div>
+
+## Size
+
+### Extreme Small
+
+<!-- ============== -->
+{%- capture _code -%}
+<img class="image image--xs image--border" src="{{ _img_src }}"/>
 {%- endcapture -%}
 {{ _code }}
 ```html
@@ -39,7 +70,7 @@ background: #1fefff;
 
 <!-- ============== -->
 {%- capture _code -%}
-<img class="image image--sm" src="{{ _img_src }}" style="{{ _img_style }}"/>
+<img class="image image--sm image--border" src="{{ _img_src }}"/>
 {%- endcapture -%}
 {{ _code }}
 ```html
@@ -51,7 +82,7 @@ background: #1fefff;
 
 <!-- ============== -->
 {%- capture _code -%}
-<img class="image image--md" src="{{ _img_src }}" style="{{ _img_style }}"/>
+<img class="image image--md image--border" src="{{ _img_src }}"/>
 {%- endcapture -%}
 {{ _code }}
 ```html
@@ -63,7 +94,7 @@ background: #1fefff;
 
 <!-- ============== -->
 {%- capture _code -%}
-<img class="image image--lg" src="{{ _img_src }}" style="{{ _img_style }}"/>
+<img class="image image--lg image--border" src="{{ _img_src }}"/>
 {%- endcapture -%}
 {{ _code }}
 ```html
@@ -75,7 +106,7 @@ background: #1fefff;
 
 <!-- ============== -->
 {%- capture _code -%}
-<img class="image image--xl" src="{{ _img_src }}" style="{{ _img_style }}"/>
+<img class="image image--xl image--border" src="{{ _img_src }}"/>
 {%- endcapture -%}
 {{ _code }}
 ```html
@@ -87,7 +118,7 @@ background: #1fefff;
 
 <!-- ============== -->
 {%- capture _code -%}
-<img class="image card--clickable" src="{{ _img_src }}" style="{{ _img_style }}"/>
+<img class="image image--clickable" src="{{ _img_src }}" style="{{ _img_style }}"/>
 {%- endcapture -%}
 {{ _code }}
 ```html
