@@ -81,7 +81,7 @@ class Swiper {
       const point = e.targetTouches ? e.targetTouches[0] : e;
       touchPageX = point.pageX;
     });
-    slideContainer.addEventListener('touchstart', mousedownListenerFunc);
+    slideContainer.addEventListener('touchstart', mousedownListenerFunc, {passive: true});
     let mouseupListenerFunc;
     slideContainer.addEventListener('mouseup', mouseupListenerFunc = (e) => {
       if(touch==true) {
@@ -95,8 +95,8 @@ class Swiper {
       }
     });
     slideContainer.addEventListener('mouseleave', mouseupListenerFunc);
-    slideContainer.addEventListener('touchend', mouseupListenerFunc);
-    slideContainer.addEventListener('touchcancel', mouseupListenerFunc);
+    slideContainer.addEventListener('touchend', mouseupListenerFunc, {passive: true});
+    slideContainer.addEventListener('touchcancel', mouseupListenerFunc, {passive: true});
     let mousemoveListenerFunc;
     slideContainer.addEventListener('mousemove', mousemoveListenerFunc = (e) => {
       if(touch) {
@@ -107,10 +107,12 @@ class Swiper {
           animation: false,
           offset: movePageX
         });
-        e.preventDefault(); // prevent 'select' and 'drop' that has been 'select'
+        if(['mousemove'].includes(e.type)) {
+          e.preventDefault(); // prevent 'select' and 'drop' that has been 'select'
+        }
       }
     });
-    slideContainer.addEventListener('touchmove', mousemoveListenerFunc);
+    slideContainer.addEventListener('touchmove', mousemoveListenerFunc, {passive: true});
   }
   getSlideIndexAdjust() {
     const offsetX = this.slideContainerTranslateOffseX;
@@ -131,8 +133,8 @@ class Swiper {
     this.slideContainer.classList.add(this.config.slideContainerAnimationClass);
     let listenerFunc;
     this.slideContainer.addEventListener('transitionend', listenerFunc = () => {
-      this.slideContainer.classList.remove(this.config.slideContainerAnimationClass);
       this.slideContainer.removeEventListener('transitionend', listenerFunc);
+      this.slideContainer.classList.remove(this.config.slideContainerAnimationClass);
     });
   }
   moveTo(index, options={}) {

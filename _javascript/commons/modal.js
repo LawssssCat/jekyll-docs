@@ -1,5 +1,6 @@
 const {Modal} = require('lib/modal');
 const lazyload = require('lazyload');
+const TOOL = require('tool-box');
 
 lazyload.onload(() => {
   window.document.querySelectorAll('[data-toggle=modal]').forEach(toggle => {
@@ -7,13 +8,17 @@ lazyload.onload(() => {
     const triggerList = triggerStr.trim().split(/\s+/g);
     triggerList.forEach(trigger => {
       switch (trigger) {
-        case 'hover':
-          toggle.addEventListener('mouseenter', (e) => {
+        case 'hover': {
+          let hoverFunc, hoverFuncOptions={passive: true};
+          toggle.addEventListener('mouseenter', hoverFunc = (e) => {
+            TOOL.logger.isDebug() && TOOL.logger.debug(e);
             if(!toggle.contains(e.fromElement)) {
               modal.show();
             }
-          });
+          }, hoverFuncOptions);
+          toggle.addEventListener('touchstart', hoverFunc, hoverFuncOptions);
           break;
+        }
         case 'click':
         default:
           toggle.addEventListener('click', () => {
