@@ -2,8 +2,7 @@
   .page__viewport {
     min-height: 100vh;
     @include flexbox();
-    .page__main, .grid {
-      width: 100%;
+    .page__main, .page__grid {
       @include flex(1);
     }
   }
