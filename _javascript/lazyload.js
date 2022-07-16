@@ -17,7 +17,7 @@ function createNode(name, attrs) {
   return node;
 }
 
-class LazyLoad {
+class RequireLoad {
   constructor() {
     /**
      * key: url (string)
@@ -104,16 +104,19 @@ class LazyLoad {
       };
     }), callback);
   }
+}
+
+class WindowLoad {
+  constructor() {
+    this.onloadStatus = {
+      init: false,
+      windowLoad: false,
+      windowLoadArgs: null,
+      queueCallback: []
+    };
+  }
   onload(callback) {
     const context = this;
-    if(!context.onloadStatus) {
-      context.onloadStatus = {
-        init: false,
-        windowLoad: false,
-        windowLoadArgs: null,
-        queueCallback: []
-      };
-    }
     // push
     context.onloadStatus.queueCallback.push(callback);
     // init
@@ -135,4 +138,18 @@ class LazyLoad {
   }
 }
 
-module.exports = new LazyLoad();
+const requireLoad = new RequireLoad();
+const windowLoad = new WindowLoad();
+
+module.exports = 
+{
+  onload: (...args) => {
+    windowLoad.onload(...args);
+  },
+  js: (...args) => {
+    requireLoad.js(...args);
+  },
+  css: (...args) => {
+    requireLoad.css(...args);
+  }
+};
