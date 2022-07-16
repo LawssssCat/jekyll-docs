@@ -260,16 +260,23 @@ TOOL.copyTextToClipboard = function(text) {
   }
 };
 
+/**
+ * options.delay: setTimeout to remove this prompt.(unit: ms)
+ * (-1=don't remove auto)
+ */
 TOOL.prompt = function (text, options={}) {
-  const delay = options.delay || 1000;
-  let prompt = new Prompt({
+  const delay     = options.delay     || 1000;
+  const prompt = new Prompt({
     position: options.position // bottom, middle, top
   });
   prompt.text = text;
   prompt.show();
-  setTimeout(() => {
-    prompt.remove();
-  }, delay);
+  if(delay != -1) {
+    setTimeout(() => {
+      prompt.remove();
+    }, delay);
+  }
+  return prompt;
 };
 
 module.exports = window.TOOL = TOOL;

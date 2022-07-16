@@ -89,8 +89,8 @@ class Popper {
   }
   show(event) {
     // node
-    this.id = this.idStatic || TOOLS.generateId('popover');
-    this.node = this.createDOM();
+    this.id = this.createId();
+    this.node = this.createDOM(this.id);
     this.container.appendChild(this.node);
     this.node.toggleAttribute('data-show');
     // popper
@@ -129,11 +129,15 @@ class Popper {
     this.id = null;
     this.hideCallback && this.hideCallback(event);
   }
-  createDOM(id) {
+  createId() {
+    return this.idStatic || TOOLS.generateId('popover');
+  }
+  createDOM(id=this.createId()) {
     // popover dom
     let result = document.createElement('div');
     result.setAttribute('id', id);
     result.classList.add('popover');
+    result.classList.add('d-print-none'); // fix: display none when print
     // arrow
     let arrow = document.createElement('div');
     arrow.classList.add('popover-arrow');
