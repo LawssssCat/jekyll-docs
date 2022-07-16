@@ -3,6 +3,7 @@
     min-height: 100vh;
     @include flexbox();
     .page__main, .page__grid {
+      width: 100%;
       @include flex(1);
     }
   }

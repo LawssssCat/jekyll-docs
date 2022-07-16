@@ -2,20 +2,44 @@
 /* stylelint-disable scss/no-global-function-names */
 .image {
   max-width: 100%;
-  @extend .image--md;
-}
-.image--md {
-  width: map-get($image, width);
-}
-.image--xl {
-  width: map-get($image, width-xl);
-}
-.image--lg {
-  width: map-get($image, width-lg);
-}
-.image--sm {
-  width: map-get($image, width-sm);
-}
-.image--xs {
-  width: map-get($image, width-xs);
+  &:not(.image--auto) {
+    @extend .image--md;
+  }
+  &.image--xs {
+    width: map-get($image, width-xs);
+  }
+  &.image--sm {
+    width: map-get($image, width-sm);
+  }
+  &.image--md {
+    width: map-get($image, width);
+  }
+  &.image--xl {
+    width: map-get($image, width-xl);
+  }
+  &.image--lg {
+    width: map-get($image, width-lg);
+  }
+  &.image--clickable {
+    cursor: pointer;
+    @include transition(map-get($clickable, transition));
+    @include hover {
+      @include box-shadow(2);
+    }
+  }
+  &.image--border {
+    border: 1px solid;
+    @include themeify {
+      border-color: themed(border-color-l);
+    }
+  }
+  &.image--shadow {
+    @include box-shadow();
+  }
+  &.image--rounded {
+    border-radius: map-get($base, border-radius);
+  }
+  &.image--circle {
+    border-radius: 50%;
+  }
 }
