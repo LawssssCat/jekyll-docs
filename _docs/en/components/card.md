@@ -101,6 +101,84 @@ background: #1fefff;
 ```
 <!-- ============== -->
 
+## Flat
+
+<!-- ============== -->
+{%- capture _code -%}
+<div class="card card--flat">
+  <div class="card__image">
+    <img class="image" src="{{ _img_src }}" style="{{ _img_style }}"/>
+  </div>
+  <div class="card__content">
+    <div class="card__header">
+      <a href="#Flat">Photograph</a>
+    </div>
+    <p>
+      A photograph is an image created by light falling on a photosensitive surface, usually photographic film or an electronic image sensor, such as a CCD or a CMOS chip.
+    </p>
+  </div>
+</div>
+{%- endcapture -%}
+<!-- ============== -->
+{{ _code }}
+<!-- ============== -->
+```html
+{{ _code }}
+```
+<!-- ============== -->
+
+## Clickable
+
+<!-- ============== -->
+{%- capture _code -%}
+<div class="card card--flat card--clickable">
+  <div class="card__image">
+    <img class="image" src="{{ _img_src }}" style="{{ _img_style }}"/>
+  </div>
+  <div class="card__content">
+    <div class="card__header">
+      <a href="#Flat">Photograph</a>
+    </div>
+    <p>
+      A photograph is an image created by light falling on a photosensitive surface, usually photographic film or an electronic image sensor, such as a CCD or a CMOS chip.
+    </p>
+  </div>
+</div>
+{%- endcapture -%}
+<!-- ============== -->
+{{ _code }}
+<!-- ============== -->
+```html
+{{ _code }}
+```
+<!-- ============== -->
+
+<!-- ============== -->
+{%- capture _code -%}
+<div>
+  <div class="card card--clickable">
+    <div class="card__image">
+      <img class="image" src="{{ _img_src }}" style="{{ _img_style }}"/>
+    </div>
+    <div class="card__content">
+      <div class="card__header">
+        <a href="#Flat">Photograph</a>
+      </div>
+      <p>
+        A photograph is an image created by light falling on a photosensitive surface, usually photographic film or an electronic image sensor, such as a CCD or a CMOS chip.
+      </p>
+    </div>
+  </div>
+</div>
+{%- endcapture -%}
+<!-- ============== -->
+{{ _code }}
+<!-- ============== -->
+```html
+{{ _code }}
+```
+<!-- ============== -->
+
 ## Image Overlay
 
 <!-- ============== -->
@@ -130,49 +208,6 @@ background: #1fefff;
   </div>
   <div class="card__content">
     <p class="card__header">Photograph</p>
-  </div>
-</div>
-{%- endcapture -%}
-<!-- ============== -->
-{{ _code }}
-<!-- ============== -->
-```html
-{{ _code }}
-```
-<!-- ============== -->
-
-## Flat
-
-<!-- ============== -->
-{%- capture _code -%}
-<div class="card card--flat">
-  <div class="card__image">
-    <img class="image" src="{{ _img_src }}" style="{{ _img_style }}"/>
-  </div>
-  <div class="card__content">
-    <div class="card__header">
-      <a href="#Flat">Photograph</a>
-    </div>
-  </div>
-</div>
-{%- endcapture -%}
-<!-- ============== -->
-{{ _code }}
-<!-- ============== -->
-```html
-{{ _code }}
-```
-<!-- ============== -->
-
-## Clickable
-
-<!-- ============== -->
-{%- capture _code -%}
-<div>
-  <div class="card card--clickable">
-    <div class="card__image">
-      <img class="image" src="{{ _img_src }}" style="{{ _img_style }}"/>
-    </div>
   </div>
 </div>
 {%- endcapture -%}
