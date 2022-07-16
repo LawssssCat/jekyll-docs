@@ -18,10 +18,10 @@ const domFunc = (function() {
   };
   const disabledClass = 'disabled';
   FUNC.enable = function(dom) {
-    dom.classList.remove(disabledClass);
+    dom && dom.classList.remove(disabledClass);
   };
   FUNC.disable = function(dom) {
-    dom.classList.add(disabledClass);
+    dom && dom.classList.add(disabledClass);
   };
   return FUNC;
 })();
@@ -49,10 +49,10 @@ class Swiper {
     this.reset();
     // listener
     const context = this;
-    this.buttonPrev.addEventListener('click', () => {
+    this.buttonPrev && this.buttonPrev.addEventListener('click', () => {
       context.prev();
     });
-    this.buttonNext.addEventListener('click', () => {
+    this.buttonNext && this.buttonNext.addEventListener('click', () => {
       context.next();
     });
     new ResizeObserver(() => {
