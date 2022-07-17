@@ -48,6 +48,7 @@ class Swiper {
       context.refresh();
     }).observe(slideContainer);
     this.bundleTouchEventListener(); // touch/mouseDown move
+    return this;
   }
   reset() {
     // touch move offset init

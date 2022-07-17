@@ -1,0 +1,13 @@
+@mixin cursor-clickable {
+  cursor: pointer;
+}
+
+@mixin cursor-draggable {
+  cursor: move;
+  cursor: -webkit-grab;
+  cursor: grab;
+  @include active {
+    cursor: -webkit-grabbing;
+    cursor: grabbing;
+  }
+}

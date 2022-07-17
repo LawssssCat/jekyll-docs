@@ -232,3 +232,44 @@ or
 {{ _code }}
 ```
 <!-- ============== -->
+
+## Actions
+
+### Gallery
+
+<style>
+{%- capture _code_style -%}
+#example-gallery {
+  > img {
+    margin: 0 5px 5px 0;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+}
+{%- endcapture -%}
+{{ _code_style | scssify }}
+</style>
+
+<!-- ============== -->
+{%- capture _code -%}
+<div class="flexbox flex-wrap" id="example-gallery">
+[SPACE]
+{%- for _index in (1..5) -%}
+{%- assign _index_status = _index | modulo: 2 -%}
+{%- if _index_status == 0 -%}
+  {%- capture _gallery_img_src -%}{% link assets/images/cover2.jpg %}{%- endcapture -%}
+{%- else -%}
+  {%- capture _gallery_img_src -%}{% link assets/images/cover3.jpg %}{%- endcapture -%}
+{%- endif -%}
+<img class="flexbox image image--xs image--clickable" src="{{ _gallery_img_src }}" 
+data-toggle="gallery"/>
+[SPACE]
+{%- endfor -%}
+</div>
+{%- endcapture -%}
+{%- assign _code = _code | replace: '[SPACE]', '' -%}
+{{ _code }}
+```html
+{{ _code }}
+```
+<!-- ============== -->

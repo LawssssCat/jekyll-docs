@@ -67,6 +67,8 @@
   display: flex;
 }
 
+.flexbox { @include flexbox; }
+
 //----------------------------------
 
 @mixin inline-flex {
@@ -76,6 +78,8 @@
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
+
+.inline-flex { @include inline-flex; }
 
 //----------------------------------------------------------------------
 
@@ -134,6 +138,8 @@
   }
   flex-wrap: $value;
 }
+
+.flex-wrap { @include flex-wrap(wrap); }
 
 //----------------------------------------------------------------------
 

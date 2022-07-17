@@ -15,6 +15,7 @@
   }
   .swiper__slide {
     @include flex-shrink(0);
+    @include cursor-draggable;
   }
 }
 

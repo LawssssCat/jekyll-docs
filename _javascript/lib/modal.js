@@ -21,8 +21,8 @@ class Modal {
   }
   show() {
     this.scrollDisable();
-    this.node.classList.add(this.config.modalShowClass);
     this.container.appendChild(this.node);
+    this.node.classList.add(this.config.modalShowClass);
     this.showCallback && this.showCallback(this);
   }
   hide() {
@@ -70,8 +70,7 @@ class Modal {
     let func;
     this.addShowCallback(() => {
       window.document.addEventListener('keydown', func = (e) => {
-        if(e.keyCode == 27){
-          //add your code here
+        if(e.keyCode == 27){ // 'ESC'
           context.hide();
         }
       });
@@ -82,6 +81,9 @@ class Modal {
   }
   addEventListener(...args) {
     this.node.addEventListener(...args);
+  }
+  appendChild(dom) {
+    this.node.appendChild(dom);
   }
 }
 
