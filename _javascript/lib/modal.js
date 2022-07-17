@@ -83,6 +83,9 @@ class Modal {
   addEventListener(...args) {
     this.node.addEventListener(...args);
   }
+  appendChild(dom) {
+    this.node.appendChild(dom);
+  }
 }
 
 module.exports = {

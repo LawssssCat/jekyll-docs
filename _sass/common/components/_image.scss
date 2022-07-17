@@ -1,5 +1,13 @@
 /* stylelint-disable scss/at-extend-no-missing-placeholder */
 /* stylelint-disable scss/no-global-function-names */
+@mixin image-popup {
+  cursor: pointer;
+  @include transition(map-get($clickable, transition));
+  @include hover {
+    @include box-shadow(2);
+  }
+}
+
 .image {
   max-width: 100%;
   &:not(.image--auto) {
@@ -21,11 +29,7 @@
     width: map-get($image, width-lg);
   }
   &.image--clickable {
-    cursor: pointer;
-    @include transition(map-get($clickable, transition));
-    @include hover {
-      @include box-shadow(2);
-    }
+    @include image-popup();
   }
   &.image--border {
     border: 1px solid;
