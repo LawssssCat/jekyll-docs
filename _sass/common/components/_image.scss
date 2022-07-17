@@ -1,7 +1,7 @@
 /* stylelint-disable scss/at-extend-no-missing-placeholder */
 /* stylelint-disable scss/no-global-function-names */
 @mixin image-popup {
-  cursor: pointer;
+  @include cursor-clickable;
   @include transition(map-get($clickable, transition));
   @include hover {
     @include box-shadow(2);

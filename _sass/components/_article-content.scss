@@ -24,7 +24,7 @@
       }
       @include hover() {
         > .anchor{
-          cursor: pointer;
+          @include cursor-clickable;
           visibility: visible;
           opacity: 1;
         }

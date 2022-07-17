@@ -67,7 +67,7 @@
     }
   }
   &.card--clickable {
-    cursor: pointer;
+    @include cursor-clickable;
     @include transition(map-get($clickable, transition));
     @include hover {
       &:not(.card--flat) {
