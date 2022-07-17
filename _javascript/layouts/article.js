@@ -13,7 +13,9 @@ lazyload.onload(() => {
     'h5[id]'
   ];
   articleContent.querySelectorAll(selectors.join(',')).forEach(dom => {
-    const anchor = TOOL.createDOM('<a class="anchor d-print-none"></a>');
+    const anchor = window.document.createElement('a');
+    anchor.classList.add('anchor');
+    anchor.classList.add('d-print-none');
     anchor.innerHTML = '#';
     dom.appendChild(anchor);
     anchor.addEventListener('click', (e) => {
