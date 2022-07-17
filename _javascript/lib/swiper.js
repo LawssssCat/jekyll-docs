@@ -1,4 +1,5 @@
 const TOOL = require('tool-box');
+const logger = require('logger');
 
 const domFunc = (function() {
   const FUNC = {};
@@ -66,7 +67,7 @@ class Swiper {
     let touchPageX;
     let mousedownListenerFunc;
     slideContainer.addEventListener('mousedown', mousedownListenerFunc = (e) => {
-      TOOL.logger.isDebug() && TOOL.logger.debug(e);
+      logger.isDebug() && logger.debug(e);
       touch = true;
       const point = e.targetTouches ? e.targetTouches[0] : e;
       touchPageX = point.pageX;
@@ -75,7 +76,7 @@ class Swiper {
     let mouseupListenerFunc;
     slideContainer.addEventListener('mouseup', mouseupListenerFunc = (e) => {
       if(touch==true) {
-        TOOL.logger.isDebug() && TOOL.logger.debug(e);
+        logger.isDebug() && logger.debug(e);
         touch = false;
         const slideIndexAdjust = context.getSlideIndexAdjust();
         context.moveTo(slideIndexAdjust, {
@@ -90,7 +91,7 @@ class Swiper {
     let mousemoveListenerFunc;
     slideContainer.addEventListener('mousemove', mousemoveListenerFunc = (e) => {
       if(touch) {
-        TOOL.logger.isDebug() && TOOL.logger.debug(e);
+        logger.isDebug() && logger.debug(e);
         const point = e.targetTouches ? e.targetTouches[0] : e;
         const movePageX = point.pageX - touchPageX;
         context.moveTo(context.slideIndexCur, {

@@ -1,4 +1,4 @@
-const TOOL = require('tool-box');
+const logger = require('logger');
 
 class Modal {
   constructor(options={}) {
@@ -52,7 +52,7 @@ class Modal {
             try {
               cb.call(context, ...args);
             } catch(error) {
-              TOOL.logger.error(context, cb, ...args);
+              logger.error(context, cb, ...args);
             }
           });
         };

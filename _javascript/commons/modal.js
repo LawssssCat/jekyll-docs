@@ -1,6 +1,6 @@
 const {Modal} = require('lib/modal');
 const lazyload = require('lazyload');
-const TOOL = require('tool-box');
+const logger = require('logger');
 
 lazyload.onload(() => {
   window.document.querySelectorAll('[data-toggle=modal]').forEach(toggle => {
@@ -11,7 +11,7 @@ lazyload.onload(() => {
         case 'hover': {
           let hoverFunc, hoverFuncOptions={passive: true};
           toggle.addEventListener('mouseenter', hoverFunc = (e) => {
-            TOOL.logger.isDebug() && TOOL.logger.debug(e);
+            logger.isDebug() && logger.debug(e);
             if(!toggle.contains(e.fromElement)) {
               modal.show();
             }

@@ -1,5 +1,6 @@
 const lazyload = require('lazyload');
 const TOOL = require('tool-box');
+const logger = require('logger');
 const {Modal} = require('lib/modal');
 const {Swiper} = require('lib/swiper');
 
@@ -115,7 +116,7 @@ class Gallery {
     let func;
     this.modal.addShowCallback(() => {
       window.document.addEventListener('keydown', func = (e) => {
-        TOOL.logger.isDebug() && TOOL.logger.debug(e);
+        logger.isDebug() && logger.debug(e);
         // Char Code: 37  ⬅, 39  ➡
         if(e.keyCode == 37){ // ⬅
           context.swiper.prev();
@@ -129,11 +130,11 @@ class Gallery {
     });
   }
   show(event) {
-    TOOL.logger.isDebug() && TOOL.logger.debug(event);
+    logger.isDebug() && logger.debug(event);
     this.modal.show();
   }
   hide(event) {
-    TOOL.logger.isDebug() && TOOL.logger.debug(event);
+    logger.isDebug() && logger.debug(event);
     this.modal.hide();
   }
 }
