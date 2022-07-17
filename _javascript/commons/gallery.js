@@ -76,6 +76,10 @@ class Gallery {
     this.imgDomList.forEach(imgDom => {
       imgDom.addEventListener('click', (e) => {
         context.show(e);
+        const clickImgIndex = context.imgDomList.findIndex(imgDom => imgDom == e.target);
+        context.swiper.moveTo(clickImgIndex, {
+          animation: false
+        });
       });
     });
     this.modal.addEventListener('click', (e) => {
