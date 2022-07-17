@@ -1,7 +1,8 @@
 /**
  * popper.js-based template class for creating popper
  */
-const TOOLS = require('tool-box');
+const TOOL = require('tool-box');
+const logger = require('logger');
 
 function promptError(msg) {
   throw new Error(msg);
@@ -10,11 +11,11 @@ function promptError(msg) {
 // focus
 function addListener4focus(popover) {
   popover.toggle.addEventListener('focusin', (e) => {
-    TOOLS.logger.isDebug() && TOOLS.logger.debug(e);
+    logger.isDebug() && logger.debug(e);
     popover.show(e);
   });
   popover.toggle.addEventListener('focusout', (e) => {
-    TOOLS.logger.isDebug() && TOOLS.logger.debug(e);
+    logger.isDebug() && logger.debug(e);
     popover.hide(e);
   });
 }
@@ -23,14 +24,14 @@ function addListener4focus(popover) {
 function addListener4Hover(popover) {
   let show = false;
   popover.toggle.addEventListener('mouseover', (e) => {
-    TOOLS.logger.isDebug() && TOOLS.logger.debug(e);
+    logger.isDebug() && logger.debug(e);
     if(!show) {
       popover.show(e);
       show = true;
     }
   });
   popover.toggle.addEventListener('mouseout', (e) => {
-    TOOLS.logger.isDebug() && TOOLS.logger.debug(e);
+    logger.isDebug() && logger.debug(e);
     if(!popover.toggle.contains(e.toElement)) {
       popover.hide(e);
       show = false;
@@ -80,7 +81,7 @@ class Popper {
           case 'hover': addListener4Hover(this); break;
           case 'focus': addListener4focus(this); break;
           default: 
-            TOOLS.logger.isDebug() && TOOLS.logger.debug('unknow event', event);
+            logger.isDebug() && logger.debug('unknow event', event);
             break;
         }
       });
@@ -130,7 +131,7 @@ class Popper {
     this.hideCallback && this.hideCallback(event);
   }
   createId() {
-    return this.idStatic || TOOLS.generateId('popover');
+    return this.idStatic || TOOL.generateId('popover');
   }
   createDOM(id=this.createId()) {
     // popover dom
@@ -162,7 +163,7 @@ class Popper {
     try {
       this.node.querySelector('.popover-body').innerHTML = innerHTML;
     } catch(err) {
-      TOOLS.logger.isDebug() && TOOLS.logger.debug(err);
+      logger.isDebug() && logger.debug(err);
     }
   }
 }

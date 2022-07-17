@@ -1,11 +1,11 @@
-const TOOL = require('tool-box');
+const logger = require('logger');
 
 function runFunction(func, caller, ...args) {
   try{
     func && func.call(caller, ...args);
-    TOOL.logger.isDebug() && TOOL.logger.debug('caller', caller, '\n', 'func', func, 'args', args);
+    logger.isDebug() && logger.debug('caller', caller, '\n', 'func', func, 'args', args);
   } catch (err) {
-    TOOL.logger.error('caller', caller, '\n', 'func', func, 'args', args, '\n', err); // prompt the console for errors and continue with the next task.
+    logger.error('caller', caller, '\n', 'func', func, 'args', args, '\n', err); // prompt the console for errors and continue with the next task.
   }
 }
 
