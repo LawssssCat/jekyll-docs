@@ -2,6 +2,10 @@ const {Prompt} = require('lib/prompt');
 
 const TOOL = {};
 
+TOOL.throwError = function(msg) {
+  throw new Error(msg);
+};
+
 TOOL.hasEvent = function (event) {
   return 'on'.concat(event) in window.document;
 };

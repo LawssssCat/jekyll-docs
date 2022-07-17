@@ -4,10 +4,6 @@
 const TOOL = require('tool-box');
 const logger = require('logger');
 
-function promptError(msg) {
-  throw new Error(msg);
-}
-
 // focus
 function addListener4focus(popover) {
   popover.toggle.addEventListener('focusin', (e) => {
@@ -57,14 +53,14 @@ class Popper {
   constructor(options={}) {
     // popper.js 
     // see https://popper.js.org/
-    this.popper           = window.Popper          || promptError('need Popper obj from popper.js');
+    this.popper           = window.Popper          || TOOL.throwError('need Popper obj from popper.js');
     this.popperConfig     = options.popperConfig   || {
       placement: options.popperConfigPlacement   || 'top', // see https://popper.js.org/docs/v2/modifiers/flip/#fallbackplacements
       modifiers: options.popperConfigModifiers   || []
     };
-    this.toggle           = options.toggle         || promptError('"toggle" is required');
+    this.toggle           = options.toggle         || TOOL.throwError('"toggle" is required');
     this.toggleEvents     = options.toggleEvents   || []; // support "hover", "focus", "click"
-    this.content          = options.content        || promptError('"content" is required');
+    this.content          = options.content        || TOOL.throwError('"content" is required');
     this.container        = options.container      || window.document.body;
     this.title            = options.title;
     this.idStatic         = options.id;
