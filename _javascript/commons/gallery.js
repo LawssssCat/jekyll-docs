@@ -59,20 +59,32 @@ class Gallery {
   }
   init() {
     const context = this;
-    // modal
-    this.modal = new Modal();
-    this.modal.enableEventEscClose();
     // swiper
     const swiperDOM = generateSwiperDom(
       this.imgDomList.map(imgDom => {
         return imgDom.src;
       })
     );
+    this.swiper = new Swiper(swiperDOM).init();
+    // modal
+    const showGalleryClass = 'show-gallery';
+    this.modal = new Modal({
+      showCallback: () => {
+        setTimeout(() => {
+          swiperDOM.classList.add(showGalleryClass);
+        }, 0);
+      },
+      hideCallback: () => {
+        swiperDOM.classList.remove(showGalleryClass);
+      }
+    });
+    this.modal.enableEventEscClose();
+    this.modal.appendChild(swiperDOM);
+    // assemble
     const swiperImgDomList = Array.from(swiperDOM.querySelectorAll('.gallery__item img'));
     const buttonDomList = Array.from(swiperDOM.querySelectorAll('.swiper__button'));
-    this.modal.appendChild(swiperDOM);
-    this.swiper = new Swiper(swiperDOM).init();
     // listener
+    // img click
     this.imgDomList.forEach(imgDom => {
       imgDom.addEventListener('click', (e) => {
         context.show(e);
@@ -82,9 +94,17 @@ class Gallery {
         });
       });
     });
-    this.modal.addEventListener('click', (e) => {
-      if(!swiperImgDomList.includes(e.target) && !buttonDomList.includes(e.target)) { // hide when the clicked dom is not img
-        context.hide(e);
+    // modal click/drag
+    let pageX, pageY;
+    this.modal.addEventListener('mousedown', (e) => {
+      pageX=e.pageX; pageY=e.pageY;
+    });
+    this.modal.addEventListener('mouseup', (e) => {
+      const moveDistance = Math.abs(pageX-e.pageX)+Math.abs(pageY-e.pageY);
+      if(moveDistance<3) {
+        if(!swiperImgDomList.includes(e.target) && !buttonDomList.includes(e.target)) { // hide when the clicked dom is not img
+          context.hide(e);
+        }
       }
     });
   }

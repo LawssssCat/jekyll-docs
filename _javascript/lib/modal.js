@@ -21,8 +21,8 @@ class Modal {
   }
   show() {
     this.scrollDisable();
-    this.node.classList.add(this.config.modalShowClass);
     this.container.appendChild(this.node);
+    this.node.classList.add(this.config.modalShowClass);
     this.showCallback && this.showCallback(this);
   }
   hide() {
