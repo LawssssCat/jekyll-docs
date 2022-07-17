@@ -107,6 +107,26 @@ class Gallery {
         }
       }
     });
+    // Char Code: 37  ⬅, 39  ➡
+    this.enableEventPrevOrNext();
+  }
+  enableEventPrevOrNext() {
+    const context=this;
+    let func;
+    this.modal.addShowCallback(() => {
+      window.document.addEventListener('keydown', func = (e) => {
+        TOOL.logger.isDebug() && TOOL.logger.debug(e);
+        // Char Code: 37  ⬅, 39  ➡
+        if(e.keyCode == 37){ // ⬅
+          context.swiper.prev();
+        } else if(e.keyCode == 39) { // ➡
+          context.swiper.next();
+        }
+      });
+    });
+    this.modal.addHideCallback(() => {
+      window.document.removeEventListener('keydown', func);
+    });
   }
   show(event) {
     TOOL.logger.isDebug() && TOOL.logger.debug(event);

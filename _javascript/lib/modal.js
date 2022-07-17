@@ -70,8 +70,7 @@ class Modal {
     let func;
     this.addShowCallback(() => {
       window.document.addEventListener('keydown', func = (e) => {
-        if(e.keyCode == 27){
-          //add your code here
+        if(e.keyCode == 27){ // 'ESC'
           context.hide();
         }
       });
