@@ -1,6 +1,7 @@
 
 const {Stack} = require('lib/stack');
 const TOOL = require('tool-box');
+const logger = require('logger');
 
 function getCurLevel(curNode, levels) { // 0,1,2,3...
   let curLevel = levels.findIndex((label) => {
@@ -67,7 +68,7 @@ function generateDOM(headers, levels) {
     headersLevel = headers.map(header => {
       return getCurLevel(header, levels);
     }), 
-    topLevel = Math.min.apply(Math, headersLevel),
+    topLevel = Math.min(...headersLevel),
     // stack
     stackDOM = new Stack([result]), 
     headersDOMlist = []; // save for later use
@@ -125,16 +126,14 @@ class Toc {
     this.config.tocSelector        = options.tocSelector           || '.js-toc-root';
     this.config.headerSelectors    = options.headerSelectors       || 'h1,h2,h3';
     this.config.headerIgnoreAttr   = options.headerIgnoreAttr      || 'toc-header-ignore';
-    this.config.scrollTarget       = options.scrollTarget          || window.VARIABLES.pageScrollTarget;
-    this.config.scroller           = options.scroller              || window.VARIABLES.pageScroller;
-    this.config.scrollerBehavior   = options.scrollerBehavior      || window.VARIABLES.pageScrollerBehavior;
+    this.config.scrollTarget       = options.scrollTarget          || window.VARIABLES.pageScrollTarget     || TOOL.throwError('undefined "pageScrollTarget"');
+    this.config.scroller           = options.scroller              || window.VARIABLES.pageScroller         || TOOL.throwError('undefined "pageScroller"');
+    this.config.scrollerBehavior   = options.scrollerBehavior      || window.VARIABLES.pageScrollerBehavior || TOOL.throwError('undefined "pageScrollerBehavior"');
   }
   init() {
     // assamble
-    this.toc     = window.document.querySelector(this.config.tocSelector);
-    this.content = window.document.querySelector(this.config.contentSelector);
-    if(!this.content) throw new Error(`toc can't find content with selector ${this.config.contentSelector}`);
-    if(!this.toc)     throw new Error(`toc can't find toc with selector ${this.config.tocSelector}`);
+    this.toc     = window.document.querySelector(this.config.tocSelector)      || TOOL.throwError(`can't find ${this.config.tocSelector}`);
+    this.content = window.document.querySelector(this.config.contentSelector)  || TOOL.throwError(`can't find ${this.config.contentSelector}`);
     this.levels = this.config.headerSelectors.trim().split(/\s*,\s*/g);
     this.headers = Array.from(this.content.querySelectorAll(this.config.headerSelectors)).filter((header) => {
       // has id
@@ -143,7 +142,10 @@ class Toc {
       const flagIgnore = header.hasAttribute(this.config.headerIgnoreAttr);
       return id!=null && !flagIgnore;
     });
-    if(this.disable()) return;
+    if(this.headers.length==0) {
+      logger.info('toc', (this.toc.innerHTML = 'no headings...'));
+      return;
+    }
     // scroll
     this.activeClass = 'active';
     this.scrollTarget = typeof this.config.scrollTarget == 'string' ? window.document.querySelector(this.config.scrollTarget) : this.config.scrollTarget;
@@ -170,9 +172,6 @@ class Toc {
         });
       }
     });
-  }
-  disable() {
-    return (this.headers.length==0);
   }
   rander() {
     const tocDOM = generateDOM.call(this, this.headers, this.levels);
