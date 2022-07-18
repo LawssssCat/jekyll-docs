@@ -119,9 +119,6 @@ class Toc {
     this.config.tocSelector        = options.tocSelector           || '.js-toc-root';
     this.config.headerSelectors    = options.headerSelectors       || 'h1,h2,h3';
     this.config.headerIgnoreAttr   = options.headerIgnoreAttr      || 'toc-header-ignore';
-    this.config.scrollTarget       = options.scrollTarget          || window.VARIABLES.pageScrollTarget     || TOOL.throwError('undefined "pageScrollTarget"');
-    this.config.scroller           = options.scroller              || window.VARIABLES.pageScroller         || TOOL.throwError('undefined "pageScroller"');
-    this.config.scrollerBehavior   = options.scrollerBehavior      || window.VARIABLES.pageScrollerBehavior || TOOL.throwError('undefined "pageScrollerBehavior"');
   }
   init() {
     // assamble
@@ -146,22 +143,31 @@ class Toc {
     }); 
     this.topLevel = Math.min(...this.headersLevel); // save for later use
 
-    // scroll
-    this.activeClass = 'active';
-    this.scrollTarget = typeof this.config.scrollTarget == 'string' ? window.document.querySelector(this.config.scrollTarget) : this.config.scrollTarget;
-    this.scroller = typeof this.config.scroller == 'string' ? window.document.querySelector(this.config.scroller) : this.config.scroller;
-
     // rander
     this.rander();
-    this.updateToc();
 
     // listener
-    this.scrollTarget.addEventListener('scroll', () => {
-      this.updateToc();
+    let updateTocFlag = false;
+    window.addEventListener('headingsActiveUpdate', (e) => { // sevent customEvent "headingsActiveUpdate"
+      logger.isDebug() && logger.debug('toc.js', e);
+      const handingDomActiveList = e.detail;
+      this.updateToc(handingDomActiveList);
+      updateTocFlag = true;
     });
-    window.addEventListener('resize', () => {
-      this.updateToc();
-    });
+    let intervalId = setInterval(() => {
+      if(!updateTocFlag) {
+        window.dispatchEvent(new Event('require headingsActiveUpdate'));
+      } else {
+        if(intervalId) {
+          clearInterval(intervalId);
+        }
+      }
+    }, 100);
+    
+  }
+  rander() {
+    const {tocDom, headersDOMlist} = generateTocDOM(this.headers, this.headersLevel, this.topLevel);
+    this.headersDOMlist = headersDOMlist;
     this.headersDOMlist.forEach(dom => {
       const a = dom.querySelector('a');
       if(a) {
@@ -172,15 +178,11 @@ class Toc {
         });
       }
     });
-  }
-  rander() {
-    const {tocDom, headersDOMlist} = generateTocDOM(this.headers, this.headersLevel, this.topLevel);
-    this.headersDOMlist = headersDOMlist;
     this.toc.appendChild(tocDom);
   }
-  updateToc() {
+  updateToc(handingDomActiveList) {
     // if(this.disable()) return; // if no header or display=none, don't update // 2022-07-03 if toc disable, return directly on init.
-    this.updateActive();
+    this.updateActive(handingDomActiveList);
     this.updateTocScroll();
   }
   updateTocScroll() { // if toc overflow, top active header at the top of toc scroll
@@ -213,55 +215,18 @@ class Toc {
       }
     }
   }
-  updateActive() {
-    /*
-    --------------- headerBottom0
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~ scrollViewpoint
-    --------------- headerBottom1 active
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~ scrollViewpointMiddle
-    --------------- headerBottom2 
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~ scrollViewpointBottom
-    --------------- headerBottom3
-    */
-    const scrollViewpointTop = this.scroller.scrollTop, 
-      scrollViewpointHeight = this.scroller.clientHeight, 
-      scrollViewpointMiddle = scrollViewpointTop + scrollViewpointHeight/2;
-    let i, currentHeader, activeHeader=null;
-    for(i=0; i<this.headers.length; i++) {
-      currentHeader = this.headers[i];
-      const headerHeight = currentHeader.clientHeight,
-        headerTop = TOOL.positionRelative(currentHeader, this.scroller).top,
-        headerBottom = headerHeight+headerTop;
-      if(scrollViewpointMiddle>headerBottom) {
-        activeHeader = currentHeader;
-      } else {
-        break; // next
-      }
-    }
-    // console.log(scrollViewpointButton, activeHeader)
-    // refresh 'active' class 
-    const activeClass = this.activeClass;
-    this.headers.forEach(header => header.classList.remove(activeClass));      // header in content
-    this.headersDOMlist.forEach(tocdom => tocdom.classList.remove(activeClass)); // link in toc
-    let index = (this.headers.length <= i ? this.headers.length : i)-1;
-    if(activeHeader){
-      activeHeader.classList.add(activeClass);
-      this.headersDOMlist[index].classList.add(activeClass);
-      // 
-      let headerLevel = this.headersLevel[index];
-      for(index=index-1;index>=0; index--) { // set 'active' class into parent headers
-        const curHeaderLevel = this.headersLevel[index], curHeader = this.headers[index], curTocDom = this.headersDOMlist[index];
-        if(headerLevel>curHeaderLevel) {
-          curHeader.classList.add(activeClass);
-          curTocDom.classList.add(activeClass);
-          // 
-          headerLevel = curHeaderLevel;
-        }
-        if(this.topLevel==curHeaderLevel) {
-          break;
-        }
-      }
-    } 
+  updateActive(handingDomActiveList) {
+    const selector = handingDomActiveList.map(headingDom => {
+      return `a[href="#${headingDom.id}"]`;
+    }).join(',');
+    this.headersDOMlist.forEach(dom => {
+      dom.classList.remove('active');
+    });
+    this.headersDOMlist.filter(dom => {
+      return dom.querySelectorAll(selector).length > 0;
+    }).forEach(dom => {
+      dom.classList.add('active');
+    });
   }
 }
 

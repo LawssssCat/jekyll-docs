@@ -1,7 +1,7 @@
-@mixin split-line($direction: default, $width: default, $color: default) {
+@mixin split-line($directions: default, $width: default, $color: default) {
   @include themeify {
-    @if $direction == default {
-      $direction: top;
+    @if $directions == default {
+      $directions: top;
     }
     @if $color == default {
       $color: themed(border-color-l);
@@ -10,17 +10,19 @@
       $width: 1px;
     }
     border: 0 solid $color;
-    @if $direction == top {
-      border-top-width: $width;
-    }
-    @if $direction == right {
-      border-right-width: $width;
-    }
-    @if $direction == bottom {
-      border-bottom-width: $width;
-    }
-    @if $direction == left {
-      border-left-width: $width;
+    @each $direction in $directions {
+      @if $direction == top {
+        border-top-width: $width;
+      }
+      @if $direction == right {
+        border-right-width: $width;
+      }
+      @if $direction == bottom {
+        border-bottom-width: $width;
+      }
+      @if $direction == left {
+        border-left-width: $width;
+      }
     }
   }
 }
