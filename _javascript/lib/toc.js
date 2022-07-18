@@ -62,21 +62,11 @@ function getCurLevel(curNode, levels) { // 0,1,2,3...
   </li>
 </ol>
 */
-function generateDOM(headers, levels) {
-  const tag = 'ol', result = document.createElement(tag), // result
-    // pretreatment
-    headersLevel = headers.map(header => {
-      return getCurLevel(header, levels);
-    }), 
-    topLevel = Math.min(...headersLevel),
+function generateTocDOM(headers, headersLevel, topLevel) {
+  const tag = 'ol', tocDom = document.createElement(tag), // result
     // stack
-    stackDOM = new Stack([result]), 
+    stackDOM = new Stack([tocDom]), 
     headersDOMlist = []; // save for later use
-
-  if(this) {
-    this.headersLevel = headersLevel; this.topLevel = topLevel; // save for later use
-    this.headersDOMlist = headersDOMlist;
-  }
 
   // create header dom one by one
   let index=0, preLevel=topLevel;
@@ -116,7 +106,10 @@ function generateDOM(headers, levels) {
       headersDOMlist.push(li); // save for later use
     }
   }
-  return result;
+  return {
+    tocDom,
+    headersDOMlist
+  };
 }
 
 class Toc {
@@ -146,6 +139,13 @@ class Toc {
       logger.info('toc', (this.toc.innerHTML = 'no headings...'));
       return;
     }
+
+    // level
+    this.headersLevel = this.headers.map(header => {
+      return getCurLevel(header, this.levels);
+    }); 
+    this.topLevel = Math.min(...this.headersLevel); // save for later use
+
     // scroll
     this.activeClass = 'active';
     this.scrollTarget = typeof this.config.scrollTarget == 'string' ? window.document.querySelector(this.config.scrollTarget) : this.config.scrollTarget;
@@ -174,8 +174,9 @@ class Toc {
     });
   }
   rander() {
-    const tocDOM = generateDOM.call(this, this.headers, this.levels);
-    this.toc.appendChild(tocDOM);
+    const {tocDom, headersDOMlist} = generateTocDOM(this.headers, this.headersLevel, this.topLevel);
+    this.headersDOMlist = headersDOMlist;
+    this.toc.appendChild(tocDom);
   }
   updateToc() {
     // if(this.disable()) return; // if no header or display=none, don't update // 2022-07-03 if toc disable, return directly on init.
