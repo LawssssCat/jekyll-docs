@@ -11,11 +11,17 @@
   .toc {
     max-height: calc(100vh - #{map-get($spacers, 5)});
     @include overflow(auto, "y");
+    @include overflow(visible, "x");
     @include scrollbar-none();
   }
   ol {
     @include menu(0, 0, nowrap);
     @include menu-direction(vertical);
+  }
+  a {
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   ol li a { /* h1 */
     padding-top: map-get($spacers, 2);
