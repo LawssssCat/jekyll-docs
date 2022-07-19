@@ -1,5 +1,8 @@
 class Queue {
   constructor() {
+    this.clear();
+  }
+  clear() {
     this.size=0;
     /*
     {
@@ -26,6 +29,9 @@ class Queue {
       this.size--;
       const data = this.font.data;
       this.font = this.font.next;
+      if(this.font==null) { // release reference
+        this.end=null;
+      }
       return data;
     }
     return null;
