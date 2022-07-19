@@ -74,6 +74,21 @@ paginate: 8
 paginate_path: /page/page:num # don't change this unless for special need
 
 # -------------------------
+# Comments
+# -------------------------
+comments:
+  provider: valine # false (default), "valine", "disqus"(todo), "gitalk"(todo), "custom"(todo)
+
+  ## Valine
+  # please refer to https://valine.js.org/en/ for more info.
+  valine:
+    app_id      : WxCLpkQo7COETr7MIcTeNlNK-MdYXbMMI # LeanCloud App id
+    app_key     : Pfou0zlVblLXKXkEhzGxtqL3 # LeanCloud App key
+    placeholder : # Prompt information
+    visitor     : # false (default)
+    meta        : # "[nick, mail, link]" (default) nickname, E-mail, Personal-site
+
+# -------------------------
 # Build
 # -------------------------
 # see https://jekyllrb.com/docs/configuration/markdown/
