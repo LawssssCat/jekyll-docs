@@ -37,7 +37,12 @@ lazyload.onload(() => {
   let func;
   pageScrollTarget.addEventListener('scroll', func = (e) => {
     logger.isDebug() && logger.debug('article.js', e);
-    const handingDomActiveList = updateArticleHandingDomActive(headings, headingsTree, pageScroller);
+    let handingDomActiveList;
+    try {
+      handingDomActiveList = updateArticleHandingDomActive(headings, headingsTree, pageScroller);
+    } catch(error) {
+      logger.error(error);
+    }
     window.dispatchEvent(new CustomEvent('headingsActiveUpdate', {
       detail: handingDomActiveList
     }));

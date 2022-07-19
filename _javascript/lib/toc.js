@@ -147,9 +147,9 @@ class Toc {
     let updateTocFlag = false;
     window.addEventListener('headingsActiveUpdate', (e) => { // sevent customEvent "headingsActiveUpdate"
       logger.isDebug() && logger.debug('toc.js', e);
+      updateTocFlag = true;
       const handingDomActiveList = e.detail;
       this.updateToc(handingDomActiveList);
-      updateTocFlag = true;
     });
     let intervalId = setInterval(() => {
       if(!updateTocFlag) {
@@ -213,17 +213,19 @@ class Toc {
     }
   }
   updateActive(handingDomActiveList) {
-    const selector = handingDomActiveList.map(headingDom => {
-      return `a[href="#${headingDom.id}"]`;
-    }).join(',');
     this.headersDOMlist.forEach(dom => {
       dom.classList.remove('active');
     });
-    this.headersDOMlist.filter(dom => {
-      return dom.querySelectorAll(selector).length > 0;
-    }).forEach(dom => {
-      dom.classList.add('active');
-    });
+    if(handingDomActiveList && handingDomActiveList.length>0) {
+      const selector = handingDomActiveList.map(headingDom => {
+        return `a[href="#${headingDom.id}"]`;
+      }).join(',');
+      this.headersDOMlist.filter(dom => {
+        return dom.querySelectorAll(selector).length > 0;
+      }).forEach(dom => {
+        dom.classList.add('active');
+      });
+    }
   }
 }
 
