@@ -1,13 +1,12 @@
 
 const {Stack} = require('lib/stack');
 const TOOL = require('tool-box');
+const logger = require('logger');
 
-function getCurLevel(curNode, levels) { // 0,1,2,3...
-  let curLevel = levels.findIndex((label) => {
-    let flag = (curNode.tagName.toLowerCase() == label);
-    return flag;
-  });
-  return curLevel;
+function getHeadingDomlevel(headingDom) {
+  // h1 => 1, h2 => 2 , ...
+  const str = headingDom.tagName.slice(1);
+  return parseInt(str);
 }
 
 /*
@@ -61,21 +60,11 @@ function getCurLevel(curNode, levels) { // 0,1,2,3...
   </li>
 </ol>
 */
-function generateDOM(headers, levels) {
-  const tag = 'ol', result = document.createElement(tag), // result
-    // pretreatment
-    headersLevel = headers.map(header => {
-      return getCurLevel(header, levels);
-    }), 
-    topLevel = Math.min.apply(Math, headersLevel),
+function generateTocDOM(headers, headersLevel, topLevel) {
+  const tag = 'ol', tocDom = document.createElement(tag), // result
     // stack
-    stackDOM = new Stack([result]), 
+    stackDOM = new Stack([tocDom]), 
     headersDOMlist = []; // save for later use
-
-  if(this) {
-    this.headersLevel = headersLevel; this.topLevel = topLevel; // save for later use
-    this.headersDOMlist = headersDOMlist;
-  }
 
   // create header dom one by one
   let index=0, preLevel=topLevel;
@@ -115,7 +104,10 @@ function generateDOM(headers, levels) {
       headersDOMlist.push(li); // save for later use
     }
   }
-  return result;
+  return {
+    tocDom,
+    headersDOMlist
+  };
 }
 
 class Toc {
@@ -125,17 +117,11 @@ class Toc {
     this.config.tocSelector        = options.tocSelector           || '.js-toc-root';
     this.config.headerSelectors    = options.headerSelectors       || 'h1,h2,h3';
     this.config.headerIgnoreAttr   = options.headerIgnoreAttr      || 'toc-header-ignore';
-    this.config.scrollTarget       = options.scrollTarget          || window.VARIABLES.pageScrollTarget;
-    this.config.scroller           = options.scroller              || window.VARIABLES.pageScroller;
-    this.config.scrollerBehavior   = options.scrollerBehavior      || window.VARIABLES.pageScrollerBehavior;
   }
   init() {
     // assamble
-    this.toc     = window.document.querySelector(this.config.tocSelector);
-    this.content = window.document.querySelector(this.config.contentSelector);
-    if(!this.content) throw new Error(`toc can't find content with selector ${this.config.contentSelector}`);
-    if(!this.toc)     throw new Error(`toc can't find toc with selector ${this.config.tocSelector}`);
-    this.levels = this.config.headerSelectors.trim().split(/\s*,\s*/g);
+    this.toc     = window.document.querySelector(this.config.tocSelector)      || TOOL.throwError(`can't find ${this.config.tocSelector}`);
+    this.content = window.document.querySelector(this.config.contentSelector)  || TOOL.throwError(`can't find ${this.config.contentSelector}`);
     this.headers = Array.from(this.content.querySelectorAll(this.config.headerSelectors)).filter((header) => {
       // has id
       const id = header.getAttribute('id');
@@ -143,51 +129,57 @@ class Toc {
       const flagIgnore = header.hasAttribute(this.config.headerIgnoreAttr);
       return id!=null && !flagIgnore;
     });
-    if(this.disable()) return;
-    // scroll
-    this.activeClass = 'active';
-    this.scrollTarget = typeof this.config.scrollTarget == 'string' ? window.document.querySelector(this.config.scrollTarget) : this.config.scrollTarget;
-    this.scroller = typeof this.config.scroller == 'string' ? window.document.querySelector(this.config.scroller) : this.config.scroller;
+    if(this.headers.length==0) {
+      logger.info('toc', (this.toc.innerHTML = 'no headings...'));
+      return;
+    }
+
+    // level
+    this.headersLevel = this.headers.map(header => {
+      return getHeadingDomlevel(header);
+    }); 
+    this.topLevel = Math.min(...this.headersLevel); // save for later use
 
     // rander
     this.rander();
-    this.updateToc();
 
     // listener
-    this.scrollTarget.addEventListener('scroll', () => {
-      this.updateToc();
+    let updateTocFlag = false;
+    window.addEventListener('headingsActiveUpdate', (e) => { // sevent customEvent "headingsActiveUpdate"
+      logger.isDebug() && logger.debug('toc.js', e);
+      updateTocFlag = true;
+      const handingDomActiveList = e.detail;
+      this.updateToc(handingDomActiveList);
     });
-    window.addEventListener('resize', () => {
-      this.updateToc();
-    });
+    let intervalId = setInterval(() => {
+      if(!updateTocFlag) {
+        window.dispatchEvent(new Event('require headingsActiveUpdate'));
+      } else {
+        if(intervalId) {
+          clearInterval(intervalId);
+        }
+      }
+    }, 100);
+    
+  }
+  rander() {
+    const {tocDom, headersDOMlist} = generateTocDOM(this.headers, this.headersLevel, this.topLevel);
+    this.headersDOMlist = headersDOMlist;
     this.headersDOMlist.forEach(dom => {
       const a = dom.querySelector('a');
       if(a) {
         a.addEventListener('click', (e) => {
           e.preventDefault();
           const href = a.getAttribute('href');
-          const offsetTop = document.querySelector(href).offsetTop;
-
-          this.scrollTarget.scroll({
-            top: offsetTop,
-            behavior: this.config.scrollerBehavior
-          });
-
           TOOL.historyPushHash(href);
         });
       }
     });
+    this.toc.appendChild(tocDom);
   }
-  disable() {
-    return (this.headers.length==0);
-  }
-  rander() {
-    const tocDOM = generateDOM.call(this, this.headers, this.levels);
-    this.toc.appendChild(tocDOM);
-  }
-  updateToc() {
+  updateToc(handingDomActiveList) {
     // if(this.disable()) return; // if no header or display=none, don't update // 2022-07-03 if toc disable, return directly on init.
-    this.updateActive();
+    this.updateActive(handingDomActiveList);
     this.updateTocScroll();
   }
   updateTocScroll() { // if toc overflow, top active header at the top of toc scroll
@@ -220,55 +212,20 @@ class Toc {
       }
     }
   }
-  updateActive() {
-    /*
-    --------------- headerBottom0
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~ scrollViewpoint
-    --------------- headerBottom1 active
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~ scrollViewpointMiddle
-    --------------- headerBottom2 
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~ scrollViewpointBottom
-    --------------- headerBottom3
-    */
-    const scrollViewpointTop = this.scroller.scrollTop, 
-      scrollViewpointHeight = this.scroller.clientHeight, 
-      scrollViewpointMiddle = scrollViewpointTop + scrollViewpointHeight/2;
-    let i, currentHeader, activeHeader=null;
-    for(i=0; i<this.headers.length; i++) {
-      currentHeader = this.headers[i];
-      const headerHeight = currentHeader.clientHeight,
-        headerTop = TOOL.positionRelative(currentHeader, this.scroller).top,
-        headerBottom = headerHeight+headerTop;
-      if(scrollViewpointMiddle>headerBottom) {
-        activeHeader = currentHeader;
-      } else {
-        break; // next
-      }
+  updateActive(handingDomActiveList) {
+    this.headersDOMlist.forEach(dom => {
+      dom.classList.remove('active');
+    });
+    if(handingDomActiveList && handingDomActiveList.length>0) {
+      const selector = handingDomActiveList.map(headingDom => {
+        return `a[href="#${headingDom.id}"]`;
+      }).join(',');
+      this.headersDOMlist.filter(dom => {
+        return dom.querySelectorAll(selector).length > 0;
+      }).forEach(dom => {
+        dom.classList.add('active');
+      });
     }
-    // console.log(scrollViewpointButton, activeHeader)
-    // refresh 'active' class 
-    const activeClass = this.activeClass;
-    this.headers.forEach(header => header.classList.remove(activeClass));      // header in content
-    this.headersDOMlist.forEach(tocdom => tocdom.classList.remove(activeClass)); // link in toc
-    let index = (this.headers.length <= i ? this.headers.length : i)-1;
-    if(activeHeader){
-      activeHeader.classList.add(activeClass);
-      this.headersDOMlist[index].classList.add(activeClass);
-      // 
-      let headerLevel = this.headersLevel[index];
-      for(index=index-1;index>=0; index--) { // set 'active' class into parent headers
-        const curHeaderLevel = this.headersLevel[index], curHeader = this.headers[index], curTocDom = this.headersDOMlist[index];
-        if(headerLevel>curHeaderLevel) {
-          curHeader.classList.add(activeClass);
-          curTocDom.classList.add(activeClass);
-          // 
-          headerLevel = curHeaderLevel;
-        }
-        if(this.topLevel==curHeaderLevel) {
-          break;
-        }
-      }
-    } 
   }
 }
 

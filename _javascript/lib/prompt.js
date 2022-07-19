@@ -1,5 +1,8 @@
 class Prompt {
-  constructor() {
+  constructor(options={}) {
+    // 
+    this.position = options.position || 'bottom';
+    // 
     this.prompt = window.document.createElement('div');
     this.init();
     window.document.body.append(this.prompt);
@@ -26,14 +29,27 @@ class Prompt {
     this.prompt.style.display = 'block';
     let width=this.prompt.offsetWidth, height=this.prompt.offsetHeight;
     this.prompt.style.left = `calc(50vw - ${width/2}px)`;
-    this.prompt.style.top = `calc(100vh - ${height}px - 1em)`;
+    switch (this.position) {
+      case 'top':
+        this.prompt.style.top = '1em';
+        break;
+      case 'middle':
+        this.prompt.style.top = `calc(50vh - ${height}px - 1em)`;
+        break;
+      case 'bottom':
+      default:
+        this.prompt.style.top = `calc(100vh - ${height}px - 1em)`;
+        break;
+    }
     this.prompt.style.opacity = '1';
   }
   remove() {
-    this.prompt.style.opacity = '0';
-    this.prompt.addEventListener('transitionend', () => {
+    let func;
+    this.prompt.addEventListener('transitionend', func = () => {
+      this.prompt.removeEventListener('transitionend', func);
       this.prompt.remove();
     });
+    this.prompt.style.opacity = '0';
   }
 }
 

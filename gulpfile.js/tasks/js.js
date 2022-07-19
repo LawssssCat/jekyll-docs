@@ -15,7 +15,7 @@ const browserify = require('browserify');
 const JS_SRC = '_javascript';
 const JS_DEST = 'assets/js/dist';
 
-const VENDERS = ['tool-box', 'lazyload']; // base on '_javascript/'
+const VENDERS = ['tool-box', 'lazyload', 'logger', 'lib/popper', 'lib/modal', 'lib/swiper']; // base on '_javascript/'
 
 function isDebug() {
   let env = process.env.JEKYLL_ENV;

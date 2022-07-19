@@ -5,7 +5,7 @@
       $color: themed(text-color-theme-dark);
     }
     @if $background-color == default {
-      $background-color: themed(mask-color);
+      $background-color: themed(modal-color);
     }
     color: $color;
     background-color: $background-color;
@@ -20,6 +20,7 @@
   width: 100%;
   height: 100%;
   touch-action: none;
+  @include cursor-clickable;
   opacity: 0;
   @include transform(translate(100%, 0));
   $_animation_dura: map-get($animation, duration);
@@ -32,4 +33,11 @@
   opacity: 1;
   @include transform(translate(0, 0));
   @include transition(#{opacity map-get($animation, duration) map-get($animation, timing-function)});
+}
+
+.modal {
+  @include modal();
+}
+.modal--show {
+  @include modal--show();
 }

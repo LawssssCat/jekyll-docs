@@ -1,9 +1,10 @@
 const {Prompt} = require('lib/prompt');
-const {Logger} = require('lib/logger');
 
 const TOOL = {};
 
-TOOL.logger = new Logger();
+TOOL.throwError = function(msg) {
+  throw new Error(msg);
+};
 
 TOOL.hasEvent = function (event) {
   return 'on'.concat(event) in window.document;
@@ -43,14 +44,6 @@ TOOL.generateId = function (prefix='generateId', suffix='', scope=window.documen
     id = randomInt();
   } while (scope.getElementById(id));
   return id;
-};
-
-const createDomContainer = window.document.createElement('div');
-TOOL.createDOM = function(template) {
-  createDomContainer.innerHTML = template;
-  const dom = createDomContainer.firstChild;
-  createDomContainer.removeChild(dom);
-  return dom;
 };
 
 // relative to document/html/body
@@ -260,13 +253,23 @@ TOOL.copyTextToClipboard = function(text) {
   }
 };
 
-TOOL.prompt = function (text, delay=1000) {
-  let prompt = new Prompt();
+/**
+ * options.delay: setTimeout to remove this prompt.(unit: ms)
+ * (-1=don't remove auto)
+ */
+TOOL.prompt = function (text, options={}) {
+  const delay     = options.delay     || 1000;
+  const prompt = new Prompt({
+    position: options.position // bottom, middle, top
+  });
   prompt.text = text;
   prompt.show();
-  setTimeout(() => {
-    prompt.remove();
-  }, delay);
+  if(delay != -1) {
+    setTimeout(() => {
+      prompt.remove();
+    }, delay);
+  }
+  return prompt;
 };
 
 module.exports = window.TOOL = TOOL;
