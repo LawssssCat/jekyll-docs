@@ -3,12 +3,10 @@ const {Stack} = require('lib/stack');
 const TOOL = require('tool-box');
 const logger = require('logger');
 
-function getCurLevel(curNode, levels) { // 0,1,2,3...
-  let curLevel = levels.findIndex((label) => {
-    let flag = (curNode.tagName.toLowerCase() == label);
-    return flag;
-  });
-  return curLevel;
+function getHeadingDomlevel(headingDom) {
+  // h1 => 1, h2 => 2 , ...
+  const str = headingDom.tagName.slice(1);
+  return parseInt(str);
 }
 
 /*
@@ -124,7 +122,6 @@ class Toc {
     // assamble
     this.toc     = window.document.querySelector(this.config.tocSelector)      || TOOL.throwError(`can't find ${this.config.tocSelector}`);
     this.content = window.document.querySelector(this.config.contentSelector)  || TOOL.throwError(`can't find ${this.config.contentSelector}`);
-    this.levels = this.config.headerSelectors.trim().split(/\s*,\s*/g);
     this.headers = Array.from(this.content.querySelectorAll(this.config.headerSelectors)).filter((header) => {
       // has id
       const id = header.getAttribute('id');
@@ -139,7 +136,7 @@ class Toc {
 
     // level
     this.headersLevel = this.headers.map(header => {
-      return getCurLevel(header, this.levels);
+      return getHeadingDomlevel(header);
     }); 
     this.topLevel = Math.min(...this.headersLevel); // save for later use
 
