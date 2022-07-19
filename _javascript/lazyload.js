@@ -1,4 +1,5 @@
 const logger = require('logger');
+const { Queue } = require('lib/queue');
 
 function runFunction(func, caller, ...args) {
   try{
@@ -33,59 +34,68 @@ class RequireLoad {
      *  ...
      * ]
      */
-    this.requireQueue = [];
+    this.requireQueue = new Queue();
   }
   checkRequireQueue() {
     const context = this;
-    context.requireQueue.forEach((item, index) => {
+    const queueSize = context.requireQueue.size;
+    for(let i=0; i<queueSize; i++) {
+      const item = context.requireQueue.dequeue();
       const urls=item.urls, callback=item.callback;
       let loadedAll = urls.every(url => {
-        return context.requireLoadedStatusMap[url] == true;
+        let requireLoadStatus = context.requireLoadedStatusMap[url];
+        return requireLoadStatus && requireLoadStatus.loaded == true;
       });
       if(loadedAll) {
-        context.requireQueue.splice(index, 1);
         runFunction(callback, context);
+      } else {
+        context.requireQueue.enqueue(item);
       }
-    });
+    }
   }
   load(requireList, callback) {
     const context = this;
     // filter & init
     const unloadList = requireList.filter(item => {
-      const url = item.url;
-      let requireLoadStatus = context.requireLoadedStatusMap[url];
-      if(requireLoadStatus==true) {
-        return false;
-      }
-      return  true;
+      let requireLoadStatus = context.requireLoadedStatusMap[item.url];
+      return !requireLoadStatus || requireLoadStatus.loaded == false;
     });
     // run (directly)
     if(!unloadList || unloadList.length==0) {
       runFunction(callback, context);
     }
-    context.requireQueue.push({
+    context.requireQueue.enqueue({
       urls: unloadList.map((item) => item.url),
       callback: callback
     });
     // load
     unloadList.forEach(item => {
-      const type=item.type, url=item.url;
-      let node;
-      switch (type) {
-        case 'css':
-          node = createNode('link', {href: url, rel: 'stylesheet'});
-          break;
-        case 'js':
-          node = createNode('script', {src: url});
-          break;
-        default:
-          throw new Error(`unknow type:${type}`);
+      const url=item.url;
+      let requireLoadStatus = context.requireLoadedStatusMap[url];
+      if(!requireLoadStatus) {
+        // create (unloaded) status
+        context.requireLoadedStatusMap[url] = {
+          loaded: false
+        };
+        // create require node
+        const type=item.type;
+        let node;
+        switch (type) {
+          case 'css':
+            node = createNode('link', {href: url, rel: 'stylesheet'});
+            break;
+          case 'js':
+            node = createNode('script', {src: url});
+            break;
+          default:
+            throw new Error(`unknow type:${type}`);
+        }
+        (window.document.head || window.document.body).appendChild(node);
+        node.onload = () => {
+          context.requireLoadedStatusMap[url].loaded = true; // url loaded flag
+          context.checkRequireQueue(); // trigger callback that dependencies had loaded
+        };
       }
-      (window.document.head || window.document.body).appendChild(node);
-      node.onload = () => {
-        context.requireLoadedStatusMap[url] = true; // url loaded flag
-        context.checkRequireQueue(); // trigger callback that dependencies had loaded
-      };
     });
   }
   css(urls, callback) {
