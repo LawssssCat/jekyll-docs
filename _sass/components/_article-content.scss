@@ -8,6 +8,13 @@
     h1,
     h2 {
       @include split-line(bottom);
+      &.active {
+        padding-left: 8px;
+        border-left-width: 4px !important;
+        @include themeify {
+          border-color: themed(main-color-1);
+        }
+      }
     }
     @include block-elements() {
       margin: map-get($spacers, 3) 0;

@@ -1,11 +1,12 @@
 const lazyload = require('lazyload');
 const TOOL = require('tool-box');
+const logger = require('logger');
 
 lazyload.onload(() => {
   refactorHistoryPushStateHandle();
   let eventFunc;
   window.addEventListener('popstate',eventFunc = (event) => {
-    TOOL.logger.isDebug() && TOOL.logger.debug(event);
+    logger.isDebug() && logger.debug(event);
     event.preventDefault();
     scroll2Hash();
   });

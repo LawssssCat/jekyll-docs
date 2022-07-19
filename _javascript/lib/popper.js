@@ -1,20 +1,17 @@
 /**
  * popper.js-based template class for creating popper
  */
-const TOOLS = require('tool-box');
-
-function promptError(msg) {
-  throw new Error(msg);
-}
+const TOOL = require('tool-box');
+const logger = require('logger');
 
 // focus
 function addListener4focus(popover) {
   popover.toggle.addEventListener('focusin', (e) => {
-    TOOLS.logger.isDebug() && TOOLS.logger.debug(e);
+    logger.isDebug() && logger.debug(e);
     popover.show(e);
   });
   popover.toggle.addEventListener('focusout', (e) => {
-    TOOLS.logger.isDebug() && TOOLS.logger.debug(e);
+    logger.isDebug() && logger.debug(e);
     popover.hide(e);
   });
 }
@@ -23,14 +20,14 @@ function addListener4focus(popover) {
 function addListener4Hover(popover) {
   let show = false;
   popover.toggle.addEventListener('mouseover', (e) => {
-    TOOLS.logger.isDebug() && TOOLS.logger.debug(e);
+    logger.isDebug() && logger.debug(e);
     if(!show) {
       popover.show(e);
       show = true;
     }
   });
   popover.toggle.addEventListener('mouseout', (e) => {
-    TOOLS.logger.isDebug() && TOOLS.logger.debug(e);
+    logger.isDebug() && logger.debug(e);
     if(!popover.toggle.contains(e.toElement)) {
       popover.hide(e);
       show = false;
@@ -56,14 +53,14 @@ class Popper {
   constructor(options={}) {
     // popper.js 
     // see https://popper.js.org/
-    this.popper           = window.Popper          || promptError('need Popper obj from popper.js');
+    this.popper           = window.Popper          || TOOL.throwError('need Popper obj from popper.js');
     this.popperConfig     = options.popperConfig   || {
       placement: options.popperConfigPlacement   || 'top', // see https://popper.js.org/docs/v2/modifiers/flip/#fallbackplacements
       modifiers: options.popperConfigModifiers   || []
     };
-    this.toggle           = options.toggle         || promptError('"toggle" is required');
+    this.toggle           = options.toggle         || TOOL.throwError('"toggle" is required');
     this.toggleEvents     = options.toggleEvents   || []; // support "hover", "focus", "click"
-    this.content          = options.content        || promptError('"content" is required');
+    this.content          = options.content        || TOOL.throwError('"content" is required');
     this.container        = options.container      || window.document.body;
     this.title            = options.title;
     this.idStatic         = options.id;
@@ -80,7 +77,7 @@ class Popper {
           case 'hover': addListener4Hover(this); break;
           case 'focus': addListener4focus(this); break;
           default: 
-            TOOLS.logger.isDebug() && TOOLS.logger.debug('unknow event', event);
+            logger.isDebug() && logger.debug('unknow event', event);
             break;
         }
       });
@@ -130,7 +127,7 @@ class Popper {
     this.hideCallback && this.hideCallback(event);
   }
   createId() {
-    return this.idStatic || TOOLS.generateId('popover');
+    return this.idStatic || TOOL.generateId('popover');
   }
   createDOM(id=this.createId()) {
     // popover dom
@@ -162,7 +159,7 @@ class Popper {
     try {
       this.node.querySelector('.popover-body').innerHTML = innerHTML;
     } catch(err) {
-      TOOLS.logger.isDebug() && TOOLS.logger.debug(err);
+      logger.isDebug() && logger.debug(err);
     }
   }
 }

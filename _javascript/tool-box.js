@@ -1,9 +1,10 @@
 const {Prompt} = require('lib/prompt');
-const {Logger} = require('lib/logger');
 
 const TOOL = {};
 
-TOOL.logger = new Logger();
+TOOL.throwError = function(msg) {
+  throw new Error(msg);
+};
 
 TOOL.hasEvent = function (event) {
   return 'on'.concat(event) in window.document;

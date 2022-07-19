@@ -205,7 +205,7 @@ css
 {%- include article/generate-tabs.html titles=_titles contents=_contents -%}
 <!-- ====================================================== -->
 
-### title + paragraph
+### paragraph
 
 <!-- ====================================================== -->
 {%- capture _code_html -%}
@@ -244,7 +244,7 @@ css
 {%- include article/generate-tabs.html titles=_titles contents=_contents -%}
 <!-- ====================================================== -->
 
-### (center) title + paragraph
+#### center
 
 <!-- ====================================================== -->
 {%- capture _code_html -%}
@@ -283,7 +283,7 @@ css
 {%- include article/generate-tabs.html titles=_titles contents=_contents -%}
 <!-- ====================================================== -->
 
-### (center) title + paragraph (customize style)
+#### filter (customize style)
 
 <!-- ====================================================== -->
 {%- capture _code_html -%}
