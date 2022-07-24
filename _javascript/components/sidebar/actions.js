@@ -1,5 +1,6 @@
 const lazyload = require('lazyload');
 const {Modal} = require('lib/modal');
+const TOOL = require('tool-box');
 
 lazyload.onload(() => {
   const rootSelector='.js-page-root', toggleSelector='.js-sidebar-show';
@@ -21,4 +22,9 @@ lazyload.onload(() => {
     modal.hide();
   });
   modal.enableEventEscClose();
+  TOOL.respondToVisibility(toggle, (visible) => {
+    if(!visible) {
+      modal.hide();
+    }
+  });
 });

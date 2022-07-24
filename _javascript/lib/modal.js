@@ -11,6 +11,8 @@ class Modal {
     // node
     this.node = window.document.createElement('div');
     this.node.classList.add(this.config.modalClass);
+    // status
+    this.isShow = false;
   }
   scrollDisable() {
     this.containerOverflowY = this.container.style.overflowY;
@@ -20,20 +22,26 @@ class Modal {
     this.container.style.overflowY = this.containerOverflowY || '';
   }
   show() {
-    this.scrollDisable();
-    this.container.appendChild(this.node);
-    this.node.classList.add(this.config.modalShowClass);
-    this.showCallback && this.showCallback(this);
+    if(!this.isShow) {
+      this.scrollDisable();
+      this.container.appendChild(this.node);
+      this.node.classList.add(this.config.modalShowClass);
+      this.showCallback && this.showCallback(this);
+    }
+    this.isShow = true;
   }
   hide() {
-    this.scrollEnable();
-    let TransitionedFunc;
-    this.node.addEventListener('transitionend', TransitionedFunc = () => {
-      this.node.removeEventListener('transitionend', TransitionedFunc);
-      this.container.removeChild(this.node);
-    });
-    this.node.classList.remove(this.config.modalShowClass);
-    this.hideCallback && this.hideCallback(this);
+    if(this.isShow) {
+      this.scrollEnable();
+      let TransitionedFunc;
+      this.node.addEventListener('transitionend', TransitionedFunc = () => {
+        this.node.removeEventListener('transitionend', TransitionedFunc);
+        this.container.removeChild(this.node);
+      });
+      this.node.classList.remove(this.config.modalShowClass);
+      this.hideCallback && this.hideCallback(this);
+    }
+    this.isShow = false;
   }
   addCallback(callbackName, callback) {
     if(!this[callbackName]) {
