@@ -76,10 +76,10 @@ strong{
 }
 
 h1 {
-  font-size: map-get($base, font-size-h1);
+  font-size: map-get($base, font-size-h1-xl);
   @include themeify-color(text-color-d);
   @include media-breakpoint-down(md) {
-    font-size: map-get($base, font-size-h1-sm);
+    font-size: map-get($base, font-size-h1);
   }
 }
 
