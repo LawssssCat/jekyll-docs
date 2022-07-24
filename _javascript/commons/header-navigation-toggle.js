@@ -1,4 +1,5 @@
 const lazyload = require('lazyload');
+const TOOL = require('tool-box');
 
 lazyload.onload(() => {
   const header = window.document.querySelector('.js-header');
@@ -15,6 +16,11 @@ lazyload.onload(() => {
           header.classList.add(toggleClassName);
         }
       }
+    }
+  });
+  TOOL.respondToVisibility(toggle, (visible) => {
+    if(!visible) {
+      header.classList.remove(toggleClassName);
     }
   });
 });
