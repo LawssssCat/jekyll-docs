@@ -60,10 +60,10 @@ body {
   margin: map-get($spacers, 2) 0;
 }
 
-input, textarea, select, button {
-  font: map-get($base, font-weight) #{map-get($base, font-size)}/#{map-get($base, line-height)} map-get($base, font-family);
-  @include themeify-color(text-color);
-}
+// input, textarea, select, button {
+//   font: map-get($base, font-weight) #{map-get($base, font-size)}/#{map-get($base, line-height)} map-get($base, font-family);
+//   @include themeify-color(text-color);
+// }
 
 h1,
 h2,
@@ -124,7 +124,7 @@ h6 {
 }
 
 a {
-  font-weight: map-get($base, font-weight-bold);
+  // font-weight: map-get($base, font-weight-bold);
   @include themeify {
     @include link-colors(themed(main-color-1));
   }
