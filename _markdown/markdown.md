@@ -82,8 +82,9 @@ Jekyll provides the way to customize Markdown Processor.
 
 ## Highlight
 
-[Rouge](https://github.com/jneen/rouge) is Jekyll's default syntax highlighter.
+[Rouge](https://github.com/jneen/rouge) is Jekyll's default syntax highlighter. (see [here]({% link _markdown/highlight/rouge.md %}) for more)
 
-See [here]({% link _markdown/highlight/rouge.md %}) for more.
+[Coderay]({% link _markdown/highlight/coderay.md %}) (few languages support) and [Pygments]({% link _markdown/highlight/pygments.md %}) (Jekyll is no longer supported) are optional.
 
-Similar to Rouge are [Coderay]({% link _markdown/highlight/coderay.md %}) (few languages support) and [Pygments]({% link _markdown/highlight/pygments.md %}) (Jekyll is no longer supported).
+> + [Github Docs - Github - Syntax highlight](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/creating-and-highlighting-code-blocks)
+> + [Github Docs - Github Page - Syntax highlight](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/about-github-pages-and-jekyll#syntax-highlighting)
