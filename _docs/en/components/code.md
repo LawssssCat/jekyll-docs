@@ -11,7 +11,7 @@ Here are some highlights of code.
 {% assign _code_line = "code code code code" %}
 
 <figure class="highlight">
-<pre><code class="language-all-style" data-lang="all-style"><span class="pre">{{ _code_line }} /* pre */ </span>
+<pre><code><span class="pre">{{ _code_line }} /* pre */ </span>
 <span class="hll">{{ _code_line }} /* hll */ </span>
 <span class="c"  >{{ _code_line }} /* Comment */  </span>
 <span class="err">{{ _code_line }} /* Error */  </span>

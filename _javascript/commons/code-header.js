@@ -47,7 +47,7 @@ class CodeHeader {
     // lang
     const headerLang = window.document.createElement('div');
     header.appendChild(headerLang);
-    headerLang.innerHTML = this.lang;
+    headerLang.innerHTML = this.lang || '&nbsp;';
     headerLang.classList.add('code-lang');
     // copy
     const headerCopy = window.document.createElement('div');
