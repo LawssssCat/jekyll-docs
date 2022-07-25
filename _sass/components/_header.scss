@@ -3,15 +3,7 @@ $height_header_top: map-get($spacers, 1);
 $height_header: map-get($layout, header-height) - $height_header_top;
 
 .page__header {
-  @include themeify {
-    $_top: themed(header-background-top);
-    @if not $_top {
-      $_top: themed(header-background);
-    }
-    background: $_top;
-  }
-  padding-top: $height_header_top;
-  @include box-shadow();
+  position: relative;
   .header {
     @include themeify {
       background: themed(header-background);
@@ -20,13 +12,33 @@ $height_header: map-get($layout, header-height) - $height_header_top;
       font-weight: map-get($base, font-weight);
       // text-decoration: none !important;
       @include themeify {
-        @include link-colors(themed(header-text-color), themed(main-color-1));
+        @include link-colors(
+          $clr: themed(header-text-color),
+          $hover-clr: themed(main-color-1),
+          $pseudo: false
+        );
+        @include hover {
+          text-decoration: none;
+        }
       }
     }
     .main {
       @include flexbox();
       @include align-items(center);
+      padding: 0 map-get($spacers, 3);
     }
+  }
+  .header__bottom {
+    top: 0;
+    width: 100%;
+    @include themeify {
+      $_top: themed(header-background-top);
+      @if not $_top {
+        $_top: themed(header-background);
+      }
+      background: $_top;
+    }
+    height: $height_header_top;
   }
 
   // =================================== title ==================================
@@ -137,14 +149,11 @@ $height_header: map-get($layout, header-height) - $height_header_top;
     & > ul {
       height: $height_header;
       @include menu(0, 0, nowrap);
-      @include align-items(center);
+      @include align-items(stretch);
       > li {
-        padding-top: map-get($spacers, 2);
-        padding-right: map-get($spacers, 3);
-        padding-bottom: map-get($spacers, 2);
-        &:last-child {
-          padding-right: 0;
-        }
+        @include flexbox();
+        @include align-items(center);
+        padding: map-get($spacers, 2);
       }
     }
   }
@@ -152,7 +161,11 @@ $height_header: map-get($layout, header-height) - $height_header_top;
   @mixin nav_item_active {
     .navigation__item-link {
       @include themeify {
-        @include link-colors(themed(main-color-1), themed(main-color-1));
+        @include link-colors(
+          $clr: themed(main-color-1),
+          $hover-clr: themed(main-color-1),
+          // $pseudo: false
+        );
       }
     }
   }
@@ -180,6 +193,9 @@ $height_header: map-get($layout, header-height) - $height_header_top;
     }
   }
   .sub_navigation__item {
+    a {
+      font-weight: map-get($base, font-weight);
+    }
     white-space: nowrap;
     @include hover() {
       @extend %sub_navigation_active;
@@ -192,7 +208,6 @@ $height_header: map-get($layout, header-height) - $height_header_top;
   .sub_navigation {
     position: absolute;
     z-index: map-get($z-indexes, header);
-    // display: none;
     max-height: 0;
     @include transition(max-height .2s ease);
     @include overflow(hidden);
@@ -203,13 +218,13 @@ $height_header: map-get($layout, header-height) - $height_header_top;
       // opacity: .92;
     }
     & > ul {
-      @include menu(3, 0);
+      @include menu(0, 0);
       @include menu-direction(vertical);
     }
     .sub_navigation__item {
       padding-top: map-get($button, padding-y-md);
-      padding-right: map-get($button, padding-x-lg);
-      padding-left: map-get($button, padding-x-lg);
+      padding-right: map-get($button, padding-x-xl);
+      padding-left: map-get($button, padding-x-xl);
       white-space: nowrap;
       a {
         display: block;
@@ -231,18 +246,15 @@ $height_header: map-get($layout, header-height) - $height_header_top;
     .navigation__item {
       .navigation__item-sub_icon {
         display: inline-block;
-        transform: rotate(90deg);
+        transform: rotate(0deg);
       }
       @include hover() {
         .navigation__item-sub_icon {
-          transform: rotate(0deg);
+          transform: rotate(180deg);
         }
       }
     }
     // sub nav
-    .sub_navigation {
-      @include box-shadow(2);
-    }
     .navigation__item[data-hover-sub_navigation] .sub_navigation {
       max-height: calc(100vh - #{$height_header});
       @include overflow(auto, "y");
@@ -259,7 +271,7 @@ $height_header: map-get($layout, header-height) - $height_header_top;
         @include button();
         @include button-size("md");
         border-radius: map-get($base, border-radius);
-        transform: rotate(90deg);
+        transform: rotate(0deg);
         @include hover() {
           @include themeify {
             color: themed(main-color-3);
@@ -290,7 +302,7 @@ $height_header: map-get($layout, header-height) - $height_header_top;
       }
       &.sub_navigation-open {
         .navigation__item-sub_icon {
-          transform: rotate(0deg);
+          transform: rotate(180deg);
         }
         .sub_navigation {
           max-height: 2000px;
@@ -314,7 +326,6 @@ $height_header: map-get($layout, header-height) - $height_header_top;
       @include transition(max-height .2s ease);
       @include overflow(auto, "y");
       @include scrollbar-none;
-      @include box-shadow(2);
       > ul {
         height: auto;
         padding-bottom: map-get($spacers, 2);
@@ -342,6 +353,7 @@ $height_header: map-get($layout, header-height) - $height_header_top;
     &.navigation--mobile-open {
       .navigation {
         max-height: 2000px;
+        @include box-shadow(1);
       }
     }
   }
