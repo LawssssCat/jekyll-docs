@@ -157,18 +157,6 @@ $height_header: map-get($layout, header-height) - $height_header_top;
       }
     }
   }
-  // nav active
-  @mixin nav_item_active {
-    .navigation__item-link {
-      @include themeify {
-        @include link-colors(
-          $clr: themed(main-color-1),
-          $hover-clr: themed(main-color-1),
-          // $pseudo: false
-        );
-      }
-    }
-  }
 
   .navigation__item {
     white-space: nowrap;
@@ -176,33 +164,10 @@ $height_header: map-get($layout, header-height) - $height_header_top;
       @include transition(transform .2s map-get($animation-timing-function, 2));
       display: none;
     }
-    @include active() {
-      @include nav_item_active();
-    }
-    @include hover() {
-      @include nav_item_active();
-    }
   }
 
-  // sub nav active
-  %sub_navigation_active {
-    .sub_navigation__item-link {
-      @include themeify {
-        @include link-colors(themed(main-color-1), themed(main-color-1));
-      }
-    }
-  }
   .sub_navigation__item {
-    a {
-      font-weight: map-get($base, font-weight);
-    }
     white-space: nowrap;
-    @include hover() {
-      @extend %sub_navigation_active;
-    }
-    @include active() {
-      @extend %sub_navigation_active;
-    }
   }
 
   .sub_navigation {

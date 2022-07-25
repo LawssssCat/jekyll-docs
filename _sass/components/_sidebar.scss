@@ -28,7 +28,8 @@ $_sidebar_width: map-get($layout, sidebar-width);
   white-space: nowrap;
   @include split-line(right);
   @include overflow(auto);
-  @include transition(transform map-get($animation, duration));
+  // @include transition(transform map-get($animation, duration));
+  @include transition(margin-left map-get($animation, duration));
   @include themeify() {
     color: themed(text-color);
     background-color: themed(background-color);
@@ -45,8 +46,9 @@ $_sidebar_width: map-get($layout, sidebar-width);
     opacity: 1;
   }
   .page__sidebar {
-    position: fixed;
-    @include transform(translate(- $_sidebar_width, 0));
+    // position: fixed;
+    // @include transform(translate(- $_sidebar_width, 0));
+    margin-left: - $_sidebar_width;
   }
   .show-sidebar { // show
     .page__actions {
@@ -54,7 +56,8 @@ $_sidebar_width: map-get($layout, sidebar-width);
     }
     .page__sidebar {
       z-index: map-get($z-indexes, sidebar-active);
-      @include transform(translate(0));
+      // @include transform(translate(0));
+      margin-left: 0;
     }
   }
 }

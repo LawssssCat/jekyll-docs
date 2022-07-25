@@ -43,13 +43,9 @@
           {%- include snippets/get-nav-url.html path=page.url -%}
           {%- assign _page_url = __return -%}
 
-          {%- include snippets/get-nav-active.html 
-            item=_item 
-            page=page -%}
-          {%- assign _nav_active = __return -%}
           {%- include snippets/get-nav-title.html nav=_item -%}
           {%- assign _nav_title = __return -%}
-          <li class="navigation__item {{ _nav_active }}">
+          <li class="navigation__item">
             <a class="navigation__item-link" href="{{ _nav_url }}">{{ _nav_title }}</a>
             <!-- sub navs -->
             {%- if _item.key != nil -%}
@@ -65,11 +61,7 @@
                     {%- assign _sub_nav_title = __return -%}
                     {%- include snippets/get-nav-url.html path=_sub_item.url -%}
                     {%- assign _sub_nav_url = __return -%}
-                    {%- include snippets/get-nav-active.html 
-                      item=_sub_item 
-                      page=page -%}
-                    {%- assign _sub_nav_active = __return -%}
-                    <li class="sub_navigation__item {{ _sub_nav_active }}">
+                    <li class="sub_navigation__item">
                       <a class="sub_navigation__item-link" href="{{ _sub_nav_url }}" title="{{ _sub_item.description }}">{{ _sub_nav_title }}</a>
                     </li>
                   {%- endfor -%}
