@@ -9,7 +9,10 @@
 /*
   $type = dark/light
 */
-@function get-color-adjust($type, $color, $level: default) {
+@function get-color-adjust($color, $type: default, $level: default) {
+  @if $type == default {
+    $type: get-color-theme($color);
+  }
   @if $level == default {
     $level: 1;
   }
