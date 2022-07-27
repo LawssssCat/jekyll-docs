@@ -1,0 +1,11 @@
+@mixin column($count, $gap: default) {
+  @if $gap == default {
+    $gap: map-get($spacers, 3);
+  }
+  column-count: $count;
+  -webkit-column-count: $count;
+  -moz-column-count: $count;
+  column-gap: $gap;
+  -webkit-column-gap: $gap;
+  -moz-column-gap: $gap;
+}

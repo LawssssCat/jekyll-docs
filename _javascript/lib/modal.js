@@ -1,4 +1,5 @@
 const logger = require('logger');
+const TOOL = require('tool-box');
 
 class Modal {
   constructor(options={}) {
@@ -14,16 +15,9 @@ class Modal {
     // status
     this.isShow = false;
   }
-  scrollDisable() {
-    this.containerOverflowY = this.container.style.overflowY;
-    this.container.style.overflowY = 'hidden';
-  }
-  scrollEnable() {
-    this.container.style.overflowY = this.containerOverflowY || '';
-  }
   show() {
     if(!this.isShow) {
-      this.scrollDisable();
+      TOOL.lockScroll();
       this.container.appendChild(this.node);
       this.node.classList.add(this.config.modalShowClass);
       this.showCallback && this.showCallback(this);
@@ -32,7 +26,7 @@ class Modal {
   }
   hide() {
     if(this.isShow) {
-      this.scrollEnable();
+      TOOL.unlockScroll();
       let TransitionedFunc;
       this.node.addEventListener('transitionend', TransitionedFunc = () => {
         this.node.removeEventListener('transitionend', TransitionedFunc);

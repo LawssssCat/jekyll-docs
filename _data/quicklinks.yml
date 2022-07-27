@@ -14,19 +14,80 @@ layouts:
       - url: /articles/item.html
       - url: /articles/grid.html
 
+tools: 
+  - url: /tools
+
+site:
+  - title: Guides
+    details:
+      - url: 
+
+jekyll-attr:
+  url: /jekyll
 jekyll:
-  - title: Jekyll
-    url: /jekyll
-  - title: Theme
+  - titles: 
+      en      : &EN       ruby
+      en-GB   : *EN
+      en-US   : *EN
+      en-CA   : *EN
+      en-AU   : *EN
+      zh-Hans : &ZH_HANS  
+      zh      : *ZH_HANS
+      zh-CN   : *ZH_HANS
+      zh-SG   : *ZH_HANS
+    url: /ruby
+  - titles:
+      en      : &EN       Themes
+      en-GB   : *EN
+      en-US   : *EN
+      en-CA   : *EN
+      en-AU   : *EN
+      zh-Hans : &ZH_HANS  主题
+      zh      : *ZH_HANS
+      zh-CN   : *ZH_HANS
+      zh-SG   : *ZH_HANS
     url: /theme
-  - title: Plugins
+  - titles:
+      en      : &EN       Plugs
+      en-GB   : *EN
+      en-US   : *EN
+      en-CA   : *EN
+      en-AU   : *EN
+      zh-Hans : &ZH_HANS  插件
+      zh      : *ZH_HANS
+      zh-CN   : *ZH_HANS
+      zh-SG   : *ZH_HANS
     url: /plugins
     details:
       - url: /plugins/emoji
         title: emoji
 
+liquid:
+  - titles: 
+      en      : &EN       liquid
+      en-GB   : *EN
+      en-US   : *EN
+      en-CA   : *EN
+      en-AU   : *EN
+      zh-Hans : &ZH_HANS  
+      zh      : *ZH_HANS
+      zh-CN   : *ZH_HANS
+      zh-SG   : *ZH_HANS
+    url: /liquid
+
+markdown-attr:
+  url: /markdown
+  titles: 
+    en      : &EN       markdown
+    en-GB   : *EN
+    en-US   : *EN
+    en-CA   : *EN
+    en-AU   : *EN
+    zh-Hans : &ZH_HANS  
+    zh      : *ZH_HANS
+    zh-CN   : *ZH_HANS
+    zh-SG   : *ZH_HANS
 markdown:
-  - url: /markdown
   - url: /markdown/kramdown
     details:
       - url: /markdown/kramdown/gfm
