@@ -115,6 +115,7 @@ $animation: (
 $animation-timing-function: (
   1:                      ease-in-out,
   2:                      cubic-bezier(.68, -.55, .27, 1.55),
+  3:                     cubic-bezier(.215, .61, .355, 1)
 );
 
 $clickable: (

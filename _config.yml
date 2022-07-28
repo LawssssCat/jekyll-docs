@@ -114,8 +114,6 @@ collections:
     output: true
   liquid:
     output: true
-  markdown:
-    output: true
   jekyll:
     output: true
   sample_articles:
@@ -144,15 +142,6 @@ defaults:
         toc: true
       sidebar:
         quicklinks: docs-en
-  - scope:
-      path: "_markdown/"
-      type: markdown
-    values:
-      nav_key: markdown
-      aside:
-          toc: true
-      sidebar: 
-          quicklinks: markdown
   - scope:
       path: "_jekyll/"
       type: jekyll

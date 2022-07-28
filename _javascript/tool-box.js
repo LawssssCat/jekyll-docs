@@ -84,7 +84,32 @@ TOOL.positionRelative = function(dom, container=document.body) {
   };
 };
 
+TOOL.unlockScroll = function(dom) {
+  const container = dom || window.document.body;
+  if(container.isLockScroll) {
+    container.style.overflowY = '';
+    container.style.marginRight = '';
+  }
+  container.isLockScroll = false;
+};
+
+TOOL.lockScroll = function(dom) {
+  const container = dom || window.document.body;
+  if(!container.isLockScroll) {
+    if(TOOL.isOverflowY(container)) {
+      container.style.overflowY = 'hidden';
+      container.style.marginRight = '16px';
+    } else {
+      container.style.overflowY = 'hidden';
+    }
+  }
+  container.isLockScroll = true;
+};
+
 TOOL.isOverflowY = function(dom) {
+  if(document.body == dom) {
+    return document.body.scrollHeight > (window.innerHeight || document.documentElement.clientHeight);
+  }
   return dom.offsetHeight < dom.scrollHeight;
 };
 
@@ -118,7 +143,7 @@ function px2Float(px) {
 }
 
 /**
- * margin + padding + content + padding + margin
+ * padding + content + padding
  * return content
  */
 TOOL.innerWidth = function(dom) {

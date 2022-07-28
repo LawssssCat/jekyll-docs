@@ -8,7 +8,7 @@ const sources = window.VARIABLES.sources;
 
 lazyload.js([sources.popper.js], () => {
   // <figure class="highlight"><pre><code class="language-liquid" data-lang="liquid">............</code>
-  const tagRenderSelector='figure.highlight';
+  const tagRenderSelector='figure.highlight:not(.no-code-header)';
   window.document.querySelectorAll(tagRenderSelector).forEach(dom => {
     const pre = dom.querySelector('pre');
     if(pre) {
@@ -19,7 +19,7 @@ lazyload.js([sources.popper.js], () => {
     }
   });
   // <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...</code>
-  const kramRenderSelector='.highlighter-rouge';
+  const kramRenderSelector='.highlighter-rouge:not(.no-code-header)';
   window.document.querySelectorAll(kramRenderSelector).forEach(dom => {
     const pre = dom.querySelector('pre');
     if(pre) {

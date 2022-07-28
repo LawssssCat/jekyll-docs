@@ -1,0 +1,6 @@
+{%- assign __quicklinks_id = include.id -%}
+
+{%- include snippets/get-quicklinks-attr.html id=__quicklinks_id -%}
+{%- assign __quicklink_attr = __return -%}
+
+{%- assign __return = __quicklink_attr.url -%}

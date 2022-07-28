@@ -36,45 +36,102 @@
     <div class="navigation">
       <ul>
         <!-- top navs -->
-        {%- assign _top_headers = site.data.navigation.header | where: 'parent', nil -%}
-        {%- for _item in _top_headers -%}
-          {%- include snippets/get-nav-url.html path=_item.url -%}
-          {%- assign _nav_url = __return -%}
-          {%- include snippets/get-nav-url.html path=page.url -%}
-          {%- assign _page_url = __return -%}
-
+        {%- for _item in site.data.navigation.header -%}
           {%- include snippets/get-nav-title.html nav=_item -%}
           {%- assign _nav_title = __return -%}
-          <li class="navigation__item">
-            <a class="navigation__item-link" href="{{ _nav_url }}">{{ _nav_title }}</a>
-            <!-- sub navs -->
-            {%- if _item.key != nil -%}
-            {%- assign _sub_navs = site.data.navigation.header | where: 'parent', _item.key -%}
-            {%- assign _sub_navs_num = _sub_navs | size -%}
-            {%- if _sub_navs_num > 0 -%}
-              &nbsp;
-              <i class="fas fa-angle-down navigation__item-sub_icon"></i>
-              <div class="sub_navigation">
-                <ul>
-                  {%- for _sub_item in _sub_navs -%}
-                    {%- include snippets/get-nav-title.html nav=_sub_item -%}
-                    {%- assign _sub_nav_title = __return -%}
-                    {%- include snippets/get-nav-url.html path=_sub_item.url -%}
-                    {%- assign _sub_nav_url = __return -%}
-                    <li class="sub_navigation__item">
-                      <a class="sub_navigation__item-link" href="{{ _sub_nav_url }}" title="{{ _sub_item.description }}">{{ _sub_nav_title }}</a>
-                    </li>
-                  {%- endfor -%}
-                </ul>
-              </div>
-            {%- endif -%}
-            {%- endif -%}
-            <!-- sub navs end -->
-          </li>
+          {%- assign _type = _item.type | default: 'link' -%}
+          {%- case _type -%}
+            {%- when 'link' -%}{%- comment -%} ================================================ {%- endcomment -%}
+              <!-- link -->
+              {%- include snippets/get-accessible-url.html url=_item.url -%}
+              {%- assign _nav_url = __return -%}
+              <li class="navigation__item">
+                <a class="navigation__item-link" href="{{ _nav_url }}">
+                  <span>{{ _nav_title }}</span>
+                </a>
+              </li>
+            {%- when 'quicklinks' -%}{%- comment -%} ================================================ {%- endcomment -%}
+              <!-- quicklinks -->
+              <li class="navigation__item">
+                <a class="navigation__item-link" href="javascript:void(0)">
+                  <span>{{ _nav_title }}</span>
+                  <i class="fas fa-angle-down navigation__item-sub_icon"></i>
+                </a>
+                <div class="quicklinks-block">
+                  <div class="quicklinks-block-left-background"></div>
+                  <div class="main quicklinks-block-content">
+                    <div class="quicklinks-block-left">
+                      <ul class="quicklinks-block-left-menu">
+                        {%- for _quicklinks_info in _item.quicklinks -%}
+                          {%- assign _quicklinks = site.data.quicklinks[_quicklinks_info.id] -%}
+                          {%- include snippets/get-nav-title.html nav=_quicklinks_info -%}{%- comment -%} ======= title ======= {%- endcomment -%}
+                          {%- assign _nav_quicklinks_title = __return -%}
+                          {%- unless _nav_quicklinks_title -%}
+                            {%- include snippets/get-quicklinks-title.html id=_quicklinks_info.id -%}
+                            {%- assign _nav_quicklinks_title = __return | default: _quicklinks_info.id -%}
+                          {%- endunless -%}
+                          {%- assign _quicklinks_title_href = "javascript:void(0)" -%}{%- comment -%} ======== href ======== {%- endcomment -%}
+                          {%- if _quicklinks_info.url -%}
+                            {%- include snippets/get-accessible-url.html url=_quicklinks_info.url -%}
+                            {%- assign _quicklinks_title_href = __return -%}
+                          {%- else -%}
+                            {%- include snippets/get-quicklinks-url.html id=_quicklinks_info.id -%}
+                            {%- assign _nav_quicklinks_href = __return -%}
+                            {%- if _nav_quicklinks_href -%}
+                              {%- include snippets/get-accessible-url.html url=_nav_quicklinks_href -%}
+                              {%- assign _quicklinks_title_href = __return -%}
+                            {%- endif -%}
+                          {%- endif -%}
+                          <li>
+                            <a class="quicklinks-title" href="{{ _quicklinks_title_href }}">
+                              <div class="quicklinks-title-text">
+                                {{ _nav_quicklinks_title }}
+                                <div class="quicklinks-border"></div>
+                              </div>
+                            </a>
+                          </li>
+                        {%- endfor -%}
+                      </ul>
+                    </div>
+                    <div class="quicklinks-block-right">
+                      {%- for _quicklinks_info in _item.quicklinks -%}
+                        {%- assign _quicklinks = site.data.quicklinks[_quicklinks_info.id] -%}
+                        <div class="quicklinks-block-right-menu">
+                          {%- for _quicklink in _quicklinks -%}
+                            {%- include snippets/get-nav-title.html nav=_quicklink -%}{%- comment -%} ======= title ======= {%- endcomment -%}
+                            {%- assign _quicklink_title = __return -%}
+                            <div class="quicklinks-block-right-menu-item">
+                              <!-- title -->
+                              {%- if _quicklink.url -%}
+                                {%- include snippets/get-accessible-url.html url=_quicklink.url -%}
+                                {%- assign _quicklink_url = __return -%}
+                                <a class="quicklinks-block-right-menu-item-title" href="{{ _quicklink_url }}">{{ _quicklink_title }} <i class="fas fa-angle-right"></i></a>
+                              {%- else -%}
+                                <a class="quicklinks-block-right-menu-item-title" href="javascript:void(0)">{{ _quicklink_title }}</a>
+                              {%- endif -%}
+                              <!-- links -->
+                              <div>
+                                {%- for _link in _quicklink.details -%}
+                                  {%- include snippets/get-accessible-url.html url=_link.url -%}
+                                  {%- assign _link_url = __return -%}
+                                  {%- assign _link_title = _link.title -%}
+                                  {%- unless _link_title -%}
+                                    {%- include snippets/get-article-title.html article_id=_link.url -%}
+                                    {%- assign _link_title = __return -%}
+                                  {%- endunless -%}
+                                  <a class="quicklinks-block-right-menu-item-link" href="{{ _link_url }}">{{ _link_title }}</a>
+                                {%- endfor -%}
+                              </div>
+                            </div>
+                          {%- endfor -%}
+                        </div>
+                      {%- endfor -%}
+                    </div>
+                  </div>
+                </div>
+              </li>
+          {%- endcase -%}
         {%- endfor -%}
-        <!-- top navs end -->
-      </ul>
     </div>
   </div>
 </header>
-<div class="header__bottom"></div>

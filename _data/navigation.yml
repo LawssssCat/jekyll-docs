@@ -1,65 +1,46 @@
 header:
-  - title: Jekyll
-    url: /jekyll
-    key: jekyll
-  - titles: 
-      en      : &EN       Themes
+  - title: Docs
+    type: quicklinks
+    quicklinks:
+      - id: jekyll
+        title: Jekyll
+      - id: liquid
+      - id: site
+      - id: tools
+  - title: Archive
+    url: /archive
+  - type: link
+    titles: 
+      en      : &EN       About
       en-GB   : *EN
       en-US   : *EN
       en-CA   : *EN
       en-AU   : *EN
-      zh-Hans : &ZH_HANS  主题
+      zh-Hans : &ZH_HANS  关于
       zh      : *ZH_HANS
       zh-CN   : *ZH_HANS
       zh-SG   : *ZH_HANS
-    url: /theme
-    parent: jekyll
-  - titles: 
-      en      : &EN       Plugs
-      en-GB   : *EN
-      en-US   : *EN
-      en-CA   : *EN
-      en-AU   : *EN
-      zh-Hans : &ZH_HANS  插件
-      zh      : *ZH_HANS
-      zh-CN   : *ZH_HANS
-      zh-SG   : *ZH_HANS
-    url: /plugins
-    parent: jekyll
-  - titles: 
-      en      : &EN       markdown
-      en-GB   : *EN
-      en-US   : *EN
-      en-CA   : *EN
-      en-AU   : *EN
-      zh-Hans : &ZH_HANS  
-      zh      : *ZH_HANS
-      zh-CN   : *ZH_HANS
-      zh-SG   : *ZH_HANS
-    url: /markdown
-    key: markdown
-  - titles: 
-      en      : &EN       liquid
-      en-GB   : *EN
-      en-US   : *EN
-      en-CA   : *EN
-      en-AU   : *EN
-      zh-Hans : &ZH_HANS  
-      zh      : *ZH_HANS
-      zh-CN   : *ZH_HANS
-      zh-SG   : *ZH_HANS
-    url: /liquid
-  - titles: 
-      en      : &EN       ruby
-      en-GB   : *EN
-      en-US   : *EN
-      en-CA   : *EN
-      en-AU   : *EN
-      zh-Hans : &ZH_HANS  
-      zh      : *ZH_HANS
-      zh-CN   : *ZH_HANS
-      zh-SG   : *ZH_HANS
-    url: /ruby
+      zh-Hant : &ZH_HANT  關於
+      zh-TW   : *ZH_HANT
+      zh-HK   : *ZH_HANT
+      ko      : &KO       소개
+      ko-KR   : *KO
+      fr      : &FR       À propos
+      fr-BE   : *FR
+      fr-CA   : *FR
+      fr-CH   : *FR
+      fr-FR   : *FR
+      fr-LU   : *FR
+      tr      : &TR       Hakkında
+    url: /about
+
+
+
+
+
+
+
+
   - titles: 
       en      : &EN       Docs
       en-GB   : *EN
@@ -88,32 +69,3 @@ header:
     url: /samples
     key: samples
     parent: archive33965
-  - title: Tools
-    url: /tools
-    parent: archive33965
-  - title: Archive
-    url: /archive
-    key: archive33965
-  - titles: 
-      en      : &EN       About
-      en-GB   : *EN
-      en-US   : *EN
-      en-CA   : *EN
-      en-AU   : *EN
-      zh-Hans : &ZH_HANS  关于
-      zh      : *ZH_HANS
-      zh-CN   : *ZH_HANS
-      zh-SG   : *ZH_HANS
-      zh-Hant : &ZH_HANT  關於
-      zh-TW   : *ZH_HANT
-      zh-HK   : *ZH_HANT
-      ko      : &KO       소개
-      ko-KR   : *KO
-      fr      : &FR       À propos
-      fr-BE   : *FR
-      fr-CA   : *FR
-      fr-CH   : *FR
-      fr-FR   : *FR
-      fr-LU   : *FR
-      tr      : &TR       Hakkında
-    url: /about

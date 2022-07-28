@@ -13,6 +13,7 @@
     $color-thumb: rgb(136, 136, 136);
   }
   &::-webkit-scrollbar {
+    display: initial;
     @if $direction == "vertical" {
       width: $size;
     } @else if $direction == "horizontal" { /* horizontal */

@@ -11,7 +11,7 @@ $color-rainbow-y: linear-gradient(180deg, $color-one, $color-two, $color-three, 
 $main-color-1: #fb7299;
 
 $text-color-3: #505050;
-$main-color-3: #f6f9fa;
+$main-color-3: #fff;
 
 $background-color: #fff;
 
@@ -54,7 +54,6 @@ $theme-default: (
   // header and footer colors
   header-text-color: $text-color-3,
   header-background: $main-color-3,
-  header-background-top: $color-rainbow,
   // header-background: linear-gradient(60deg,#f6f9fa 0%, #e6f9ea 100%),
 
   footer-text-color: $text-color-3,
