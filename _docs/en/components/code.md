@@ -4,7 +4,7 @@ title: Code
 permalink: /docs/en/components/code
 ---
 
-See [article of this site]({%  link _markdown/highlight/rouge.md %}) or [article of official site](https://jekyllrb.com/docs/liquid/tags/#code-snippet-highlighting) for more details about code highlight.
+See [article of this site]({%  link _jekyll/markdown-highlight.md %}) or [article of official site](https://jekyllrb.com/docs/liquid/tags/#code-snippet-highlighting) for more details about code highlight.
 
 Here are some highlights of code.
 

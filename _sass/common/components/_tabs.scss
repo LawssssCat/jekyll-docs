@@ -9,21 +9,22 @@
     .tab-nav {
       @include button;
       @include button-size("md");
+      font-weight: map-get($base, font-weight);
       @include themeify {
-        @include button--outline(text-color, main-color-3);
+        color: themed(text-color-3);
+        border: 1px solid themed(border-color);
+      }
+      margin-bottom: -1px;
+      @include active {
+        font-weight: map-get($base, font-weight-bold);
+        @include themeify {
+          border-bottom-color: themed(background-color);
+        }
       }
       @include flexbox();
       @include align-items(center);
       margin-right: -1px;
       $_radius: map-get($base, border-radius);
-      &:first-child {
-        border-top-left-radius: $_radius;
-        border-bottom-left-radius: $_radius;
-      }
-      &:last-child {
-        border-top-right-radius: $_radius;
-        border-bottom-right-radius: $_radius;
-      }
     }
   }
   .tab-contents {
@@ -31,6 +32,9 @@
       display: none;
       &.active {
         display: block;
+      }
+      figure.highlight, .highlighter-rouge {
+        margin-top: 0;
       }
     }
   }

@@ -36,4 +36,7 @@
       border: 1px solid themed(red);
     }
   }
+  .alert-compact {
+    padding: map-get($spacers, 1) map-get($spacers, 1);
+  }
 }

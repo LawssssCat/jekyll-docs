@@ -134,6 +134,12 @@ a {
   }
 }
 
+ul,
+ol,
+dl {
+  list-style-position: outside;
+}
+
 pre, code {
   font-family: map-get($base, font-family-code);
 }

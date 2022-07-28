@@ -26,6 +26,20 @@ jekyll-attr:
   url: /jekyll
 jekyll:
   - titles: 
+      en      : &EN       markdown
+      en-GB   : *EN
+      en-US   : *EN
+      en-CA   : *EN
+      en-AU   : *EN
+      zh-Hans : &ZH_HANS  
+      zh      : *ZH_HANS
+      zh-CN   : *ZH_HANS
+      zh-SG   : *ZH_HANS
+    details:
+      - url: /markdown/syntax
+      - url: /markdown/processor
+      - url: /markdown/highlight
+  - titles: 
       en      : &EN       ruby
       en-GB   : *EN
       en-US   : *EN
@@ -74,29 +88,6 @@ liquid:
       zh-CN   : *ZH_HANS
       zh-SG   : *ZH_HANS
     url: /liquid
-
-markdown-attr:
-  url: /markdown
-  titles: 
-    en      : &EN       markdown
-    en-GB   : *EN
-    en-US   : *EN
-    en-CA   : *EN
-    en-AU   : *EN
-    zh-Hans : &ZH_HANS  
-    zh      : *ZH_HANS
-    zh-CN   : *ZH_HANS
-    zh-SG   : *ZH_HANS
-markdown:
-  - url: /markdown/kramdown
-    details:
-      - url: /markdown/kramdown/gfm
-  - title: Highlight
-    details: 
-      - url: /markdown/highlight/rouge
-      - url: /markdown/highlight/compare-rouge-vs-coderay
-      - url: /markdown/highlight/coderay
-      - url: /markdown/highlight/pygments
 
 docs-en:
   - title: Start

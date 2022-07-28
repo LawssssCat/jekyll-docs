@@ -261,14 +261,6 @@ $height_header: map-get($layout, header-height);
           vertical-align: top;
           break-inside: avoid;
         }
-        .quicklinks-block-right-menu-item-title {
-          display: block;
-          padding-bottom: map-get($spacers, 3);
-          font-weight: map-get($base, font-weight-bold);
-          @include themeify {
-            color: themed(main-color-1);
-          }
-        }
         .quicklinks-block-right-menu-item-title, .quicklinks-block-right-menu-item-link {
           display: block;
           overflow: hidden;
@@ -278,6 +270,15 @@ $height_header: map-get($layout, header-height);
           text-decoration: none;
           text-overflow: ellipsis;
           white-space: nowrap;
+        }
+        .quicklinks-block-right-menu-item-title {
+          display: block;
+          padding-bottom: map-get($spacers, 2);
+          font-size: map-get($base, font-size);
+          font-weight: map-get($base, font-weight-bold);
+          @include themeify {
+            color: themed(main-color-1);
+          }
         }
         .quicklinks-block-right-menu {
           position: absolute;

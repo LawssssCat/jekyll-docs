@@ -3,7 +3,7 @@ header:
     type: quicklinks
     quicklinks:
       - id: jekyll
-      - id: markdown
+        title: Jekyll
       - id: liquid
       - id: site
       - id: tools

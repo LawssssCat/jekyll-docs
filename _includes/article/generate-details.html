@@ -1,7 +1,13 @@
 {% assign _summaruy      = include.summary  %}
 {% assign _code          = include.code     %}
+{% assign _open          = include.open     %}
 
-<details>
-  <summary>{{ _summaruy }}</summary>
+{%- assign _details_attr = "" -%}
+{%- if _open==true -%}
+  {%- assign _details_attr = _details_attr | append: " open" -%}
+{%- endif -%}
+
+<details {{ _details_attr }}>
+  <summary title="click to show details">{{ _summaruy }}</summary>
 {{ _code }}
 </details>
