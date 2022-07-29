@@ -112,8 +112,6 @@ collections:
     permalink: /:name
   docs:
     output: true
-  liquid:
-    output: true
   jekyll:
     output: true
   sample_articles:
@@ -151,15 +149,6 @@ defaults:
           toc: true
       sidebar: 
           quicklinks: jekyll
-  - scope:
-      path: "_liquid/"
-      type: liquid
-    values:
-      nav_key: liquid
-      aside:
-          toc: true
-      sidebar: 
-          quicklinks: liquid
 
 # see http://jch.penibelst.de/
 compress_html:

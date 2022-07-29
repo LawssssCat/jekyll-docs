@@ -204,7 +204,7 @@ $height_header: map-get($layout, header-height);
         height: 100%;
         @include scrollbar-none;
         .quicklinks-block-left-menu, .quicklinks-block-right-menu {
-          padding-top: map-get($spacers, 5);
+          padding-top: map-get($spacers, 4);
           padding-bottom: map-get($spacers, 3);
           margin: 0;
         }
@@ -260,6 +260,7 @@ $height_header: map-get($layout, header-height);
         .quicklinks-block-right-menu-item {
           vertical-align: top;
           break-inside: avoid;
+          padding-bottom: map-get($spacers, 3);
         }
         .quicklinks-block-right-menu-item-title, .quicklinks-block-right-menu-item-link {
           display: block;
@@ -273,7 +274,7 @@ $height_header: map-get($layout, header-height);
         }
         .quicklinks-block-right-menu-item-title {
           display: block;
-          padding-bottom: map-get($spacers, 2);
+          padding-bottom: map-get($spacers, 1);
           font-size: map-get($base, font-size);
           font-weight: map-get($base, font-weight-bold);
           @include themeify {
