@@ -72,9 +72,9 @@ class HeaderNav {
   setHeight(nav, h) {
     if(nav.hasSubNav) {
       if(!h) {
-        const l = nav.subLeftContent.offsetHeight;
+        const l = TOOL.height(nav.subLeftContent);
         const r = Math.max(...nav.subRgithContent.map(menu => {
-          return menu.dom.offsetHeight;
+          return TOOL.height(menu.dom);
         }));
         h = Math.max(l, r);
       }

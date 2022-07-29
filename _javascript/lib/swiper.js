@@ -107,7 +107,7 @@ class Swiper {
   }
   getSlideIndexAdjust() {
     const offsetX = this.slideContainerTranslateOffseX;
-    const slideWidth = TOOL.innerWidth(this.slideContainer);
+    const slideWidth = TOOL.outterWidth(this.slideContainer);
     if(Math.abs(offsetX) > (slideWidth/4)) {
       if(offsetX < 0) { // end ← start
         return this.slideIndexCur + 1;
@@ -140,7 +140,7 @@ class Swiper {
     }
     // offset
     const offsetX = this.slideContainerTranslateOffseX = options.offset ? options.offset : 0;
-    const slideWidth = TOOL.innerWidth(this.slideContainer);
+    const slideWidth = TOOL.outterWidth(this.slideContainer);
     const translateXOld = this.slideContainerTranslateX;
     const translateX = this.slideContainerTranslateX = offsetX - (this.slideIndexCur * slideWidth);
     if(translateX != translateXOld) {

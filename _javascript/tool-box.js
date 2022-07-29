@@ -121,18 +121,20 @@ TOOL.isHidden = function(element) {
   // var style = window.getComputedStyle(el);//el即DOM元素
   // return (style.display === 'none');
   return (!element)
-    || (TOOL.getStyle(element, 'display') == 'none')
+    || (TOOL.getStyle(element)['display'] == 'none')
     || (element.offsetHeight === 0 && element.offsetWidth === 0);
 };
 
-TOOL.getStyle = function(obj, attr) {
+TOOL.getStyle = function(obj) {
+  let style;
   if (obj.currentStyle) { // compatible IE
-    return obj.currentStyle[attr];
+    style = obj.currentStyle;
   } else if (window.getComputedStyle) {
-    return window.getComputedStyle(obj, null)[attr];
+    style = window.getComputedStyle(obj, null);
   } else {
-    return obj.style[attr];
+    style = obj.style;
   }
+  return style;
 };
 
 function px2Float(px) {
@@ -142,27 +144,58 @@ function px2Float(px) {
   return float?float:0;
 }
 
-/**
- * padding + content + padding
- * return content
- */
-TOOL.innerWidth = function(dom) {
-  if(!dom) return 0;
-  const flag = (TOOL.getStyle(dom, 'display') == 'none');
+function cloneDisplayNone(dom, callback) {
+  const flag = (TOOL.getStyle(dom)['display'] == 'none');
   if(flag) {
     dom = dom.cloneNode(true);
     dom.style.position = 'absolute';
+    dom.style.visibility = 'hidden';
     dom.style.top = '-3000px';
     dom.style.display = 'block';
     document.getElementsByTagName('body')[0].appendChild(dom);
   }
-  const paddingLeft      =px2Float(TOOL.getStyle(dom, 'paddingLeft')),
-    innerWidth           =px2Float(TOOL.getStyle(dom, 'width')),
-    paddingRight         =px2Float(TOOL.getStyle(dom, 'paddingRight'));
+  const result = callback(dom);
   if(flag) {
     dom.parentNode.removeChild(dom);
   }
-  return -paddingLeft+innerWidth-paddingRight;
+  return result;
+}
+
+TOOL.height = function(dom) {
+  if(!dom) return 0;
+  return cloneDisplayNone(dom, (dom) => {
+    const style = TOOL.getStyle(dom);
+    const  innerHeight           =px2Float(style['height']);
+    return innerHeight;
+  });
+};
+
+/**
+ * content
+ * return content
+ */
+TOOL.innerWidth = function(dom) {
+  if(!dom) return 0;
+  return cloneDisplayNone(dom, (dom) => {
+    const style = TOOL.getStyle(dom);
+    const paddingLeft      =px2Float(style['paddingLeft']),
+      innerWidth           =px2Float(style['width']),
+      paddingRight         =px2Float(style['paddingRight']);
+    return -paddingLeft+innerWidth-paddingRight;
+  });
+};
+
+/**
+ * padding + content + padding
+ * return content
+ */
+TOOL.width = function(dom) {
+  if(!dom) return 0;
+  return cloneDisplayNone(dom, (dom) => {
+    const style = TOOL.getStyle(dom);
+    const innerWidth           =px2Float(style['width']);
+    return innerWidth;
+  });
 };
 
 /**
@@ -170,10 +203,13 @@ TOOL.innerWidth = function(dom) {
  */
 TOOL.outterWidth = function(dom) {
   if(!dom) return 0;
-  const marginLeft     =px2Float(TOOL.getStyle(dom, 'marginLeft')),
-    marginRight        =px2Float(TOOL.getStyle(dom, 'marginRight')),
-    innerWidth         =TOOL.innerWidth(dom);
-  return marginLeft+innerWidth+marginRight;
+  return cloneDisplayNone(dom, (dom) => {
+    const style = TOOL.getStyle(dom);
+    const marginLeft     =px2Float(style['marginLeft']),
+      marginRight        =px2Float(style['marginRight']),
+      innerWidth         =TOOL.innerWidth(dom);
+    return marginLeft+innerWidth+marginRight;
+  });
 };
 
 /*

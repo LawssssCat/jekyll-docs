@@ -264,9 +264,9 @@ $height_header: map-get($layout, header-height);
         overflow-x: hidden;
         @include flex(1);
         .quicklinks-block-right-menu-item {
+          padding-bottom: map-get($spacers, 3);
           vertical-align: top;
           break-inside: avoid;
-          padding-bottom: map-get($spacers, 3);
         }
         .quicklinks-block-right-menu-item-title, .quicklinks-block-right-menu-item-link {
           display: block;
@@ -289,14 +289,12 @@ $height_header: map-get($layout, header-height);
         }
         .quicklinks-block-right-menu {
           position: absolute;
+          display: none;
           width: 100%;
           padding-left: map-get($spacers, 5);
-          visibility: hidden;
-          opacity: 0; /* visibility to hidden is too slow to overlay with dom that chang visibility to visible */
           @include column(3);
           @include active {
-            visibility: visible;
-            opacity: 1;
+            display: block;
           }
         }
       }
