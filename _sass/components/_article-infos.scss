@@ -31,6 +31,23 @@
     height: $_width;
     padding: calc((#{$_border-width} + #{$_border-width-inner}) / 2);
     border-radius: 50%;
+    @include hover {
+      animation: avator .3s linear;
+    }
+    @keyframes avator {
+      0% {
+        transform: rotate(0deg);
+      }
+      33% {
+        transform: rotate(-30deg);
+      }
+      66% {
+        transform: rotate(30deg);
+      }
+      100% {
+        transform: rotate(0deg);
+      }
+    }
     img {
       $img_width: calc(#{$_width} - ((#{$_border-width} + #{$_border-width-inner})));
       width: $img_width;

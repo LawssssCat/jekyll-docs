@@ -14,6 +14,11 @@ $height_header: map-get($layout, header-height);
     a {
       font-weight: map-get($base, font-weight);
       // text-decoration: none !important;
+      &[href="javascript:void(0)"] {
+        .link-additional-icon {
+          display: none;
+        }
+      }
       @include themeify {
         @include link-colors(
           $clr: themed(header-text-color),
@@ -221,6 +226,7 @@ $height_header: map-get($layout, header-height);
           list-style: none;
         }
         ul > li {
+          padding: map-get($spacers, 1) 0;
           padding-left: map-get($spacers, 4);
           line-height: 2rem;
           .quicklinks-title {
@@ -231,7 +237,7 @@ $height_header: map-get($layout, header-height);
             }
             .quicklinks-border {
               position: absolute;
-              bottom: 4px;
+              bottom: 0;
               width: 100%;
               @include themeify {
                 border-bottom: 2px solid themed(main-color-1);

@@ -85,7 +85,7 @@
                           <li>
                             <a class="quicklinks-title" href="{{ _quicklinks_title_href }}">
                               <div class="quicklinks-title-text">
-                                {{ _nav_quicklinks_title }}
+                                {{ _nav_quicklinks_title }} <i class="fas fa-angle-right link-additional-icon"></i>
                                 <div class="quicklinks-border"></div>
                               </div>
                             </a>
@@ -102,13 +102,14 @@
                             {%- assign _quicklink_title = __return -%}
                             <div class="quicklinks-block-right-menu-item">
                               <!-- title -->
+                              {%- assign _quicklink_url = "javascript:void(0)" -%}
                               {%- if _quicklink.url -%}
                                 {%- include snippets/get-accessible-url.html url=_quicklink.url -%}
                                 {%- assign _quicklink_url = __return -%}
-                                <a class="quicklinks-block-right-menu-item-title" href="{{ _quicklink_url }}">{{ _quicklink_title }} <i class="fas fa-angle-right"></i></a>
-                              {%- else -%}
-                                <a class="quicklinks-block-right-menu-item-title" href="javascript:void(0)">{{ _quicklink_title }}</a>
                               {%- endif -%}
+                              <a class="quicklinks-block-right-menu-item-title" href="{{ _quicklink_url }}">
+                                {{ _quicklink_title }} <i class="fas fa-angle-right link-additional-icon"></i>
+                              </a>
                               <!-- links -->
                               <div>
                                 {%- for _link in _quicklink.details -%}

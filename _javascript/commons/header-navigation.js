@@ -78,6 +78,8 @@ class HeaderNav {
         }));
         h = Math.max(l, r);
       }
+      // max
+      h = h>600 ? 600 : h;
       nav.subBlockDom.style.height = `${h}px`;
     }
   }

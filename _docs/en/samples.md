@@ -1,7 +1,7 @@
 ---
-layout: page
+layout: article
 title: Samples
-# permalink: /samples
+permalink: /samples
 ---
 <div class="layout--articles">
   <section>
