@@ -3,13 +3,15 @@
   @include flexbox();
   @include align-items(center);
   .switch-input {
+    $_transition_time: .1s;
     position: relative;
     $_h: map-get($base, font-size);
     width: $_h * 2;
     height: $_h;
     border-radius: $_h;
     outline: none;
-    @include transition(background .2s map-get($animation-timing-function, 1));
+    @include cursor-clickable;
+    @include transition(background $_transition_time map-get($animation-timing-function, 1));
     @include appearance(none);
     @include themeify {
       background: get-color-adjust($color: themed(background-color), $reverse: true);
@@ -23,7 +25,7 @@
       height: 100%;
       content: "";
       border-radius: 50%;
-      @include transition(left .2s map-get($animation-timing-function, 1));
+      @include transition(left $_transition_time map-get($animation-timing-function, 1));
       @include themeify {
         background: themed(background-color);
         border: 1px solid themed(border-color-l);

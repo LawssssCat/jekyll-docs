@@ -39,27 +39,58 @@ permalink: /docs/en/components/checkbox
 
 <!-- ============================= -->
 {%- capture _code -%}
-<div class="switch-box">
-  <input class="switch-input" type="checkbox" id="switch111">
-  <label class="switch-label" for="switch111">Default switch checkbox input</label>
-</div>
-<div class="switch-box">
-  <input class="switch-input" type="checkbox" id="switch222" checked>
-  <label class="switch-label" for="switch222">Default switch checkbox input</label>
-</div>
-<div class="switch-box">
-  <input class="switch-input" type="checkbox" id="switch333" disabled>
-  <label class="switch-label" for="switch333">Default switch checkbox input</label>
-</div>
-<div class="switch-box">
-  <input class="switch-input" type="checkbox" id="switch444" disabled checked>
-  <label class="switch-label" for="switch444">Default switch checkbox input</label>
+<div id="example-switch">
+  <div class="switch-box">
+    <input class="switch-input" type="checkbox" id="switch111">
+    <label class="switch-label" for="switch111">Default switch checkbox input</label>
+  </div>
+  <div class="switch-box">
+    <input class="switch-input" type="checkbox" id="switch222" checked>
+    <label class="switch-label" for="switch222">Default switch checkbox input</label>
+  </div>
+  <div class="switch-box">
+    <input class="switch-input" type="checkbox" id="switch333" disabled>
+    <label class="switch-label" for="switch333">Default switch checkbox input</label>
+  </div>
+  <div class="switch-box">
+    <input class="switch-input" type="checkbox" id="switch444" disabled checked>
+    <label class="switch-label" for="switch444">Default switch checkbox input</label>
+  </div>
 </div>
 {%- endcapture -%}
 <!-- ============================= -->
-
 {{ _code }}
+<!-- ============================= -->
+<script>
+{%- capture _code_js -%}
+window.document.querySelectorAll('#example-switch .switch-input').forEach(element => {
+  element.addEventListener('click', function() {
+    if(element.checked) {
+      window.alert('checked!');
+    }
+  });
+});
+{%- endcapture -%}
+{{ _code_js }}
+</script>
+<!-- ============================= -->
 
+<!-- ============================= -->
+{%- capture _titles -%}
+html
+<!-- split title -->
+javascript
+{%- endcapture -%}
+<!-- ============================= -->
+{%- capture _contents -%}
 ```html
 {{ _code }}
 ```
+<!-- split content -->
+```javascript
+{{ _code_js }}
+```
+{%- endcapture -%}
+{%- assign _contents = _contents | markdownify -%}
+<!-- ============================= -->
+{%- include article/generate-tabs.html titles=_titles contents=_contents -%}

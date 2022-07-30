@@ -57,9 +57,13 @@ pre {
     @include flexbox();
     @include align-items(stretch);
     @include justify-content(space-between);
-    > div {
+    .code-lang {
       padding: map-get($spacers, 1) map-get($spacers, 3);
       // border-radius: $_border_radius;
+    }
+    .code-toggle-wrapper {
+      padding: map-get($spacers, 1) 0;
+      @include menu(3, 0, nowrap);
     }
     .code-lang {
       @include flexbox();

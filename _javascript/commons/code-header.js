@@ -49,10 +49,44 @@ class CodeHeader {
     header.appendChild(headerLang);
     headerLang.innerHTML = this.lang || '&nbsp;';
     headerLang.classList.add('code-lang');
+    // toggle
+    const headerToggleWrapper = window.document.createElement('ul');
+    header.appendChild(headerToggleWrapper);
+    headerToggleWrapper.classList.add('code-toggle-wrapper');
+    // wrap
+    this.initWrapToggle(headerToggleWrapper);
     // copy
-    const headerCopy = window.document.createElement('div');
-    header.appendChild(headerCopy);
+    this.initCopyToggle(headerToggleWrapper);
+    
+  }
+  initWrapToggle(wrapper) {
+    const headerWrap = window.document.createElement('li');
+    wrapper.appendChild(headerWrap);
+    headerWrap.classList.add('code-toggle-wrap');
+    headerWrap.classList.add('code-toggle');
+    const headerWrapId = TOOL.generateId('code-header-wrap-switch');
+    headerWrap.innerHTML = `
+    <div class="switch-box">
+      <input class="switch-input" type="checkbox" id="${headerWrapId}" checked>
+      <label class="switch-label" for="${headerWrapId}">Wrap</label>
+    </div>
+    `;
+    const toggle = headerWrap.querySelector(`#${headerWrapId}`);
+    let func;
+    toggle.addEventListener('click', func = () => {
+      if(toggle.checked) {
+        this.pre.style.whiteSpace = 'pre-wrap';
+      } else {
+        this.pre.style.whiteSpace = '';
+      }
+    });
+    func();
+  }
+  initCopyToggle(wrapper) {
+    const headerCopy = window.document.createElement('li');
+    wrapper.appendChild(headerCopy);
     headerCopy.classList.add('code-toggle-copy');
+    headerCopy.classList.add('code-toggle');
     headerCopy.setCopyReady = function() {
       this.innerHTML = '<i class="fas fa-clipboard"></i>';
     };
