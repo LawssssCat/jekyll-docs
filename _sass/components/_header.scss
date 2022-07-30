@@ -182,16 +182,16 @@ $height_header: map-get($layout, header-height);
       @include transition(opacity .2s map-get($animation-timing-function, 3));
       @include flexbox();
       @include themeify {
-        $_header_color: themed(header-background);
         .quicklinks-block-left-background, .quicklinks-block-left {
-          @if get-color-theme($_header_color) == "light" {
-            background: get-color-adjust($color: $_header_color, $type: "dark", $level: l-1);
-          } @else {
-            background: get-color-adjust($color: $_header_color, $type: "light", $level: l-1);
-          }
+          background:
+            get-color-adjust(
+              $color: themed(background-color),
+              $level: l-1,
+              $reverse: true
+            );
         }
-        .quicklinks-block-right {
-          background: $_header_color;
+        &, .quicklinks-block-right {
+          background: themed(header-background);
         }
       }
       .quicklinks-block-left-background {
