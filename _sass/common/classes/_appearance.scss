@@ -1,0 +1,12 @@
+@mixin appearance($value: default) {
+  @if $value == default {
+    $value: none;
+  }
+  -webkit-appearance: $value;
+  -moz-appearance: $value;
+  appearance: $value;
+}
+
+.appearance-none {
+  @include appearance(none);
+}

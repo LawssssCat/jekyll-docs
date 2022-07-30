@@ -122,6 +122,7 @@ docs-en:
       - url: /docs/en/components/code
       - url: /docs/en/components/alert
       - url: /docs/en/components/button
+      - url: /docs/en/components/checkbox
       - url: /docs/en/components/icons
       - url: /docs/en/components/images
       - url: /docs/en/components/item

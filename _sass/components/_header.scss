@@ -182,7 +182,6 @@ $height_header: map-get($layout, header-height);
       @include transition(opacity .2s map-get($animation-timing-function, 3));
       @include flexbox();
       @include themeify {
-        $_header_color: themed(header-background);
         .quicklinks-block-left-background, .quicklinks-block-left {
           background:
             get-color-adjust(
@@ -191,8 +190,8 @@ $height_header: map-get($layout, header-height);
               $reverse: true
             );
         }
-        .quicklinks-block-right {
-          background: $_header_color;
+        &, .quicklinks-block-right {
+          background: themed(header-background);
         }
       }
       .quicklinks-block-left-background {
