@@ -17,11 +17,6 @@ layouts:
 tools: 
   - url: /tools
 
-site:
-  - title: Guides
-    details:
-      - url: 
-
 jekyll-attr:
   url: /jekyll
 jekyll:
@@ -50,6 +45,17 @@ jekyll:
       zh-CN   : *ZH_HANS
       zh-SG   : *ZH_HANS
     url: /ruby
+  - titles: 
+      en      : &EN       liquid
+      en-GB   : *EN
+      en-US   : *EN
+      en-CA   : *EN
+      en-AU   : *EN
+      zh-Hans : &ZH_HANS  
+      zh      : *ZH_HANS
+      zh-CN   : *ZH_HANS
+      zh-SG   : *ZH_HANS
+    url: /liquid
   - titles:
       en      : &EN       Themes
       en-GB   : *EN
@@ -76,19 +82,17 @@ jekyll:
       - url: /plugins/emoji
         title: emoji
 
-liquid:
-  - titles: 
-      en      : &EN       liquid
-      en-GB   : *EN
-      en-US   : *EN
-      en-CA   : *EN
-      en-AU   : *EN
-      zh-Hans : &ZH_HANS  
-      zh      : *ZH_HANS
-      zh-CN   : *ZH_HANS
-      zh-SG   : *ZH_HANS
-    url: /liquid
-
+docs-en-attr:
+  titles:
+    en      : &EN       Docs
+    en-GB   : *EN
+    en-US   : *EN
+    en-CA   : *EN
+    en-AU   : *EN
+    zh-Hans : &ZH_HANS  
+    zh      : *ZH_HANS
+    zh-CN   : *ZH_HANS
+    zh-SG   : *ZH_HANS
 docs-en:
   - title: Start
     details:
@@ -98,6 +102,18 @@ docs-en:
         url: /docs/en/structure
       - url: /docs/en/typography
       - url: /docs/en/blog-service-migration
+
+  - titles: 
+      en      : &EN       Samples
+      en-GB   : *EN
+      en-US   : *EN
+      en-CA   : *EN
+      en-AU   : *EN
+      zh-Hans : &ZH_HANS  
+      zh      : *ZH_HANS
+      zh-CN   : *ZH_HANS
+      zh-SG   : *ZH_HANS
+    url: /samples
 
   - title: Components
     details:

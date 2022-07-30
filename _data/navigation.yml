@@ -4,8 +4,8 @@ header:
     quicklinks:
       - id: jekyll
         title: Jekyll
-      - id: liquid
-      - id: site
+      - id: docs-en
+        title: site
       - id: tools
   - title: Archive
     url: /archive
@@ -33,39 +33,3 @@ header:
       fr-LU   : *FR
       tr      : &TR       Hakkında
     url: /about
-
-
-
-
-
-
-
-
-  - titles: 
-      en      : &EN       Docs
-      en-GB   : *EN
-      en-US   : *EN
-      en-CA   : *EN
-      en-AU   : *EN
-      zh-Hans : &ZH_HANS  
-      zh      : *ZH_HANS
-      zh-CN   : *ZH_HANS
-      zh-SG   : *ZH_HANS
-    url: /docs/en/quick-start
-    key: docs
-    parent: archive33965
-    description: |
-      some docs for this site.
-  - titles: 
-      en      : &EN       Samples
-      en-GB   : *EN
-      en-US   : *EN
-      en-CA   : *EN
-      en-AU   : *EN
-      zh-Hans : &ZH_HANS  
-      zh      : *ZH_HANS
-      zh-CN   : *ZH_HANS
-      zh-SG   : *ZH_HANS
-    url: /samples
-    key: samples
-    parent: archive33965

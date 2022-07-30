@@ -14,6 +14,11 @@ $height_header: map-get($layout, header-height);
     a {
       font-weight: map-get($base, font-weight);
       // text-decoration: none !important;
+      &[href="javascript:void(0)"] {
+        .link-additional-icon {
+          display: none;
+        }
+      }
       @include themeify {
         @include link-colors(
           $clr: themed(header-text-color),
@@ -204,7 +209,7 @@ $height_header: map-get($layout, header-height);
         height: 100%;
         @include scrollbar-none;
         .quicklinks-block-left-menu, .quicklinks-block-right-menu {
-          padding-top: map-get($spacers, 5);
+          padding-top: map-get($spacers, 4);
           padding-bottom: map-get($spacers, 3);
           margin: 0;
         }
@@ -221,6 +226,7 @@ $height_header: map-get($layout, header-height);
           list-style: none;
         }
         ul > li {
+          padding: map-get($spacers, 1) 0;
           padding-left: map-get($spacers, 4);
           line-height: 2rem;
           .quicklinks-title {
@@ -231,7 +237,7 @@ $height_header: map-get($layout, header-height);
             }
             .quicklinks-border {
               position: absolute;
-              bottom: 4px;
+              bottom: 0;
               width: 100%;
               @include themeify {
                 border-bottom: 2px solid themed(main-color-1);
@@ -258,6 +264,7 @@ $height_header: map-get($layout, header-height);
         overflow-x: hidden;
         @include flex(1);
         .quicklinks-block-right-menu-item {
+          padding-bottom: map-get($spacers, 3);
           vertical-align: top;
           break-inside: avoid;
         }
@@ -273,7 +280,7 @@ $height_header: map-get($layout, header-height);
         }
         .quicklinks-block-right-menu-item-title {
           display: block;
-          padding-bottom: map-get($spacers, 2);
+          padding-bottom: map-get($spacers, 1);
           font-size: map-get($base, font-size);
           font-weight: map-get($base, font-weight-bold);
           @include themeify {
@@ -282,14 +289,12 @@ $height_header: map-get($layout, header-height);
         }
         .quicklinks-block-right-menu {
           position: absolute;
+          display: none;
           width: 100%;
           padding-left: map-get($spacers, 5);
-          visibility: hidden;
-          opacity: 0; /* visibility to hidden is too slow to overlay with dom that chang visibility to visible */
           @include column(3);
           @include active {
-            visibility: visible;
-            opacity: 1;
+            display: block;
           }
         }
       }

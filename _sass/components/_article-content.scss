@@ -20,35 +20,35 @@
         transform: translateX(-100%);
         @include cursor-clickable;
         @include themeify {
-          @include link-colors(themed(text-color-3));
+          @include link-colors(themed(text-color-3), themed(main-color-1));
           @include hover {
             text-decoration: none;
           }
         }
       }
 
-      $_handing_before_left: 4px;
-      &::before {
-        position: absolute;
-        top: 50%;
-        left: -#{$_handing_before_left};
-        z-index: -1;
-        width: 4px;
-        height: 60%;
-        visibility: hidden;
-        content: "";
-        transform: translateY(-50%);
-        @include themeify {
-          background: themed(main-color-1);
-        }
-      }
-      @include hover() { /* before */
-        &::before {
-          @include transition(width .2s map-get($animation-timing-function, 1) .2s);
-          width: calc(100% + #{$_handing_before_left} * 2);
-          visibility: visible;
-        }
-      }
+      // $_handing_before_left: 4px;
+      // &::before {
+      //   position: absolute;
+      //   top: 50%;
+      //   left: -#{$_handing_before_left};
+      //   z-index: -1;
+      //   width: 4px;
+      //   height: 60%;
+      //   visibility: hidden;
+      //   content: "";
+      //   transform: translateY(-50%);
+      //   @include themeify {
+      //     background: themed(main-color-1);
+      //   }
+      // }
+      // @include hover() { /* before */
+      //   &::before {
+      //     @include transition(width .2s map-get($animation-timing-function, 1) .2s);
+      //     width: calc(100% + #{$_handing_before_left} * 2);
+      //     visibility: visible;
+      //   }
+      // }
     }
     p > img {
       max-width: calc(100%);
