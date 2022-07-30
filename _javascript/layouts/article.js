@@ -54,7 +54,8 @@ lazyload.onload(() => {
 });
 
 function updateArticleHandingDomActive(headingsDom, headingsDomTree, pageScroller) {
-  const myScrollTop = pageScroller.scrollTop + pageScroller.clientHeight/2;
+  const detectHeight = pageScroller.clientHeight/4;
+  const myScrollTop = pageScroller.scrollTop + Math.max(detectHeight, 100);
   let i, activeHeader=null;
   for(i=0; i<headingsDom.length; i++) {
     let currentHeader = headingsDom[i];
