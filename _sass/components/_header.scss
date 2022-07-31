@@ -155,8 +155,11 @@ $height_header: map-get($layout, header-height);
         $_nav_padding: map-get($spacers, 3);
         padding-right: $_nav_padding;
         padding-left: $_nav_padding;
-        &:first-child {
-          padding-left: map-get($spacers, 5);
+        border-bottom: 1px solid transparent;
+        @include hover {
+          @include themeify {
+            border-bottom-color: themed(main-color-1);
+          }
         }
       }
     }
@@ -231,6 +234,8 @@ $height_header: map-get($layout, header-height);
           padding: map-get($spacers, 1) 0;
           padding-left: map-get($spacers, 4);
           line-height: 2rem;
+          border-right: 1px solid transparent;
+          @include transition(border-right .3s map-get($animation-timing-function, 1));
           .quicklinks-title {
             display: block;
           }
@@ -251,6 +256,7 @@ $height_header: map-get($layout, header-height);
           }
           @include active {
             @include themeify {
+              border-right-color: themed(main-color-1);
               .quicklinks-title-text {
                 color: themed(main-color-1);
               }
