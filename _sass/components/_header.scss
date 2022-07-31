@@ -82,7 +82,7 @@ $height_header: map-get($layout, header-height);
   // =================================== navigation toggle ==================================
 
   .navigation__toggle {
-    $_h: map-get($base, font-size-h4) * 1.6;
+    $_h: map-get($base, font-size-lg) * 1.5;
     z-index: map-get($z-indexes, header) + 1;
     width: $_h;
     height: $_h;
@@ -90,27 +90,13 @@ $height_header: map-get($layout, header-height);
     @include button-size("md");
     // stylelint-disable-next-line scss/at-extend-no-missing-placeholder
     @extend .button--rounded;
-    @include themeify {
-      @include hover() {
-        // color: themed(main-color-3);
-        background: themed(text-color-3); // @include clickable(themed($color), transparent, , themed($color));
-        .toggle__bar {
-          background: themed(main-color-3) !important;
-        }
-      }
-    }
-    // @include themeify {
-    //   @include button--outline(text-color-3, main-color-3);
-    // }
     padding: map-get($spacers, 2) map-get($spacers, 1);
     .toggle {
-      .toggle-inner {
-        @include flexbox();
-        @include justify-content(space-between);
-        @include flex-direction(column);
-        width: 100%;
-        height: 100%;
-      }
+      @include flexbox();
+      @include justify-content(space-between);
+      @include flex-direction(column);
+      width: 100%;
+      height: 100%;
       .toggle__bar {
         width: 100%;
         height: 2px;
@@ -121,18 +107,31 @@ $height_header: map-get($layout, header-height);
         }
       }
     }
+    @include hover() {
+      .toggle__bar {
+        @include themeify {
+          background:
+            get-color-adjust(
+              $color: themed(header-text-color),
+              $level: 4,
+              $reverse: true
+            );
+        }
+      }
+    }
   }
   &.navigation--mobile-open {
     .navigation__toggle {
+      cursor: default;
       .toggle__bar {
         opacity: 0;
         &:first-of-type {
           opacity: 1;
-          transform: translateX(0) translateY(6px) rotate(45deg) scale(1.3);
+          transform: translateX(0) translateY(6px) rotate(45deg) scale(1.1);
         }
         &:last-of-type {
           opacity: 1;
-          transform: translateX(0) translateY(-6px) rotate(-45deg) scale(1.3);
+          transform: translateX(0) translateY(-6px) rotate(-45deg) scale(1.1);
         }
       }
     }
