@@ -3,8 +3,13 @@
 <div class="quicklinks">
   <ol>
     {%- assign token_page_url   = page.url    | replace: '.html', '' -%}
-    {%- for _item in _quicklinks -%}
-
+    {%- for _quicklink in _quicklinks -%}
+      {%- if _quicklink.id -%}
+        {%- include snippets/get-quicklinks-attr.html id=_quicklink.id -%}
+        {%- assign _item = __return -%}
+      {%- else -%}
+        {%- assign _item = _quicklink -%}
+      {%- endif -%}
       {%- assign  _item_details_active = false -%}
       {%- capture _item_details -%}
         {%- if _item.details -%}

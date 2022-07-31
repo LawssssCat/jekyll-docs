@@ -61,6 +61,7 @@
                   <div class="quicklinks-block-left-background"></div>
                   <div class="main quicklinks-block-content">
                     <div class="quicklinks-block-left">
+                      <!-- left -->
                       <ul class="quicklinks-block-left-menu">
                         {%- for _quicklinks_info in _item.quicklinks -%}
                           {%- assign _quicklinks = site.data.quicklinks[_quicklinks_info.id] -%}
@@ -93,11 +94,18 @@
                         {%- endfor -%}
                       </ul>
                     </div>
+                    <!-- right -->
                     <div class="quicklinks-block-right">
                       {%- for _quicklinks_info in _item.quicklinks -%}
                         {%- assign _quicklinks = site.data.quicklinks[_quicklinks_info.id] -%}
                         <div class="quicklinks-block-right-menu">
-                          {%- for _quicklink in _quicklinks -%}
+                          {%- for _item in _quicklinks -%}
+                            {%- if _item.id -%}{%- comment -%} ======== other quicklinks ======== {%- endcomment -%}
+                              {%- include snippets/get-quicklinks-attr.html id=_item.id -%}
+                              {%- assign _quicklink = __return -%}
+                            {%- else -%}
+                              {%- assign _quicklink = _item -%}
+                            {%- endif -%}
                             {%- include snippets/get-nav-title.html nav=_quicklink -%}{%- comment -%} ======= title ======= {%- endcomment -%}
                             {%- assign _quicklink_title = __return -%}
                             <div class="quicklinks-block-right-menu-item">

@@ -1,7 +1,16 @@
+layouts-attr:
+  titles: 
+    en      : &EN       Samples
+    en-GB   : *EN
+    en-US   : *EN
+    en-CA   : *EN
+    en-AU   : *EN
+    zh-Hans : &ZH_HANS  
+    zh      : *ZH_HANS
+    zh-CN   : *ZH_HANS
+    zh-SG   : *ZH_HANS
+  url: /samples.html
 layouts:
-  - title: Samples
-    url: /samples.html
-    details:
   - title: Page Layout
     details:
       - url: /page/single.html
@@ -103,17 +112,7 @@ docs-en:
       - url: /docs/en/typography
       - url: /docs/en/blog-service-migration
 
-  - titles: 
-      en      : &EN       Samples
-      en-GB   : *EN
-      en-US   : *EN
-      en-CA   : *EN
-      en-AU   : *EN
-      zh-Hans : &ZH_HANS  
-      zh      : *ZH_HANS
-      zh-CN   : *ZH_HANS
-      zh-SG   : *ZH_HANS
-    url: /samples
+  - id: layouts
 
   - title: Components
     details:
@@ -135,8 +134,6 @@ docs-en:
   - title: Configuration
     details:
       - url: 
-  - title: Layouts
-    url: 
   - title: Authors
     url: /docs/en/authors
 
