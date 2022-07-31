@@ -1,3 +1,5 @@
+/* stylelint-disable selector-max-combinators */
+/* stylelint-disable selector-max-compound-selectors */
 /* stylelint-disable scss/no-global-function-names */
 $height_header: map-get($layout, header-height);
 
@@ -205,47 +207,47 @@ $height_header: map-get($layout, header-height);
         height: 100%;
         @include align-items(flex-start);
       }
-      .quicklinks-block-left, .quicklinks-block-right {
-        height: 100%;
-        @include scrollbar-none;
-        .quicklinks-block-left-menu, .quicklinks-block-right-menu {
-          padding-top: map-get($spacers, 4);
-          padding-bottom: map-get($spacers, 3);
-          margin: 0;
-        }
-      }
       @include hover {
         .quicklinks-block-left, .quicklinks-block-right {
           @include scrollbar;
         }
       }
-      .quicklinks-block-left {
-        width: 226px;
-        overflow-x: hidden;
-        ul {
-          list-style: none;
-        }
-        ul > li {
+    }
+    .quicklinks-block-left, .quicklinks-block-right {
+      height: 100%;
+      @include scrollbar-none;
+      .quicklinks-block-left-menu, .quicklinks-block-right-menu {
+        padding-top: map-get($spacers, 4);
+        padding-bottom: map-get($spacers, 3);
+        margin: 0;
+      }
+    }
+    .quicklinks-block-left {
+      width: 226px;
+      overflow-x: hidden;
+      ul {
+        list-style: none;
+        & > li {
           padding: map-get($spacers, 1) 0;
           padding-left: map-get($spacers, 4);
           line-height: 2rem;
           .quicklinks-title {
             display: block;
-            .quicklinks-title-text {
-              position: relative;
-              display: inline-block;
+          }
+          .quicklinks-title-text {
+            position: relative;
+            display: inline-block;
+          }
+          .quicklinks-border {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            @include themeify {
+              border-bottom: 2px solid themed(main-color-1);
             }
-            .quicklinks-border {
-              position: absolute;
-              bottom: 0;
-              width: 100%;
-              @include themeify {
-                border-bottom: 2px solid themed(main-color-1);
-              }
-              transform: scaleX(0);
-              transform-origin: left;
-              @include transition(transform .15s map-get($animation-timing-function, 1));
-            }
+            transform: scaleX(0);
+            transform-origin: left;
+            @include transition(transform .15s map-get($animation-timing-function, 1));
           }
           @include active {
             @include themeify {
@@ -259,43 +261,43 @@ $height_header: map-get($layout, header-height);
           }
         }
       }
-      .quicklinks-block-right {
-        position: relative;
-        overflow-x: hidden;
-        @include flex(1);
-        .quicklinks-block-right-menu-item {
-          padding-bottom: map-get($spacers, 3);
-          vertical-align: top;
-          break-inside: avoid;
+    }
+    .quicklinks-block-right {
+      position: relative;
+      overflow-x: hidden;
+      @include flex(1);
+      .quicklinks-block-right-menu-item {
+        padding-bottom: map-get($spacers, 3);
+        vertical-align: top;
+        break-inside: avoid;
+      }
+      .quicklinks-block-right-menu-item-title, .quicklinks-block-right-menu-item-link {
+        display: block;
+        overflow: hidden;
+        font-size: map-get($base, font-size-sm);
+        line-height: map-get($base, line-height-xl);
+        text-align: left;
+        text-decoration: none;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .quicklinks-block-right-menu-item-title {
+        display: block;
+        padding-bottom: map-get($spacers, 1);
+        font-size: map-get($base, font-size);
+        font-weight: map-get($base, font-weight-bold);
+        @include themeify {
+          color: themed(main-color-1);
         }
-        .quicklinks-block-right-menu-item-title, .quicklinks-block-right-menu-item-link {
+      }
+      .quicklinks-block-right-menu {
+        position: absolute;
+        display: none;
+        width: 100%;
+        padding-left: map-get($spacers, 5);
+        @include column(3);
+        @include active {
           display: block;
-          overflow: hidden;
-          font-size: map-get($base, font-size-sm);
-          line-height: map-get($base, line-height-xl);
-          text-align: left;
-          text-decoration: none;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-        }
-        .quicklinks-block-right-menu-item-title {
-          display: block;
-          padding-bottom: map-get($spacers, 1);
-          font-size: map-get($base, font-size);
-          font-weight: map-get($base, font-weight-bold);
-          @include themeify {
-            color: themed(main-color-1);
-          }
-        }
-        .quicklinks-block-right-menu {
-          position: absolute;
-          display: none;
-          width: 100%;
-          padding-left: map-get($spacers, 5);
-          @include column(3);
-          @include active {
-            display: block;
-          }
         }
       }
     }
@@ -359,7 +361,6 @@ $height_header: map-get($layout, header-height);
           @include hover() {
             @include themeify {
               background: themed(main-color-1);
-              /* stylelint-disable-next-line selector-max-compound-selectors */
               a, a:hover {
                 color: themed(text-color-1);
                 text-decoration: none;

@@ -35,7 +35,7 @@ pre {
   // $_border_radius: map-get($base, border-radius);
   // base style
   & > pre {
-    padding: map-get($spacers, 3) 0 map-get($spacers, 3) map-get($spacers, 3);
+    padding: map-get($spacers, 3) map-get($spacers, 2) map-get($spacers, 3) map-get($spacers, 3);
     margin: 0;
     // border-bottom-right-radius: $_border_radius;
     // border-bottom-left-radius: $_border_radius;
@@ -58,16 +58,14 @@ pre {
     @include align-items(stretch);
     @include justify-content(space-between);
     .code-lang {
+      @include flexbox();
+      @include align-items(center);
       padding: map-get($spacers, 1) map-get($spacers, 3);
       // border-radius: $_border_radius;
     }
     .code-toggle-wrapper {
       padding: map-get($spacers, 1) 0;
       @include menu(3, 0, nowrap);
-    }
-    .code-lang {
-      @include flexbox();
-      @include align-items(center);
     }
     .code-toggle-copy {
       border-bottom-right-radius: 0;
