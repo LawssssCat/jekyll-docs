@@ -6,16 +6,10 @@ lazyload.onload(() => {
   const toggle = window.document.querySelector('.navigation__toggle');
   const toggleClassName = 'navigation--mobile-open';
   window.addEventListener('click', (e) => {
-    if(!e.path.includes(header)) {
-      header.classList.remove(toggleClassName);
+    if(e.path.includes(toggle) && !header.classList.contains(toggleClassName)) {
+      header.classList.add(toggleClassName);
     } else {
-      if(e.path.includes(toggle)) {
-        if(header.classList.contains(toggleClassName)) {
-          header.classList.remove(toggleClassName);
-        } else {
-          header.classList.add(toggleClassName);
-        }
-      }
+      header.classList.remove(toggleClassName);
     }
   });
   TOOL.respondToVisibility(toggle, (visible) => {
