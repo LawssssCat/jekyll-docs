@@ -132,7 +132,12 @@ class WindowLoad {
     // init
     if(context.onloadStatus.init == false) {
       context.onloadStatus.init = true;
-      window.addEventListener('load', (...args) => {
+      // improvement: listen 'DOMContentLoaded' instead of 'load'
+      // doc zhihu https://zhuanlan.zhihu.com/p/25876048
+      // doc w3c https://html.spec.whatwg.org/multipage/parsing.html#parsing
+      // doc mdn https://developer.mozilla.org/en-US/docs/Web/API/Window/DOMContentLoaded_event
+      // demo https://testdrive-archive.azurewebsites.net/HTML5/DOMContentLoaded/Default.html
+      window.addEventListener('DOMContentLoaded', (...args) => {
         context.onloadStatus.windowLoad = true;
         context.onloadStatus.windowLoadArgs = args;
         // callback
