@@ -329,4 +329,40 @@ TOOL.prompt = function (text, options={}) {
   return prompt;
 };
 
+/**
+ * https://www.cnblogs.com/caizhenbo/p/6679478.html
+ */
+TOOL.ready = function(fn){
+
+  if(document.addEventListener) {
+    let func;
+    document.addEventListener('DOMContentLoaded', func = function() {
+      document.removeEventListener('DOMContentLoaded',func, false);
+      fn();
+    }, false);
+  } 
+
+  // 如果IE
+  else if(document.attachEvent) {
+    let func;
+    // 确保当页面是在iframe中加载时，事件依旧会被安全触发
+    document.attachEvent('onreadystatechange', func = function() {
+      if(document.readyState == 'complete') {
+        document.detachEvent('onreadystatechange', func);
+        fn();
+      }
+    });
+
+    // 如果是IE且页面不在iframe中时，轮询调用doScroll 方法检测DOM是否加载完毕
+    if(document.documentElement.doScroll && typeof window.frameElement === 'undefined') {
+      try{
+        document.documentElement.doScroll('left');
+      } catch(error) {
+        return setTimeout(func, 20);
+      }
+      fn();
+    }
+  }
+};
+
 module.exports = window.TOOL = TOOL;

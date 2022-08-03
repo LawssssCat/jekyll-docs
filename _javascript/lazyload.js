@@ -1,4 +1,5 @@
 const logger = require('logger');
+const TOOL = require('tool-box');
 const { Queue } = require('lib/queue');
 
 function runFunction(func, caller, ...args) {
@@ -137,7 +138,8 @@ class WindowLoad {
       // doc w3c https://html.spec.whatwg.org/multipage/parsing.html#parsing
       // doc mdn https://developer.mozilla.org/en-US/docs/Web/API/Window/DOMContentLoaded_event
       // demo https://testdrive-archive.azurewebsites.net/HTML5/DOMContentLoaded/Default.html
-      window.addEventListener('DOMContentLoaded', (...args) => {
+      // window.addEventListener('DOMContentLoaded', );
+      TOOL.ready((...args) => {
         context.onloadStatus.windowLoad = true;
         context.onloadStatus.windowLoadArgs = args;
         // callback
