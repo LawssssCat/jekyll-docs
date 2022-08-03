@@ -5,8 +5,8 @@ lazyload.onload(() => {
   const header = window.document.querySelector('.js-header');
   const toggle = window.document.querySelector('.navigation__toggle');
   const toggleClassName = 'navigation--mobile-open';
-  window.addEventListener('click', (e) => {
-    if(e.path.includes(toggle) && !header.classList.contains(toggleClassName)) {
+  toggle.addEventListener('click', (e) => {
+    if((e.composedPath?e.composedPath():e.path).includes(toggle) && !header.classList.contains(toggleClassName)) {
       header.classList.add(toggleClassName);
     } else {
       header.classList.remove(toggleClassName);

@@ -146,19 +146,18 @@ function px2Float(px) {
 
 function cloneDisplayNone(dom, callback) {
   const flag = (TOOL.getStyle(dom)['display'] == 'none');
-  if(flag) {
-    dom = dom.cloneNode(true);
-    dom.style.position = 'absolute';
+  if(!flag) {
+    return callback(dom);
+  } else {
+    const rawVisibility = dom.style.visibility;
+    const rawDisplay = dom.style.display;
     dom.style.visibility = 'hidden';
-    dom.style.top = '-3000px';
     dom.style.display = 'block';
-    document.getElementsByTagName('body')[0].appendChild(dom);
+    const result = callback(dom);
+    dom.style.visibility = rawVisibility;
+    dom.style.display = rawDisplay;
+    return result;
   }
-  const result = callback(dom);
-  if(flag) {
-    dom.parentNode.removeChild(dom);
-  }
-  return result;
 }
 
 TOOL.height = function(dom) {
