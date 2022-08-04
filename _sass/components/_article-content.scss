@@ -113,7 +113,7 @@
   details {
     padding: map-get($spacers, 1);
     @include themeify {
-      border: 1px solid themed(border-color);
+      border: 1px dashed themed(border-color);
     }
     summary {
       display: inline-block;
