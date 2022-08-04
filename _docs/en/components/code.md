@@ -4,14 +4,18 @@ title: Code
 permalink: /docs/en/components/code
 ---
 
-See [article of this site]({%  link _jekyll/markdown-highlight.md %}) or [article of official site](https://jekyllrb.com/docs/liquid/tags/#code-snippet-highlighting) for more details about code highlight.
+## Demo
+
+By default, [Rouge](https://github.com/rouge-ruby/rouge) is used as the syntax highlighter.([Supported Languages](https://github.com/rouge-ruby/rouge/blob/master/docs/Languages.md))
+
+> See [article of this site]({%  link _jekyll/markdown-highlight.md %}) or [article of official site](https://jekyllrb.com/docs/liquid/tags/#code-snippet-highlighting) for more details about code highlight.
 
 Here are some highlights of code.
 
 {% assign _code_line = "code code code code" %}
 
-<figure class="highlight">
-<pre><code><span class="pre">{{ _code_line }} /* pre */ </span>
+<figure class="highlight" >
+<pre><code data-lang="all-highlight-style.html"><span class="pre">{{ _code_line }} /* pre */ </span>
 <span class="hll">{{ _code_line }} /* hll */ </span>
 <span class="c"  >{{ _code_line }} /* Comment */  </span>
 <span class="err">{{ _code_line }} /* Error */  </span>
@@ -78,7 +82,7 @@ Here are some highlights of code.
 </code></pre>
 </figure>
 
-## Javascript
+### Javascript
 
 <!-- ====================================================================================== -->
 {%- capture _code -%}
@@ -163,7 +167,7 @@ kramdown html
 {%- include article/generate-tabs.html titles=_titles contents=_contents -%}
 <!-- ====================================================================================== -->
 
-## Html
+### Html
 
 <!-- ====================================================================================== -->
 {%- capture _code -%}
@@ -235,7 +239,7 @@ kramdown html
 {%- include article/generate-tabs.html titles=_titles contents=_contents -%}
 <!-- ====================================================================================== -->
 
-## Ruby
+### Ruby
 
 ```ruby
 Jekyll::Hooks.register(:site, :pre_render) do |site|
@@ -259,7 +263,7 @@ Jekyll::Hooks.register(:site, :pre_render) do |site|
 end
 ```
 
-## Java
+### Java
 
 ```java
 import java.util.*;
@@ -286,4 +290,8 @@ class Palindrome
  
    }
 }
+```
+
+## Group
+
 ```

@@ -32,16 +32,13 @@ pre {
 }
 
 .highlighter-rouge > .highlight, figure.highlight {
-  // $_border_radius: map-get($base, border-radius);
-  // base style
+  border: 1px solid;
+  @include themeify {
+    border-color: themed(border-color);
+  }
   & > pre {
     padding: map-get($spacers, 3) map-get($spacers, 2) map-get($spacers, 3) map-get($spacers, 3);
     margin: 0;
-    // border-bottom-right-radius: $_border_radius;
-    // border-bottom-left-radius: $_border_radius;
-    // @include themeify {
-    //   background-color: themed(text-background-color);
-    // }
     & > code {
       display: block;
     }
@@ -49,10 +46,8 @@ pre {
   // show language
   .code-header {
     padding: 0;
-    // border-top-left-radius: $_border_radius;
-    // border-top-right-radius: $_border_radius;
     @include themeify {
-      border: 1px solid themed(border-color);
+      background: themed(border-color-l);
     }
     @include flexbox();
     @include align-items(stretch);
@@ -60,8 +55,8 @@ pre {
     .code-lang {
       @include flexbox();
       @include align-items(center);
-      padding: map-get($spacers, 1) map-get($spacers, 3);
-      // border-radius: $_border_radius;
+      @include cursor-clickable;
+      padding: map-get($spacers, 1) map-get($spacers, 4);
     }
     .code-toggle-wrapper {
       padding: map-get($spacers, 1) 0;
