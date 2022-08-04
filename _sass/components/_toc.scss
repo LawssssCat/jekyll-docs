@@ -36,17 +36,6 @@
       padding-left: map-get($spacers, 4);
       font-size: map-get($base, font-size-sm);
     }
-    > ol {
-      height: auto;
-      max-height: 0;
-      @include overflow(hidden);
-      @include transition(max-height .8s ease);
-    }
-    &.active {
-      > ol {
-        max-height: 2000px;
-      }
-    }
   }
   ol li ol li ol li a { /* h3 */
     padding-top: map-get($spacers, 0);
