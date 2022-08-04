@@ -9,12 +9,13 @@
     .tab-nav {
       @include button;
       @include button-size("md");
+      margin-right: -1px;
+      margin-bottom: -1px;
       font-weight: map-get($base, font-weight);
       @include themeify {
         color: themed(text-color-3);
         border: 1px solid themed(border-color);
       }
-      margin-bottom: -1px;
       @include active {
         font-weight: map-get($base, font-weight-bold);
         @include themeify {
@@ -23,8 +24,6 @@
       }
       @include flexbox();
       @include align-items(center);
-      margin-right: -1px;
-      $_radius: map-get($base, border-radius);
     }
   }
   .tab-contents {
@@ -34,7 +33,6 @@
         display: block;
       }
       figure.highlight, .highlighter-rouge {
-        margin-top: 0;
       }
     }
   }
