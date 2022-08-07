@@ -77,16 +77,18 @@
   }
 
   // focus
-  // @if $focus-clr == default { /* focus = active -> hover -> normal */
-  //   @if $focus-bg-clr == null {
-  //     $focus-clr: $hover-clr;
-  //   } @else if $hover-bg-clr == default {
-  //     $focus-clr: $hover-clr;
-  //   }
-  // }
+  @if $focus-clr == default { /* focus = active -> hover -> normal */
+    // @if $focus-bg-clr == null {
+    //   $focus-clr: $hover-clr;
+    // } @else if $hover-bg-clr == default {
+    //   $focus-clr: $hover-clr;
+    // }
+    $focus-clr: null;
+  }
 
   @if $focus-bg-clr == default {
-    $focus-bg-clr: $hover-bg-clr;
+    // $focus-bg-clr: $hover-bg-clr;
+    $focus-bg-clr: null;
   }
 
   @include plain() {
@@ -107,12 +109,14 @@
       background-color: $active-bg-clr;
     }
   }
-  // @include focus() {
-  //   color: $focus-clr;
-  //   @if $focus-bg-clr{
-  //     background-color: $focus-bg-clr;
-  //   }
-  // }
+  @include focus() {
+    @if $focus-clr {
+      color: $focus-clr;
+    }
+    @if $focus-bg-clr {
+      background-color: $focus-bg-clr;
+    }
+  }
   @include disabled() {
     @if $theme == "light" {
       color: rgba($clr, .2) !important;

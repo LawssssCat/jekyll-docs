@@ -110,17 +110,6 @@
       margin-left: map-get($spacers, 4);
     }
   }
-  details {
-    padding: map-get($spacers, 1);
-    @include themeify {
-      border: 1px dashed themed(border-color);
-    }
-    summary {
-      display: inline-block;
-      width: 100%;
-      @include cursor-clickable;
-    }
-  }
   table {
     display: block;
     width: 100%;

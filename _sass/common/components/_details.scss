@@ -1,0 +1,35 @@
+/* stylelint-disable scss/at-extend-no-missing-placeholder */
+/* stylelint-disable scss/no-global-function-names */
+.details-wrapper {
+  padding: map-get($spacers, 1);
+  @include themeify {
+    border: 1px dashed themed(border-color);
+  }
+  details {
+    .summary-toggle-icon  {
+      @include transition(transform map-get($animation, duration) map-get($animation-timing-function, 1));
+    }
+    .content {
+      transform: scaleY(0);
+      transform-origin: top;
+      @include transition(transform map-get($animation, duration) map-get($animation-timing-function, 1));
+    }
+    &[open] {
+      .summary-toggle-icon  {
+        transform: rotate(180deg);
+      }
+      .content {
+        transform: scaleY(1);
+      }
+    }
+  }
+  summary {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    @include cursor-clickable;
+    @extend .button;
+    @extend .button--secondary;
+    @extend .button--rounded;
+  }
+}

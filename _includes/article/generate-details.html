@@ -7,7 +7,16 @@
   {%- assign _details_attr = _details_attr | append: " open" -%}
 {%- endif -%}
 
-<details {{ _details_attr }}>
-  <summary title="click to show details">{{ _summaruy }}</summary>
-{{ _code }}
-</details>
+<div class="details-wrapper">
+  {%- if _summaruy -%}
+    <div class="summary-content">{{ _summaruy }}</div>
+  {%- endif -%}
+  <details {{ _details_attr }}>
+    <summary class="summary-toggle" title="click to show details">
+      <i class="summary-toggle-icon fas fa-angle-double-down"></i>
+    </summary>
+    <div class="content">
+      {{ _code }}
+    </div>
+  </details>
+</div>
