@@ -5,42 +5,46 @@ const lazyload = require('lazyload');
 const TOOL     = require('tool-box');
 const {Popper} = require('lib/popper');
 const sources = window.VARIABLES.sources;
+const logger = require('logger');
 
 lazyload.js([sources.popper.js], () => {
   // <figure class="highlight"><pre><code class="language-liquid" data-lang="liquid">............</code>
-  const tagRenderSelector='figure.highlight:not(.no-code-header)';
+  const tagRenderSelector='figure.highlight';
   window.document.querySelectorAll(tagRenderSelector).forEach(dom => {
     const pre = dom.querySelector('pre');
-    if(pre) {
+    if(pre) { // filter ``
       const code = pre.querySelector('code');
       const lang = code.getAttribute('data-lang');
       dom.setAttribute('data-lang', lang);
-      new CodeHeader(pre, code, lang).init();
+      new CodeHeader(dom, pre, lang).init();
     }
   });
   // <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...</code>
-  const kramRenderSelector='.highlighter-rouge:not(.no-code-header)';
+  const kramRenderSelector='.highlighter-rouge';
   window.document.querySelectorAll(kramRenderSelector).forEach(dom => {
     const pre = dom.querySelector('pre');
     if(pre) {
-      const code = dom.querySelector('code');
       const className = Array.from(dom.classList).find(item => {
         return item.startsWith('language-');
       });
       const lang = className.replace('language-', '');
       dom.setAttribute('data-lang', lang);
-      new CodeHeader(pre, code, lang).init();
+      new CodeHeader(dom, pre, lang).init();
     }
   });
 });
 
 class CodeHeader {
-  constructor(pre, code, lang) {
+  constructor(dom, pre, lang) {
+    this.dom = dom;
     this.pre = pre;
-    this.code = code;
     this.lang = lang;
   }
   init() {
+    if(this.dom.classList.contains('no-code-header')) {
+      logger.isDebug() && logger.debug('code-header.js', 'no code header', this.dom);
+      return ;
+    }
     const header = this.header = window.document.createElement('div');
     this.pre.parentNode.prepend(header);
     header.classList.add('code-header');
@@ -124,7 +128,8 @@ class CodeHeader {
     let setCopyReadyTimeoutClock;
     headerCopy.addEventListener('click', () => {
       popper.hide();
-      TOOL.copyTextToClipboard(this.code.textContent).then(() => {
+      const code = this.pre.querySelector('code');
+      TOOL.copyTextToClipboard(code.textContent).then(() => {
         // show popover when copy ok
         popper.setContent(popperContentOk);
         popper.show();
