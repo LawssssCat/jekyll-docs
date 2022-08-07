@@ -6,9 +6,6 @@ layout: compress
 
 {%- include snippets/get-themes.html -%}
 {%- assign _themes = __return -%}
-{%- include snippets/get-theme.html -%}
-{%- assign cur_theme = __return -%}
-
 {%- include snippets/get-sources.html -%}
 {%- assign _sources = __return -%}
 
@@ -19,7 +16,6 @@ layout: compress
       "{{ _theme }}"{% unless forloop.last %},{% endunless %}
       {%- endfor -%}
     ],
-    cur_theme: "{{ cur_theme }}",
     sources: {{ _sources | json | replace: "=>", ":"}},
     pageScrollTarget: window,
     pageScroller: (window.document.scrollingElement || window.document.documentElement || window.document.body),

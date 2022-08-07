@@ -4,7 +4,7 @@ $theme-map: null;
   @if not $theme-map {
     @each $theme-name, $theme-map in $themes {
       $theme-map: $theme-map !global; /* make $theme-map to a global variable */
-      html[data-theme=#{$theme-name}] & {
+      [data-theme=#{$theme-name}] & {
         @content;
       }
     }

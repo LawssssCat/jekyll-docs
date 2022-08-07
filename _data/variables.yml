@@ -34,11 +34,8 @@ default:
     license: CC-BY-4.0
 
 themes:
-  - default
-  - original
+  - light
   - dark
-  - chocolate
-  - forest
 
 sources:
   # bootcdn

@@ -63,4 +63,6 @@ $theme-dark: (
   text-color-function: rgba(#fff, .8),
 );
 
+// logo colors
+@import "./logo-colors";
 $theme-dark: map-merge($logo-colors, $theme-dark);
