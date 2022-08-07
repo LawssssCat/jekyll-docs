@@ -1,35 +1,74 @@
 /* stylelint-disable scss/at-extend-no-missing-placeholder */
 /* stylelint-disable scss/no-global-function-names */
 .details-wrapper {
-  padding: map-get($spacers, 1);
   @include themeify {
     border: 1px dashed themed(border-color);
   }
+  .summary-content, details > .content {
+    padding: map-get($spacers, 1);
+  }
   details {
-    .summary-toggle-icon  {
-      @include transition(transform map-get($animation, duration) map-get($animation-timing-function, 1));
-    }
     .content {
       transform: scaleY(0);
       transform-origin: top;
       @include transition(transform map-get($animation, duration) map-get($animation-timing-function, 1));
     }
-    &[open] {
-      .summary-toggle-icon  {
-        transform: rotate(180deg);
+    .summary-toggle-icon {
+      @include transition(transform map-get($animation, duration) map-get($animation-timing-function, 1));
+      @include animation(icon-actions .6s infinite);
+      @include keyframes(icon-actions) {
+        0% {
+          transform: translateY(0);
+        }
+        25% {
+          transform: translateY(map-get($spacers, 1));
+        }
+        50% {
+          transform: translateY(0);
+        }
+        75% {
+          transform: translateY(map-get($spacers, 1));
+        }
       }
+    }
+    &[open] {
       .content {
         transform: scaleY(1);
       }
+      .summary-toggle-icon {
+        @include animation(icon-actions-r .6s infinite);
+        @include keyframes(icon-actions-r) {
+          0% {
+            transform: rotate(180deg) translateY(0);
+          }
+          25% {
+            transform: rotate(180deg) translateY(map-get($spacers, 1));
+          }
+          50% {
+            transform: rotate(180deg) translateY(0);
+          }
+          75% {
+            transform: rotate(180deg) translateY(map-get($spacers, 1));
+          }
+          100% {
+            transform: rotate(180deg) translateY(0);
+          }
+        }
+      }
     }
   }
-  summary {
-    display: inline-block;
+  .summary-toggle {
+    $border_width: 1px;
+    display: block;
     width: 100%;
+    padding: map-get($spacers, 3);
+    margin-bottom: -$border_width;
     text-align: center;
     @include cursor-clickable;
     @extend .button;
     @extend .button--secondary;
-    @extend .button--rounded;
+    @include themeify {
+      border-bottom: $border_width dashed themed(border-color);
+    }
   }
 }
