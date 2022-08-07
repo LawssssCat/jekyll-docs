@@ -8,7 +8,14 @@
       {%- if forloop.first -%}
         {%- assign _active_class = 'active' -%}
       {%- endif -%}
-      <div class="tab-nav {{ _active_class }}">{{ _title }}</div>
+      <div class="tab-nav {{ _active_class }}">
+        <div class="tab-nav-inner">
+          {{ _title }}
+        </div>
+      </div>
+      {% unless forloop.last %}
+      <div class="tab-split"></div>
+      {% endunless -%}
     {%- endfor -%}
   </div>
   <div class="tab-contents">
