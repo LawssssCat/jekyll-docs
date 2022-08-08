@@ -61,7 +61,11 @@ function getHeadingDomlevel(headingDom) {
 </ol>
 */
 function generateTocDOM(headers, headersLevel, topLevel) {
-  const tag = 'ol', tocDom = document.createElement(tag), // result
+  const tag = 'ol', tocDom = (function() {
+      const rootNode = document.createElement(tag); // result
+      rootNode.classList.add('root-node');
+      return rootNode;
+    })(),
     // stack
     stackDOM = new Stack([tocDom]), 
     headersDOMlist = []; // save for later use

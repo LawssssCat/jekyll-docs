@@ -49,6 +49,7 @@ $theme-dark: (
   footer-background: $main-color-3,
 
   // border and shadow colors
+  border-color-d:     mix(#fff, $background-color, 40%),
   border-color:     mix(#fff, $background-color, 20%),
   border-color-l:   mix(#fff, $background-color, 10%),
   decorate-color:   rgba(#fff, .1),

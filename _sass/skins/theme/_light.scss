@@ -62,6 +62,7 @@ $theme-light: (
   // footer-background: linear-gradient(12deg,#f2f2f6 0%, $main-color-3 100%),
 
   // border and shadow colors
+  border-color-d:   mix(#000, $background-color, 40%),
   border-color:     mix(#000, $background-color, 20%),
   border-color-l:   mix(#000, $background-color, 10%),
   border-color-light: $color-brilliant,
