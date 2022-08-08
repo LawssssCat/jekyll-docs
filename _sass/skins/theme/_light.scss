@@ -1,8 +1,17 @@
 /* stylelint-disable scss/no-global-function-names */
-$main-color-1: #fc4d50;
+$color-one: #ffbe0b;
+$color-two: #fb5607;
+$color-three: #ff006e;
+$color-four: #8338ec;
+$color-five: #3a86ff;
+$color-brilliant: linear-gradient(90deg, $color-one, $color-two);
+$color-rainbow: linear-gradient(90deg, $color-one, $color-two, $color-three, $color-four, $color-five);
+$color-rainbow-y: linear-gradient(180deg, $color-one, $color-two, $color-three, $color-four, $color-five);
 
-$text-color-3: #333;
-$main-color-3: #f2f2f2;
+$main-color-1: #fb7299;
+
+$text-color-3: #505050;
+$main-color-3: #fff;
 
 $background-color: #fff;
 
@@ -10,7 +19,7 @@ $text-color-theme-light-d: #000;
 $text-color-theme-light: #222;
 $text-color-theme-light-l: #888;
 
-$theme-original: (
+$theme-light: (
   // main colors
   main-color-1: $main-color-1,
   text-color-1: #fff,
@@ -45,16 +54,20 @@ $theme-original: (
   // header and footer colors
   header-text-color: $text-color-3,
   header-background: $main-color-3,
+  // header-background: linear-gradient(60deg,#f6f9fa 0%, #e6f9ea 100%),
 
   footer-text-color: $text-color-3,
-  footer-background: $main-color-3,
+  footer-background: linear-gradient(to bottom, $background-color, #ebf2ff 100%),
+  footer-background-top: $color-rainbow,
+  // footer-background: linear-gradient(12deg,#f2f2f6 0%, $main-color-3 100%),
 
-  // // border and shadow colors
+  // border and shadow colors
   border-color:     mix(#000, $background-color, 20%),
   border-color-l:   mix(#000, $background-color, 10%),
+  border-color-light: $color-brilliant,
   decorate-color:   rgba(#000, .1),
   modal-color:       rgba(#000, .9),
-  select-color: rgba($main-color-1, .5),
+  select-color: rgba($main-color-1, .4),
 
   // function colors
   green:           #5baa34,
@@ -62,8 +75,9 @@ $theme-original: (
   yellow:          #c9771f,
   red:             #da3d45,
   text-color-function: rgba(#fff, .8),
+
 );
 
 // logo colors
 @import "./logo-colors";
-$theme-original: map-merge($theme-original, $logo-colors);
+$theme-light: map-merge($theme-light, $logo-colors);

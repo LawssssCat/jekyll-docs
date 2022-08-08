@@ -163,6 +163,7 @@ exclude:
   - README.md
   - LICENSE
   - jekyll-docs-all-in-one.gemspec
+  - /.git
   - .gitignore
   - package-lock.json
   - package.json

@@ -371,12 +371,8 @@ html
 > + [Kramdown Official website - API Docs](https://kramdown.gettalong.org/options.html) - ⭐️
 
 <!-- ============================================================================ -->
-{%- capture _summary -%}
-**default options:**
-{%- endcapture -%}
-{%- assign _summary = _summary | markdownify -%}
-<!-- ======================= -->
 {%- capture _code -%}
+**default options:**
 
 `Jekyll` source code [lib/jekyll/configuration.rb](https://github.com/jekyll/jekyll/blob/master/lib/jekyll/configuration.rb)
 
@@ -411,7 +407,7 @@ end
 {%- endcapture -%}
 {%- assign _code = _code | markdownify -%}
 <!-- ======================= -->
-{%- include article/generate-details.html summary=_summary code=_code open=true -%}
+{%- include article/generate-details.html code=_code open=true -%}
 <!-- ============================================================================ -->
 
 There are several unsupported kramdown options\

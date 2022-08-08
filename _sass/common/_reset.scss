@@ -16,6 +16,7 @@
   ol,
   dl,
   table,
+  .details-wrapper,
   .footnotes {
     @content;
   }
@@ -51,13 +52,20 @@ body {
   margin: 0;
   font: map-get($base, font-weight) #{map-get($base, font-size)}/#{map-get($base, line-height)} map-get($base, font-family);
   @include selection() {
-    @include themeify-color($color: text-color-1, $background-color: select-color);
+    @include themeify {
+      color: themed(text-color-1);
+      background-color: themed(select-color);
+    }
   }
 }
 
 @include block-elements() {
   padding: 0;
   margin: map-get($spacers, 2) 0;
+}
+
+@include heading-elements {
+  margin: map-get($spacers, 1) 0;
 }
 
 // input, textarea, select, button {
@@ -77,39 +85,53 @@ strong{
 
 h1 {
   font-size: map-get($base, font-size-h1-xl);
-  @include themeify-color(text-color-d);
+  @include themeify {
+    color: themed(text-color-d);
+  }
   @include media-breakpoint-down(md) {
     font-size: map-get($base, font-size-h1);
   }
 }
 
 h2 {
+  margin-top: map-get($spacers, 5);
   font-size: map-get($base, font-size-h2);
-  @include themeify-color(text-color-d);
+  @include themeify {
+    color: themed(text-color-d);
+  }
   @include media-breakpoint-down(md) {
     font-size: map-get($base, font-size-h2-sm);
   }
 }
 
 h3 {
+  margin-top: map-get($spacers, 4);
   font-size: map-get($base, font-size-h3);
-  @include themeify-color(text-color-d);
+  @include themeify {
+    color: themed(text-color-d);
+  }
   @include media-breakpoint-down(md) {
     font-size: map-get($base, font-size-h3-sm);
   }
 }
 
 h4 {
+  margin-top: map-get($spacers, 3);
   font-size: map-get($base, font-size-h4);
-  @include themeify-color(text-color);
+  @include themeify {
+    color: themed(text-color);
+  }
   @include media-breakpoint-down(md) {
     font-size: map-get($base, font-size-h4-sm);
   }
 }
 
 h5 {
+  margin-top: map-get($spacers, 2);
   font-size: map-get($base, font-size-h5);
-  @include themeify-color(text-color);
+  @include themeify {
+    color: themed(text-color);
+  }
   @include media-breakpoint-down(md) {
     font-size: map-get($base, font-size-h5-sm);
   }
@@ -117,7 +139,9 @@ h5 {
 
 h6 {
   font-size: map-get($base, font-size-h6);
-  @include themeify-color(text-color-l);
+  @include themeify {
+    color: themed(text-color-l);
+  }
   @include media-breakpoint-down(md) {
     font-size: map-get($base, font-size-h6-sm);
   }

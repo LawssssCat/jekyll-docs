@@ -4,7 +4,7 @@ title: Code
 permalink: /docs/en/components/code
 ---
 
-## Demo
+## Highlight
 
 By default, [Rouge](https://github.com/rouge-ruby/rouge) is used as the syntax highlighter.([Supported Languages](https://github.com/rouge-ruby/rouge/blob/master/docs/Languages.md))
 
@@ -292,6 +292,32 @@ class Palindrome
 }
 ```
 
+## Code header
+
+### hide
+
+`.no-code-header`
+
+e.g. 
+
+<!-- ====================== -->
+{%- capture _code -%}
+```yml
+bala bala ...
+```
+{:.no-code-header}
+{%- endcapture -%}
+<!-- ====================== -->
+
+``````markdown
+{{ _code }}
+``````
+
+demo
+
+{{ _code }}
+
 ## Group
 
+```
 ```

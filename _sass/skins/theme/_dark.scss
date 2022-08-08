@@ -53,7 +53,7 @@ $theme-dark: (
   border-color-l:   mix(#fff, $background-color, 10%),
   decorate-color:   rgba(#fff, .1),
   modal-color:       rgba(#000, .9),
-  select-color:     rgba($main-color-1, .5),
+  select-color:     rgba($main-color-1, .1),
 
   // function colors
   green:           #5baa34,
@@ -63,4 +63,6 @@ $theme-dark: (
   text-color-function: rgba(#fff, .8),
 );
 
+// logo colors
+@import "./logo-colors";
 $theme-dark: map-merge($logo-colors, $theme-dark);
