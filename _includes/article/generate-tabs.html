@@ -3,9 +3,6 @@
 
 <div class="block-tabs">
   <div class="tab-navs-wrapper">
-    <div class="tab-toggle-left">
-      <i class="fas fa-chevron-left"></i>
-    </div>
     <div class="tab-navs">
       {%- for _title in _title_list -%}
         {%- assign _active_class = '' -%}
@@ -21,6 +18,9 @@
         <div class="tab-split"></div>
         {% endunless -%}
       {%- endfor -%}
+    </div>
+    <div class="tab-toggle-left">
+      <i class="fas fa-chevron-left"></i>
     </div>
     <div class="tab-toggle-right">
       <i class="fas fa-chevron-right"></i>

@@ -7,11 +7,6 @@
   .summary-content, .details-content-inner {
     padding: map-get($spacers, 4);
   }
-  .details-content-inner {
-    @include themeify {
-      border-top: 1px dashed themed(border-color);
-    }
-  }
   .details-content-wrapper {
     @include flexbox();
     @include flex-direction(column-reverse);
