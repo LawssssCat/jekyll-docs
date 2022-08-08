@@ -8,18 +8,44 @@
       border-color: themed(border-color-l);
     }
   }
+  .tab-navs-wrapper {
+    position: relative;
+    overflow-x: hidden;
+    @include flexbox();
+    @include align-items(flex-end);
+    .tab-toggle-left, .tab-toggle-right {
+      display: none;
+      @include themeify {
+        background: themed(border-color);
+      }
+    }
+    .tab-toggle-right {
+      position: absolute;
+      right: 0;
+    }
+    .tab-toggle-left {
+      position: absolute;
+      left: 0;
+    }
+    &.show-tab-toggle {
+      .tab-toggle-left, .tab-toggle-right {
+        display: block;
+      }
+    }
+  }
   .tab-navs {
-    height: $button-height-lg;
     margin-top: 0;
     margin-bottom: 0;
     @include flexbox();
-    @include flex-wrap(wrap);
-    @include align-items(center);
+    @include flex-wrap(nowrap);
+    @include align-items(flex-end);
     .tab-nav {
+      min-height: $button-height-lg;
       @include button;
       @include button-size("md");
       padding: 0 map-get($spacers, 3);
       font-weight: map-get($base, font-weight);
+      white-space: nowrap;
       @include flexbox();
       @include align-items(center);
       @include active {
