@@ -17,6 +17,9 @@ $height_header: map-get($layout, header-height);
     a {
       font-weight: map-get($base, font-weight);
       // text-decoration: none !important;
+      .link-additional-icon {
+        font-size: map-get($base, font-size-sm);
+      }
       &[href="javascript:void(0)"] {
         .link-additional-icon {
           display: none;
