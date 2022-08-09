@@ -66,6 +66,7 @@ body {
 
 @include heading-elements {
   margin: map-get($spacers, 1) 0;
+  margin-top: map-get($spacers, 4);
 }
 
 // input, textarea, select, button {
@@ -94,7 +95,7 @@ h1 {
 }
 
 h2 {
-  margin-top: map-get($spacers, 5);
+  margin-top: map-get($spacers, 6);
   font-size: map-get($base, font-size-h2);
   @include themeify {
     color: themed(text-color-d);
@@ -105,7 +106,7 @@ h2 {
 }
 
 h3 {
-  margin-top: map-get($spacers, 4);
+  margin-top: map-get($spacers, 5);
   font-size: map-get($base, font-size-h3);
   @include themeify {
     color: themed(text-color-d);
@@ -116,7 +117,7 @@ h3 {
 }
 
 h4 {
-  margin-top: map-get($spacers, 3);
+  margin-top: map-get($spacers, 4);
   font-size: map-get($base, font-size-h4);
   @include themeify {
     color: themed(text-color);
@@ -127,7 +128,6 @@ h4 {
 }
 
 h5 {
-  margin-top: map-get($spacers, 2);
   font-size: map-get($base, font-size-h5);
   @include themeify {
     color: themed(text-color);

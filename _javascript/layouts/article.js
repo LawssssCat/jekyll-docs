@@ -20,7 +20,8 @@ lazyload.onload(() => {
     const anchor = window.document.createElement('a');
     anchor.classList.add('anchor');
     anchor.classList.add('d-print-none');
-    anchor.innerHTML = '#';
+    anchor.classList.add('fas');
+    anchor.classList.add('fa-link');
     dom.appendChild(anchor);
     anchor.addEventListener('click', (e) => {
       e.preventDefault();

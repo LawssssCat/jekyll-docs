@@ -12,11 +12,15 @@
     position: relative;
     overflow-x: hidden;
     @include flexbox();
-    @include align-items(flex-end);
+    @include align-items(center);
     .tab-toggle-left, .tab-toggle-right {
       display: none;
+      @include cursor-clickable;
       @include themeify {
         background: themed(border-color);
+      }
+      &.active {
+        display: block;
       }
     }
     .tab-toggle-right {
@@ -27,18 +31,14 @@
       position: absolute;
       left: 0;
     }
-    &.show-tab-toggle {
-      .tab-toggle-left, .tab-toggle-right {
-        display: block;
-      }
-    }
   }
   .tab-navs {
     margin-top: 0;
     margin-bottom: 0;
+    @include transition(transform map-get($animation, duration) map-get($animation-timing-function, 1));
     @include flexbox();
     @include flex-wrap(nowrap);
-    @include align-items(flex-end);
+    @include align-items(center);
     .tab-nav {
       min-height: $button-height-lg;
       @include button;
@@ -67,8 +67,6 @@
       display: none;
       &.active {
         display: block;
-      }
-      figure.highlight, .highlighter-rouge {
       }
     }
   }
