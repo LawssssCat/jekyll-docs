@@ -6,6 +6,7 @@
   $_line_height: map-get($base, line-height);
   $_padding_y: map-get($spacers, 1);
   $_padding_x: map-get($spacers, 3);
+  $_height_middle: calc((#{$_font_size} * #{$_line_height}) / 2 + #{$_padding_y});
   .toc-handing {
     margin-top: 0;
     margin-bottom: map-get($spacers, 1);
@@ -33,11 +34,11 @@
         }
       }
       &:last-child::before {
-        height: calc((#{$_font_size} * #{$_line_height}) / 2 + #{$_padding_y});
+        height: $_height_middle;
       }
       &::after {
         position: absolute;
-        top: calc((#{$_font_size} * #{$_line_height}) / 2 + #{$_padding_y});
+        top: $_height_middle;
         width: $_padding_x / 2;
         content: "";
         @include themeify {
@@ -59,29 +60,47 @@
         @include themeify {
           @include link-colors($clr: themed(text-color-theme-light-l), $pseudo: false);
         }
-        &::before {
-          position: absolute;
-          top: 0;
-          left: -$_padding_x;
-          height: 100%;
-          content: "";
-          @include themeify {
-            border-left: 1px dashed themed(border-color-d);
-          }
-        }
         @include hover {
           text-decoration: none;
+        }
+      }
+      &.through {
+        &::before {
+          border-width: 2px;
           @include themeify {
-            color: themed(main-color-1);
+            border-color: themed(main-color-1);
           }
         }
       }
-      @include active() {
-        & > a {
+      &.active {
+        &::after {
+          border-width: 2px;
           @include themeify {
-            // background-color: transparent;
+            border-color: themed(main-color-1);
+          }
+        }
+        & > a {
+          font-weight: map-get($base, font-weight-bold);
+          @include themeify {
             color: themed(main-color-1);
-            @include split-line(left, 2px, themed(main-color-1));
+          }
+          &::before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: $_height_middle;
+            content: "";
+            @include themeify {
+              border-left: 2px dashed themed(main-color-1);
+            }
+          }
+        }
+      }
+      @include hover {
+        & > a {
+          font-weight: map-get($base, font-weight-bold);
+          @include themeify {
+            color: themed(main-color-1);
           }
         }
       }
