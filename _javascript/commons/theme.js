@@ -29,4 +29,6 @@ lazyload.onload(() => {
       updateTheme(index);
     });
   });
+}, {
+  priority: -1
 });

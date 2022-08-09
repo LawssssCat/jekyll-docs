@@ -341,6 +341,11 @@ $height_header: map-get($layout, header-height);
           }
         }
       }
+      @include hover {
+        @include themeify {
+          color: themed(main-color-1);
+        }
+      }
     }
   }
 
