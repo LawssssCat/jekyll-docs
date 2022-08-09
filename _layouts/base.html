@@ -4,7 +4,9 @@ layout: compress
 <!DOCTYPE html>
 {%- include snippets/get-lang.html -%}
 {%- assign _lang = __return -%}
-<html lang="{{ _lang }}">
+{%- include snippets/get-themes.html -%}
+{%- assign _themes = __return -%}
+<html lang="{{ _lang }}" data-theme="{{ _themes | first }}">
   <head>
     {%- include head.html -%}
     {%- include snippets/get-accessible-url.html url="/assets/js/data/variables.js" -%}
