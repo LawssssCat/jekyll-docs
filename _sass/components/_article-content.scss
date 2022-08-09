@@ -5,19 +5,14 @@
   line-height: map-get($base, line-height-lg);
   word-wrap: break-word;
   & > {
-    @include block-elements() {
-      margin: map-get($spacers, 3) 0;
-    }
     @include heading-elements() {
       position: relative;
       z-index: 0;
-      margin-top: map-get($spacers, 4);
       > .anchor {
-        position: absolute;
-        left: -8px;
-        margin-left: map-get($spacers, 1);
-        visibility: visible;
-        transform: translateX(-100%);
+        margin-left: map-get($spacers, 2);
+        visibility: hidden;
+        opacity: 0;
+        @include transition(opacity .2s map-get($animation-timing-function, 1));
         @include cursor-clickable;
         @include themeify {
           @include link-colors(themed(text-color-3), themed(main-color-1));
@@ -26,7 +21,12 @@
           }
         }
       }
-
+      @include hover() {
+        > .anchor {
+          visibility: visible;
+          opacity: 1;
+        }
+      }
       // $_handing_before_left: 4px;
       // &::before {
       //   position: absolute;
@@ -66,7 +66,7 @@
       @include split-line(left, 4px, themed(border-color));
     }
     p {
-      margin: map-get($spacers, 2) 0;
+      margin: map-get($spacers, 1) 0;
     }
     & > :last-child {
       margin-bottom: 0;
@@ -108,17 +108,6 @@
     list-style-type: none;
     ul, ol {
       margin-left: map-get($spacers, 4);
-    }
-  }
-  details {
-    padding: map-get($spacers, 1);
-    @include themeify {
-      border: 1px dashed themed(border-color);
-    }
-    summary {
-      display: inline-block;
-      width: 100%;
-      @include cursor-clickable;
     }
   }
   table {

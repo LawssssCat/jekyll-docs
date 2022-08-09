@@ -46,9 +46,6 @@ pre {
   // show language
   .code-header {
     padding: 0;
-    @include themeify {
-      background: themed(border-color-l);
-    }
     @include flexbox();
     @include align-items(stretch);
     @include justify-content(space-between);

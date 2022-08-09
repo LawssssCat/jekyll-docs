@@ -140,10 +140,13 @@ class WindowLoad {
       queueCallback: []
     };
   }
-  onload(callback) {
+  onload(callback, options={}) {
     const context = this;
     // push
-    context.onloadStatus.queueCallback.push(callback);
+    context.onloadStatus.queueCallback.push({
+      callback: callback,
+      priority: options.priority==null?0:options.priority
+    });
     // init
     if(context.onloadStatus.init == false) {
       context.onloadStatus.init = true;
@@ -157,8 +160,10 @@ class WindowLoad {
         context.onloadStatus.windowLoad = true;
         context.onloadStatus.windowLoadArgs = args;
         // callback
-        context.onloadStatus.queueCallback.forEach(callback => {
-          runFunction(callback, context, ...args);
+        context.onloadStatus.queueCallback.sort((a, b) => {
+          return a.priority - b.priority; // -1, 0, 1, 3, ...
+        }).forEach(item => {
+          runFunction(item.callback, context, ...args);
         });
       });
     }

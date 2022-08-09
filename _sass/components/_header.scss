@@ -1,3 +1,4 @@
+/* stylelint-disable selector-max-class */
 /* stylelint-disable selector-max-combinators */
 /* stylelint-disable selector-max-compound-selectors */
 /* stylelint-disable scss/no-global-function-names */
@@ -16,6 +17,9 @@ $height_header: map-get($layout, header-height);
     a {
       font-weight: map-get($base, font-weight);
       // text-decoration: none !important;
+      .link-additional-icon {
+        font-size: map-get($base, font-size-sm);
+      }
       &[href="javascript:void(0)"] {
         .link-additional-icon {
           display: none;
@@ -308,6 +312,43 @@ $height_header: map-get($layout, header-height);
     }
   }
 
+  // =================================== toggle-items ==================================
+
+  .toggle-items {
+    @include flexbox();
+    .toggle-item {
+      $_p: map-get($spacers, 2);
+      padding-right: $_p;
+      padding-left: $_p;
+      @include align-items(center);
+      &.toggle-docs-search {
+        padding-right: 0;
+        padding-left: map-get($spacers, 4);
+      }
+      &.toggle-theme-switch {
+        .toggle-theme-icon-dark {
+          display: none;
+        }
+        .toggle-theme-icon-light {
+          display: unset;
+        }
+        @at-root html[data-theme="dark"] & {
+          .toggle-theme-icon-dark {
+            display: unset;
+          }
+          .toggle-theme-icon-light {
+            display: none;
+          }
+        }
+      }
+      @include hover {
+        @include themeify {
+          color: themed(main-color-1);
+        }
+      }
+    }
+  }
+
   // ================================================ media up lg
 
   @include media-breakpoint-up(lg) {
@@ -339,6 +380,9 @@ $height_header: map-get($layout, header-height);
 
   // ================================================ media down lg
   @include media-breakpoint-down(lg) {
+    .header__title {
+      @include justify-content(center);
+    }
     .navigation__item {
       @include flexbox();
       @include flex-wrap(wrap);
