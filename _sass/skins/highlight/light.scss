@@ -1,24 +1,23 @@
-// MONOKAI
-// https://raw.githubusercontent.com/jwarby/pygments-css/master/monokai.css
+/*
+ * The syntax light mode styles.
+ */
 
-$highlight-foreground: #fff;
-$highlight-background: #272822;
-$highlight-comment: #68bb1a;
-
-%monokai_base {
-  pre { color: $highlight-foreground; background-color: $highlight-background; }
+%highlight-syntax-light {
+  // MONOKAI
+  // https://raw.githubusercontent.com/jwarby/pygments-css/master/monokai.css
+  pre { color: var(--highlight-foreground-color); background-color: var(--highlight-background-color); }
   .hll { background-color: #272822; }
-  .c { color: $highlight-comment; } /* Comment */
+  .c { color: var(--highlight-comment-color); } /* Comment */
   .err { color: #960050; background-color: #1e0010; } /* Error */
   .k { color: #66d9ef; } /* Keyword */
   .l { color: #ae81ff; } /* Literal */
   .n { color: #f8f8f2; } /* Name */
   .o { color: #f92672; } /* Operator */
   .p { color: #f8f8f2; } /* Punctuation */
-  .cm { color: $highlight-comment; } /* Comment.Multiline */
-  .cp { color: $highlight-comment; } /* Comment.Preproc */
-  .c1 { color: $highlight-comment; } /* Comment.Single */
-  .cs { color: $highlight-comment; } /* Comment.Special */
+  .cm { color: var(--highlight-comment-color); } /* Comment.Multiline */
+  .cp { color: var(--highlight-comment-color); } /* Comment.Preproc */
+  .c1 { color: var(--highlight-comment-color); } /* Comment.Single */
+  .cs { color: var(--highlight-comment-color); } /* Comment.Special */
   .ge { font-style: italic; } /* Generic.Emph */
   .gs { font-weight: bold; } /* Generic.Strong */
   .kc { color: #66d9ef; } /* Keyword.Constant */
@@ -71,22 +70,19 @@ $highlight-comment: #68bb1a;
   // .gu { color: #75715e; } /* Generic.Subheading & Diff Unified/Comment? */
   .gd { color: #f92672; } /* Generic.Deleted & Diff Deleted */
   .gi { color: #a6e22e; } /* Generic.Inserted & Diff Inserted */
-}
 
-%monokai_scss {
-  .m { color: #a6e22e; }
-  .nn, .nc, .p { color: #e6db74; }
-  .nl { color: #66d9ef; }
-  .n, .nb { color: #fb660a; }
-}
-
-%monokai {
-  @extend %monokai_base;
   &[data-lang="scss"], &[data-lang="css"] {
-    @extend %monokai_scss;
+    .m { color: #a6e22e; }
+    .nn, .nc, .p { color: #e6db74; }
+    .nl { color: #66d9ef; }
+    .n, .nb { color: #fb660a; }
   }
 }
 
-.highlighter-rouge > .highlight, figure.highlight {
-  @extend %monokai;
+%highlight-global-light {
+  --highlight-foreground-color: #fff;
+  --highlight-background-color: #272822;
+  --highlight-comment-color: #68bb1a;
 }
+
+@include highlightify("light");

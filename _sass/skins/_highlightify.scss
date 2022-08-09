@@ -1,0 +1,12 @@
+/*
+* The syntax highlight.
+*/
+
+@mixin highlightify($theme-name) {
+  [data-theme=#{$theme-name}] {
+    @extend %highlight-global-#{$theme-name};
+    .highlighter-rouge > .highlight, figure.highlight {
+      @extend %highlight-syntax-#{$theme-name};
+    }
+  }
+}
