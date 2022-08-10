@@ -37,8 +37,11 @@ pre {
     border-color: themed(border-color);
   }
   & > pre {
+    max-height: 600px;
     padding: map-get($spacers, 3) map-get($spacers, 2) map-get($spacers, 3) map-get($spacers, 3);
     margin: 0;
+    overflow: auto;
+    @include scrollbar($size: 10px, $color-track: transparent);
     & > code {
       display: block;
     }

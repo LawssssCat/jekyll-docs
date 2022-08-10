@@ -145,7 +145,7 @@ $height_header: map-get($layout, header-height);
 
   .navigation {
     @include overflow(auto, "x");
-    @include scrollbar($direction: "horizontal");
+    @include scrollbar;
     &, & > ul {
       height: 100%;
     }
