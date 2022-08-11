@@ -11,6 +11,7 @@
   .tab-navs-wrapper {
     position: relative;
     overflow-x: hidden;
+    margin-bottom: map-get($spacers, 3);
     @include flexbox();
     @include align-items(center);
     .tab-toggle-left, .tab-toggle-right {
