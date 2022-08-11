@@ -139,7 +139,7 @@ html
 {{ _code_content_render }}
 <!-- split content -->
 ```html
-{{ _code_content_render }}
+{{ _code_content_render | strip }}
 ```
 {%- endcapture -%}
 {%- assign _contents = _contents | markdownify -%}

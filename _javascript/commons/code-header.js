@@ -71,20 +71,18 @@ class CodeHeader {
     const headerWrapId = TOOL.generateId('code-header-wrap-switch');
     headerWrap.innerHTML = `
     <div class="switch-box">
-      <input class="switch-input" type="checkbox" id="${headerWrapId}" checked>
+      <input class="switch-input" type="checkbox" id="${headerWrapId}">
       <label class="switch-label" for="${headerWrapId}">Wrap</label>
     </div>
     `;
     const toggle = headerWrap.querySelector(`#${headerWrapId}`);
-    let func;
-    toggle.addEventListener('click', func = () => {
+    toggle.addEventListener('click', () => {
       if(toggle.checked) {
         this.pre.style.whiteSpace = 'pre-wrap';
       } else {
         this.pre.style.whiteSpace = '';
       }
     });
-    func();
   }
   initCopyToggle(wrapper) {
     const headerCopy = window.document.createElement('li');
