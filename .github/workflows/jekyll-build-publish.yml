@@ -1,0 +1,96 @@
+name: jekyll-build-publish
+
+# see https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#example-including-and-excluding-branches
+on:
+  push:
+    branches: [ main ]
+    paths-ignore: 
+      - '!README.md'
+  workflow_dispatch:
+
+jobs:
+
+  docs_update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️ # publish to dev
+        uses: actions/checkout@v3
+      - name: Install and Build js 📦
+        run: |
+          npm install
+          npm run js-build
+      # - name: Cache bundle install # cache. see https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows
+      - name: Cache Ruby - Bundler 📁 # see https://github.com/actions/cache/blob/master/examples.md#ruby---bundler
+        uses: actions/cache@v2
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+      # uses: ruby/setup-ruby@v1 # see https://github.com/ruby/setup-ruby#caching-bundle-install-automatically
+      # - name: Set up Ruby 📁
+      #   # uses: ruby/setup-ruby@473e4d8fe5dd94ee328fdfca9f8c9c7afc9dae5e
+      #   uses: ruby/setup-ruby@v1
+      #   with:
+      #     ruby-version: '3.0'
+      #     # see https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-ruby#caching-dependencies
+      #     bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+      - name: Set up Ruby 📁
+        uses: actions/setup-ruby@v1
+        # with:
+        #     ruby-version: 2.7
+      - name: Install dependencies 🔧
+        run: |
+          echo =============== gem environment
+          gem environment
+          echo =============== gem list
+          gem list 
+          echo =============== gem install
+          gem install bundler
+          echo =============== gem bundle config list
+          bundle config list
+          echo =============== gem bundle list
+          # bundle list
+          echo =============== gem bundle config change see https://github.com/actions/cache/blob/master/examples.md#ruby---bundler
+          bundle config path vendor/bundle
+          bundle config list
+          echo =============== gem bundle list
+          # bundle list
+          echo =============== gem bundle install
+          bundle install --jobs 4 --retry 3
+          echo =============== gem bundle list
+          bundle list
+      - name: Build 📦
+        run: npm run build
+      - name: Deploy dev 🚀 # see https://github.com/LawssssCat/github-pages-deploy-action
+        uses: LawssssCat/github-pages-deploy-action@v4.3.3
+        with:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: _site
+
+  # see https://docs.github.com/en/actions/learn-github-actions/contexts#example-printing-context-information-to-the-log
+  dump_contexts_to_log:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Dump GitHub context 🛎️
+          id: github_context_step
+          run: echo '${{ toJSON(github) }}'
+        - name: Dump env context
+          run: echo '${{ toJSON(env) }}'
+        - name: Dump job context
+          run: echo '${{ toJSON(job) }}'
+        - name: Dump steps context
+          run: echo '${{ toJSON(steps) }}'
+        - name: Dump runner context
+          run: echo '${{ toJSON(runner) }}'
+        - name: Dump strategy context
+          run: echo '${{ toJSON(strategy) }}'
+        - name: Dump matrix context
+          run: echo '${{ toJSON(matrix) }}'
+        - name: Dump secrets context
+          run: echo '${{ toJSON(secrets) }}'
+        - name: Dump needs context
+          run: echo '${{ toJSON(needs) }}'
+        - name: Dump inputs context
+          run: echo '${{ toJSON(inputs) }}'  
