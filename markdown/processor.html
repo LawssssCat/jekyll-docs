@@ -1,0 +1,678 @@
+<!DOCTYPE html><html lang="zh" data-theme="light"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Renderer | jekyll-docs</title><meta name="description" content="KramdownKramdown (Github) is the default Markdown renderer for Jekyll.markdown: kramdown # options: kramdown (default), redcarpetThe Order of Function Callin..."><link rel="canonical" href="https://lawsssscat.github.io/"><link rel="alternate" type="application/rss+xml" title="jekyll-docs" href="/jekyll-docs/feed.xml"><link rel="apple-touch-icon" sizes="180x180" href="/jekyll-docs/assets/images/favicon/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/jekyll-docs/assets/images/favicon/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/jekyll-docs/assets/images/favicon/favicon-16x16.png"><link rel="manifest" href="/jekyll-docs/assets/images/favicon/site.webmanifest"><link rel="mask-icon" color="#5bbad5" href="/jekyll-docs/assets/images/favicon/safari-pinned-tab.svg"><meta name="msapplication-config" content="/jekyll-docs/assets/images/favicon/browserconfig.xml"><meta name="msapplication-TileColor" content="#da532c"><meta name="theme-color" content="#ffffff"><link rel="stylesheet" href="/jekyll-docs/assets/css/style.css"> <script src="/jekyll-docs/assets/js/data/variables.js"></script><script src="/jekyll-docs/assets/js/dist/venders.min.js"></script><body><div class="layout--base"><div class="layout--page js-page-root"><div class="page__viewport"><div class="page__sidebar-actions d-print-none"><div class="button button--lg button--circle box-shadow-2 sidebar-button js-sidebar-show"> <i class="fas fa-bars icon--show"></i></div><script src="/jekyll-docs/assets/js/dist/sidebar/actions.min.js"></script></div><div class="page__grid grid"><div class="page__sidebar d-print-none"><div class="page__sidebar-inner"><div class="page__sidebar-quicklinks"><div class="quicklinks"><ol><li class="heading active"><div class="quicklinks-item" title="markdown">markdown</div><ol class="quicklinks-details"><li class="" title="Syntax"> <a href="/jekyll-docs/markdown/syntax">Syntax</a><li class="active" title="Renderer"> <a href="/jekyll-docs/markdown/processor">Renderer</a><li class="" title="Highlight"> <a href="/jekyll-docs/markdown/highlight">Highlight</a></ol><li class="heading "><div class="quicklinks-item" title="ruby"><a href="/jekyll-docs/ruby">ruby</a></div><li class="heading "><div class="quicklinks-item" title="liquid"><a href="/jekyll-docs/liquid">liquid</a></div><li class="heading "><div class="quicklinks-item" title="主题"><a href="/jekyll-docs/theme">主题</a></div><li class="heading "><div class="quicklinks-item" title="插件"><a href="/jekyll-docs/plugins">插件</a></div><ol class="quicklinks-details"><li class="" title="emoji"> <a href="/jekyll-docs/plugins/emoji">emoji</a></ol></ol></div><script src="/jekyll-docs/assets/js/dist/sidebar/quicklinks.min.js"></script></div></div><div class="page__sidebar-toggle d-print-none"> <i class="fas fa-bars icon--show"></i></div></div><div class="page__main js-page-main has-aside has-sidebar cell cell--auto"><div class="page__main-inner"><div class="page__header js-header d-print-none"><header class="header"><div class="main"><div class="navigation__toggle"><div class="toggle" aria-label="Menu"><div class="toggle__bar"></div><div class="toggle__bar"></div><div class="toggle__bar"></div></div></div><div class="header__title"><div class="header__brand"><svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m12 2.604-.43.283L0 10.459v6.752l6.393 4.184L12 17.725l5.607 3.671L24 17.211v-6.752L12 2.604zm0 .828 5.434 3.556-2.717 1.778L12 10.545l-2.717-1.78-2.717-1.777L12 3.432zM6.39 7.104l5.434 3.556-5.408 3.54-5.434-3.557 5.409-3.54zm11.22 0 5.431 3.554-5.434 3.557-5.433-3.555 5.435-3.556zM.925 10.867l5.379 3.52a.123.08 0 0 0 .027.013v5.647l-5.406-3.54v-5.64zm11.213.115 5.408 3.54v5.664l-5.408-3.54v-5.664z"/></svg><a class="header__brand-title" title="Collects the common information of Jekyll and put all in one site. " href="/jekyll-docs/">jekyll-docs</a></div></div><div class="navigation"><ul><li class="navigation__item"> <a class="navigation__item-link" href="javascript:void(0)"> <span>Docs</span> <i class="fas fa-angle-down navigation__item-sub_icon"></i> </a><div class="quicklinks-block"><div class="quicklinks-block-left-background"></div><div class="main quicklinks-block-content"><div class="quicklinks-block-left"><ul class="quicklinks-block-left-menu"><li><div class="quicklinks-title"><div class="quicklinks-title-text"> Jekyll <a href="/jekyll-docs/jekyll"><i class="fas fa-external-link-alt link-additional-icon"></i></a><div class="quicklinks-border"></div></div></div><li><div class="quicklinks-title"><div class="quicklinks-title-text"> site <a href="javascript:void(0)"><i class="fas fa-external-link-alt link-additional-icon"></i></a><div class="quicklinks-border"></div></div></div><li><div class="quicklinks-title"><div class="quicklinks-title-text"> tools <a href="javascript:void(0)"><i class="fas fa-external-link-alt link-additional-icon"></i></a><div class="quicklinks-border"></div></div></div></ul></div><div class="quicklinks-block-right"><div class="quicklinks-block-right-menu"><div class="quicklinks-block-right-menu-item"><div class="quicklinks-block-right-menu-item-title"> markdown <a href="javascript:void(0)"><i class="fas fa-external-link-alt link-additional-icon"></i></a></div><div><a class="quicklinks-block-right-menu-item-link" href="/jekyll-docs/markdown/syntax">Syntax</a><a class="quicklinks-block-right-menu-item-link" href="/jekyll-docs/markdown/processor">Renderer</a><a class="quicklinks-block-right-menu-item-link" href="/jekyll-docs/markdown/highlight">Highlight</a></div></div><div class="quicklinks-block-right-menu-item"><div class="quicklinks-block-right-menu-item-title"> ruby <a href="/jekyll-docs/ruby"><i class="fas fa-external-link-alt link-additional-icon"></i></a></div><div></div></div><div class="quicklinks-block-right-menu-item"><div class="quicklinks-block-right-menu-item-title"> liquid <a href="/jekyll-docs/liquid"><i class="fas fa-external-link-alt link-additional-icon"></i></a></div><div></div></div><div class="quicklinks-block-right-menu-item"><div class="quicklinks-block-right-menu-item-title"> 主题 <a href="/jekyll-docs/theme"><i class="fas fa-external-link-alt link-additional-icon"></i></a></div><div></div></div><div class="quicklinks-block-right-menu-item"><div class="quicklinks-block-right-menu-item-title"> 插件 <a href="/jekyll-docs/plugins"><i class="fas fa-external-link-alt link-additional-icon"></i></a></div><div><a class="quicklinks-block-right-menu-item-link" href="/jekyll-docs/plugins/emoji">emoji</a></div></div></div><div class="quicklinks-block-right-menu"><div class="quicklinks-block-right-menu-item"><div class="quicklinks-block-right-menu-item-title"> Start <a href="javascript:void(0)"><i class="fas fa-external-link-alt link-additional-icon"></i></a></div><div><a class="quicklinks-block-right-menu-item-link" href="/jekyll-docs/docs/en/quick-start">Quick Start</a><a class="quicklinks-block-right-menu-item-link" href="/jekyll-docs/docs/en/structure">Structure</a><a class="quicklinks-block-right-menu-item-link" href="/jekyll-docs/docs/en/typography">Typography</a><a class="quicklinks-block-right-menu-item-link" href="/jekyll-docs/docs/en/blog-service-migration">Blog Migration</a></div></div><div class="quicklinks-block-right-menu-item"><div class="quicklinks-block-right-menu-item-title"> Samples <a href="/jekyll-docs/samples.html"><i class="fas fa-external-link-alt link-additional-icon"></i></a></div><div></div></div><div class="quicklinks-block-right-menu-item"><div class="quicklinks-block-right-menu-item-title"> Components <a href="javascript:void(0)"><i class="fas fa-external-link-alt link-additional-icon"></i></a></div><div><a class="quicklinks-block-right-menu-item-link" href="/jekyll-docs/docs/en/components/spacing">Spacing</a><a class="quicklinks-block-right-menu-item-link" href="/jekyll-docs/docs/en/components/grid">Grid</a><a class="quicklinks-block-right-menu-item-link" href="/jekyll-docs/docs/en/components/code">Code</a><a class="quicklinks-block-right-menu-item-link" href="/jekyll-docs/docs/en/components/alert">Alert</a><a class="quicklinks-block-right-menu-item-link" href="/jekyll-docs/docs/en/components/button">Button</a><a class="quicklinks-block-right-menu-item-link" href="/jekyll-docs/docs/en/components/checkbox">Checkbox</a><a class="quicklinks-block-right-menu-item-link" href="/jekyll-docs/docs/en/components/icons">Icons</a><a class="quicklinks-block-right-menu-item-link" href="/jekyll-docs/docs/en/components/images">Images</a><a class="quicklinks-block-right-menu-item-link" href="/jekyll-docs/docs/en/components/item">Item</a><a class="quicklinks-block-right-menu-item-link" href="/jekyll-docs/docs/en/components/card">Card</a><a class="quicklinks-block-right-menu-item-link" href="/jekyll-docs/docs/en/components/hero">Hero</a><a class="quicklinks-block-right-menu-item-link" href="/jekyll-docs/docs/en/components/swiper">Swiper</a></div></div><div class="quicklinks-block-right-menu-item"><div class="quicklinks-block-right-menu-item-title"> Customization <a href="javascript:void(0)"><i class="fas fa-external-link-alt link-additional-icon"></i></a></div><div></div></div><div class="quicklinks-block-right-menu-item"><div class="quicklinks-block-right-menu-item-title"> Configuration <a href="javascript:void(0)"><i class="fas fa-external-link-alt link-additional-icon"></i></a></div><div><a class="quicklinks-block-right-menu-item-link" href=""></a></div></div><div class="quicklinks-block-right-menu-item"><div class="quicklinks-block-right-menu-item-title"> Authors <a href="/jekyll-docs/docs/en/authors"><i class="fas fa-external-link-alt link-additional-icon"></i></a></div><div></div></div><div class="quicklinks-block-right-menu-item"><div class="quicklinks-block-right-menu-item-title"> Language <a href="javascript:void(0)"><i class="fas fa-external-link-alt link-additional-icon"></i></a></div><div><a class="quicklinks-block-right-menu-item-link" href="">中文</a></div></div><div class="quicklinks-block-right-menu-item"><div class="quicklinks-block-right-menu-item-title"> Development <a href="javascript:void(0)"><i class="fas fa-external-link-alt link-additional-icon"></i></a></div><div></div></div></div><div class="quicklinks-block-right-menu"><div class="quicklinks-block-right-menu-item"><div class="quicklinks-block-right-menu-item-title"> <a href="/jekyll-docs/tools"><i class="fas fa-external-link-alt link-additional-icon"></i></a></div><div></div></div></div></div></div></div><li class="navigation__item"> <a class="navigation__item-link" href="/jekyll-docs/archive"> <span>Archive</span> </a><li class="navigation__item"> <a class="navigation__item-link" href="/jekyll-docs/about"> <span>关于</span> </a></div><div class="toggle-items"><div class="toggle-item toggle-lang-switch"> <i class="fas fa-language"></i> <span>ZH</span></div><div class="toggle-item toggle-theme-switch"> <i class="toggle-theme-icon-light fas fa-sun"></i> <i class="toggle-theme-icon-dark far fa-moon"></i></div><div class="toggle-item toggle-docs-search"> <i class="fas fa-search"></i></div></div></div></header></div><div class="page__content"><div class="main"><div class="grid grid--reverse"><div class="col-aside d-print-none"><aside><div class="toc-aside"><header><h2 class="toc-handing">In this article</h2></header><div class="toc js-toc-root"></div><script> window.VARIABLES.append({ toc: { selectors: "h1,h2,h3,h4" } }); </script><script src="/jekyll-docs/assets/js/dist/aside/toc.min.js"></script></div></aside></div><div class="col-main cell cell--sm-auto"><article itemscope itemtype="http://schema.org/Article"><div><div class="layout--article"><div class="article__header"><header class="header"><h1>Renderer</h1><span class="split-space d-print-none">&nbsp;</span> <a class="edit-on-repo d-print-none" title="在 GitHub 上修改" href="https://github.com/lawsssscat/jekyll-docs/tree/dev/_jekyll/markdown-processor.md"><i class="far fa-edit"></i></a></header><meta itemprop="headline" content="Renderer"></div><div class="article__infos d-print-none"><div class="infos"><div class="info__item article__author-avatar-wrapper"><div class="article__author-avatar"> <img src="/jekyll-docs/assets/images/cover2.jpg" alt="author avatar"></div></div><div class="info__item"><p> <font>Published on</font> <span class="nowrap">2022年08月18日</span></p></div><div class="info__item"><p> <font>Written by</font> <span class="nowrap"> <a href="https://example.com/">@foo</a> </span></p></div><div class="info__item"><p> <font>Reading time</font> <span class="nowrap" data-toggle="popover" data-popper-trigger="hover focus" data-popper-title="" data-popper-content="2312 字"> 13 min </span></p></div><div class="info__item"><p> <font>Views</font><span class="nowrap js-pageview" data-one-page-action="increase" data-one-page-key="/markdown/markdown-processor" data-one-page-title="Renderer" > <font class="views-num">0</font> Hits </span></p></div><div class="info__item"><p> <font>More on</font> <span class="wrap"><a href="/jekyll-docs/archive?tag=guide">guide</a>,&nbsp;<a href="/jekyll-docs/archive?tag=markdown">markdown</a>,&nbsp;<a href="/jekyll-docs/archive?tag=kramdown">kramdown</a>,&nbsp;<a href="/jekyll-docs/archive?tag=redcarpet">redcarpet</a></span></p></div></div><meta itemprop="author" content="foo"/></div><div class="article__content js-article-content"><h2 id="kramdown">Kramdown</h2><p><a href="https://kramdown.gettalong.org/index.html">Kramdown</a> (<a href="https://github.com/gettalong/kramdown">Github</a>) is the default Markdown renderer for Jekyll.</p><div class="language-yml no-code-header highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">markdown</span><span class="pi">:</span> <span class="s">kramdown</span> <span class="c1"># options: kramdown (default), redcarpet</span>
+</code></pre></div></div><div class="details-wrapper"><div class="summary-content"><p><strong>The Order of Function Calling:</strong></p><ol><li><span class="info alert-compact">Jekyll markdown init</span><ol><li>(jekyll - markdown) <code class="language-plaintext highlighter-rouge">Converter.get_processor</code> =&gt;<li>(jekyll - markdown - parser) <code class="language-plaintext highlighter-rouge">KramdownParser.new</code></ol><li><span class="info alert-compact">Jekyll markdown convert</span><ol><li>(jekyll - markdown) <code class="language-plaintext highlighter-rouge">Converter.convert</code> =&gt;<li>(jekyll - markdown - parser) <code class="language-plaintext highlighter-rouge">KramdownParser.convert</code> =&gt;<li>(jekyll - markdown - parser) <code class="language-plaintext highlighter-rouge">JekyllDocument.new</code> =&gt;<li>(jekyll - markdown - parser) <code class="language-plaintext highlighter-rouge">JekyllDocument.try_require("parser", "Kramdown")</code> =&gt;<li>(jekyll - markdown - parser) <code class="language-plaintext highlighter-rouge">require "kramdown/parser/kramdown"</code> =&gt;<br /> <span class="info alert-compact">kramdown init and parse</span> =&gt;<br /> <code class="language-plaintext highlighter-rouge">Parser.const_get("Kramdown")</code> =&gt;<br /> <code class="language-plaintext highlighter-rouge">JekyllDocument.parser.parse(source, @options)</code> =&gt;<li>(jekyll - markdown - parser) <code class="language-plaintext highlighter-rouge">JekyllDocument.to_html</code></ol><li><span class="info alert-compact">kramdown init and parse</span><ol><li>(kramdown) <code class="language-plaintext highlighter-rouge">Kramdown:Parser:Kramdown.initialize</code> =&gt;<li>(kramdown) <code class="language-plaintext highlighter-rouge">Kramdown:Parser:Kramdown.parse</code></ol></ol></div><div class="details-content-wrapper"> <details onclick="javascript: window.VARIABLES.pageScrollTarget.scroll({ top: TOOL.positionRelative( (this.open?this.parentElement.parentElement:this.parentElement), window.VARIABLES.pageScroller ).top, behavior: window.VARIABLES.pageScrollerBehavior }); "> <summary class="summary-toggle" title="click to show details"> <i class="summary-toggle-icon fas fa-angle-double-down"></i> </summary> </details><div class="details-content"><div class="details-content-inner"><p>details:</p><div class="warning"><p><code class="language-plaintext highlighter-rouge">Jekyll</code> Source Code: <a href="https://github.com/jekyll/jekyll/blob/master/lib/jekyll/converters/markdown.rb">lib/jekyll/converters/markdown.rb</a></p><ul><li>Jekyll - Converter - Markdown</ul></div><div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="nn">Jekyll</span>
+  <span class="k">module</span> <span class="nn">Converters</span>
+    <span class="c1"># Markdown converter.</span>
+    <span class="c1"># For more info on converters see https://jekyllrb.com/docs/plugins/converters/</span>
+    <span class="k">class</span> <span class="nc">Markdown</span> <span class="o">&lt;</span> <span class="no">Converter</span>
+      <span class="c1"># RuboCop does not allow reader methods to have names starting with `get_`</span>
+      <span class="c1"># To ensure compatibility, this check has been disabled on this method</span>
+      <span class="c1">#</span>
+      <span class="c1"># rubocop:disable Naming/AccessorMethodName</span>
+      <span class="k">def</span> <span class="nf">get_processor</span>
+        <span class="k">case</span> <span class="vi">@config</span><span class="p">[</span><span class="s2">"markdown"</span><span class="p">].</span><span class="nf">downcase</span>
+        <span class="k">when</span> <span class="s2">"kramdown"</span> <span class="k">then</span> <span class="no">KramdownParser</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="vi">@config</span><span class="p">)</span>
+        <span class="k">else</span>
+          <span class="n">custom_processor</span>
+        <span class="k">end</span>
+      <span class="k">end</span>
+
+      <span class="o">...</span>
+
+      <span class="c1"># Logic to do the content conversion.</span>
+      <span class="c1">#</span>
+      <span class="c1"># content - String content of file (without front matter).</span>
+      <span class="c1">#</span>
+      <span class="c1"># Returns a String of the converted content.</span>
+      <span class="k">def</span> <span class="nf">convert</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+        <span class="n">setup</span>
+        <span class="vi">@cache</span><span class="p">.</span><span class="nf">getset</span><span class="p">(</span><span class="n">content</span><span class="p">)</span> <span class="k">do</span>
+          <span class="vi">@parser</span><span class="p">.</span><span class="nf">convert</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+        <span class="k">end</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div><div class="warning"><p><code class="language-plaintext highlighter-rouge">Jekyll</code> Source Code: <a href="https://github.com/jekyll/jekyll/blob/master/lib/jekyll/converters/markdown/kramdown_parser.rb">lib/jekyll/converters/markdown/kramdown_parser.rb</a></p><ul><li>Kramdown - JekyllDocument<li>Jekyll - Converters - Markdown - KramdownParser</ul><p>Ruby API:</p><ul><li><a href="https://ruby-doc.org/core-2.5.0/Module.html#method-i-const_get">const_get</a></ul></div><div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="nn">Kramdown</span>
+  <span class="c1"># A Kramdown::Document subclass meant to optimize memory usage from initializing</span>
+  <span class="c1"># a kramdown document for parsing.</span>
+  <span class="c1">#</span>
+  <span class="c1"># The optimization is by using the same options Hash (and its derivatives) for</span>
+  <span class="c1"># converting all Markdown documents in a Jekyll site.</span>
+  <span class="k">class</span> <span class="nc">JekyllDocument</span> <span class="o">&lt;</span> <span class="no">Document</span>
+    <span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="nb">self</span>
+      <span class="c1"># The implementation is basically the core logic in +Kramdown::Document#initialize+</span>
+      <span class="c1">#</span>
+      <span class="c1"># rubocop:disable Naming/MemoizedInstanceVariableName</span>
+      <span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="n">options</span><span class="p">)</span>
+        <span class="vi">@cache</span> <span class="o">||=</span> <span class="p">{}</span>
+
+        <span class="c1"># reset variables on a subsequent set up with a different options Hash</span>
+        <span class="k">unless</span> <span class="vi">@cache</span><span class="p">[</span><span class="ss">:id</span><span class="p">]</span> <span class="o">==</span> <span class="n">options</span><span class="p">.</span><span class="nf">hash</span>
+          <span class="vi">@options</span> <span class="o">=</span> <span class="vi">@parser</span> <span class="o">=</span> <span class="kp">nil</span>
+          <span class="vi">@cache</span><span class="p">[</span><span class="ss">:id</span><span class="p">]</span> <span class="o">=</span> <span class="n">options</span><span class="p">.</span><span class="nf">hash</span>
+        <span class="k">end</span>
+
+        <span class="vi">@options</span> <span class="o">||=</span> <span class="no">Options</span><span class="p">.</span><span class="nf">merge</span><span class="p">(</span><span class="n">options</span><span class="p">).</span><span class="nf">freeze</span>
+        <span class="vi">@parser</span>  <span class="o">||=</span> <span class="k">begin</span>
+          <span class="n">parser_name</span> <span class="o">=</span> <span class="p">(</span><span class="vi">@options</span><span class="p">[</span><span class="ss">:input</span><span class="p">]</span> <span class="o">||</span> <span class="s2">"kramdown"</span><span class="p">).</span><span class="nf">to_s</span>
+          <span class="n">parser_name</span> <span class="o">=</span> <span class="n">parser_name</span><span class="p">[</span><span class="mi">0</span><span class="o">..</span><span class="mi">0</span><span class="p">].</span><span class="nf">upcase</span> <span class="o">+</span> <span class="n">parser_name</span><span class="p">[</span><span class="mi">1</span><span class="o">..-</span><span class="mi">1</span><span class="p">]</span>
+          <span class="n">try_require</span><span class="p">(</span><span class="s2">"parser"</span><span class="p">,</span> <span class="n">parser_name</span><span class="p">)</span>
+
+          <span class="k">if</span> <span class="no">Parser</span><span class="p">.</span><span class="nf">const_defined?</span><span class="p">(</span><span class="n">parser_name</span><span class="p">)</span>
+            <span class="no">Parser</span><span class="p">.</span><span class="nf">const_get</span><span class="p">(</span><span class="n">parser_name</span><span class="p">)</span>
+          <span class="k">else</span>
+            <span class="k">raise</span> <span class="no">Kramdown</span><span class="o">::</span><span class="no">Error</span><span class="p">,</span> <span class="s2">"kramdown has no parser to handle the specified "</span> <span class="p">\</span>
+                                    <span class="s2">"input format: </span><span class="si">#{</span><span class="vi">@options</span><span class="p">[</span><span class="ss">:input</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span>
+          <span class="k">end</span>
+        <span class="k">end</span>
+      <span class="k">end</span>
+
+      <span class="kp">private</span>
+
+      <span class="k">def</span> <span class="nf">try_require</span><span class="p">(</span><span class="n">type</span><span class="p">,</span> <span class="nb">name</span><span class="p">)</span>
+        <span class="nb">require</span> <span class="s2">"kramdown/</span><span class="si">#{</span><span class="n">type</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="no">Utils</span><span class="p">.</span><span class="nf">snake_case</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
+      <span class="k">rescue</span> <span class="no">LoadError</span>
+        <span class="kp">false</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+
+    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">options</span> <span class="o">=</span> <span class="p">{})</span>
+      <span class="no">JekyllDocument</span><span class="p">.</span><span class="nf">setup</span><span class="p">(</span><span class="n">options</span><span class="p">)</span>
+
+      <span class="vi">@options</span> <span class="o">=</span> <span class="no">JekyllDocument</span><span class="p">.</span><span class="nf">options</span>
+      <span class="vi">@root</span><span class="p">,</span> <span class="vi">@warnings</span> <span class="o">=</span> <span class="no">JekyllDocument</span><span class="p">.</span><span class="nf">parser</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="vi">@options</span><span class="p">)</span>
+    <span class="k">end</span>
+
+    <span class="c1"># Use Kramdown::Converter::Html class to convert this document into HTML.</span>
+    <span class="c1">#</span>
+    <span class="c1"># The implementation is basically an optimized version of core logic in</span>
+    <span class="c1"># +Kramdown::Document#method_missing+ from kramdown-2.1.0.</span>
+    <span class="k">def</span> <span class="nf">to_html</span>
+      <span class="n">output</span><span class="p">,</span> <span class="n">warnings</span> <span class="o">=</span> <span class="no">Kramdown</span><span class="o">::</span><span class="no">Converter</span><span class="o">::</span><span class="no">Html</span><span class="p">.</span><span class="nf">convert</span><span class="p">(</span><span class="vi">@root</span><span class="p">,</span> <span class="vi">@options</span><span class="p">)</span>
+      <span class="vi">@warnings</span><span class="p">.</span><span class="nf">concat</span><span class="p">(</span><span class="n">warnings</span><span class="p">)</span>
+      <span class="n">output</span>
+    <span class="k">end</span>
+
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">module</span> <span class="nn">Jekyll</span>
+  <span class="k">module</span> <span class="nn">Converters</span>
+    <span class="k">class</span> <span class="nc">Markdown</span>
+      <span class="k">class</span> <span class="nc">KramdownParser</span>
+        <span class="no">CODERAY_DEFAULTS</span> <span class="o">=</span> <span class="p">{</span>
+          <span class="s2">"css"</span>               <span class="o">=&gt;</span> <span class="s2">"style"</span><span class="p">,</span>
+          <span class="s2">"bold_every"</span>        <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
+          <span class="s2">"line_numbers"</span>      <span class="o">=&gt;</span> <span class="s2">"inline"</span><span class="p">,</span>
+          <span class="s2">"line_number_start"</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="s2">"tab_width"</span>         <span class="o">=&gt;</span> <span class="mi">4</span><span class="p">,</span>
+          <span class="s2">"wrap"</span>              <span class="o">=&gt;</span> <span class="s2">"div"</span><span class="p">,</span>
+        <span class="p">}.</span><span class="nf">freeze</span>
+
+        <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+          <span class="vi">@main_fallback_highlighter</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s2">"highlighter"</span><span class="p">]</span> <span class="o">||</span> <span class="s2">"rouge"</span>
+          <span class="vi">@config</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s2">"kramdown"</span><span class="p">]</span> <span class="o">||</span> <span class="p">{}</span>
+          <span class="vi">@highlighter</span> <span class="o">=</span> <span class="kp">nil</span>
+          <span class="n">setup</span>
+          <span class="n">load_dependencies</span>
+        <span class="k">end</span>
+
+        <span class="k">def</span> <span class="nf">convert</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+          <span class="n">document</span> <span class="o">=</span> <span class="no">Kramdown</span><span class="o">::</span><span class="no">JekyllDocument</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="vi">@config</span><span class="p">)</span>
+          <span class="n">html_output</span> <span class="o">=</span> <span class="n">document</span><span class="p">.</span><span class="nf">to_html</span>
+          <span class="k">if</span> <span class="vi">@config</span><span class="p">[</span><span class="s2">"show_warnings"</span><span class="p">]</span>
+            <span class="n">document</span><span class="p">.</span><span class="nf">warnings</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">warning</span><span class="o">|</span>
+              <span class="no">Jekyll</span><span class="p">.</span><span class="nf">logger</span><span class="p">.</span><span class="nf">warn</span> <span class="s2">"Kramdown warning:"</span><span class="p">,</span> <span class="n">warning</span>
+            <span class="k">end</span>
+          <span class="k">end</span>
+          <span class="n">html_output</span>
+        <span class="k">end</span>
+
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div><div class="warning"><p><code class="language-plaintext highlighter-rouge">Kramdown</code> Source Code: <a href="https://github.com/gettalong/kramdown/blob/master/lib/kramdown/parser/kramdown.rb">lib/kramdown/parser/kramdown.rb</a></p></div><div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'strscan'</span>
+<span class="nb">require</span> <span class="s1">'stringio'</span>
+<span class="nb">require</span> <span class="s1">'kramdown/parser'</span>
+
+<span class="k">module</span> <span class="nn">Kramdown</span>
+
+  <span class="k">module</span> <span class="nn">Parser</span>
+
+    <span class="c1"># Used for parsing a document in kramdown format.</span>
+    <span class="c1">#</span>
+    <span class="c1"># If you want to extend the functionality of the parser, you need to do the following:</span>
+    <span class="c1">#</span>
+    <span class="c1"># * Create a new subclass</span>
+    <span class="c1"># * add the needed parser methods</span>
+    <span class="c1"># * modify the @block_parsers and @span_parsers variables and add the names of your parser</span>
+    <span class="c1">#   methods</span>
+    <span class="c1">#</span>
+    <span class="c1"># Here is a small example for an extended parser class that parses ERB style tags as raw text if</span>
+    <span class="c1"># they are used as span-level elements (an equivalent block-level parser should probably also be</span>
+    <span class="c1"># made to handle the block case):</span>
+    <span class="c1">#</span>
+    <span class="c1">#   require 'kramdown/parser/kramdown'</span>
+    <span class="c1">#</span>
+    <span class="c1">#   class Kramdown::Parser::ERBKramdown &lt; Kramdown::Parser::Kramdown</span>
+    <span class="c1">#</span>
+    <span class="c1">#      def initialize(source, options)</span>
+    <span class="c1">#        super</span>
+    <span class="c1">#        @span_parsers.unshift(:erb_tags)</span>
+    <span class="c1">#      end</span>
+    <span class="c1">#</span>
+    <span class="c1">#      ERB_TAGS_START = /&lt;%.*?%&gt;/</span>
+    <span class="c1">#</span>
+    <span class="c1">#      def parse_erb_tags</span>
+    <span class="c1">#        @src.pos += @src.matched_size</span>
+    <span class="c1">#        @tree.children &lt;&lt; Element.new(:raw, @src.matched)</span>
+    <span class="c1">#      end</span>
+    <span class="c1">#      define_parser(:erb_tags, ERB_TAGS_START, '&lt;%')</span>
+    <span class="c1">#</span>
+    <span class="c1">#   end</span>
+    <span class="c1">#</span>
+    <span class="c1"># The new parser can be used like this:</span>
+    <span class="c1">#</span>
+    <span class="c1">#   require 'kramdown/document'</span>
+    <span class="c1">#   # require the file with the above parser class</span>
+    <span class="c1">#</span>
+    <span class="c1">#   Kramdown::Document.new(input_text, :input =&gt; 'ERBKramdown').to_html</span>
+    <span class="c1">#</span>
+    <span class="k">class</span> <span class="nc">Kramdown</span> <span class="o">&lt;</span> <span class="no">Base</span>
+      
+      <span class="c1"># Create a new Kramdown parser object with the given +options+.</span>
+      <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span>
+        <span class="k">super</span>
+
+        <span class="n">reset_env</span>
+
+        <span class="vi">@alds</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="vi">@footnotes</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="vi">@link_defs</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">update_link_definitions</span><span class="p">(</span><span class="vi">@options</span><span class="p">[</span><span class="ss">:link_defs</span><span class="p">])</span>
+
+        <span class="vi">@block_parsers</span> <span class="o">=</span> <span class="p">[</span><span class="ss">:blank_line</span><span class="p">,</span> <span class="ss">:codeblock</span><span class="p">,</span> <span class="ss">:codeblock_fenced</span><span class="p">,</span> <span class="ss">:blockquote</span><span class="p">,</span> <span class="ss">:atx_header</span><span class="p">,</span>
+                          <span class="ss">:horizontal_rule</span><span class="p">,</span> <span class="ss">:list</span><span class="p">,</span> <span class="ss">:definition_list</span><span class="p">,</span> <span class="ss">:block_html</span><span class="p">,</span> <span class="ss">:setext_header</span><span class="p">,</span>
+                          <span class="ss">:block_math</span><span class="p">,</span> <span class="ss">:table</span><span class="p">,</span> <span class="ss">:footnote_definition</span><span class="p">,</span> <span class="ss">:link_definition</span><span class="p">,</span>
+                          <span class="ss">:abbrev_definition</span><span class="p">,</span> <span class="ss">:block_extensions</span><span class="p">,</span> <span class="ss">:eob_marker</span><span class="p">,</span> <span class="ss">:paragraph</span><span class="p">]</span>
+        <span class="vi">@span_parsers</span> <span class="o">=</span>  <span class="p">[</span><span class="ss">:emphasis</span><span class="p">,</span> <span class="ss">:codespan</span><span class="p">,</span> <span class="ss">:autolink</span><span class="p">,</span> <span class="ss">:span_html</span><span class="p">,</span> <span class="ss">:footnote_marker</span><span class="p">,</span> <span class="ss">:link</span><span class="p">,</span>
+                          <span class="ss">:smart_quotes</span><span class="p">,</span> <span class="ss">:inline_math</span><span class="p">,</span> <span class="ss">:span_extensions</span><span class="p">,</span> <span class="ss">:html_entity</span><span class="p">,</span>
+                          <span class="ss">:typographic_syms</span><span class="p">,</span> <span class="ss">:line_break</span><span class="p">,</span> <span class="ss">:escaped_chars</span><span class="p">]</span>
+
+        <span class="vi">@span_pattern_cache</span> <span class="o">||=</span> <span class="no">Hash</span><span class="p">.</span><span class="nf">new</span> <span class="p">{</span> <span class="o">|</span><span class="n">h</span><span class="p">,</span> <span class="n">k</span><span class="o">|</span> <span class="n">h</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span> <span class="p">}</span>
+      <span class="k">end</span>
+
+      <span class="c1"># The source string provided on initialization is parsed into the @root element.</span>
+      <span class="k">def</span> <span class="nf">parse</span>
+        <span class="n">configure_parser</span>
+        <span class="n">parse_blocks</span><span class="p">(</span><span class="vi">@root</span><span class="p">,</span> <span class="n">adapt_source</span><span class="p">(</span><span class="n">source</span><span class="p">))</span>
+        <span class="n">update_tree</span><span class="p">(</span><span class="vi">@root</span><span class="p">)</span>
+        <span class="n">correct_abbreviations_attributes</span>
+        <span class="n">replace_abbreviations</span><span class="p">(</span><span class="vi">@root</span><span class="p">)</span>
+        <span class="vi">@footnotes</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">_name</span><span class="p">,</span> <span class="n">data</span><span class="o">|</span>
+          <span class="n">update_tree</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="ss">:content</span><span class="p">])</span>
+          <span class="n">replace_abbreviations</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="ss">:content</span><span class="p">])</span>
+        <span class="k">end</span>
+        <span class="n">footnote_count</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="vi">@footnotes</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="nb">name</span><span class="p">,</span> <span class="n">data</span><span class="o">|</span>
+          <span class="p">(</span><span class="n">footnote_count</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span> <span class="k">next</span><span class="p">)</span> <span class="k">if</span> <span class="n">data</span><span class="p">.</span><span class="nf">key?</span><span class="p">(</span><span class="ss">:marker</span><span class="p">)</span>
+          <span class="n">line</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="ss">:content</span><span class="p">].</span><span class="nf">options</span><span class="p">[</span><span class="ss">:location</span><span class="p">]</span>
+          <span class="n">warning</span><span class="p">(</span><span class="s2">"Footnote definition for '</span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">' on line </span><span class="si">#{</span><span class="n">line</span><span class="si">}</span><span class="s2"> is unreferenced - ignoring"</span><span class="p">)</span>
+        <span class="k">end</span>
+        <span class="vi">@root</span><span class="p">.</span><span class="nf">options</span><span class="p">[</span><span class="ss">:footnote_count</span><span class="p">]</span> <span class="o">=</span> <span class="n">footnote_count</span>
+      <span class="k">end</span>
+
+      <span class="c1"># Adapt the object to allow parsing like specified in the options.</span>
+      <span class="k">def</span> <span class="nf">configure_parser</span>
+        <span class="vi">@parsers</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="p">(</span><span class="vi">@block_parsers</span> <span class="o">+</span> <span class="vi">@span_parsers</span><span class="p">).</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="nb">name</span><span class="o">|</span>
+          <span class="k">if</span> <span class="nb">self</span><span class="p">.</span><span class="nf">class</span><span class="p">.</span><span class="nf">has_parser?</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+            <span class="vi">@parsers</span><span class="p">[</span><span class="nb">name</span><span class="p">]</span> <span class="o">=</span> <span class="nb">self</span><span class="p">.</span><span class="nf">class</span><span class="p">.</span><span class="nf">parser</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+          <span class="k">else</span>
+            <span class="k">raise</span> <span class="no">Kramdown</span><span class="o">::</span><span class="no">Error</span><span class="p">,</span> <span class="s2">"Unknown parser: </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">"</span>
+          <span class="k">end</span>
+        <span class="k">end</span>
+        <span class="vi">@span_start</span><span class="p">,</span> <span class="vi">@span_start_re</span> <span class="o">=</span> <span class="n">span_parser_regexps</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+<span class="k">end</span>
+</code></pre></div></div></div></div></div></div><h3 id="syntax">Syntax</h3><blockquote><ul><li><a href="https://kramdown.gettalong.org/quickref.html">Kramdown Official website - Syntax Quick-Reference and Demo</a> - ⭐️<li><a href="https://kramdown.gettalong.org/syntax.html">Kramdown Official website - Syntax Detailed-Behavior</a> - ⭐️</ul></blockquote><p>e.g.<br /> <a href="https://kramdown.gettalong.org/syntax.html#block-ials">IAL(Inline Attribute Lists)</a></p><div class="block-tabs"><div class="tab-navs-wrapper"><div class="tab-navs"><div class="tab-nav active"><div class="tab-nav-inner"> markdown</div></div><div class="tab-split"></div><div class="tab-nav "><div class="tab-nav-inner"> html</div></div></div><div class="tab-toggle-left"> <i class="fas fa-chevron-left"></i></div><div class="tab-toggle-right"> <i class="fas fa-chevron-right"></i></div></div><div class="tab-contents"><div class="tab-content active"><div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{::comment}
+This text is completely ignored by kramdown - a comment in the text.
+{:/comment}
+
+Do you see {::comment}this text{:/comment}?
+{::comment}some other comment{:/}
+
+{::options key="val" /}
+
+This <span class="ge">*is*</span>{:.underline} some <span class="sb">`code`</span>{:#id}{:.class}.
+A <span class="p">[</span><span class="nv">link</span><span class="p">](</span><span class="sx">test.html</span><span class="p">)</span>{:rel='something'} and some <span class="gs">**tools**</span>{:.tools}.
+<span class="gt">
+&gt; A blockquote{:rel='something'} with a title{:.tools}</span>
+{:title="The blockquote title"}
+{: #myid}
+
+{:.ruby}
+    Some code here
+
+This <span class="ge">*is italic*</span>{::}<span class="ge">*marked*</span>{:.special} text
+</code></pre></div></div></div><div class="tab-content "><div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- This text is completely ignored by kramdown - a comment in the text. --&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>Do you see <span class="c">&lt;!-- this text --&gt;</span>?
+<span class="c">&lt;!-- some other comment --&gt;</span><span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>This <span class="nt">&lt;em</span> <span class="na">class=</span><span class="s">"underline"</span><span class="nt">&gt;</span>is<span class="nt">&lt;/em&gt;</span> some <span class="nt">&lt;code</span> <span class="na">id=</span><span class="s">"id"</span> <span class="na">class=</span><span class="s">"language-plaintext class highlighter-rouge"</span><span class="nt">&gt;</span>code<span class="nt">&lt;/code&gt;</span>.
+A <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"test.html"</span> <span class="na">rel=</span><span class="s">"something"</span><span class="nt">&gt;</span>link<span class="nt">&lt;/a&gt;</span> and some <span class="nt">&lt;strong</span> <span class="na">class=</span><span class="s">"tools"</span><span class="nt">&gt;</span>tools<span class="nt">&lt;/strong&gt;</span>.<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;blockquote</span> <span class="na">title=</span><span class="s">"The blockquote title"</span> <span class="na">id=</span><span class="s">"myid"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;p&gt;</span>A blockquote{:rel=’something’} with a title{:.tools}<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/blockquote&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"language-plaintext ruby highlighter-rouge"</span><span class="nt">&gt;&lt;div</span> <span class="na">class=</span><span class="s">"highlight"</span><span class="nt">&gt;&lt;pre</span> <span class="na">class=</span><span class="s">"highlight"</span><span class="nt">&gt;&lt;code&gt;</span>Some code here
+<span class="nt">&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>This <span class="nt">&lt;em&gt;</span>is italic<span class="nt">&lt;/em&gt;&lt;em</span> <span class="na">class=</span><span class="s">"special"</span><span class="nt">&gt;</span>marked<span class="nt">&lt;/em&gt;</span> text<span class="nt">&lt;/p&gt;</span>
+
+</code></pre></div></div></div></div></div><h3 id="options">Options</h3><blockquote><ul><li><a href="https://jekyllrb.com/docs/configuration/markdown/#kramdown">Jekyll Official website - Configuration of markdown</a><li><a href="https://kramdown.gettalong.org/rdoc/Kramdown/Options.html">Kramdown Official website - API</a><li><a href="https://kramdown.gettalong.org/options.html">Kramdown Official website - API Docs</a> - ⭐️</ul></blockquote><div class="details-wrapper"><div class="summary-content"><p><strong>default options:</strong></p></div><div class="details-content-wrapper"> <details open="" onclick="javascript: window.VARIABLES.pageScrollTarget.scroll({ top: TOOL.positionRelative( (this.open?this.parentElement.parentElement:this.parentElement), window.VARIABLES.pageScroller ).top, behavior: window.VARIABLES.pageScrollerBehavior }); "> <summary class="summary-toggle" title="click to show details"> <i class="summary-toggle-icon fas fa-angle-double-down"></i> </summary> </details><div class="details-content"><div class="details-content-inner"><p>details:</p><p><code class="language-plaintext highlighter-rouge">Jekyll</code> source code <a href="https://github.com/jekyll/jekyll/blob/master/lib/jekyll/configuration.rb">lib/jekyll/configuration.rb</a></p><div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="nn">Jekyll</span>
+  <span class="k">class</span> <span class="nc">Configuration</span> <span class="o">&lt;</span> <span class="no">Hash</span>
+    <span class="no">DEFAULTS</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="c1"># Conversion</span>
+      <span class="s2">"markdown"</span>            <span class="o">=&gt;</span> <span class="s2">"kramdown"</span><span class="p">,</span>
+      <span class="s2">"highlighter"</span>         <span class="o">=&gt;</span> <span class="s2">"rouge"</span><span class="p">,</span>
+      <span class="s2">"lsi"</span>                 <span class="o">=&gt;</span> <span class="kp">false</span><span class="p">,</span>
+      <span class="s2">"excerpt_separator"</span>   <span class="o">=&gt;</span> <span class="s2">"</span><span class="se">\n\n</span><span class="s2">"</span><span class="p">,</span>
+      <span class="s2">"incremental"</span>         <span class="o">=&gt;</span> <span class="kp">false</span><span class="p">,</span>
+
+      <span class="o">...</span>
+
+      <span class="s2">"kramdown"</span>            <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="s2">"auto_ids"</span>      <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span>
+        <span class="s2">"toc_levels"</span>    <span class="o">=&gt;</span> <span class="p">(</span><span class="mi">1</span><span class="o">..</span><span class="mi">6</span><span class="p">).</span><span class="nf">to_a</span><span class="p">,</span>
+        <span class="s2">"entity_output"</span> <span class="o">=&gt;</span> <span class="s2">"as_char"</span><span class="p">,</span>
+        <span class="s2">"smart_quotes"</span>  <span class="o">=&gt;</span> <span class="s2">"lsquo,rsquo,ldquo,rdquo"</span><span class="p">,</span>
+        <span class="s2">"input"</span>         <span class="o">=&gt;</span> <span class="s2">"GFM"</span><span class="p">,</span>
+        <span class="s2">"hard_wrap"</span>     <span class="o">=&gt;</span> <span class="kp">false</span><span class="p">,</span>
+        <span class="s2">"guess_lang"</span>    <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span>
+        <span class="s2">"footnote_nr"</span>   <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">"show_warnings"</span> <span class="o">=&gt;</span> <span class="kp">false</span><span class="p">,</span>
+      <span class="p">},</span>
+    <span class="p">}</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div></div></div></div></div><p class="error">There are several unsupported kramdown options<br /> Please note that Jekyll uses Kramdown’s HTML converter. Kramdown options used only by other converters, such as remove_block_html_tags (used by the RemoveHtmlTags converter), will not work.</p><h3 id="gfm">GFM (GitHub Flavored Markdown)</h3><p>This is a parser for kramdown that converts Markdown documents in the <a href="https://github.com/kramdown/parser-gfm">GitHub Flavored Markdown (GFM)</a> dialect to HTML.</p><div class="info"><p>By default, Jekyll uses the <a href="https://github.com/kramdown/parser-gfm">GitHub Flavored Markdown (GFM) processor</a> for Kramdown. (Specifying <code class="language-plaintext highlighter-rouge">input: GFM</code> is fine, but redundant.)</p><div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">kramdown</span><span class="pi">:</span>
+  <span class="na">input</span><span class="pi">:</span> <span class="s">GFM</span>
+</code></pre></div></div></div><div class="details-wrapper"><div class="summary-content"><p><strong>The Order of Function Calling:</strong></p><ol><li><span class="info alert-compact">load dependency</span><br /> (Jekyll) <code class="language-plaintext highlighter-rouge">KramdownParser.initialize</code> =&gt; <code class="language-plaintext highlighter-rouge">KramdownParser.load_dependencies</code> =&gt; <code class="language-plaintext highlighter-rouge">require "kramdown-parser-gfm" if @config["input"] == "GFM"</code><li><span class="info alert-compact">implementation Parser</span><br /> (GFM) <code class="language-plaintext highlighter-rouge">class GFM &lt; Kramdown::Parser::Kramdown</code><li><span class="info alert-compact">use Parser</span><br /> <code class="language-plaintext highlighter-rouge">Kramdown::Document.new(input_text, :input =&gt; 'GFM').to_html</code></ol></div><div class="details-content-wrapper"> <details onclick="javascript: window.VARIABLES.pageScrollTarget.scroll({ top: TOOL.positionRelative( (this.open?this.parentElement.parentElement:this.parentElement), window.VARIABLES.pageScroller ).top, behavior: window.VARIABLES.pageScrollerBehavior }); "> <summary class="summary-toggle" title="click to show details"> <i class="summary-toggle-icon fas fa-angle-double-down"></i> </summary> </details><div class="details-content"><div class="details-content-inner"><p>details:</p><p><code class="language-plaintext highlighter-rouge">Jekyll</code> source code <a href="https://github.com/jekyll/jekyll/blob/master/lib/jekyll/converters/markdown/kramdown_parser.rb">lib/jekyll/converters/markdown/kramdown_parser.rb</a></p><div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="nn">Jekyll</span>
+  <span class="k">module</span> <span class="nn">Converters</span>
+    <span class="k">class</span> <span class="nc">Markdown</span>
+      <span class="k">class</span> <span class="nc">KramdownParser</span>
+        <span class="no">CODERAY_DEFAULTS</span> <span class="o">=</span> <span class="p">{</span>
+          <span class="s2">"css"</span>               <span class="o">=&gt;</span> <span class="s2">"style"</span><span class="p">,</span>
+          <span class="s2">"bold_every"</span>        <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
+          <span class="s2">"line_numbers"</span>      <span class="o">=&gt;</span> <span class="s2">"inline"</span><span class="p">,</span>
+          <span class="s2">"line_number_start"</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="s2">"tab_width"</span>         <span class="o">=&gt;</span> <span class="mi">4</span><span class="p">,</span>
+          <span class="s2">"wrap"</span>              <span class="o">=&gt;</span> <span class="s2">"div"</span><span class="p">,</span>
+        <span class="p">}.</span><span class="nf">freeze</span>
+
+        <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+          <span class="vi">@main_fallback_highlighter</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s2">"highlighter"</span><span class="p">]</span> <span class="o">||</span> <span class="s2">"rouge"</span>
+          <span class="vi">@config</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s2">"kramdown"</span><span class="p">]</span> <span class="o">||</span> <span class="p">{}</span>
+          <span class="vi">@highlighter</span> <span class="o">=</span> <span class="kp">nil</span>
+          <span class="n">setup</span>
+          <span class="n">load_dependencies</span>
+        <span class="k">end</span>
+
+        <span class="k">def</span> <span class="nf">load_dependencies</span>
+          <span class="nb">require</span> <span class="s2">"kramdown-parser-gfm"</span> <span class="k">if</span> <span class="vi">@config</span><span class="p">[</span><span class="s2">"input"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"GFM"</span>
+
+          <span class="k">if</span> <span class="n">highlighter</span> <span class="o">==</span> <span class="s2">"coderay"</span>
+            <span class="no">Jekyll</span><span class="o">::</span><span class="no">External</span><span class="p">.</span><span class="nf">require_with_graceful_fail</span><span class="p">(</span><span class="s2">"kramdown-syntax-coderay"</span><span class="p">)</span>
+          <span class="k">end</span>
+
+          <span class="c1"># `mathjax` engine is bundled within kramdown-2.x and will be handled by</span>
+          <span class="c1"># kramdown itself.</span>
+          <span class="k">if</span> <span class="p">(</span><span class="n">math_engine</span> <span class="o">=</span> <span class="vi">@config</span><span class="p">[</span><span class="s2">"math_engine"</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="n">math_engine</span> <span class="o">!=</span> <span class="s2">"mathjax"</span>
+            <span class="no">Jekyll</span><span class="o">::</span><span class="no">External</span><span class="p">.</span><span class="nf">require_with_graceful_fail</span><span class="p">(</span><span class="s2">"kramdown-math-</span><span class="si">#{</span><span class="n">math_engine</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+          <span class="k">end</span>
+        <span class="k">end</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div><p><code class="language-plaintext highlighter-rouge">parser-gfm</code> source code <a href="https://github.com/kramdown/parser-gfm/blob/master/lib/kramdown-parser-gfm.rb">lib/kramdown-parser-gfm.rb</a></p><div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">require_relative</span> <span class="s1">'kramdown/parser/gfm'</span>
+</code></pre></div></div><p><code class="language-plaintext highlighter-rouge">parser-gfm</code> source code <a href="https://github.com/kramdown/parser-gfm/blob/master/lib/kramdown/parser/gfm.rb">lib/kramdown/parser/gfm.rb</a></p><div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'kramdown/options'</span>
+<span class="nb">require</span> <span class="s1">'kramdown/parser/kramdown'</span>
+
+<span class="nb">require_relative</span> <span class="s1">'gfm/options'</span>
+<span class="nb">require_relative</span> <span class="s1">'gfm_version'</span>
+
+<span class="k">module</span> <span class="nn">Kramdown</span>
+  <span class="k">module</span> <span class="nn">Parser</span>
+
+    <span class="c1"># This class provides a parser implementation for the GFM dialect of Markdown.</span>
+    <span class="k">class</span> <span class="nc">GFM</span> <span class="o">&lt;</span> <span class="no">Kramdown</span><span class="o">::</span><span class="no">Parser</span><span class="o">::</span><span class="no">Kramdown</span>
+
+    <span class="o">...</span>
+
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div><p><code class="language-plaintext highlighter-rouge">Kramdown</code> Source Code: <a href="https://github.com/gettalong/kramdown/blob/master/lib/kramdown/parser/kramdown.rb">lib/kramdown/parser/kramdown.rb</a></p><div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'strscan'</span>
+<span class="nb">require</span> <span class="s1">'stringio'</span>
+<span class="nb">require</span> <span class="s1">'kramdown/parser'</span>
+
+<span class="k">module</span> <span class="nn">Kramdown</span>
+
+  <span class="k">module</span> <span class="nn">Parser</span>
+
+    <span class="c1"># Used for parsing a document in kramdown format.</span>
+    <span class="c1">#</span>
+    <span class="c1"># If you want to extend the functionality of the parser, you need to do the following:</span>
+    <span class="c1">#</span>
+    <span class="c1"># * Create a new subclass</span>
+    <span class="c1"># * add the needed parser methods</span>
+    <span class="c1"># * modify the @block_parsers and @span_parsers variables and add the names of your parser</span>
+    <span class="c1">#   methods</span>
+    <span class="c1">#</span>
+    <span class="c1"># Here is a small example for an extended parser class that parses ERB style tags as raw text if</span>
+    <span class="c1"># they are used as span-level elements (an equivalent block-level parser should probably also be</span>
+    <span class="c1"># made to handle the block case):</span>
+    <span class="c1">#</span>
+    <span class="c1">#   require 'kramdown/parser/kramdown'</span>
+    <span class="c1">#</span>
+    <span class="c1">#   class Kramdown::Parser::ERBKramdown &lt; Kramdown::Parser::Kramdown</span>
+    <span class="c1">#</span>
+    <span class="c1">#      def initialize(source, options)</span>
+    <span class="c1">#        super</span>
+    <span class="c1">#        @span_parsers.unshift(:erb_tags)</span>
+    <span class="c1">#      end</span>
+    <span class="c1">#</span>
+    <span class="c1">#      ERB_TAGS_START = /&lt;%.*?%&gt;/</span>
+    <span class="c1">#</span>
+    <span class="c1">#      def parse_erb_tags</span>
+    <span class="c1">#        @src.pos += @src.matched_size</span>
+    <span class="c1">#        @tree.children &lt;&lt; Element.new(:raw, @src.matched)</span>
+    <span class="c1">#      end</span>
+    <span class="c1">#      define_parser(:erb_tags, ERB_TAGS_START, '&lt;%')</span>
+    <span class="c1">#</span>
+    <span class="c1">#   end</span>
+    <span class="c1">#</span>
+    <span class="c1"># The new parser can be used like this:</span>
+    <span class="c1">#</span>
+    <span class="c1">#   require 'kramdown/document'</span>
+    <span class="c1">#   # require the file with the above parser class</span>
+    <span class="c1">#</span>
+    <span class="c1">#   Kramdown::Document.new(input_text, :input =&gt; 'ERBKramdown').to_html</span>
+    <span class="c1">#</span>
+    <span class="k">class</span> <span class="nc">Kramdown</span> <span class="o">&lt;</span> <span class="no">Base</span>
+
+    <span class="o">...</span>  
+
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+<span class="k">end</span>
+</code></pre></div></div><p><code class="language-plaintext highlighter-rouge">Jekyll</code> source code <a href="https://github.com/jekyll/jekyll/blob/master/lib/jekyll/converters/markdown/kramdown_parser.rb">lib/jekyll/converters/markdown/kramdown_parser.rb</a></p><div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="nn">Kramdown</span>
+  <span class="k">class</span> <span class="nc">JekyllDocument</span> <span class="o">&lt;</span> <span class="no">Document</span>
+    <span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="n">options</span><span class="p">)</span>
+      <span class="vi">@parser</span>  <span class="o">||=</span> <span class="k">begin</span>
+      <span class="n">parser_name</span> <span class="o">=</span> <span class="p">(</span><span class="vi">@options</span><span class="p">[</span><span class="ss">:input</span><span class="p">]</span> <span class="o">||</span> <span class="s2">"kramdown"</span><span class="p">).</span><span class="nf">to_s</span>
+      <span class="n">parser_name</span> <span class="o">=</span> <span class="n">parser_name</span><span class="p">[</span><span class="mi">0</span><span class="o">..</span><span class="mi">0</span><span class="p">].</span><span class="nf">upcase</span> <span class="o">+</span> <span class="n">parser_name</span><span class="p">[</span><span class="mi">1</span><span class="o">..-</span><span class="mi">1</span><span class="p">]</span>
+      <span class="n">try_require</span><span class="p">(</span><span class="s2">"parser"</span><span class="p">,</span> <span class="n">parser_name</span><span class="p">)</span>
+
+      <span class="k">if</span> <span class="no">Parser</span><span class="p">.</span><span class="nf">const_defined?</span><span class="p">(</span><span class="n">parser_name</span><span class="p">)</span>
+        <span class="no">Parser</span><span class="p">.</span><span class="nf">const_get</span><span class="p">(</span><span class="n">parser_name</span><span class="p">)</span>
+      <span class="k">else</span>
+        <span class="k">raise</span> <span class="no">Kramdown</span><span class="o">::</span><span class="no">Error</span><span class="p">,</span> <span class="s2">"kramdown has no parser to handle the specified "</span> <span class="p">\</span>
+                                <span class="s2">"input format: </span><span class="si">#{</span><span class="vi">@options</span><span class="p">[</span><span class="ss">:input</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div></div></div></div></div><p>These <a href="https://github.com/kramdown/parser-gfm#options">options</a> can be used directly in your Kramdown Jekyll config, like this:</p><div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">kramdown</span><span class="pi">:</span>
+  <span class="c1"># You can also change the processor used by Kramdown (as specified for the input key in the Kramdown RDoc). For example, to use the non-GFM Kramdown processor in Jekyll, add the following to your configuration.</span>
+  <span class="na">input</span><span class="pi">:</span> <span class="s">GFM</span> <span class="c1"># redundant. default is GFM. options: GFM, Kramdown, SmartyPants</span>
+  <span class="c1"># Insert HTML &lt;br /&gt; tags inside paragraphs where the original Markdown document had newlines (by default, Markdown ignores these newlines).</span>
+  <span class="na">hard_wrap</span><span class="pi">:</span> <span class="c1"># Interprets line breaks literally (default: true)</span>
+  <span class="c1"># Enables a set of GFM specific quirks (default: paragraph_end)</span>
+  <span class="c1"># option: </span>
+  <span class="c1">#  - paragraph_end: Disables the kramdown restriction that at least one blank line has to be used after a paragraph before a new block element can be started. </span>
+  <span class="c1">#                   Note that if this quirk is used, lazy line wrapping does not fully work anymore!</span>
+  <span class="c1">#  - no_auto_typographic: Disables automatic conversion of some characters into their corresponding typographic symbols (like -- to em-dash etc). This helps to achieve results closer to what GitHub Flavored Markdown produces.</span>
+  <span class="na">gfm_quirks</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">paragraph_end</span><span class="pi">]</span> <span class="c1"># (default: `paragraph_end`)</span>
+  <span class="c1"># Enables rendering emoji amidst GFM (default: false)</span>
+  <span class="na">gfm_emojis</span><span class="pi">:</span> 
+  <span class="c1"># Configuration for rendering emoji amidst GFM (default: {})</span>
+  <span class="na">gfm_emoji_opts</span><span class="pi">:</span> 
+    <span class="c1"># The remote location of emoji assets that will be prefixed to emoji file path. Gemoji 3 has the file path set to unicode/[emoji-filename].</span>
+    <span class="c1"># the absolute path to an emoji file would be: https://github.githubassets.com/images/icons/emoji/unicode/[emoji-filename]</span>
+    <span class="na">asset_path</span><span class="pi">:</span> <span class="c1"># Defaults to https://github.githubassets.com/images/icons/emoji.</span>
+</code></pre></div></div><p>The following shows the the differences of settings one by one.</p><h4 id="hard_wrap">hard_wrap</h4><p>for a markdown file (not converted yet)</p><blockquote><p>In the first paragraph there are two spaces ‘ ‘ after the first ‘blank’.</p></blockquote><div class="block-tabs"><div class="tab-navs-wrapper"><div class="tab-navs"><div class="tab-nav active"><div class="tab-nav-inner"> raw</div></div><div class="tab-split"></div><div class="tab-nav "><div class="tab-nav-inner"> hard_wrap: false (default)</div></div><div class="tab-split"></div><div class="tab-nav "><div class="tab-nav-inner"> hard_wrap: true</div></div></div><div class="tab-toggle-left"> <i class="fas fa-chevron-left"></i></div><div class="tab-toggle-right"> <i class="fas fa-chevron-right"></i></div></div><div class="tab-contents"><div class="tab-content active"><div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>blank  
+blank
+
+blank
+blank
+
+blank<span class="err">\</span>
+blank
+
+blank<span class="se">\b</span>lank
+</code></pre></div></div></div><div class="tab-content "><div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;p&gt;</span>blank<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+blank<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>blank
+blank<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>blank<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+blank<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>blank\blank<span class="nt">&lt;/p&gt;</span>
+</code></pre></div></div></div><div class="tab-content "><div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;p&gt;</span>blank  <span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+blank<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>blank<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+blank<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>blank\<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+blank<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>blank\blank<span class="nt">&lt;/p&gt;</span>
+</code></pre></div></div></div></div></div><h4 id="paragraph_end">paragraph_end</h4><div class="block-tabs"><div class="tab-navs-wrapper"><div class="tab-navs"><div class="tab-nav active"><div class="tab-nav-inner"> raw</div></div><div class="tab-split"></div><div class="tab-nav "><div class="tab-nav-inner"> "gfm_quirks:" or "gfm_quirks: [paragraph_end]"</div></div><div class="tab-split"></div><div class="tab-nav "><div class="tab-nav-inner"> "gfm_quirks: []" ( disable paragraph_end )</div></div></div><div class="tab-toggle-left"> <i class="fas fa-chevron-left"></i></div><div class="tab-toggle-right"> <i class="fas fa-chevron-right"></i></div></div><div class="tab-contents"><div class="tab-content active"><div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A
+<span class="p">  -</span> b
+
+This is a list
+<span class="p">-</span> or is it
+
+blockquote
+<span class="gt">&gt; text</span>
+
+header
+<span class="gh"># text</span>
+
+codeblock fenced
+<span class="p">```</span><span class="nl">
+</span>puts hello world
+<span class="p">```</span>
+<span class="p">
+*</span> level 1
+  some text
+
+  begin level 2
+<span class="p">  *</span> level 2
+<span class="p">  *</span> level 2
+
+<span class="gh"># h1</span>
+<span class="gu">## h2</span>
+<span class="gu">### h3</span>
+</code></pre></div></div></div><div class="tab-content "><div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;p&gt;</span>A<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;ul&gt;</span>
+  <span class="nt">&lt;li&gt;</span>b<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>This is a list<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;ul&gt;</span>
+  <span class="nt">&lt;li&gt;</span>or is it<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>blockquote<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;blockquote&gt;</span>
+  <span class="nt">&lt;p&gt;</span>text<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/blockquote&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>header<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;h1</span> <span class="na">id=</span><span class="s">"text"</span><span class="nt">&gt;</span>text<span class="nt">&lt;/h1&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>codeblock fenced<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"language-plaintext highlighter-rouge"</span><span class="nt">&gt;&lt;div</span> <span class="na">class=</span><span class="s">"highlight"</span><span class="nt">&gt;&lt;pre</span> <span class="na">class=</span><span class="s">"highlight"</span><span class="nt">&gt;&lt;code&gt;</span>puts hello world
+<span class="nt">&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</span>
+
+<span class="nt">&lt;ul&gt;</span>
+  <span class="nt">&lt;li&gt;</span>
+    <span class="nt">&lt;p&gt;</span>level 1
+some text<span class="nt">&lt;/p&gt;</span>
+
+    <span class="nt">&lt;p&gt;</span>begin level 2<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;ul&gt;</span>
+      <span class="nt">&lt;li&gt;</span>level 2<span class="nt">&lt;/li&gt;</span>
+      <span class="nt">&lt;li&gt;</span>level 2<span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+  <span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+
+<span class="nt">&lt;h1</span> <span class="na">id=</span><span class="s">"h1"</span><span class="nt">&gt;</span>h1<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;h2</span> <span class="na">id=</span><span class="s">"h2"</span><span class="nt">&gt;</span>h2<span class="nt">&lt;/h2&gt;</span>
+<span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"h3"</span><span class="nt">&gt;</span>h3<span class="nt">&lt;/h3&gt;</span>
+</code></pre></div></div></div><div class="tab-content "><div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;p&gt;</span>A
+  - b<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>This is a list
+- or is it<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>blockquote
+<span class="ni">&amp;gt;</span> text<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>header
+# text<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>codeblock fenced
+<span class="nt">&lt;code</span> <span class="na">class=</span><span class="s">"language-plaintext highlighter-rouge"</span><span class="nt">&gt;</span>
+puts hello world
+<span class="nt">&lt;/code&gt;&lt;/p&gt;</span>
+
+<span class="nt">&lt;ul&gt;</span>
+  <span class="nt">&lt;li&gt;</span>
+    <span class="nt">&lt;p&gt;</span>level 1
+some text<span class="nt">&lt;/p&gt;</span>
+
+    <span class="nt">&lt;p&gt;</span>begin level 2
+* level 2
+* level 2<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+
+<span class="nt">&lt;h1</span> <span class="na">id=</span><span class="s">"h1"</span><span class="nt">&gt;</span>h1<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;p&gt;</span>## h2
+### h3<span class="nt">&lt;/p&gt;</span>
+</code></pre></div></div></div></div></div><h4 id="no_auto_typographic">no_auto_typographic</h4><div class="block-tabs"><div class="tab-navs-wrapper"><div class="tab-navs"><div class="tab-nav active"><div class="tab-nav-inner"> raw</div></div><div class="tab-split"></div><div class="tab-nav "><div class="tab-nav-inner"> "gfm_quirks:" (default) (disable no_auto_typographic)</div></div><div class="tab-split"></div><div class="tab-nav "><div class="tab-nav-inner"> "gfm_quirks: [no_auto_typographic]"</div></div></div><div class="tab-toggle-left"> <i class="fas fa-chevron-left"></i></div><div class="tab-toggle-right"> <i class="fas fa-chevron-right"></i></div></div><div class="tab-contents"><div class="tab-content active"><div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gu">### Header with --ndash 😀</span>
+
+<span class="gu">### with --- &lt;&lt; typographic &gt;&gt; ... symbols</span>
+
+<span class="gu">### bb&lt;font color='red'&gt;haha&lt;/font&gt;qq</span>
+</code></pre></div></div></div><div class="tab-content "><div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"header-with---ndash-"</span><span class="nt">&gt;</span>Header with --ndash 😀<span class="nt">&lt;/h3&gt;</span>
+
+<span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"with--typographic--symbols"</span><span class="nt">&gt;</span>with — « typographic » … symbols<span class="nt">&lt;/h3&gt;</span>
+
+<span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"bbhahaqq"</span><span class="nt">&gt;</span>bb<span class="nt">&lt;font</span> <span class="na">color=</span><span class="s">"red"</span><span class="nt">&gt;</span>haha<span class="nt">&lt;/font&gt;</span>qq<span class="nt">&lt;/h3&gt;</span>
+</code></pre></div></div></div><div class="tab-content "><div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"header-with-ndash-"</span><span class="nt">&gt;</span>Header with –ndash 😀<span class="nt">&lt;/h3&gt;</span>
+
+<span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"with------typographic---symbols"</span><span class="nt">&gt;</span>with --- <span class="ni">&amp;lt;&amp;lt;</span> typographic <span class="ni">&amp;gt;&amp;gt;</span> ... symbols<span class="nt">&lt;/h3&gt;</span>
+
+<span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"bbhahaqq"</span><span class="nt">&gt;</span>bb<span class="nt">&lt;font</span> <span class="na">color=</span><span class="s">"red"</span><span class="nt">&gt;</span>haha<span class="nt">&lt;/font&gt;</span>qq<span class="nt">&lt;/h3&gt;</span>
+</code></pre></div></div></div></div></div><h3 id="static_id_auto_ids">auto_ids</h3><div class="block-tabs"><div class="tab-navs-wrapper"><div class="tab-navs"><div class="tab-nav active"><div class="tab-nav-inner"> raw</div></div><div class="tab-split"></div><div class="tab-nav "><div class="tab-nav-inner"> "auto_ids: true" (default)<br /> "transliterated_header_ids: false" (default)</div></div><div class="tab-split"></div><div class="tab-nav "><div class="tab-nav-inner"> "auto_ids: true" (default)<br /> "auto_id_prefix: hallo-"</div></div></div><div class="tab-toggle-left"> <i class="fas fa-chevron-left"></i></div><div class="tab-toggle-right"> <i class="fas fa-chevron-right"></i></div></div><div class="tab-contents"><div class="tab-content active"><div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gu">### test {#myid}</span>
+
+<span class="gu">### variable_name</span>
+
+<span class="gu">### abc def öúß</span>
+
+<span class="gu">### 192 abc 192</span>
+
+<span class="gu">### ;.;;</span>
+
+<span class="gu">### variable_name</span>
+
+<span class="gu">### variable_name</span>
+
+<span class="gu">### ;;</span>
+
+<span class="gu">### before 	after tab</span>
+
+<span class="gu">### with `code`</span>
+
+<span class="gu">### with &amp;nbsp;&amp;auml;&amp;nbsp;space</span>
+
+<span class="gu">### With "smart" quotes</span>
+
+<span class="gu">### with --- &lt;&lt; typographic &gt;&gt; ... symbols</span>
+
+<span class="gu">### with $$m=5$$</span>
+</code></pre></div></div></div><div class="tab-content "><div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"myid"</span><span class="nt">&gt;</span>test<span class="nt">&lt;/h3&gt;</span>
+
+<span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"variable_name"</span><span class="nt">&gt;</span>variable_name<span class="nt">&lt;/h3&gt;</span>
+
+<span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"abc-def-öúß"</span><span class="nt">&gt;</span>abc def öúß<span class="nt">&lt;/h3&gt;</span>
+
+<span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"192-abc-192"</span><span class="nt">&gt;</span>192 abc 192<span class="nt">&lt;/h3&gt;</span>
+
+<span class="nt">&lt;h3&gt;</span>;.;;<span class="nt">&lt;/h3&gt;</span>
+
+<span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"variable_name-1"</span><span class="nt">&gt;</span>variable_name<span class="nt">&lt;/h3&gt;</span>
+
+<span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"variable_name-2"</span><span class="nt">&gt;</span>variable_name<span class="nt">&lt;/h3&gt;</span>
+
+<span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"-1"</span><span class="nt">&gt;</span>;;<span class="nt">&lt;/h3&gt;</span>
+
+<span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"before--after-tab"</span><span class="nt">&gt;</span>before 	after tab<span class="nt">&lt;/h3&gt;</span>
+
+<span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"with-code"</span><span class="nt">&gt;</span>with <span class="nt">&lt;code</span> <span class="na">class=</span><span class="s">"language-plaintext highlighter-rouge"</span><span class="nt">&gt;</span>code<span class="nt">&lt;/code&gt;&lt;/h3&gt;</span>
+
+<span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"with-äspace"</span><span class="nt">&gt;</span>with  ä space<span class="nt">&lt;/h3&gt;</span>
+
+<span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"with-smart-quotes"</span><span class="nt">&gt;</span>With “smart” quotes<span class="nt">&lt;/h3&gt;</span>
+
+<span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"with--typographic--symbols"</span><span class="nt">&gt;</span>with — « typographic » … symbols<span class="nt">&lt;/h3&gt;</span>
+
+<span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"with-m5"</span><span class="nt">&gt;</span>with \(m=5\)<span class="nt">&lt;/h3&gt;</span>
+</code></pre></div></div></div><div class="tab-content "><div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"myid"</span><span class="nt">&gt;</span>test<span class="nt">&lt;/h3&gt;</span>
+
+<span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"hallo-variable_name"</span><span class="nt">&gt;</span>variable_name<span class="nt">&lt;/h3&gt;</span>
+
+<span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"hallo-abc-def-öúß"</span><span class="nt">&gt;</span>abc def öúß<span class="nt">&lt;/h3&gt;</span>
+
+<span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"hallo-192-abc-192"</span><span class="nt">&gt;</span>192 abc 192<span class="nt">&lt;/h3&gt;</span>
+
+<span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"hallo-"</span><span class="nt">&gt;</span>;.;;<span class="nt">&lt;/h3&gt;</span>
+
+<span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"hallo-variable_name-1"</span><span class="nt">&gt;</span>variable_name<span class="nt">&lt;/h3&gt;</span>
+
+<span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"hallo-variable_name-2"</span><span class="nt">&gt;</span>variable_name<span class="nt">&lt;/h3&gt;</span>
+
+<span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"hallo--1"</span><span class="nt">&gt;</span>;;<span class="nt">&lt;/h3&gt;</span>
+
+<span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"hallo-before--after-tab"</span><span class="nt">&gt;</span>before 	after tab<span class="nt">&lt;/h3&gt;</span>
+
+<span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"hallo-with-code"</span><span class="nt">&gt;</span>with <span class="nt">&lt;code</span> <span class="na">class=</span><span class="s">"language-plaintext highlighter-rouge"</span><span class="nt">&gt;</span>code<span class="nt">&lt;/code&gt;&lt;/h3&gt;</span>
+
+<span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"hallo-with-äspace"</span><span class="nt">&gt;</span>with  ä space<span class="nt">&lt;/h3&gt;</span>
+
+<span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"hallo-with-smart-quotes"</span><span class="nt">&gt;</span>With “smart” quotes<span class="nt">&lt;/h3&gt;</span>
+
+<span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"hallo-with--typographic--symbols"</span><span class="nt">&gt;</span>with — « typographic » … symbols<span class="nt">&lt;/h3&gt;</span>
+
+<span class="nt">&lt;h3</span> <span class="na">id=</span><span class="s">"hallo-with-m5"</span><span class="nt">&gt;</span>with \(m=5\)<span class="nt">&lt;/h3&gt;</span>
+</code></pre></div></div></div></div></div><h2 id="redcarpet">Redcarpet</h2><div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">markdown</span><span class="pi">:</span> <span class="s">redcarpet</span>
+<span class="na">redcarpet</span><span class="pi">:</span>
+    <span class="na">extensions</span><span class="pi">:</span> <span class="pi">[</span> <span class="s2">"</span><span class="s">fenced_code_blocks"</span><span class="pi">,</span> <span class="s2">"</span><span class="s">hard_wrap"</span><span class="pi">,</span><span class="s2">"</span><span class="s">autolink"</span><span class="pi">,</span> <span class="s2">"</span><span class="s">tables"</span><span class="pi">,</span> <span class="s2">"</span><span class="s">strikethrough"</span><span class="pi">,</span> <span class="s2">"</span><span class="s">superscript"</span><span class="pi">,</span> <span class="s2">"</span><span class="s">with_toc_data"</span><span class="pi">,</span> <span class="s2">"</span><span class="s">highlight"</span><span class="pi">,</span> <span class="s2">"</span><span class="s">prettify"</span><span class="pi">,</span><span class="s2">"</span><span class="s">no_intra_emphasis"</span><span class="pi">]</span>
+</code></pre></div></div><h2 id="customize">Customize</h2><p>Jekyll provides the way to customize Markdown Processor.</p><blockquote><ul><li>Custom Markdown Processors - <a href="https://jekyllrb.com/docs/configuration/markdown/#custom-markdown-processors">https://jekyllrb.com/docs/configuration/markdown/#custom-markdown-processors</a></ul></blockquote></div><div class="article__footer d-print-none"><footer class="footer horizontal-rules-dashed"><p> <span>更新于 <time itemprop="dateModified" datetime="2022-08-17T17:13:09+00:00">2022年08月18日</time> </span></p><p>2312 字</p><p>原始链接 <a href="https://lawsssscat.github.io:4000/jekyll-docs/markdown/processor">https://lawsssscat.github.io:4000/jekyll-docs/markdown/processor</a></p><div class="article__license"><div class="license"><p>本文遵守 <a itemprop="license" rel="license" href="https://creativecommons.org/licenses/by/4.0/">Attribution 4.0 International</a> 许可协议。 <a rel="license" href="https://creativecommons.org/licenses/by/4.0/"> <img alt="Attribution 4.0 International" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /> </a></p></div></div><div class="article__footer_navigation"><div class="navigation clearfix"><div class="previous"> <span>上篇</span><a href="/jekyll-docs/markdown/syntax">Syntax</a></div><div class="next"> <span>下篇</span><a href="/jekyll-docs/markdown/highlight">Highlight</a></div></div></div></footer></div></div><script> window.VARIABLES.append({ paveview: { appId: "OC6yw4BTaMHK4tuRLUG2jbPd-MdYXbMMI", appKey: "wlnRdeSQaLI70XWjvabbtGeq", appClass: "pageview",} }); </script><script src="/jekyll-docs/assets/js/dist/pageview/leancloud.min.js"></script><script src="/jekyll-docs/assets/js/dist/layouts/article.min.js"></script></div></article></div></div></div></div><div class="page__footer d-print-none"><footer class="footer py-4"><div class="main"><div itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="lawsssscat"><meta itemprop="url" content="https://lawsssscat.github.io/"><meta itemprop="description" content="Expect inspiring inspiration. 😉"><div class="footer__author-links"><div class="author-links"><ul><link itemprop="url" href="https://lawsssscat.github.io/"><li title="订阅"> <a class="button button--circle rss-button" itemprop="sameAs" href="/jekyll-docs/feed.xml" target="_blank"> <i class="fas fa-rss"></i></a><li title="给我发邮件。"> <a class="button button--circle mail-button" itemprop="email" href="mailto:1191693505@qq.com" target="_blank"> <i class="fas fa-envelope"></i></a><li title="在 Github 上关注我。"> <a class="button button--circle github-button" itemprop="sameAs" href="https://github.com/lawsssscat" target="_blank"> <i class="fab fa-github"></i></a></ul></div></div></div><div class="site-info"><div> © jekyll-docs 2022, Powered by <a title="Jekyll is a simple, blog-aware, static site generator." href="http://jekyllrb.com/">Jekyll</a> & <a title="Collects the common information of Jekyll and put all in one site." href="https://github.com/LawssssCat/jekyll-docs">Jekyll docs all in one</a></div></div></div></footer></div></div></div></div></div></div></div><script src="/jekyll-docs/assets/js/dist/commons.min.js"></script>

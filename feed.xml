@@ -1,0 +1,558 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://lawsssscat.github.io//jekyll-docs/feed.xml" rel="self" type="application/atom+xml" /><link href="https://lawsssscat.github.io//jekyll-docs/" rel="alternate" type="text/html" /><updated>2022-08-17T17:18:04+00:00</updated><id>https://lawsssscat.github.io//jekyll-docs/feed.xml</id><title type="html">jekyll-docs</title><subtitle>Collects the common information of Jekyll and put all in one site.
+</subtitle><author><name>lawsssscat</name><email>1191693505@qq.com</email></author><entry><title type="html">Comment</title><link href="https://lawsssscat.github.io//jekyll-docs/2022/06/24/comment.html" rel="alternate" type="text/html" title="Comment" /><published>2022-06-24T00:00:00+00:00</published><updated>2022-08-17T17:13:09+00:00</updated><id>https://lawsssscat.github.io//jekyll-docs/2022/06/24/comment</id><content type="html" xml:base="https://lawsssscat.github.io//jekyll-docs/2022/06/24/comment.html"><![CDATA[<table>
+  <thead>
+    <tr>
+      <th>name</th>
+      <th>introduce</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://disqus.com/">disqus</a></td>
+      <td>over reliance on platform</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/gitalk/gitalk/">gitalk</a></td>
+      <td>the GitHub permission requested is too large and can not be broken down</td>
+    </tr>
+    <tr>
+      <td>valine</td>
+      <td>need only a serverless platform, e.g. <a href="https://leancloud.app/">leancloud</a> (but for some reason, the <code class="language-plaintext highlighter-rouge">src directory</code> will be suspended from updating after <code class="language-plaintext highlighter-rouge">v1.4.0.</code>)</td>
+    </tr>
+    <tr>
+      <td>custom</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>]]></content><author><name>lawsssscat</name><email>1191693505@qq.com</email></author><summary type="html"><![CDATA[name introduce disqus over reliance on platform gitalk the GitHub permission requested is too large and can not be broken down valine need only a serverless platform, e.g. leancloud (but for some reason, the src directory will be suspended from updating after v1.4.0.) custom  ]]></summary></entry><entry><title type="html">Pageview</title><link href="https://lawsssscat.github.io//jekyll-docs/2022/06/24/pageview.html" rel="alternate" type="text/html" title="Pageview" /><published>2022-06-24T00:00:00+00:00</published><updated>2022-08-17T17:13:09+00:00</updated><id>https://lawsssscat.github.io//jekyll-docs/2022/06/24/pageview</id><content type="html" xml:base="https://lawsssscat.github.io//jekyll-docs/2022/06/24/pageview.html"><![CDATA[<p>view data save on the serverless platform. e.g. <a href="https://leancloud.app/">leancloud</a></p>
+
+<p>settings in <code class="language-plaintext highlighter-rouge">_config.yml</code></p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">pageview</span><span class="pi">:</span>
+  <span class="na">enable</span><span class="pi">:</span> <span class="no">true</span>
+  <span class="na">provider</span><span class="pi">:</span> <span class="s">leancloud</span>
+
+  <span class="c1">## Leancloud</span>
+  <span class="na">leancloud</span><span class="pi">:</span>
+    <span class="na">server_url </span><span class="pi">:</span> <span class="c1"># Null if there is no special requirement. see https://leancloud.cn/docs/custom-api-domain-guide.html#hash-1410615135</span>
+    <span class="na">app_id    </span><span class="pi">:</span> <span class="s">your app id in leancloud</span>
+    <span class="na">app_key   </span><span class="pi">:</span> <span class="s">your app key in leancloud</span>
+    <span class="na">app_class </span><span class="pi">:</span> <span class="s">your app class created by yourself in leancloud</span> 
+</code></pre></div></div>]]></content><author><name>lawsssscat</name><email>1191693505@qq.com</email></author><summary type="html"><![CDATA[view data save on the serverless platform. e.g. leancloud settings in _config.yml pageview: enable: true provider: leancloud ## Leancloud leancloud: server_url : # Null if there is no special requirement. see https://leancloud.cn/docs/custom-api-domain-guide.html#hash-1410615135 app_id : your app id in leancloud app_key : your app key in leancloud app_class : your app class created by yourself in leancloud]]></summary></entry><entry><title type="html">Math Engine</title><link href="https://lawsssscat.github.io//jekyll-docs/2022/06/21/math-engine.html" rel="alternate" type="text/html" title="Math Engine" /><published>2022-06-21T00:00:00+00:00</published><updated>2022-08-17T17:13:09+00:00</updated><id>https://lawsssscat.github.io//jekyll-docs/2022/06/21/math-engine</id><content type="html" xml:base="https://lawsssscat.github.io//jekyll-docs/2022/06/21/math-engine.html"><![CDATA[<p>kramdown supports the use of various math engines. The default math engine is <a href="https://kramdown.gettalong.org/math_engine/mathjax.html">MathJax</a> (which can also be used with <a href="https://katex.org/">KaTeX</a>).</p>
+
+<h2 id="katex">KaTeX</h2>
+
+<p>KaTeX - <a href="https://katex.org/">https://katex.org/</a></p>
+
+<p>The fastest math typesetting library for the web.</p>
+
+<h2 id="mathjax">MathJax</h2>
+
+<p>MathJax - <a href="https://www.mathjax.org/">https://www.mathjax.org/</a></p>
+
+<p>MathJax is a javascript library that uses the TeX algorithms and fonts to display math formulas on HTML pages. It allows for very fine-grained configuration, is widely used and works on all modern browsers.</p>
+
+<p>example - <a href="https://jsbin.com/?html,output">https://jsbin.com/?html,output</a></p>
+
+<p>When (a \ne 0), there are two solutions to (ax^2 + bx + c = 0) and they are
+[x = {-b \pm \sqrt{b^2-4ac} \over 2a}.]</p>
+
+<h3 id="write-latex-equations-in-jekyll-using-mathjax--kramdown">Write LaTeX Equations in Jekyll Using MathJax &amp; Kramdown</h3>
+
+<p>In Kramdown, <a href="https://kramdown.gettalong.org/math_engine/mathjax.html">Math Engine MathJax</a> marks up math formulas with the standard MathJax syntax of <code class="language-plaintext highlighter-rouge">\(...\)</code> for inline math and <code class="language-plaintext highlighter-rouge">\[...\]</code> for block math (works for both version 2.x and 3.x of MathJax). The only other thing to do is to include the MathJax library itself on the HTML page.</p>
+
+<p>For proper functionality, the HTML template must be configured to link to the engine’s Javascript and CSS. Note that the CSS includes references to webfonts.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- Mathjax Support --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">async</span>
+  <span class="na">src=</span><span class="s">"https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>Note that kramdown does <strong>not</strong> ship with the MathJax library and that therefore the “default” template does <strong>not</strong> include a link to it! we need to add a link to MathJax to our page.</p>
+</blockquote>
+
+<blockquote>
+  <p>Also available are precompiling versions to eliminate the need for client-side Javascript. Those are <a href="https://kramdown.gettalong.org/math_engine/mathjaxnode.html">Mathjax-Node</a>, <a href="https://kramdown.gettalong.org/math_engine/katex.html">KaTeX</a>, and <a href="https://kramdown.gettalong.org/math_engine/sskatex.html">SsKaTeX</a>. Each one requires a Javascript engine installed where kramdown runs, in order to perform the precompilation. The resulting pages still require CSS and fonts, but no Javascript anymore.</p>
+</blockquote>
+
+<h4 id="math-syntax-in-kramdown">Math syntax in Kramdown</h4>
+
+<p>The default math delimiters are <code class="language-plaintext highlighter-rouge">$$...$$</code> and <code class="language-plaintext highlighter-rouge">\[...\]</code> for displayed mathematics, and <code class="language-plaintext highlighter-rouge">\(...\)</code> for in-line mathematics.</p>
+
+<blockquote>
+  <p>Note in particular that the <code class="language-plaintext highlighter-rouge">$...$</code> in-line delimiters are not used by default. Since dollar signs appear too often in non-mathematical settings.</p>
+</blockquote>
+
+<p>The following kramdown fragment:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$$
+\begin{align*}
+  <span class="err">&amp;</span> \phi(x,y) = \phi \left(\sum_{i=1}^n x_ie_i, \sum_{j=1}^n y_je_j \right)
+  = \sum_{i=1}^n \sum_{j=1}^n x_i y_j \phi(e_i, e_j) = \\
+  <span class="err">&amp;</span> (x_1, \ldots, x_n) \left( \begin{array}{ccc}
+      \phi(e_1, e_1) <span class="err">&amp;</span> \cdots <span class="err">&amp;</span> \phi(e_1, e_n) \\
+      \vdots <span class="err">&amp;</span> \ddots <span class="err">&amp;</span> \vdots \\
+      \phi(e_n, e_1) <span class="err">&amp;</span> \cdots <span class="err">&amp;</span> \phi(e_n, e_n)
+    \end{array} \right)
+  \left( \begin{array}{c}
+      y_1 \\
+      \vdots \\
+      y_n
+    \end{array} \right)
+\end{align*}
+$$
+</code></pre></div></div>
+
+<p>will render as</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>\[\begin{align*} <span class="err">&amp;</span> \phi(x,y) = \phi \left(\sum_{i=1}^n x_ie_i, \sum_{j=1}^n y_je_j \right) = \sum_{i=1}^n \sum_{j=1}^n x_i y_j \phi(e_i, e_j) = \\ <span class="err">&amp;</span> (x_1, \ldots, x_n) \left( \begin{array}{ccc} \phi(e_1, e_1) <span class="err">&amp;</span> \cdots <span class="err">&amp;</span> \phi(e_1, e_n) \\ \vdots <span class="err">&amp;</span> \ddots <span class="err">&amp;</span> \vdots \\ \phi(e_n, e_1) <span class="err">&amp;</span> \cdots <span class="err">&amp;</span> \phi(e_n, e_n) \end{array} \right) \left( \begin{array}{c} y_1 \\ \vdots \\ y_n \end{array} \right) \end{align*}\]
+</code></pre></div></div>
+
+<blockquote>
+  <p>Note that LaTeX code that uses the pipe symbol <code class="language-plaintext highlighter-rouge">|</code> in inline math statements may lead to a line being recognized as a table line. This problem can be avoided by using the <code class="language-plaintext highlighter-rouge">\vert</code> command instead of <code class="language-plaintext highlighter-rouge">|</code></p>
+</blockquote>
+
+<p>more</p>
+<ul>
+  <li>Kramdown: <a href="https://kramdown.gettalong.org/syntax.html#math-blocks">Math Blocks</a> / <a href="https://kramdown.gettalong.org/converter/html.html#math-support">Math Support</a> <a href="https://kramdown.gettalong.org/math_engine/mathjax.html">Math Engine MathJax</a></li>
+  <li><a href="http://www.noamross.net/archives/2012-04-04-math-in-rss-feeds/">Displaying Math in RSS feeds</a></li>
+  <li><a href="http://haixing-hu.github.io/programming/2013/09/20/how-to-use-mathjax-in-jekyll-generated-github-pages/">How to use MathJax in Jekyll generated Github pages</a></li>
+</ul>]]></content><author><name>lawsssscat</name><email>1191693505@qq.com</email></author><summary type="html"><![CDATA[kramdown supports the use of various math engines. The default math engine is MathJax (which can also be used with KaTeX). KaTeX KaTeX - https://katex.org/ The fastest math typesetting library for the web. MathJax MathJax - https://www.mathjax.org/ MathJax is a javascript library that uses the TeX algorithms and fonts to display math formulas on HTML pages. It allows for very fine-grained configuration, is widely used and works on all modern browsers. example - https://jsbin.com/?html,output When (a \ne 0), there are two solutions to (ax^2 + bx + c = 0) and they are [x = {-b \pm \sqrt{b^2-4ac} \over 2a}.] Write LaTeX Equations in Jekyll Using MathJax &amp; Kramdown In Kramdown, Math Engine MathJax marks up math formulas with the standard MathJax syntax of \(...\) for inline math and \[...\] for block math (works for both version 2.x and 3.x of MathJax). The only other thing to do is to include the MathJax library itself on the HTML page. For proper functionality, the HTML template must be configured to link to the engine’s Javascript and CSS. Note that the CSS includes references to webfonts. &lt;!-- Mathjax Support --&gt; &lt;script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"&gt; &lt;/script&gt; Note that kramdown does not ship with the MathJax library and that therefore the “default” template does not include a link to it! we need to add a link to MathJax to our page. Also available are precompiling versions to eliminate the need for client-side Javascript. Those are Mathjax-Node, KaTeX, and SsKaTeX. Each one requires a Javascript engine installed where kramdown runs, in order to perform the precompilation. The resulting pages still require CSS and fonts, but no Javascript anymore. Math syntax in Kramdown The default math delimiters are $$...$$ and \[...\] for displayed mathematics, and \(...\) for in-line mathematics. Note in particular that the $...$ in-line delimiters are not used by default. Since dollar signs appear too often in non-mathematical settings. The following kramdown fragment: $$ \begin{align*} &amp; \phi(x,y) = \phi \left(\sum_{i=1}^n x_ie_i, \sum_{j=1}^n y_je_j \right) = \sum_{i=1}^n \sum_{j=1}^n x_i y_j \phi(e_i, e_j) = \\ &amp; (x_1, \ldots, x_n) \left( \begin{array}{ccc} \phi(e_1, e_1) &amp; \cdots &amp; \phi(e_1, e_n) \\ \vdots &amp; \ddots &amp; \vdots \\ \phi(e_n, e_1) &amp; \cdots &amp; \phi(e_n, e_n) \end{array} \right) \left( \begin{array}{c} y_1 \\ \vdots \\ y_n \end{array} \right) \end{align*} $$ will render as \[\begin{align*} &amp; \phi(x,y) = \phi \left(\sum_{i=1}^n x_ie_i, \sum_{j=1}^n y_je_j \right) = \sum_{i=1}^n \sum_{j=1}^n x_i y_j \phi(e_i, e_j) = \\ &amp; (x_1, \ldots, x_n) \left( \begin{array}{ccc} \phi(e_1, e_1) &amp; \cdots &amp; \phi(e_1, e_n) \\ \vdots &amp; \ddots &amp; \vdots \\ \phi(e_n, e_1) &amp; \cdots &amp; \phi(e_n, e_n) \end{array} \right) \left( \begin{array}{c} y_1 \\ \vdots \\ y_n \end{array} \right) \end{align*}\] Note that LaTeX code that uses the pipe symbol | in inline math statements may lead to a line being recognized as a table line. This problem can be avoided by using the \vert command instead of | more Kramdown: Math Blocks / Math Support Math Engine MathJax Displaying Math in RSS feeds How to use MathJax in Jekyll generated Github pages]]></summary></entry><entry><title type="html">Site Config</title><link href="https://lawsssscat.github.io//jekyll-docs/2022/06/14/site-config.html" rel="alternate" type="text/html" title="Site Config" /><published>2022-06-14T00:00:00+00:00</published><updated>2022-08-17T17:13:09+00:00</updated><id>https://lawsssscat.github.io//jekyll-docs/2022/06/14/site-config</id><content type="html" xml:base="https://lawsssscat.github.io//jekyll-docs/2022/06/14/site-config.html"><![CDATA[<h2 id="site">site</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>path</th>
+      <th>type of config</th>
+      <th>name</th>
+      <th>type of date</th>
+      <th>mean</th>
+      <th>default</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">_config.yml</code></td>
+      <td> </td>
+      <td><code class="language-plaintext highlighter-rouge">baseurl</code></td>
+      <td>string</td>
+      <td>the base url of the webpage.</td>
+      <td><code class="language-plaintext highlighter-rouge">/</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">_config.yml</code></td>
+      <td> </td>
+      <td><code class="language-plaintext highlighter-rouge">lang</code></td>
+      <td>string</td>
+      <td>the language of the webpage. <br />see <a href="http://www.lingoes.net/en/translator/langcode.htm">http://www.lingoes.net/en/translator/langcode.htm</a></td>
+      <td><code class="language-plaintext highlighter-rouge">en</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">_data/locale.yml</code></td>
+      <td> </td>
+      <td><code class="language-plaintext highlighter-rouge">{{lang}}.{{key}}</code></td>
+      <td>string</td>
+      <td>the value represents the localized representation of the <code class="language-plaintext highlighter-rouge">key</code> that will display in the webpag.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">_data/navigation.yml</code></td>
+      <td> </td>
+      <td><code class="language-plaintext highlighter-rouge">header[{{index}}].name</code></td>
+      <td>string</td>
+      <td>the value will display in navigation row of the webpag. <br /> if it’s start with <code class="language-plaintext highlighter-rouge">:</code>, the final value is taken from <code class="language-plaintext highlighter-rouge">_data/locale.yml</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">_config.yml</code></td>
+      <td> </td>
+      <td><code class="language-plaintext highlighter-rouge">author</code></td>
+      <td>obj</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">_data/variables.yml</code></td>
+      <td> </td>
+      <td><code class="language-plaintext highlighter-rouge">pageview.enable</code></td>
+      <td>boolean</td>
+      <td> </td>
+      <td>true</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="page">page</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>path</th>
+      <th>type of config</th>
+      <th>name</th>
+      <th>type of date</th>
+      <th>mean</th>
+      <th>default</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">{page.path}</code></td>
+      <td> </td>
+      <td><code class="language-plaintext highlighter-rouge">lang</code></td>
+      <td>string</td>
+      <td>the language of the page. see <a href="http://www.lingoes.net/en/translator/langcode.htm">http://www.lingoes.net/en/translator/langcode.htm</a></td>
+      <td><code class="language-plaintext highlighter-rouge">{{site.lang}}</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">{page.path}</code></td>
+      <td>front matter</td>
+      <td><code class="language-plaintext highlighter-rouge">permalink</code></td>
+      <td>url</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">{page.path}</code></td>
+      <td>front matter</td>
+      <td><code class="language-plaintext highlighter-rouge">key</code></td>
+      <td>string</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">{page.path}</code></td>
+      <td>front matter</td>
+      <td><code class="language-plaintext highlighter-rouge">cover</code></td>
+      <td>url</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">{page.path}</code></td>
+      <td>front matter</td>
+      <td><code class="language-plaintext highlighter-rouge">article_header</code></td>
+      <td>obj</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">{page.path}</code></td>
+      <td>front matter</td>
+      <td><code class="language-plaintext highlighter-rouge">article_header.type</code></td>
+      <td><code class="language-plaintext highlighter-rouge">cover</code> or <code class="language-plaintext highlighter-rouge">overload</code></td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">{page.path}</code></td>
+      <td>front matter</td>
+      <td><code class="language-plaintext highlighter-rouge">article_header.image</code></td>
+      <td>obj</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">{page.path}</code></td>
+      <td>front matter</td>
+      <td><code class="language-plaintext highlighter-rouge">article_header.image.src</code></td>
+      <td>url</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">{page.path}</code></td>
+      <td>front matter</td>
+      <td><code class="language-plaintext highlighter-rouge">article_header.image.style</code></td>
+      <td>css</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">{page.path}</code></td>
+      <td>front matter</td>
+      <td><code class="language-plaintext highlighter-rouge">aside.toc</code></td>
+      <td>boolean</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="author">author</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>path</th>
+      <th>type of config</th>
+      <th>name</th>
+      <th>type of date</th>
+      <th>mean</th>
+      <th>default</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">_data/variables.yml</code></td>
+      <td> </td>
+      <td><code class="language-plaintext highlighter-rouge">default.page.show_author_profile</code></td>
+      <td>boolean</td>
+      <td> </td>
+      <td><code class="language-plaintext highlighter-rouge">false</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">{layout}</code></td>
+      <td>front matter</td>
+      <td><code class="language-plaintext highlighter-rouge">show_author_profile</code></td>
+      <td>boolean</td>
+      <td> </td>
+      <td><code class="language-plaintext highlighter-rouge">site.data.default.page.show_author_profile</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">{page.path}</code></td>
+      <td>front matter</td>
+      <td><code class="language-plaintext highlighter-rouge">show_author_profile</code></td>
+      <td>boolean</td>
+      <td> </td>
+      <td><code class="language-plaintext highlighter-rouge">{layout}.show_author_profile</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">{author}</code></td>
+      <td> </td>
+      <td><code class="language-plaintext highlighter-rouge">avatar</code></td>
+      <td>url</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">{author}</code></td>
+      <td> </td>
+      <td><code class="language-plaintext highlighter-rouge">url</code></td>
+      <td>url</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="article">article</h3>
+
+<p>priority:</p>
+<ol>
+  <li>page front matter (site.default.xxx)</li>
+  <li>layout front matter</li>
+  <li><code class="language-plaintext highlighter-rouge">_data/variables</code> <code class="language-plaintext highlighter-rouge">default.page.{xxx}</code></li>
+</ol>
+
+<table>
+  <thead>
+    <tr>
+      <th>path</th>
+      <th>type of config</th>
+      <th>name</th>
+      <th>type of date</th>
+      <th>mean</th>
+      <th>default</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td><code class="language-plaintext highlighter-rouge">show_article_info_read_by_count</code></td>
+      <td>boolean</td>
+      <td> </td>
+      <td>true</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td><code class="language-plaintext highlighter-rouge">show_article_info_reading_time</code></td>
+      <td>boolean</td>
+      <td> </td>
+      <td>true</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td><code class="language-plaintext highlighter-rouge">show_article_info_publish_on</code></td>
+      <td>boolean</td>
+      <td> </td>
+      <td>true</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td><code class="language-plaintext highlighter-rouge">show_article_info_tags</code></td>
+      <td>boolean</td>
+      <td> </td>
+      <td>true</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td><code class="language-plaintext highlighter-rouge">show_article_title</code></td>
+      <td>boolean</td>
+      <td> </td>
+      <td>true</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td><code class="language-plaintext highlighter-rouge">show_article_title_edit_on_github</code></td>
+      <td>boolean</td>
+      <td> </td>
+      <td>true</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">site</code></td>
+      <td> </td>
+      <td><code class="language-plaintext highlighter-rouge">repository</code></td>
+      <td>boolean</td>
+      <td>obj</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">site</code></td>
+      <td> </td>
+      <td><code class="language-plaintext highlighter-rouge">repository.platform</code></td>
+      <td>boolean</td>
+      <td>string</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">site</code></td>
+      <td> </td>
+      <td><code class="language-plaintext highlighter-rouge">repository.name</code></td>
+      <td>boolean</td>
+      <td>string</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">site</code></td>
+      <td> </td>
+      <td><code class="language-plaintext highlighter-rouge">repository.tree</code></td>
+      <td>boolean</td>
+      <td>string</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td><code class="language-plaintext highlighter-rouge">show_article_footer_horizontal_rule</code></td>
+      <td>boolean</td>
+      <td> </td>
+      <td>false</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td><code class="language-plaintext highlighter-rouge">show_btn_change_theme</code></td>
+      <td>boolean</td>
+      <td> </td>
+      <td>true</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td><code class="language-plaintext highlighter-rouge">show_article_footer_navigation</code></td>
+      <td>boolean</td>
+      <td> </td>
+      <td>false</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td><code class="language-plaintext highlighter-rouge">show_author_profile</code></td>
+      <td>boolean</td>
+      <td> </td>
+      <td>false</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td><code class="language-plaintext highlighter-rouge">show_subscribe</code></td>
+      <td>boolean</td>
+      <td> </td>
+      <td>false</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td><code class="language-plaintext highlighter-rouge">license</code></td>
+      <td>string</td>
+      <td>license name. data define in <code class="language-plaintext highlighter-rouge">_data/license.yml</code></td>
+      <td>false</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">_data.navigation</code></td>
+      <td> </td>
+      <td><code class="language-plaintext highlighter-rouge">key</code></td>
+      <td>string</td>
+      <td>work with <code class="language-plaintext highlighter-rouge">nav_key</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>page</td>
+      <td>front matter</td>
+      <td><code class="language-plaintext highlighter-rouge">nav_key</code></td>
+      <td>string</td>
+      <td>work with <code class="language-plaintext highlighter-rouge">_data.navigation</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>page</td>
+      <td>front matter</td>
+      <td><code class="language-plaintext highlighter-rouge">original_link</code></td>
+      <td>url</td>
+      <td>if not site url, please use absolute url</td>
+      <td><code class="language-plaintext highlighter-rouge">page.url</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="aside">aside</h3>
+
+<p>open</p>
+
+<p><code class="language-plaintext highlighter-rouge">page.aside</code> <code class="language-plaintext highlighter-rouge">true</code>
+<code class="language-plaintext highlighter-rouge">layout.aside</code> <code class="language-plaintext highlighter-rouge">true</code></p>
+
+<p>or obj</p>
+
+<p><code class="language-plaintext highlighter-rouge">page.aside.toc</code> <code class="language-plaintext highlighter-rouge">true</code>
+<code class="language-plaintext highlighter-rouge">page.aside.tocselectors</code> <code class="language-plaintext highlighter-rouge">h1,h2,h3,h4</code>
+<code class="language-plaintext highlighter-rouge">layout.aside.toc</code> <code class="language-plaintext highlighter-rouge">true</code>
+<code class="language-plaintext highlighter-rouge">layout.aside.tocselectors</code> <code class="language-plaintext highlighter-rouge">h1,h2,h3,h4</code></p>
+
+<p>aside.toc</p>
+
+<p><code class="language-plaintext highlighter-rouge">page.aside.toc</code> <code class="language-plaintext highlighter-rouge">true</code> 
+<code class="language-plaintext highlighter-rouge">layout.aside.toc</code> <code class="language-plaintext highlighter-rouge">true</code></p>
+
+<p>or obj</p>
+
+<p><code class="language-plaintext highlighter-rouge">page.aside.toc.selectors</code> <code class="language-plaintext highlighter-rouge">h1,h2,h3,h4</code>
+<code class="language-plaintext highlighter-rouge">layout.aside.toc.selectors</code> <code class="language-plaintext highlighter-rouge">h1,h2,h3,h4</code></p>
+
+<p>aside.toc.selectors</p>
+
+<p><code class="language-plaintext highlighter-rouge">page.aside.toc.selectors</code> <code class="language-plaintext highlighter-rouge">h1,h2,h3,h4</code>
+<code class="language-plaintext highlighter-rouge">layout.aside.toc.selectors</code> <code class="language-plaintext highlighter-rouge">h1,h2,h3,h4</code>
+<code class="language-plaintext highlighter-rouge">site.data.variables.default.aside.toc.selectors</code> <code class="language-plaintext highlighter-rouge">h1,h2,h3,h4</code></p>
+
+<blockquote>
+  <p>add html dom attribute <code class="language-plaintext highlighter-rouge">toc-header-ignore</code> to avoid being regarded as headers.</p>
+</blockquote>
+
+<h3 id="sidebar">sidebar</h3>
+
+<p>open obj</p>
+
+<p><code class="language-plaintext highlighter-rouge">page.sidebar.quicklinks</code> 
+<code class="language-plaintext highlighter-rouge">layout.sidebar.quicklinks</code></p>
+
+<p>the values define in <code class="language-plaintext highlighter-rouge">_data/quicklinks.yml</code>.</p>]]></content><author><name>lawsssscat</name><email>1191693505@qq.com</email></author><summary type="html"><![CDATA[site path type of config name type of date mean default _config.yml   baseurl string the base url of the webpage. / _config.yml   lang string the language of the webpage. see http://www.lingoes.net/en/translator/langcode.htm en _data/locale.yml   {{lang}}.{{key}} string the value represents the localized representation of the key that will display in the webpag.   _data/navigation.yml   header[{{index}}].name string the value will display in navigation row of the webpag. if it’s start with :, the final value is taken from _data/locale.yml   _config.yml   author obj     _data/variables.yml   pageview.enable boolean   true page path type of config name type of date mean default {page.path}   lang string the language of the page. see http://www.lingoes.net/en/translator/langcode.htm {{site.lang}} {page.path} front matter permalink url     {page.path} front matter key string     {page.path} front matter cover url     {page.path} front matter article_header obj     {page.path} front matter article_header.type cover or overload     {page.path} front matter article_header.image obj     {page.path} front matter article_header.image.src url     {page.path} front matter article_header.image.style css     {page.path} front matter aside.toc boolean     author path type of config name type of date mean default _data/variables.yml   default.page.show_author_profile boolean   false {layout} front matter show_author_profile boolean   site.data.default.page.show_author_profile {page.path} front matter show_author_profile boolean   {layout}.show_author_profile {author}   avatar url     {author}   url url     article priority: page front matter (site.default.xxx) layout front matter _data/variables default.page.{xxx} path type of config name type of date mean default     show_article_info_read_by_count boolean   true     show_article_info_reading_time boolean   true     show_article_info_publish_on boolean   true     show_article_info_tags boolean   true     show_article_title boolean   true     show_article_title_edit_on_github boolean   true site   repository boolean obj   site   repository.platform boolean string   site   repository.name boolean string   site   repository.tree boolean string       show_article_footer_horizontal_rule boolean   false     show_btn_change_theme boolean   true     show_article_footer_navigation boolean   false     show_author_profile boolean   false     show_subscribe boolean   false     license string license name. data define in _data/license.yml false _data.navigation   key string work with nav_key   page front matter nav_key string work with _data.navigation   page front matter original_link url if not site url, please use absolute url page.url aside open page.aside true layout.aside true or obj page.aside.toc true page.aside.tocselectors h1,h2,h3,h4 layout.aside.toc true layout.aside.tocselectors h1,h2,h3,h4 aside.toc page.aside.toc true layout.aside.toc true or obj page.aside.toc.selectors h1,h2,h3,h4 layout.aside.toc.selectors h1,h2,h3,h4 aside.toc.selectors page.aside.toc.selectors h1,h2,h3,h4 layout.aside.toc.selectors h1,h2,h3,h4 site.data.variables.default.aside.toc.selectors h1,h2,h3,h4 add html dom attribute toc-header-ignore to avoid being regarded as headers. sidebar open obj page.sidebar.quicklinks layout.sidebar.quicklinks the values define in _data/quicklinks.yml.]]></summary></entry></feed>

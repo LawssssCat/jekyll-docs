@@ -1,0 +1,947 @@
+<!DOCTYPE html><html lang="zh" data-theme="light"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Typography | jekyll-docs</title><meta name="description" content="Most of the typography here is based on markdown rendering of Jekyll and Kramdown is the default Markdown renderer for Jekyll. (see here for more details abo..."><link rel="canonical" href="https://lawsssscat.github.io/"><link rel="alternate" type="application/rss+xml" title="jekyll-docs" href="/jekyll-docs/feed.xml"><link rel="apple-touch-icon" sizes="180x180" href="/jekyll-docs/assets/images/favicon/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/jekyll-docs/assets/images/favicon/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/jekyll-docs/assets/images/favicon/favicon-16x16.png"><link rel="manifest" href="/jekyll-docs/assets/images/favicon/site.webmanifest"><link rel="mask-icon" color="#5bbad5" href="/jekyll-docs/assets/images/favicon/safari-pinned-tab.svg"><meta name="msapplication-config" content="/jekyll-docs/assets/images/favicon/browserconfig.xml"><meta name="msapplication-TileColor" content="#da532c"><meta name="theme-color" content="#ffffff"><link rel="stylesheet" href="/jekyll-docs/assets/css/style.css"> <script src="/jekyll-docs/assets/js/data/variables.js"></script><script src="/jekyll-docs/assets/js/dist/venders.min.js"></script><body><div class="layout--base"><div class="layout--page js-page-root"><div class="page__viewport">
+<div class="page__sidebar-actions d-print-none">
+<div class="button button--lg button--circle box-shadow-2 sidebar-button js-sidebar-show"> <i class="fas fa-bars icon--show"></i>
+</div>
+<script src="/jekyll-docs/assets/js/dist/sidebar/actions.min.js"></script>
+</div>
+<div class="page__grid grid">
+<div class="page__sidebar d-print-none">
+<div class="page__sidebar-inner"><div class="page__sidebar-quicklinks">
+<div class="quicklinks"><ol>
+<li class="heading active">
+<div class="quicklinks-item" title="Start">Start</div>
+<ol class="quicklinks-details">
+<li class="" title="Quick Start"> <a href="/jekyll-docs/docs/en/quick-start">Quick Start</a>
+</li>
+<li class="" title="Structure"> <a href="/jekyll-docs/docs/en/structure">Structure</a>
+</li>
+<li class="active" title="Typography"> <a href="/jekyll-docs/docs/en/typography">Typography</a>
+</li>
+<li class="" title="Blog Migration"> <a href="/jekyll-docs/docs/en/blog-service-migration">Blog Migration</a>
+</li>
+</ol>
+</li>
+<li class="heading "><div class="quicklinks-item" title="Samples"><a href="/jekyll-docs/samples.html">Samples</a></div></li>
+<li class="heading ">
+<div class="quicklinks-item" title="Components">Components</div>
+<ol class="quicklinks-details">
+<li class="" title="Spacing"> <a href="/jekyll-docs/docs/en/components/spacing">Spacing</a>
+</li>
+<li class="" title="Grid"> <a href="/jekyll-docs/docs/en/components/grid">Grid</a>
+</li>
+<li class="" title="Code"> <a href="/jekyll-docs/docs/en/components/code">Code</a>
+</li>
+<li class="" title="Alert"> <a href="/jekyll-docs/docs/en/components/alert">Alert</a>
+</li>
+<li class="" title="Button"> <a href="/jekyll-docs/docs/en/components/button">Button</a>
+</li>
+<li class="" title="Checkbox"> <a href="/jekyll-docs/docs/en/components/checkbox">Checkbox</a>
+</li>
+<li class="" title="Icons"> <a href="/jekyll-docs/docs/en/components/icons">Icons</a>
+</li>
+<li class="" title="Images"> <a href="/jekyll-docs/docs/en/components/images">Images</a>
+</li>
+<li class="" title="Item"> <a href="/jekyll-docs/docs/en/components/item">Item</a>
+</li>
+<li class="" title="Card"> <a href="/jekyll-docs/docs/en/components/card">Card</a>
+</li>
+<li class="" title="Hero"> <a href="/jekyll-docs/docs/en/components/hero">Hero</a>
+</li>
+<li class="" title="Swiper"> <a href="/jekyll-docs/docs/en/components/swiper">Swiper</a>
+</li>
+</ol>
+</li>
+<li class="heading "><div class="quicklinks-item" title="Customization">Customization</div></li>
+<li class="heading ">
+<div class="quicklinks-item" title="Configuration">Configuration</div>
+<ol class="quicklinks-details"><li class="" title=""> <a href=""></a>
+</li></ol>
+</li>
+<li class="heading "><div class="quicklinks-item" title="Authors"><a href="/jekyll-docs/docs/en/authors">Authors</a></div></li>
+<li class="heading ">
+<div class="quicklinks-item" title="Language">Language</div>
+<ol class="quicklinks-details"><li class="" title="中文"> <a href="">中文</a>
+</li></ol>
+</li>
+<li class="heading "><div class="quicklinks-item" title="Development">Development</div></li>
+</ol></div>
+<script src="/jekyll-docs/assets/js/dist/sidebar/quicklinks.min.js"></script>
+</div></div>
+<div class="page__sidebar-toggle d-print-none"> <i class="fas fa-bars icon--show"></i>
+</div>
+</div>
+<div class="page__main js-page-main has-aside has-sidebar cell cell--auto"><div class="page__main-inner">
+<div class="page__header js-header d-print-none"><header class="header"><div class="main">
+<div class="navigation__toggle"><div class="toggle" aria-label="Menu">
+<div class="toggle__bar"></div>
+<div class="toggle__bar"></div>
+<div class="toggle__bar"></div>
+</div></div>
+<div class="header__title"><div class="header__brand">
+<svg width="24" height="24" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m12 2.604-.43.283L0 10.459v6.752l6.393 4.184L12 17.725l5.607 3.671L24 17.211v-6.752L12 2.604zm0 .828 5.434 3.556-2.717 1.778L12 10.545l-2.717-1.78-2.717-1.777L12 3.432zM6.39 7.104l5.434 3.556-5.408 3.54-5.434-3.557 5.409-3.54zm11.22 0 5.431 3.554-5.434 3.557-5.433-3.555 5.435-3.556zM.925 10.867l5.379 3.52a.123.08 0 0 0 .027.013v5.647l-5.406-3.54v-5.64zm11.213.115 5.408 3.54v5.664l-5.408-3.54v-5.664z"></path></svg><a class="header__brand-title" title="Collects the common information of Jekyll and put all in one site. " href="/jekyll-docs/">jekyll-docs</a>
+</div></div>
+<div class="navigation"><ul>
+<li class="navigation__item"> <a class="navigation__item-link" href="javascript:void(0)"> <span>Docs</span> <i class="fas fa-angle-down navigation__item-sub_icon"></i> </a><div class="quicklinks-block">
+<div class="quicklinks-block-left-background"></div>
+<div class="main quicklinks-block-content">
+<div class="quicklinks-block-left"><ul class="quicklinks-block-left-menu">
+<li><div class="quicklinks-title"><div class="quicklinks-title-text"> Jekyll <a href="/jekyll-docs/jekyll"><i class="fas fa-external-link-alt link-additional-icon"></i></a><div class="quicklinks-border"></div>
+</div></div></li>
+<li><div class="quicklinks-title"><div class="quicklinks-title-text"> site <a href="javascript:void(0)"><i class="fas fa-external-link-alt link-additional-icon"></i></a><div class="quicklinks-border"></div>
+</div></div></li>
+<li><div class="quicklinks-title"><div class="quicklinks-title-text"> tools <a href="javascript:void(0)"><i class="fas fa-external-link-alt link-additional-icon"></i></a><div class="quicklinks-border"></div>
+</div></div></li>
+</ul></div>
+<div class="quicklinks-block-right">
+<div class="quicklinks-block-right-menu">
+<div class="quicklinks-block-right-menu-item">
+<div class="quicklinks-block-right-menu-item-title"> markdown <a href="javascript:void(0)"><i class="fas fa-external-link-alt link-additional-icon"></i></a>
+</div>
+<div>
+<a class="quicklinks-block-right-menu-item-link" href="/jekyll-docs/markdown/syntax">Syntax</a><a class="quicklinks-block-right-menu-item-link" href="/jekyll-docs/markdown/processor">Renderer</a><a class="quicklinks-block-right-menu-item-link" href="/jekyll-docs/markdown/highlight">Highlight</a>
+</div>
+</div>
+<div class="quicklinks-block-right-menu-item">
+<div class="quicklinks-block-right-menu-item-title"> ruby <a href="/jekyll-docs/ruby"><i class="fas fa-external-link-alt link-additional-icon"></i></a>
+</div>
+<div></div>
+</div>
+<div class="quicklinks-block-right-menu-item">
+<div class="quicklinks-block-right-menu-item-title"> liquid <a href="/jekyll-docs/liquid"><i class="fas fa-external-link-alt link-additional-icon"></i></a>
+</div>
+<div></div>
+</div>
+<div class="quicklinks-block-right-menu-item">
+<div class="quicklinks-block-right-menu-item-title"> 主题 <a href="/jekyll-docs/theme"><i class="fas fa-external-link-alt link-additional-icon"></i></a>
+</div>
+<div></div>
+</div>
+<div class="quicklinks-block-right-menu-item">
+<div class="quicklinks-block-right-menu-item-title"> 插件 <a href="/jekyll-docs/plugins"><i class="fas fa-external-link-alt link-additional-icon"></i></a>
+</div>
+<div><a class="quicklinks-block-right-menu-item-link" href="/jekyll-docs/plugins/emoji">emoji</a></div>
+</div>
+</div>
+<div class="quicklinks-block-right-menu">
+<div class="quicklinks-block-right-menu-item">
+<div class="quicklinks-block-right-menu-item-title"> Start <a href="javascript:void(0)"><i class="fas fa-external-link-alt link-additional-icon"></i></a>
+</div>
+<div>
+<a class="quicklinks-block-right-menu-item-link" href="/jekyll-docs/docs/en/quick-start">Quick Start</a><a class="quicklinks-block-right-menu-item-link" href="/jekyll-docs/docs/en/structure">Structure</a><a class="quicklinks-block-right-menu-item-link" href="/jekyll-docs/docs/en/typography">Typography</a><a class="quicklinks-block-right-menu-item-link" href="/jekyll-docs/docs/en/blog-service-migration">Blog Migration</a>
+</div>
+</div>
+<div class="quicklinks-block-right-menu-item">
+<div class="quicklinks-block-right-menu-item-title"> Samples <a href="/jekyll-docs/samples.html"><i class="fas fa-external-link-alt link-additional-icon"></i></a>
+</div>
+<div></div>
+</div>
+<div class="quicklinks-block-right-menu-item">
+<div class="quicklinks-block-right-menu-item-title"> Components <a href="javascript:void(0)"><i class="fas fa-external-link-alt link-additional-icon"></i></a>
+</div>
+<div>
+<a class="quicklinks-block-right-menu-item-link" href="/jekyll-docs/docs/en/components/spacing">Spacing</a><a class="quicklinks-block-right-menu-item-link" href="/jekyll-docs/docs/en/components/grid">Grid</a><a class="quicklinks-block-right-menu-item-link" href="/jekyll-docs/docs/en/components/code">Code</a><a class="quicklinks-block-right-menu-item-link" href="/jekyll-docs/docs/en/components/alert">Alert</a><a class="quicklinks-block-right-menu-item-link" href="/jekyll-docs/docs/en/components/button">Button</a><a class="quicklinks-block-right-menu-item-link" href="/jekyll-docs/docs/en/components/checkbox">Checkbox</a><a class="quicklinks-block-right-menu-item-link" href="/jekyll-docs/docs/en/components/icons">Icons</a><a class="quicklinks-block-right-menu-item-link" href="/jekyll-docs/docs/en/components/images">Images</a><a class="quicklinks-block-right-menu-item-link" href="/jekyll-docs/docs/en/components/item">Item</a><a class="quicklinks-block-right-menu-item-link" href="/jekyll-docs/docs/en/components/card">Card</a><a class="quicklinks-block-right-menu-item-link" href="/jekyll-docs/docs/en/components/hero">Hero</a><a class="quicklinks-block-right-menu-item-link" href="/jekyll-docs/docs/en/components/swiper">Swiper</a>
+</div>
+</div>
+<div class="quicklinks-block-right-menu-item">
+<div class="quicklinks-block-right-menu-item-title"> Customization <a href="javascript:void(0)"><i class="fas fa-external-link-alt link-additional-icon"></i></a>
+</div>
+<div></div>
+</div>
+<div class="quicklinks-block-right-menu-item">
+<div class="quicklinks-block-right-menu-item-title"> Configuration <a href="javascript:void(0)"><i class="fas fa-external-link-alt link-additional-icon"></i></a>
+</div>
+<div><a class="quicklinks-block-right-menu-item-link" href=""></a></div>
+</div>
+<div class="quicklinks-block-right-menu-item">
+<div class="quicklinks-block-right-menu-item-title"> Authors <a href="/jekyll-docs/docs/en/authors"><i class="fas fa-external-link-alt link-additional-icon"></i></a>
+</div>
+<div></div>
+</div>
+<div class="quicklinks-block-right-menu-item">
+<div class="quicklinks-block-right-menu-item-title"> Language <a href="javascript:void(0)"><i class="fas fa-external-link-alt link-additional-icon"></i></a>
+</div>
+<div><a class="quicklinks-block-right-menu-item-link" href="">中文</a></div>
+</div>
+<div class="quicklinks-block-right-menu-item">
+<div class="quicklinks-block-right-menu-item-title"> Development <a href="javascript:void(0)"><i class="fas fa-external-link-alt link-additional-icon"></i></a>
+</div>
+<div></div>
+</div>
+</div>
+<div class="quicklinks-block-right-menu"><div class="quicklinks-block-right-menu-item">
+<div class="quicklinks-block-right-menu-item-title"> <a href="/jekyll-docs/tools"><i class="fas fa-external-link-alt link-additional-icon"></i></a>
+</div>
+<div></div>
+</div></div>
+</div>
+</div>
+</div>
+</li>
+<li class="navigation__item"> <a class="navigation__item-link" href="/jekyll-docs/archive"> <span>Archive</span> </a>
+</li>
+<li class="navigation__item"> <a class="navigation__item-link" href="/jekyll-docs/about"> <span>关于</span> </a>
+</li>
+</ul></div>
+<div class="toggle-items">
+<div class="toggle-item toggle-lang-switch"> <i class="fas fa-language"></i> <span>ZH</span>
+</div>
+<div class="toggle-item toggle-theme-switch"> <i class="toggle-theme-icon-light fas fa-sun"></i> <i class="toggle-theme-icon-dark far fa-moon"></i>
+</div>
+<div class="toggle-item toggle-docs-search"> <i class="fas fa-search"></i>
+</div>
+</div>
+</div></header></div>
+<div class="page__content"><div class="main"><div class="grid grid--reverse">
+<div class="col-aside d-print-none"><aside><div class="toc-aside">
+<header><h2 class="toc-handing">In this article</h2></header><div class="toc js-toc-root"></div>
+<script> window.VARIABLES.append({ toc: { selectors: "h1,h2,h3,h4" } }); </script><script src="/jekyll-docs/assets/js/dist/aside/toc.min.js"></script>
+</div></aside></div>
+<div class="col-main cell cell--sm-auto"><article itemscope itemtype="http://schema.org/Article"><div>
+<div class="layout--article">
+<div class="article__header">
+<header class="header"><h1>Typography</h1>
+<span class="split-space d-print-none"> </span> <a class="edit-on-repo d-print-none" title="在 GitHub 上修改" href="https://github.com/lawsssscat/jekyll-docs/tree/dev/_docs/en/1.3-typography.md"><i class="far fa-edit"></i></a></header><meta itemprop="headline" content="Typography">
+</div>
+<div class="article__infos d-print-none">
+<div class="infos">
+<div class="info__item article__author-avatar-wrapper"><div class="article__author-avatar"> <img src="/jekyll-docs/assets/images/avatar/18041500.jpg" alt="author avatar">
+</div></div>
+<div class="info__item"><p> <font>Published on</font> <span class="nowrap">2022年08月18日</span></p></div>
+<div class="info__item"><p> <font>Written by</font> <span class="nowrap"> <a href="https://lawsssscat.github.io/">@lawsssscat</a> </span></p></div>
+<div class="info__item"><p> <font>Reading time</font> <span class="nowrap" data-toggle="popover" data-popper-trigger="hover focus" data-popper-title="" data-popper-content="1371 字"> 8 min </span></p></div>
+<div class="info__item"><p> <font>Views</font><span class="nowrap js-pageview" data-one-page-action="increase" data-one-page-key="/docs/en/1.3-typography" data-one-page-title="Typography"> <font class="views-num">0</font> Hits </span></p></div>
+<div class="info__item"><p> <font>More on</font> <span class="wrap"><a href="/jekyll-docs/archive?tag=guide">guide</a>, <a href="/jekyll-docs/archive?tag=typography">typography</a></span></p></div>
+</div>
+<meta itemprop="author" content="lawsssscat">
+</div>
+<div class="article__content js-article-content">
+<p class="info">Most of the typography here is based on markdown rendering of Jekyll and <a href="https://kramdown.gettalong.org/index.html">Kramdown</a> is the default Markdown renderer for Jekyll. <br> (see <a href="/jekyll-docs/markdown/processor">here</a> for more details about markdown and Kramdown in Jekyll.)</p>
+<p class="info">The following is the basic typography of this site. Please see <a href="/jekyll-docs/docs/en/components/spacing">here</a> for more style infomation.</p>
+<h1 toc-header-ignore="true" id="h1">H1</h1>
+<h2 toc-header-ignore="true" id="h2">H2</h2>
+<h3 toc-header-ignore="true" id="h3">H3</h3>
+<h4 toc-header-ignore="true" id="h4">H4</h4>
+<h5 toc-header-ignore="true" id="h5">H5</h5>
+<h6 toc-header-ignore="true" id="h6">H6</h6>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gh"># H1</span>
+{: toc-header-ignore='true'}
+<span class="gu">## H2</span>
+{: toc-header-ignore='true'}
+<span class="gu">### H3</span>
+{: toc-header-ignore='true'}
+<span class="gu">#### H4</span>
+{: toc-header-ignore='true'}
+<span class="gu">##### H5</span>
+{: toc-header-ignore='true'}
+<span class="gu">###### H6</span>
+{: toc-header-ignore='true'}
+</code></pre></div></div>
+<h2 id="paragraph">Paragraph</h2>
+<p>paragraph 1 balabalabalabala balabala balabala balabala balabala balabalabalabalabalabalabalabala balabalabalabalabalabalabalabala balabalabalabala.balabala balabala balabala</p>
+<p>paragraph 2 balabalabalabala balabala balabala balabala balabala balabalabalabalabalabalabalabala balabalabalabalabalabalabalabala balabalabalabala.balabala balabala balabala</p>
+<h3 id="text-markup">Text Markup</h3>
+<p><strong>bold</strong> <em>italic</em> <del>delete</del> <code class="language-plaintext highlighter-rouge">code</code> <a href="#">link</a></p>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gs">**bold**</span> <span class="ge">*italic*</span> ~~delete~~ <span class="sb">`code`</span> <span class="p">[</span><span class="nv">link</span><span class="p">](</span><span class="sx">#</span><span class="p">)</span>
+</code></pre></div></div>
+<h3 id="images">Images</h3>
+<p><img src="/jekyll-docs/assets/images/cover2.jpg" alt="Alt" title="Title" class="image image--lg"></p>
+<div class="details-wrapper">
+<div class="summary-content">markdown source</div>
+<div class="details-content-wrapper"> <details onclick="javascript: window.VARIABLES.pageScrollTarget.scroll({ top: TOOL.positionRelative( (this.open?this.parentElement.parentElement:this.parentElement), window.VARIABLES.pageScroller ).top, behavior: window.VARIABLES.pageScrollerBehavior }); "> <summary class="summary-toggle" title="click to show details"> <i class="summary-toggle-icon fas fa-angle-double-down"></i> </summary> </details><div class="details-content"><div class="details-content-inner">
+<p>details:</p>
+<figure class="highlight"><pre><code class="language-markdown" data-lang="markdown"><span class="p">![</span><span class="nv">Alt</span><span class="p">](</span><span class="sx">/jekyll-docs/assets/images/cover2.jpg</span> <span class="nn">"Title"</span><span class="p">)</span>{:.image.image--lg}<span class="sb">
+
+
+</span><span class="p">![</span><span class="nv">Alt</span><span class="p">][</span><span class="ss">1</span><span class="p">]</span>
+
+<span class="p">[</span><span class="ss">1</span><span class="p">]:</span> <span class="sx">/jekyll-docs/assets/images/cover2.jpg</span> <span class="nn">"Title"</span></code></pre></figure>
+</div></div>
+</div>
+</div>
+<h3 id="emoji">Emoji</h3>
+<p>✂️ Copy and 📋 Paste Emoji - <a href="https://getemoji.com/">https://getemoji.com/</a></p>
+<p>😀 😃 😄 😁 😆 😅 😂 🤣 🥲 ☺️ 😊 😇 🙂 🙃 😉 😌 😍 🥰 😘 😗 😙 😚 😋 😛 😝 😜 🤪 🤨 🧐 🤓 😎 🥸 🤩 🥳 😏 😒 😞 😔 😟 😕 🙁 ☹️ 😣 😖 😫 😩 🥺 😢 😭 😤 😠 😡 🤬 🤯 😳 🥵 🥶 😱 😨 😰 😥 😓 🤗 🤔 🤭 🤫 🤥 😶 😐 😑 😬 🙄 😯 😦 😧 😮 😲 🥱 😴 🤤 😪 😵 🤐 🥴 🤢 🤮 🤧 😷 🤒 🤕 🤑 🤠 😈 👿 👹 👺 🤡 💩 👻 💀 ☠️ 👽 👾 🤖 🎃 😺 😸 😹 😻 😼 😽 🙀 😿 😾 …</p>
+<p>Emoji emoticons - <a href="https://www.webfx.com/tools/emoji-cheat-sheet/">https://www.webfx.com/tools/emoji-cheat-sheet/</a></p>
+<p><img class="emoji" title=":bowtie:" alt=":bowtie:" src="https://github.githubassets.com/images/icons/emoji/bowtie.png" height="20" width="20"> <img class="emoji" title=":smile:" alt=":smile:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png" height="20" width="20"> :simple_smile: <img class="emoji" title=":laughing:" alt=":laughing:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f606.png" height="20" width="20"> <img class="emoji" title=":blush:" alt=":blush:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" height="20" width="20"> <img class="emoji" title=":smiley:" alt=":smiley:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f603.png" height="20" width="20"> <img class="emoji" title=":relaxed:" alt=":relaxed:" src="https://github.githubassets.com/images/icons/emoji/unicode/263a.png" height="20" width="20"> <img class="emoji" title=":smirk:" alt=":smirk:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f60f.png" height="20" width="20"> <img class="emoji" title=":heart_eyes:" alt=":heart_eyes:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f60d.png" height="20" width="20"> <img class="emoji" title=":kissing_heart:" alt=":kissing_heart:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f618.png" height="20" width="20"> <img class="emoji" title=":kissing_closed_eyes:" alt=":kissing_closed_eyes:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f61a.png" height="20" width="20"> <img class="emoji" title=":flushed:" alt=":flushed:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f633.png" height="20" width="20"> <img class="emoji" title=":relieved:" alt=":relieved:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f60c.png" height="20" width="20"> <img class="emoji" title=":satisfied:" alt=":satisfied:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f606.png" height="20" width="20"> <img class="emoji" title=":grin:" alt=":grin:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f601.png" height="20" width="20"> <img class="emoji" title=":wink:" alt=":wink:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f609.png" height="20" width="20"> <img class="emoji" title=":stuck_out_tongue_winking_eye:" alt=":stuck_out_tongue_winking_eye:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f61c.png" height="20" width="20"> <img class="emoji" title=":stuck_out_tongue_closed_eyes:" alt=":stuck_out_tongue_closed_eyes:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f61d.png" height="20" width="20"> <img class="emoji" title=":grinning:" alt=":grinning:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f600.png" height="20" width="20"> <img class="emoji" title=":kissing:" alt=":kissing:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f617.png" height="20" width="20"> <img class="emoji" title=":kissing_smiling_eyes:" alt=":kissing_smiling_eyes:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f619.png" height="20" width="20"> <img class="emoji" title=":stuck_out_tongue:" alt=":stuck_out_tongue:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f61b.png" height="20" width="20"> <img class="emoji" title=":sleeping:" alt=":sleeping:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f634.png" height="20" width="20"> <img class="emoji" title=":worried:" alt=":worried:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f61f.png" height="20" width="20"> <img class="emoji" title=":camel:" alt=":camel:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f42b.png" height="20" width="20"> <img class="emoji" title=":sheep:" alt=":sheep:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f411.png" height="20" width="20"> <img class="emoji" title=":elephant:" alt=":elephant:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f418.png" height="20" width="20"> <img class="emoji" title=":panda_face:" alt=":panda_face:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f43c.png" height="20" width="20"> <img class="emoji" title=":snake:" alt=":snake:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f40d.png" height="20" width="20"> <img class="emoji" title=":bird:" alt=":bird:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f426.png" height="20" width="20"> <img class="emoji" title=":baby_chick:" alt=":baby_chick:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f424.png" height="20" width="20"> <img class="emoji" title=":hatched_chick:" alt=":hatched_chick:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f425.png" height="20" width="20"> <img class="emoji" title=":hatching_chick:" alt=":hatching_chick:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f423.png" height="20" width="20"> <img class="emoji" title=":chicken:" alt=":chicken:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f414.png" height="20" width="20"> <img class="emoji" title=":penguin:" alt=":penguin:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f427.png" height="20" width="20"> <img class="emoji" title=":turtle:" alt=":turtle:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f422.png" height="20" width="20"> <img class="emoji" title=":bug:" alt=":bug:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f41b.png" height="20" width="20"> <img class="emoji" title=":honeybee:" alt=":honeybee:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f41d.png" height="20" width="20"> <img class="emoji" title=":ant:" alt=":ant:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f41c.png" height="20" width="20"> <img class="emoji" title=":beetle:" alt=":beetle:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f41e.png" height="20" width="20"> <img class="emoji" title=":snail:" alt=":snail:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f40c.png" height="20" width="20"> <img class="emoji" title=":octopus:" alt=":octopus:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f419.png" height="20" width="20"> <img class="emoji" title=":tropical_fish:" alt=":tropical_fish:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f420.png" height="20" width="20"> <img class="emoji" title=":fish:" alt=":fish:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f41f.png" height="20" width="20"> <img class="emoji" title=":whale:" alt=":whale:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f433.png" height="20" width="20"> <img class="emoji" title=":whale2:" alt=":whale2:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f40b.png" height="20" width="20"> <img class="emoji" title=":dolphin:" alt=":dolphin:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f42c.png" height="20" width="20"> <img class="emoji" title=":cow2:" alt=":cow2:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f404.png" height="20" width="20"> <img class="emoji" title=":ram:" alt=":ram:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f40f.png" height="20" width="20"> <img class="emoji" title=":rat:" alt=":rat:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f400.png" height="20" width="20"> <img class="emoji" title=":water_buffalo:" alt=":water_buffalo:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f403.png" height="20" width="20"> <img class="emoji" title=":tiger2:" alt=":tiger2:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f405.png" height="20" width="20"> <img class="emoji" title=":rabbit2:" alt=":rabbit2:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f407.png" height="20" width="20"> <img class="emoji" title=":dragon:" alt=":dragon:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f409.png" height="20" width="20"> <img class="emoji" title=":goat:" alt=":goat:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f410.png" height="20" width="20"> <img class="emoji" title=":rooster:" alt=":rooster:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f413.png" height="20" width="20"> <img class="emoji" title=":dog2:" alt=":dog2:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f415.png" height="20" width="20"> <img class="emoji" title=":pig2:" alt=":pig2:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f416.png" height="20" width="20"> <img class="emoji" title=":mouse2:" alt=":mouse2:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f401.png" height="20" width="20"> <img class="emoji" title=":ox:" alt=":ox:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f402.png" height="20" width="20"> <img class="emoji" title=":dragon_face:" alt=":dragon_face:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f432.png" height="20" width="20"> <img class="emoji" title=":blowfish:" alt=":blowfish:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f421.png" height="20" width="20"> <img class="emoji" title=":crocodile:" alt=":crocodile:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f40a.png" height="20" width="20"> <img class="emoji" title=":dromedary_camel:" alt=":dromedary_camel:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f42a.png" height="20" width="20"> <img class="emoji" title=":leopard:" alt=":leopard:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f406.png" height="20" width="20"> <img class="emoji" title=":cat2:" alt=":cat2:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f408.png" height="20" width="20"> <img class="emoji" title=":poodle:" alt=":poodle:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f429.png" height="20" width="20"> <img class="emoji" title=":paw_prints:" alt=":paw_prints:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f43e.png" height="20" width="20"> <img class="emoji" title=":bouquet:" alt=":bouquet:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f490.png" height="20" width="20"> <img class="emoji" title=":cherry_blossom:" alt=":cherry_blossom:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f338.png" height="20" width="20"> <img class="emoji" title=":tulip:" alt=":tulip:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f337.png" height="20" width="20"> <img class="emoji" title=":four_leaf_clover:" alt=":four_leaf_clover:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f340.png" height="20" width="20"> <img class="emoji" title=":rose:" alt=":rose:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f339.png" height="20" width="20"> <img class="emoji" title=":sunflower:" alt=":sunflower:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f33b.png" height="20" width="20"> <img class="emoji" title=":hibiscus:" alt=":hibiscus:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f33a.png" height="20" width="20"> <img class="emoji" title=":maple_leaf:" alt=":maple_leaf:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f341.png" height="20" width="20"> <img class="emoji" title=":leaves:" alt=":leaves:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f343.png" height="20" width="20"> <img class="emoji" title=":fallen_leaf:" alt=":fallen_leaf:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f342.png" height="20" width="20"> <img class="emoji" title=":herb:" alt=":herb:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f33f.png" height="20" width="20"> <img class="emoji" title=":mushroom:" alt=":mushroom:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f344.png" height="20" width="20"> <img class="emoji" title=":cactus:" alt=":cactus:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f335.png" height="20" width="20"> <img class="emoji" title=":palm_tree:" alt=":palm_tree:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f334.png" height="20" width="20"> <img class="emoji" title=":evergreen_tree:" alt=":evergreen_tree:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f332.png" height="20" width="20"> <img class="emoji" title=":deciduous_tree:" alt=":deciduous_tree:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f333.png" height="20" width="20"> <img class="emoji" title=":chestnut:" alt=":chestnut:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f330.png" height="20" width="20"> <img class="emoji" title=":seedling:" alt=":seedling:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f331.png" height="20" width="20"> <img class="emoji" title=":blossom:" alt=":blossom:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f33c.png" height="20" width="20"> <img class="emoji" title=":ear_of_rice:" alt=":ear_of_rice:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f33e.png" height="20" width="20"> <img class="emoji" title=":shell:" alt=":shell:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f41a.png" height="20" width="20"> <img class="emoji" title=":globe_with_meridians:" alt=":globe_with_meridians:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f310.png" height="20" width="20"> <img class="emoji" title=":sun_with_face:" alt=":sun_with_face:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f31e.png" height="20" width="20"> <img class="emoji" title=":full_moon_with_face:" alt=":full_moon_with_face:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f31d.png" height="20" width="20"> <img class="emoji" title=":new_moon_with_face:" alt=":new_moon_with_face:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f31a.png" height="20" width="20"> <img class="emoji" title=":new_moon:" alt=":new_moon:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f311.png" height="20" width="20"> <img class="emoji" title=":waxing_crescent_moon:" alt=":waxing_crescent_moon:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f312.png" height="20" width="20"> <img class="emoji" title=":first_quarter_moon:" alt=":first_quarter_moon:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f313.png" height="20" width="20"> <img class="emoji" title=":waxing_gibbous_moon:" alt=":waxing_gibbous_moon:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f314.png" height="20" width="20"> <img class="emoji" title=":full_moon:" alt=":full_moon:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f315.png" height="20" width="20"> <img class="emoji" title=":waning_gibbous_moon:" alt=":waning_gibbous_moon:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f316.png" height="20" width="20"> <img class="emoji" title=":last_quarter_moon:" alt=":last_quarter_moon:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f317.png" height="20" width="20"> <img class="emoji" title=":waning_crescent_moon:" alt=":waning_crescent_moon:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f318.png" height="20" width="20"> <img class="emoji" title=":last_quarter_moon_with_face:" alt=":last_quarter_moon_with_face:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f31c.png" height="20" width="20"> <img class="emoji" title=":first_quarter_moon_with_face:" alt=":first_quarter_moon_with_face:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f31b.png" height="20" width="20"> <img class="emoji" title=":crescent_moon:" alt=":crescent_moon:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f319.png" height="20" width="20"> <img class="emoji" title=":earth_africa:" alt=":earth_africa:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f30d.png" height="20" width="20"> <img class="emoji" title=":earth_americas:" alt=":earth_americas:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f30e.png" height="20" width="20"> <img class="emoji" title=":earth_asia:" alt=":earth_asia:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f30f.png" height="20" width="20"> <img class="emoji" title=":volcano:" alt=":volcano:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f30b.png" height="20" width="20"> <img class="emoji" title=":milky_way:" alt=":milky_way:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f30c.png" height="20" width="20"> <img class="emoji" title=":partly_sunny:" alt=":partly_sunny:" src="https://github.githubassets.com/images/icons/emoji/unicode/26c5.png" height="20" width="20"> <img class="emoji" title=":octocat:" alt=":octocat:" src="https://github.githubassets.com/images/icons/emoji/octocat.png" height="20" width="20"> …</p>
+<div class="details-wrapper">
+<div class="summary-content">markdown source</div>
+<div class="details-content-wrapper"> <details onclick="javascript: window.VARIABLES.pageScrollTarget.scroll({ top: TOOL.positionRelative( (this.open?this.parentElement.parentElement:this.parentElement), window.VARIABLES.pageScroller ).top, behavior: window.VARIABLES.pageScrollerBehavior }); "> <summary class="summary-toggle" title="click to show details"> <i class="summary-toggle-icon fas fa-angle-double-down"></i> </summary> </details><div class="details-content"><div class="details-content-inner">
+<p>details:</p>
+<div style="height: 20rem; overflow-y: scroll;"><ul>
+<li><p><img class="emoji" title=":bowtie:" alt=":bowtie:" src="https://github.githubassets.com/images/icons/emoji/bowtie.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:bowtie:</code></p></li>
+<li><p><img class="emoji" title=":smile:" alt=":smile:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:smile:</code></p></li>
+<li><p>:simple_smile: - <code class="language-plaintext highlighter-rouge">:simple_smile:</code></p></li>
+<li><p><img class="emoji" title=":laughing:" alt=":laughing:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f606.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:laughing:</code></p></li>
+<li><p><img class="emoji" title=":blush:" alt=":blush:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:blush:</code></p></li>
+<li><p><img class="emoji" title=":smiley:" alt=":smiley:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f603.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:smiley:</code></p></li>
+<li><p><img class="emoji" title=":relaxed:" alt=":relaxed:" src="https://github.githubassets.com/images/icons/emoji/unicode/263a.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:relaxed:</code></p></li>
+<li><p><img class="emoji" title=":smirk:" alt=":smirk:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f60f.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:smirk:</code></p></li>
+<li><p><img class="emoji" title=":heart_eyes:" alt=":heart_eyes:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f60d.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:heart_eyes:</code></p></li>
+<li><p><img class="emoji" title=":kissing_heart:" alt=":kissing_heart:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f618.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:kissing_heart:</code></p></li>
+<li><p><img class="emoji" title=":kissing_closed_eyes:" alt=":kissing_closed_eyes:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f61a.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:kissing_closed_eyes:</code></p></li>
+<li><p><img class="emoji" title=":flushed:" alt=":flushed:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f633.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:flushed:</code></p></li>
+<li><p><img class="emoji" title=":relieved:" alt=":relieved:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f60c.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:relieved:</code></p></li>
+<li><p><img class="emoji" title=":satisfied:" alt=":satisfied:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f606.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:satisfied:</code></p></li>
+<li><p><img class="emoji" title=":grin:" alt=":grin:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f601.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:grin:</code></p></li>
+<li><p><img class="emoji" title=":wink:" alt=":wink:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f609.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:wink:</code></p></li>
+<li><p><img class="emoji" title=":stuck_out_tongue_winking_eye:" alt=":stuck_out_tongue_winking_eye:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f61c.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:stuck_out_tongue_winking_eye:</code></p></li>
+<li><p><img class="emoji" title=":stuck_out_tongue_closed_eyes:" alt=":stuck_out_tongue_closed_eyes:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f61d.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:stuck_out_tongue_closed_eyes:</code></p></li>
+<li><p><img class="emoji" title=":grinning:" alt=":grinning:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f600.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:grinning:</code></p></li>
+<li><p><img class="emoji" title=":kissing:" alt=":kissing:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f617.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:kissing:</code></p></li>
+<li><p><img class="emoji" title=":kissing_smiling_eyes:" alt=":kissing_smiling_eyes:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f619.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:kissing_smiling_eyes:</code></p></li>
+<li><p><img class="emoji" title=":stuck_out_tongue:" alt=":stuck_out_tongue:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f61b.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:stuck_out_tongue:</code></p></li>
+<li><p><img class="emoji" title=":sleeping:" alt=":sleeping:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f634.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:sleeping:</code></p></li>
+<li><p><img class="emoji" title=":worried:" alt=":worried:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f61f.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:worried:</code></p></li>
+<li><p><img class="emoji" title=":camel:" alt=":camel:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f42b.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:camel:</code></p></li>
+<li><p><img class="emoji" title=":sheep:" alt=":sheep:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f411.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:sheep:</code></p></li>
+<li><p><img class="emoji" title=":elephant:" alt=":elephant:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f418.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:elephant:</code></p></li>
+<li><p><img class="emoji" title=":panda_face:" alt=":panda_face:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f43c.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:panda_face:</code></p></li>
+<li><p><img class="emoji" title=":snake:" alt=":snake:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f40d.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:snake:</code></p></li>
+<li><p><img class="emoji" title=":bird:" alt=":bird:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f426.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:bird:</code></p></li>
+<li><p><img class="emoji" title=":baby_chick:" alt=":baby_chick:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f424.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:baby_chick:</code></p></li>
+<li><p><img class="emoji" title=":hatched_chick:" alt=":hatched_chick:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f425.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:hatched_chick:</code></p></li>
+<li><p><img class="emoji" title=":hatching_chick:" alt=":hatching_chick:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f423.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:hatching_chick:</code></p></li>
+<li><p><img class="emoji" title=":chicken:" alt=":chicken:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f414.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:chicken:</code></p></li>
+<li><p><img class="emoji" title=":penguin:" alt=":penguin:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f427.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:penguin:</code></p></li>
+<li><p><img class="emoji" title=":turtle:" alt=":turtle:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f422.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:turtle:</code></p></li>
+<li><p><img class="emoji" title=":bug:" alt=":bug:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f41b.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:bug:</code></p></li>
+<li><p><img class="emoji" title=":honeybee:" alt=":honeybee:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f41d.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:honeybee:</code></p></li>
+<li><p><img class="emoji" title=":ant:" alt=":ant:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f41c.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:ant:</code></p></li>
+<li><p><img class="emoji" title=":beetle:" alt=":beetle:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f41e.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:beetle:</code></p></li>
+<li><p><img class="emoji" title=":snail:" alt=":snail:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f40c.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:snail:</code></p></li>
+<li><p><img class="emoji" title=":octopus:" alt=":octopus:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f419.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:octopus:</code></p></li>
+<li><p><img class="emoji" title=":tropical_fish:" alt=":tropical_fish:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f420.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:tropical_fish:</code></p></li>
+<li><p><img class="emoji" title=":fish:" alt=":fish:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f41f.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:fish:</code></p></li>
+<li><p><img class="emoji" title=":whale:" alt=":whale:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f433.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:whale:</code></p></li>
+<li><p><img class="emoji" title=":whale2:" alt=":whale2:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f40b.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:whale2:</code></p></li>
+<li><p><img class="emoji" title=":dolphin:" alt=":dolphin:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f42c.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:dolphin:</code></p></li>
+<li><p><img class="emoji" title=":cow2:" alt=":cow2:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f404.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:cow2:</code></p></li>
+<li><p><img class="emoji" title=":ram:" alt=":ram:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f40f.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:ram:</code></p></li>
+<li><p><img class="emoji" title=":rat:" alt=":rat:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f400.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:rat:</code></p></li>
+<li><p><img class="emoji" title=":water_buffalo:" alt=":water_buffalo:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f403.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:water_buffalo:</code></p></li>
+<li><p><img class="emoji" title=":tiger2:" alt=":tiger2:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f405.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:tiger2:</code></p></li>
+<li><p><img class="emoji" title=":rabbit2:" alt=":rabbit2:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f407.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:rabbit2:</code></p></li>
+<li><p><img class="emoji" title=":dragon:" alt=":dragon:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f409.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:dragon:</code></p></li>
+<li><p><img class="emoji" title=":goat:" alt=":goat:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f410.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:goat:</code></p></li>
+<li><p><img class="emoji" title=":rooster:" alt=":rooster:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f413.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:rooster:</code></p></li>
+<li><p><img class="emoji" title=":dog2:" alt=":dog2:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f415.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:dog2:</code></p></li>
+<li><p><img class="emoji" title=":pig2:" alt=":pig2:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f416.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:pig2:</code></p></li>
+<li><p><img class="emoji" title=":mouse2:" alt=":mouse2:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f401.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:mouse2:</code></p></li>
+<li><p><img class="emoji" title=":ox:" alt=":ox:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f402.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:ox:</code></p></li>
+<li><p><img class="emoji" title=":dragon_face:" alt=":dragon_face:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f432.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:dragon_face:</code></p></li>
+<li><p><img class="emoji" title=":blowfish:" alt=":blowfish:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f421.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:blowfish:</code></p></li>
+<li><p><img class="emoji" title=":crocodile:" alt=":crocodile:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f40a.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:crocodile:</code></p></li>
+<li><p><img class="emoji" title=":dromedary_camel:" alt=":dromedary_camel:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f42a.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:dromedary_camel:</code></p></li>
+<li><p><img class="emoji" title=":leopard:" alt=":leopard:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f406.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:leopard:</code></p></li>
+<li><p><img class="emoji" title=":cat2:" alt=":cat2:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f408.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:cat2:</code></p></li>
+<li><p><img class="emoji" title=":poodle:" alt=":poodle:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f429.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:poodle:</code></p></li>
+<li><p><img class="emoji" title=":paw_prints:" alt=":paw_prints:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f43e.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:paw_prints:</code></p></li>
+<li><p><img class="emoji" title=":bouquet:" alt=":bouquet:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f490.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:bouquet:</code></p></li>
+<li><p><img class="emoji" title=":cherry_blossom:" alt=":cherry_blossom:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f338.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:cherry_blossom:</code></p></li>
+<li><p><img class="emoji" title=":tulip:" alt=":tulip:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f337.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:tulip:</code></p></li>
+<li><p><img class="emoji" title=":four_leaf_clover:" alt=":four_leaf_clover:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f340.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:four_leaf_clover:</code></p></li>
+<li><p><img class="emoji" title=":rose:" alt=":rose:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f339.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:rose:</code></p></li>
+<li><p><img class="emoji" title=":sunflower:" alt=":sunflower:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f33b.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:sunflower:</code></p></li>
+<li><p><img class="emoji" title=":hibiscus:" alt=":hibiscus:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f33a.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:hibiscus:</code></p></li>
+<li><p><img class="emoji" title=":maple_leaf:" alt=":maple_leaf:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f341.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:maple_leaf:</code></p></li>
+<li><p><img class="emoji" title=":leaves:" alt=":leaves:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f343.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:leaves:</code></p></li>
+<li><p><img class="emoji" title=":fallen_leaf:" alt=":fallen_leaf:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f342.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:fallen_leaf:</code></p></li>
+<li><p><img class="emoji" title=":herb:" alt=":herb:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f33f.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:herb:</code></p></li>
+<li><p><img class="emoji" title=":mushroom:" alt=":mushroom:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f344.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:mushroom:</code></p></li>
+<li><p><img class="emoji" title=":cactus:" alt=":cactus:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f335.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:cactus:</code></p></li>
+<li><p><img class="emoji" title=":palm_tree:" alt=":palm_tree:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f334.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:palm_tree:</code></p></li>
+<li><p><img class="emoji" title=":evergreen_tree:" alt=":evergreen_tree:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f332.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:evergreen_tree:</code></p></li>
+<li><p><img class="emoji" title=":deciduous_tree:" alt=":deciduous_tree:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f333.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:deciduous_tree:</code></p></li>
+<li><p><img class="emoji" title=":chestnut:" alt=":chestnut:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f330.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:chestnut:</code></p></li>
+<li><p><img class="emoji" title=":seedling:" alt=":seedling:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f331.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:seedling:</code></p></li>
+<li><p><img class="emoji" title=":blossom:" alt=":blossom:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f33c.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:blossom:</code></p></li>
+<li><p><img class="emoji" title=":ear_of_rice:" alt=":ear_of_rice:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f33e.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:ear_of_rice:</code></p></li>
+<li><p><img class="emoji" title=":shell:" alt=":shell:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f41a.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:shell:</code></p></li>
+<li><p><img class="emoji" title=":globe_with_meridians:" alt=":globe_with_meridians:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f310.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:globe_with_meridians:</code></p></li>
+<li><p><img class="emoji" title=":sun_with_face:" alt=":sun_with_face:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f31e.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:sun_with_face:</code></p></li>
+<li><p><img class="emoji" title=":full_moon_with_face:" alt=":full_moon_with_face:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f31d.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:full_moon_with_face:</code></p></li>
+<li><p><img class="emoji" title=":new_moon_with_face:" alt=":new_moon_with_face:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f31a.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:new_moon_with_face:</code></p></li>
+<li><p><img class="emoji" title=":new_moon:" alt=":new_moon:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f311.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:new_moon:</code></p></li>
+<li><p><img class="emoji" title=":waxing_crescent_moon:" alt=":waxing_crescent_moon:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f312.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:waxing_crescent_moon:</code></p></li>
+<li><p><img class="emoji" title=":first_quarter_moon:" alt=":first_quarter_moon:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f313.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:first_quarter_moon:</code></p></li>
+<li><p><img class="emoji" title=":waxing_gibbous_moon:" alt=":waxing_gibbous_moon:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f314.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:waxing_gibbous_moon:</code></p></li>
+<li><p><img class="emoji" title=":full_moon:" alt=":full_moon:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f315.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:full_moon:</code></p></li>
+<li><p><img class="emoji" title=":waning_gibbous_moon:" alt=":waning_gibbous_moon:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f316.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:waning_gibbous_moon:</code></p></li>
+<li><p><img class="emoji" title=":last_quarter_moon:" alt=":last_quarter_moon:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f317.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:last_quarter_moon:</code></p></li>
+<li><p><img class="emoji" title=":waning_crescent_moon:" alt=":waning_crescent_moon:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f318.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:waning_crescent_moon:</code></p></li>
+<li><p><img class="emoji" title=":last_quarter_moon_with_face:" alt=":last_quarter_moon_with_face:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f31c.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:last_quarter_moon_with_face:</code></p></li>
+<li><p><img class="emoji" title=":first_quarter_moon_with_face:" alt=":first_quarter_moon_with_face:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f31b.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:first_quarter_moon_with_face:</code></p></li>
+<li><p><img class="emoji" title=":crescent_moon:" alt=":crescent_moon:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f319.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:crescent_moon:</code></p></li>
+<li><p><img class="emoji" title=":earth_africa:" alt=":earth_africa:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f30d.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:earth_africa:</code></p></li>
+<li><p><img class="emoji" title=":earth_americas:" alt=":earth_americas:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f30e.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:earth_americas:</code></p></li>
+<li><p><img class="emoji" title=":earth_asia:" alt=":earth_asia:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f30f.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:earth_asia:</code></p></li>
+<li><p><img class="emoji" title=":volcano:" alt=":volcano:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f30b.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:volcano:</code></p></li>
+<li><p><img class="emoji" title=":milky_way:" alt=":milky_way:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f30c.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:milky_way:</code></p></li>
+<li><p><img class="emoji" title=":partly_sunny:" alt=":partly_sunny:" src="https://github.githubassets.com/images/icons/emoji/unicode/26c5.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:partly_sunny:</code></p></li>
+<li><p><img class="emoji" title=":octocat:" alt=":octocat:" src="https://github.githubassets.com/images/icons/emoji/octocat.png" height="20" width="20"> - <code class="language-plaintext highlighter-rouge">:octocat:</code></p></li>
+<li><p>… see <a href="https://www.webfx.com/tools/emoji-cheat-sheet/">here</a> for more.</p></li>
+</ul></div>
+</div></div>
+</div>
+</div>
+<p class="info">see <a href="/jekyll-docs/plugins/emoji">here</a> for more details about emoji</p>
+<h3 id="footnotes">Footnotes</h3>
+<p>You can add <code class="language-plaintext highlighter-rouge">[^xxxx]</code> after a word. e.g. <code class="language-plaintext highlighter-rouge">Official document of Kramdown about footnotes[^Official_document_of_Kramdown_about_footnotes]</code></p>
+<p>“Official document of Kramdown about footnotes<sup id="fnref:Official_document_of_Kramdown_about_footnotes" role="doc-noteref"><a href="#fn:Official_document_of_Kramdown_about_footnotes" class="footnote" rel="footnote">1</a></sup>”</p>
+<p>Then add the following anywhere in the document.</p>
+<p><code class="language-plaintext highlighter-rouge">[^Official_document_of_Kramdown_about_footnotes]: [Official document of Kramdown about footnotes](https://kramdown.gettalong.org/syntax.html#footnotes)</code></p>
+<p>You can see footnotes at the end of article.</p>
+<h3 id="abbreviations">Abbreviations</h3>
+<p>Markdown converts text to <abbr title="HyperText Markup Language">HTML</abbr>.</p>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Markdown converts text to HTML.
+
+<span class="err">*</span>[HTML]: HyperText Markup Language
+</code></pre></div></div>
+<h2 id="horizontal-rule">Horizontal rule</h2>
+<hr>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">---
+</span></code></pre></div></div>
+<h2 id="code">code</h2>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">'template'</span><span class="nt">&gt;</span>link<span class="nt">&lt;/a&gt;&lt;a</span> <span class="na">href=</span><span class="s">'template'</span><span class="nt">&gt;</span>link<span class="nt">&lt;/a&gt;&lt;a</span> <span class="na">href=</span><span class="s">'template'</span><span class="nt">&gt;</span>link<span class="nt">&lt;/a&gt;&lt;a</span> <span class="na">href=</span><span class="s">'template'</span><span class="nt">&gt;</span>link<span class="nt">&lt;/a&gt;&lt;a</span> <span class="na">href=</span><span class="s">'template'</span><span class="nt">&gt;</span>link<span class="nt">&lt;/a&gt;&lt;a</span> <span class="na">href=</span><span class="s">'template'</span><span class="nt">&gt;</span>link<span class="nt">&lt;/a&gt;&lt;a</span> <span class="na">href=</span><span class="s">'template'</span><span class="nt">&gt;</span>link<span class="nt">&lt;/a&gt;&lt;a</span> <span class="na">href=</span><span class="s">'template'</span><span class="nt">&gt;</span>link<span class="nt">&lt;/a&gt;&lt;a</span> <span class="na">href=</span><span class="s">'template'</span><span class="nt">&gt;</span>link<span class="nt">&lt;/a&gt;&lt;a</span> <span class="na">href=</span><span class="s">'template'</span><span class="nt">&gt;</span>link<span class="nt">&lt;/a&gt;&lt;a</span> <span class="na">href=</span><span class="s">'template'</span><span class="nt">&gt;</span>link<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+<div class="details-wrapper">
+<div class="summary-content">markdown source</div>
+<div class="details-content-wrapper"> <details onclick="javascript: window.VARIABLES.pageScrollTarget.scroll({ top: TOOL.positionRelative( (this.open?this.parentElement.parentElement:this.parentElement), window.VARIABLES.pageScroller ).top, behavior: window.VARIABLES.pageScrollerBehavior }); "> <summary class="summary-toggle" title="click to show details"> <i class="summary-toggle-icon fas fa-angle-double-down"></i> </summary> </details><div class="details-content"><div class="details-content-inner">
+<p>details:</p>
+<figure class="highlight"><pre><code class="language-markdown" data-lang="markdown"><span class="p">```</span><span class="nl">html
+</span><span class="nt">&lt;div&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">'template'</span><span class="nt">&gt;</span>link<span class="nt">&lt;/a&gt;&lt;a</span> <span class="na">href=</span><span class="s">'template'</span><span class="nt">&gt;</span>link<span class="nt">&lt;/a&gt;&lt;a</span> <span class="na">href=</span><span class="s">'template'</span><span class="nt">&gt;</span>link<span class="nt">&lt;/a&gt;&lt;a</span> <span class="na">href=</span><span class="s">'template'</span><span class="nt">&gt;</span>link<span class="nt">&lt;/a&gt;&lt;a</span> <span class="na">href=</span><span class="s">'template'</span><span class="nt">&gt;</span>link<span class="nt">&lt;/a&gt;&lt;a</span> <span class="na">href=</span><span class="s">'template'</span><span class="nt">&gt;</span>link<span class="nt">&lt;/a&gt;&lt;a</span> <span class="na">href=</span><span class="s">'template'</span><span class="nt">&gt;</span>link<span class="nt">&lt;/a&gt;&lt;a</span> <span class="na">href=</span><span class="s">'template'</span><span class="nt">&gt;</span>link<span class="nt">&lt;/a&gt;&lt;a</span> <span class="na">href=</span><span class="s">'template'</span><span class="nt">&gt;</span>link<span class="nt">&lt;/a&gt;&lt;a</span> <span class="na">href=</span><span class="s">'template'</span><span class="nt">&gt;</span>link<span class="nt">&lt;/a&gt;&lt;a</span> <span class="na">href=</span><span class="s">'template'</span><span class="nt">&gt;</span>link<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="p">```</span></code></pre></figure>
+</div></div>
+</div>
+</div>
+<p>see <a href="/jekyll-docs/docs/en/components/code">compoments/code</a> for more.</p>
+<h2 id="list">List</h2>
+<p>ul</p>
+<ul>
+<li>1<ul>
+<li>1.1</li>
+<li>1.2</li>
+</ul>
+</li>
+<li>2</li>
+</ul>
+<div class="details-wrapper">
+<div class="summary-content">markdown source</div>
+<div class="details-content-wrapper"> <details onclick="javascript: window.VARIABLES.pageScrollTarget.scroll({ top: TOOL.positionRelative( (this.open?this.parentElement.parentElement:this.parentElement), window.VARIABLES.pageScroller ).top, behavior: window.VARIABLES.pageScrollerBehavior }); "> <summary class="summary-toggle" title="click to show details"> <i class="summary-toggle-icon fas fa-angle-double-down"></i> </summary> </details><div class="details-content"><div class="details-content-inner">
+<p>details:</p>
+<figure class="highlight"><pre><code class="language-markdown" data-lang="markdown"><span class="p">+</span> 1
+<span class="p">  +</span> 1.1
+<span class="p">  +</span> 1.2
+<span class="p">+</span> 2 </code></pre></figure>
+</div></div>
+</div>
+</div>
+<p>ol</p>
+<ol>
+<li>level1</li>
+<li>level2</li>
+<li>level2</li>
+<li>level1</li>
+<li>level1</li>
+</ol>
+<div class="details-wrapper">
+<div class="summary-content">markdown source</div>
+<div class="details-content-wrapper"> <details onclick="javascript: window.VARIABLES.pageScrollTarget.scroll({ top: TOOL.positionRelative( (this.open?this.parentElement.parentElement:this.parentElement), window.VARIABLES.pageScroller ).top, behavior: window.VARIABLES.pageScrollerBehavior }); "> <summary class="summary-toggle" title="click to show details"> <i class="summary-toggle-icon fas fa-angle-double-down"></i> </summary> </details><div class="details-content"><div class="details-content-inner">
+<p>details:</p>
+<figure class="highlight"><pre><code class="language-markdown" data-lang="markdown"><span class="p">1.</span> level1
+<span class="p">  1.</span> level2
+<span class="p">  1.</span> level2
+<span class="p">1.</span> level1
+<span class="p">1.</span> level1</code></pre></figure>
+</div></div>
+</div>
+</div>
+<p>ol + ul</p>
+<ul>
+<li>ul level1</li>
+<li>ul level1<ol>
+<li>ol level1</li>
+<li>ol level1<ul><li>ul level2</li></ul>
+</li>
+</ol>
+</li>
+</ul>
+<div class="details-wrapper">
+<div class="summary-content">markdown source</div>
+<div class="details-content-wrapper"> <details onclick="javascript: window.VARIABLES.pageScrollTarget.scroll({ top: TOOL.positionRelative( (this.open?this.parentElement.parentElement:this.parentElement), window.VARIABLES.pageScroller ).top, behavior: window.VARIABLES.pageScrollerBehavior }); "> <summary class="summary-toggle" title="click to show details"> <i class="summary-toggle-icon fas fa-angle-double-down"></i> </summary> </details><div class="details-content"><div class="details-content-inner">
+<p>details:</p>
+<figure class="highlight"><pre><code class="language-markdown" data-lang="markdown"><span class="p">+</span> ul level1
+<span class="p">+</span> ul level1
+<span class="p">  1.</span> ol level1
+<span class="p">  2.</span> ol level1
+<span class="p">    +</span> ul level2</code></pre></figure>
+</div></div>
+</div>
+</div>
+<p>task-list</p>
+<ul class="task-list">
+<li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>task1</li>
+<li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>task2<ul class="task-list">
+<li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled checked>task2.1</li>
+<li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>task2.2</li>
+</ul>
+</li>
+<li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>task3</li>
+</ul>
+<div class="details-wrapper">
+<div class="summary-content">markdown source</div>
+<div class="details-content-wrapper"> <details onclick="javascript: window.VARIABLES.pageScrollTarget.scroll({ top: TOOL.positionRelative( (this.open?this.parentElement.parentElement:this.parentElement), window.VARIABLES.pageScroller ).top, behavior: window.VARIABLES.pageScrollerBehavior }); "> <summary class="summary-toggle" title="click to show details"> <i class="summary-toggle-icon fas fa-angle-double-down"></i> </summary> </details><div class="details-content"><div class="details-content-inner">
+<p>details:</p>
+<figure class="highlight"><pre><code class="language-markdown" data-lang="markdown"><span class="p">+</span> [x] task1
+<span class="p">+</span> [ ] task2
+<span class="p">  +</span> [x] task2.1
+<span class="p">  +</span> [ ] task2.2
+<span class="p">+</span> [ ] task3</code></pre></figure>
+</div></div>
+</div>
+</div>
+<h2 id="table">table</h2>
+<table>
+<thead><tr>
+<th>col1</th>
+<th>col2</th>
+<th>col3</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>1111111111111111111111111111111111111111111</td>
+<td>22222222222222222222222222222222222</td>
+<td>3333333333333333333333333333</td>
+</tr>
+<tr>
+<td>1111111111111111111111111111111111111111111</td>
+<td>22222222222222222222222222222222222</td>
+<td>3333333333333333333333333333</td>
+</tr>
+<tr>
+<td>1111111111111111111111111111111111111111111</td>
+<td>22222222222222222222222222222222222</td>
+<td>3333333333333333333333333333</td>
+</tr>
+<tr>
+<td>1111111111111111111111111111111111111111111</td>
+<td>22222222222222222222222222222222222</td>
+<td>3333333333333333333333333333</td>
+</tr>
+</tbody>
+</table>
+<div class="details-wrapper">
+<div class="summary-content">markdown source</div>
+<div class="details-content-wrapper"> <details onclick="javascript: window.VARIABLES.pageScrollTarget.scroll({ top: TOOL.positionRelative( (this.open?this.parentElement.parentElement:this.parentElement), window.VARIABLES.pageScroller ).top, behavior: window.VARIABLES.pageScrollerBehavior }); "> <summary class="summary-toggle" title="click to show details"> <i class="summary-toggle-icon fas fa-angle-double-down"></i> </summary> </details><div class="details-content"><div class="details-content-inner">
+<p>details:</p>
+<figure class="highlight"><pre><code class="language-markdown" data-lang="markdown">|  col1 | col2 | col3 |
+| ---   | ---  | ---  | 
+| 1111111111111111111111111111111111111111111 | 22222222222222222222222222222222222 | 3333333333333333333333333333 | 
+| 1111111111111111111111111111111111111111111 | 22222222222222222222222222222222222 | 3333333333333333333333333333 | 
+| 1111111111111111111111111111111111111111111 | 22222222222222222222222222222222222 | 3333333333333333333333333333 | 
+| 1111111111111111111111111111111111111111111 | 22222222222222222222222222222222222 | 3333333333333333333333333333 | </code></pre></figure>
+</div></div>
+</div>
+</div>
+<h2 id="blockquote">Blockquote</h2>
+<blockquote>
+<p>blockquote</p>
+<p>paragraph 2</p>
+<ul>
+<li>List<ul>
+<li>sub List</li>
+<li>sub List</li>
+</ul>
+</li>
+<li>List<ul>
+<li>sub List</li>
+<li>sub List</li>
+</ul>
+</li>
+</ul>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">'template'</span><span class="nt">&gt;</span>link<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+</blockquote>
+<div class="details-wrapper">
+<div class="summary-content">markdown source</div>
+<div class="details-content-wrapper"> <details onclick="javascript: window.VARIABLES.pageScrollTarget.scroll({ top: TOOL.positionRelative( (this.open?this.parentElement.parentElement:this.parentElement), window.VARIABLES.pageScroller ).top, behavior: window.VARIABLES.pageScrollerBehavior }); "> <summary class="summary-toggle" title="click to show details"> <i class="summary-toggle-icon fas fa-angle-double-down"></i> </summary> </details><div class="details-content"><div class="details-content-inner">
+<p>details:</p>
+<figure class="highlight"><pre><code class="language-markdown" data-lang="markdown"><span class="gt">&gt; blockquote</span>
+<span class="gt">&gt;</span>
+<span class="gt">&gt; paragraph 2 </span>
+<span class="gt">&gt;</span>
+<span class="gt">&gt; + List</span>
+<span class="gt">&gt;   + sub List</span>
+<span class="gt">&gt;   + sub List</span>
+<span class="gt">&gt; + List</span>
+<span class="gt">&gt;   + sub List</span>
+<span class="gt">&gt;   + sub List</span>
+<span class="gt">&gt;</span>
+<span class="gt">&gt; ```html</span>
+<span class="gt">&gt; &lt;div&gt;</span>
+<span class="gt">&gt;   &lt;a href='template'&gt;link&lt;/a&gt;</span>
+<span class="gt">&gt; &lt;/div&gt;</span>
+<span class="gt">&gt; ```</span></code></pre></figure>
+</div></div>
+</div>
+</div>
+<h2 id="textarea">textarea</h2>
+<textarea style="width: 100%; height: 300px; resize: vertical;">
+2022-08-17 17:18:04 +0000
+https://jekyllrb.com/docs/variables/
+============================= site.pages
+
+  /404.html
+
+  /assets/images/favicon/browserconfig.xml
+
+  /assets/images/favicon/site.webmanifest
+
+  /assets/css/style.css
+
+  /assets/js/data/variables.js
+
+  /feed.xml
+
+  /sitemap.xml
+
+  /robots.txt
+
+============================= site.posts
+
+  /2022/06/24/pageview.html
+
+  /2022/06/24/comment.html
+
+  /2022/06/21/math-engine.html
+
+  /2022/06/14/site-config.html
+
+============================= site.related_posts
+
+  /2022/06/24/pageview.html
+
+  /2022/06/24/comment.html
+
+  /2022/06/21/math-engine.html
+
+  /2022/06/14/site-config.html
+
+============================= site.static_files
+
+  /GETSTART.md
+
+  /assets/images/avatar/18041500.jpg
+
+  /assets/images/axure/articles-brief-info.jpg
+
+  /assets/images/axure/articles-brief.jpg
+
+  /assets/images/axure/articles-grid-small.jpg
+
+  /assets/images/axure/articles-grid.jpg
+
+  /assets/images/axure/articles-item-cover-excerpt-readmore-info.jpg
+
+  /assets/images/axure/articles-item-cover-excerpt-readmore.jpg
+
+  /assets/images/axure/articles-item-cover-excerpt.jpg
+
+  /assets/images/axure/articles-item-cover.jpg
+
+  /assets/images/axure/articles-item-excerpt-readmore-info.jpg
+
+  /assets/images/axure/page-article-header-cover-image-header-background.jpg
+
+  /assets/images/axure/page-article-header-cover-image-immersive-translucent-header.jpg
+
+  /assets/images/axure/page-article-header-cover-image.jpg
+
+  /assets/images/axure/page-article-header-overlay-background-fill-immersive-translucent-header.jpg
+
+  /assets/images/axure/page-article-header-overlay-background-fill.jpg
+
+  /assets/images/axure/page-article-header-overlay-background-image-header-background.jpg
+
+  /assets/images/axure/page-article-header-overlay-background-image-immersive-translucent-header.jpg
+
+  /assets/images/axure/page-article-header-overlay-background-image.jpg
+
+  /assets/images/axure/page-aside.jpg
+
+  /assets/images/axure/page-sidebar-aside.jpg
+
+  /assets/images/axure/page-sidebar.jpg
+
+  /assets/images/axure/page-single.jpg
+
+  /assets/images/cover1_with_title.svg
+
+  /assets/images/cover1_with_title_7.svg
+
+  /assets/images/cover2.jpg
+
+  /assets/images/cover3.jpg
+
+  /assets/images/favicon/android-chrome-192x192.png
+
+  /assets/images/favicon/android-chrome-512x512.png
+
+  /assets/images/favicon/apple-touch-icon.png
+
+  /assets/images/favicon/favicon-16x16.png
+
+  /assets/images/favicon/favicon-32x32.png
+
+  /assets/images/favicon/favicon.ico
+
+  /assets/images/favicon/mstile-144x144.png
+
+  /assets/images/favicon/mstile-150x150.png
+
+  /assets/images/favicon/mstile-310x150.png
+
+  /assets/images/favicon/mstile-310x310.png
+
+  /assets/images/favicon/mstile-70x70.png
+
+  /assets/images/favicon/safari-pinned-tab.svg
+
+  /assets/js/dist/aside/toc.min.js
+
+  /assets/js/dist/commons.min.js
+
+  /assets/js/dist/layouts/article.min.js
+
+  /assets/js/dist/pageview/leancloud.min.js
+
+  /assets/js/dist/sidebar/actions.min.js
+
+  /assets/js/dist/sidebar/quicklinks.min.js
+
+  /assets/js/dist/theme.min.js
+
+  /assets/js/dist/venders.min.js
+
+============================= site.html_pages
+
+  /404.html
+
+============================= site.documents
+
+  - url /2022/06/14/site-config.html
+    id /2022/06/14/site-config
+    key 
+
+  - url /2022/06/21/math-engine.html
+    id /2022/06/21/math-engine
+    key 
+
+  - url /2022/06/24/comment.html
+    id /2022/06/24/comment
+    key 
+
+  - url /2022/06/24/pageview.html
+    id /2022/06/24/pageview
+    key 
+
+  - url /about
+    id /about
+    key 
+
+  - url /archive
+    id /archive
+    key 
+
+  - url /index
+    id /index
+    key 
+
+  - url /tools
+    id /tools
+    key 
+
+  - url /docs/en/quick-start
+    id /docs/en/1.1-quick-start
+    key 
+
+  - url /docs/en/structure
+    id /docs/en/1.2-structure
+    key 
+
+  - url /docs/en/typography
+    id /docs/en/1.3-typography
+    key 
+
+  - url /docs/en/blog-service-migration
+    id /docs/en/1.4-blog-service-migration
+    key 
+
+  - url /docs/en/components/alert
+    id /docs/en/components/alert
+    key 
+
+  - url /docs/en/components/button
+    id /docs/en/components/button
+    key 
+
+  - url /docs/en/components/card
+    id /docs/en/components/card
+    key 
+
+  - url /docs/en/components/checkbox
+    id /docs/en/components/checkbox
+    key 
+
+  - url /docs/en/components/code
+    id /docs/en/components/code
+    key 
+
+  - url /docs/en/components/grid
+    id /docs/en/components/grid
+    key 
+
+  - url /docs/en/components/hero
+    id /docs/en/components/hero
+    key 
+
+  - url /docs/en/components/icons
+    id /docs/en/components/icons
+    key 
+
+  - url /docs/en/components/images
+    id /docs/en/components/images
+    key 
+
+  - url /docs/en/components/item
+    id /docs/en/components/item
+    key 
+
+  - url /docs/en/components/spacing
+    id /docs/en/components/spacing
+    key 
+
+  - url /docs/en/components/swiper
+    id /docs/en/components/swiper
+    key 
+
+  - url /samples
+    id /samples
+    key 
+
+  - url /jekyll
+    id /jekyll
+    key 
+
+  - url /liquid
+    id /liquid
+    key 
+
+  - url /markdown/processor
+    id /markdown/markdown-processor
+    key 
+
+  - url /markdown/highlight
+    id /markdown/markdown-highlight
+    key 
+
+  - url /markdown/syntax
+    id /markdown/markdown-syntax
+    key 
+
+  - url /plugins/emoji
+    id /plugins/emoji
+    key 
+
+  - url /plugins
+    id /index
+    key 
+
+  - url /ruby
+    id /ruby
+    key 
+
+  - url /theme
+    id /theme
+    key 
+
+  - url /page/single.html
+    id /page/1.1-single
+    key page-single
+
+  - url /page/aside.html
+    id /page/1.2-aside
+    key 
+
+  - url /page/sidebar.html
+    id /page/1.3-sidebar
+    key 
+
+  - url /page/page-sidebar-aside.html
+    id /page/1.4-sidebar+asdie
+    key 
+
+  - url /articles/brief.html
+    id /articles/2.1-brief
+    key 
+
+  - url /articles/item.html
+    id /articles/2.2-item
+    key 
+
+  - url /articles/grid.html
+    id /articles/2.3-grid
+    key 
+
+  - url /articles/grid-small.html
+    id /articles/2.4-grid-small
+    key 
+
+</textarea><div class="footnotes" role="doc-endnotes"><ol><li id="fn:Official_document_of_Kramdown_about_footnotes" role="doc-endnote"><p><a href="https://kramdown.gettalong.org/syntax.html#footnotes">Official document of Kramdown about footnotes</a> <a href="#fnref:Official_document_of_Kramdown_about_footnotes" class="reversefootnote" role="doc-backlink">↩</a></p></li></ol></div>
+</div>
+<div class="article__footer d-print-none"><footer class="footer horizontal-rules-dashed"><p> <span>更新于 <time itemprop="dateModified" datetime="2022-08-17T17:13:09+00:00">2022年08月18日</time> </span></p>
+<p>1371 字</p>
+<p>原始链接 <a href="https://lawsssscat.github.io:4000/jekyll-docs/docs/en/typography">https://lawsssscat.github.io:4000/jekyll-docs/docs/en/typography</a></p>
+<div class="article__license"><div class="license"><p>本文遵守 <a itemprop="license" rel="license" href="https://creativecommons.org/licenses/by/4.0/">Attribution 4.0 International</a> 许可协议。 <a rel="license" href="https://creativecommons.org/licenses/by/4.0/"> <img alt="Attribution 4.0 International" src="https://i.creativecommons.org/l/by/4.0/88x31.png"> </a></p></div></div>
+<div class="article__footer_navigation"><div class="navigation clearfix">
+<div class="previous"> <span>上篇</span><a href="/jekyll-docs/docs/en/structure">Structure</a>
+</div>
+<div class="next"> <span>下篇</span><a href="/jekyll-docs/docs/en/blog-service-migration">Blog Migration</a>
+</div>
+</div></div></footer></div>
+</div>
+<script> window.VARIABLES.append({ paveview: { appId: "OC6yw4BTaMHK4tuRLUG2jbPd-MdYXbMMI", appKey: "wlnRdeSQaLI70XWjvabbtGeq", appClass: "pageview",} }); </script><script src="/jekyll-docs/assets/js/dist/pageview/leancloud.min.js"></script><script src="/jekyll-docs/assets/js/dist/layouts/article.min.js"></script>
+</div></article></div>
+</div></div></div>
+<div class="page__footer d-print-none"><footer class="footer py-4"><div class="main">
+<div itemscope itemtype="http://schema.org/Person">
+<meta itemprop="name" content="lawsssscat">
+<meta itemprop="url" content="https://lawsssscat.github.io/">
+<meta itemprop="description" content="Expect inspiring inspiration. 😉">
+<div class="footer__author-links"><div class="author-links"><ul>
+<link itemprop="url" href="https://lawsssscat.github.io/">
+<li title="订阅"> <a class="button button--circle rss-button" itemprop="sameAs" href="/jekyll-docs/feed.xml" target="_blank"> <i class="fas fa-rss"></i></a>
+</li>
+<li title="给我发邮件。"> <a class="button button--circle mail-button" itemprop="email" href="mailto:1191693505@qq.com" target="_blank"> <i class="fas fa-envelope"></i></a>
+</li>
+<li title="在 Github 上关注我。"> <a class="button button--circle github-button" itemprop="sameAs" href="https://github.com/lawsssscat" target="_blank"> <i class="fab fa-github"></i></a>
+</li>
+</ul></div></div>
+</div>
+<div class="site-info"><div> © jekyll-docs 2022, Powered by <a title="Jekyll is a simple, blog-aware, static site generator." href="http://jekyllrb.com/">Jekyll</a> &amp; <a title="Collects the common information of Jekyll and put all in one site." href="https://github.com/LawssssCat/jekyll-docs">Jekyll docs all in one</a>
+</div></div>
+</div></footer></div>
+</div></div>
+</div>
+</div></div></div><script src="/jekyll-docs/assets/js/dist/commons.min.js"></script>
