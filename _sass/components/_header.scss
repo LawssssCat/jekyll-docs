@@ -174,6 +174,20 @@ $height_header: map-get($layout, header-height);
         width: 100%;
         height: 100%;
       }
+      .quicklinks-block-left, .quicklinks-block-right {
+        height: 100%;
+        @include scrollbar-none;
+        .quicklinks-block-left-menu, .quicklinks-block-right-menu {
+          padding-top: map-get($spacers, 4);
+          padding-bottom: map-get($spacers, 3);
+          margin: 0;
+        }
+      }
+      @include hover {
+        .quicklinks-block-left, .quicklinks-block-right {
+          @include scrollbar;
+        }
+      }
       .quicklinks-block-left {
         ul {
           list-style: none;
@@ -329,20 +343,6 @@ $height_header: map-get($layout, header-height);
         .quicklinks-block-content {
           @include align-items(flex-start);
         }
-        @include hover {
-          .quicklinks-block-left, .quicklinks-block-right {
-            @include scrollbar;
-          }
-        }
-      }
-      .quicklinks-block-left, .quicklinks-block-right {
-        height: 100%;
-        @include scrollbar-none;
-        .quicklinks-block-left-menu, .quicklinks-block-right-menu {
-          padding-top: map-get($spacers, 4);
-          padding-bottom: map-get($spacers, 3);
-          margin: 0;
-        }
       }
       .quicklinks-block-left {
         width: 226px;
@@ -489,8 +489,6 @@ $height_header: map-get($layout, header-height);
           transform: rotate(180deg);
         }
         .navigation__item-link {
-          border-bottom: 1px solid;
-          @include box-shadow(1);
           @include themeify {
             color: themed(main-color-1);
           }
@@ -504,7 +502,7 @@ $height_header: map-get($layout, header-height);
       position: absolute;
       top: $height_header;
       left: 0;
-      z-index: 1;
+      z-index: map-get($z-indexes, header);
       width: calc(100% - #{map-get($layout, scrollbar-width)});
       max-height: 0;
       @include themeify {
