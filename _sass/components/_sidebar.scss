@@ -24,10 +24,12 @@ $_sidebar_width_sm: map-get($layout, sidebar-width-sm);
   position: absolute;
   bottom: 0;
   width: 100%;
+  height: 100%;
   padding: map-get($spacers, 3);
   text-align: center;
   @include button();
   @extend .button--secondary;
+  @include transition(height map-get($animation, duration));
 }
 
 .page__sidebar {
@@ -48,7 +50,7 @@ $_sidebar_width_sm: map-get($layout, sidebar-width-sm);
   }
   .page__sidebar-inner {
     width: 100%;
-    height: 100%;
+    height: calc(100% - #{$_sidebar_width_sm});
     overflow-y: auto;
   }
 }
@@ -56,6 +58,9 @@ $_sidebar_width_sm: map-get($layout, sidebar-width-sm);
 .sidebar-active {
   .page__sidebar {
     max-width: $_sidebar_width;
+  }
+  .page__sidebar-toggle {
+    height: $_sidebar_width_sm;
   }
 }
 
