@@ -1,0 +1,22 @@
+/* stylelint-disable scss/no-global-function-names */
+.gallery {
+  height: 100%;
+  opacity: 0;
+  @include transition(opacity map-get($animation, duration) map-get($animation-timing-function, 1));
+  &.show-gallery {
+    opacity: 1;
+  }
+  &.swiper {
+    .swiper__slide {
+      @include flexbox;
+      @include align-items(center);
+      @include justify-content(center);
+    }
+  }
+  .gallery__item {
+    img {
+      max-width: 100%;
+      max-height: 80%;
+    }
+  }
+}

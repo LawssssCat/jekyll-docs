@@ -6,36 +6,37 @@ $base: (
   font-size-root:         16px,
   font-size-root-sm:      14px,
 
+  font-size:              1rem,
   font-size-xl:           1.5rem,
   font-size-lg:           1.25rem,
-  font-size:              1rem,
+  font-size-md:           1rem,
   font-size-sm:           .85rem,
   font-size-xs:           .7rem,
 
-  font-size-h1-xl:        3.5rem,
-  font-size-h2-xl:        2.5rem,
-  font-size-h3-xl:        2rem,
+  font-size-h1-xl:        3rem,
+  font-size-h2-xl:        2.25rem,
+  font-size-h3-xl:        1.75rem,
   font-size-h4-xl:        1.75rem,
   font-size-h5-xl:        1.5rem,
   font-size-h6-xl:        1.5rem,
 
-  font-size-h1-lg:        3rem,
+  font-size-h1-lg:        2.5rem,
   font-size-h2-lg:        2rem,
-  font-size-h3-lg:        1.75rem,
+  font-size-h3-lg:        1.5rem,
   font-size-h4-lg:        1.5rem,
   font-size-h5-lg:        1.25rem,
   font-size-h6-lg:        1.25rem,
 
-  font-size-h1:           2.5rem,
-  font-size-h2:           1.9rem,
-  font-size-h3:           1.5rem,
+  font-size-h1:           2rem,
+  font-size-h2:           1.5rem,
+  font-size-h3:           1.25rem,
   font-size-h4:           1.2rem,
   font-size-h5:           1rem,
   font-size-h6:           1rem,
 
-  font-size-h1-sm:        2rem,
-  font-size-h2-sm:        1.5rem,
-  font-size-h3-sm:        1.35rem,
+  font-size-h1-sm:        1.5rem,
+  font-size-h2-sm:        1.25rem,
+  font-size-h3-sm:        1.15rem,
   font-size-h4-sm:        1.15rem,
   font-size-h5-sm:        1rem,
   font-size-h6-sm:        1rem,
@@ -73,13 +74,30 @@ $spacers: (
   6:                      map-get($base, spacer) * 4.5
 );
 
+//     unset       middle       top
+// | ---------- | --------- | --------- |
+// 0           400         999          -
+$z-indexes: (
+  modal: 997,
+  sidebar-active: 998,
+  popover: 600,
+  sidebar: 400,
+  header: 400,
+  actions: 399,
+);
+
 $layout: (
-  header-height:          4rem,
+  scrollbar-width:        16px,
+  header-height:          3.4rem,
   header-height-sm:       3rem,
+  header-nav-left-mobile: 150px,
   content-max-width:      950px,
   sidebar-width:          250px,
+  sidebar-width-sm:       48px,
   sidebar-header-height:  3rem,
-  aside-width:            220px
+  aside-width-sm:         300px,
+  aside-width:            350px,
+  aside-width-lg:         411px
 );
 
 //     sm       md       lg
@@ -102,6 +120,7 @@ $animation: (
 $animation-timing-function: (
   1:                      ease-in-out,
   2:                      cubic-bezier(.68, -.55, .27, 1.55),
+  3:                     cubic-bezier(.215, .61, .355, 1)
 );
 
 $clickable: (
@@ -119,8 +138,8 @@ $button: (
   padding-x-xl:           $button-height-xl / 3,
   padding-y-lg:           ($button-height-lg - map-get($base, font-size-lg)) / 2,
   padding-x-lg:           $button-height-lg / 3,
-  padding-y:              ($button-height - map-get($base, font-size)) / 2,
-  padding-x:              $button-height / 3,
+  padding-y-md:           ($button-height - map-get($base, font-size)) / 2,
+  padding-x-md:           $button-height / 3,
   padding-y-sm:           ($button-height-sm - map-get($base, font-size-sm)) / 2,
   padding-x-sm:           $button-height-sm / 3,
   padding-y-xs:           ($button-height-xs - map-get($base, font-size-xs)) / 2,
@@ -130,7 +149,7 @@ $button: (
 
   circle-diameter-xl:     $button-height-xl,
   circle-diameter-lg:     $button-height-lg,
-  circle-diameter:        $button-height,
+  circle-diameter-md:     $button-height,
   circle-diameter-sm:     $button-height-sm,
   circle-diameter-xs:     $button-height-xs,
 
@@ -152,6 +171,7 @@ $menu: (
 );
 
 $dark: (
+  l-1: 4%,
   1: 14%,
   2: 15%,
   3: 18%,
@@ -159,6 +179,7 @@ $dark: (
 );
 
 $light: (
+  l-1: 6%,
   1: 16%,
   2: 18%,
   3: 21%,

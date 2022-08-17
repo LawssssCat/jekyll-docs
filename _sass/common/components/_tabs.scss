@@ -1,0 +1,74 @@
+/* stylelint-disable scss/no-global-function-names */
+.block-tabs {
+  margin-top: map-get($spacers, 3);
+  .tab-split {
+    height: map-get($base, font-size);
+    border-left: 1px solid;
+    @include themeify {
+      border-color: themed(border-color-l);
+    }
+  }
+  .tab-navs-wrapper {
+    position: relative;
+    margin-bottom: map-get($spacers, 3);
+    overflow-x: hidden;
+    @include flexbox();
+    @include align-items(center);
+    .tab-toggle-left, .tab-toggle-right {
+      display: none;
+      @include cursor-clickable;
+      @include themeify {
+        background: themed(border-color);
+      }
+      &.active {
+        display: block;
+      }
+    }
+    .tab-toggle-right {
+      position: absolute;
+      right: 0;
+    }
+    .tab-toggle-left {
+      position: absolute;
+      left: 0;
+    }
+  }
+  .tab-navs {
+    margin-top: 0;
+    margin-bottom: 0;
+    @include transition(transform map-get($animation, duration) map-get($animation-timing-function, 1));
+    @include flexbox();
+    @include flex-wrap(nowrap);
+    @include align-items(center);
+    .tab-nav {
+      min-height: $button-height-lg;
+      @include button;
+      @include button-size("md");
+      padding: 0 map-get($spacers, 3);
+      font-weight: map-get($base, font-weight);
+      white-space: nowrap;
+      @include flexbox();
+      @include align-items(center);
+      @include active {
+        .tab-nav-inner {
+          @include themeify {
+            border-bottom-color: themed(main-color-1);
+          }
+        }
+      }
+    }
+    .tab-nav-inner {
+      box-sizing: inherit;
+      padding: map-get($spacers, 1) map-get($spacers, 2);
+      border-bottom: 2px solid transparent;
+    }
+  }
+  .tab-contents {
+    .tab-content {
+      display: none;
+      &.active {
+        display: block;
+      }
+    }
+  }
+}

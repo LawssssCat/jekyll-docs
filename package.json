@@ -1,5 +1,5 @@
 {
-  "name": "jekyll-docs-all-in-one",
+  "name": "jekyll-docs",
   "version": "1.0.0",
   "author": "lawsssscat",
   "license": "MIT",
@@ -7,13 +7,13 @@
   "keywords": [
     "jekyll"
   ],
-  "homepage": "https://github.com/LawssssCat/jekyll-docs-all-in-one#readme",
+  "homepage": "https://github.com/LawssssCat/jekyll-docs#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LawssssCat/jekyll-docs-all-in-one.git"
+    "url": "git+https://github.com/LawssssCat/jekyll-docs.git"
   },
   "bugs": {
-    "url": "https://github.com/LawssssCat/jekyll-docs-all-in-one/issues"
+    "url": "https://github.com/LawssssCat/jekyll-docs/issues"
   },
   "scripts": {
     "prepare": "husky install",
@@ -21,8 +21,8 @@
     "js-watch": "gulp dev",
     "check": "cross-env JEKYLL_ENV=production npm run stylelint && npm run eslint",
     "build": "npm run check && npm run js-build && cross-env JEKYLL_ENV=production JEKYLL_LOG_LEVEL=debug bundle exec jekyll build -d _site",
-    "serve": "npm run check && npm run js-build && bundle exec jekyll serve -H 0.0.0.0 --port 8765 -d _site/dev",
-    "debug": "cross-env JEKYLL_LOG_LEVEL=debug bundle exec jekyll serve -H 0.0.0.0 --port 9875 -d _site/debug",
+    "serve": "npm run check && npm run js-build && cross-env JEKYLL_ENV=production JEKYLL_LOG_LEVEL=debug bundle exec jekyll serve -H 0.0.0.0 --port 8765 -d _site/dev",
+    "debug": "cross-env JEKYLL_LOG_LEVEL=debug bundle exec jekyll serve --port 9875 -d _site/debug",
     "eslint": "eslint \"_javascript/**/*.js\"",
     "eslint-fix": "eslint \"_javascript/**/*.js\" --fix",
     "stylelint": "stylelint scss \"_sass/**/*.scss\"",

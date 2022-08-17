@@ -1,6 +1,103 @@
 /* stylelint-disable scss/no-global-function-names */
+@mixin set-card_header($color, $color_active) {
+  .card__header {
+    & > a {
+      @include link-colors($color, $color_active);
+      @include hover {
+        text-decoration: none;
+      }
+      @content;
+    }
+  }
+}
+
 .card {
   max-width: 18rem;
-  border-radius: map-get($base, border-radius);
+  overflow: hidden;
+  font-size: map-get($base, font-size);
+  @include media-breakpoint-down(md) {
+    font-size: map-get($base, font-size-sm);
+  }
+  $_card_border_radius: map-get($base, border-radius);
+  border-radius: $_card_border_radius;
   @include box-shadow();
+  @include themeify {
+    @include set-card_header(themed(text-color-d), themed(main-color-1));
+  }
+  &.card--flat {
+    overflow: visible;
+    @include box-shadow(0);
+    .card__image {
+      overflow: hidden;
+      border-radius: $_card_border_radius;
+    }
+  }
+  &.card--overlay {
+    @mixin overlay-setting($position) {
+      position: relative;
+      .card__content {
+        position: absolute;
+        width: 100%;
+        @if $position == "top" {
+          top: 0;
+          border-top-left-radius: $_card_border_radius;
+          border-top-right-radius: $_card_border_radius;
+        } @else if $position == "bottom" {
+          bottom: 0;
+          border-bottom-right-radius: $_card_border_radius;
+          border-bottom-left-radius: $_card_border_radius;
+        }
+        @include themeify {
+          color: themed(text-color-theme-dark);
+          background: rgba(#000, .4);
+          @include set-card_header(themed(text-color-theme-dark), themed(main-color-1)) {
+            display: block;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            @include overflow(hidden);
+          }
+        }
+      }
+    }
+    &:not(.card--overlay-top) {
+      @include overlay-setting("bottom");
+    }
+    &.card--overlay-top {
+      @include overlay-setting("top");
+    }
+  }
+  &.card--clickable {
+    @include cursor-clickable;
+    @include transition(map-get($clickable, transition));
+    @include hover {
+      &:not(.card--flat) {
+        @include box-shadow(2);
+      }
+      &.card--flat {
+        .card__image {
+          @include box-shadow(1);
+        }
+      }
+    }
+  }
+}
+
+.cell {
+  & > .card {
+    max-width: unset;
+  }
+}
+
+.card__image {
+  width: 100%;
+  img, .image {
+    display: block;
+    width: 100%;
+    height: auto;
+    // border-radius: inherit;
+  }
+}
+
+.card__content {
+  padding: map-get($spacers, 2) map-get($spacers, 3);
 }

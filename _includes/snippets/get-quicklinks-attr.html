@@ -1,0 +1,4 @@
+{%- assign __quicklinks_id = include.id -%}
+
+{%- assign __quicklinks_attr_id = __quicklinks_id | append: "-attr" -%}
+{%- assign __return = site.data.quicklinks[__quicklinks_attr_id] -%}

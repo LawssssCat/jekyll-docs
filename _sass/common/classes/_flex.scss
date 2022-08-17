@@ -67,6 +67,8 @@
   display: flex;
 }
 
+.flexbox { @include flexbox; }
+
 //----------------------------------
 
 @mixin inline-flex {
@@ -76,6 +78,8 @@
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
+
+.inline-flex { @include inline-flex; }
 
 //----------------------------------------------------------------------
 
@@ -133,6 +137,45 @@
     -ms-flex-wrap: $value;
   }
   flex-wrap: $value;
+}
+
+.flex-wrap { @include flex-wrap(wrap); }
+
+//----------------------------------------------------------------------
+
+// Flexbox Grow
+//
+// The 'flex-grow' property sets the flex grow factor. Negative numbers
+// are invalid.
+//
+// Default: 0
+//
+// http://w3.org/tr/css3-flexbox/#flex-grow-property
+
+@mixin flex-grow($int: 0) {
+  -webkit-box-flex: $int;
+  -webkit-flex-grow: $int;
+  -moz-flex-grow: $int;
+  -ms-flex-positive: $int;
+  flex-grow: $int;
+}
+
+//----------------------------------------------------------------------
+
+// Flexbox Shrink
+//
+// The 'flex-shrink' property sets the flex shrink factor. Negative numbers
+// are invalid.
+//
+// Default: 1
+//
+// http://w3.org/tr/css3-flexbox/#flex-shrink-property
+
+@mixin flex-shrink($int: 1) {
+  -webkit-flex-shrink: $int;
+  -moz-flex-shrink: $int;
+  -ms-flex-negative: $int;
+  flex-shrink: $int;
 }
 
 //----------------------------------------------------------------------

@@ -4,10 +4,21 @@
   "common/function",
   "common/classes",
   "common/reset",
+  "common/components/alert",
   "common/components/menu",
+  "common/components/image",
+  "common/components/gallery",
   "common/components/card",
   "common/components/button",
+  "common/components/details",
+  "common/components/switch",
+  "common/components/radio",
   "common/components/popover",
+  "common/components/tabs",
+  "common/components/modal",
+  "common/components/item",
+  "common/components/hero",
+  "common/components/swiper",
 
   "components/main",
   "components/header",
@@ -18,8 +29,11 @@
   "components/article-header",
   "components/article-infos",
   "components/article-content",
+  "components/article-list",
+  "components/code",
   "components/aside",
   "components/toc", // must be after 'aside'
   "components/sidebar",
 
-  "layout/page";
+  "layout/page",
+  "layout/404";

@@ -1,0 +1,15 @@
+@mixin animation($value) {
+  -webkit-animation: $value;
+  animation: $value;
+}
+
+@mixin keyframes($name) {
+  & {
+    @keyframes #{$name} {
+      @content;
+    }
+    @-webkit-keyframes #{$name} {
+      @content;
+    }
+  }
+}

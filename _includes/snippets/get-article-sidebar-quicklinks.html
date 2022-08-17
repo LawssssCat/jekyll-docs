@@ -1,0 +1,4 @@
+{%- assign _sidebar = page.sidebar | default: layout.sidebar -%}
+{%- assign _quicklinks_key = _sidebar.quicklinks -%}
+{%- assign _quicklinks = site.data.quicklinks[_quicklinks_key] -%}
+{%- assign __return = _quicklinks -%}

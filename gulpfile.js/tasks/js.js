@@ -15,7 +15,7 @@ const browserify = require('browserify');
 const JS_SRC = '_javascript';
 const JS_DEST = 'assets/js/dist';
 
-const VENDERS = ['tool-box', 'lazyload']; // base on '_javascript/'
+const VENDERS = ['tool-box', 'lazyload', 'logger', 'lib/popper', 'lib/modal', 'lib/swiper']; // base on '_javascript/'
 
 function isDebug() {
   let env = process.env.JEKYLL_ENV;
@@ -78,7 +78,13 @@ const commonsJs = () => {
 const componentsJs = parallel(
   () => concatJs(`${JS_SRC}/components/theme.js`, 'theme'),
   () => concatJs(`${JS_SRC}/components/aside/toc.js`, 'aside/toc'),
+  () => concatJs(`${JS_SRC}/components/sidebar/quicklinks.js`, 'sidebar/quicklinks'),
+  () => concatJs(`${JS_SRC}/components/sidebar/actions.js`   , 'sidebar/actions'),
   () => concatJs(`${JS_SRC}/components/pageview/leancloud.js`, 'pageview/leancloud')
+);
+
+const layoutsJs = parallel(
+  () => concatJs(`${JS_SRC}/layouts/article.js`, 'layouts/article')
 );
 
 const vendersJs = () => {
@@ -96,7 +102,7 @@ const vendersJs = () => {
 
 const buildJs = series(
   clean,
-  parallel(commonsJs, vendersJs, componentsJs)
+  parallel(commonsJs, vendersJs, componentsJs, layoutsJs)
 );
 
 exports.build = series(buildJs, minifyJs);

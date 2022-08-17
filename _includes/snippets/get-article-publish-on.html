@@ -1,0 +1,4 @@
+{%- assign _article = include.article -%}
+
+{%- assign _publish_on = _article["first_publish_at"] | default: _article.date -%}
+{%- assign __return = _publish_on -%}

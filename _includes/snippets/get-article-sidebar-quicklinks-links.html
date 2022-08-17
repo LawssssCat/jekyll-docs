@@ -1,0 +1,16 @@
+{%- assign _quicklinks = include.quicklinks -%}
+
+{%- assign _ids = '' -%}
+{%- for _item in _quicklinks -%}
+  {%- if _item.url -%}
+    {%- assign _ids = _ids | append: ',' | append: _item.url -%}
+  {%- endif -%}
+  {%- for _detail in _item.details -%}
+    {%- if _detail.url -%}
+      {%- assign _ids = _ids | append: ',' | append: _detail.url -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endfor -%}
+{%- assign _link_list = _ids | split: ',' | compact -%}
+
+{%- assign __return = _link_list -%}

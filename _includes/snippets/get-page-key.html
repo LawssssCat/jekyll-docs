@@ -1,1 +1,2 @@
-{%- assign __return = page.key | default: page.id -%}
+{%- assign __article = include.page -%}
+{%- assign __return = __article.key | default: __article.id -%}

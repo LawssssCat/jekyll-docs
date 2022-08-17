@@ -1,15 +1,29 @@
-@function get-color-theme($color) {
+@function get-color-theme($color, $reverse: default) {
+  @if $reverse == default {
+    $reverse: false;
+  }
   @if lightness($color) < 15% {
-    @return "dark";
+    @if $reverse == false {
+      @return "dark";
+    } @else {
+      @return "light";
+    }
   } @else {
-    @return "light";
+    @if $reverse == false {
+      @return "light";
+    } @else {
+      @return "dark";
+    }
   }
 }
 
 /*
   $type = dark/light
 */
-@function get-color-adjust($type, $color, $level: default) {
+@function get-color-adjust($color, $type: default, $level: default, $reverse: default) {
+  @if $type == default {
+    $type: get-color-theme($color, $reverse);
+  }
   @if $level == default {
     $level: 1;
   }

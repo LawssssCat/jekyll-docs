@@ -1,0 +1,42 @@
+/* stylelint-disable color-named */
+/* stylelint-disable scss/no-global-function-names */
+.article__content {
+  .success {
+    padding: map-get($spacers, 2) map-get($spacers, 3);
+    border-radius: map-get($base, border-radius);
+    @include themeify {
+      background-color: rgba(themed(green), .1);
+      // border: 1px solid themed(green);
+    }
+  }
+
+  .info {
+    padding: map-get($spacers, 2) map-get($spacers, 3);
+    border-radius: map-get($base, border-radius);
+    @include themeify {
+      background-color: rgba(themed(blue), .1);
+      // border: 1px solid themed(blue);
+    }
+  }
+
+  .warning {
+    padding: map-get($spacers, 2) map-get($spacers, 3);
+    border-radius: map-get($base, border-radius);
+    @include themeify {
+      background-color: rgba(themed(yellow), .1);
+      // border: 1px solid themed(yellow);
+    }
+  }
+
+  .error {
+    padding: map-get($spacers, 2) map-get($spacers, 3);
+    border-radius: map-get($base, border-radius);
+    @include themeify {
+      background-color: rgba(themed(red), .1);
+      // border: 1px solid themed(red);
+    }
+  }
+  .alert-compact {
+    padding: map-get($spacers, 1) map-get($spacers, 1);
+  }
+}

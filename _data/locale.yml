@@ -6,6 +6,7 @@ en: &EN
   FOLLOW_ME               : "Follow me on [NAME]."
   EMAIL_ME                : "Send me an Email."
   ARTICLE_DATE_FORMAT     : "%b %d, %Y" 
+  ARTICLE_LIST_DATE_FORMAT: "%b %d"
   LAST_UPDATED            : "Last updated" 
   PUBLISH_ON              : "Published on"
   WRITTEN_BY              : "Written by"

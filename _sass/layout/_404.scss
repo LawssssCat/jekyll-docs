@@ -1,0 +1,23 @@
+/* stylelint-disable scss/no-global-function-names */
+.layout--404 {
+  $_height_header: map-get($layout, header-height);
+  width: 100%;
+  // height: calc(100vh - #{$_height_header});
+  @include flexbox();
+  @include align-items(center);
+  .sign {
+    $_sign_margin: map-get($spacers, 5) * 3;
+    display: table;
+    margin: map-get($spacers, 4) auto;
+    margin-top: $_sign_margin;
+    margin-bottom: $_sign_margin;
+    h1 {
+      font-size: map-get($base, font-size-xl) * 4;
+      line-height: 1;
+      text-align: center;
+    }
+    p {
+      font-size: map-get($base, font-size-xl) * 1.2;
+    }
+  }
+}

@@ -1,14 +1,20 @@
 /* stylelint-disable at-rule-name-space-after, at-rule-semicolon-space-before  */
 @charset "utf-8";
 @import
+  "common/classes/animation",
   "common/classes/wrap",
+  "common/classes/appearance",
+  "common/classes/column",
+  "common/classes/selection",
   "common/classes/transition",
   "common/classes/media",
   "common/classes/clickable",
   "common/classes/clearfix",
   "common/classes/flex",
   "common/classes/pseudo",
+  "common/classes/cursor",
   "common/classes/link",
+  "common/classes/text",
   "common/classes/spacing",
   "common/classes/overflow",
   "common/classes/shadow",

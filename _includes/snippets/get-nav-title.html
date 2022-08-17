@@ -12,6 +12,6 @@ return
   {%- include snippets/get-string-locale-from-locales.html locales=__item.titles -%}
   {%- assign _nav_title = __return -%}
 {%- else -%}
-  {%- assign _nav_title = 'undefine' -%}
+  {%- assign _nav_title = nil -%}
 {%- endif -%}
 {%- assign __return = _nav_title -%}

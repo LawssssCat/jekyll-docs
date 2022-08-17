@@ -1,0 +1,53 @@
+/* stylelint-disable scss/no-global-function-names */
+.radio-box {
+  @include flexbox();
+  @include align-items(center);
+  .radio-input {
+    $_h: map-get($base, font-size);
+    position: relative;
+    display: inline-block;
+    width: $_h;
+    height: $_h;
+    margin-right: map-get($spacers, 2);
+    border-radius: 50%;
+    @include appearance(none);
+    @include transition(all .2s map-get($animation-timing-function, 1));
+    @include cursor-clickable;
+    @include themeify {
+      background: themed(background-color);
+      border: 1px solid themed(border-color);
+    }
+    &::before {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: $_h * 3 / 5;
+      height: $_h * 3 / 5;
+      content: "";
+      border-radius: 50%;
+      opacity: 0;
+      transform: translate(-50%, -50%);
+      @include transition(all .25s map-get($animation-timing-function, 1));
+      @include themeify {
+        background: themed(border-color);
+      }
+    }
+    &:checked {
+      @include themeify {
+        border-color: themed(main-color-1);
+      }
+      &::before {
+        opacity: 1;
+        @include themeify {
+          background: themed(main-color-1);
+        }
+      }
+    }
+    &:disabled {
+      cursor: no-drop;
+      @include themeify {
+        background: themed(border-color-l);
+      }
+    }
+  }
+}

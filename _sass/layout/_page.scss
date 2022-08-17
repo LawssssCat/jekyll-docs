@@ -1,17 +1,29 @@
+/* stylelint-disable scss/no-global-function-names */
 .layout--page {
   .page__viewport {
-    // height: 100%;
+    min-height: 100vh;
+    @include flexbox();
+    .page__main, .page__grid {
+      width: 100%;
+      @include flex(1);
+    }
   }
 }
 
-// .page__main {
-//   // height: 100%;
-//   color: $text-color;
-// }
+.page__main {
+  position: relative;
+}
 
 .page__main-inner {
+  height: 100%;
+  @include flexbox();
+  @include flex-direction(column);
   @include themeify() {
     color: themed(text-color);
     background-color: themed(background-color);
   }
+}
+
+.page__content {
+  @include flex(1);
 }

@@ -3,7 +3,8 @@
   "env": {
       "browser": true,
       "jquery": true,
-      "node": true
+      "node": true,
+      "es6": true
   },
   "rules": {
       "no-console": "warn",
@@ -13,7 +14,7 @@
       "block-scoped-var": "error",
       "default-case": "error",
       "no-extra-bind": "error",
-      "camelcase": "error",
+      "camelcase": "warn",
       "indent": ["error", 2, { "SwitchCase": 1 }],
       "eol-last": ["error", "always"]
   },

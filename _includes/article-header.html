@@ -1,40 +1,28 @@
-{%- include snippets/assign.html 
-  value1=page.show_article_title
-  value2=layout.show_article_title
-  value3=site.data.variables.default.page.show_article_title -%}
-{%- assign _show_article_title = __return -%}
-
-{%- comment -%}============================================ switch ===================================== {%- endcomment -%}
-
 {%- include snippets/get-article-title.html article=page -%}
 {%- assign _article_title = __return -%}
 
-{%- if _show_article_title -%}
 
-  {%- include snippets/assign.html 
-    value1=page.show_article_title_edit_on_github
-    value2=layout.show_article_title_edit_on_github
-    value3=site.data.variables.default.page.show_article_title_edit_on_github -%}
+{%- include snippets/assign.html 
+  value1=page.show_article_title_edit_on_github
+  value2=layout.show_article_title_edit_on_github
+  value3=site.data.variables.default.page.show_article_title_edit_on_github -%}
+{%- assign _show_article_title_edit_on_github = __return -%}
 
-  {%- comment -%}============================================ switch ===================================== {%- endcomment -%}
-
-  {%- assign _show_article_title_edit_on_github = __return -%}
-  <header class="header">
-    <h1>{{ _article_title }}</h1>
-    {%- if _show_article_title_edit_on_github -%}
-      {%- include snippets/get-repo-accessible-url.html path=page.path -%}
-      {%- assign _repo_path_url = __return -%}
-      {%- if _repo_path_url -%}
-        {%- include snippets/get-repo-locale-name.html -%}
-        {%- assign _repo_locale_name = __return -%}
-        {%- include snippets/get-string-locale-from-data.html key="POST_ON_REPO" -%}
-        {%- assign _locale_post_on_repo = __return | replace: "[REPO]", _repo_locale_name -%}
-        <span class="split-space d-print-none">&nbsp;</span>
-        <a class="edit-on-repo d-print-none" title="{{ _locale_post_on_repo }}" href="{{ _repo_path_url }}"><i class="far fa-edit"></i></a>
-      {%- endif -%}
+<header class="header">
+  <h1>{{ _article_title }}</h1>
+  {%- if _show_article_title_edit_on_github -%}
+    {%- include snippets/get-repo-accessible-url.html path=page.path -%}
+    {%- assign _repo_path_url = __return -%}
+    {%- if _repo_path_url -%}
+      {%- include snippets/get-repo-locale-name.html -%}
+      {%- assign _repo_locale_name = __return -%}
+      {%- include snippets/get-string-locale-from-data.html key="POST_ON_REPO" -%}
+      {%- assign _locale_post_on_repo = __return | replace: "[REPO]", _repo_locale_name -%}
+      <span class="split-space d-print-none">&nbsp;</span>
+      <a class="edit-on-repo d-print-none" title="{{ _locale_post_on_repo }}" href="{{ _repo_path_url }}"><i class="far fa-edit"></i></a>
     {%- endif -%}
-  </header>
-{%- endif -%}
+  {%- endif -%}
+</header>
 
 <!-- semantic -->
 <meta itemprop="headline" content="{{ _article_title }}">

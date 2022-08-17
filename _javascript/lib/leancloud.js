@@ -20,6 +20,17 @@ class Pageview {
     query.equalTo('key', key);
     return query.first();
   }
+  searchBatch(keys) {
+    const queryList = new Array(keys.length);
+    keys.forEach((key, index) => {
+      const query = new this.AV.Query(this.appClass);
+      query.equalTo('key', key);
+      queryList[index] = query;
+    });
+    return this.AV.Query
+      .or(...queryList)
+      .find();
+  }
   insert(key, title, views=0) {
     const PV = this.AV.Object.extend(this.appClass);
     const _pv = new PV();
@@ -31,6 +42,12 @@ class Pageview {
   increment(pv) {
     pv.increment('views', 1);
     return pv.save();
+  }
+  queryBatch(keys, callback) {
+    return this.searchBatch(keys)
+      .then((result) => {
+        callback && callback(result);
+      });
   }
   increase(key, title, callback) {
     return this.search(key)
