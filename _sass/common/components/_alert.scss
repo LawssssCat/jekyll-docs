@@ -6,7 +6,7 @@
     border-radius: map-get($base, border-radius);
     @include themeify {
       background-color: rgba(themed(green), .1);
-      border: 1px solid themed(green);
+      // border: 1px solid themed(green);
     }
   }
 
@@ -15,7 +15,7 @@
     border-radius: map-get($base, border-radius);
     @include themeify {
       background-color: rgba(themed(blue), .1);
-      border: 1px solid themed(blue);
+      // border: 1px solid themed(blue);
     }
   }
 
@@ -24,7 +24,7 @@
     border-radius: map-get($base, border-radius);
     @include themeify {
       background-color: rgba(themed(yellow), .1);
-      border: 1px solid themed(yellow);
+      // border: 1px solid themed(yellow);
     }
   }
 
@@ -33,7 +33,10 @@
     border-radius: map-get($base, border-radius);
     @include themeify {
       background-color: rgba(themed(red), .1);
-      border: 1px solid themed(red);
+      // border: 1px solid themed(red);
     }
+  }
+  .alert-compact {
+    padding: map-get($spacers, 1) map-get($spacers, 1);
   }
 }

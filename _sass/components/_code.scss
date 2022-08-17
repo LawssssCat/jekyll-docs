@@ -1,8 +1,8 @@
 /* stylelint-disable selector-max-compound-selectors */
 /* stylelint-disable scss/no-global-function-names */
 code.highlighter-rouge {
-  padding: map-get($spacers, 1) map-get($spacers, 1);
-  border-radius: map-get($base, border-radius);
+  padding: 0 map-get($spacers, 1);
+  // border-radius: map-get($base, border-radius);
   span {
     padding: 0;
     margin: 0;
@@ -32,16 +32,16 @@ pre {
 }
 
 .highlighter-rouge > .highlight, figure.highlight {
-  $_border_radius: map-get($base, border-radius);
-  // base style
+  border: 1px solid;
+  @include themeify {
+    border-color: themed(border-color);
+  }
   & > pre {
-    padding: map-get($spacers, 3) 0 map-get($spacers, 3) map-get($spacers, 3);
+    max-height: 600px;
+    padding: map-get($spacers, 3) map-get($spacers, 2) map-get($spacers, 3) map-get($spacers, 3);
     margin: 0;
-    border-bottom-right-radius: $_border_radius;
-    border-bottom-left-radius: $_border_radius;
-    // @include themeify {
-    //   background-color: themed(text-background-color);
-    // }
+    overflow: auto;
+    @include scrollbar($size: 10px, $color-track: transparent);
     & > code {
       display: block;
     }
@@ -49,21 +49,20 @@ pre {
   // show language
   .code-header {
     padding: 0;
-    border-top-left-radius: $_border_radius;
-    border-top-right-radius: $_border_radius;
-    @include themeify {
-      border: 1px solid themed(border-color);
-    }
     @include flexbox();
     @include align-items(stretch);
     @include justify-content(space-between);
-    > div {
-      padding: map-get($spacers, 1) map-get($spacers, 3);
-      border-radius: $_border_radius;
-    }
     .code-lang {
       @include flexbox();
       @include align-items(center);
+      @include cursor-clickable;
+      padding: map-get($spacers, 1) map-get($spacers, 4);
+      color: var(--highlight-foreground-color);
+      background: var(--highlight-background-color);
+    }
+    .code-toggle-wrapper {
+      padding: map-get($spacers, 1) 0;
+      @include menu(3, 0, nowrap);
     }
     .code-toggle-copy {
       border-bottom-right-radius: 0;

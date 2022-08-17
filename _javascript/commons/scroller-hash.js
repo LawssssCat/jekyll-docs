@@ -6,14 +6,15 @@ lazyload.onload(() => {
   refactorHistoryPushStateHandle();
   let eventFunc;
   window.addEventListener('popstate',eventFunc = (event) => {
-    logger.isDebug() && logger.debug(event);
+    logger.isDebug() && logger.debug('scroller-hash.js', event);
     event.preventDefault();
-    scroll2Hash();
+    scroll2Hash(window.VARIABLES.pageScrollerBehavior);
   });
   window.addEventListener('hashchange', eventFunc);
   window.addEventListener('pushState', eventFunc);
   window.addEventListener('replaceState', eventFunc);
-  scroll2Hash();
+}, {
+  priority: 99
 });
 
 function refactorHistoryPushStateHandle() {
@@ -31,7 +32,7 @@ function refactorHistoryPushStateHandle() {
   history.replaceState = _historyWrap('replaceState');
 }
 
-function scroll2Hash() {
+function scroll2Hash(behavior) {
   const hash = window.location.hash;
   if(hash) {
     const id = hash.slice(1);
@@ -40,7 +41,7 @@ function scroll2Hash() {
       const headerTop = TOOL.positionRelative(dom, window.VARIABLES.pageScroller).top;
       window.VARIABLES.pageScrollTarget.scroll({
         top: headerTop,
-        behavior: window.VARIABLES.pageScrollerBehavior
+        behavior: behavior
       });
     }
   }

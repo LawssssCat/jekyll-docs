@@ -1,6 +1,6 @@
 default: 
   color_theme: default # "default" (default), "dark", "forest", "ocean", "chocolate", "orange"
-  highlight_theme: default # "default" (default), "tomorrow", "tomorrow-night", "tomorrow-night-eighties", "tomorrow-night-blue", "tomorrow-night-bright"
+  highlight_theme: default # "default" (default), "tomorrow"(todo see https://github.com/chriskempson/tomorrow-theme)
   lang: zh # options: en (default), zh
   author: 
     type: person
@@ -34,13 +34,8 @@ default:
     license: CC-BY-4.0
 
 themes:
-  - default
-  - original
+  - light
   - dark
-  - chocolate
-  - forest
-  - ocean
-  - orange
 
 sources:
   # bootcdn

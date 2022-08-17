@@ -1,24 +1,30 @@
 const lazyload = require('lazyload');
-const {Modal} = require('lib/modal');
 
 lazyload.onload(() => {
-  const rootSelector='.js-page-root', toggleSelector='.js-sidebar-show';
-  const addClass='show-sidebar';
-  const root    =window.document.querySelector(rootSelector);
-  const toggle  =window.document.querySelector(toggleSelector);
-  const modal   =new Modal({
-    showCallback: () => {
-      root.classList.add(addClass);
-    },
-    hideCallback: () => {
-      root.classList.remove(addClass);
+  const root    =window.document.querySelector('.js-page-root');
+  const toggle  =window.document.querySelector('.page__sidebar-toggle');
+  const activeClass = 'sidebar-active';
+  const activeLocalName = 'sidebar-expand';
+  function expand() {
+    root.classList.add(activeClass);
+    window.localStorage.setItem(activeLocalName, 'true');
+  }
+  function fold() {
+    root.classList.remove(activeClass);
+    window.localStorage.setItem(activeLocalName, 'false');
+  }
+  if(window.localStorage.getItem(activeLocalName) == 'true') {
+    expand();
+  } else {
+    root.classList.remove(activeClass);
+  }
+  toggle.addEventListener('click', () => {
+    if(root.classList.contains(activeClass)) {
+      // close
+      fold();
+    } else {
+      // open
+      expand();
     }
   });
-  toggle.addEventListener('click', () => {
-    modal.show();
-  });
-  modal.addEventListener('click', () => {
-    modal.hide();
-  });
-  modal.enableEventEscClose();
 });

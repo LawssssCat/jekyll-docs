@@ -5,17 +5,18 @@ const lazyload = require('lazyload');
 const TOOL     = require('tool-box');
 const {Popper} = require('lib/popper');
 const sources = window.VARIABLES.sources;
+const logger = require('logger');
 
 lazyload.js([sources.popper.js], () => {
   // <figure class="highlight"><pre><code class="language-liquid" data-lang="liquid">............</code>
   const tagRenderSelector='figure.highlight';
   window.document.querySelectorAll(tagRenderSelector).forEach(dom => {
     const pre = dom.querySelector('pre');
-    if(pre) {
+    if(pre) { // filter ``
       const code = pre.querySelector('code');
       const lang = code.getAttribute('data-lang');
       dom.setAttribute('data-lang', lang);
-      new CodeHeader(pre, code, lang).init();
+      new CodeHeader(dom, pre, lang).init();
     }
   });
   // <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...</code>
@@ -23,36 +24,71 @@ lazyload.js([sources.popper.js], () => {
   window.document.querySelectorAll(kramRenderSelector).forEach(dom => {
     const pre = dom.querySelector('pre');
     if(pre) {
-      const code = dom.querySelector('code');
       const className = Array.from(dom.classList).find(item => {
         return item.startsWith('language-');
       });
       const lang = className.replace('language-', '');
       dom.setAttribute('data-lang', lang);
-      new CodeHeader(pre, code, lang).init();
+      new CodeHeader(dom, pre, lang).init();
     }
   });
 });
 
 class CodeHeader {
-  constructor(pre, code, lang) {
+  constructor(dom, pre, lang) {
+    this.dom = dom;
     this.pre = pre;
-    this.code = code;
     this.lang = lang;
   }
   init() {
+    if(this.dom.classList.contains('no-code-header')) {
+      logger.isDebug() && logger.debug('code-header.js', 'no code header', this.dom);
+      return ;
+    }
     const header = this.header = window.document.createElement('div');
     this.pre.parentNode.prepend(header);
     header.classList.add('code-header');
     // lang
     const headerLang = window.document.createElement('div');
     header.appendChild(headerLang);
-    headerLang.innerHTML = this.lang;
+    headerLang.innerHTML = this.lang || '&nbsp;';
     headerLang.classList.add('code-lang');
+    // toggle
+    const headerToggleWrapper = window.document.createElement('ul');
+    header.appendChild(headerToggleWrapper);
+    headerToggleWrapper.classList.add('code-toggle-wrapper');
+    // wrap
+    this.initWrapToggle(headerToggleWrapper);
     // copy
-    const headerCopy = window.document.createElement('div');
-    header.appendChild(headerCopy);
+    this.initCopyToggle(headerToggleWrapper);
+    
+  }
+  initWrapToggle(wrapper) {
+    const headerWrap = window.document.createElement('li');
+    wrapper.appendChild(headerWrap);
+    headerWrap.classList.add('code-toggle-wrap');
+    headerWrap.classList.add('code-toggle');
+    const headerWrapId = TOOL.generateId('code-header-wrap-switch');
+    headerWrap.innerHTML = `
+    <div class="switch-box">
+      <input class="switch-input" type="checkbox" id="${headerWrapId}">
+      <label class="switch-label" for="${headerWrapId}">Wrap</label>
+    </div>
+    `;
+    const toggle = headerWrap.querySelector(`#${headerWrapId}`);
+    toggle.addEventListener('click', () => {
+      if(toggle.checked) {
+        this.pre.style.whiteSpace = 'pre-wrap';
+      } else {
+        this.pre.style.whiteSpace = '';
+      }
+    });
+  }
+  initCopyToggle(wrapper) {
+    const headerCopy = window.document.createElement('li');
+    wrapper.appendChild(headerCopy);
     headerCopy.classList.add('code-toggle-copy');
+    headerCopy.classList.add('code-toggle');
     headerCopy.setCopyReady = function() {
       this.innerHTML = '<i class="fas fa-clipboard"></i>';
     };
@@ -68,6 +104,14 @@ class CodeHeader {
       toggle: headerCopy,
       toggleEvents: ['hover'],
       content: popperContentReady,
+      popperConfigModifiers: [
+        {
+          name: 'offset',
+          options: {
+            offset: [0, 8]
+          }
+        }
+      ],
       showCallback: () => {
         if(!hover) { // only the first hover event is active until 'mouseout'.
           popper.setContent(popperContentReady);
@@ -90,7 +134,8 @@ class CodeHeader {
     let setCopyReadyTimeoutClock;
     headerCopy.addEventListener('click', () => {
       popper.hide();
-      TOOL.copyTextToClipboard(this.code.textContent).then(() => {
+      const code = this.pre.querySelector('code');
+      TOOL.copyTextToClipboard(code.textContent).then(() => {
         // show popover when copy ok
         popper.setContent(popperContentOk);
         popper.show();

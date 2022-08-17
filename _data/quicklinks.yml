@@ -1,7 +1,16 @@
+layouts-attr:
+  titles: 
+    en      : &EN       Samples
+    en-GB   : *EN
+    en-US   : *EN
+    en-CA   : *EN
+    en-AU   : *EN
+    zh-Hans : &ZH_HANS  
+    zh      : *ZH_HANS
+    zh-CN   : *ZH_HANS
+    zh-SG   : *ZH_HANS
+  url: /samples.html
 layouts:
-  - title: Samples
-    url: /samples.html
-    details:
   - title: Page Layout
     details:
       - url: /page/single.html
@@ -14,29 +23,85 @@ layouts:
       - url: /articles/item.html
       - url: /articles/grid.html
 
+tools: 
+  - url: /tools
+
+jekyll-attr:
+  url: /jekyll
 jekyll:
-  - title: Jekyll
-    url: /jekyll
-  - title: Theme
+  - titles: 
+      en      : &EN       markdown
+      en-GB   : *EN
+      en-US   : *EN
+      en-CA   : *EN
+      en-AU   : *EN
+      zh-Hans : &ZH_HANS  
+      zh      : *ZH_HANS
+      zh-CN   : *ZH_HANS
+      zh-SG   : *ZH_HANS
+    details:
+      - url: /markdown/syntax
+      - url: /markdown/processor
+      - url: /markdown/highlight
+  - titles: 
+      en      : &EN       ruby
+      en-GB   : *EN
+      en-US   : *EN
+      en-CA   : *EN
+      en-AU   : *EN
+      zh-Hans : &ZH_HANS  
+      zh      : *ZH_HANS
+      zh-CN   : *ZH_HANS
+      zh-SG   : *ZH_HANS
+    url: /ruby
+  - titles: 
+      en      : &EN       liquid
+      en-GB   : *EN
+      en-US   : *EN
+      en-CA   : *EN
+      en-AU   : *EN
+      zh-Hans : &ZH_HANS  
+      zh      : *ZH_HANS
+      zh-CN   : *ZH_HANS
+      zh-SG   : *ZH_HANS
+    url: /liquid
+  - titles:
+      en      : &EN       Themes
+      en-GB   : *EN
+      en-US   : *EN
+      en-CA   : *EN
+      en-AU   : *EN
+      zh-Hans : &ZH_HANS  主题
+      zh      : *ZH_HANS
+      zh-CN   : *ZH_HANS
+      zh-SG   : *ZH_HANS
     url: /theme
-  - title: Plugins
+  - titles:
+      en      : &EN       Plugs
+      en-GB   : *EN
+      en-US   : *EN
+      en-CA   : *EN
+      en-AU   : *EN
+      zh-Hans : &ZH_HANS  插件
+      zh      : *ZH_HANS
+      zh-CN   : *ZH_HANS
+      zh-SG   : *ZH_HANS
     url: /plugins
     details:
       - url: /plugins/emoji
         title: emoji
 
-markdown:
-  - url: /markdown
-  - url: /markdown/kramdown
-    details:
-      - url: /markdown/kramdown/gfm
-  - title: Highlight
-    details: 
-      - url: /markdown/highlight/rouge
-      - url: /markdown/highlight/compare-rouge-vs-coderay
-      - url: /markdown/highlight/coderay
-      - url: /markdown/highlight/pygments
-
+docs-en-attr:
+  titles:
+    en      : &EN       Docs
+    en-GB   : *EN
+    en-US   : *EN
+    en-CA   : *EN
+    en-AU   : *EN
+    zh-Hans : &ZH_HANS  
+    zh      : *ZH_HANS
+    zh-CN   : *ZH_HANS
+    zh-SG   : *ZH_HANS
 docs-en:
   - title: Start
     details:
@@ -47,6 +112,8 @@ docs-en:
       - url: /docs/en/typography
       - url: /docs/en/blog-service-migration
 
+  - id: layouts
+
   - title: Components
     details:
       - url: /docs/en/components/spacing
@@ -54,6 +121,7 @@ docs-en:
       - url: /docs/en/components/code
       - url: /docs/en/components/alert
       - url: /docs/en/components/button
+      - url: /docs/en/components/checkbox
       - url: /docs/en/components/icons
       - url: /docs/en/components/images
       - url: /docs/en/components/item
@@ -66,8 +134,6 @@ docs-en:
   - title: Configuration
     details:
       - url: 
-  - title: Layouts
-    url: 
   - title: Authors
     url: /docs/en/authors
 

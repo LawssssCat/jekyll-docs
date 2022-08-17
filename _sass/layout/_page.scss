@@ -1,3 +1,4 @@
+/* stylelint-disable scss/no-global-function-names */
 .layout--page {
   .page__viewport {
     min-height: 100vh;
@@ -7,6 +8,10 @@
       @include flex(1);
     }
   }
+}
+
+.page__main {
+  position: relative;
 }
 
 .page__main-inner {

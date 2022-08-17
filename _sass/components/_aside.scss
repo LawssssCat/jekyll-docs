@@ -4,8 +4,14 @@
     max-width: map-get($layout, content-max-width) + map-get($layout, aside-width);
   }
   .col-aside {
-    width: map-get($layout, aside-width);
-    @include media-breakpoint-down(lg) {
+    width: map-get($layout, aside-width-lg);
+    @include media-breakpoint-down($name: lg, $offset: (map-get($layout, aside-width) + map-get($layout, aside-width-lg)) / 2) {
+      width: map-get($layout, aside-width);
+    }
+    @include media-breakpoint-down($name: lg, $offset: (map-get($layout, aside-width-sm) + map-get($layout, aside-width)) / 2) {
+      width: map-get($layout, aside-width-sm);
+    }
+    @include media-breakpoint-down($name: lg) {
       display: none;
     }
   }

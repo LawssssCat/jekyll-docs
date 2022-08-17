@@ -1,12 +1,27 @@
 const logger = require('logger');
+const TOOL = require('tool-box');
 const { Queue } = require('lib/queue');
 
 function runFunction(func, caller, ...args) {
+  const logo = 'lazyload.js';
+  const info = {
+    caller: caller,
+    func: func,
+    args: args
+  };
   try{
-    func && func.call(caller, ...args);
-    logger.isDebug() && logger.debug('caller', caller, '\n', 'func', func, 'args', args);
+    info.startTime=new Date();
+    func.call(caller, ...args);
+    info.endTime=new Date();
+    info.runTime = info.endTime - info.startTime;
+    // runFunctionRecord.push(info);
+    if(info.runTime>=100) {
+      logger.warn(logo, info, '\n', `runtime(${info.runTime}ms) is more then 100ms`);
+    } else if(logger.isDebug()) {
+      logger.debug(logo, info);
+    }
   } catch (err) {
-    logger.error('caller', caller, '\n', 'func', func, 'args', args, '\n', err); // prompt the console for errors and continue with the next task.
+    logger.error(logo, info, '\n', err); // prompt the console for errors and continue with the next task.
   }
 }
 
@@ -125,19 +140,30 @@ class WindowLoad {
       queueCallback: []
     };
   }
-  onload(callback) {
+  onload(callback, options={}) {
     const context = this;
     // push
-    context.onloadStatus.queueCallback.push(callback);
+    context.onloadStatus.queueCallback.push({
+      callback: callback,
+      priority: options.priority==null?0:options.priority
+    });
     // init
     if(context.onloadStatus.init == false) {
       context.onloadStatus.init = true;
-      window.addEventListener('load', (...args) => {
+      // improvement: listen 'DOMContentLoaded' instead of 'load'
+      // doc zhihu https://zhuanlan.zhihu.com/p/25876048
+      // doc w3c https://html.spec.whatwg.org/multipage/parsing.html#parsing
+      // doc mdn https://developer.mozilla.org/en-US/docs/Web/API/Window/DOMContentLoaded_event
+      // demo https://testdrive-archive.azurewebsites.net/HTML5/DOMContentLoaded/Default.html
+      // window.addEventListener('DOMContentLoaded', );
+      TOOL.ready((...args) => {
         context.onloadStatus.windowLoad = true;
         context.onloadStatus.windowLoadArgs = args;
         // callback
-        context.onloadStatus.queueCallback.forEach(callback => {
-          runFunction(callback, context, ...args);
+        context.onloadStatus.queueCallback.sort((a, b) => {
+          return a.priority - b.priority; // -1, 0, 1, 3, ...
+        }).forEach(item => {
+          runFunction(item.callback, context, ...args);
         });
       });
     }

@@ -20,7 +20,8 @@ lazyload.onload(() => {
     const anchor = window.document.createElement('a');
     anchor.classList.add('anchor');
     anchor.classList.add('d-print-none');
-    anchor.innerHTML = '#';
+    anchor.classList.add('fas');
+    anchor.classList.add('fa-link');
     dom.appendChild(anchor);
     anchor.addEventListener('click', (e) => {
       e.preventDefault();
@@ -54,7 +55,8 @@ lazyload.onload(() => {
 });
 
 function updateArticleHandingDomActive(headingsDom, headingsDomTree, pageScroller) {
-  const myScrollTop = pageScroller.scrollTop + pageScroller.clientHeight/2;
+  const detectHeight = pageScroller.clientHeight/4;
+  const myScrollTop = pageScroller.scrollTop + Math.max(detectHeight, 100);
   let i, activeHeader=null;
   for(i=0; i<headingsDom.length; i++) {
     let currentHeader = headingsDom[i];

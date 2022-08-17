@@ -1,29 +1,66 @@
 /* stylelint-disable scss/no-global-function-names */
 .block-tabs {
   margin-top: map-get($spacers, 3);
+  .tab-split {
+    height: map-get($base, font-size);
+    border-left: 1px solid;
+    @include themeify {
+      border-color: themed(border-color-l);
+    }
+  }
+  .tab-navs-wrapper {
+    position: relative;
+    overflow-x: hidden;
+    margin-bottom: map-get($spacers, 3);
+    @include flexbox();
+    @include align-items(center);
+    .tab-toggle-left, .tab-toggle-right {
+      display: none;
+      @include cursor-clickable;
+      @include themeify {
+        background: themed(border-color);
+      }
+      &.active {
+        display: block;
+      }
+    }
+    .tab-toggle-right {
+      position: absolute;
+      right: 0;
+    }
+    .tab-toggle-left {
+      position: absolute;
+      left: 0;
+    }
+  }
   .tab-navs {
     margin-top: 0;
     margin-bottom: 0;
+    @include transition(transform map-get($animation, duration) map-get($animation-timing-function, 1));
     @include flexbox();
-    @include flex-wrap(wrap);
+    @include flex-wrap(nowrap);
+    @include align-items(center);
     .tab-nav {
+      min-height: $button-height-lg;
       @include button;
       @include button-size("md");
-      @include themeify {
-        @include button--outline(text-color, main-color-3);
-      }
+      padding: 0 map-get($spacers, 3);
+      font-weight: map-get($base, font-weight);
+      white-space: nowrap;
       @include flexbox();
       @include align-items(center);
-      margin-right: -1px;
-      $_radius: map-get($base, border-radius);
-      &:first-child {
-        border-top-left-radius: $_radius;
-        border-bottom-left-radius: $_radius;
+      @include active {
+        .tab-nav-inner {
+          @include themeify {
+            border-bottom-color: themed(main-color-1);
+          }
+        }
       }
-      &:last-child {
-        border-top-right-radius: $_radius;
-        border-bottom-right-radius: $_radius;
-      }
+    }
+    .tab-nav-inner {
+      box-sizing: inherit;
+      padding: map-get($spacers, 1) map-get($spacers, 2);
+      border-bottom: 2px solid transparent;
     }
   }
   .tab-contents {

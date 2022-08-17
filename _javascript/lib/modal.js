@@ -1,4 +1,5 @@
 const logger = require('logger');
+const TOOL = require('tool-box');
 
 class Modal {
   constructor(options={}) {
@@ -11,29 +12,30 @@ class Modal {
     // node
     this.node = window.document.createElement('div');
     this.node.classList.add(this.config.modalClass);
-  }
-  scrollDisable() {
-    this.containerOverflowY = this.container.style.overflowY;
-    this.container.style.overflowY = 'hidden';
-  }
-  scrollEnable() {
-    this.container.style.overflowY = this.containerOverflowY || '';
+    // status
+    this.isShow = false;
   }
   show() {
-    this.scrollDisable();
-    this.container.appendChild(this.node);
-    this.node.classList.add(this.config.modalShowClass);
-    this.showCallback && this.showCallback(this);
+    if(!this.isShow) {
+      TOOL.lockScroll();
+      this.container.appendChild(this.node);
+      this.node.classList.add(this.config.modalShowClass);
+      this.showCallback && this.showCallback(this);
+    }
+    this.isShow = true;
   }
   hide() {
-    this.scrollEnable();
-    let TransitionedFunc;
-    this.node.addEventListener('transitionend', TransitionedFunc = () => {
-      this.node.removeEventListener('transitionend', TransitionedFunc);
-      this.container.removeChild(this.node);
-    });
-    this.node.classList.remove(this.config.modalShowClass);
-    this.hideCallback && this.hideCallback(this);
+    if(this.isShow) {
+      TOOL.unlockScroll();
+      let TransitionedFunc;
+      this.node.addEventListener('transitionend', TransitionedFunc = () => {
+        this.node.removeEventListener('transitionend', TransitionedFunc);
+        this.container.removeChild(this.node);
+      });
+      this.node.classList.remove(this.config.modalShowClass);
+      this.hideCallback && this.hideCallback(this);
+    }
+    this.isShow = false;
   }
   addCallback(callbackName, callback) {
     if(!this[callbackName]) {

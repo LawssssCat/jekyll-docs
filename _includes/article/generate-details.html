@@ -1,7 +1,35 @@
 {% assign _summaruy      = include.summary  %}
 {% assign _code          = include.code     %}
+{% assign _open          = include.open     %}
 
-<details>
-  <summary>{{ _summaruy }}</summary>
-{{ _code }}
-</details>
+{%- assign _details_attr = "" -%}
+{%- if _open==true -%}
+  {%- assign _details_attr = _details_attr | append: " open" -%}
+{%- endif -%}
+
+<div class="details-wrapper">
+  {%- if _summaruy -%}
+    <div class="summary-content">{{ _summaruy }}</div>
+  {%- endif -%}
+  <div class="details-content-wrapper">
+    <details {{ _details_attr }}  onclick="javascript:
+      window.VARIABLES.pageScrollTarget.scroll({
+        top: TOOL.positionRelative(
+            (this.open?this.parentElement.parentElement:this.parentElement), 
+            window.VARIABLES.pageScroller
+          ).top,
+        behavior: window.VARIABLES.pageScrollerBehavior
+      });
+    ">
+      <summary class="summary-toggle" title="click to show details">
+        <i class="summary-toggle-icon fas fa-angle-double-down"></i>
+      </summary>
+    </details>
+    <div class="details-content">
+      <div class="details-content-inner">
+        <p>details:</p>
+        {{ _code }}
+      </div>
+    </div>
+  </div>
+</div>

@@ -34,10 +34,10 @@
   @if $hover-clr == default { /* hover -> normal */
     @if $hover-bg-clr == null {
       @if $theme == "light" {
-        $hover-clr: get-color-adjust("dark", $clr, 1);
+        $hover-clr: get-color-adjust($clr, "dark", 1);
       }
       @if $theme == "dark" {
-        $hover-clr: get-color-adjust("light", $clr, 2);
+        $hover-clr: get-color-adjust($clr, "light", 2);
       }
     } @else if $hover-bg-clr == default {
       $hover-clr: $clr; 
@@ -46,10 +46,10 @@
 
   @if $hover-bg-clr == default {
     @if $theme == 'light' {
-      $hover-bg-clr: get-color-adjust("dark", $bg-clr, 1);
+      $hover-bg-clr: get-color-adjust($bg-clr, "dark", 1);
     }
     @if $theme == 'dark' {
-      $hover-bg-clr: get-color-adjust("light", $bg-clr, 2);
+      $hover-bg-clr: get-color-adjust($bg-clr, "light", 2);
     }
   }
 
@@ -57,10 +57,10 @@
   @if $active-clr == default { /* active -> hover -> normal */
     @if $active-bg-clr == null {
       @if $theme == "light" {
-        $active-clr: get-color-adjust("dark", $hover-clr, 2);
+        $active-clr: get-color-adjust($hover-clr, "dark", 2);
       }
       @if $theme == "dark" {
-        $active-clr: get-color-adjust("light", $hover-clr, 1);
+        $active-clr: get-color-adjust($hover-clr, "light", 1);
       }
     } @else if $active-bg-clr == default {
       $active-clr: $hover-clr; 
@@ -69,24 +69,26 @@
 
   @if $active-bg-clr == default {
     @if $theme == "light" {
-      $active-bg-clr: get-color-adjust("dark", $hover-bg-clr, 2);
+      $active-bg-clr: get-color-adjust($hover-bg-clr, "dark", 2);
     }
     @if $theme == "dark" {
-      $active-bg-clr: get-color-adjust("light", $hover-bg-clr, 1);
+      $active-bg-clr: get-color-adjust($hover-bg-clr, "light", 1);
     }
   }
 
   // focus
   @if $focus-clr == default { /* focus = active -> hover -> normal */
-    @if $focus-bg-clr == null {
-      $focus-clr: $hover-clr;
-    } @else if $hover-bg-clr == default {
-      $focus-clr: $hover-clr;
-    }
+    // @if $focus-bg-clr == null {
+    //   $focus-clr: $hover-clr;
+    // } @else if $hover-bg-clr == default {
+    //   $focus-clr: $hover-clr;
+    // }
+    $focus-clr: null;
   }
 
   @if $focus-bg-clr == default {
-    $focus-bg-clr: $hover-bg-clr;
+    // $focus-bg-clr: $hover-bg-clr;
+    $focus-bg-clr: null;
   }
 
   @include plain() {
@@ -108,8 +110,10 @@
     }
   }
   @include focus() {
-    color: $focus-clr;
-    @if $focus-bg-clr{
+    @if $focus-clr {
+      color: $focus-clr;
+    }
+    @if $focus-bg-clr {
       background-color: $focus-bg-clr;
     }
   }

@@ -16,6 +16,7 @@
   ol,
   dl,
   table,
+  .details-wrapper,
   .footnotes {
     @content;
   }
@@ -51,7 +52,10 @@ body {
   margin: 0;
   font: map-get($base, font-weight) #{map-get($base, font-size)}/#{map-get($base, line-height)} map-get($base, font-family);
   @include selection() {
-    @include themeify-color($color: text-color-1, $background-color: select-color);
+    @include themeify {
+      color: themed(text-color-1);
+      background-color: themed(select-color);
+    }
   }
 }
 
@@ -60,10 +64,15 @@ body {
   margin: map-get($spacers, 2) 0;
 }
 
-input, textarea, select, button {
-  font: map-get($base, font-weight) #{map-get($base, font-size)}/#{map-get($base, line-height)} map-get($base, font-family);
-  @include themeify-color(text-color);
+@include heading-elements {
+  margin: map-get($spacers, 1) 0;
+  margin-top: map-get($spacers, 4);
 }
+
+// input, textarea, select, button {
+//   font: map-get($base, font-weight) #{map-get($base, font-size)}/#{map-get($base, line-height)} map-get($base, font-family);
+//   @include themeify-color(text-color);
+// }
 
 h1,
 h2,
@@ -76,32 +85,43 @@ strong{
 }
 
 h1 {
-  font-size: map-get($base, font-size-h1);
-  @include themeify-color(text-color-d);
+  font-size: map-get($base, font-size-h1-xl);
+  @include themeify {
+    color: themed(text-color-d);
+  }
   @include media-breakpoint-down(md) {
-    font-size: map-get($base, font-size-h1-sm);
+    font-size: map-get($base, font-size-h1);
   }
 }
 
 h2 {
+  margin-top: map-get($spacers, 6);
   font-size: map-get($base, font-size-h2);
-  @include themeify-color(text-color-d);
+  @include themeify {
+    color: themed(text-color-d);
+  }
   @include media-breakpoint-down(md) {
     font-size: map-get($base, font-size-h2-sm);
   }
 }
 
 h3 {
+  margin-top: map-get($spacers, 5);
   font-size: map-get($base, font-size-h3);
-  @include themeify-color(text-color-d);
+  @include themeify {
+    color: themed(text-color-d);
+  }
   @include media-breakpoint-down(md) {
     font-size: map-get($base, font-size-h3-sm);
   }
 }
 
 h4 {
+  margin-top: map-get($spacers, 4);
   font-size: map-get($base, font-size-h4);
-  @include themeify-color(text-color);
+  @include themeify {
+    color: themed(text-color);
+  }
   @include media-breakpoint-down(md) {
     font-size: map-get($base, font-size-h4-sm);
   }
@@ -109,7 +129,9 @@ h4 {
 
 h5 {
   font-size: map-get($base, font-size-h5);
-  @include themeify-color(text-color);
+  @include themeify {
+    color: themed(text-color);
+  }
   @include media-breakpoint-down(md) {
     font-size: map-get($base, font-size-h5-sm);
   }
@@ -117,17 +139,29 @@ h5 {
 
 h6 {
   font-size: map-get($base, font-size-h6);
-  @include themeify-color(text-color-l);
+  @include themeify {
+    color: themed(text-color-l);
+  }
   @include media-breakpoint-down(md) {
     font-size: map-get($base, font-size-h6-sm);
   }
 }
 
 a {
-  font-weight: map-get($base, font-weight-bold);
+  // font-weight: map-get($base, font-weight-bold);
   @include themeify {
     @include link-colors(themed(main-color-1));
   }
+  cursor: pointer;
+  &[href="javascript:void(0)"] {
+    cursor: default;
+  }
+}
+
+ul,
+ol,
+dl {
+  list-style-position: outside;
 }
 
 pre, code {

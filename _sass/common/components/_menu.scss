@@ -20,9 +20,6 @@
     }
     margin-right: map-get($spacers, $horizontal-spacer);
     list-style-type: none;
-    &:last-child {
-      margin-right: 0;
-    }
   }
 }
 

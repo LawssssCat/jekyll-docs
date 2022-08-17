@@ -84,7 +84,32 @@ TOOL.positionRelative = function(dom, container=document.body) {
   };
 };
 
+TOOL.unlockScroll = function(dom) {
+  const container = dom || window.document.body;
+  if(container.isLockScroll) {
+    container.style.overflowY = '';
+    container.style.marginRight = '';
+  }
+  container.isLockScroll = false;
+};
+
+TOOL.lockScroll = function(dom) {
+  const container = dom || window.document.body;
+  if(!container.isLockScroll) {
+    if(TOOL.isOverflowY(container)) {
+      container.style.overflowY = 'hidden';
+      container.style.marginRight = '16px';
+    } else {
+      container.style.overflowY = 'hidden';
+    }
+  }
+  container.isLockScroll = true;
+};
+
 TOOL.isOverflowY = function(dom) {
+  if(document.body == dom) {
+    return document.body.scrollHeight > (window.innerHeight || document.documentElement.clientHeight);
+  }
   return dom.offsetHeight < dom.scrollHeight;
 };
 
@@ -96,18 +121,20 @@ TOOL.isHidden = function(element) {
   // var style = window.getComputedStyle(el);//el即DOM元素
   // return (style.display === 'none');
   return (!element)
-    || (TOOL.getStyle(element, 'display') == 'none')
+    || (TOOL.getStyle(element)['display'] == 'none')
     || (element.offsetHeight === 0 && element.offsetWidth === 0);
 };
 
-TOOL.getStyle = function(obj, attr) {
+TOOL.getStyle = function(obj) {
+  let style;
   if (obj.currentStyle) { // compatible IE
-    return obj.currentStyle[attr];
+    style = obj.currentStyle;
   } else if (window.getComputedStyle) {
-    return window.getComputedStyle(obj, null)[attr];
+    style = window.getComputedStyle(obj, null);
   } else {
-    return obj.style[attr];
+    style = obj.style;
   }
+  return style;
 };
 
 function px2Float(px) {
@@ -117,27 +144,57 @@ function px2Float(px) {
   return float?float:0;
 }
 
+function cloneDisplayNone(dom, callback) {
+  const flag = (TOOL.getStyle(dom)['display'] == 'none');
+  if(!flag) {
+    return callback(dom);
+  } else {
+    const rawVisibility = dom.style.visibility;
+    const rawDisplay = dom.style.display;
+    dom.style.visibility = 'hidden';
+    dom.style.display = 'block';
+    const result = callback(dom);
+    dom.style.visibility = rawVisibility;
+    dom.style.display = rawDisplay;
+    return result;
+  }
+}
+
+TOOL.height = function(dom) {
+  if(!dom) return 0;
+  return cloneDisplayNone(dom, (dom) => {
+    const style = TOOL.getStyle(dom);
+    const  innerHeight           =px2Float(style['height']);
+    return innerHeight;
+  });
+};
+
 /**
- * margin + padding + content + padding + margin
+ * content
  * return content
  */
 TOOL.innerWidth = function(dom) {
   if(!dom) return 0;
-  const flag = (TOOL.getStyle(dom, 'display') == 'none');
-  if(flag) {
-    dom = dom.cloneNode(true);
-    dom.style.position = 'absolute';
-    dom.style.top = '-3000px';
-    dom.style.display = 'block';
-    document.getElementsByTagName('body')[0].appendChild(dom);
-  }
-  const paddingLeft      =px2Float(TOOL.getStyle(dom, 'paddingLeft')),
-    innerWidth           =px2Float(TOOL.getStyle(dom, 'width')),
-    paddingRight         =px2Float(TOOL.getStyle(dom, 'paddingRight'));
-  if(flag) {
-    dom.parentNode.removeChild(dom);
-  }
-  return -paddingLeft+innerWidth-paddingRight;
+  return cloneDisplayNone(dom, (dom) => {
+    const style = TOOL.getStyle(dom);
+    const paddingLeft      =px2Float(style['paddingLeft']),
+      innerWidth           =px2Float(style['width']),
+      paddingRight         =px2Float(style['paddingRight']);
+    return -paddingLeft+innerWidth-paddingRight;
+  });
+};
+
+/**
+ * padding + content + padding
+ * return content
+ */
+TOOL.width = function(dom) {
+  if(!dom) return 0;
+  return cloneDisplayNone(dom, (dom) => {
+    const style = TOOL.getStyle(dom);
+    const innerWidth           =px2Float(style['width']);
+    return innerWidth;
+  });
 };
 
 /**
@@ -145,10 +202,13 @@ TOOL.innerWidth = function(dom) {
  */
 TOOL.outterWidth = function(dom) {
   if(!dom) return 0;
-  const marginLeft     =px2Float(TOOL.getStyle(dom, 'marginLeft')),
-    marginRight        =px2Float(TOOL.getStyle(dom, 'marginRight')),
-    innerWidth         =TOOL.innerWidth(dom);
-  return marginLeft+innerWidth+marginRight;
+  return cloneDisplayNone(dom, (dom) => {
+    const style = TOOL.getStyle(dom);
+    const marginLeft     =px2Float(style['marginLeft']),
+      marginRight        =px2Float(style['marginRight']),
+      innerWidth         =TOOL.innerWidth(dom);
+    return marginLeft+innerWidth+marginRight;
+  });
 };
 
 /*
@@ -176,11 +236,7 @@ TOOL.childTotalWidth = function(dom) {
 // 
 // see: https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API
 // demo: https://jsfiddle.net/elmarj/u35tez5n/5
-TOOL.respondToVisibility = function(element, callback) {
-  var options = {
-    root: document.documentElement
-  };
-
+TOOL.respondToVisibility = function(element, callback, options) {
   // eslint-disable-next-line no-unused-vars
   var observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
@@ -270,6 +326,42 @@ TOOL.prompt = function (text, options={}) {
     }, delay);
   }
   return prompt;
+};
+
+/**
+ * https://www.cnblogs.com/caizhenbo/p/6679478.html
+ */
+TOOL.ready = function(fn){
+
+  if(document.addEventListener) {
+    let func;
+    document.addEventListener('DOMContentLoaded', func = function() {
+      document.removeEventListener('DOMContentLoaded',func, false);
+      fn();
+    }, false);
+  } 
+
+  // 如果IE
+  else if(document.attachEvent) {
+    let func;
+    // 确保当页面是在iframe中加载时，事件依旧会被安全触发
+    document.attachEvent('onreadystatechange', func = function() {
+      if(document.readyState == 'complete') {
+        document.detachEvent('onreadystatechange', func);
+        fn();
+      }
+    });
+
+    // 如果是IE且页面不在iframe中时，轮询调用doScroll 方法检测DOM是否加载完毕
+    if(document.documentElement.doScroll && typeof window.frameElement === 'undefined') {
+      try{
+        document.documentElement.doScroll('left');
+      } catch(error) {
+        return setTimeout(func, 20);
+      }
+      fn();
+    }
+  }
 };
 
 module.exports = window.TOOL = TOOL;
