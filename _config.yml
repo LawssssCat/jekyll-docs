@@ -8,16 +8,16 @@
 # -------------------------
 # Site Settings 
 # -------------------------
-baseurl: /jekyll-docs-all-in-one # does not include hostname
+baseurl: /jekyll-docs # does not include hostname
 url: https://lawsssscat.github.io/ # https://lawsssscat.github.io/jekyll-docs-all-in-one (needn't indicate. auto generate) # the base hostname & protocol for your site e.g. https://www.someone.com (use in "absolute_url" tag with production environment. e.g. JEKYLL_ENV="production" bundle exec jekyll build)
-title: jekyll-docs-all-in-one
+title: jekyll-docs
 title_short: jekyll-aio
 description: >
   Collects the common information of Jekyll and put all in one site.
 
 repository:
   platform: github
-  name: lawsssscat/jekyll-docs-all-in-one
+  name: lawsssscat/jekyll-docs
   tree: dev
 
 # -------------------------
@@ -162,7 +162,7 @@ compress_html:
 exclude:
   - README.md
   - LICENSE
-  - jekyll-docs-all-in-one.gemspec
+  - jekyll-docs.gemspec
   - /.git
   - .gitignore
   - package-lock.json

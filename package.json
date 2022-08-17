@@ -1,5 +1,5 @@
 {
-  "name": "jekyll-docs-all-in-one",
+  "name": "jekyll-docs",
   "version": "1.0.0",
   "author": "lawsssscat",
   "license": "MIT",
@@ -7,13 +7,13 @@
   "keywords": [
     "jekyll"
   ],
-  "homepage": "https://github.com/LawssssCat/jekyll-docs-all-in-one#readme",
+  "homepage": "https://github.com/LawssssCat/jekyll-docs#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LawssssCat/jekyll-docs-all-in-one.git"
+    "url": "git+https://github.com/LawssssCat/jekyll-docs.git"
   },
   "bugs": {
-    "url": "https://github.com/LawssssCat/jekyll-docs-all-in-one/issues"
+    "url": "https://github.com/LawssssCat/jekyll-docs/issues"
   },
   "scripts": {
     "prepare": "husky install",
