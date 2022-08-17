@@ -1,6 +1,8 @@
+/* stylelint-disable scss/at-extend-no-missing-placeholder */
 /* stylelint-disable scss/no-global-function-names */
 
 $_sidebar_width: map-get($layout, sidebar-width);
+$_sidebar_width_sm: map-get($layout, sidebar-width-sm);
 
 .page__sidebar-actions {
   position: fixed;
@@ -18,18 +20,28 @@ $_sidebar_width: map-get($layout, sidebar-width);
   }
 }
 
+.page__sidebar-toggle {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: map-get($spacers, 3);
+  text-align: center;
+  @include button();
+  @extend .button--secondary;
+}
+
 .page__sidebar {
   position: sticky;
   top: 0;
   z-index: map-get($z-indexes, sidebar);
   width: 80%;
-  max-width: $_sidebar_width;
+  max-width: $_sidebar_width_sm;
   height: 100vh;
+  overflow: visible;
   white-space: nowrap;
   @include split-line(right);
   @include overflow(auto);
-  // @include transition(transform map-get($animation, duration));
-  @include transition(margin-left map-get($animation, duration));
+  @include transition(max-width map-get($animation, duration));
   @include themeify() {
     color: themed(text-color);
     background-color: themed(background-color);
@@ -37,28 +49,13 @@ $_sidebar_width: map-get($layout, sidebar-width);
   .page__sidebar-inner {
     width: 100%;
     height: 100%;
+    overflow-y: auto;
   }
 }
 
-@include media-breakpoint-down($name: lg, $offset: $_sidebar_width) {
-  .page__sidebar-actions {
-    display: block;
-    opacity: 1;
-  }
+.sidebar-active {
   .page__sidebar {
-    // position: fixed;
-    // @include transform(translate(- $_sidebar_width, 0));
-    margin-left: - $_sidebar_width;
-  }
-  .show-sidebar { // show
-    .page__actions {
-      visibility: hidden;
-    }
-    .page__sidebar {
-      z-index: map-get($z-indexes, sidebar-active);
-      // @include transform(translate(0));
-      margin-left: 0;
-    }
+    max-width: $_sidebar_width;
   }
 }
 

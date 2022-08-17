@@ -10,6 +10,10 @@
   }
 }
 
+.page__main {
+  position: relative;
+}
+
 .page__main-inner {
   height: 100%;
   @include flexbox();

@@ -504,7 +504,7 @@ $height_header: map-get($layout, header-height);
       top: $height_header;
       left: 0;
       z-index: map-get($z-indexes, header);
-      width: calc(100% - #{map-get($layout, scrollbar-width)});
+      width: calc(100%);
       max-height: 0;
       @include themeify {
         background: themed(header-background);
