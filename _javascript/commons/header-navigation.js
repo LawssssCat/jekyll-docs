@@ -9,16 +9,54 @@ lazyload.onload(() => {
 });
 
 const HeaderNavConst = {
-  activeClass: 'active'
+  activeClass: 'active',
+  mobile_navActiveClass: 'navigation--mobile-open'
 };
+class HeaderNavToggle {
+  constructor(header) {
+    this.header = header;
+    this.toggle = header.querySelector('.navigation__toggle');
+  }
+  init() {
+    const toggleClassName = HeaderNavConst.mobile_navActiveClass;
+    const header = this.header;
+    const toggle = this.toggle;
+    toggle.addEventListener('click', (e) => {
+      if((e.composedPath?e.composedPath():e.path).includes(toggle) && !header.classList.contains(toggleClassName)) {
+        header.classList.add(toggleClassName);
+        TOOL.lockScroll();
+      } else {
+        header.classList.remove(toggleClassName);
+        TOOL.unlockScroll();
+      }
+    });
+    TOOL.respondToVisibility(toggle, (visible) => {
+      if(!visible) {
+        header.classList.remove(toggleClassName);
+        TOOL.unlockScroll();
+        this.visible = false;
+      } else {
+        this.visible = true;
+      }
+    });
+  }
+  isVisible() {
+    return this.visible;
+  }
+}
 class HeaderNav {
   constructor() {
     this.navs = [];
-    window.document.querySelectorAll('.navigation__item').forEach(dom => {
+    const header = window.document.querySelector('.js-header');
+    // toggle
+    this.toggle = new HeaderNavToggle(header);
+    // navs
+    header.querySelectorAll('.navigation__item').forEach(dom => {
       const nav = {
         dom: dom
       };
       this.navs.push(nav);
+      nav.itemLinkDom = nav.dom.querySelector('.navigation__item-link');
       nav.subBlockDom = nav.dom.querySelector('.quicklinks-block');
       nav.hasSubNav = nav.subBlockDom ? true : false;
       if(nav.hasSubNav) {
@@ -45,6 +83,9 @@ class HeaderNav {
         });
       }
     });
+  }
+  isMediaDown() {
+    return this.toggle.isVisible();
   }
   clearActive(nav) {
     const navs = nav ? [nav] : this.navs;
@@ -87,12 +128,19 @@ class HeaderNav {
     nav.subBlockDom.style.height = '';
   }
   init() {
+    // toggle init
+    this.toggle.init();
     // reset
     this.clearActive();
     // event linstener
     this.navs.forEach((nav) => {
       if(nav.hasSubNav) {
+
+        // media up
         nav.dom.addEventListener('mouseenter', (e) => {
+          if(this.isMediaDown()) {
+            return;
+          }
           e.preventDefault();
           if(!nav.dom.contains(e.fromElement)) {
             if(!nav.isHoving) {
@@ -105,6 +153,9 @@ class HeaderNav {
           }
         });
         nav.dom.addEventListener('mouseleave', (e) => {
+          if(this.isMediaDown()) {
+            return;
+          }
           e.preventDefault();
           if(!nav.dom.contains(e.toElement)) {
             if(nav.isHoving) {
@@ -117,11 +168,47 @@ class HeaderNav {
         });
         nav.subLeftNavs.forEach((subnav, index) => {
           subnav.dom.addEventListener('mouseenter', (e) => {
+            if(this.isMediaDown()) {
+              return;
+            }
             e.preventDefault();
+            this.setSubBlockActive(nav, index);
+          });
+        });
+
+        // media down
+        nav.itemLinkDom.addEventListener('click', () => {
+          if(!this.isMediaDown()) {
+            return;
+          }
+          const flag = nav.dom.classList.contains(HeaderNavConst.activeClass);
+          this.clearActive();
+          if(!flag) {
+            nav.dom.classList.add(HeaderNavConst.activeClass);
+          }
+        });
+        nav.subLeftNavs.forEach((leftNav, index) => {
+          leftNav.dom.addEventListener('click', () => {
+            if(!this.isMediaDown()) {
+              return;
+            }
             this.setSubBlockActive(nav, index);
           });
         });
       }
     });
+  }
+  switchLeftNavsOpen(openLeftNav) {
+    const openClassName = HeaderNavConst.activeClass;
+    const flag = openLeftNav;
+    this.navs.forEach(_n => {
+      const leftNavs = _n.subLeftNavs;
+      if(leftNavs) {
+        leftNavs.forEach(subLeftNav => subLeftNav.dom.classList.remove(openClassName));
+      }
+    });
+    if(flag) {
+      openLeftNav.dom.classList.add(openClassName);
+    }
   }
 }

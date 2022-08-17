@@ -14,7 +14,7 @@
       "block-scoped-var": "error",
       "default-case": "error",
       "no-extra-bind": "error",
-      "camelcase": "error",
+      "camelcase": "warn",
       "indent": ["error", 2, { "SwitchCase": 1 }],
       "eol-last": ["error", "always"]
   },

@@ -104,6 +104,14 @@ class CodeHeader {
       toggle: headerCopy,
       toggleEvents: ['hover'],
       content: popperContentReady,
+      popperConfigModifiers: [
+        {
+          name: 'offset',
+          options: {
+            offset: [0, 8]
+          }
+        }
+      ],
       showCallback: () => {
         if(!hover) { // only the first hover event is active until 'mouseout'.
           popper.setContent(popperContentReady);

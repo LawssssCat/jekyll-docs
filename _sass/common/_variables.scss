@@ -87,8 +87,10 @@ $z-indexes: (
 );
 
 $layout: (
+  scrollbar-width: 16px,
   header-height:          3.4rem,
   header-height-sm:       3rem,
+  header-nav-left-mobile: 150px,
   content-max-width:      950px,
   sidebar-width:          250px,
   sidebar-header-height:  3rem,
