@@ -15,6 +15,14 @@
     max-height: 0;
     overflow-y: hidden;
     @include transition(max-height map-get($animation, duration) map-get($animation-timing-function, 1));
+    @include themeify {
+      background:
+        get-color-adjust(
+          $color: themed(background-color),
+          $level: 1,
+          $reverse: true
+        );
+    }
   }
   details {
     position: sticky;

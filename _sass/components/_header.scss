@@ -417,7 +417,7 @@ $height_header: map-get($layout, header-height);
           top: 0;
           left: map-get($layout, header-nav-left-mobile);
           width: calc(100% - #{map-get($layout, scrollbar-width)} - #{map-get($layout, header-nav-left-mobile)});
-          height: 100%;
+          height: calc(100% - #{$height_header});
         }
         .quicklinks-block-left {
           width: 100%;
@@ -440,6 +440,7 @@ $height_header: map-get($layout, header-height);
         @include justify-content(space-between);
       }
       .quicklinks-block-left-menu {
+        padding-top: map-get($spacers, 2) !important;
         > li {
           position: relative;
           padding-top: map-get($spacers, 1);
