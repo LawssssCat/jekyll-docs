@@ -1,6 +1,9 @@
-@mixin column($count, $gap: default) {
+@mixin column($count, $gap: default, $width: default) {
   @if $gap == default {
     $gap: map-get($spacers, 3);
+  }
+  @if $width == default {
+    $width: 150px;
   }
   column-count: $count;
   -webkit-column-count: $count;
@@ -8,4 +11,7 @@
   column-gap: $gap;
   -webkit-column-gap: $gap;
   -moz-column-gap: $gap;
+  column-width: $width;
+  -webkit-column-width: $width;
+  -moz-column-width: $width;
 }

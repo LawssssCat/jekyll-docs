@@ -377,7 +377,6 @@ html
 {%- assign _summary = _summary | markdownify -%}
 <!-- ======================= -->
 {%- capture _code -%}
-
 `Jekyll` source code [lib/jekyll/configuration.rb](https://github.com/jekyll/jekyll/blob/master/lib/jekyll/configuration.rb)
 
 ```ruby

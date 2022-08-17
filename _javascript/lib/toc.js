@@ -61,7 +61,11 @@ function getHeadingDomlevel(headingDom) {
 </ol>
 */
 function generateTocDOM(headers, headersLevel, topLevel) {
-  const tag = 'ol', tocDom = document.createElement(tag), // result
+  const tag = 'ol', tocDom = (function() {
+      const rootNode = document.createElement(tag); // result
+      rootNode.classList.add('root-node');
+      return rootNode;
+    })(),
     // stack
     stackDOM = new Stack([tocDom]), 
     headersDOMlist = []; // save for later use
@@ -215,16 +219,38 @@ class Toc {
   updateActive(handingDomActiveList) {
     this.headersDOMlist.forEach(dom => {
       dom.classList.remove('active');
+      dom.classList.remove('through');
     });
     if(handingDomActiveList && handingDomActiveList.length>0) {
       const selector = handingDomActiveList.map(headingDom => {
         return `a[href="#${headingDom.id}"]`;
       }).join(',');
-      this.headersDOMlist.filter(dom => {
-        return dom.querySelectorAll(selector).length > 0;
-      }).forEach(dom => {
+      const activeHeaderLevel = [];
+      const activeHeaderDomList = this.headersDOMlist.filter((dom, index) => {
+        const flag = dom.querySelectorAll(selector).length > 0;
+        if(flag) {
+          const headerLevel = this.headersLevel[index];
+          activeHeaderLevel.push(headerLevel);
+        }
+        return flag;
+      });
+      // active
+      activeHeaderDomList.forEach(dom => {
         dom.classList.add('active');
       });
+      // through
+      let index=0, activeIndex=0;
+      for(; activeIndex<activeHeaderDomList.length;) {
+        const headerDom = this.headersDOMlist[index], headerLevel = this.headersLevel[index];
+        index++;
+        const activeHeaderDom = activeHeaderDomList[activeIndex], activeLevel = activeHeaderLevel[activeIndex];
+        if(headerDom==activeHeaderDom) {
+          activeIndex++;
+        }
+        if(headerLevel==activeLevel && headerDom!=activeHeaderDom) {
+          headerDom.classList.add('through');
+        }
+      }
     }
   }
 }

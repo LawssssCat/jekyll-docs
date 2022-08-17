@@ -1,0 +1,13 @@
+/*
+ * The syntax light mode styles.
+ */
+
+%highlight-global-dark {
+  @extend %highlight-global-light;
+}
+
+%highlight-syntax-dark {
+  @extend %highlight-syntax-light;
+}
+
+@include highlightify("dark");

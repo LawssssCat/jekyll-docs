@@ -1,9 +1,13 @@
-{%- include snippets/assign.html 
-  value3=site.data.variables.default.page.show_btn_change_theme -%}
-{%- assign _show_btn_change_theme = __return -%}
-
 <header class="header">
   <div class="main">
+    <!-- navigation toggle -->
+    <div class="navigation__toggle">
+      <div class="toggle" aria-label="Menu">
+        <div class="toggle__bar"></div>
+        <div class="toggle__bar"></div>
+        <div class="toggle__bar"></div>
+      </div>
+    </div>
     <!-- title -->
     <div class="header__title">
       <div class="header__brand">
@@ -11,23 +15,6 @@
         {%- assign _paths_root = site.data.variables.default.paths.root -%}
         {%- include snippets/get-nav-url.html path=_paths_root -%}
         <a class="header__brand-title" title="{{ site.description }}" href="{{ __return }}">{{ site.title }}</a>
-      </div>
-      {%- if _show_btn_change_theme -%}
-        <div class="theme-btn">
-          {%- include snippets/get-theme.html -%}
-          {%- assign _theme = __return -%}
-          <div class="theme-panel_title button button--outline-secondary button--xs">{{ _theme }}</div>
-        </div>
-        {%- include snippets/get-accessible-url.html url="/assets/js/dist/theme.min.js" -%}
-        <script src="{{ __return }}"></script>
-      {%- endif -%}
-    </div>
-    <!-- navigation toggle -->
-    <div class="navigation__toggle">
-      <div class="toggle" aria-label="Menu">
-        <div class="toggle__bar"></div>
-        <div class="toggle__bar"></div>
-        <div class="toggle__bar"></div>
       </div>
     </div>
     <!-- navigation -->
@@ -82,12 +69,12 @@
                             {%- endif -%}
                           {%- endif -%}
                           <li>
-                            <a class="quicklinks-title" href="{{ _quicklinks_title_href }}">
+                            <div class="quicklinks-title">
                               <div class="quicklinks-title-text">
-                                {{ _nav_quicklinks_title }} <i class="fas fa-angle-right link-additional-icon"></i>
+                                {{ _nav_quicklinks_title }} <a href="{{ _quicklinks_title_href }}"><i class="fas fa-external-link-alt link-additional-icon"></i></a>
                                 <div class="quicklinks-border"></div>
                               </div>
-                            </a>
+                            </div>
                           </li>
                         {%- endfor -%}
                       </ul>
@@ -113,9 +100,9 @@
                                 {%- include snippets/get-accessible-url.html url=_quicklink.url -%}
                                 {%- assign _quicklink_url = __return -%}
                               {%- endif -%}
-                              <a class="quicklinks-block-right-menu-item-title" href="{{ _quicklink_url }}">
-                                {{ _quicklink_title }} <i class="fas fa-angle-right link-additional-icon"></i>
-                              </a>
+                              <div class="quicklinks-block-right-menu-item-title">
+                                {{ _quicklink_title }} <a href="{{ _quicklink_url }}"><i class="fas fa-external-link-alt link-additional-icon"></i></a>
+                              </div>
                               <!-- links -->
                               <div>
                                 {%- for _link in _quicklink.details -%}
@@ -139,6 +126,25 @@
               </li>
           {%- endcase -%}
         {%- endfor -%}
+    </div>
+    <!-- items -->
+    <div class="toggle-items">
+      <!-- lang -->
+      {%- include snippets/get-lang.html -%}
+      {%- assign _lang = __return -%}
+      <div class="toggle-item toggle-lang-switch">
+        <i class="fas fa-language"></i>
+        <span>{{ _lang | upcase }}</span>
+      </div>
+      <!-- theme -->
+      <div class="toggle-item toggle-theme-switch">
+        <i class="toggle-theme-icon-light fas fa-sun"></i>
+        <i class="toggle-theme-icon-dark far fa-moon"></i>
+      </div>
+      <!-- search -->
+      <div class="toggle-item toggle-docs-search">
+        <i class="fas fa-search"></i>
+      </div>
     </div>
   </div>
 </header>

@@ -8,7 +8,6 @@
 # -------------------------
 # Site Settings 
 # -------------------------
-highlight_theme: default # "default" (default), "tomorrow", "tomorrow-night", "tomorrow-night-eighties", "tomorrow-night-blue", "tomorrow-night-bright". see https://github.com/chriskempson/tomorrow-theme
 baseurl: /jekyll-docs-all-in-one # does not include hostname
 url: https://lawsssscat.github.io/ # https://lawsssscat.github.io/jekyll-docs-all-in-one (needn't indicate. auto generate) # the base hostname & protocol for your site e.g. https://www.someone.com (use in "absolute_url" tag with production environment. e.g. JEKYLL_ENV="production" bundle exec jekyll build)
 title: jekyll-docs-all-in-one
@@ -164,6 +163,7 @@ exclude:
   - README.md
   - LICENSE
   - jekyll-docs-all-in-one.gemspec
+  - /.git
   - .gitignore
   - package-lock.json
   - package.json

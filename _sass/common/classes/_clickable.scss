@@ -78,15 +78,17 @@
 
   // focus
   @if $focus-clr == default { /* focus = active -> hover -> normal */
-    @if $focus-bg-clr == null {
-      $focus-clr: $hover-clr;
-    } @else if $hover-bg-clr == default {
-      $focus-clr: $hover-clr;
-    }
+    // @if $focus-bg-clr == null {
+    //   $focus-clr: $hover-clr;
+    // } @else if $hover-bg-clr == default {
+    //   $focus-clr: $hover-clr;
+    // }
+    $focus-clr: null;
   }
 
   @if $focus-bg-clr == default {
-    $focus-bg-clr: $hover-bg-clr;
+    // $focus-bg-clr: $hover-bg-clr;
+    $focus-bg-clr: null;
   }
 
   @include plain() {
@@ -108,8 +110,10 @@
     }
   }
   @include focus() {
-    color: $focus-clr;
-    @if $focus-bg-clr{
+    @if $focus-clr {
+      color: $focus-clr;
+    }
+    @if $focus-bg-clr {
       background-color: $focus-bg-clr;
     }
   }
